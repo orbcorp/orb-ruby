@@ -150,6 +150,7 @@ module Orb
         required :start_date, Date
 
         # @!attribute unit_config
+        #   Configuration for unit pricing
         #
         #   @return [Orb::Models::UnitConfig]
         required :unit_config, -> { Orb::UnitConfig }
@@ -167,7 +168,7 @@ module Orb
         #
         #   @param start_date [Date] A date string to specify the line item's start date in the customer's timezone.
         #
-        #   @param unit_config [Orb::Models::UnitConfig]
+        #   @param unit_config [Orb::Models::UnitConfig] Configuration for unit pricing
 
         # @see Orb::Models::InvoiceCreateParams::LineItem#model_type
         module ModelType

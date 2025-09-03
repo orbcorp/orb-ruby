@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionPackageWithAllocationPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionPackageWithAllocationPrice::ModelType }
@@ -27,9 +28,11 @@ module Orb
       required :name, String
 
       # @!attribute package_with_allocation_config
+      #   Configuration for package_with_allocation pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :package_with_allocation_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig]
+      required :package_with_allocation_config,
+               -> { Orb::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -128,11 +131,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionPackageWithAllocationPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionPackageWithAllocationPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param package_with_allocation_config [Hash{Symbol=>Object}]
+      #   @param package_with_allocation_config [Orb::Models::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig] Configuration for package_with_allocation pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -177,6 +180,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionPackageWithAllocationPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -185,6 +190,36 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewSubscriptionPackageWithAllocationPrice#package_with_allocation_config
+      class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
+        # @!attribute allocation
+        #   Usage allocation
+        #
+        #   @return [String]
+        required :allocation, String
+
+        # @!attribute package_amount
+        #   Price per package
+        #
+        #   @return [String]
+        required :package_amount, String
+
+        # @!attribute package_size
+        #   Package size
+        #
+        #   @return [String]
+        required :package_size, String
+
+        # @!method initialize(allocation:, package_amount:, package_size:)
+        #   Configuration for package_with_allocation pricing
+        #
+        #   @param allocation [String] Usage allocation
+        #
+        #   @param package_amount [String] Price per package
+        #
+        #   @param package_size [String] Package size
       end
     end
   end

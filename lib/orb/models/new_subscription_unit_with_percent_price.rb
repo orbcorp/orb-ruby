@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionUnitWithPercentPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionUnitWithPercentPrice::ModelType }
@@ -27,9 +28,10 @@ module Orb
       required :name, String
 
       # @!attribute unit_with_percent_config
+      #   Configuration for unit_with_percent pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :unit_with_percent_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionUnitWithPercentPrice::UnitWithPercentConfig]
+      required :unit_with_percent_config, -> { Orb::NewSubscriptionUnitWithPercentPrice::UnitWithPercentConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -128,11 +130,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionUnitWithPercentPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionUnitWithPercentPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param unit_with_percent_config [Hash{Symbol=>Object}]
+      #   @param unit_with_percent_config [Orb::Models::NewSubscriptionUnitWithPercentPrice::UnitWithPercentConfig] Configuration for unit_with_percent pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -177,6 +179,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionUnitWithPercentPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -185,6 +189,28 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewSubscriptionUnitWithPercentPrice#unit_with_percent_config
+      class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
+        # @!attribute percent
+        #   What percent, out of 100, of the calculated total to charge
+        #
+        #   @return [String]
+        required :percent, String
+
+        # @!attribute unit_amount
+        #   Rate per unit of usage
+        #
+        #   @return [String]
+        required :unit_amount, String
+
+        # @!method initialize(percent:, unit_amount:)
+        #   Configuration for unit_with_percent pricing
+        #
+        #   @param percent [String] What percent, out of 100, of the calculated total to charge
+        #
+        #   @param unit_amount [String] Rate per unit of usage
       end
     end
   end

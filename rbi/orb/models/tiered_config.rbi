@@ -9,6 +9,7 @@ module Orb
       sig { returns(T::Array[Orb::Tier]) }
       attr_accessor :tiers
 
+      # Configuration for tiered pricing
       sig do
         params(tiers: T::Array[Orb::Tier::OrHash]).returns(T.attached_class)
       end

@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ModelType]
       required :model_type, enum: -> { Orb::NewPlanScalableMatrixWithTieredPricingPrice::ModelType }
@@ -27,10 +28,11 @@ module Orb
       required :name, String
 
       # @!attribute scalable_matrix_with_tiered_pricing_config
+      #   Configuration for scalable_matrix_with_tiered_pricing pricing
       #
-      #   @return [Hash{Symbol=>Object}]
+      #   @return [Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig]
       required :scalable_matrix_with_tiered_pricing_config,
-               Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+               -> { Orb::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -129,11 +131,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param scalable_matrix_with_tiered_pricing_config [Hash{Symbol=>Object}]
+      #   @param scalable_matrix_with_tiered_pricing_config [Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig] Configuration for scalable_matrix_with_tiered_pricing pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -178,6 +180,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -186,6 +190,100 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice#scalable_matrix_with_tiered_pricing_config
+      class ScalableMatrixWithTieredPricingConfig < Orb::Internal::Type::BaseModel
+        # @!attribute first_dimension
+        #   Used for the scalable matrix first dimension
+        #
+        #   @return [String]
+        required :first_dimension, String
+
+        # @!attribute matrix_scaling_factors
+        #   Apply a scaling factor to each dimension
+        #
+        #   @return [Array<Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>]
+        required :matrix_scaling_factors,
+                 -> do
+                   Orb::Internal::Type::ArrayOf[
+                     Orb::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor
+                   ]
+                 end
+
+        # @!attribute tiers
+        #   Tier pricing structure
+        #
+        #   @return [Array<Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier] }
+
+        # @!attribute second_dimension
+        #   Used for the scalable matrix second dimension (optional)
+        #
+        #   @return [String, nil]
+        optional :second_dimension, String, nil?: true
+
+        # @!method initialize(first_dimension:, matrix_scaling_factors:, tiers:, second_dimension: nil)
+        #   Configuration for scalable_matrix_with_tiered_pricing pricing
+        #
+        #   @param first_dimension [String] Used for the scalable matrix first dimension
+        #
+        #   @param matrix_scaling_factors [Array<Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
+        #
+        #   @param tiers [Array<Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier>] Tier pricing structure
+        #
+        #   @param second_dimension [String, nil] Used for the scalable matrix second dimension (optional)
+
+        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+          # @!attribute first_dimension_value
+          #   First dimension value
+          #
+          #   @return [String]
+          required :first_dimension_value, String
+
+          # @!attribute scaling_factor
+          #   Scaling factor
+          #
+          #   @return [String]
+          required :scaling_factor, String
+
+          # @!attribute second_dimension_value
+          #   Second dimension value (optional)
+          #
+          #   @return [String, nil]
+          optional :second_dimension_value, String, nil?: true
+
+          # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
+          #   Configuration for a single matrix scaling factor
+          #
+          #   @param first_dimension_value [String] First dimension value
+          #
+          #   @param scaling_factor [String] Scaling factor
+          #
+          #   @param second_dimension_value [String, nil] Second dimension value (optional)
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!attribute unit_amount
+          #   Per unit amount
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(tier_lower_bound:, unit_amount:)
+          #   Configuration for a single tier entry with business logic
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+          #
+          #   @param unit_amount [String] Per unit amount
+        end
       end
     end
   end

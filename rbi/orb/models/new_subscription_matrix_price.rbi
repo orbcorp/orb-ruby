@@ -16,12 +16,14 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # Configuration for matrix pricing
       sig { returns(Orb::MatrixConfig) }
       attr_reader :matrix_config
 
       sig { params(matrix_config: Orb::MatrixConfig::OrHash).void }
       attr_writer :matrix_config
 
+      # The pricing model type
       sig { returns(Orb::NewSubscriptionMatrixPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -159,7 +161,9 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # Configuration for matrix pricing
         matrix_config:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -281,6 +285,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

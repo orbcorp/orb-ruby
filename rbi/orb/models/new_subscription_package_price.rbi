@@ -16,6 +16,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewSubscriptionPackagePrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -23,6 +24,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
+      # Configuration for package pricing
       sig { returns(Orb::PackageConfig) }
       attr_reader :package_config
 
@@ -159,9 +161,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for package pricing
         package_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -287,6 +291,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

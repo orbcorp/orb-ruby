@@ -9,8 +9,18 @@ module Orb
       #   @return [String]
       required :unit_amount, String
 
-      # @!method initialize(unit_amount:)
+      # @!attribute scaling_factor
+      #   Multiplier to scale rated quantity by
+      #
+      #   @return [Float, nil]
+      optional :scaling_factor, Float, nil?: true
+
+      # @!method initialize(unit_amount:, scaling_factor: nil)
+      #   Configuration for unit pricing
+      #
       #   @param unit_amount [String] Rate per unit of usage
+      #
+      #   @param scaling_factor [Float, nil] Multiplier to scale rated quantity by
     end
   end
 end

@@ -218,37 +218,37 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :minimum_amount
 
-        # The definition of a new price to create and add to the subscription.
+        # New floating price request body params.
         sig do
           returns(
             T.nilable(
               T.any(
                 Orb::NewFloatingUnitPrice,
-                Orb::NewFloatingPackagePrice,
-                Orb::NewFloatingMatrixPrice,
-                Orb::NewFloatingMatrixWithAllocationPrice,
                 Orb::NewFloatingTieredPrice,
                 Orb::NewFloatingBulkPrice,
+                Orb::NewFloatingPackagePrice,
+                Orb::NewFloatingMatrixPrice,
                 Orb::NewFloatingThresholdTotalAmountPrice,
                 Orb::NewFloatingTieredPackagePrice,
-                Orb::NewFloatingGroupedTieredPrice,
-                Orb::NewFloatingMaxGroupTieredPackagePrice,
                 Orb::NewFloatingTieredWithMinimumPrice,
-                Orb::NewFloatingPackageWithAllocationPrice,
+                Orb::NewFloatingGroupedTieredPrice,
                 Orb::NewFloatingTieredPackageWithMinimumPrice,
+                Orb::NewFloatingPackageWithAllocationPrice,
                 Orb::NewFloatingUnitWithPercentPrice,
+                Orb::NewFloatingMatrixWithAllocationPrice,
                 Orb::NewFloatingTieredWithProrationPrice,
                 Orb::NewFloatingUnitWithProrationPrice,
                 Orb::NewFloatingGroupedAllocationPrice,
+                Orb::NewFloatingBulkWithProrationPrice,
                 Orb::NewFloatingGroupedWithProratedMinimumPrice,
                 Orb::NewFloatingGroupedWithMeteredMinimumPrice,
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds,
                 Orb::NewFloatingMatrixWithDisplayNamePrice,
-                Orb::NewFloatingBulkWithProrationPrice,
                 Orb::NewFloatingGroupedTieredPackagePrice,
+                Orb::NewFloatingMaxGroupTieredPackagePrice,
                 Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                 Orb::NewFloatingCumulativeGroupedBulkPrice,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds,
                 Orb::NewFloatingMinimumCompositePrice
               )
             )
@@ -299,31 +299,31 @@ module Orb
               T.nilable(
                 T.any(
                   Orb::NewFloatingUnitPrice::OrHash,
-                  Orb::NewFloatingPackagePrice::OrHash,
-                  Orb::NewFloatingMatrixPrice::OrHash,
-                  Orb::NewFloatingMatrixWithAllocationPrice::OrHash,
                   Orb::NewFloatingTieredPrice::OrHash,
                   Orb::NewFloatingBulkPrice::OrHash,
+                  Orb::NewFloatingPackagePrice::OrHash,
+                  Orb::NewFloatingMatrixPrice::OrHash,
                   Orb::NewFloatingThresholdTotalAmountPrice::OrHash,
                   Orb::NewFloatingTieredPackagePrice::OrHash,
-                  Orb::NewFloatingGroupedTieredPrice::OrHash,
-                  Orb::NewFloatingMaxGroupTieredPackagePrice::OrHash,
                   Orb::NewFloatingTieredWithMinimumPrice::OrHash,
-                  Orb::NewFloatingPackageWithAllocationPrice::OrHash,
+                  Orb::NewFloatingGroupedTieredPrice::OrHash,
                   Orb::NewFloatingTieredPackageWithMinimumPrice::OrHash,
+                  Orb::NewFloatingPackageWithAllocationPrice::OrHash,
                   Orb::NewFloatingUnitWithPercentPrice::OrHash,
+                  Orb::NewFloatingMatrixWithAllocationPrice::OrHash,
                   Orb::NewFloatingTieredWithProrationPrice::OrHash,
                   Orb::NewFloatingUnitWithProrationPrice::OrHash,
                   Orb::NewFloatingGroupedAllocationPrice::OrHash,
+                  Orb::NewFloatingBulkWithProrationPrice::OrHash,
                   Orb::NewFloatingGroupedWithProratedMinimumPrice::OrHash,
                   Orb::NewFloatingGroupedWithMeteredMinimumPrice::OrHash,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::OrHash,
                   Orb::NewFloatingMatrixWithDisplayNamePrice::OrHash,
-                  Orb::NewFloatingBulkWithProrationPrice::OrHash,
                   Orb::NewFloatingGroupedTieredPackagePrice::OrHash,
+                  Orb::NewFloatingMaxGroupTieredPackagePrice::OrHash,
                   Orb::NewFloatingScalableMatrixWithUnitPricingPrice::OrHash,
                   Orb::NewFloatingScalableMatrixWithTieredPricingPrice::OrHash,
                   Orb::NewFloatingCumulativeGroupedBulkPrice::OrHash,
-                  Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::OrHash,
                   Orb::NewFloatingMinimumCompositePrice::OrHash
                 )
               ),
@@ -357,7 +357,7 @@ module Orb
           # The minimum amount that will be billed for this price interval for a given
           # billing period.
           minimum_amount: nil,
-          # The definition of a new price to create and add to the subscription.
+          # New floating price request body params.
           price: nil,
           # The id of the price to add to the subscription.
           price_id: nil,
@@ -402,31 +402,31 @@ module Orb
                 T.nilable(
                   T.any(
                     Orb::NewFloatingUnitPrice,
-                    Orb::NewFloatingPackagePrice,
-                    Orb::NewFloatingMatrixPrice,
-                    Orb::NewFloatingMatrixWithAllocationPrice,
                     Orb::NewFloatingTieredPrice,
                     Orb::NewFloatingBulkPrice,
+                    Orb::NewFloatingPackagePrice,
+                    Orb::NewFloatingMatrixPrice,
                     Orb::NewFloatingThresholdTotalAmountPrice,
                     Orb::NewFloatingTieredPackagePrice,
-                    Orb::NewFloatingGroupedTieredPrice,
-                    Orb::NewFloatingMaxGroupTieredPackagePrice,
                     Orb::NewFloatingTieredWithMinimumPrice,
-                    Orb::NewFloatingPackageWithAllocationPrice,
+                    Orb::NewFloatingGroupedTieredPrice,
                     Orb::NewFloatingTieredPackageWithMinimumPrice,
+                    Orb::NewFloatingPackageWithAllocationPrice,
                     Orb::NewFloatingUnitWithPercentPrice,
+                    Orb::NewFloatingMatrixWithAllocationPrice,
                     Orb::NewFloatingTieredWithProrationPrice,
                     Orb::NewFloatingUnitWithProrationPrice,
                     Orb::NewFloatingGroupedAllocationPrice,
+                    Orb::NewFloatingBulkWithProrationPrice,
                     Orb::NewFloatingGroupedWithProratedMinimumPrice,
                     Orb::NewFloatingGroupedWithMeteredMinimumPrice,
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds,
                     Orb::NewFloatingMatrixWithDisplayNamePrice,
-                    Orb::NewFloatingBulkWithProrationPrice,
                     Orb::NewFloatingGroupedTieredPackagePrice,
+                    Orb::NewFloatingMaxGroupTieredPackagePrice,
                     Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
                     Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                     Orb::NewFloatingCumulativeGroupedBulkPrice,
-                    Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds,
                     Orb::NewFloatingMinimumCompositePrice
                   )
                 ),
@@ -651,7 +651,7 @@ module Orb
           end
         end
 
-        # The definition of a new price to create and add to the subscription.
+        # New floating price request body params.
         module Price
           extend Orb::Internal::Type::Union
 
@@ -659,31 +659,31 @@ module Orb
             T.type_alias do
               T.any(
                 Orb::NewFloatingUnitPrice,
-                Orb::NewFloatingPackagePrice,
-                Orb::NewFloatingMatrixPrice,
-                Orb::NewFloatingMatrixWithAllocationPrice,
                 Orb::NewFloatingTieredPrice,
                 Orb::NewFloatingBulkPrice,
+                Orb::NewFloatingPackagePrice,
+                Orb::NewFloatingMatrixPrice,
                 Orb::NewFloatingThresholdTotalAmountPrice,
                 Orb::NewFloatingTieredPackagePrice,
-                Orb::NewFloatingGroupedTieredPrice,
-                Orb::NewFloatingMaxGroupTieredPackagePrice,
                 Orb::NewFloatingTieredWithMinimumPrice,
-                Orb::NewFloatingPackageWithAllocationPrice,
+                Orb::NewFloatingGroupedTieredPrice,
                 Orb::NewFloatingTieredPackageWithMinimumPrice,
+                Orb::NewFloatingPackageWithAllocationPrice,
                 Orb::NewFloatingUnitWithPercentPrice,
+                Orb::NewFloatingMatrixWithAllocationPrice,
                 Orb::NewFloatingTieredWithProrationPrice,
                 Orb::NewFloatingUnitWithProrationPrice,
                 Orb::NewFloatingGroupedAllocationPrice,
+                Orb::NewFloatingBulkWithProrationPrice,
                 Orb::NewFloatingGroupedWithProratedMinimumPrice,
                 Orb::NewFloatingGroupedWithMeteredMinimumPrice,
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds,
                 Orb::NewFloatingMatrixWithDisplayNamePrice,
-                Orb::NewFloatingBulkWithProrationPrice,
                 Orb::NewFloatingGroupedTieredPackagePrice,
+                Orb::NewFloatingMaxGroupTieredPackagePrice,
                 Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                 Orb::NewFloatingCumulativeGroupedBulkPrice,
-                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds,
                 Orb::NewFloatingMinimumCompositePrice
               )
             end
@@ -709,13 +709,27 @@ module Orb
             sig { returns(String) }
             attr_accessor :currency
 
-            sig { returns(T::Hash[Symbol, T.anything]) }
-            attr_accessor :grouped_with_min_max_thresholds_config
+            # Configuration for grouped_with_min_max_thresholds pricing
+            sig do
+              returns(
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+              )
+            end
+            attr_reader :grouped_with_min_max_thresholds_config
+
+            sig do
+              params(
+                grouped_with_min_max_thresholds_config:
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash
+              ).void
+            end
+            attr_writer :grouped_with_min_max_thresholds_config
 
             # The id of the item the price will be associated with.
             sig { returns(String) }
             attr_accessor :item_id
 
+            # The pricing model type
             sig { returns(Symbol) }
             attr_accessor :model_type
 
@@ -813,7 +827,7 @@ module Orb
                   Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
                 currency: String,
                 grouped_with_min_max_thresholds_config:
-                  T::Hash[Symbol, T.anything],
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
                 item_id: String,
                 name: String,
                 billable_metric_id: T.nilable(String),
@@ -844,6 +858,7 @@ module Orb
               cadence:,
               # An ISO 4217 currency string for which this price is billed in.
               currency:,
+              # Configuration for grouped_with_min_max_thresholds pricing
               grouped_with_min_max_thresholds_config:,
               # The id of the item the price will be associated with.
               item_id:,
@@ -878,6 +893,7 @@ module Orb
               # by setting the value to `null`, and the entire metadata mapping can be cleared
               # by setting `metadata` to `null`.
               metadata: nil,
+              # The pricing model type
               model_type: :grouped_with_min_max_thresholds
             )
             end
@@ -889,7 +905,7 @@ module Orb
                     Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
                   currency: String,
                   grouped_with_min_max_thresholds_config:
-                    T::Hash[Symbol, T.anything],
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
                   item_id: String,
                   model_type: Symbol,
                   name: String,
@@ -971,6 +987,66 @@ module Orb
                 )
               end
               def self.values
+              end
+            end
+
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The event property used to group before applying thresholds
+              sig { returns(String) }
+              attr_accessor :grouping_key
+
+              # The maximum amount to charge each group
+              sig { returns(String) }
+              attr_accessor :maximum_charge
+
+              # The minimum amount to charge each group, regardless of usage
+              sig { returns(String) }
+              attr_accessor :minimum_charge
+
+              # The base price charged per group
+              sig { returns(String) }
+              attr_accessor :per_unit_rate
+
+              # Configuration for grouped_with_min_max_thresholds pricing
+              sig do
+                params(
+                  grouping_key: String,
+                  maximum_charge: String,
+                  minimum_charge: String,
+                  per_unit_rate: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The event property used to group before applying thresholds
+                grouping_key:,
+                # The maximum amount to charge each group
+                maximum_charge:,
+                # The minimum amount to charge each group, regardless of usage
+                minimum_charge:,
+                # The base price charged per group
+                per_unit_rate:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    grouping_key: String,
+                    maximum_charge: String,
+                    minimum_charge: String,
+                    per_unit_rate: String
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end

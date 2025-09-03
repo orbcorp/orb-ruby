@@ -25,6 +25,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # Configuration for matrix_with_allocation pricing
       sig { returns(Orb::MatrixWithAllocationConfig) }
       attr_reader :matrix_with_allocation_config
 
@@ -35,6 +36,7 @@ module Orb
       end
       attr_writer :matrix_with_allocation_config
 
+      # The pricing model type
       sig do
         returns(Orb::NewFloatingMatrixWithAllocationPrice::ModelType::OrSymbol)
       end
@@ -167,7 +169,9 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # Configuration for matrix_with_allocation pricing
         matrix_with_allocation_config:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -292,6 +296,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionThresholdTotalAmountPrice::ModelType }
@@ -27,9 +28,11 @@ module Orb
       required :name, String
 
       # @!attribute threshold_total_amount_config
+      #   Configuration for threshold_total_amount pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :threshold_total_amount_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig]
+      required :threshold_total_amount_config,
+               -> { Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -128,11 +131,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param threshold_total_amount_config [Hash{Symbol=>Object}]
+      #   @param threshold_total_amount_config [Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig] Configuration for threshold_total_amount pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -177,6 +180,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionThresholdTotalAmountPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -185,6 +190,55 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewSubscriptionThresholdTotalAmountPrice#threshold_total_amount_config
+      class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
+        # @!attribute consumption_table
+        #   When the quantity consumed passes a provided threshold, the configured total
+        #   will be charged
+        #
+        #   @return [Array<Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable>]
+        required :consumption_table,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable] }
+
+        # @!attribute prorate
+        #   If true, the unit price will be prorated to the billing period
+        #
+        #   @return [Boolean, nil]
+        optional :prorate, Orb::Internal::Type::Boolean, nil?: true
+
+        # @!method initialize(consumption_table:, prorate: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig}
+        #   for more details.
+        #
+        #   Configuration for threshold_total_amount pricing
+        #
+        #   @param consumption_table [Array<Orb::Models::NewSubscriptionThresholdTotalAmountPrice::ThresholdTotalAmountConfig::ConsumptionTable>] When the quantity consumed passes a provided threshold, the configured total wil
+        #
+        #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
+
+        class ConsumptionTable < Orb::Internal::Type::BaseModel
+          # @!attribute threshold
+          #   Quantity threshold
+          #
+          #   @return [String]
+          required :threshold, String
+
+          # @!attribute total_amount
+          #   Total amount for this threshold
+          #
+          #   @return [String]
+          required :total_amount, String
+
+          # @!method initialize(threshold:, total_amount:)
+          #   Configuration for a single threshold
+          #
+          #   @param threshold [String] Quantity threshold
+          #
+          #   @param total_amount [String] Total amount for this threshold
+        end
       end
     end
   end

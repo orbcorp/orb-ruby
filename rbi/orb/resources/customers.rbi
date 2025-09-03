@@ -50,7 +50,8 @@ module Orb
               T.any(
                 Orb::NewAvalaraTaxConfiguration::OrHash,
                 Orb::NewTaxJarConfiguration::OrHash,
-                Orb::NewSphereConfiguration::OrHash
+                Orb::NewSphereConfiguration::OrHash,
+                Orb::CustomerCreateParams::TaxConfiguration::Numeral::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -67,7 +68,8 @@ module Orb
         name:,
         accounting_sync_configuration: nil,
         # Additional email addresses for this customer. If populated, these email
-        # addresses will be CC'd for customer communications.
+        # addresses will be CC'd for customer communications. The total number of email
+        # addresses (including the primary email) cannot exceed 50.
         additional_emails: nil,
         # Used to determine if invoices for this customer will automatically attempt to
         # charge a saved payment method, if available. This parameter defaults to `True`
@@ -288,7 +290,8 @@ module Orb
               T.any(
                 Orb::NewAvalaraTaxConfiguration::OrHash,
                 Orb::NewTaxJarConfiguration::OrHash,
-                Orb::NewSphereConfiguration::OrHash
+                Orb::NewSphereConfiguration::OrHash,
+                Orb::CustomerUpdateParams::TaxConfiguration::Numeral::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -299,7 +302,8 @@ module Orb
         customer_id,
         accounting_sync_configuration: nil,
         # Additional email addresses for this customer. If populated, these email
-        # addresses will be CC'd for customer communications.
+        # addresses will be CC'd for customer communications. The total number of email
+        # addresses (including the primary email) cannot exceed 50.
         additional_emails: nil,
         # Used to determine if invoices for this customer will automatically attempt to
         # charge a saved payment method, if available. This parameter defaults to `True`
@@ -641,7 +645,8 @@ module Orb
               T.any(
                 Orb::NewAvalaraTaxConfiguration::OrHash,
                 Orb::NewTaxJarConfiguration::OrHash,
-                Orb::NewSphereConfiguration::OrHash
+                Orb::NewSphereConfiguration::OrHash,
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -652,7 +657,8 @@ module Orb
         id,
         accounting_sync_configuration: nil,
         # Additional email addresses for this customer. If populated, these email
-        # addresses will be CC'd for customer communications.
+        # addresses will be CC'd for customer communications. The total number of email
+        # addresses (including the primary email) cannot exceed 50.
         additional_emails: nil,
         # Used to determine if invoices for this customer will automatically attempt to
         # charge a saved payment method, if available. This parameter defaults to `True`

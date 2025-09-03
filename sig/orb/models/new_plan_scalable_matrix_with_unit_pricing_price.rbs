@@ -6,7 +6,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice::model_type,
         name: String,
-        scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_unit_pricing_config: Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -31,7 +31,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top]
+      attr_accessor scalable_matrix_with_unit_pricing_config: Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -64,7 +64,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice::model_type,
         name: String,
-        scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_unit_pricing_config: Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -85,7 +85,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice::model_type,
         name: String,
-        scalable_matrix_with_unit_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_unit_pricing_config: Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -125,6 +125,70 @@ module Orb
         SCALABLE_MATRIX_WITH_UNIT_PRICING: :scalable_matrix_with_unit_pricing
 
         def self?.values: -> ::Array[Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice::model_type]
+      end
+
+      type scalable_matrix_with_unit_pricing_config =
+        {
+          first_dimension: String,
+          matrix_scaling_factors: ::Array[Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
+          unit_price: String,
+          prorate: bool?,
+          second_dimension: String?
+        }
+
+      class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
+        attr_accessor first_dimension: String
+
+        attr_accessor matrix_scaling_factors: ::Array[Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor]
+
+        attr_accessor unit_price: String
+
+        attr_accessor prorate: bool?
+
+        attr_accessor second_dimension: String?
+
+        def initialize: (
+          first_dimension: String,
+          matrix_scaling_factors: ::Array[Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
+          unit_price: String,
+          ?prorate: bool?,
+          ?second_dimension: String?
+        ) -> void
+
+        def to_hash: -> {
+          first_dimension: String,
+          matrix_scaling_factors: ::Array[Orb::NewPlanScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
+          unit_price: String,
+          prorate: bool?,
+          second_dimension: String?
+        }
+
+        type matrix_scaling_factor =
+          {
+            first_dimension_value: String,
+            scaling_factor: String,
+            second_dimension_value: String?
+          }
+
+        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+          attr_accessor first_dimension_value: String
+
+          attr_accessor scaling_factor: String
+
+          attr_accessor second_dimension_value: String?
+
+          def initialize: (
+            first_dimension_value: String,
+            scaling_factor: String,
+            ?second_dimension_value: String?
+          ) -> void
+
+          def to_hash: -> {
+            first_dimension_value: String,
+            scaling_factor: String,
+            second_dimension_value: String?
+          }
+        end
       end
     end
   end

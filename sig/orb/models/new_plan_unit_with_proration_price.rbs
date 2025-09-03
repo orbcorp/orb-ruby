@@ -6,7 +6,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanUnitWithProrationPrice::model_type,
         name: String,
-        unit_with_proration_config: ::Hash[Symbol, top],
+        unit_with_proration_config: Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -31,7 +31,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor unit_with_proration_config: ::Hash[Symbol, top]
+      attr_accessor unit_with_proration_config: Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -64,7 +64,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanUnitWithProrationPrice::model_type,
         name: String,
-        unit_with_proration_config: ::Hash[Symbol, top],
+        unit_with_proration_config: Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -85,7 +85,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewPlanUnitWithProrationPrice::model_type,
         name: String,
-        unit_with_proration_config: ::Hash[Symbol, top],
+        unit_with_proration_config: Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -125,6 +125,16 @@ module Orb
         UNIT_WITH_PRORATION: :unit_with_proration
 
         def self?.values: -> ::Array[Orb::Models::NewPlanUnitWithProrationPrice::model_type]
+      end
+
+      type unit_with_proration_config = { unit_amount: String }
+
+      class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
+        attr_accessor unit_amount: String
+
+        def initialize: (unit_amount: String) -> void
+
+        def to_hash: -> { unit_amount: String }
       end
     end
   end

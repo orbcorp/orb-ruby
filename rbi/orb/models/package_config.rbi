@@ -15,6 +15,7 @@ module Orb
       sig { returns(Integer) }
       attr_accessor :package_size
 
+      # Configuration for package pricing
       sig do
         params(package_amount: String, package_size: Integer).returns(
           T.attached_class

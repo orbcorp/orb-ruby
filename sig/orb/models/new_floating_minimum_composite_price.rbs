@@ -112,16 +112,18 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::NewFloatingMinimumCompositePrice::cadence]
       end
 
-      type minimum_config = { minimum_amount: String, prorated: bool? }
+      type minimum_config = { minimum_amount: String, prorated: bool }
 
       class MinimumConfig < Orb::Internal::Type::BaseModel
         attr_accessor minimum_amount: String
 
-        attr_accessor prorated: bool?
+        attr_reader prorated: bool?
 
-        def initialize: (minimum_amount: String, ?prorated: bool?) -> void
+        def prorated=: (bool) -> bool
 
-        def to_hash: -> { minimum_amount: String, prorated: bool? }
+        def initialize: (minimum_amount: String, ?prorated: bool) -> void
+
+        def to_hash: -> { minimum_amount: String, prorated: bool }
       end
 
       type model_type = :minimum

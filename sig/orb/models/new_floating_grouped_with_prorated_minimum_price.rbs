@@ -4,7 +4,7 @@ module Orb
       {
         cadence: Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::cadence,
         currency: String,
-        grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+        grouped_with_prorated_minimum_config: Orb::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::model_type,
         name: String,
@@ -26,7 +26,7 @@ module Orb
 
       attr_accessor currency: String
 
-      attr_accessor grouped_with_prorated_minimum_config: ::Hash[Symbol, top]
+      attr_accessor grouped_with_prorated_minimum_config: Orb::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig
 
       attr_accessor item_id: String
 
@@ -59,7 +59,7 @@ module Orb
       def initialize: (
         cadence: Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::cadence,
         currency: String,
-        grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+        grouped_with_prorated_minimum_config: Orb::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::model_type,
         name: String,
@@ -79,7 +79,7 @@ module Orb
       def to_hash: -> {
         cadence: Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::cadence,
         currency: String,
-        grouped_with_prorated_minimum_config: ::Hash[Symbol, top],
+        grouped_with_prorated_minimum_config: Orb::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::model_type,
         name: String,
@@ -110,6 +110,29 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::cadence]
+      end
+
+      type grouped_with_prorated_minimum_config =
+        { grouping_key: String, minimum: String, unit_rate: String }
+
+      class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
+        attr_accessor grouping_key: String
+
+        attr_accessor minimum: String
+
+        attr_accessor unit_rate: String
+
+        def initialize: (
+          grouping_key: String,
+          minimum: String,
+          unit_rate: String
+        ) -> void
+
+        def to_hash: -> {
+          grouping_key: String,
+          minimum: String,
+          unit_rate: String
+        }
       end
 
       type model_type = :grouped_with_prorated_minimum

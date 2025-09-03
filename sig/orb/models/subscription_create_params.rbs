@@ -292,40 +292,198 @@ module Orb
 
         type price =
           Orb::NewSubscriptionUnitPrice
-          | Orb::NewSubscriptionPackagePrice
-          | Orb::NewSubscriptionMatrixPrice
           | Orb::NewSubscriptionTieredPrice
           | Orb::NewSubscriptionBulkPrice
+          | Orb::NewSubscriptionPackagePrice
+          | Orb::NewSubscriptionMatrixPrice
           | Orb::NewSubscriptionThresholdTotalAmountPrice
           | Orb::NewSubscriptionTieredPackagePrice
           | Orb::NewSubscriptionTieredWithMinimumPrice
-          | Orb::NewSubscriptionUnitWithPercentPrice
+          | Orb::NewSubscriptionGroupedTieredPrice
+          | Orb::NewSubscriptionTieredPackageWithMinimumPrice
           | Orb::NewSubscriptionPackageWithAllocationPrice
-          | Orb::NewSubscriptionTierWithProrationPrice
+          | Orb::NewSubscriptionUnitWithPercentPrice
+          | Orb::NewSubscriptionMatrixWithAllocationPrice
+          | Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration
           | Orb::NewSubscriptionUnitWithProrationPrice
           | Orb::NewSubscriptionGroupedAllocationPrice
-          | Orb::NewSubscriptionGroupedWithProratedMinimumPrice
           | Orb::NewSubscriptionBulkWithProrationPrice
+          | Orb::NewSubscriptionGroupedWithProratedMinimumPrice
+          | Orb::NewSubscriptionGroupedWithMeteredMinimumPrice
+          | Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds
+          | Orb::NewSubscriptionMatrixWithDisplayNamePrice
+          | Orb::NewSubscriptionGroupedTieredPackagePrice
+          | Orb::NewSubscriptionMaxGroupTieredPackagePrice
           | Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice
           | Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice
           | Orb::NewSubscriptionCumulativeGroupedBulkPrice
-          | Orb::NewSubscriptionMaxGroupTieredPackagePrice
-          | Orb::NewSubscriptionGroupedWithMeteredMinimumPrice
-          | Orb::NewSubscriptionMatrixWithDisplayNamePrice
-          | Orb::NewSubscriptionGroupedTieredPackagePrice
-          | Orb::NewSubscriptionMatrixWithAllocationPrice
-          | Orb::NewSubscriptionTieredPackageWithMinimumPrice
-          | Orb::NewSubscriptionGroupedTieredPrice
-          | Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds
           | Orb::NewSubscriptionMinimumCompositePrice
 
         module Price
           extend Orb::Internal::Type::Union
 
+          type tiered_with_proration =
+            {
+              cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::cadence,
+              item_id: String,
+              model_type: :tiered_with_proration,
+              name: String,
+              tiered_with_proration_config: Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class TieredWithProration < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :tiered_with_proration
+
+            attr_accessor name: String
+
+            attr_accessor tiered_with_proration_config: Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::cadence,
+              item_id: String,
+              name: String,
+              tiered_with_proration_config: Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :tiered_with_proration
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::cadence,
+              item_id: String,
+              model_type: :tiered_with_proration,
+              name: String,
+              tiered_with_proration_config: Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::cadence]
+            end
+
+            type tiered_with_proration_config =
+              {
+                tiers: ::Array[Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              }
+
+            class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::SubscriptionCreateParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              }
+
+              type tier = { tier_lower_bound: String, unit_amount: String }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor tier_lower_bound: String
+
+                attr_accessor unit_amount: String
+
+                def initialize: (
+                  tier_lower_bound: String,
+                  unit_amount: String
+                ) -> void
+
+                def to_hash: -> {
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+              end
+            end
+          end
+
           type grouped_with_min_max_thresholds =
             {
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -347,7 +505,7 @@ module Orb
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence
 
-            attr_accessor grouped_with_min_max_thresholds_config: ::Hash[Symbol, top]
+            attr_accessor grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
 
             attr_accessor item_id: String
 
@@ -383,7 +541,7 @@ module Orb
 
             def initialize: (
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -404,7 +562,7 @@ module Orb
 
             def to_hash: -> {
               cadence: Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -442,6 +600,38 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence]
+            end
+
+            type grouped_with_min_max_thresholds_config =
+              {
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              }
+
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              attr_accessor grouping_key: String
+
+              attr_accessor maximum_charge: String
+
+              attr_accessor minimum_charge: String
+
+              attr_accessor per_unit_rate: String
+
+              def initialize: (
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              ) -> void
+
+              def to_hash: -> {
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              }
             end
           end
 
@@ -579,40 +769,198 @@ module Orb
 
         type price =
           Orb::NewSubscriptionUnitPrice
-          | Orb::NewSubscriptionPackagePrice
-          | Orb::NewSubscriptionMatrixPrice
           | Orb::NewSubscriptionTieredPrice
           | Orb::NewSubscriptionBulkPrice
+          | Orb::NewSubscriptionPackagePrice
+          | Orb::NewSubscriptionMatrixPrice
           | Orb::NewSubscriptionThresholdTotalAmountPrice
           | Orb::NewSubscriptionTieredPackagePrice
           | Orb::NewSubscriptionTieredWithMinimumPrice
-          | Orb::NewSubscriptionUnitWithPercentPrice
+          | Orb::NewSubscriptionGroupedTieredPrice
+          | Orb::NewSubscriptionTieredPackageWithMinimumPrice
           | Orb::NewSubscriptionPackageWithAllocationPrice
-          | Orb::NewSubscriptionTierWithProrationPrice
+          | Orb::NewSubscriptionUnitWithPercentPrice
+          | Orb::NewSubscriptionMatrixWithAllocationPrice
+          | Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration
           | Orb::NewSubscriptionUnitWithProrationPrice
           | Orb::NewSubscriptionGroupedAllocationPrice
-          | Orb::NewSubscriptionGroupedWithProratedMinimumPrice
           | Orb::NewSubscriptionBulkWithProrationPrice
+          | Orb::NewSubscriptionGroupedWithProratedMinimumPrice
+          | Orb::NewSubscriptionGroupedWithMeteredMinimumPrice
+          | Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds
+          | Orb::NewSubscriptionMatrixWithDisplayNamePrice
+          | Orb::NewSubscriptionGroupedTieredPackagePrice
+          | Orb::NewSubscriptionMaxGroupTieredPackagePrice
           | Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice
           | Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice
           | Orb::NewSubscriptionCumulativeGroupedBulkPrice
-          | Orb::NewSubscriptionMaxGroupTieredPackagePrice
-          | Orb::NewSubscriptionGroupedWithMeteredMinimumPrice
-          | Orb::NewSubscriptionMatrixWithDisplayNamePrice
-          | Orb::NewSubscriptionGroupedTieredPackagePrice
-          | Orb::NewSubscriptionMatrixWithAllocationPrice
-          | Orb::NewSubscriptionTieredPackageWithMinimumPrice
-          | Orb::NewSubscriptionGroupedTieredPrice
-          | Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds
           | Orb::NewSubscriptionMinimumCompositePrice
 
         module Price
           extend Orb::Internal::Type::Union
 
+          type tiered_with_proration =
+            {
+              cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::cadence,
+              item_id: String,
+              model_type: :tiered_with_proration,
+              name: String,
+              tiered_with_proration_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class TieredWithProration < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :tiered_with_proration
+
+            attr_accessor name: String
+
+            attr_accessor tiered_with_proration_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::cadence,
+              item_id: String,
+              name: String,
+              tiered_with_proration_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :tiered_with_proration
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::cadence,
+              item_id: String,
+              model_type: :tiered_with_proration,
+              name: String,
+              tiered_with_proration_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::cadence]
+            end
+
+            type tiered_with_proration_config =
+              {
+                tiers: ::Array[Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              }
+
+            class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
+              attr_accessor tiers: ::Array[Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+
+              def initialize: (
+                tiers: ::Array[Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                tiers: ::Array[Orb::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              }
+
+              type tier = { tier_lower_bound: String, unit_amount: String }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor tier_lower_bound: String
+
+                attr_accessor unit_amount: String
+
+                def initialize: (
+                  tier_lower_bound: String,
+                  unit_amount: String
+                ) -> void
+
+                def to_hash: -> {
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+              end
+            end
+          end
+
           type grouped_with_min_max_thresholds =
             {
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -634,7 +982,7 @@ module Orb
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
             attr_accessor cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence
 
-            attr_accessor grouped_with_min_max_thresholds_config: ::Hash[Symbol, top]
+            attr_accessor grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
 
             attr_accessor item_id: String
 
@@ -670,7 +1018,7 @@ module Orb
 
             def initialize: (
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -691,7 +1039,7 @@ module Orb
 
             def to_hash: -> {
               cadence: Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: ::Hash[Symbol, top],
+              grouped_with_min_max_thresholds_config: Orb::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -729,6 +1077,38 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence]
+            end
+
+            type grouped_with_min_max_thresholds_config =
+              {
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              }
+
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              attr_accessor grouping_key: String
+
+              attr_accessor maximum_charge: String
+
+              attr_accessor minimum_charge: String
+
+              attr_accessor per_unit_rate: String
+
+              def initialize: (
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              ) -> void
+
+              def to_hash: -> {
+                grouping_key: String,
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              }
             end
           end
 

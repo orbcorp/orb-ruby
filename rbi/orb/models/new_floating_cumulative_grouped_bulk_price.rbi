@@ -17,8 +17,21 @@ module Orb
       end
       attr_accessor :cadence
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :cumulative_grouped_bulk_config
+      # Configuration for cumulative_grouped_bulk pricing
+      sig do
+        returns(
+          Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig
+        )
+      end
+      attr_reader :cumulative_grouped_bulk_config
+
+      sig do
+        params(
+          cumulative_grouped_bulk_config:
+            Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::OrHash
+        ).void
+      end
+      attr_writer :cumulative_grouped_bulk_config
 
       # An ISO 4217 currency string for which this price is billed in.
       sig { returns(String) }
@@ -28,6 +41,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(Orb::NewFloatingCumulativeGroupedBulkPrice::ModelType::OrSymbol)
       end
@@ -125,7 +139,8 @@ module Orb
         params(
           cadence:
             Orb::NewFloatingCumulativeGroupedBulkPrice::Cadence::OrSymbol,
-          cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+          cumulative_grouped_bulk_config:
+            Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::OrHash,
           currency: String,
           item_id: String,
           model_type:
@@ -156,11 +171,13 @@ module Orb
       def self.new(
         # The cadence to bill for this price on.
         cadence:,
+        # Configuration for cumulative_grouped_bulk pricing
         cumulative_grouped_bulk_config:,
         # An ISO 4217 currency string for which this price is billed in.
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -201,7 +218,8 @@ module Orb
           {
             cadence:
               Orb::NewFloatingCumulativeGroupedBulkPrice::Cadence::OrSymbol,
-            cumulative_grouped_bulk_config: T::Hash[Symbol, T.anything],
+            cumulative_grouped_bulk_config:
+              Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig,
             currency: String,
             item_id: String,
             model_type:
@@ -285,6 +303,115 @@ module Orb
         end
       end
 
+      class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Each tier lower bound must have the same group of values.
+        sig do
+          returns(
+            T::Array[
+              Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue
+            ]
+          )
+        end
+        attr_accessor :dimension_values
+
+        # Grouping key name
+        sig { returns(String) }
+        attr_accessor :group
+
+        # Configuration for cumulative_grouped_bulk pricing
+        sig do
+          params(
+            dimension_values:
+              T::Array[
+                Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue::OrHash
+              ],
+            group: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Each tier lower bound must have the same group of values.
+          dimension_values:,
+          # Grouping key name
+          group:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              dimension_values:
+                T::Array[
+                  Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue
+                ],
+              group: String
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class DimensionValue < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewFloatingCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Grouping key value
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # Tier lower bound
+          sig { returns(String) }
+          attr_accessor :tier_lower_bound
+
+          # Unit amount for this combination
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a dimension value entry
+          sig do
+            params(
+              grouping_key: String,
+              tier_lower_bound: String,
+              unit_amount: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Grouping key value
+            grouping_key:,
+            # Tier lower bound
+            tier_lower_bound:,
+            # Unit amount for this combination
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                grouping_key: String,
+                tier_lower_bound: String,
+                unit_amount: String
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

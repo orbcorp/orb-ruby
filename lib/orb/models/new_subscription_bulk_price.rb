@@ -4,6 +4,7 @@ module Orb
   module Models
     class NewSubscriptionBulkPrice < Orb::Internal::Type::BaseModel
       # @!attribute bulk_config
+      #   Configuration for bulk pricing
       #
       #   @return [Orb::Models::BulkConfig]
       required :bulk_config, -> { Orb::BulkConfig }
@@ -21,6 +22,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionBulkPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionBulkPrice::ModelType }
@@ -124,13 +126,13 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewSubscriptionBulkPrice} for more details.
       #
-      #   @param bulk_config [Orb::Models::BulkConfig]
+      #   @param bulk_config [Orb::Models::BulkConfig] Configuration for bulk pricing
       #
       #   @param cadence [Symbol, Orb::Models::NewSubscriptionBulkPrice::Cadence] The cadence to bill for this price on.
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionBulkPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionBulkPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +179,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionBulkPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

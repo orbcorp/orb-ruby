@@ -4,7 +4,7 @@ module Orb
       {
         cadence: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::cadence,
         item_id: String,
-        matrix_with_display_name_config: ::Hash[Symbol, top],
+        matrix_with_display_name_config: Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig,
         model_type: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::model_type,
         name: String,
         billable_metric_id: String?,
@@ -27,7 +27,7 @@ module Orb
 
       attr_accessor item_id: String
 
-      attr_accessor matrix_with_display_name_config: ::Hash[Symbol, top]
+      attr_accessor matrix_with_display_name_config: Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig
 
       attr_accessor model_type: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::model_type
 
@@ -62,7 +62,7 @@ module Orb
       def initialize: (
         cadence: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::cadence,
         item_id: String,
-        matrix_with_display_name_config: ::Hash[Symbol, top],
+        matrix_with_display_name_config: Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig,
         model_type: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::model_type,
         name: String,
         ?billable_metric_id: String?,
@@ -83,7 +83,7 @@ module Orb
       def to_hash: -> {
         cadence: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::cadence,
         item_id: String,
-        matrix_with_display_name_config: ::Hash[Symbol, top],
+        matrix_with_display_name_config: Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig,
         model_type: Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::model_type,
         name: String,
         billable_metric_id: String?,
@@ -115,6 +115,51 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice::cadence]
+      end
+
+      type matrix_with_display_name_config =
+        {
+          dimension: String,
+          unit_amounts: ::Array[Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount]
+        }
+
+      class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
+        attr_accessor dimension: String
+
+        attr_accessor unit_amounts: ::Array[Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount]
+
+        def initialize: (
+          dimension: String,
+          unit_amounts: ::Array[Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount]
+        ) -> void
+
+        def to_hash: -> {
+          dimension: String,
+          unit_amounts: ::Array[Orb::NewSubscriptionMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount]
+        }
+
+        type unit_amount =
+          { dimension_value: String, display_name: String, unit_amount: String }
+
+        class UnitAmount < Orb::Internal::Type::BaseModel
+          attr_accessor dimension_value: String
+
+          attr_accessor display_name: String
+
+          attr_accessor unit_amount: String
+
+          def initialize: (
+            dimension_value: String,
+            display_name: String,
+            unit_amount: String
+          ) -> void
+
+          def to_hash: -> {
+            dimension_value: String,
+            display_name: String,
+            unit_amount: String
+          }
+        end
       end
 
       type model_type = :matrix_with_display_name

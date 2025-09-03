@@ -33,7 +33,8 @@ module Orb
       attr_writer :accounting_sync_configuration
 
       # Additional email addresses for this customer. If populated, these email
-      # addresses will be CC'd for customer communications.
+      # addresses will be CC'd for customer communications. The total number of email
+      # addresses (including the primary email) cannot exceed 50.
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :additional_emails
 
@@ -123,7 +124,8 @@ module Orb
             T.any(
               Orb::NewAvalaraTaxConfiguration,
               Orb::NewTaxJarConfiguration,
-              Orb::NewSphereConfiguration
+              Orb::NewSphereConfiguration,
+              Orb::CustomerCreateParams::TaxConfiguration::Numeral
             )
           )
         )
@@ -312,7 +314,8 @@ module Orb
               T.any(
                 Orb::NewAvalaraTaxConfiguration::OrHash,
                 Orb::NewTaxJarConfiguration::OrHash,
-                Orb::NewSphereConfiguration::OrHash
+                Orb::NewSphereConfiguration::OrHash,
+                Orb::CustomerCreateParams::TaxConfiguration::Numeral::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -329,7 +332,8 @@ module Orb
         name:,
         accounting_sync_configuration: nil,
         # Additional email addresses for this customer. If populated, these email
-        # addresses will be CC'd for customer communications.
+        # addresses will be CC'd for customer communications. The total number of email
+        # addresses (including the primary email) cannot exceed 50.
         additional_emails: nil,
         # Used to determine if invoices for this customer will automatically attempt to
         # charge a saved payment method, if available. This parameter defaults to `True`
@@ -544,7 +548,8 @@ module Orb
                 T.any(
                   Orb::NewAvalaraTaxConfiguration,
                   Orb::NewTaxJarConfiguration,
-                  Orb::NewSphereConfiguration
+                  Orb::NewSphereConfiguration,
+                  Orb::CustomerCreateParams::TaxConfiguration::Numeral
                 )
               ),
             tax_id: T.nilable(Orb::CustomerTaxID),
@@ -611,9 +616,40 @@ module Orb
             T.any(
               Orb::NewAvalaraTaxConfiguration,
               Orb::NewTaxJarConfiguration,
-              Orb::NewSphereConfiguration
+              Orb::NewSphereConfiguration,
+              Orb::CustomerCreateParams::TaxConfiguration::Numeral
             )
           end
+
+        class Numeral < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerCreateParams::TaxConfiguration::Numeral,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T::Boolean) }
+          attr_accessor :tax_exempt
+
+          sig { returns(Symbol) }
+          attr_accessor :tax_provider
+
+          sig do
+            params(tax_exempt: T::Boolean, tax_provider: Symbol).returns(
+              T.attached_class
+            )
+          end
+          def self.new(tax_exempt:, tax_provider: :numeral)
+          end
+
+          sig do
+            override.returns({ tax_exempt: T::Boolean, tax_provider: Symbol })
+          end
+          def to_hash
+          end
+        end
 
         sig do
           override.returns(

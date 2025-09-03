@@ -13,10 +13,11 @@ module Orb
       sig { returns(T::Array[T.nilable(String)]) }
       attr_accessor :dimensions
 
-      # Matrix values for specified matrix grouping keys
+      # Matrix values configuration
       sig { returns(T::Array[Orb::MatrixValue]) }
       attr_accessor :matrix_values
 
+      # Configuration for matrix pricing
       sig do
         params(
           default_unit_amount: String,
@@ -29,7 +30,7 @@ module Orb
         default_unit_amount:,
         # One or two event property values to evaluate matrix groups by
         dimensions:,
-        # Matrix values for specified matrix grouping keys
+        # Matrix values configuration
         matrix_values:
       )
       end

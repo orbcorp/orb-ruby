@@ -10,9 +10,11 @@ module Orb
       required :cadence, enum: -> { Orb::NewSubscriptionGroupedAllocationPrice::Cadence }
 
       # @!attribute grouped_allocation_config
+      #   Configuration for grouped_allocation pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :grouped_allocation_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionGroupedAllocationPrice::GroupedAllocationConfig]
+      required :grouped_allocation_config,
+               -> { Orb::NewSubscriptionGroupedAllocationPrice::GroupedAllocationConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -21,6 +23,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionGroupedAllocationPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionGroupedAllocationPrice::ModelType }
@@ -126,11 +129,11 @@ module Orb
       #
       #   @param cadence [Symbol, Orb::Models::NewSubscriptionGroupedAllocationPrice::Cadence] The cadence to bill for this price on.
       #
-      #   @param grouped_allocation_config [Hash{Symbol=>Object}]
+      #   @param grouped_allocation_config [Orb::Models::NewSubscriptionGroupedAllocationPrice::GroupedAllocationConfig] Configuration for grouped_allocation pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionGroupedAllocationPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionGroupedAllocationPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +180,38 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewSubscriptionGroupedAllocationPrice#grouped_allocation_config
+      class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
+        # @!attribute allocation
+        #   Usage allocation per group
+        #
+        #   @return [String]
+        required :allocation, String
+
+        # @!attribute grouping_key
+        #   How to determine the groups that should each be allocated some quantity
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute overage_unit_rate
+        #   Unit rate for post-allocation
+        #
+        #   @return [String]
+        required :overage_unit_rate, String
+
+        # @!method initialize(allocation:, grouping_key:, overage_unit_rate:)
+        #   Configuration for grouped_allocation pricing
+        #
+        #   @param allocation [String] Usage allocation per group
+        #
+        #   @param grouping_key [String] How to determine the groups that should each be allocated some quantity
+        #
+        #   @param overage_unit_rate [String] Unit rate for post-allocation
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionGroupedAllocationPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

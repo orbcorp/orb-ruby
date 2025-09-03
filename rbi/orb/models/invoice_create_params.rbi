@@ -201,6 +201,7 @@ module Orb
         sig { returns(Date) }
         attr_accessor :start_date
 
+        # Configuration for unit pricing
         sig { returns(Orb::UnitConfig) }
         attr_reader :unit_config
 
@@ -229,6 +230,7 @@ module Orb
           quantity:,
           # A date string to specify the line item's start date in the customer's timezone.
           start_date:,
+          # Configuration for unit pricing
           unit_config:
         )
         end

@@ -16,9 +16,11 @@ module Orb
       required :currency, String
 
       # @!attribute grouped_with_prorated_minimum_config
+      #   Configuration for grouped_with_prorated_minimum pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :grouped_with_prorated_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig]
+      required :grouped_with_prorated_minimum_config,
+               -> { Orb::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -27,6 +29,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingGroupedWithProratedMinimumPrice::ModelType }
@@ -120,11 +123,11 @@ module Orb
       #
       #   @param currency [String] An ISO 4217 currency string for which this price is billed in.
       #
-      #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
+      #   @param grouped_with_prorated_minimum_config [Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig] Configuration for grouped_with_prorated_minimum pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -167,6 +170,38 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewFloatingGroupedWithProratedMinimumPrice#grouped_with_prorated_minimum_config
+      class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
+        # @!attribute grouping_key
+        #   How to determine the groups that should each have a minimum
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute minimum
+        #   The minimum amount to charge per group
+        #
+        #   @return [String]
+        required :minimum, String
+
+        # @!attribute unit_rate
+        #   The amount to charge per unit
+        #
+        #   @return [String]
+        required :unit_rate, String
+
+        # @!method initialize(grouping_key:, minimum:, unit_rate:)
+        #   Configuration for grouped_with_prorated_minimum pricing
+        #
+        #   @param grouping_key [String] How to determine the groups that should each have a minimum
+        #
+        #   @param minimum [String] The minimum amount to charge per group
+        #
+        #   @param unit_rate [String] The amount to charge per unit
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingGroupedWithProratedMinimumPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

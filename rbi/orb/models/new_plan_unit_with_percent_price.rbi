@@ -16,6 +16,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewPlanUnitWithPercentPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -23,8 +24,17 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :unit_with_percent_config
+      # Configuration for unit_with_percent pricing
+      sig { returns(Orb::NewPlanUnitWithPercentPrice::UnitWithPercentConfig) }
+      attr_reader :unit_with_percent_config
+
+      sig do
+        params(
+          unit_with_percent_config:
+            Orb::NewPlanUnitWithPercentPrice::UnitWithPercentConfig::OrHash
+        ).void
+      end
+      attr_writer :unit_with_percent_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -126,7 +136,8 @@ module Orb
           item_id: String,
           model_type: Orb::NewPlanUnitWithPercentPrice::ModelType::OrSymbol,
           name: String,
-          unit_with_percent_config: T::Hash[Symbol, T.anything],
+          unit_with_percent_config:
+            Orb::NewPlanUnitWithPercentPrice::UnitWithPercentConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -156,9 +167,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for unit_with_percent pricing
         unit_with_percent_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -205,7 +218,8 @@ module Orb
             item_id: String,
             model_type: Orb::NewPlanUnitWithPercentPrice::ModelType::OrSymbol,
             name: String,
-            unit_with_percent_config: T::Hash[Symbol, T.anything],
+            unit_with_percent_config:
+              Orb::NewPlanUnitWithPercentPrice::UnitWithPercentConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -284,6 +298,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -305,6 +320,40 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanUnitWithPercentPrice::UnitWithPercentConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # What percent, out of 100, of the calculated total to charge
+        sig { returns(String) }
+        attr_accessor :percent
+
+        # Rate per unit of usage
+        sig { returns(String) }
+        attr_accessor :unit_amount
+
+        # Configuration for unit_with_percent pricing
+        sig do
+          params(percent: String, unit_amount: String).returns(T.attached_class)
+        end
+        def self.new(
+          # What percent, out of 100, of the calculated total to charge
+          percent:,
+          # Rate per unit of usage
+          unit_amount:
+        )
+        end
+
+        sig { override.returns({ percent: String, unit_amount: String }) }
+        def to_hash
         end
       end
     end
