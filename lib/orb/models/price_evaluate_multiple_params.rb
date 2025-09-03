@@ -235,7 +235,7 @@ module Orb
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
             optional :conversion_rate_config,
                      union: -> {
-                       Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::UnnamedTypeWithobjectParent110
+                       Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
                      },
                      nil?: true
 
