@@ -22,11 +22,13 @@ module Orb
       required :item_id, String
 
       # @!attribute matrix_config
+      #   Configuration for matrix pricing
       #
       #   @return [Orb::Models::MatrixConfig]
       required :matrix_config, -> { Orb::MatrixConfig }
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingMatrixPrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingMatrixPrice::ModelType }
@@ -122,9 +124,9 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param matrix_config [Orb::Models::MatrixConfig]
+      #   @param matrix_config [Orb::Models::MatrixConfig] Configuration for matrix pricing
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingMatrixPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingMatrixPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -167,6 +169,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingMatrixPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

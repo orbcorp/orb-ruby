@@ -16,6 +16,8 @@ module Orb
       optional :maximum_units, Float, nil?: true
 
       # @!method initialize(unit_amount:, maximum_units: nil)
+      #   Configuration for a single bulk pricing tier
+      #
       #   @param unit_amount [String] Amount per unit
       #
       #   @param maximum_units [Float, nil] Upper bound for this tier

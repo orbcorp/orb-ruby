@@ -7,7 +7,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingUnitWithPercentPrice::model_type,
         name: String,
-        unit_with_percent_config: ::Hash[Symbol, top],
+        unit_with_percent_config: Orb::NewFloatingUnitWithPercentPrice::UnitWithPercentConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -32,7 +32,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor unit_with_percent_config: ::Hash[Symbol, top]
+      attr_accessor unit_with_percent_config: Orb::NewFloatingUnitWithPercentPrice::UnitWithPercentConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -62,7 +62,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingUnitWithPercentPrice::model_type,
         name: String,
-        unit_with_percent_config: ::Hash[Symbol, top],
+        unit_with_percent_config: Orb::NewFloatingUnitWithPercentPrice::UnitWithPercentConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -82,7 +82,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingUnitWithPercentPrice::model_type,
         name: String,
-        unit_with_percent_config: ::Hash[Symbol, top],
+        unit_with_percent_config: Orb::NewFloatingUnitWithPercentPrice::UnitWithPercentConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -120,6 +120,18 @@ module Orb
         UNIT_WITH_PERCENT: :unit_with_percent
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingUnitWithPercentPrice::model_type]
+      end
+
+      type unit_with_percent_config = { percent: String, unit_amount: String }
+
+      class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
+        attr_accessor percent: String
+
+        attr_accessor unit_amount: String
+
+        def initialize: (percent: String, unit_amount: String) -> void
+
+        def to_hash: -> { percent: String, unit_amount: String }
       end
     end
   end

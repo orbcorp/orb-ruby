@@ -128,9 +128,9 @@ module Orb
         optional :minimum_amount, Float, nil?: true
 
         # @!attribute price
-        #   The definition of a new price to create and add to the subscription.
+        #   New floating price request body params.
         #
-        #   @return [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMinimumCompositePrice, nil]
+        #   @return [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::NewFloatingMinimumCompositePrice, nil]
         optional :price, union: -> { Orb::SubscriptionPriceIntervalsParams::Add::Price }, nil?: true
 
         # @!attribute price_id
@@ -172,7 +172,7 @@ module Orb
         #
         #   @param minimum_amount [Float, nil] The minimum amount that will be billed for this price interval for a given billi
         #
-        #   @param price [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMinimumCompositePrice, nil] The definition of a new price to create and add to the subscription.
+        #   @param price [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::NewFloatingMinimumCompositePrice, nil] New floating price request body params.
         #
         #   @param price_id [String, nil] The id of the price to add to the subscription.
         #
@@ -306,7 +306,7 @@ module Orb
           #   @param quantity [Integer] The quantity of the fixed fee quantity transition.
         end
 
-        # The definition of a new price to create and add to the subscription.
+        # New floating price request body params.
         #
         # @see Orb::Models::SubscriptionPriceIntervalsParams::Add#price
         module Price
@@ -316,31 +316,29 @@ module Orb
 
           variant :unit, -> { Orb::NewFloatingUnitPrice }
 
-          variant :package, -> { Orb::NewFloatingPackagePrice }
-
-          variant :matrix, -> { Orb::NewFloatingMatrixPrice }
-
-          variant :matrix_with_allocation, -> { Orb::NewFloatingMatrixWithAllocationPrice }
-
           variant :tiered, -> { Orb::NewFloatingTieredPrice }
 
           variant :bulk, -> { Orb::NewFloatingBulkPrice }
+
+          variant :package, -> { Orb::NewFloatingPackagePrice }
+
+          variant :matrix, -> { Orb::NewFloatingMatrixPrice }
 
           variant :threshold_total_amount, -> { Orb::NewFloatingThresholdTotalAmountPrice }
 
           variant :tiered_package, -> { Orb::NewFloatingTieredPackagePrice }
 
-          variant :grouped_tiered, -> { Orb::NewFloatingGroupedTieredPrice }
-
-          variant :max_group_tiered_package, -> { Orb::NewFloatingMaxGroupTieredPackagePrice }
-
           variant :tiered_with_minimum, -> { Orb::NewFloatingTieredWithMinimumPrice }
 
-          variant :package_with_allocation, -> { Orb::NewFloatingPackageWithAllocationPrice }
+          variant :grouped_tiered, -> { Orb::NewFloatingGroupedTieredPrice }
 
           variant :tiered_package_with_minimum, -> { Orb::NewFloatingTieredPackageWithMinimumPrice }
 
+          variant :package_with_allocation, -> { Orb::NewFloatingPackageWithAllocationPrice }
+
           variant :unit_with_percent, -> { Orb::NewFloatingUnitWithPercentPrice }
+
+          variant :matrix_with_allocation, -> { Orb::NewFloatingMatrixWithAllocationPrice }
 
           variant :tiered_with_proration, -> { Orb::NewFloatingTieredWithProrationPrice }
 
@@ -348,24 +346,26 @@ module Orb
 
           variant :grouped_allocation, -> { Orb::NewFloatingGroupedAllocationPrice }
 
+          variant :bulk_with_proration, -> { Orb::NewFloatingBulkWithProrationPrice }
+
           variant :grouped_with_prorated_minimum, -> { Orb::NewFloatingGroupedWithProratedMinimumPrice }
 
           variant :grouped_with_metered_minimum, -> { Orb::NewFloatingGroupedWithMeteredMinimumPrice }
 
+          variant :grouped_with_min_max_thresholds,
+                  -> { Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds }
+
           variant :matrix_with_display_name, -> { Orb::NewFloatingMatrixWithDisplayNamePrice }
 
-          variant :bulk_with_proration, -> { Orb::NewFloatingBulkWithProrationPrice }
-
           variant :grouped_tiered_package, -> { Orb::NewFloatingGroupedTieredPackagePrice }
+
+          variant :max_group_tiered_package, -> { Orb::NewFloatingMaxGroupTieredPackagePrice }
 
           variant :scalable_matrix_with_unit_pricing, -> { Orb::NewFloatingScalableMatrixWithUnitPricingPrice }
 
           variant :scalable_matrix_with_tiered_pricing, -> { Orb::NewFloatingScalableMatrixWithTieredPricingPrice }
 
           variant :cumulative_grouped_bulk, -> { Orb::NewFloatingCumulativeGroupedBulkPrice }
-
-          variant :grouped_with_min_max_thresholds,
-                  -> { Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds }
 
           variant :minimum, -> { Orb::NewFloatingMinimumCompositePrice }
 
@@ -384,10 +384,11 @@ module Orb
             required :currency, String
 
             # @!attribute grouped_with_min_max_thresholds_config
+            #   Configuration for grouped_with_min_max_thresholds pricing
             #
-            #   @return [Hash{Symbol=>Object}]
+            #   @return [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig]
             required :grouped_with_min_max_thresholds_config,
-                     Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+                     -> { Orb::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig }
 
             # @!attribute item_id
             #   The id of the item the price will be associated with.
@@ -396,6 +397,7 @@ module Orb
             required :item_id, String
 
             # @!attribute model_type
+            #   The pricing model type
             #
             #   @return [Symbol, :grouped_with_min_max_thresholds]
             required :model_type, const: :grouped_with_min_max_thresholds
@@ -496,7 +498,7 @@ module Orb
             #
             #   @param currency [String] An ISO 4217 currency string for which this price is billed in.
             #
-            #   @param grouped_with_min_max_thresholds_config [Hash{Symbol=>Object}]
+            #   @param grouped_with_min_max_thresholds_config [Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig] Configuration for grouped_with_min_max_thresholds pricing
             #
             #   @param item_id [String] The id of the item the price will be associated with.
             #
@@ -524,7 +526,7 @@ module Orb
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
-            #   @param model_type [Symbol, :grouped_with_min_max_thresholds]
+            #   @param model_type [Symbol, :grouped_with_min_max_thresholds] The pricing model type
 
             # The cadence to bill for this price on.
             #
@@ -542,10 +544,48 @@ module Orb
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+
+            # @see Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds#grouped_with_min_max_thresholds_config
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before applying thresholds
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute maximum_charge
+              #   The maximum amount to charge each group
+              #
+              #   @return [String]
+              required :maximum_charge, String
+
+              # @!attribute minimum_charge
+              #   The minimum amount to charge each group, regardless of usage
+              #
+              #   @return [String]
+              required :minimum_charge, String
+
+              # @!attribute per_unit_rate
+              #   The base price charged per group
+              #
+              #   @return [String]
+              required :per_unit_rate, String
+
+              # @!method initialize(grouping_key:, maximum_charge:, minimum_charge:, per_unit_rate:)
+              #   Configuration for grouped_with_min_max_thresholds pricing
+              #
+              #   @param grouping_key [String] The event property used to group before applying thresholds
+              #
+              #   @param maximum_charge [String] The maximum amount to charge each group
+              #
+              #   @param minimum_charge [String] The minimum amount to charge each group, regardless of usage
+              #
+              #   @param per_unit_rate [String] The base price charged per group
+            end
           end
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMinimumCompositePrice)]
+          #   @return [Array(Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::NewFloatingMinimumCompositePrice)]
         end
       end
 

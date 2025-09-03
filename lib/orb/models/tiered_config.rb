@@ -10,6 +10,8 @@ module Orb
       required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::Tier] }
 
       # @!method initialize(tiers:)
+      #   Configuration for tiered pricing
+      #
       #   @param tiers [Array<Orb::Models::Tier>] Tiers for rating based on total usage quantities into the specified tier
     end
   end

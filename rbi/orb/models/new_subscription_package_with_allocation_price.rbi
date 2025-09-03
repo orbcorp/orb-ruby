@@ -23,6 +23,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(
           Orb::NewSubscriptionPackageWithAllocationPrice::ModelType::OrSymbol
@@ -34,8 +35,21 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :package_with_allocation_config
+      # Configuration for package_with_allocation pricing
+      sig do
+        returns(
+          Orb::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig
+        )
+      end
+      attr_reader :package_with_allocation_config
+
+      sig do
+        params(
+          package_with_allocation_config:
+            Orb::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig::OrHash
+        ).void
+      end
+      attr_writer :package_with_allocation_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -139,7 +153,8 @@ module Orb
           model_type:
             Orb::NewSubscriptionPackageWithAllocationPrice::ModelType::OrSymbol,
           name: String,
-          package_with_allocation_config: T::Hash[Symbol, T.anything],
+          package_with_allocation_config:
+            Orb::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -169,9 +184,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for package_with_allocation pricing
         package_with_allocation_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -220,7 +237,8 @@ module Orb
             model_type:
               Orb::NewSubscriptionPackageWithAllocationPrice::ModelType::OrSymbol,
             name: String,
-            package_with_allocation_config: T::Hash[Symbol, T.anything],
+            package_with_allocation_config:
+              Orb::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -304,6 +322,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -330,6 +349,54 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewSubscriptionPackageWithAllocationPrice::PackageWithAllocationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Usage allocation
+        sig { returns(String) }
+        attr_accessor :allocation
+
+        # Price per package
+        sig { returns(String) }
+        attr_accessor :package_amount
+
+        # Package size
+        sig { returns(String) }
+        attr_accessor :package_size
+
+        # Configuration for package_with_allocation pricing
+        sig do
+          params(
+            allocation: String,
+            package_amount: String,
+            package_size: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Usage allocation
+          allocation:,
+          # Price per package
+          package_amount:,
+          # Package size
+          package_size:
+        )
+        end
+
+        sig do
+          override.returns(
+            { allocation: String, package_amount: String, package_size: String }
+          )
+        end
+        def to_hash
         end
       end
     end

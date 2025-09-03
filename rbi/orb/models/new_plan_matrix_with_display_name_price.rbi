@@ -16,9 +16,23 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :matrix_with_display_name_config
+      # Configuration for matrix_with_display_name pricing
+      sig do
+        returns(
+          Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig
+        )
+      end
+      attr_reader :matrix_with_display_name_config
 
+      sig do
+        params(
+          matrix_with_display_name_config:
+            Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::OrHash
+        ).void
+      end
+      attr_writer :matrix_with_display_name_config
+
+      # The pricing model type
       sig do
         returns(Orb::NewPlanMatrixWithDisplayNamePrice::ModelType::OrSymbol)
       end
@@ -126,7 +140,8 @@ module Orb
         params(
           cadence: Orb::NewPlanMatrixWithDisplayNamePrice::Cadence::OrSymbol,
           item_id: String,
-          matrix_with_display_name_config: T::Hash[Symbol, T.anything],
+          matrix_with_display_name_config:
+            Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::OrHash,
           model_type:
             Orb::NewPlanMatrixWithDisplayNamePrice::ModelType::OrSymbol,
           name: String,
@@ -159,7 +174,9 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # Configuration for matrix_with_display_name pricing
         matrix_with_display_name_config:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -206,7 +223,8 @@ module Orb
           {
             cadence: Orb::NewPlanMatrixWithDisplayNamePrice::Cadence::OrSymbol,
             item_id: String,
-            matrix_with_display_name_config: T::Hash[Symbol, T.anything],
+            matrix_with_display_name_config:
+              Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig,
             model_type:
               Orb::NewPlanMatrixWithDisplayNamePrice::ModelType::OrSymbol,
             name: String,
@@ -290,6 +308,115 @@ module Orb
         end
       end
 
+      class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Used to determine the unit rate
+        sig { returns(String) }
+        attr_accessor :dimension
+
+        # Apply per unit pricing to each dimension value
+        sig do
+          returns(
+            T::Array[
+              Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount
+            ]
+          )
+        end
+        attr_accessor :unit_amounts
+
+        # Configuration for matrix_with_display_name pricing
+        sig do
+          params(
+            dimension: String,
+            unit_amounts:
+              T::Array[
+                Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Used to determine the unit rate
+          dimension:,
+          # Apply per unit pricing to each dimension value
+          unit_amounts:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              dimension: String,
+              unit_amounts:
+                T::Array[
+                  Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class UnitAmount < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewPlanMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The dimension value
+          sig { returns(String) }
+          attr_accessor :dimension_value
+
+          # Display name for this dimension value
+          sig { returns(String) }
+          attr_accessor :display_name
+
+          # Per unit amount
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for a unit amount item
+          sig do
+            params(
+              dimension_value: String,
+              display_name: String,
+              unit_amount: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The dimension value
+            dimension_value:,
+            # Display name for this dimension value
+            display_name:,
+            # Per unit amount
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                dimension_value: String,
+                display_name: String,
+                unit_amount: String
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

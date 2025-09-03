@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionUnitWithProrationPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionUnitWithProrationPrice::ModelType }
@@ -27,9 +28,11 @@ module Orb
       required :name, String
 
       # @!attribute unit_with_proration_config
+      #   Configuration for unit_with_proration pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :unit_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionUnitWithProrationPrice::UnitWithProrationConfig]
+      required :unit_with_proration_config,
+               -> { Orb::NewSubscriptionUnitWithProrationPrice::UnitWithProrationConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -128,11 +131,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionUnitWithProrationPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionUnitWithProrationPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param unit_with_proration_config [Hash{Symbol=>Object}]
+      #   @param unit_with_proration_config [Orb::Models::NewSubscriptionUnitWithProrationPrice::UnitWithProrationConfig] Configuration for unit_with_proration pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -177,6 +180,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionUnitWithProrationPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -185,6 +190,20 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewSubscriptionUnitWithProrationPrice#unit_with_proration_config
+      class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
+        # @!attribute unit_amount
+        #   Rate per unit of usage
+        #
+        #   @return [String]
+        required :unit_amount, String
+
+        # @!method initialize(unit_amount:)
+        #   Configuration for unit_with_proration pricing
+        #
+        #   @param unit_amount [String] Rate per unit of usage
       end
     end
   end

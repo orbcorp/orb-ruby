@@ -3,7 +3,7 @@ module Orb
     type new_subscription_grouped_tiered_package_price =
       {
         cadence: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::cadence,
-        grouped_tiered_package_config: ::Hash[Symbol, top],
+        grouped_tiered_package_config: Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig,
         item_id: String,
         model_type: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::model_type,
         name: String,
@@ -25,7 +25,7 @@ module Orb
     class NewSubscriptionGroupedTieredPackagePrice < Orb::Internal::Type::BaseModel
       attr_accessor cadence: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::cadence
 
-      attr_accessor grouped_tiered_package_config: ::Hash[Symbol, top]
+      attr_accessor grouped_tiered_package_config: Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig
 
       attr_accessor item_id: String
 
@@ -61,7 +61,7 @@ module Orb
 
       def initialize: (
         cadence: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::cadence,
-        grouped_tiered_package_config: ::Hash[Symbol, top],
+        grouped_tiered_package_config: Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig,
         item_id: String,
         model_type: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::model_type,
         name: String,
@@ -82,7 +82,7 @@ module Orb
 
       def to_hash: -> {
         cadence: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::cadence,
-        grouped_tiered_package_config: ::Hash[Symbol, top],
+        grouped_tiered_package_config: Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig,
         item_id: String,
         model_type: Orb::Models::NewSubscriptionGroupedTieredPackagePrice::model_type,
         name: String,
@@ -115,6 +115,45 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewSubscriptionGroupedTieredPackagePrice::cadence]
+      end
+
+      type grouped_tiered_package_config =
+        {
+          grouping_key: String,
+          package_size: String,
+          tiers: ::Array[Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier]
+        }
+
+      class GroupedTieredPackageConfig < Orb::Internal::Type::BaseModel
+        attr_accessor grouping_key: String
+
+        attr_accessor package_size: String
+
+        attr_accessor tiers: ::Array[Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier]
+
+        def initialize: (
+          grouping_key: String,
+          package_size: String,
+          tiers: ::Array[Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier]
+        ) -> void
+
+        def to_hash: -> {
+          grouping_key: String,
+          package_size: String,
+          tiers: ::Array[Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier]
+        }
+
+        type tier = { per_unit: String, tier_lower_bound: String }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor per_unit: String
+
+          attr_accessor tier_lower_bound: String
+
+          def initialize: (per_unit: String, tier_lower_bound: String) -> void
+
+          def to_hash: -> { per_unit: String, tier_lower_bound: String }
+        end
       end
 
       type model_type = :grouped_tiered_package

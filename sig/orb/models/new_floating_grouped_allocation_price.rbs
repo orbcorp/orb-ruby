@@ -4,7 +4,7 @@ module Orb
       {
         cadence: Orb::Models::NewFloatingGroupedAllocationPrice::cadence,
         currency: String,
-        grouped_allocation_config: ::Hash[Symbol, top],
+        grouped_allocation_config: Orb::NewFloatingGroupedAllocationPrice::GroupedAllocationConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedAllocationPrice::model_type,
         name: String,
@@ -26,7 +26,7 @@ module Orb
 
       attr_accessor currency: String
 
-      attr_accessor grouped_allocation_config: ::Hash[Symbol, top]
+      attr_accessor grouped_allocation_config: Orb::NewFloatingGroupedAllocationPrice::GroupedAllocationConfig
 
       attr_accessor item_id: String
 
@@ -59,7 +59,7 @@ module Orb
       def initialize: (
         cadence: Orb::Models::NewFloatingGroupedAllocationPrice::cadence,
         currency: String,
-        grouped_allocation_config: ::Hash[Symbol, top],
+        grouped_allocation_config: Orb::NewFloatingGroupedAllocationPrice::GroupedAllocationConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedAllocationPrice::model_type,
         name: String,
@@ -79,7 +79,7 @@ module Orb
       def to_hash: -> {
         cadence: Orb::Models::NewFloatingGroupedAllocationPrice::cadence,
         currency: String,
-        grouped_allocation_config: ::Hash[Symbol, top],
+        grouped_allocation_config: Orb::NewFloatingGroupedAllocationPrice::GroupedAllocationConfig,
         item_id: String,
         model_type: Orb::Models::NewFloatingGroupedAllocationPrice::model_type,
         name: String,
@@ -110,6 +110,29 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingGroupedAllocationPrice::cadence]
+      end
+
+      type grouped_allocation_config =
+        { allocation: String, grouping_key: String, overage_unit_rate: String }
+
+      class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
+        attr_accessor allocation: String
+
+        attr_accessor grouping_key: String
+
+        attr_accessor overage_unit_rate: String
+
+        def initialize: (
+          allocation: String,
+          grouping_key: String,
+          overage_unit_rate: String
+        ) -> void
+
+        def to_hash: -> {
+          allocation: String,
+          grouping_key: String,
+          overage_unit_rate: String
+        }
       end
 
       type model_type = :grouped_allocation

@@ -16,6 +16,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewPlanUnitWithProrationPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -23,8 +24,19 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :unit_with_proration_config
+      # Configuration for unit_with_proration pricing
+      sig do
+        returns(Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig)
+      end
+      attr_reader :unit_with_proration_config
+
+      sig do
+        params(
+          unit_with_proration_config:
+            Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig::OrHash
+        ).void
+      end
+      attr_writer :unit_with_proration_config
 
       # The id of the billable metric for the price. Only needed if the price is
       # usage-based.
@@ -126,7 +138,8 @@ module Orb
           item_id: String,
           model_type: Orb::NewPlanUnitWithProrationPrice::ModelType::OrSymbol,
           name: String,
-          unit_with_proration_config: T::Hash[Symbol, T.anything],
+          unit_with_proration_config:
+            Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -156,9 +169,11 @@ module Orb
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
+        # Configuration for unit_with_proration pricing
         unit_with_proration_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
@@ -205,7 +220,8 @@ module Orb
             item_id: String,
             model_type: Orb::NewPlanUnitWithProrationPrice::ModelType::OrSymbol,
             name: String,
-            unit_with_proration_config: T::Hash[Symbol, T.anything],
+            unit_with_proration_config:
+              Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig,
             billable_metric_id: T.nilable(String),
             billed_in_advance: T.nilable(T::Boolean),
             billing_cycle_configuration:
@@ -284,6 +300,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 
@@ -307,6 +324,32 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanUnitWithProrationPrice::UnitWithProrationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Rate per unit of usage
+        sig { returns(String) }
+        attr_accessor :unit_amount
+
+        # Configuration for unit_with_proration pricing
+        sig { params(unit_amount: String).returns(T.attached_class) }
+        def self.new(
+          # Rate per unit of usage
+          unit_amount:
+        )
+        end
+
+        sig { override.returns({ unit_amount: String }) }
+        def to_hash
         end
       end
     end

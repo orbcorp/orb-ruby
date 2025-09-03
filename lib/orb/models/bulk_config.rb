@@ -10,6 +10,8 @@ module Orb
       required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::BulkTier] }
 
       # @!method initialize(tiers:)
+      #   Configuration for bulk pricing
+      #
       #   @param tiers [Array<Orb::Models::BulkTier>] Bulk tiers for rating based on total usage volume
     end
   end

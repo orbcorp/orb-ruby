@@ -7,7 +7,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::model_type,
         name: String,
-        scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_tiered_pricing_config: Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -32,7 +32,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top]
+      attr_accessor scalable_matrix_with_tiered_pricing_config: Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -62,7 +62,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::model_type,
         name: String,
-        scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_tiered_pricing_config: Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -82,7 +82,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::model_type,
         name: String,
-        scalable_matrix_with_tiered_pricing_config: ::Hash[Symbol, top],
+        scalable_matrix_with_tiered_pricing_config: Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -120,6 +120,80 @@ module Orb
         SCALABLE_MATRIX_WITH_TIERED_PRICING: :scalable_matrix_with_tiered_pricing
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::model_type]
+      end
+
+      type scalable_matrix_with_tiered_pricing_config =
+        {
+          first_dimension: String,
+          matrix_scaling_factors: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor],
+          tiers: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier],
+          second_dimension: String?
+        }
+
+      class ScalableMatrixWithTieredPricingConfig < Orb::Internal::Type::BaseModel
+        attr_accessor first_dimension: String
+
+        attr_accessor matrix_scaling_factors: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor]
+
+        attr_accessor tiers: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier]
+
+        attr_accessor second_dimension: String?
+
+        def initialize: (
+          first_dimension: String,
+          matrix_scaling_factors: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor],
+          tiers: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier],
+          ?second_dimension: String?
+        ) -> void
+
+        def to_hash: -> {
+          first_dimension: String,
+          matrix_scaling_factors: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor],
+          tiers: ::Array[Orb::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier],
+          second_dimension: String?
+        }
+
+        type matrix_scaling_factor =
+          {
+            first_dimension_value: String,
+            scaling_factor: String,
+            second_dimension_value: String?
+          }
+
+        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+          attr_accessor first_dimension_value: String
+
+          attr_accessor scaling_factor: String
+
+          attr_accessor second_dimension_value: String?
+
+          def initialize: (
+            first_dimension_value: String,
+            scaling_factor: String,
+            ?second_dimension_value: String?
+          ) -> void
+
+          def to_hash: -> {
+            first_dimension_value: String,
+            scaling_factor: String,
+            second_dimension_value: String?
+          }
+        end
+
+        type tier = { tier_lower_bound: String, unit_amount: String }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor tier_lower_bound: String
+
+          attr_accessor unit_amount: String
+
+          def initialize: (
+            tier_lower_bound: String,
+            unit_amount: String
+          ) -> void
+
+          def to_hash: -> { tier_lower_bound: String, unit_amount: String }
+        end
       end
     end
   end

@@ -12,13 +12,25 @@ module Orb
       sig { returns(Orb::NewPlanGroupedAllocationPrice::Cadence::OrSymbol) }
       attr_accessor :cadence
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :grouped_allocation_config
+      # Configuration for grouped_allocation pricing
+      sig do
+        returns(Orb::NewPlanGroupedAllocationPrice::GroupedAllocationConfig)
+      end
+      attr_reader :grouped_allocation_config
+
+      sig do
+        params(
+          grouped_allocation_config:
+            Orb::NewPlanGroupedAllocationPrice::GroupedAllocationConfig::OrHash
+        ).void
+      end
+      attr_writer :grouped_allocation_config
 
       # The id of the item the price will be associated with.
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig { returns(Orb::NewPlanGroupedAllocationPrice::ModelType::OrSymbol) }
       attr_accessor :model_type
 
@@ -123,7 +135,8 @@ module Orb
       sig do
         params(
           cadence: Orb::NewPlanGroupedAllocationPrice::Cadence::OrSymbol,
-          grouped_allocation_config: T::Hash[Symbol, T.anything],
+          grouped_allocation_config:
+            Orb::NewPlanGroupedAllocationPrice::GroupedAllocationConfig::OrHash,
           item_id: String,
           model_type: Orb::NewPlanGroupedAllocationPrice::ModelType::OrSymbol,
           name: String,
@@ -154,9 +167,11 @@ module Orb
       def self.new(
         # The cadence to bill for this price on.
         cadence:,
+        # Configuration for grouped_allocation pricing
         grouped_allocation_config:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -202,7 +217,8 @@ module Orb
         override.returns(
           {
             cadence: Orb::NewPlanGroupedAllocationPrice::Cadence::OrSymbol,
-            grouped_allocation_config: T::Hash[Symbol, T.anything],
+            grouped_allocation_config:
+              Orb::NewPlanGroupedAllocationPrice::GroupedAllocationConfig,
             item_id: String,
             model_type: Orb::NewPlanGroupedAllocationPrice::ModelType::OrSymbol,
             name: String,
@@ -284,6 +300,59 @@ module Orb
         end
       end
 
+      class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewPlanGroupedAllocationPrice::GroupedAllocationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Usage allocation per group
+        sig { returns(String) }
+        attr_accessor :allocation
+
+        # How to determine the groups that should each be allocated some quantity
+        sig { returns(String) }
+        attr_accessor :grouping_key
+
+        # Unit rate for post-allocation
+        sig { returns(String) }
+        attr_accessor :overage_unit_rate
+
+        # Configuration for grouped_allocation pricing
+        sig do
+          params(
+            allocation: String,
+            grouping_key: String,
+            overage_unit_rate: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Usage allocation per group
+          allocation:,
+          # How to determine the groups that should each be allocated some quantity
+          grouping_key:,
+          # Unit rate for post-allocation
+          overage_unit_rate:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              allocation: String,
+              grouping_key: String,
+              overage_unit_rate: String
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

@@ -22,11 +22,14 @@ module Orb
       required :item_id, String
 
       # @!attribute matrix_with_display_name_config
+      #   Configuration for matrix_with_display_name pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :matrix_with_display_name_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewFloatingMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig]
+      required :matrix_with_display_name_config,
+               -> { Orb::NewFloatingMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig }
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingMatrixWithDisplayNamePrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingMatrixWithDisplayNamePrice::ModelType }
@@ -122,9 +125,9 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param matrix_with_display_name_config [Hash{Symbol=>Object}]
+      #   @param matrix_with_display_name_config [Orb::Models::NewFloatingMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig] Configuration for matrix_with_display_name pricing
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingMatrixWithDisplayNamePrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingMatrixWithDisplayNamePrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -167,6 +170,60 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewFloatingMatrixWithDisplayNamePrice#matrix_with_display_name_config
+      class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
+        # @!attribute dimension
+        #   Used to determine the unit rate
+        #
+        #   @return [String]
+        required :dimension, String
+
+        # @!attribute unit_amounts
+        #   Apply per unit pricing to each dimension value
+        #
+        #   @return [Array<Orb::Models::NewFloatingMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount>]
+        required :unit_amounts,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewFloatingMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount] }
+
+        # @!method initialize(dimension:, unit_amounts:)
+        #   Configuration for matrix_with_display_name pricing
+        #
+        #   @param dimension [String] Used to determine the unit rate
+        #
+        #   @param unit_amounts [Array<Orb::Models::NewFloatingMatrixWithDisplayNamePrice::MatrixWithDisplayNameConfig::UnitAmount>] Apply per unit pricing to each dimension value
+
+        class UnitAmount < Orb::Internal::Type::BaseModel
+          # @!attribute dimension_value
+          #   The dimension value
+          #
+          #   @return [String]
+          required :dimension_value, String
+
+          # @!attribute display_name
+          #   Display name for this dimension value
+          #
+          #   @return [String]
+          required :display_name, String
+
+          # @!attribute unit_amount
+          #   Per unit amount
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(dimension_value:, display_name:, unit_amount:)
+          #   Configuration for a unit amount item
+          #
+          #   @param dimension_value [String] The dimension value
+          #
+          #   @param display_name [String] Display name for this dimension value
+          #
+          #   @param unit_amount [String] Per unit amount
+        end
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingMatrixWithDisplayNamePrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

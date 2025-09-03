@@ -343,8 +343,6 @@ module Orb
 
   class NewPlanTieredWithMinimumPrice = Orb::Models::NewPlanTieredWithMinimumPrice
 
-  class NewPlanTierWithProrationPrice = Orb::Models::NewPlanTierWithProrationPrice
-
   class NewPlanUnitPrice = Orb::Models::NewPlanUnitPrice
 
   class NewPlanUnitWithPercentPrice = Orb::Models::NewPlanUnitWithPercentPrice
@@ -398,8 +396,6 @@ module Orb
   class NewSubscriptionTieredPrice = Orb::Models::NewSubscriptionTieredPrice
 
   class NewSubscriptionTieredWithMinimumPrice = Orb::Models::NewSubscriptionTieredWithMinimumPrice
-
-  class NewSubscriptionTierWithProrationPrice = Orb::Models::NewSubscriptionTierWithProrationPrice
 
   class NewSubscriptionUnitPrice = Orb::Models::NewSubscriptionUnitPrice
 
@@ -530,8 +526,6 @@ module Orb
   class Threshold = Orb::Models::Threshold
 
   class Tier = Orb::Models::Tier
-
-  class TierConfig = Orb::Models::TierConfig
 
   class TieredConfig = Orb::Models::TieredConfig
 

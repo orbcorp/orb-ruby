@@ -131,9 +131,22 @@ module Orb
         Orb::NewAvalaraTaxConfiguration
         | Orb::NewTaxJarConfiguration
         | Orb::NewSphereConfiguration
+        | Orb::CustomerCreateParams::TaxConfiguration::Numeral
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
+
+        type numeral = { tax_exempt: bool, tax_provider: :numeral }
+
+        class Numeral < Orb::Internal::Type::BaseModel
+          attr_accessor tax_exempt: bool
+
+          attr_accessor tax_provider: :numeral
+
+          def initialize: (tax_exempt: bool, ?tax_provider: :numeral) -> void
+
+          def to_hash: -> { tax_exempt: bool, tax_provider: :numeral }
+        end
 
         def self?.variants: -> ::Array[Orb::Models::CustomerCreateParams::tax_configuration]
       end

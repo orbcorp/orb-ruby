@@ -20,6 +20,8 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PackageConfig} for more details.
       #
+      #   Configuration for package pricing
+      #
       #   @param package_amount [String] A currency amount to rate usage by
       #
       #   @param package_size [Integer] An integer amount to represent package size. For example, 1000 here would divide

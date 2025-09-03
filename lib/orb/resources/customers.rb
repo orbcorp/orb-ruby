@@ -62,7 +62,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, nil]
+      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, nil]
       #
       # @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -129,7 +129,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, nil]
+      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, nil]
       #
       # @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -367,7 +367,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, nil]
+      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, nil]
       #
       # @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #

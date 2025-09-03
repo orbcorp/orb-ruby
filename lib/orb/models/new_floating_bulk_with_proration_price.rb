@@ -4,9 +4,11 @@ module Orb
   module Models
     class NewFloatingBulkWithProrationPrice < Orb::Internal::Type::BaseModel
       # @!attribute bulk_with_proration_config
+      #   Configuration for bulk_with_proration pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :bulk_with_proration_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig]
+      required :bulk_with_proration_config,
+               -> { Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig }
 
       # @!attribute cadence
       #   The cadence to bill for this price on.
@@ -27,6 +29,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingBulkWithProrationPrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingBulkWithProrationPrice::ModelType }
@@ -116,7 +119,7 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewFloatingBulkWithProrationPrice} for more details.
       #
-      #   @param bulk_with_proration_config [Hash{Symbol=>Object}]
+      #   @param bulk_with_proration_config [Orb::Models::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig] Configuration for bulk_with_proration pricing
       #
       #   @param cadence [Symbol, Orb::Models::NewFloatingBulkWithProrationPrice::Cadence] The cadence to bill for this price on.
       #
@@ -124,7 +127,7 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingBulkWithProrationPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingBulkWithProrationPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -150,6 +153,42 @@ module Orb
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
 
+      # @see Orb::Models::NewFloatingBulkWithProrationPrice#bulk_with_proration_config
+      class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
+        # @!attribute tiers
+        #   Bulk tiers for rating based on total usage volume
+        #
+        #   @return [Array<Orb::Models::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier] }
+
+        # @!method initialize(tiers:)
+        #   Configuration for bulk_with_proration pricing
+        #
+        #   @param tiers [Array<Orb::Models::NewFloatingBulkWithProrationPrice::BulkWithProrationConfig::Tier>] Bulk tiers for rating based on total usage volume
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute unit_amount
+          #   Cost per unit
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!attribute tier_lower_bound
+          #   The lower bound for this tier
+          #
+          #   @return [String, nil]
+          optional :tier_lower_bound, String, nil?: true
+
+          # @!method initialize(unit_amount:, tier_lower_bound: nil)
+          #   Configuration for a single bulk pricing tier with proration
+          #
+          #   @param unit_amount [String] Cost per unit
+          #
+          #   @param tier_lower_bound [String, nil] The lower bound for this tier
+        end
+      end
+
       # The cadence to bill for this price on.
       #
       # @see Orb::Models::NewFloatingBulkWithProrationPrice#cadence
@@ -167,6 +206,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingBulkWithProrationPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

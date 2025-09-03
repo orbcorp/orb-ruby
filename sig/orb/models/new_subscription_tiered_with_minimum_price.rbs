@@ -6,7 +6,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewSubscriptionTieredWithMinimumPrice::model_type,
         name: String,
-        tiered_with_minimum_config: ::Hash[Symbol, top],
+        tiered_with_minimum_config: Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -31,7 +31,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor tiered_with_minimum_config: ::Hash[Symbol, top]
+      attr_accessor tiered_with_minimum_config: Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -64,7 +64,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewSubscriptionTieredWithMinimumPrice::model_type,
         name: String,
-        tiered_with_minimum_config: ::Hash[Symbol, top],
+        tiered_with_minimum_config: Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -85,7 +85,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewSubscriptionTieredWithMinimumPrice::model_type,
         name: String,
-        tiered_with_minimum_config: ::Hash[Symbol, top],
+        tiered_with_minimum_config: Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -125,6 +125,64 @@ module Orb
         TIERED_WITH_MINIMUM: :tiered_with_minimum
 
         def self?.values: -> ::Array[Orb::Models::NewSubscriptionTieredWithMinimumPrice::model_type]
+      end
+
+      type tiered_with_minimum_config =
+        {
+          tiers: ::Array[Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier],
+          hide_zero_amount_tiers: bool,
+          prorate: bool
+        }
+
+      class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
+        attr_accessor tiers: ::Array[Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier]
+
+        attr_reader hide_zero_amount_tiers: bool?
+
+        def hide_zero_amount_tiers=: (bool) -> bool
+
+        attr_reader prorate: bool?
+
+        def prorate=: (bool) -> bool
+
+        def initialize: (
+          tiers: ::Array[Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier],
+          ?hide_zero_amount_tiers: bool,
+          ?prorate: bool
+        ) -> void
+
+        def to_hash: -> {
+          tiers: ::Array[Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier],
+          hide_zero_amount_tiers: bool,
+          prorate: bool
+        }
+
+        type tier =
+          {
+            minimum_amount: String,
+            tier_lower_bound: String,
+            unit_amount: String
+          }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor minimum_amount: String
+
+          attr_accessor tier_lower_bound: String
+
+          attr_accessor unit_amount: String
+
+          def initialize: (
+            minimum_amount: String,
+            tier_lower_bound: String,
+            unit_amount: String
+          ) -> void
+
+          def to_hash: -> {
+            minimum_amount: String,
+            tier_lower_bound: String,
+            unit_amount: String
+          }
+        end
       end
     end
   end

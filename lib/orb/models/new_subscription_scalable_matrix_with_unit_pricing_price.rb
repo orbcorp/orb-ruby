@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice::ModelType }
@@ -27,10 +28,11 @@ module Orb
       required :name, String
 
       # @!attribute scalable_matrix_with_unit_pricing_config
+      #   Configuration for scalable_matrix_with_unit_pricing pricing
       #
-      #   @return [Hash{Symbol=>Object}]
+      #   @return [Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig]
       required :scalable_matrix_with_unit_pricing_config,
-               Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+               -> { Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -130,11 +132,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param scalable_matrix_with_unit_pricing_config [Hash{Symbol=>Object}]
+      #   @param scalable_matrix_with_unit_pricing_config [Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig] Configuration for scalable_matrix_with_unit_pricing pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -179,6 +181,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -187,6 +191,86 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice#scalable_matrix_with_unit_pricing_config
+      class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
+        # @!attribute first_dimension
+        #   Used to determine the unit rate
+        #
+        #   @return [String]
+        required :first_dimension, String
+
+        # @!attribute matrix_scaling_factors
+        #   Apply a scaling factor to each dimension
+        #
+        #   @return [Array<Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>]
+        required :matrix_scaling_factors,
+                 -> do
+                   Orb::Internal::Type::ArrayOf[
+                     Orb::NewSubscriptionScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
+                   ]
+                 end
+
+        # @!attribute unit_price
+        #   The final unit price to rate against the output of the matrix
+        #
+        #   @return [String]
+        required :unit_price, String
+
+        # @!attribute prorate
+        #   If true, the unit price will be prorated to the billing period
+        #
+        #   @return [Boolean, nil]
+        optional :prorate, Orb::Internal::Type::Boolean, nil?: true
+
+        # @!attribute second_dimension
+        #   Used to determine the unit rate (optional)
+        #
+        #   @return [String, nil]
+        optional :second_dimension, String, nil?: true
+
+        # @!method initialize(first_dimension:, matrix_scaling_factors:, unit_price:, prorate: nil, second_dimension: nil)
+        #   Configuration for scalable_matrix_with_unit_pricing pricing
+        #
+        #   @param first_dimension [String] Used to determine the unit rate
+        #
+        #   @param matrix_scaling_factors [Array<Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
+        #
+        #   @param unit_price [String] The final unit price to rate against the output of the matrix
+        #
+        #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
+        #
+        #   @param second_dimension [String, nil] Used to determine the unit rate (optional)
+
+        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+          # @!attribute first_dimension_value
+          #   First dimension value
+          #
+          #   @return [String]
+          required :first_dimension_value, String
+
+          # @!attribute scaling_factor
+          #   Scaling factor
+          #
+          #   @return [String]
+          required :scaling_factor, String
+
+          # @!attribute second_dimension_value
+          #   Second dimension value (optional)
+          #
+          #   @return [String, nil]
+          optional :second_dimension_value, String, nil?: true
+
+          # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
+          #   Configuration for a single matrix scaling factor
+          #
+          #   @param first_dimension_value [String] First dimension value
+          #
+          #   @param scaling_factor [String] Scaling factor
+          #
+          #   @param second_dimension_value [String, nil] Second dimension value (optional)
+        end
       end
     end
   end

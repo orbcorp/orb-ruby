@@ -20,6 +20,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # Configuration for minimum pricing
       sig { returns(Orb::NewFloatingMinimumCompositePrice::MinimumConfig) }
       attr_reader :minimum_config
 
@@ -31,6 +32,7 @@ module Orb
       end
       attr_writer :minimum_config
 
+      # The pricing model type
       sig do
         returns(Orb::NewFloatingMinimumCompositePrice::ModelType::OrSymbol)
       end
@@ -163,7 +165,9 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
+        # Configuration for minimum pricing
         minimum_config:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -301,35 +305,35 @@ module Orb
         sig { returns(String) }
         attr_accessor :minimum_amount
 
-        # By default, subtotals from minimum composite prices are prorated based on the
-        # service period. Set to false to disable proration.
+        # If true, subtotals from this price are prorated based on the service period
         sig { returns(T.nilable(T::Boolean)) }
-        attr_accessor :prorated
+        attr_reader :prorated
 
+        sig { params(prorated: T::Boolean).void }
+        attr_writer :prorated
+
+        # Configuration for minimum pricing
         sig do
-          params(
-            minimum_amount: String,
-            prorated: T.nilable(T::Boolean)
-          ).returns(T.attached_class)
+          params(minimum_amount: String, prorated: T::Boolean).returns(
+            T.attached_class
+          )
         end
         def self.new(
           # The minimum amount to apply
           minimum_amount:,
-          # By default, subtotals from minimum composite prices are prorated based on the
-          # service period. Set to false to disable proration.
+          # If true, subtotals from this price are prorated based on the service period
           prorated: nil
         )
         end
 
         sig do
-          override.returns(
-            { minimum_amount: String, prorated: T.nilable(T::Boolean) }
-          )
+          override.returns({ minimum_amount: String, prorated: T::Boolean })
         end
         def to_hash
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

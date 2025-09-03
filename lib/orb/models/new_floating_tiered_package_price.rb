@@ -22,6 +22,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewFloatingTieredPackagePrice::ModelType]
       required :model_type, enum: -> { Orb::NewFloatingTieredPackagePrice::ModelType }
@@ -33,9 +34,10 @@ module Orb
       required :name, String
 
       # @!attribute tiered_package_config
+      #   Configuration for tiered_package pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewFloatingTieredPackagePrice::TieredPackageConfig]
+      required :tiered_package_config, -> { Orb::NewFloatingTieredPackagePrice::TieredPackageConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -122,11 +124,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewFloatingTieredPackagePrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewFloatingTieredPackagePrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param tiered_package_config [Hash{Symbol=>Object}]
+      #   @param tiered_package_config [Orb::Models::NewFloatingTieredPackagePrice::TieredPackageConfig] Configuration for tiered_package pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -167,6 +169,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewFloatingTieredPackagePrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -175,6 +179,55 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewFloatingTieredPackagePrice#tiered_package_config
+      class TieredPackageConfig < Orb::Internal::Type::BaseModel
+        # @!attribute package_size
+        #   Package size
+        #
+        #   @return [String]
+        required :package_size, String
+
+        # @!attribute tiers
+        #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+        #   are defined using exclusive lower bounds.
+        #
+        #   @return [Array<Orb::Models::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier] }
+
+        # @!method initialize(package_size:, tiers:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewFloatingTieredPackagePrice::TieredPackageConfig} for more
+        #   details.
+        #
+        #   Configuration for tiered_package pricing
+        #
+        #   @param package_size [String] Package size
+        #
+        #   @param tiers [Array<Orb::Models::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute per_unit
+          #   Price per package
+          #
+          #   @return [String]
+          required :per_unit, String
+
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!method initialize(per_unit:, tier_lower_bound:)
+          #   Configuration for a single tier with business logic
+          #
+          #   @param per_unit [String] Price per package
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+        end
       end
     end
   end

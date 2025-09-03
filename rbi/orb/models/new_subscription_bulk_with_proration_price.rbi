@@ -11,8 +11,21 @@ module Orb
           )
         end
 
-      sig { returns(T::Hash[Symbol, T.anything]) }
-      attr_accessor :bulk_with_proration_config
+      # Configuration for bulk_with_proration pricing
+      sig do
+        returns(
+          Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig
+        )
+      end
+      attr_reader :bulk_with_proration_config
+
+      sig do
+        params(
+          bulk_with_proration_config:
+            Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig::OrHash
+        ).void
+      end
+      attr_writer :bulk_with_proration_config
 
       # The cadence to bill for this price on.
       sig do
@@ -24,6 +37,7 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
+      # The pricing model type
       sig do
         returns(Orb::NewSubscriptionBulkWithProrationPrice::ModelType::OrSymbol)
       end
@@ -129,7 +143,8 @@ module Orb
 
       sig do
         params(
-          bulk_with_proration_config: T::Hash[Symbol, T.anything],
+          bulk_with_proration_config:
+            Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig::OrHash,
           cadence:
             Orb::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol,
           item_id: String,
@@ -161,11 +176,13 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        # Configuration for bulk_with_proration pricing
         bulk_with_proration_config:,
         # The cadence to bill for this price on.
         cadence:,
         # The id of the item the price will be associated with.
         item_id:,
+        # The pricing model type
         model_type:,
         # The name of the price.
         name:,
@@ -210,7 +227,8 @@ module Orb
       sig do
         override.returns(
           {
-            bulk_with_proration_config: T::Hash[Symbol, T.anything],
+            bulk_with_proration_config:
+              Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig,
             cadence:
               Orb::NewSubscriptionBulkWithProrationPrice::Cadence::OrSymbol,
             item_id: String,
@@ -243,6 +261,95 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Bulk tiers for rating based on total usage volume
+        sig do
+          returns(
+            T::Array[
+              Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig::Tier
+            ]
+          )
+        end
+        attr_accessor :tiers
+
+        # Configuration for bulk_with_proration pricing
+        sig do
+          params(
+            tiers:
+              T::Array[
+                Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig::Tier::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Bulk tiers for rating based on total usage volume
+          tiers:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              tiers:
+                T::Array[
+                  Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig::Tier
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::NewSubscriptionBulkWithProrationPrice::BulkWithProrationConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Cost per unit
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # The lower bound for this tier
+          sig { returns(T.nilable(String)) }
+          attr_accessor :tier_lower_bound
+
+          # Configuration for a single bulk pricing tier with proration
+          sig do
+            params(
+              unit_amount: String,
+              tier_lower_bound: T.nilable(String)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Cost per unit
+            unit_amount:,
+            # The lower bound for this tier
+            tier_lower_bound: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { unit_amount: String, tier_lower_bound: T.nilable(String) }
+            )
+          end
+          def to_hash
+          end
+        end
       end
 
       # The cadence to bill for this price on.
@@ -297,6 +404,7 @@ module Orb
         end
       end
 
+      # The pricing model type
       module ModelType
         extend Orb::Internal::Type::Enum
 

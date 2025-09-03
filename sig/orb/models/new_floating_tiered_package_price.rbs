@@ -7,7 +7,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingTieredPackagePrice::model_type,
         name: String,
-        tiered_package_config: ::Hash[Symbol, top],
+        tiered_package_config: Orb::NewFloatingTieredPackagePrice::TieredPackageConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -32,7 +32,7 @@ module Orb
 
       attr_accessor name: String
 
-      attr_accessor tiered_package_config: ::Hash[Symbol, top]
+      attr_accessor tiered_package_config: Orb::NewFloatingTieredPackagePrice::TieredPackageConfig
 
       attr_accessor billable_metric_id: String?
 
@@ -62,7 +62,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingTieredPackagePrice::model_type,
         name: String,
-        tiered_package_config: ::Hash[Symbol, top],
+        tiered_package_config: Orb::NewFloatingTieredPackagePrice::TieredPackageConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -82,7 +82,7 @@ module Orb
         item_id: String,
         model_type: Orb::Models::NewFloatingTieredPackagePrice::model_type,
         name: String,
-        tiered_package_config: ::Hash[Symbol, top],
+        tiered_package_config: Orb::NewFloatingTieredPackagePrice::TieredPackageConfig,
         billable_metric_id: String?,
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -120,6 +120,40 @@ module Orb
         TIERED_PACKAGE: :tiered_package
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingTieredPackagePrice::model_type]
+      end
+
+      type tiered_package_config =
+        {
+          package_size: String,
+          tiers: ::Array[Orb::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier]
+        }
+
+      class TieredPackageConfig < Orb::Internal::Type::BaseModel
+        attr_accessor package_size: String
+
+        attr_accessor tiers: ::Array[Orb::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier]
+
+        def initialize: (
+          package_size: String,
+          tiers: ::Array[Orb::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier]
+        ) -> void
+
+        def to_hash: -> {
+          package_size: String,
+          tiers: ::Array[Orb::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier]
+        }
+
+        type tier = { per_unit: String, tier_lower_bound: String }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor per_unit: String
+
+          attr_accessor tier_lower_bound: String
+
+          def initialize: (per_unit: String, tier_lower_bound: String) -> void
+
+          def to_hash: -> { per_unit: String, tier_lower_bound: String }
+        end
       end
     end
   end

@@ -10,9 +10,11 @@ module Orb
       required :cadence, enum: -> { Orb::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence }
 
       # @!attribute grouped_with_prorated_minimum_config
+      #   Configuration for grouped_with_prorated_minimum pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :grouped_with_prorated_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig]
+      required :grouped_with_prorated_minimum_config,
+               -> { Orb::NewSubscriptionGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -21,6 +23,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionGroupedWithProratedMinimumPrice::ModelType }
@@ -126,11 +129,11 @@ module Orb
       #
       #   @param cadence [Symbol, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice::Cadence] The cadence to bill for this price on.
       #
-      #   @param grouped_with_prorated_minimum_config [Hash{Symbol=>Object}]
+      #   @param grouped_with_prorated_minimum_config [Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice::GroupedWithProratedMinimumConfig] Configuration for grouped_with_prorated_minimum pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +180,38 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice#grouped_with_prorated_minimum_config
+      class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
+        # @!attribute grouping_key
+        #   How to determine the groups that should each have a minimum
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute minimum
+        #   The minimum amount to charge per group
+        #
+        #   @return [String]
+        required :minimum, String
+
+        # @!attribute unit_rate
+        #   The amount to charge per unit
+        #
+        #   @return [String]
+        required :unit_rate, String
+
+        # @!method initialize(grouping_key:, minimum:, unit_rate:)
+        #   Configuration for grouped_with_prorated_minimum pricing
+        #
+        #   @param grouping_key [String] How to determine the groups that should each have a minimum
+        #
+        #   @param minimum [String] The minimum amount to charge per group
+        #
+        #   @param unit_rate [String] The amount to charge per unit
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

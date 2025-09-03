@@ -16,6 +16,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionTieredWithMinimumPrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionTieredWithMinimumPrice::ModelType }
@@ -27,9 +28,11 @@ module Orb
       required :name, String
 
       # @!attribute tiered_with_minimum_config
+      #   Configuration for tiered_with_minimum pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :tiered_with_minimum_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig]
+      required :tiered_with_minimum_config,
+               -> { Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig }
 
       # @!attribute billable_metric_id
       #   The id of the billable metric for the price. Only needed if the price is
@@ -128,11 +131,11 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionTieredWithMinimumPrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionTieredWithMinimumPrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
-      #   @param tiered_with_minimum_config [Hash{Symbol=>Object}]
+      #   @param tiered_with_minimum_config [Orb::Models::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig] Configuration for tiered_with_minimum pricing
       #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
@@ -177,6 +180,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionTieredWithMinimumPrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum
@@ -185,6 +190,71 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see Orb::Models::NewSubscriptionTieredWithMinimumPrice#tiered_with_minimum_config
+      class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
+        # @!attribute tiers
+        #   Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
+        #   defined using exclusive lower bounds.
+        #
+        #   @return [Array<Orb::Models::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier] }
+
+        # @!attribute hide_zero_amount_tiers
+        #   If true, tiers with an accrued amount of 0 will not be included in the rating.
+        #
+        #   @return [Boolean, nil]
+        optional :hide_zero_amount_tiers, Orb::Internal::Type::Boolean
+
+        # @!attribute prorate
+        #   If true, the unit price will be prorated to the billing period
+        #
+        #   @return [Boolean, nil]
+        optional :prorate, Orb::Internal::Type::Boolean
+
+        # @!method initialize(tiers:, hide_zero_amount_tiers: nil, prorate: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig}
+        #   for more details.
+        #
+        #   Configuration for tiered_with_minimum pricing
+        #
+        #   @param tiers [Array<Orb::Models::NewSubscriptionTieredWithMinimumPrice::TieredWithMinimumConfig::Tier>] Tiered pricing with a minimum amount dependent on the volume tier. Tiers are def
+        #
+        #   @param hide_zero_amount_tiers [Boolean] If true, tiers with an accrued amount of 0 will not be included in the rating.
+        #
+        #   @param prorate [Boolean] If true, the unit price will be prorated to the billing period
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute minimum_amount
+          #   Minimum amount
+          #
+          #   @return [String]
+          required :minimum_amount, String
+
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!attribute unit_amount
+          #   Per unit amount
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!method initialize(minimum_amount:, tier_lower_bound:, unit_amount:)
+          #   Configuration for a single tier
+          #
+          #   @param minimum_amount [String] Minimum amount
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+          #
+          #   @param unit_amount [String] Per unit amount
+        end
       end
     end
   end

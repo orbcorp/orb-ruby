@@ -3,7 +3,7 @@ module Orb
     type new_plan_grouped_with_metered_minimum_price =
       {
         cadence: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::cadence,
-        grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+        grouped_with_metered_minimum_config: Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig,
         item_id: String,
         model_type: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::model_type,
         name: String,
@@ -25,7 +25,7 @@ module Orb
     class NewPlanGroupedWithMeteredMinimumPrice < Orb::Internal::Type::BaseModel
       attr_accessor cadence: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::cadence
 
-      attr_accessor grouped_with_metered_minimum_config: ::Hash[Symbol, top]
+      attr_accessor grouped_with_metered_minimum_config: Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig
 
       attr_accessor item_id: String
 
@@ -61,7 +61,7 @@ module Orb
 
       def initialize: (
         cadence: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::cadence,
-        grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+        grouped_with_metered_minimum_config: Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig,
         item_id: String,
         model_type: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::model_type,
         name: String,
@@ -82,7 +82,7 @@ module Orb
 
       def to_hash: -> {
         cadence: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::cadence,
-        grouped_with_metered_minimum_config: ::Hash[Symbol, top],
+        grouped_with_metered_minimum_config: Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig,
         item_id: String,
         model_type: Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::model_type,
         name: String,
@@ -115,6 +115,75 @@ module Orb
         CUSTOM: :custom
 
         def self?.values: -> ::Array[Orb::Models::NewPlanGroupedWithMeteredMinimumPrice::cadence]
+      end
+
+      type grouped_with_metered_minimum_config =
+        {
+          grouping_key: String,
+          minimum_unit_amount: String,
+          pricing_key: String,
+          scaling_factors: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor],
+          scaling_key: String,
+          unit_amounts: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount]
+        }
+
+      class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
+        attr_accessor grouping_key: String
+
+        attr_accessor minimum_unit_amount: String
+
+        attr_accessor pricing_key: String
+
+        attr_accessor scaling_factors: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor]
+
+        attr_accessor scaling_key: String
+
+        attr_accessor unit_amounts: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount]
+
+        def initialize: (
+          grouping_key: String,
+          minimum_unit_amount: String,
+          pricing_key: String,
+          scaling_factors: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor],
+          scaling_key: String,
+          unit_amounts: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount]
+        ) -> void
+
+        def to_hash: -> {
+          grouping_key: String,
+          minimum_unit_amount: String,
+          pricing_key: String,
+          scaling_factors: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::ScalingFactor],
+          scaling_key: String,
+          unit_amounts: ::Array[Orb::NewPlanGroupedWithMeteredMinimumPrice::GroupedWithMeteredMinimumConfig::UnitAmount]
+        }
+
+        type scaling_factor = { scaling_factor: String, scaling_value: String }
+
+        class ScalingFactor < Orb::Internal::Type::BaseModel
+          attr_accessor scaling_factor: String
+
+          attr_accessor scaling_value: String
+
+          def initialize: (
+            scaling_factor: String,
+            scaling_value: String
+          ) -> void
+
+          def to_hash: -> { scaling_factor: String, scaling_value: String }
+        end
+
+        type unit_amount = { pricing_value: String, unit_amount: String }
+
+        class UnitAmount < Orb::Internal::Type::BaseModel
+          attr_accessor pricing_value: String
+
+          attr_accessor unit_amount: String
+
+          def initialize: (pricing_value: String, unit_amount: String) -> void
+
+          def to_hash: -> { pricing_value: String, unit_amount: String }
+        end
       end
 
       type model_type = :grouped_with_metered_minimum

@@ -22,10 +22,10 @@ module Orb
       sig { returns(Float) }
       attr_accessor :quantity
 
-      sig { returns(Orb::TierConfig) }
+      sig { returns(Orb::TierSubLineItem::TierConfig) }
       attr_reader :tier_config
 
-      sig { params(tier_config: Orb::TierConfig::OrHash).void }
+      sig { params(tier_config: Orb::TierSubLineItem::TierConfig::OrHash).void }
       attr_writer :tier_config
 
       sig { returns(Orb::TierSubLineItem::Type::TaggedSymbol) }
@@ -37,7 +37,7 @@ module Orb
           grouping: T.nilable(Orb::SubLineItemGrouping::OrHash),
           name: String,
           quantity: Float,
-          tier_config: Orb::TierConfig::OrHash,
+          tier_config: Orb::TierSubLineItem::TierConfig::OrHash,
           type: Orb::TierSubLineItem::Type::OrSymbol
         ).returns(T.attached_class)
       end
@@ -59,12 +59,50 @@ module Orb
             grouping: T.nilable(Orb::SubLineItemGrouping),
             name: String,
             quantity: Float,
-            tier_config: Orb::TierConfig,
+            tier_config: Orb::TierSubLineItem::TierConfig,
             type: Orb::TierSubLineItem::Type::TaggedSymbol
           }
         )
       end
       def to_hash
+      end
+
+      class TierConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::TierSubLineItem::TierConfig, Orb::Internal::AnyHash)
+          end
+
+        sig { returns(Float) }
+        attr_accessor :first_unit
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :last_unit
+
+        sig { returns(String) }
+        attr_accessor :unit_amount
+
+        sig do
+          params(
+            first_unit: Float,
+            last_unit: T.nilable(Float),
+            unit_amount: String
+          ).returns(T.attached_class)
+        end
+        def self.new(first_unit:, last_unit:, unit_amount:)
+        end
+
+        sig do
+          override.returns(
+            {
+              first_unit: Float,
+              last_unit: T.nilable(Float),
+              unit_amount: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       module Type

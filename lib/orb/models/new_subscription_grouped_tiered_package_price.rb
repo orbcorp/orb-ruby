@@ -10,9 +10,11 @@ module Orb
       required :cadence, enum: -> { Orb::NewSubscriptionGroupedTieredPackagePrice::Cadence }
 
       # @!attribute grouped_tiered_package_config
+      #   Configuration for grouped_tiered_package pricing
       #
-      #   @return [Hash{Symbol=>Object}]
-      required :grouped_tiered_package_config, Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]
+      #   @return [Orb::Models::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig]
+      required :grouped_tiered_package_config,
+               -> { Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig }
 
       # @!attribute item_id
       #   The id of the item the price will be associated with.
@@ -21,6 +23,7 @@ module Orb
       required :item_id, String
 
       # @!attribute model_type
+      #   The pricing model type
       #
       #   @return [Symbol, Orb::Models::NewSubscriptionGroupedTieredPackagePrice::ModelType]
       required :model_type, enum: -> { Orb::NewSubscriptionGroupedTieredPackagePrice::ModelType }
@@ -126,11 +129,11 @@ module Orb
       #
       #   @param cadence [Symbol, Orb::Models::NewSubscriptionGroupedTieredPackagePrice::Cadence] The cadence to bill for this price on.
       #
-      #   @param grouped_tiered_package_config [Hash{Symbol=>Object}]
+      #   @param grouped_tiered_package_config [Orb::Models::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig] Configuration for grouped_tiered_package pricing
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param model_type [Symbol, Orb::Models::NewSubscriptionGroupedTieredPackagePrice::ModelType]
+      #   @param model_type [Symbol, Orb::Models::NewSubscriptionGroupedTieredPackagePrice::ModelType] The pricing model type
       #
       #   @param name [String] The name of the price.
       #
@@ -177,6 +180,65 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
+      # @see Orb::Models::NewSubscriptionGroupedTieredPackagePrice#grouped_tiered_package_config
+      class GroupedTieredPackageConfig < Orb::Internal::Type::BaseModel
+        # @!attribute grouping_key
+        #   The event property used to group before tiering
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute package_size
+        #   Package size
+        #
+        #   @return [String]
+        required :package_size, String
+
+        # @!attribute tiers
+        #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+        #   are defined using exclusive lower bounds.
+        #
+        #   @return [Array<Orb::Models::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier>]
+        required :tiers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier] }
+
+        # @!method initialize(grouping_key:, package_size:, tiers:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig}
+        #   for more details.
+        #
+        #   Configuration for grouped_tiered_package pricing
+        #
+        #   @param grouping_key [String] The event property used to group before tiering
+        #
+        #   @param package_size [String] Package size
+        #
+        #   @param tiers [Array<Orb::Models::NewSubscriptionGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute per_unit
+          #   Price per package
+          #
+          #   @return [String]
+          required :per_unit, String
+
+          # @!attribute tier_lower_bound
+          #   Tier lower bound
+          #
+          #   @return [String]
+          required :tier_lower_bound, String
+
+          # @!method initialize(per_unit:, tier_lower_bound:)
+          #   Configuration for a single tier
+          #
+          #   @param per_unit [String] Price per package
+          #
+          #   @param tier_lower_bound [String] Tier lower bound
+        end
+      end
+
+      # The pricing model type
+      #
       # @see Orb::Models::NewSubscriptionGroupedTieredPackagePrice#model_type
       module ModelType
         extend Orb::Internal::Type::Enum

@@ -13,14 +13,14 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
     assert_pattern do
       case response
       in Orb::Price::Unit
-      in Orb::Price::Package
-      in Orb::Price::Matrix
       in Orb::Price::Tiered
       in Orb::Price::Bulk
+      in Orb::Price::Package
+      in Orb::Price::Matrix
       in Orb::Price::ThresholdTotalAmount
       in Orb::Price::TieredPackage
-      in Orb::Price::GroupedTiered
       in Orb::Price::TieredWithMinimum
+      in Orb::Price::GroupedTiered
       in Orb::Price::TieredPackageWithMinimum
       in Orb::Price::PackageWithAllocation
       in Orb::Price::UnitWithPercent
@@ -28,16 +28,16 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
       in Orb::Price::TieredWithProration
       in Orb::Price::UnitWithProration
       in Orb::Price::GroupedAllocation
+      in Orb::Price::BulkWithProration
       in Orb::Price::GroupedWithProratedMinimum
       in Orb::Price::GroupedWithMeteredMinimum
+      in Orb::Price::GroupedWithMinMaxThresholds
       in Orb::Price::MatrixWithDisplayName
-      in Orb::Price::BulkWithProration
       in Orb::Price::GroupedTieredPackage
       in Orb::Price::MaxGroupTieredPackage
       in Orb::Price::ScalableMatrixWithUnitPricing
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
-      in Orb::Price::GroupedWithMinMaxThresholds
       in Orb::Price::Minimum
       end
     end
@@ -71,64 +71,6 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         price_type: Orb::Price::Unit::PriceType,
         replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :package,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::Package::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::Package::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        package_config: Orb::PackageConfig,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::Package::PriceType,
-        replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :matrix,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::Matrix::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::Matrix::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        matrix_config: Orb::MatrixConfig,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::Matrix::PriceType,
-        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -190,6 +132,64 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
+        model_type: :package,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::Package::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Package::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        package_config: Orb::PackageConfig,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Package::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :matrix,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::Matrix::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Matrix::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        matrix_config: Orb::MatrixConfig,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Matrix::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
         model_type: :threshold_total_amount,
         id: String,
         billable_metric: Orb::BillableMetricTiny | nil,
@@ -215,7 +215,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
         replaces_price_id: String | nil,
-        threshold_total_amount_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -244,36 +244,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackage::PriceType,
         replaces_price_id: String | nil,
-        tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :grouped_tiered,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::GroupedTiered::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::GroupedTiered::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        grouped_tiered_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::GroupedTiered::PriceType,
-        replaces_price_id: String | nil,
+        tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -302,7 +273,36 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithMinimum::PriceType,
         replaces_price_id: String | nil,
-        tiered_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :grouped_tiered,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::GroupedTiered::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::GroupedTiered::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        grouped_tiered_config: Orb::Price::GroupedTiered::GroupedTieredConfig,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::GroupedTiered::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -331,7 +331,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
         replaces_price_id: String | nil,
-        tiered_package_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -357,7 +357,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         minimum: Orb::Minimum | nil,
         minimum_amount: String | nil,
         name: String,
-        package_with_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        package_with_allocation_config: Orb::Price::PackageWithAllocation::PackageWithAllocationConfig,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
         replaces_price_id: String | nil,
@@ -389,7 +389,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithPercent::PriceType,
         replaces_price_id: String | nil,
-        unit_with_percent_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -447,7 +447,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithProration::PriceType,
         replaces_price_id: String | nil,
-        tiered_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -476,7 +476,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithProration::PriceType,
         replaces_price_id: String | nil,
-        unit_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -494,7 +494,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_allocation_config: Orb::Price::GroupedAllocation::GroupedAllocationConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -505,6 +505,35 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :bulk_with_proration,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
+        cadence: Orb::Price::BulkWithProration::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::BulkWithProration::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -523,7 +552,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_with_prorated_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_with_prorated_minimum_config: Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -552,7 +581,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_with_metered_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_with_metered_minimum_config: Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -563,6 +592,35 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :grouped_with_min_max_thresholds,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        grouped_with_min_max_thresholds_config: Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -583,7 +641,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         fixed_price_quantity: Float | nil,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
-        matrix_with_display_name_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        matrix_with_display_name_config: Orb::Price::MatrixWithDisplayName::MatrixWithDisplayNameConfig,
         maximum: Orb::Maximum | nil,
         maximum_amount: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
@@ -592,35 +650,6 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
-        replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :bulk_with_proration,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        bulk_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        cadence: Orb::Price::BulkWithProration::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::BulkWithProration::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -639,7 +668,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_tiered_package_config: Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -670,7 +699,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         fixed_price_quantity: Float | nil,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
-        max_group_tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        max_group_tiered_package_config: Orb::Price::MaxGroupTieredPackage::MaxGroupTieredPackageConfig,
         maximum: Orb::Maximum | nil,
         maximum_amount: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
@@ -708,7 +737,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
         replaces_price_id: String | nil,
-        scalable_matrix_with_unit_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -737,7 +766,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
         replaces_price_id: String | nil,
-        scalable_matrix_with_tiered_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -751,7 +780,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         conversion_rate_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig | nil,
         created_at: Time,
         credit_allocation: Orb::Allocation | nil,
-        cumulative_grouped_bulk_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        cumulative_grouped_bulk_config: Orb::Price::CumulativeGroupedBulk::CumulativeGroupedBulkConfig,
         currency: String,
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
@@ -766,35 +795,6 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
-        replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :grouped_with_min_max_thresholds,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        grouped_with_min_max_thresholds_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -841,14 +841,14 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
     assert_pattern do
       case response
       in Orb::Price::Unit
-      in Orb::Price::Package
-      in Orb::Price::Matrix
       in Orb::Price::Tiered
       in Orb::Price::Bulk
+      in Orb::Price::Package
+      in Orb::Price::Matrix
       in Orb::Price::ThresholdTotalAmount
       in Orb::Price::TieredPackage
-      in Orb::Price::GroupedTiered
       in Orb::Price::TieredWithMinimum
+      in Orb::Price::GroupedTiered
       in Orb::Price::TieredPackageWithMinimum
       in Orb::Price::PackageWithAllocation
       in Orb::Price::UnitWithPercent
@@ -856,16 +856,16 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
       in Orb::Price::TieredWithProration
       in Orb::Price::UnitWithProration
       in Orb::Price::GroupedAllocation
+      in Orb::Price::BulkWithProration
       in Orb::Price::GroupedWithProratedMinimum
       in Orb::Price::GroupedWithMeteredMinimum
+      in Orb::Price::GroupedWithMinMaxThresholds
       in Orb::Price::MatrixWithDisplayName
-      in Orb::Price::BulkWithProration
       in Orb::Price::GroupedTieredPackage
       in Orb::Price::MaxGroupTieredPackage
       in Orb::Price::ScalableMatrixWithUnitPricing
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
-      in Orb::Price::GroupedWithMinMaxThresholds
       in Orb::Price::Minimum
       end
     end
@@ -899,64 +899,6 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         price_type: Orb::Price::Unit::PriceType,
         replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :package,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::Package::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::Package::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        package_config: Orb::PackageConfig,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::Package::PriceType,
-        replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :matrix,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::Matrix::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::Matrix::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        matrix_config: Orb::MatrixConfig,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::Matrix::PriceType,
-        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1018,6 +960,64 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
+        model_type: :package,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::Package::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Package::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        package_config: Orb::PackageConfig,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Package::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :matrix,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::Matrix::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Matrix::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        matrix_config: Orb::MatrixConfig,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Matrix::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
         model_type: :threshold_total_amount,
         id: String,
         billable_metric: Orb::BillableMetricTiny | nil,
@@ -1043,7 +1043,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
         replaces_price_id: String | nil,
-        threshold_total_amount_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1072,36 +1072,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackage::PriceType,
         replaces_price_id: String | nil,
-        tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :grouped_tiered,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::GroupedTiered::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::GroupedTiered::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        grouped_tiered_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::GroupedTiered::PriceType,
-        replaces_price_id: String | nil,
+        tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1130,7 +1101,36 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithMinimum::PriceType,
         replaces_price_id: String | nil,
-        tiered_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :grouped_tiered,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::GroupedTiered::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::GroupedTiered::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        grouped_tiered_config: Orb::Price::GroupedTiered::GroupedTieredConfig,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::GroupedTiered::PriceType,
+        replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1159,7 +1159,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
         replaces_price_id: String | nil,
-        tiered_package_with_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1185,7 +1185,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         minimum: Orb::Minimum | nil,
         minimum_amount: String | nil,
         name: String,
-        package_with_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        package_with_allocation_config: Orb::Price::PackageWithAllocation::PackageWithAllocationConfig,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
         replaces_price_id: String | nil,
@@ -1217,7 +1217,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithPercent::PriceType,
         replaces_price_id: String | nil,
-        unit_with_percent_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1275,7 +1275,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::TieredWithProration::PriceType,
         replaces_price_id: String | nil,
-        tiered_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1304,7 +1304,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::UnitWithProration::PriceType,
         replaces_price_id: String | nil,
-        unit_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1322,7 +1322,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_allocation_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_allocation_config: Orb::Price::GroupedAllocation::GroupedAllocationConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -1333,6 +1333,35 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :bulk_with_proration,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
+        cadence: Orb::Price::BulkWithProration::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::BulkWithProration::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1351,7 +1380,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_with_prorated_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_with_prorated_minimum_config: Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -1380,7 +1409,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_with_metered_minimum_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_with_metered_minimum_config: Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -1391,6 +1420,35 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :grouped_with_min_max_thresholds,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        grouped_with_min_max_thresholds_config: Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1411,7 +1469,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         fixed_price_quantity: Float | nil,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
-        matrix_with_display_name_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        matrix_with_display_name_config: Orb::Price::MatrixWithDisplayName::MatrixWithDisplayNameConfig,
         maximum: Orb::Maximum | nil,
         maximum_amount: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
@@ -1420,35 +1478,6 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
-        replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :bulk_with_proration,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        bulk_with_proration_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        cadence: Orb::Price::BulkWithProration::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::BulkWithProration::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1467,7 +1496,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
         fixed_price_quantity: Float | nil,
-        grouped_tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        grouped_tiered_package_config: Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
         maximum: Orb::Maximum | nil,
@@ -1498,7 +1527,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         fixed_price_quantity: Float | nil,
         invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
         item: Orb::ItemSlim,
-        max_group_tiered_package_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        max_group_tiered_package_config: Orb::Price::MaxGroupTieredPackage::MaxGroupTieredPackageConfig,
         maximum: Orb::Maximum | nil,
         maximum_amount: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
@@ -1536,7 +1565,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
         replaces_price_id: String | nil,
-        scalable_matrix_with_unit_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1565,7 +1594,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
         replaces_price_id: String | nil,
-        scalable_matrix_with_tiered_pricing_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
       in {
@@ -1579,7 +1608,7 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         conversion_rate_config: Orb::Price::CumulativeGroupedBulk::ConversionRateConfig | nil,
         created_at: Time,
         credit_allocation: Orb::Allocation | nil,
-        cumulative_grouped_bulk_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
+        cumulative_grouped_bulk_config: Orb::Price::CumulativeGroupedBulk::CumulativeGroupedBulkConfig,
         currency: String,
         discount: Orb::Discount | nil,
         external_price_id: String | nil,
@@ -1594,35 +1623,6 @@ class Orb::Test::Resources::Prices::ExternalPriceIDTest < Orb::Test::ResourceTes
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
-        replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
-      }
-      in {
-        model_type: :grouped_with_min_max_thresholds,
-        id: String,
-        billable_metric: Orb::BillableMetricTiny | nil,
-        billing_cycle_configuration: Orb::BillingCycleConfiguration,
-        cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence,
-        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
-        conversion_rate: Float | nil,
-        conversion_rate_config: Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig | nil,
-        created_at: Time,
-        credit_allocation: Orb::Allocation | nil,
-        currency: String,
-        discount: Orb::Discount | nil,
-        external_price_id: String | nil,
-        fixed_price_quantity: Float | nil,
-        grouped_with_min_max_thresholds_config: ^(Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]),
-        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
-        item: Orb::ItemSlim,
-        maximum: Orb::Maximum | nil,
-        maximum_amount: String | nil,
-        metadata: ^(Orb::Internal::Type::HashOf[String]),
-        minimum: Orb::Minimum | nil,
-        minimum_amount: String | nil,
-        name: String,
-        plan_phase_order: Integer | nil,
-        price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
