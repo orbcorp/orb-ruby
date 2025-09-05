@@ -194,13 +194,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Unit::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::Unit::price_type]
         end
@@ -368,13 +369,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::price_type]
         end
@@ -542,13 +544,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::price_type]
         end
@@ -716,13 +719,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Package::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::Package::price_type]
         end
@@ -890,13 +894,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::price_type]
         end
@@ -1064,13 +1069,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::price_type]
         end
@@ -1272,13 +1278,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::price_type]
         end
@@ -1480,13 +1487,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::price_type]
         end
@@ -1749,13 +1757,14 @@ module Orb
           end
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::price_type]
         end
@@ -1923,13 +1932,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::price_type]
         end
@@ -2169,13 +2179,14 @@ module Orb
           }
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::price_type]
         end
@@ -2343,13 +2354,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::price_type]
         end
@@ -2529,13 +2541,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::price_type]
         end
@@ -2703,13 +2716,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::price_type]
         end
@@ -2909,13 +2923,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::price_type]
         end
@@ -3120,13 +3135,14 @@ module Orb
           }
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::price_type]
         end
@@ -3326,13 +3342,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::price_type]
         end
@@ -3523,13 +3540,14 @@ module Orb
           }
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::price_type]
         end
@@ -3767,13 +3785,14 @@ module Orb
           end
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::price_type]
         end
@@ -3973,13 +3992,14 @@ module Orb
           }
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::price_type]
         end
@@ -4196,13 +4216,14 @@ module Orb
           end
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::price_type]
         end
@@ -4409,13 +4430,14 @@ module Orb
           end
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::price_type]
         end
@@ -4625,13 +4647,14 @@ module Orb
           end
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::price_type]
         end
@@ -4799,13 +4822,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type]
         end
@@ -5037,13 +5061,14 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence]
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type]
         end
@@ -5334,13 +5359,14 @@ module Orb
           end
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::price_type]
         end
@@ -5522,13 +5548,14 @@ module Orb
           def to_hash: -> { minimum_amount: String, prorated: bool }
         end
 
-        type price_type = :usage_price | :fixed_price
+        type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
           extend Orb::Internal::Type::Enum
 
           USAGE_PRICE: :usage_price
           FIXED_PRICE: :fixed_price
+          COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::Minimum::price_type]
         end
