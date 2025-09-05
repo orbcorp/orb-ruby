@@ -301,6 +301,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -537,6 +538,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -773,6 +775,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -1009,6 +1012,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -1245,6 +1249,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -1484,6 +1489,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -1771,6 +1777,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -2056,6 +2063,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -2406,6 +2414,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -2645,6 +2654,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -2971,6 +2981,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -3209,6 +3220,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -3469,6 +3481,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -3707,6 +3720,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -3986,6 +4000,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -4268,6 +4283,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -4542,6 +4558,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -4811,6 +4828,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -5154,6 +5172,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -5431,6 +5450,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -5722,6 +5742,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -6018,6 +6039,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -6313,6 +6335,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -6552,6 +6575,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -6867,6 +6891,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -7248,6 +7273,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -7506,6 +7532,7 @@ module Orb
 
           USAGE_PRICE = :usage_price
           FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
 
           # @!method self.values
           #   @return [Array<Symbol>]

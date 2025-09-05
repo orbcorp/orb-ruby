@@ -350,6 +350,8 @@ module Orb
             T.let(:usage_price, Orb::Price::Unit::PriceType::TaggedSymbol)
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Price::Unit::PriceType::TaggedSymbol)
+          COMPOSITE_PRICE =
+            T.let(:composite_price, Orb::Price::Unit::PriceType::TaggedSymbol)
 
           sig do
             override.returns(
@@ -666,6 +668,8 @@ module Orb
             T.let(:usage_price, Orb::Price::Tiered::PriceType::TaggedSymbol)
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Price::Tiered::PriceType::TaggedSymbol)
+          COMPOSITE_PRICE =
+            T.let(:composite_price, Orb::Price::Tiered::PriceType::TaggedSymbol)
 
           sig do
             override.returns(
@@ -979,6 +983,8 @@ module Orb
             T.let(:usage_price, Orb::Price::Bulk::PriceType::TaggedSymbol)
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Price::Bulk::PriceType::TaggedSymbol)
+          COMPOSITE_PRICE =
+            T.let(:composite_price, Orb::Price::Bulk::PriceType::TaggedSymbol)
 
           sig do
             override.returns(
@@ -1298,6 +1304,11 @@ module Orb
             T.let(:usage_price, Orb::Price::Package::PriceType::TaggedSymbol)
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Price::Package::PriceType::TaggedSymbol)
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::Package::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -1614,6 +1625,8 @@ module Orb
             T.let(:usage_price, Orb::Price::Matrix::PriceType::TaggedSymbol)
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Price::Matrix::PriceType::TaggedSymbol)
+          COMPOSITE_PRICE =
+            T.let(:composite_price, Orb::Price::Matrix::PriceType::TaggedSymbol)
 
           sig do
             override.returns(
@@ -1980,6 +1993,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::ThresholdTotalAmount::PriceType::TaggedSymbol
             )
 
@@ -2420,6 +2438,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::TieredPackage::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::TieredPackage::PriceType::TaggedSymbol
             )
 
@@ -2870,6 +2893,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::TieredWithMinimum::PriceType::TaggedSymbol
             )
 
@@ -3432,6 +3460,11 @@ module Orb
               :fixed_price,
               Orb::Price::GroupedTiered::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::GroupedTiered::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -3806,6 +3839,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::TieredPackageWithMinimum::PriceType::TaggedSymbol
             )
 
@@ -4344,6 +4382,11 @@ module Orb
               :fixed_price,
               Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -4693,6 +4736,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::UnitWithPercent::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::UnitWithPercent::PriceType::TaggedSymbol
             )
 
@@ -5096,6 +5144,11 @@ module Orb
               :fixed_price,
               Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -5464,6 +5517,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::TieredWithProration::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::TieredWithProration::PriceType::TaggedSymbol
             )
 
@@ -5914,6 +5972,11 @@ module Orb
               :fixed_price,
               Orb::Price::UnitWithProration::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::UnitWithProration::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -6348,6 +6411,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::GroupedAllocation::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::GroupedAllocation::PriceType::TaggedSymbol
             )
 
@@ -6797,6 +6865,11 @@ module Orb
               :fixed_price,
               Orb::Price::BulkWithProration::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::BulkWithProration::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -7224,6 +7297,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol
             )
 
@@ -7788,6 +7866,11 @@ module Orb
               :fixed_price,
               Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -8231,6 +8314,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol
             )
 
@@ -8715,6 +8803,11 @@ module Orb
               :fixed_price,
               Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -9187,6 +9280,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol
             )
 
@@ -9667,6 +9765,11 @@ module Orb
               :fixed_price,
               Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -10054,6 +10157,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::ScalableMatrixWithUnitPricing::PriceType::TaggedSymbol
             )
 
@@ -10578,6 +10686,11 @@ module Orb
           FIXED_PRICE =
             T.let(
               :fixed_price,
+              Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
               Orb::Price::ScalableMatrixWithTieredPricing::PriceType::TaggedSymbol
             )
 
@@ -11238,6 +11351,11 @@ module Orb
               :fixed_price,
               Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
             )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
@@ -11601,6 +11719,11 @@ module Orb
             T.let(:usage_price, Orb::Price::Minimum::PriceType::TaggedSymbol)
           FIXED_PRICE =
             T.let(:fixed_price, Orb::Price::Minimum::PriceType::TaggedSymbol)
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::Minimum::PriceType::TaggedSymbol
+            )
 
           sig do
             override.returns(
