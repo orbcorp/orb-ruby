@@ -65,6 +65,7 @@ module Orb
           | :taxjar
           | :avalara
           | :anrok
+          | :numeral
 
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
@@ -76,6 +77,7 @@ module Orb
           TAXJAR: :taxjar
           AVALARA: :avalara
           ANROK: :anrok
+          NUMERAL: :numeral
 
           def self?.values: -> ::Array[Orb::Models::Item::ExternalConnection::external_connection_name]
         end

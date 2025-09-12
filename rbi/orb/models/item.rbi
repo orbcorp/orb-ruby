@@ -148,6 +148,11 @@ module Orb
               :anrok,
               Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
             )
+          NUMERAL =
+            T.let(
+              :numeral,
+              Orb::Item::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
 
           sig do
             override.returns(
