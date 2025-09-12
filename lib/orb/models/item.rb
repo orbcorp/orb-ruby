@@ -77,6 +77,7 @@ module Orb
           TAXJAR = :taxjar
           AVALARA = :avalara
           ANROK = :anrok
+          NUMERAL = :numeral
 
           # @!method self.values
           #   @return [Array<Symbol>]
