@@ -87,6 +87,11 @@ module Orb
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
 
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::Unit::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::Unit::BillingMode }
+
         # @!attribute cadence
         #
         #   @return [Symbol, Orb::Models::Price::Unit::Cadence]
@@ -222,7 +227,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Unit}
         #   for more details.
         #
@@ -231,6 +236,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::Unit::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Unit::Cadence]
         #
@@ -280,6 +287,17 @@ module Orb
         #
         #   @param model_type [Symbol, :unit] The pricing model type
 
+        # @see Orb::Models::Price::Unit#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # @see Orb::Models::Price::Unit#cadence
         module Cadence
           extend Orb::Internal::Type::Enum
@@ -323,6 +341,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::Tiered::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::Tiered::BillingMode }
 
         # @!attribute cadence
         #
@@ -459,7 +482,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Tiered} for more details.
         #
@@ -468,6 +491,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::Tiered::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Tiered::Cadence]
         #
@@ -517,6 +542,17 @@ module Orb
         #
         #   @param model_type [Symbol, :tiered] The pricing model type
 
+        # @see Orb::Models::Price::Tiered#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # @see Orb::Models::Price::Tiered#cadence
         module Cadence
           extend Orb::Internal::Type::Enum
@@ -560,6 +596,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::Bulk::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::Bulk::BillingMode }
 
         # @!attribute bulk_config
         #   Configuration for bulk pricing
@@ -696,7 +737,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Bulk}
         #   for more details.
         #
@@ -705,6 +746,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::Bulk::BillingMode]
         #
         #   @param bulk_config [Orb::Models::BulkConfig] Configuration for bulk pricing
         #
@@ -754,6 +797,17 @@ module Orb
         #
         #   @param model_type [Symbol, :bulk] The pricing model type
 
+        # @see Orb::Models::Price::Bulk#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # @see Orb::Models::Price::Bulk#cadence
         module Cadence
           extend Orb::Internal::Type::Enum
@@ -797,6 +851,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::Package::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::Package::BillingMode }
 
         # @!attribute cadence
         #
@@ -933,7 +992,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Package} for more details.
         #
@@ -942,6 +1001,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::Package::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Package::Cadence]
         #
@@ -991,6 +1052,17 @@ module Orb
         #
         #   @param model_type [Symbol, :package] The pricing model type
 
+        # @see Orb::Models::Price::Package#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # @see Orb::Models::Price::Package#cadence
         module Cadence
           extend Orb::Internal::Type::Enum
@@ -1034,6 +1106,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::Matrix::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::Matrix::BillingMode }
 
         # @!attribute cadence
         #
@@ -1170,7 +1247,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Matrix} for more details.
         #
@@ -1179,6 +1256,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::Matrix::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Matrix::Cadence]
         #
@@ -1228,6 +1307,17 @@ module Orb
         #
         #   @param model_type [Symbol, :matrix] The pricing model type
 
+        # @see Orb::Models::Price::Matrix#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # @see Orb::Models::Price::Matrix#cadence
         module Cadence
           extend Orb::Internal::Type::Enum
@@ -1271,6 +1361,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::ThresholdTotalAmount::BillingMode }
 
         # @!attribute cadence
         #
@@ -1410,7 +1505,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ThresholdTotalAmount} for more details.
         #
@@ -1419,6 +1514,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::ThresholdTotalAmount::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmount::Cadence]
         #
@@ -1467,6 +1564,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :threshold_total_amount] The pricing model type
+
+        # @see Orb::Models::Price::ThresholdTotalAmount#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::ThresholdTotalAmount#cadence
         module Cadence
@@ -1560,6 +1668,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::TieredPackage::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::TieredPackage::BillingMode }
 
         # @!attribute cadence
         #
@@ -1698,7 +1811,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackage} for more details.
         #
@@ -1707,6 +1820,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::TieredPackage::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackage::Cadence]
         #
@@ -1755,6 +1870,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :tiered_package] The pricing model type
+
+        # @see Orb::Models::Price::TieredPackage#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::TieredPackage#cadence
         module Cadence
@@ -1848,6 +1974,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::TieredWithMinimum::BillingMode }
 
         # @!attribute cadence
         #
@@ -1986,7 +2117,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithMinimum} for more details.
         #
@@ -1995,6 +2126,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::TieredWithMinimum::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithMinimum::Cadence]
         #
@@ -2043,6 +2176,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :tiered_with_minimum] The pricing model type
+
+        # @see Orb::Models::Price::TieredWithMinimum#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::TieredWithMinimum#cadence
         module Cadence
@@ -2152,6 +2296,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedTiered::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::GroupedTiered::BillingMode }
 
         # @!attribute cadence
         #
@@ -2290,7 +2439,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTiered} for more details.
         #
@@ -2299,6 +2448,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::GroupedTiered::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTiered::Cadence]
         #
@@ -2347,6 +2498,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :grouped_tiered] The pricing model type
+
+        # @see Orb::Models::Price::GroupedTiered#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::GroupedTiered#cadence
         module Cadence
@@ -2438,6 +2600,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::TieredPackageWithMinimum::BillingMode }
 
         # @!attribute cadence
         #
@@ -2577,7 +2744,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackageWithMinimum} for more details.
         #
@@ -2586,6 +2753,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::TieredPackageWithMinimum::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Cadence]
         #
@@ -2634,6 +2803,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :tiered_package_with_minimum] The pricing model type
+
+        # @see Orb::Models::Price::TieredPackageWithMinimum#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::TieredPackageWithMinimum#cadence
         module Cadence
@@ -2735,6 +2915,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::PackageWithAllocation::BillingMode }
 
         # @!attribute cadence
         #
@@ -2874,7 +3059,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::PackageWithAllocation} for more details.
         #
@@ -2883,6 +3068,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::PackageWithAllocation::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::PackageWithAllocation::Cadence]
         #
@@ -2931,6 +3118,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :package_with_allocation] The pricing model type
+
+        # @see Orb::Models::Price::PackageWithAllocation#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::PackageWithAllocation#cadence
         module Cadence
@@ -3005,6 +3203,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::UnitWithPercent::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::UnitWithPercent::BillingMode }
 
         # @!attribute cadence
         #
@@ -3143,7 +3346,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithPercent} for more details.
         #
@@ -3152,6 +3355,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::UnitWithPercent::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithPercent::Cadence]
         #
@@ -3200,6 +3405,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :unit_with_percent] The pricing model type
+
+        # @see Orb::Models::Price::UnitWithPercent#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::UnitWithPercent#cadence
         module Cadence
@@ -3266,6 +3482,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::MatrixWithAllocation::BillingMode }
 
         # @!attribute cadence
         #
@@ -3404,7 +3625,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithAllocation} for more details.
         #
@@ -3413,6 +3634,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::MatrixWithAllocation::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocation::Cadence]
         #
@@ -3462,6 +3685,17 @@ module Orb
         #
         #   @param model_type [Symbol, :matrix_with_allocation] The pricing model type
 
+        # @see Orb::Models::Price::MatrixWithAllocation#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # @see Orb::Models::Price::MatrixWithAllocation#cadence
         module Cadence
           extend Orb::Internal::Type::Enum
@@ -3505,6 +3739,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::TieredWithProration::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::TieredWithProration::BillingMode }
 
         # @!attribute cadence
         #
@@ -3643,7 +3882,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithProration} for more details.
         #
@@ -3652,6 +3891,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::TieredWithProration::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithProration::Cadence]
         #
@@ -3700,6 +3941,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :tiered_with_proration] The pricing model type
+
+        # @see Orb::Models::Price::TieredWithProration#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::TieredWithProration#cadence
         module Cadence
@@ -3785,6 +4037,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::UnitWithProration::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::UnitWithProration::BillingMode }
 
         # @!attribute cadence
         #
@@ -3923,7 +4180,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithProration} for more details.
         #
@@ -3932,6 +4189,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::UnitWithProration::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithProration::Cadence]
         #
@@ -3980,6 +4239,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :unit_with_proration] The pricing model type
+
+        # @see Orb::Models::Price::UnitWithProration#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::UnitWithProration#cadence
         module Cadence
@@ -4038,6 +4308,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedAllocation::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::GroupedAllocation::BillingMode }
 
         # @!attribute cadence
         #
@@ -4176,7 +4451,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedAllocation} for more details.
         #
@@ -4185,6 +4460,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::GroupedAllocation::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedAllocation::Cadence]
         #
@@ -4233,6 +4510,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :grouped_allocation] The pricing model type
+
+        # @see Orb::Models::Price::GroupedAllocation#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::GroupedAllocation#cadence
         module Cadence
@@ -4307,6 +4595,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::BulkWithProration::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::BulkWithProration::BillingMode }
 
         # @!attribute bulk_with_proration_config
         #   Configuration for bulk_with_proration pricing
@@ -4445,7 +4738,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithProration} for more details.
         #
@@ -4454,6 +4747,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::BulkWithProration::BillingMode]
         #
         #   @param bulk_with_proration_config [Orb::Models::Price::BulkWithProration::BulkWithProrationConfig] Configuration for bulk_with_proration pricing
         #
@@ -4502,6 +4797,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :bulk_with_proration] The pricing model type
+
+        # @see Orb::Models::Price::BulkWithProration#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::BulkWithProration#bulk_with_proration_config
         class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
@@ -4582,6 +4888,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::GroupedWithProratedMinimum::BillingMode }
 
         # @!attribute cadence
         #
@@ -4721,7 +5032,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithProratedMinimum} for more details.
         #
@@ -4730,6 +5041,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Cadence]
         #
@@ -4778,6 +5091,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :grouped_with_prorated_minimum] The pricing model type
+
+        # @see Orb::Models::Price::GroupedWithProratedMinimum#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimum#cadence
         module Cadence
@@ -4852,6 +5176,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::GroupedWithMeteredMinimum::BillingMode }
 
         # @!attribute cadence
         #
@@ -4991,7 +5320,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMeteredMinimum} for more details.
         #
@@ -5000,6 +5329,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence]
         #
@@ -5048,6 +5379,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :grouped_with_metered_minimum] The pricing model type
+
+        # @see Orb::Models::Price::GroupedWithMeteredMinimum#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#cadence
         module Cadence
@@ -5197,6 +5539,11 @@ module Orb
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
 
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::GroupedWithMinMaxThresholds::BillingMode }
+
         # @!attribute cadence
         #
         #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
@@ -5335,7 +5682,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_min_max_thresholds)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_min_max_thresholds)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMinMaxThresholds} for more details.
         #
@@ -5344,6 +5691,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
         #
@@ -5392,6 +5741,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :grouped_with_min_max_thresholds] The pricing model type
+
+        # @see Orb::Models::Price::GroupedWithMinMaxThresholds#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::GroupedWithMinMaxThresholds#cadence
         module Cadence
@@ -5474,6 +5834,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::MatrixWithDisplayName::BillingMode }
 
         # @!attribute cadence
         #
@@ -5613,7 +5978,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithDisplayName} for more details.
         #
@@ -5622,6 +5987,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::MatrixWithDisplayName::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayName::Cadence]
         #
@@ -5670,6 +6037,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :matrix_with_display_name] The pricing model type
+
+        # @see Orb::Models::Price::MatrixWithDisplayName#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::MatrixWithDisplayName#cadence
         module Cadence
@@ -5766,6 +6144,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::GroupedTieredPackage::BillingMode }
 
         # @!attribute cadence
         #
@@ -5905,7 +6288,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTieredPackage} for more details.
         #
@@ -5914,6 +6297,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::GroupedTieredPackage::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackage::Cadence]
         #
@@ -5962,6 +6347,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :grouped_tiered_package] The pricing model type
+
+        # @see Orb::Models::Price::GroupedTieredPackage#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::GroupedTieredPackage#cadence
         module Cadence
@@ -6063,6 +6459,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::MaxGroupTieredPackage::BillingMode }
 
         # @!attribute cadence
         #
@@ -6202,7 +6603,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MaxGroupTieredPackage} for more details.
         #
@@ -6211,6 +6612,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::MaxGroupTieredPackage::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Cadence]
         #
@@ -6259,6 +6662,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :max_group_tiered_package] The pricing model type
+
+        # @see Orb::Models::Price::MaxGroupTieredPackage#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::MaxGroupTieredPackage#cadence
         module Cadence
@@ -6359,6 +6773,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::BillingMode }
 
         # @!attribute cadence
         #
@@ -6498,7 +6917,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithUnitPricing} for more details.
         #
@@ -6507,6 +6926,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence]
         #
@@ -6555,6 +6976,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing] The pricing model type
+
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#cadence
         module Cadence
@@ -6675,6 +7107,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::BillingMode }
 
         # @!attribute cadence
         #
@@ -6814,7 +7251,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithTieredPricing} for more details.
         #
@@ -6823,6 +7260,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence]
         #
@@ -6871,6 +7310,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing] The pricing model type
+
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#cadence
         module Cadence
@@ -7005,6 +7455,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::CumulativeGroupedBulk::BillingMode }
 
         # @!attribute cadence
         #
@@ -7144,7 +7599,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedBulk} for more details.
         #
@@ -7153,6 +7608,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::CumulativeGroupedBulk::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Cadence]
         #
@@ -7201,6 +7658,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :cumulative_grouped_bulk] The pricing model type
+
+        # @see Orb::Models::Price::CumulativeGroupedBulk#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::CumulativeGroupedBulk#cadence
         module Cadence
@@ -7297,6 +7765,11 @@ module Orb
         #
         #   @return [Orb::Models::BillingCycleConfiguration]
         required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::Minimum::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::Minimum::BillingMode }
 
         # @!attribute cadence
         #
@@ -7433,7 +7906,7 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Minimum} for more details.
         #
@@ -7442,6 +7915,8 @@ module Orb
         #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
         #
         #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::Minimum::BillingMode]
         #
         #   @param cadence [Symbol, Orb::Models::Price::Minimum::Cadence]
         #
@@ -7490,6 +7965,17 @@ module Orb
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
         #
         #   @param model_type [Symbol, :minimum] The pricing model type
+
+        # @see Orb::Models::Price::Minimum#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # @see Orb::Models::Price::Minimum#cadence
         module Cadence
