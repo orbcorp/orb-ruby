@@ -37,6 +37,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Unit::billing_mode,
           cadence: Orb::Models::Price::Unit::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -69,6 +70,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::Unit::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::Unit::cadence
 
@@ -122,6 +125,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Unit::billing_mode,
           cadence: Orb::Models::Price::Unit::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -152,6 +156,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Unit::billing_mode,
           cadence: Orb::Models::Price::Unit::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -177,6 +182,17 @@ module Orb
           unit_config: Orb::UnitConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::Unit::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -212,6 +228,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Tiered::billing_mode,
           cadence: Orb::Models::Price::Tiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -244,6 +261,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::Tiered::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::Tiered::cadence
 
@@ -297,6 +316,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Tiered::billing_mode,
           cadence: Orb::Models::Price::Tiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -327,6 +347,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Tiered::billing_mode,
           cadence: Orb::Models::Price::Tiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -352,6 +373,17 @@ module Orb
           tiered_config: Orb::TieredConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::Tiered::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -387,6 +419,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Bulk::billing_mode,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
@@ -419,6 +452,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::Bulk::billing_mode
 
         attr_accessor bulk_config: Orb::BulkConfig
 
@@ -472,6 +507,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Bulk::billing_mode,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
@@ -502,6 +538,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Bulk::billing_mode,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
@@ -527,6 +564,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::Bulk::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -562,6 +610,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Package::billing_mode,
           cadence: Orb::Models::Price::Package::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -594,6 +643,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::Package::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::Package::cadence
 
@@ -647,6 +698,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Package::billing_mode,
           cadence: Orb::Models::Price::Package::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -677,6 +729,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Package::billing_mode,
           cadence: Orb::Models::Price::Package::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -702,6 +755,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::Package::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -737,6 +801,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Matrix::billing_mode,
           cadence: Orb::Models::Price::Matrix::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -769,6 +834,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::Matrix::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::Matrix::cadence
 
@@ -822,6 +889,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Matrix::billing_mode,
           cadence: Orb::Models::Price::Matrix::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -852,6 +920,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Matrix::billing_mode,
           cadence: Orb::Models::Price::Matrix::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -877,6 +946,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::Matrix::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -912,6 +992,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -944,6 +1025,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::ThresholdTotalAmount::cadence
 
@@ -997,6 +1080,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1027,6 +1111,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1052,6 +1137,17 @@ module Orb
           threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -1121,6 +1217,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredPackage::billing_mode,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1153,6 +1250,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::TieredPackage::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::TieredPackage::cadence
 
@@ -1206,6 +1305,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredPackage::billing_mode,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1236,6 +1336,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredPackage::billing_mode,
           cadence: Orb::Models::Price::TieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1261,6 +1362,17 @@ module Orb
           tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -1330,6 +1442,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1362,6 +1475,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::TieredWithMinimum::cadence
 
@@ -1415,6 +1530,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1445,6 +1561,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1470,6 +1587,17 @@ module Orb
           tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -1563,6 +1691,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedTiered::billing_mode,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1595,6 +1724,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::GroupedTiered::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::GroupedTiered::cadence
 
@@ -1648,6 +1779,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedTiered::billing_mode,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1678,6 +1810,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedTiered::billing_mode,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1703,6 +1836,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -1775,6 +1919,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1807,6 +1952,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence
 
@@ -1860,6 +2007,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1890,6 +2038,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -1915,6 +2064,17 @@ module Orb
           tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -1999,6 +2159,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2031,6 +2192,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::PackageWithAllocation::cadence
 
@@ -2084,6 +2247,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2114,6 +2278,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2139,6 +2304,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -2197,6 +2373,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2229,6 +2406,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::UnitWithPercent::cadence
 
@@ -2282,6 +2461,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2312,6 +2492,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2337,6 +2518,17 @@ module Orb
           unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -2384,6 +2576,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2416,6 +2609,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::MatrixWithAllocation::cadence
 
@@ -2469,6 +2664,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2499,6 +2695,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2524,6 +2721,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -2559,6 +2767,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredWithProration::billing_mode,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2591,6 +2800,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::TieredWithProration::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::TieredWithProration::cadence
 
@@ -2644,6 +2855,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredWithProration::billing_mode,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2674,6 +2886,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::TieredWithProration::billing_mode,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2699,6 +2912,17 @@ module Orb
           tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -2766,6 +2990,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::UnitWithProration::billing_mode,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2798,6 +3023,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::UnitWithProration::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::UnitWithProration::cadence
 
@@ -2851,6 +3078,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::UnitWithProration::billing_mode,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2881,6 +3109,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::UnitWithProration::billing_mode,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2906,6 +3135,17 @@ module Orb
           unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -2951,6 +3191,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -2983,6 +3224,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::GroupedAllocation::cadence
 
@@ -3036,6 +3279,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3066,6 +3310,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3091,6 +3336,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -3153,6 +3409,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::BulkWithProration::billing_mode,
           bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
@@ -3185,6 +3442,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::BulkWithProration::billing_mode
 
         attr_accessor bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig
 
@@ -3238,6 +3497,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::BulkWithProration::billing_mode,
           bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
@@ -3268,6 +3528,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::BulkWithProration::billing_mode,
           bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
           cadence: Orb::Models::Price::BulkWithProration::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
@@ -3293,6 +3554,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::billing_mode]
+        end
 
         type bulk_with_proration_config =
           {
@@ -3360,6 +3632,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3392,6 +3665,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence
 
@@ -3445,6 +3720,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3475,6 +3751,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3500,6 +3777,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -3558,6 +3846,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3590,6 +3879,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence
 
@@ -3643,6 +3934,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3673,6 +3965,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3698,6 +3991,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -3803,6 +4107,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3835,6 +4140,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence
 
@@ -3888,6 +4195,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3918,6 +4226,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -3943,6 +4252,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -4010,6 +4330,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4042,6 +4363,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::MatrixWithDisplayName::cadence
 
@@ -4095,6 +4418,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4125,6 +4449,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4150,6 +4475,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -4234,6 +4570,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4266,6 +4603,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::GroupedTieredPackage::cadence
 
@@ -4319,6 +4658,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4349,6 +4689,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4374,6 +4715,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -4448,6 +4800,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4480,6 +4833,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence
 
@@ -4533,6 +4888,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4563,6 +4919,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4588,6 +4945,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -4665,6 +5033,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4697,6 +5066,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence
 
@@ -4750,6 +5121,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4780,6 +5152,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4805,6 +5178,17 @@ module Orb
           scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -4904,6 +5288,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -4936,6 +5321,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence
 
@@ -4989,6 +5376,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5019,6 +5407,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5044,6 +5433,17 @@ module Orb
           scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -5153,6 +5553,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5185,6 +5586,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence
 
@@ -5238,6 +5641,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5268,6 +5672,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5293,6 +5698,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
@@ -5377,6 +5793,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Minimum::billing_mode,
           cadence: Orb::Models::Price::Minimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5409,6 +5826,8 @@ module Orb
         attr_accessor billable_metric: Orb::BillableMetricTiny?
 
         attr_accessor billing_cycle_configuration: Orb::BillingCycleConfiguration
+
+        attr_accessor billing_mode: Orb::Models::Price::Minimum::billing_mode
 
         attr_accessor cadence: Orb::Models::Price::Minimum::cadence
 
@@ -5462,6 +5881,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Minimum::billing_mode,
           cadence: Orb::Models::Price::Minimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5492,6 +5912,7 @@ module Orb
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
+          billing_mode: Orb::Models::Price::Minimum::billing_mode,
           cadence: Orb::Models::Price::Minimum::cadence,
           composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
           conversion_rate: Float?,
@@ -5517,6 +5938,17 @@ module Orb
           replaces_price_id: String?,
           dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
         }
+
+        type billing_mode = :in_advance | :in_arrear
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE: :in_advance
+          IN_ARREAR: :in_arrear
+
+          def self?.values: -> ::Array[Orb::Models::Price::Minimum::billing_mode]
+        end
 
         type cadence =
           :one_time | :monthly | :quarterly | :semi_annual | :annual | :custom
