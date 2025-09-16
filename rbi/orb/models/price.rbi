@@ -75,6 +75,9 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig { returns(Orb::Price::Unit::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::Unit::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -195,6 +198,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::Unit::BillingMode::OrSymbol,
             cadence: Orb::Price::Unit::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -242,6 +246,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -283,6 +288,7 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode: Orb::Price::Unit::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -315,6 +321,27 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Unit::BillingMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(:in_advance, Orb::Price::Unit::BillingMode::TaggedSymbol)
+          IN_ARREAR =
+            T.let(:in_arrear, Orb::Price::Unit::BillingMode::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Unit::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -389,6 +416,9 @@ module Orb
           ).void
         end
         attr_writer :billing_cycle_configuration
+
+        sig { returns(Orb::Price::Tiered::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
 
         sig { returns(Orb::Price::Tiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
@@ -510,6 +540,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::Tiered::BillingMode::OrSymbol,
             cadence: Orb::Price::Tiered::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -557,6 +588,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -598,6 +630,7 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode: Orb::Price::Tiered::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -630,6 +663,27 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Tiered::BillingMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(:in_advance, Orb::Price::Tiered::BillingMode::TaggedSymbol)
+          IN_ARREAR =
+            T.let(:in_arrear, Orb::Price::Tiered::BillingMode::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Tiered::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -707,6 +761,9 @@ module Orb
           ).void
         end
         attr_writer :billing_cycle_configuration
+
+        sig { returns(Orb::Price::Bulk::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
 
         # Configuration for bulk pricing
         sig { returns(Orb::BulkConfig) }
@@ -828,6 +885,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::Bulk::BillingMode::OrSymbol,
             bulk_config: Orb::BulkConfig::OrHash,
             cadence: Orb::Price::Bulk::Cadence::OrSymbol,
             composite_price_filters:
@@ -875,6 +933,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           # Configuration for bulk pricing
           bulk_config:,
           cadence:,
@@ -916,6 +975,7 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode: Orb::Price::Bulk::BillingMode::TaggedSymbol,
               bulk_config: Orb::BulkConfig,
               cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -948,6 +1008,27 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Bulk::BillingMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(:in_advance, Orb::Price::Bulk::BillingMode::TaggedSymbol)
+          IN_ARREAR =
+            T.let(:in_arrear, Orb::Price::Bulk::BillingMode::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Bulk::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -1022,6 +1103,9 @@ module Orb
           ).void
         end
         attr_writer :billing_cycle_configuration
+
+        sig { returns(Orb::Price::Package::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
 
         sig { returns(Orb::Price::Package::Cadence::TaggedSymbol) }
         attr_accessor :cadence
@@ -1145,6 +1229,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::Package::BillingMode::OrSymbol,
             cadence: Orb::Price::Package::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -1192,6 +1277,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -1233,6 +1319,7 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode: Orb::Price::Package::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Package::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -1265,6 +1352,27 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Package::BillingMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(:in_advance, Orb::Price::Package::BillingMode::TaggedSymbol)
+          IN_ARREAR =
+            T.let(:in_arrear, Orb::Price::Package::BillingMode::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Package::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -1346,6 +1454,9 @@ module Orb
           ).void
         end
         attr_writer :billing_cycle_configuration
+
+        sig { returns(Orb::Price::Matrix::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
 
         sig { returns(Orb::Price::Matrix::Cadence::TaggedSymbol) }
         attr_accessor :cadence
@@ -1467,6 +1578,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::Matrix::BillingMode::OrSymbol,
             cadence: Orb::Price::Matrix::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -1514,6 +1626,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -1555,6 +1668,7 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode: Orb::Price::Matrix::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -1587,6 +1701,27 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Matrix::BillingMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(:in_advance, Orb::Price::Matrix::BillingMode::TaggedSymbol)
+          IN_ARREAR =
+            T.let(:in_arrear, Orb::Price::Matrix::BillingMode::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Matrix::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -1666,6 +1801,11 @@ module Orb
           ).void
         end
         attr_writer :billing_cycle_configuration
+
+        sig do
+          returns(Orb::Price::ThresholdTotalAmount::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
 
         sig { returns(Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol) }
         attr_accessor :cadence
@@ -1800,6 +1940,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::ThresholdTotalAmount::BillingMode::OrSymbol,
             cadence: Orb::Price::ThresholdTotalAmount::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -1848,6 +1990,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -1889,6 +2032,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::ThresholdTotalAmount::BillingMode::TaggedSymbol,
               cadence: Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -1925,6 +2070,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::ThresholdTotalAmount::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::ThresholdTotalAmount::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::ThresholdTotalAmount::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ThresholdTotalAmount::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -2138,6 +2314,9 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig { returns(Orb::Price::TieredPackage::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::TieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -2265,6 +2444,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::TieredPackage::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredPackage::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -2313,6 +2493,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -2354,6 +2535,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::TieredPackage::BillingMode::TaggedSymbol,
               cadence: Orb::Price::TieredPackage::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -2389,6 +2572,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredPackage::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::TieredPackage::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::TieredPackage::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredPackage::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -2581,6 +2793,11 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig do
+          returns(Orb::Price::TieredWithMinimum::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -2710,6 +2927,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::TieredWithMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredWithMinimum::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -2758,6 +2976,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -2799,6 +3018,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::TieredWithMinimum::BillingMode::TaggedSymbol,
               cadence: Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -2835,6 +3056,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredWithMinimum::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::TieredWithMinimum::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::TieredWithMinimum::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::TieredWithMinimum::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -3068,6 +3318,9 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig { returns(Orb::Price::GroupedTiered::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::GroupedTiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -3195,6 +3448,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::GroupedTiered::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedTiered::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -3243,6 +3497,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -3284,6 +3539,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::GroupedTiered::BillingMode::TaggedSymbol,
               cadence: Orb::Price::GroupedTiered::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -3319,6 +3576,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedTiered::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::GroupedTiered::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::GroupedTiered::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedTiered::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -3510,6 +3796,13 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(
+            Orb::Price::TieredPackageWithMinimum::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -3646,6 +3939,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::TieredPackageWithMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -3695,6 +3990,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -3736,6 +4032,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::TieredPackageWithMinimum::BillingMode::TaggedSymbol,
               cadence:
                 Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -3773,6 +4071,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredPackageWithMinimum::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::TieredPackageWithMinimum::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::TieredPackageWithMinimum::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredPackageWithMinimum::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -4003,6 +4332,11 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(Orb::Price::PackageWithAllocation::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -4139,6 +4473,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::PackageWithAllocation::BillingMode::OrSymbol,
             cadence: Orb::Price::PackageWithAllocation::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -4187,6 +4523,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -4228,6 +4565,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::PackageWithAllocation::BillingMode::TaggedSymbol,
               cadence: Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -4264,6 +4603,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::PackageWithAllocation::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::PackageWithAllocation::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::PackageWithAllocation::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::PackageWithAllocation::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -4433,6 +4803,9 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig { returns(Orb::Price::UnitWithPercent::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::UnitWithPercent::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -4562,6 +4935,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::UnitWithPercent::BillingMode::OrSymbol,
             cadence: Orb::Price::UnitWithPercent::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -4610,6 +4984,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -4651,6 +5026,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::UnitWithPercent::BillingMode::TaggedSymbol,
               cadence: Orb::Price::UnitWithPercent::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -4686,6 +5063,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::UnitWithPercent::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::UnitWithPercent::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::UnitWithPercent::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::UnitWithPercent::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -4823,6 +5229,11 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig do
+          returns(Orb::Price::MatrixWithAllocation::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -4954,6 +5365,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::MatrixWithAllocation::BillingMode::OrSymbol,
             cadence: Orb::Price::MatrixWithAllocation::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -5002,6 +5415,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -5043,6 +5457,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::MatrixWithAllocation::BillingMode::TaggedSymbol,
               cadence: Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -5078,6 +5494,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MatrixWithAllocation::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::MatrixWithAllocation::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::MatrixWithAllocation::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithAllocation::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -5194,6 +5641,11 @@ module Orb
           ).void
         end
         attr_writer :billing_cycle_configuration
+
+        sig do
+          returns(Orb::Price::TieredWithProration::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
 
         sig { returns(Orb::Price::TieredWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
@@ -5328,6 +5780,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::TieredWithProration::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredWithProration::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -5376,6 +5830,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -5417,6 +5872,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::TieredWithProration::BillingMode::TaggedSymbol,
               cadence: Orb::Price::TieredWithProration::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -5453,6 +5910,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredWithProration::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::TieredWithProration::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::TieredWithProration::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredWithProration::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -5658,6 +6146,11 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig do
+          returns(Orb::Price::UnitWithProration::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::UnitWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -5787,6 +6280,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::UnitWithProration::BillingMode::OrSymbol,
             cadence: Orb::Price::UnitWithProration::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -5835,6 +6329,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -5876,6 +6371,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::UnitWithProration::BillingMode::TaggedSymbol,
               cadence: Orb::Price::UnitWithProration::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -5912,6 +6409,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::UnitWithProration::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::UnitWithProration::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::UnitWithProration::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::UnitWithProration::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -6047,6 +6573,11 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig do
+          returns(Orb::Price::GroupedAllocation::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::GroupedAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -6176,6 +6707,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::GroupedAllocation::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedAllocation::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -6224,6 +6756,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -6265,6 +6798,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::GroupedAllocation::BillingMode::TaggedSymbol,
               cadence: Orb::Price::GroupedAllocation::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -6301,6 +6836,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedAllocation::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::GroupedAllocation::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::GroupedAllocation::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::GroupedAllocation::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -6462,6 +7026,11 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig do
+          returns(Orb::Price::BulkWithProration::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
         # Configuration for bulk_with_proration pricing
         sig { returns(Orb::Price::BulkWithProration::BulkWithProrationConfig) }
         attr_reader :bulk_with_proration_config
@@ -6591,6 +7160,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::BulkWithProration::BillingMode::OrSymbol,
             bulk_with_proration_config:
               Orb::Price::BulkWithProration::BulkWithProrationConfig::OrHash,
             cadence: Orb::Price::BulkWithProration::Cadence::OrSymbol,
@@ -6639,6 +7209,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           # Configuration for bulk_with_proration pricing
           bulk_with_proration_config:,
           cadence:,
@@ -6680,6 +7251,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::BulkWithProration::BillingMode::TaggedSymbol,
               bulk_with_proration_config:
                 Orb::Price::BulkWithProration::BulkWithProrationConfig,
               cadence: Orb::Price::BulkWithProration::Cadence::TaggedSymbol,
@@ -6716,6 +7289,35 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::BulkWithProration::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::BulkWithProration::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::BulkWithProration::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::BulkWithProration::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
@@ -6918,6 +7520,13 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(
+            Orb::Price::GroupedWithProratedMinimum::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -7056,6 +7665,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::GroupedWithProratedMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -7105,6 +7716,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -7146,6 +7758,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::GroupedWithProratedMinimum::BillingMode::TaggedSymbol,
               cadence:
                 Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -7183,6 +7797,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithProratedMinimum::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::GroupedWithProratedMinimum::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::GroupedWithProratedMinimum::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithProratedMinimum::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -7351,6 +7996,13 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(
+            Orb::Price::GroupedWithMeteredMinimum::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -7489,6 +8141,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::GroupedWithMeteredMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -7538,6 +8192,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -7579,6 +8234,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::GroupedWithMeteredMinimum::BillingMode::TaggedSymbol,
               cadence:
                 Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -7616,6 +8273,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedWithMeteredMinimum::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::GroupedWithMeteredMinimum::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::GroupedWithMeteredMinimum::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMeteredMinimum::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -7922,6 +8610,13 @@ module Orb
 
         sig do
           returns(
+            Orb::Price::GroupedWithMinMaxThresholds::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
+          returns(
             Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
           )
         end
@@ -8061,6 +8756,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::GroupedWithMinMaxThresholds::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -8110,6 +8807,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -8151,6 +8849,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::GroupedWithMinMaxThresholds::BillingMode::TaggedSymbol,
               cadence:
                 Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -8188,6 +8888,40 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::GroupedWithMinMaxThresholds::BillingMode
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::GroupedWithMinMaxThresholds::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::GroupedWithMinMaxThresholds::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedWithMinMaxThresholds::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -8368,6 +9102,11 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(Orb::Price::MatrixWithDisplayName::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -8504,6 +9243,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::MatrixWithDisplayName::BillingMode::OrSymbol,
             cadence: Orb::Price::MatrixWithDisplayName::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -8552,6 +9293,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -8593,6 +9335,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::MatrixWithDisplayName::BillingMode::TaggedSymbol,
               cadence: Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -8629,6 +9373,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MatrixWithDisplayName::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::MatrixWithDisplayName::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::MatrixWithDisplayName::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MatrixWithDisplayName::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -8854,6 +9629,11 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig do
+          returns(Orb::Price::GroupedTieredPackage::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -8987,6 +9767,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::GroupedTieredPackage::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedTieredPackage::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -9035,6 +9817,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -9076,6 +9859,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::GroupedTieredPackage::BillingMode::TaggedSymbol,
               cadence: Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -9112,6 +9897,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::GroupedTieredPackage::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::GroupedTieredPackage::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::GroupedTieredPackage::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::GroupedTieredPackage::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -9334,6 +10150,11 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(Orb::Price::MaxGroupTieredPackage::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -9470,6 +10291,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::MaxGroupTieredPackage::BillingMode::OrSymbol,
             cadence: Orb::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -9518,6 +10341,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -9559,6 +10383,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::MaxGroupTieredPackage::BillingMode::TaggedSymbol,
               cadence: Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -9595,6 +10421,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MaxGroupTieredPackage::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::MaxGroupTieredPackage::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::MaxGroupTieredPackage::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::MaxGroupTieredPackage::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -9821,6 +10678,13 @@ module Orb
 
         sig do
           returns(
+            Orb::Price::ScalableMatrixWithUnitPricing::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
+          returns(
             Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol
           )
         end
@@ -9960,6 +10824,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::ScalableMatrixWithUnitPricing::BillingMode::OrSymbol,
             cadence:
               Orb::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
             composite_price_filters:
@@ -10010,6 +10876,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -10051,6 +10918,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingMode::TaggedSymbol,
               cadence:
                 Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -10088,6 +10957,40 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingMode
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::ScalableMatrixWithUnitPricing::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::ScalableMatrixWithUnitPricing::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithUnitPricing::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -10347,6 +11250,13 @@ module Orb
 
         sig do
           returns(
+            Orb::Price::ScalableMatrixWithTieredPricing::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
+          returns(
             Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol
           )
         end
@@ -10486,6 +11396,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::ScalableMatrixWithTieredPricing::BillingMode::OrSymbol,
             cadence:
               Orb::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
             composite_price_filters:
@@ -10536,6 +11448,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -10577,6 +11490,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingMode::TaggedSymbol,
               cadence:
                 Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
               composite_price_filters:
@@ -10614,6 +11529,40 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingMode
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::ScalableMatrixWithTieredPricing::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::ScalableMatrixWithTieredPricing::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::ScalableMatrixWithTieredPricing::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -10916,6 +11865,11 @@ module Orb
         attr_writer :billing_cycle_configuration
 
         sig do
+          returns(Orb::Price::CumulativeGroupedBulk::BillingMode::TaggedSymbol)
+        end
+        attr_accessor :billing_mode
+
+        sig do
           returns(Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol)
         end
         attr_accessor :cadence
@@ -11052,6 +12006,8 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::CumulativeGroupedBulk::BillingMode::OrSymbol,
             cadence: Orb::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -11100,6 +12056,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -11141,6 +12098,8 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::CumulativeGroupedBulk::BillingMode::TaggedSymbol,
               cadence: Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -11177,6 +12136,37 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::CumulativeGroupedBulk::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::CumulativeGroupedBulk::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::CumulativeGroupedBulk::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedBulk::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence
@@ -11400,6 +12390,9 @@ module Orb
         end
         attr_writer :billing_cycle_configuration
 
+        sig { returns(Orb::Price::Minimum::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
+
         sig { returns(Orb::Price::Minimum::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
@@ -11526,6 +12519,7 @@ module Orb
             id: String,
             billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
             billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::Minimum::BillingMode::OrSymbol,
             cadence: Orb::Price::Minimum::Cadence::OrSymbol,
             composite_price_filters:
               T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
@@ -11573,6 +12567,7 @@ module Orb
           id:,
           billable_metric:,
           billing_cycle_configuration:,
+          billing_mode:,
           cadence:,
           composite_price_filters:,
           conversion_rate:,
@@ -11614,6 +12609,7 @@ module Orb
               id: String,
               billable_metric: T.nilable(Orb::BillableMetricTiny),
               billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode: Orb::Price::Minimum::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Minimum::Cadence::TaggedSymbol,
               composite_price_filters:
                 T.nilable(T::Array[Orb::TransformPriceFilter]),
@@ -11646,6 +12642,27 @@ module Orb
           )
         end
         def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Price::Minimum::BillingMode) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(:in_advance, Orb::Price::Minimum::BillingMode::TaggedSymbol)
+          IN_ARREAR =
+            T.let(:in_arrear, Orb::Price::Minimum::BillingMode::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::Minimum::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
 
         module Cadence

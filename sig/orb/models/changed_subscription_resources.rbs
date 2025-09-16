@@ -3,7 +3,7 @@ module Orb
     type changed_subscription_resources =
       {
         created_credit_notes: ::Array[Orb::CreditNote],
-        created_invoices: ::Array[Orb::Invoice],
+        created_invoices: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice],
         voided_credit_notes: ::Array[Orb::CreditNote],
         voided_invoices: ::Array[Orb::Invoice]
       }
@@ -11,7 +11,7 @@ module Orb
     class ChangedSubscriptionResources < Orb::Internal::Type::BaseModel
       attr_accessor created_credit_notes: ::Array[Orb::CreditNote]
 
-      attr_accessor created_invoices: ::Array[Orb::Invoice]
+      attr_accessor created_invoices: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice]
 
       attr_accessor voided_credit_notes: ::Array[Orb::CreditNote]
 
@@ -19,17 +19,649 @@ module Orb
 
       def initialize: (
         created_credit_notes: ::Array[Orb::CreditNote],
-        created_invoices: ::Array[Orb::Invoice],
+        created_invoices: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice],
         voided_credit_notes: ::Array[Orb::CreditNote],
         voided_invoices: ::Array[Orb::Invoice]
       ) -> void
 
       def to_hash: -> {
         created_credit_notes: ::Array[Orb::CreditNote],
-        created_invoices: ::Array[Orb::Invoice],
+        created_invoices: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice],
         voided_credit_notes: ::Array[Orb::CreditNote],
         voided_invoices: ::Array[Orb::Invoice]
       }
+
+      type created_invoice =
+        {
+          id: String,
+          amount_due: String,
+          auto_collection: Orb::ChangedSubscriptionResources::CreatedInvoice::AutoCollection,
+          billing_address: Orb::Address?,
+          created_at: Time,
+          credit_notes: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CreditNote],
+          currency: String,
+          customer: Orb::CustomerMinified,
+          customer_balance_transactions: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction],
+          customer_tax_id: Orb::CustomerTaxID?,
+          discount: top,
+          discounts: ::Array[Orb::Models::invoice_level_discount],
+          due_date: Time?,
+          eligible_to_issue_at: Time?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          invoice_pdf: String?,
+          invoice_source: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::invoice_source,
+          is_payable_now: bool,
+          issue_failed_at: Time?,
+          issued_at: Time?,
+          line_items: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem],
+          maximum: Orb::Maximum?,
+          maximum_amount: String?,
+          memo: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Minimum?,
+          minimum_amount: String?,
+          paid_at: Time?,
+          payment_attempts: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt],
+          payment_failed_at: Time?,
+          payment_started_at: Time?,
+          scheduled_issue_at: Time?,
+          shipping_address: Orb::Address?,
+          status: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::status,
+          subscription: Orb::SubscriptionMinified?,
+          subtotal: String,
+          sync_failed_at: Time?,
+          total: String,
+          voided_at: Time?,
+          will_auto_issue: bool
+        }
+
+      class CreatedInvoice < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount_due: String
+
+        attr_accessor auto_collection: Orb::ChangedSubscriptionResources::CreatedInvoice::AutoCollection
+
+        attr_accessor billing_address: Orb::Address?
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_notes: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CreditNote]
+
+        attr_accessor currency: String
+
+        attr_accessor customer: Orb::CustomerMinified
+
+        attr_accessor customer_balance_transactions: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction]
+
+        attr_accessor customer_tax_id: Orb::CustomerTaxID?
+
+        attr_accessor discount: top
+
+        attr_accessor discounts: ::Array[Orb::Models::invoice_level_discount]
+
+        attr_accessor due_date: Time?
+
+        attr_accessor eligible_to_issue_at: Time?
+
+        attr_accessor hosted_invoice_url: String?
+
+        attr_accessor invoice_date: Time
+
+        attr_accessor invoice_number: String
+
+        attr_accessor invoice_pdf: String?
+
+        attr_accessor invoice_source: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::invoice_source
+
+        attr_accessor is_payable_now: bool
+
+        attr_accessor issue_failed_at: Time?
+
+        attr_accessor issued_at: Time?
+
+        attr_accessor line_items: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem]
+
+        attr_accessor maximum: Orb::Maximum?
+
+        attr_accessor maximum_amount: String?
+
+        attr_accessor memo: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor minimum: Orb::Minimum?
+
+        attr_accessor minimum_amount: String?
+
+        attr_accessor paid_at: Time?
+
+        attr_accessor payment_attempts: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt]
+
+        attr_accessor payment_failed_at: Time?
+
+        attr_accessor payment_started_at: Time?
+
+        attr_accessor scheduled_issue_at: Time?
+
+        attr_accessor shipping_address: Orb::Address?
+
+        attr_accessor status: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::status
+
+        attr_accessor subscription: Orb::SubscriptionMinified?
+
+        attr_accessor subtotal: String
+
+        attr_accessor sync_failed_at: Time?
+
+        attr_accessor total: String
+
+        attr_accessor voided_at: Time?
+
+        attr_accessor will_auto_issue: bool
+
+        def initialize: (
+          id: String,
+          amount_due: String,
+          auto_collection: Orb::ChangedSubscriptionResources::CreatedInvoice::AutoCollection,
+          billing_address: Orb::Address?,
+          created_at: Time,
+          credit_notes: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CreditNote],
+          currency: String,
+          customer: Orb::CustomerMinified,
+          customer_balance_transactions: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction],
+          customer_tax_id: Orb::CustomerTaxID?,
+          discount: top,
+          discounts: ::Array[Orb::Models::invoice_level_discount],
+          due_date: Time?,
+          eligible_to_issue_at: Time?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          invoice_pdf: String?,
+          invoice_source: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::invoice_source,
+          is_payable_now: bool,
+          issue_failed_at: Time?,
+          issued_at: Time?,
+          line_items: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem],
+          maximum: Orb::Maximum?,
+          maximum_amount: String?,
+          memo: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Minimum?,
+          minimum_amount: String?,
+          paid_at: Time?,
+          payment_attempts: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt],
+          payment_failed_at: Time?,
+          payment_started_at: Time?,
+          scheduled_issue_at: Time?,
+          shipping_address: Orb::Address?,
+          status: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::status,
+          subscription: Orb::SubscriptionMinified?,
+          subtotal: String,
+          sync_failed_at: Time?,
+          total: String,
+          voided_at: Time?,
+          will_auto_issue: bool
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount_due: String,
+          auto_collection: Orb::ChangedSubscriptionResources::CreatedInvoice::AutoCollection,
+          billing_address: Orb::Address?,
+          created_at: Time,
+          credit_notes: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CreditNote],
+          currency: String,
+          customer: Orb::CustomerMinified,
+          customer_balance_transactions: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction],
+          customer_tax_id: Orb::CustomerTaxID?,
+          discount: top,
+          discounts: ::Array[Orb::Models::invoice_level_discount],
+          due_date: Time?,
+          eligible_to_issue_at: Time?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          invoice_pdf: String?,
+          invoice_source: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::invoice_source,
+          is_payable_now: bool,
+          issue_failed_at: Time?,
+          issued_at: Time?,
+          line_items: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem],
+          maximum: Orb::Maximum?,
+          maximum_amount: String?,
+          memo: String?,
+          metadata: ::Hash[Symbol, String],
+          minimum: Orb::Minimum?,
+          minimum_amount: String?,
+          paid_at: Time?,
+          payment_attempts: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt],
+          payment_failed_at: Time?,
+          payment_started_at: Time?,
+          scheduled_issue_at: Time?,
+          shipping_address: Orb::Address?,
+          status: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::status,
+          subscription: Orb::SubscriptionMinified?,
+          subtotal: String,
+          sync_failed_at: Time?,
+          total: String,
+          voided_at: Time?,
+          will_auto_issue: bool
+        }
+
+        type auto_collection =
+          {
+            enabled: bool?,
+            next_attempt_at: Time?,
+            num_attempts: Integer?,
+            previously_attempted_at: Time?
+          }
+
+        class AutoCollection < Orb::Internal::Type::BaseModel
+          attr_accessor enabled: bool?
+
+          attr_accessor next_attempt_at: Time?
+
+          attr_accessor num_attempts: Integer?
+
+          attr_accessor previously_attempted_at: Time?
+
+          def initialize: (
+            enabled: bool?,
+            next_attempt_at: Time?,
+            num_attempts: Integer?,
+            previously_attempted_at: Time?
+          ) -> void
+
+          def to_hash: -> {
+            enabled: bool?,
+            next_attempt_at: Time?,
+            num_attempts: Integer?,
+            previously_attempted_at: Time?
+          }
+        end
+
+        type credit_note =
+          {
+            id: String,
+            credit_note_number: String,
+            memo: String?,
+            reason: String,
+            total: String,
+            type: String,
+            voided_at: Time?
+          }
+
+        class CreditNote < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor credit_note_number: String
+
+          attr_accessor memo: String?
+
+          attr_accessor reason: String
+
+          attr_accessor total: String
+
+          attr_accessor type: String
+
+          attr_accessor voided_at: Time?
+
+          def initialize: (
+            id: String,
+            credit_note_number: String,
+            memo: String?,
+            reason: String,
+            total: String,
+            type: String,
+            voided_at: Time?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            credit_note_number: String,
+            memo: String?,
+            reason: String,
+            total: String,
+            type: String,
+            voided_at: Time?
+          }
+        end
+
+        type customer_balance_transaction =
+          {
+            id: String,
+            action: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::action,
+            amount: String,
+            created_at: Time,
+            credit_note: Orb::CreditNoteTiny?,
+            description: String?,
+            ending_balance: String,
+            invoice: Orb::InvoiceTiny?,
+            starting_balance: String,
+            type: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::type_
+          }
+
+        class CustomerBalanceTransaction < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor action: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::action
+
+          attr_accessor amount: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor credit_note: Orb::CreditNoteTiny?
+
+          attr_accessor description: String?
+
+          attr_accessor ending_balance: String
+
+          attr_accessor invoice: Orb::InvoiceTiny?
+
+          attr_accessor starting_balance: String
+
+          attr_accessor type: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::type_
+
+          def initialize: (
+            id: String,
+            action: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::action,
+            amount: String,
+            created_at: Time,
+            credit_note: Orb::CreditNoteTiny?,
+            description: String?,
+            ending_balance: String,
+            invoice: Orb::InvoiceTiny?,
+            starting_balance: String,
+            type: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::type_
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            action: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::action,
+            amount: String,
+            created_at: Time,
+            credit_note: Orb::CreditNoteTiny?,
+            description: String?,
+            ending_balance: String,
+            invoice: Orb::InvoiceTiny?,
+            starting_balance: String,
+            type: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::type_
+          }
+
+          type action =
+            :applied_to_invoice
+            | :manual_adjustment
+            | :prorated_refund
+            | :revert_prorated_refund
+            | :return_from_voiding
+            | :credit_note_applied
+            | :credit_note_voided
+            | :overpayment_refund
+            | :external_payment
+            | :small_invoice_carryover
+
+          module Action
+            extend Orb::Internal::Type::Enum
+
+            APPLIED_TO_INVOICE: :applied_to_invoice
+            MANUAL_ADJUSTMENT: :manual_adjustment
+            PRORATED_REFUND: :prorated_refund
+            REVERT_PRORATED_REFUND: :revert_prorated_refund
+            RETURN_FROM_VOIDING: :return_from_voiding
+            CREDIT_NOTE_APPLIED: :credit_note_applied
+            CREDIT_NOTE_VOIDED: :credit_note_voided
+            OVERPAYMENT_REFUND: :overpayment_refund
+            EXTERNAL_PAYMENT: :external_payment
+            SMALL_INVOICE_CARRYOVER: :small_invoice_carryover
+
+            def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::action]
+          end
+
+          type type_ = :increment | :decrement
+
+          module Type
+            extend Orb::Internal::Type::Enum
+
+            INCREMENT: :increment
+            DECREMENT: :decrement
+
+            def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::type_]
+          end
+        end
+
+        type invoice_source = :subscription | :partial | :one_off
+
+        module InvoiceSource
+          extend Orb::Internal::Type::Enum
+
+          SUBSCRIPTION: :subscription
+          PARTIAL: :partial
+          ONE_OFF: :one_off
+
+          def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::invoice_source]
+        end
+
+        type line_item =
+          {
+            id: String,
+            adjusted_subtotal: String,
+            adjustments: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::adjustment],
+            amount: String,
+            credits_applied: String,
+            discount: Orb::Models::discount?,
+            end_date: Time,
+            filter: String?,
+            grouping: String?,
+            maximum: Orb::Maximum?,
+            maximum_amount: String?,
+            minimum: Orb::Minimum?,
+            minimum_amount: String?,
+            name: String,
+            partially_invoiced_amount: String,
+            price: Orb::Models::price,
+            quantity: Float,
+            start_date: Time,
+            sub_line_items: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::sub_line_item],
+            subtotal: String,
+            tax_amounts: ::Array[Orb::TaxAmount],
+            usage_customer_ids: ::Array[String]?
+          }
+
+        class LineItem < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor adjusted_subtotal: String
+
+          attr_accessor adjustments: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::adjustment]
+
+          attr_accessor amount: String
+
+          attr_accessor credits_applied: String
+
+          attr_accessor discount: Orb::Models::discount?
+
+          attr_accessor end_date: Time
+
+          attr_accessor filter: String?
+
+          attr_accessor grouping: String?
+
+          attr_accessor maximum: Orb::Maximum?
+
+          attr_accessor maximum_amount: String?
+
+          attr_accessor minimum: Orb::Minimum?
+
+          attr_accessor minimum_amount: String?
+
+          attr_accessor name: String
+
+          attr_accessor partially_invoiced_amount: String
+
+          attr_accessor price: Orb::Models::price
+
+          attr_accessor quantity: Float
+
+          attr_accessor start_date: Time
+
+          attr_accessor sub_line_items: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::sub_line_item]
+
+          attr_accessor subtotal: String
+
+          attr_accessor tax_amounts: ::Array[Orb::TaxAmount]
+
+          attr_accessor usage_customer_ids: ::Array[String]?
+
+          def initialize: (
+            id: String,
+            adjusted_subtotal: String,
+            adjustments: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::adjustment],
+            amount: String,
+            credits_applied: String,
+            discount: Orb::Models::discount?,
+            end_date: Time,
+            filter: String?,
+            grouping: String?,
+            maximum: Orb::Maximum?,
+            maximum_amount: String?,
+            minimum: Orb::Minimum?,
+            minimum_amount: String?,
+            name: String,
+            partially_invoiced_amount: String,
+            price: Orb::Models::price,
+            quantity: Float,
+            start_date: Time,
+            sub_line_items: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::sub_line_item],
+            subtotal: String,
+            tax_amounts: ::Array[Orb::TaxAmount],
+            usage_customer_ids: ::Array[String]?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            adjusted_subtotal: String,
+            adjustments: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::adjustment],
+            amount: String,
+            credits_applied: String,
+            discount: Orb::Models::discount?,
+            end_date: Time,
+            filter: String?,
+            grouping: String?,
+            maximum: Orb::Maximum?,
+            maximum_amount: String?,
+            minimum: Orb::Minimum?,
+            minimum_amount: String?,
+            name: String,
+            partially_invoiced_amount: String,
+            price: Orb::Models::price,
+            quantity: Float,
+            start_date: Time,
+            sub_line_items: ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::sub_line_item],
+            subtotal: String,
+            tax_amounts: ::Array[Orb::TaxAmount],
+            usage_customer_ids: ::Array[String]?
+          }
+
+          type adjustment =
+            Orb::MonetaryUsageDiscountAdjustment
+            | Orb::MonetaryAmountDiscountAdjustment
+            | Orb::MonetaryPercentageDiscountAdjustment
+            | Orb::MonetaryMinimumAdjustment
+            | Orb::MonetaryMaximumAdjustment
+
+          module Adjustment
+            extend Orb::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::adjustment]
+          end
+
+          type sub_line_item =
+            Orb::MatrixSubLineItem
+            | Orb::TierSubLineItem
+            | Orb::OtherSubLineItem
+
+          module SubLineItem
+            extend Orb::Internal::Type::Union
+
+            def self?.variants: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::sub_line_item]
+          end
+        end
+
+        type payment_attempt =
+          {
+            id: String,
+            amount: String,
+            created_at: Time,
+            payment_provider: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt::payment_provider?,
+            payment_provider_id: String?,
+            receipt_pdf: String?,
+            succeeded: bool
+          }
+
+        class PaymentAttempt < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor amount: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor payment_provider: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt::payment_provider?
+
+          attr_accessor payment_provider_id: String?
+
+          attr_accessor receipt_pdf: String?
+
+          attr_accessor succeeded: bool
+
+          def initialize: (
+            id: String,
+            amount: String,
+            created_at: Time,
+            payment_provider: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt::payment_provider?,
+            payment_provider_id: String?,
+            receipt_pdf: String?,
+            succeeded: bool
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            amount: String,
+            created_at: Time,
+            payment_provider: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt::payment_provider?,
+            payment_provider_id: String?,
+            receipt_pdf: String?,
+            succeeded: bool
+          }
+
+          type payment_provider = :stripe
+
+          module PaymentProvider
+            extend Orb::Internal::Type::Enum
+
+            STRIPE: :stripe
+
+            def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::PaymentAttempt::payment_provider]
+          end
+        end
+
+        type status = :issued | :paid | :synced | :void | :draft
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ISSUED: :issued
+          PAID: :paid
+          SYNCED: :synced
+          VOID: :void
+          DRAFT: :draft
+
+          def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::status]
+        end
+      end
     end
   end
 end
