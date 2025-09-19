@@ -4,9 +4,6 @@ module Orb
   module Resources
     class Beta
       class ExternalPlanID
-        # This API endpoint is in beta and its interface may change. It is recommended for
-        # use only in test mode.
-        #
         # This endpoint allows the creation of a new plan version for an existing plan.
         #
         # @overload create_plan_version(external_plan_id, version:, add_adjustments: nil, add_prices: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, set_as_default: nil, request_options: {})

@@ -6,9 +6,6 @@ module Orb
       # @return [Orb::Resources::Beta::ExternalPlanID]
       attr_reader :external_plan_id
 
-      # This API endpoint is in beta and its interface may change. It is recommended for
-      # use only in test mode.
-      #
       # This endpoint allows the creation of a new plan version for an existing plan.
       #
       # @overload create_plan_version(plan_id, version:, add_adjustments: nil, add_prices: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, set_as_default: nil, request_options: {})

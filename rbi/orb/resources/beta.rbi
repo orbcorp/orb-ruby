@@ -6,9 +6,6 @@ module Orb
       sig { returns(Orb::Resources::Beta::ExternalPlanID) }
       attr_reader :external_plan_id
 
-      # This API endpoint is in beta and its interface may change. It is recommended for
-      # use only in test mode.
-      #
       # This endpoint allows the creation of a new plan version for an existing plan.
       sig do
         params(
