@@ -1,7 +1,11 @@
 module Orb
   module Models
     type subscription_change_apply_params =
-      { description: String?, previously_collected_amount: String? }
+      {
+        description: String?,
+        mark_as_paid: bool?,
+        previously_collected_amount: String?
+      }
       & Orb::Internal::Type::request_parameters
 
     class SubscriptionChangeApplyParams < Orb::Internal::Type::BaseModel
@@ -10,16 +14,20 @@ module Orb
 
       attr_accessor description: String?
 
+      attr_accessor mark_as_paid: bool?
+
       attr_accessor previously_collected_amount: String?
 
       def initialize: (
         ?description: String?,
+        ?mark_as_paid: bool?,
         ?previously_collected_amount: String?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
         description: String?,
+        mark_as_paid: bool?,
         previously_collected_amount: String?,
         request_options: Orb::RequestOptions
       }

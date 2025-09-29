@@ -9,6 +9,7 @@ module Orb
       def apply: (
         String subscription_change_id,
         ?description: String?,
+        ?mark_as_paid: bool?,
         ?previously_collected_amount: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::SubscriptionChangeApplyResponse

@@ -30,17 +30,22 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionChangeApplyParams} for more details.
+      #
       # Apply a subscription change to perform the intended action. If a positive amount
       # is passed with a request to this endpoint, any eligible invoices that were
       # created will be issued immediately if they only contain in-advance fees.
       #
-      # @overload apply(subscription_change_id, description: nil, previously_collected_amount: nil, request_options: {})
+      # @overload apply(subscription_change_id, description: nil, mark_as_paid: nil, previously_collected_amount: nil, request_options: {})
       #
       # @param subscription_change_id [String]
       #
       # @param description [String, nil] Description to apply to the balance transaction representing this credit.
       #
-      # @param previously_collected_amount [String, nil] Amount already collected to apply to the customer's balance.
+      # @param mark_as_paid [Boolean, nil] Mark all pending invoices that are payable as paid. If amount is also provided,
+      #
+      # @param previously_collected_amount [String, nil] Amount already collected to apply to the customer's balance. If mark_as_paid is
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

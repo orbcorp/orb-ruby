@@ -28,6 +28,7 @@ module Orb
         params(
           subscription_change_id: String,
           description: T.nilable(String),
+          mark_as_paid: T.nilable(T::Boolean),
           previously_collected_amount: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::SubscriptionChangeApplyResponse)
@@ -36,7 +37,11 @@ module Orb
         subscription_change_id,
         # Description to apply to the balance transaction representing this credit.
         description: nil,
-        # Amount already collected to apply to the customer's balance.
+        # Mark all pending invoices that are payable as paid. If amount is also provided,
+        # mark as paid and credit the difference to the customer's balance.
+        mark_as_paid: nil,
+        # Amount already collected to apply to the customer's balance. If mark_as_paid is
+        # also provided, credit the difference to the customer's balance.
         previously_collected_amount: nil,
         request_options: {}
       )
