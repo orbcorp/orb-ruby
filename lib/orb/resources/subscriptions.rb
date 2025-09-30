@@ -397,7 +397,7 @@ module Orb
       # for multiple customers, use the customer_id[] or external_customer_id[] query
       # parameters.
       #
-      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, status: nil, request_options: {})
+      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
       #
       # @param created_at_gt [Time, nil]
       #
@@ -413,7 +413,11 @@ module Orb
       #
       # @param external_customer_id [Array<String>, nil]
       #
+      # @param external_plan_id [String, nil]
+      #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param plan_id [String, nil]
       #
       # @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
       #

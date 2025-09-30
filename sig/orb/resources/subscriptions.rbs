@@ -56,7 +56,9 @@ module Orb
         ?cursor: String?,
         ?customer_id: ::Array[String]?,
         ?external_customer_id: ::Array[String]?,
+        ?external_plan_id: String?,
         ?limit: Integer,
+        ?plan_id: String?,
         ?status: Orb::Models::SubscriptionListParams::status?,
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::Subscription]
