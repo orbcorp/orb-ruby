@@ -9,7 +9,9 @@ module Orb
         cursor: String?,
         customer_id: ::Array[String]?,
         external_customer_id: ::Array[String]?,
+        external_plan_id: String?,
         limit: Integer,
+        plan_id: String?,
         status: Orb::Models::SubscriptionListParams::status?
       }
       & Orb::Internal::Type::request_parameters
@@ -32,9 +34,13 @@ module Orb
 
       attr_accessor external_customer_id: ::Array[String]?
 
+      attr_accessor external_plan_id: String?
+
       attr_reader limit: Integer?
 
       def limit=: (Integer) -> Integer
+
+      attr_accessor plan_id: String?
 
       attr_accessor status: Orb::Models::SubscriptionListParams::status?
 
@@ -46,7 +52,9 @@ module Orb
         ?cursor: String?,
         ?customer_id: ::Array[String]?,
         ?external_customer_id: ::Array[String]?,
+        ?external_plan_id: String?,
         ?limit: Integer,
+        ?plan_id: String?,
         ?status: Orb::Models::SubscriptionListParams::status?,
         ?request_options: Orb::request_opts
       ) -> void
@@ -59,7 +67,9 @@ module Orb
         cursor: String?,
         customer_id: ::Array[String]?,
         external_customer_id: ::Array[String]?,
+        external_plan_id: String?,
         limit: Integer,
+        plan_id: String?,
         status: Orb::Models::SubscriptionListParams::status?,
         request_options: Orb::RequestOptions
       }

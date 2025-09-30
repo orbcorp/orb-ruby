@@ -470,7 +470,9 @@ module Orb
           cursor: T.nilable(String),
           customer_id: T.nilable(T::Array[String]),
           external_customer_id: T.nilable(T::Array[String]),
+          external_plan_id: T.nilable(String),
           limit: Integer,
+          plan_id: T.nilable(String),
           status: T.nilable(Orb::SubscriptionListParams::Status::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Internal::Page[Orb::Subscription])
@@ -485,8 +487,10 @@ module Orb
         cursor: nil,
         customer_id: nil,
         external_customer_id: nil,
+        external_plan_id: nil,
         # The number of items to fetch. Defaults to 20.
         limit: nil,
+        plan_id: nil,
         status: nil,
         request_options: {}
       )
