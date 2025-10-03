@@ -34,7 +34,13 @@ module Orb
       #   @return [Symbol, Orb::Models::MatrixSubLineItem::Type]
       required :type, enum: -> { Orb::MatrixSubLineItem::Type }
 
-      # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type:)
+      # @!attribute scaled_quantity
+      #   The scaled quantity for this line item for specific pricing structures
+      #
+      #   @return [Float, nil]
+      optional :scaled_quantity, Float, nil?: true
+
+      # @!method initialize(amount:, grouping:, matrix_config:, name:, quantity:, type:, scaled_quantity: nil)
       #   @param amount [String] The total amount for this sub line item.
       #
       #   @param grouping [Orb::Models::SubLineItemGrouping, nil]
@@ -46,6 +52,8 @@ module Orb
       #   @param quantity [Float]
       #
       #   @param type [Symbol, Orb::Models::MatrixSubLineItem::Type]
+      #
+      #   @param scaled_quantity [Float, nil] The scaled quantity for this line item for specific pricing structures
 
       # @see Orb::Models::MatrixSubLineItem#type
       module Type
