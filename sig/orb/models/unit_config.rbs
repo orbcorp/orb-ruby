@@ -1,15 +1,13 @@
 module Orb
   module Models
-    type unit_config = { unit_amount: String, scaling_factor: Float? }
+    type unit_config = { unit_amount: String }
 
     class UnitConfig < Orb::Internal::Type::BaseModel
       attr_accessor unit_amount: String
 
-      attr_accessor scaling_factor: Float?
+      def initialize: (unit_amount: String) -> void
 
-      def initialize: (unit_amount: String, ?scaling_factor: Float?) -> void
-
-      def to_hash: -> { unit_amount: String, scaling_factor: Float? }
+      def to_hash: -> { unit_amount: String }
     end
   end
 end
