@@ -7,7 +7,8 @@ module Orb
         matrix_config: Orb::SubLineItemMatrixConfig,
         name: String,
         quantity: Float,
-        type: Orb::Models::MatrixSubLineItem::type_
+        type: Orb::Models::MatrixSubLineItem::type_,
+        scaled_quantity: Float?
       }
 
     class MatrixSubLineItem < Orb::Internal::Type::BaseModel
@@ -23,13 +24,16 @@ module Orb
 
       attr_accessor type: Orb::Models::MatrixSubLineItem::type_
 
+      attr_accessor scaled_quantity: Float?
+
       def initialize: (
         amount: String,
         grouping: Orb::SubLineItemGrouping?,
         matrix_config: Orb::SubLineItemMatrixConfig,
         name: String,
         quantity: Float,
-        type: Orb::Models::MatrixSubLineItem::type_
+        type: Orb::Models::MatrixSubLineItem::type_,
+        ?scaled_quantity: Float?
       ) -> void
 
       def to_hash: -> {
@@ -38,7 +42,8 @@ module Orb
         matrix_config: Orb::SubLineItemMatrixConfig,
         name: String,
         quantity: Float,
-        type: Orb::Models::MatrixSubLineItem::type_
+        type: Orb::Models::MatrixSubLineItem::type_,
+        scaled_quantity: Float?
       }
 
       type type_ = :matrix

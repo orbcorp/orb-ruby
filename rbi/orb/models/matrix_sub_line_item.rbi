@@ -31,6 +31,10 @@ module Orb
       sig { returns(Orb::MatrixSubLineItem::Type::TaggedSymbol) }
       attr_accessor :type
 
+      # The scaled quantity for this line item for specific pricing structures
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :scaled_quantity
+
       sig do
         params(
           amount: String,
@@ -38,7 +42,8 @@ module Orb
           matrix_config: Orb::SubLineItemMatrixConfig::OrHash,
           name: String,
           quantity: Float,
-          type: Orb::MatrixSubLineItem::Type::OrSymbol
+          type: Orb::MatrixSubLineItem::Type::OrSymbol,
+          scaled_quantity: T.nilable(Float)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -48,7 +53,9 @@ module Orb
         matrix_config:,
         name:,
         quantity:,
-        type:
+        type:,
+        # The scaled quantity for this line item for specific pricing structures
+        scaled_quantity: nil
       )
       end
 
@@ -60,7 +67,8 @@ module Orb
             matrix_config: Orb::SubLineItemMatrixConfig,
             name: String,
             quantity: Float,
-            type: Orb::MatrixSubLineItem::Type::TaggedSymbol
+            type: Orb::MatrixSubLineItem::Type::TaggedSymbol,
+            scaled_quantity: T.nilable(Float)
           }
         )
       end
