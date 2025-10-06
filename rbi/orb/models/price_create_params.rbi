@@ -414,6 +414,17 @@ module Orb
       end
       attr_writer :minimum_config
 
+      # Configuration for event_output pricing
+      sig { returns(Orb::PriceCreateParams::EventOutputConfig) }
+      attr_reader :event_output_config
+
+      sig do
+        params(
+          event_output_config: Orb::PriceCreateParams::EventOutputConfig::OrHash
+        ).void
+      end
+      attr_writer :event_output_config
+
       sig do
         params(
           cadence: Orb::PriceCreateParams::Cadence::OrSymbol,
@@ -469,6 +480,8 @@ module Orb
           cumulative_grouped_bulk_config:
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
           minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
+          event_output_config:
+            Orb::PriceCreateParams::EventOutputConfig::OrHash,
           billable_metric_id: T.nilable(String),
           billed_in_advance: T.nilable(T::Boolean),
           billing_cycle_configuration:
@@ -557,6 +570,8 @@ module Orb
         cumulative_grouped_bulk_config:,
         # Configuration for minimum pricing
         minimum_config:,
+        # Configuration for event_output pricing
+        event_output_config:,
         # The id of the billable metric for the price. Only needed if the price is
         # usage-based.
         billable_metric_id: nil,
@@ -663,6 +678,7 @@ module Orb
             cumulative_grouped_bulk_config:
               Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
             minimum_config: Orb::PriceCreateParams::MinimumConfig,
+            event_output_config: Orb::PriceCreateParams::EventOutputConfig,
             request_options: Orb::RequestOptions
           }
         )
@@ -705,8 +721,8 @@ module Orb
           T.type_alias { T.all(Symbol, Orb::PriceCreateParams::ModelType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MINIMUM =
-          T.let(:minimum, Orb::PriceCreateParams::ModelType::TaggedSymbol)
+        EVENT_OUTPUT =
+          T.let(:event_output, Orb::PriceCreateParams::ModelType::TaggedSymbol)
 
         sig do
           override.returns(
@@ -2599,6 +2615,49 @@ module Orb
 
         sig do
           override.returns({ minimum_amount: String, prorated: T::Boolean })
+        end
+        def to_hash
+        end
+      end
+
+      class EventOutputConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::EventOutputConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The key in the event data to extract the unit rate from.
+        sig { returns(String) }
+        attr_accessor :unit_rating_key
+
+        # An optional key in the event data to group by (e.g., event ID). All events will
+        # also be grouped by their unit rate.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :grouping_key
+
+        # Configuration for event_output pricing
+        sig do
+          params(
+            unit_rating_key: String,
+            grouping_key: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The key in the event data to extract the unit rate from.
+          unit_rating_key:,
+          # An optional key in the event data to group by (e.g., event ID). All events will
+          # also be grouped by their unit rate.
+          grouping_key: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            { unit_rating_key: String, grouping_key: T.nilable(String) }
+          )
         end
         def to_hash
         end

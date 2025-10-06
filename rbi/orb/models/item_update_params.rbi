@@ -68,6 +68,7 @@ module Orb
             )
           end
 
+        # The name of the external system this item is connected to.
         sig do
           returns(
             Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::OrSymbol
@@ -75,9 +76,12 @@ module Orb
         end
         attr_accessor :external_connection_name
 
+        # The identifier of this item in the external system.
         sig { returns(String) }
         attr_accessor :external_entity_id
 
+        # Represents a connection between an Item and an external system for invoicing or
+        # tax calculation purposes.
         sig do
           params(
             external_connection_name:
@@ -85,7 +89,12 @@ module Orb
             external_entity_id: String
           ).returns(T.attached_class)
         end
-        def self.new(external_connection_name:, external_entity_id:)
+        def self.new(
+          # The name of the external system this item is connected to.
+          external_connection_name:,
+          # The identifier of this item in the external system.
+          external_entity_id:
+        )
         end
 
         sig do
@@ -100,6 +109,7 @@ module Orb
         def to_hash
         end
 
+        # The name of the external system this item is connected to.
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
 

@@ -196,7 +196,8 @@ module Orb
               Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
               Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
               Orb::Price::CumulativeGroupedBulk::OrHash,
-              Orb::Price::Minimum::OrHash
+              Orb::Price::Minimum::OrHash,
+              Orb::Price::EventOutput::OrHash
             ),
           quantity: Float,
           start_date: Time,

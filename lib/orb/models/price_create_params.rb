@@ -278,7 +278,13 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::MinimumConfig]
       required :minimum_config, -> { Orb::PriceCreateParams::MinimumConfig }
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!attribute event_output_config
+      #   Configuration for event_output pricing
+      #
+      #   @return [Orb::Models::PriceCreateParams::EventOutputConfig]
+      required :event_output_config, -> { Orb::PriceCreateParams::EventOutputConfig }
+
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -346,6 +352,8 @@ module Orb
       #
       #   @param minimum_config [Orb::Models::PriceCreateParams::MinimumConfig] Configuration for minimum pricing
       #
+      #   @param event_output_config [Orb::Models::PriceCreateParams::EventOutputConfig] Configuration for event_output pricing
+      #
       #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
       #
       #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
@@ -389,7 +397,7 @@ module Orb
       module ModelType
         extend Orb::Internal::Type::Enum
 
-        MINIMUM = :minimum
+        EVENT_OUTPUT = :event_output
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -1384,6 +1392,31 @@ module Orb
         #   @param minimum_amount [String] The minimum amount to apply
         #
         #   @param prorated [Boolean] If true, subtotals from this price are prorated based on the service period
+      end
+
+      class EventOutputConfig < Orb::Internal::Type::BaseModel
+        # @!attribute unit_rating_key
+        #   The key in the event data to extract the unit rate from.
+        #
+        #   @return [String]
+        required :unit_rating_key, String
+
+        # @!attribute grouping_key
+        #   An optional key in the event data to group by (e.g., event ID). All events will
+        #   also be grouped by their unit rate.
+        #
+        #   @return [String, nil]
+        optional :grouping_key, String, nil?: true
+
+        # @!method initialize(unit_rating_key:, grouping_key: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::PriceCreateParams::EventOutputConfig} for more details.
+        #
+        #   Configuration for event_output pricing
+        #
+        #   @param unit_rating_key [String] The key in the event data to extract the unit rate from.
+        #
+        #   @param grouping_key [String, nil] An optional key in the event data to group by (e.g., event ID). All events will
       end
     end
   end
