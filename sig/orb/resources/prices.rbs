@@ -36,6 +36,7 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        event_output_config: Orb::PriceCreateParams::EventOutputConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,

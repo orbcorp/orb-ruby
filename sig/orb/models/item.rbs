@@ -6,7 +6,8 @@ module Orb
         created_at: Time,
         external_connections: ::Array[Orb::Item::ExternalConnection],
         metadata: ::Hash[Symbol, String],
-        name: String
+        name: String,
+        archived_at: Time?
       }
 
     class Item < Orb::Internal::Type::BaseModel
@@ -20,12 +21,15 @@ module Orb
 
       attr_accessor name: String
 
+      attr_accessor archived_at: Time?
+
       def initialize: (
         id: String,
         created_at: Time,
         external_connections: ::Array[Orb::Item::ExternalConnection],
         metadata: ::Hash[Symbol, String],
-        name: String
+        name: String,
+        ?archived_at: Time?
       ) -> void
 
       def to_hash: -> {
@@ -33,7 +37,8 @@ module Orb
         created_at: Time,
         external_connections: ::Array[Orb::Item::ExternalConnection],
         metadata: ::Hash[Symbol, String],
-        name: String
+        name: String,
+        archived_at: Time?
       }
 
       type external_connection =

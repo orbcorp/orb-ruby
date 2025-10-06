@@ -16,7 +16,8 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        archived_at: Time | nil
       }
     end
   end
@@ -34,7 +35,8 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        archived_at: Time | nil
       }
     end
   end
@@ -59,7 +61,8 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        archived_at: Time | nil
       }
     end
   end
@@ -77,7 +80,8 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        archived_at: Time | nil
       }
     end
   end
@@ -95,7 +99,8 @@ class Orb::Test::Resources::ItemsTest < Orb::Test::ResourceTest
         created_at: Time,
         external_connections: ^(Orb::Internal::Type::ArrayOf[Orb::Item::ExternalConnection]),
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        archived_at: Time | nil
       }
     end
   end

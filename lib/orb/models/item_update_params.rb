@@ -41,20 +41,28 @@ module Orb
 
       class ExternalConnection < Orb::Internal::Type::BaseModel
         # @!attribute external_connection_name
+        #   The name of the external system this item is connected to.
         #
         #   @return [Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
         required :external_connection_name,
                  enum: -> { Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName }
 
         # @!attribute external_entity_id
+        #   The identifier of this item in the external system.
         #
         #   @return [String]
         required :external_entity_id, String
 
         # @!method initialize(external_connection_name:, external_entity_id:)
-        #   @param external_connection_name [Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName]
-        #   @param external_entity_id [String]
+        #   Represents a connection between an Item and an external system for invoicing or
+        #   tax calculation purposes.
+        #
+        #   @param external_connection_name [Symbol, Orb::Models::ItemUpdateParams::ExternalConnection::ExternalConnectionName] The name of the external system this item is connected to.
+        #
+        #   @param external_entity_id [String] The identifier of this item in the external system.
 
+        # The name of the external system this item is connected to.
+        #
         # @see Orb::Models::ItemUpdateParams::ExternalConnection#external_connection_name
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum

@@ -44,7 +44,8 @@ module Orb
         scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
-        minimum_config: Orb::PriceCreateParams::MinimumConfig
+        minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        event_output_config: Orb::PriceCreateParams::EventOutputConfig
       }
       & Orb::Internal::Type::request_parameters
 
@@ -138,6 +139,8 @@ module Orb
 
       attr_accessor minimum_config: Orb::PriceCreateParams::MinimumConfig
 
+      attr_accessor event_output_config: Orb::PriceCreateParams::EventOutputConfig
+
       def initialize: (
         cadence: Orb::Models::PriceCreateParams::cadence,
         currency: String,
@@ -171,6 +174,7 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        event_output_config: Orb::PriceCreateParams::EventOutputConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -229,6 +233,7 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        event_output_config: Orb::PriceCreateParams::EventOutputConfig,
         request_options: Orb::RequestOptions
       }
 
@@ -248,12 +253,12 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::cadence]
       end
 
-      type model_type = :minimum
+      type model_type = :event_output
 
       module ModelType
         extend Orb::Internal::Type::Enum
 
-        MINIMUM: :minimum
+        EVENT_OUTPUT: :event_output
 
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
       end
@@ -1047,6 +1052,22 @@ module Orb
         def initialize: (minimum_amount: String, ?prorated: bool) -> void
 
         def to_hash: -> { minimum_amount: String, prorated: bool }
+      end
+
+      type event_output_config =
+        { unit_rating_key: String, grouping_key: String? }
+
+      class EventOutputConfig < Orb::Internal::Type::BaseModel
+        attr_accessor unit_rating_key: String
+
+        attr_accessor grouping_key: String?
+
+        def initialize: (
+          unit_rating_key: String,
+          ?grouping_key: String?
+        ) -> void
+
+        def to_hash: -> { unit_rating_key: String, grouping_key: String? }
       end
     end
   end
