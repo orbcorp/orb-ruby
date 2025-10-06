@@ -103,7 +103,8 @@ module Orb
               Orb::Price::ScalableMatrixWithUnitPricing::OrHash,
               Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
               Orb::Price::CumulativeGroupedBulk::OrHash,
-              Orb::Price::Minimum::OrHash
+              Orb::Price::Minimum::OrHash,
+              Orb::Price::EventOutput::OrHash
             ),
           start_date: Time,
           usage_customer_ids: T.nilable(T::Array[String])

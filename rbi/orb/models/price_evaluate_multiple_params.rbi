@@ -144,7 +144,8 @@ module Orb
                 Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                 Orb::NewFloatingCumulativeGroupedBulkPrice,
-                Orb::NewFloatingMinimumCompositePrice
+                Orb::NewFloatingMinimumCompositePrice,
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput
               )
             )
           )
@@ -189,7 +190,8 @@ module Orb
                   Orb::NewFloatingScalableMatrixWithUnitPricingPrice::OrHash,
                   Orb::NewFloatingScalableMatrixWithTieredPricingPrice::OrHash,
                   Orb::NewFloatingCumulativeGroupedBulkPrice::OrHash,
-                  Orb::NewFloatingMinimumCompositePrice::OrHash
+                  Orb::NewFloatingMinimumCompositePrice::OrHash,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::OrHash
                 )
               ),
             price_id: T.nilable(String)
@@ -248,7 +250,8 @@ module Orb
                     Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
                     Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                     Orb::NewFloatingCumulativeGroupedBulkPrice,
-                    Orb::NewFloatingMinimumCompositePrice
+                    Orb::NewFloatingMinimumCompositePrice,
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput
                   )
                 ),
               price_id: T.nilable(String)
@@ -291,7 +294,8 @@ module Orb
                 Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                 Orb::NewFloatingCumulativeGroupedBulkPrice,
-                Orb::NewFloatingMinimumCompositePrice
+                Orb::NewFloatingMinimumCompositePrice,
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput
               )
             end
 
@@ -651,6 +655,352 @@ module Orb
                     minimum_charge: String,
                     per_unit_rate: String
                   }
+                )
+              end
+              def to_hash
+              end
+            end
+          end
+
+          class EventOutput < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # An ISO 4217 currency string for which this price is billed in.
+            sig { returns(String) }
+            attr_accessor :currency
+
+            # Configuration for event_output pricing
+            sig do
+              returns(
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::EventOutputConfig
+              )
+            end
+            attr_reader :event_output_config
+
+            sig do
+              params(
+                event_output_config:
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::EventOutputConfig::OrHash
+              ).void
+            end
+            attr_writer :event_output_config
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            # The pricing model type
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # The configuration for the rate of the price currency to the invoicing currency.
+            sig do
+              returns(
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig,
+                    Orb::TieredConversionRateConfig
+                  )
+                )
+              )
+            end
+            attr_accessor :conversion_rate_config
+
+            # For dimensional price: specifies a price group and dimension values
+            sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            sig do
+              params(
+                cadence:
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::OrSymbol,
+                currency: String,
+                event_output_config:
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::EventOutputConfig::OrHash,
+                item_id: String,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig::OrHash,
+                      Orb::TieredConversionRateConfig::OrHash
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
+              currency:,
+              # Configuration for event_output pricing
+              event_output_config:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # The configuration for the rate of the price currency to the invoicing currency.
+              conversion_rate_config: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # The pricing model type
+              model_type: :event_output
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::OrSymbol,
+                  currency: String,
+                  event_output_config:
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::EventOutputConfig,
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(Orb::NewBillingCycleConfiguration),
+                  conversion_rate: T.nilable(Float),
+                  conversion_rate_config:
+                    T.nilable(
+                      T.any(
+                        Orb::UnitConversionRateConfig,
+                        Orb::TieredConversionRateConfig
+                      )
+                    ),
+                  dimensional_price_configuration:
+                    T.nilable(Orb::NewDimensionalPriceConfiguration),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(Orb::NewBillingCycleConfiguration),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class EventOutputConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput::EventOutputConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The key in the event data to extract the unit rate from.
+              sig { returns(String) }
+              attr_accessor :unit_rating_key
+
+              # An optional key in the event data to group by (e.g., event ID). All events will
+              # also be grouped by their unit rate.
+              sig { returns(T.nilable(String)) }
+              attr_accessor :grouping_key
+
+              # Configuration for event_output pricing
+              sig do
+                params(
+                  unit_rating_key: String,
+                  grouping_key: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The key in the event data to extract the unit rate from.
+                unit_rating_key:,
+                # An optional key in the event data to group by (e.g., event ID). All events will
+                # also be grouped by their unit rate.
+                grouping_key: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  { unit_rating_key: String, grouping_key: T.nilable(String) }
                 )
               end
               def to_hash

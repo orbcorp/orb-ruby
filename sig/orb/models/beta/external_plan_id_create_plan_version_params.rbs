@@ -147,6 +147,7 @@ module Orb
             | Orb::NewPlanScalableMatrixWithTieredPricingPrice
             | Orb::NewPlanCumulativeGroupedBulkPrice
             | Orb::NewPlanMinimumCompositePrice
+            | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput
 
           module Price
             extend Orb::Internal::Type::Union
@@ -464,6 +465,148 @@ module Orb
               end
             end
 
+            type event_output =
+              {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
+                event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+                item_id: String,
+                model_type: :event_output,
+                name: String,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+            class EventOutput < Orb::Internal::Type::BaseModel
+              attr_accessor cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence
+
+              attr_accessor event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig
+
+              attr_accessor item_id: String
+
+              attr_accessor model_type: :event_output
+
+              attr_accessor name: String
+
+              attr_accessor billable_metric_id: String?
+
+              attr_accessor billed_in_advance: bool?
+
+              attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor conversion_rate: Float?
+
+              attr_accessor conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::conversion_rate_config?
+
+              attr_accessor currency: String?
+
+              attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+              attr_accessor external_price_id: String?
+
+              attr_accessor fixed_price_quantity: Float?
+
+              attr_accessor invoice_grouping_key: String?
+
+              attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              attr_accessor reference_id: String?
+
+              def initialize: (
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
+                event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+                item_id: String,
+                name: String,
+                ?billable_metric_id: String?,
+                ?billed_in_advance: bool?,
+                ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?conversion_rate: Float?,
+                ?conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::conversion_rate_config?,
+                ?currency: String?,
+                ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                ?external_price_id: String?,
+                ?fixed_price_quantity: Float?,
+                ?invoice_grouping_key: String?,
+                ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?reference_id: String?,
+                ?model_type: :event_output
+              ) -> void
+
+              def to_hash: -> {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
+                event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+                item_id: String,
+                model_type: :event_output,
+                name: String,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+              type cadence =
+                :annual
+                | :semi_annual
+                | :monthly
+                | :quarterly
+                | :one_time
+                | :custom
+
+              module Cadence
+                extend Orb::Internal::Type::Enum
+
+                ANNUAL: :annual
+                SEMI_ANNUAL: :semi_annual
+                MONTHLY: :monthly
+                QUARTERLY: :quarterly
+                ONE_TIME: :one_time
+                CUSTOM: :custom
+
+                def self?.values: -> ::Array[Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence]
+              end
+
+              type event_output_config =
+                { unit_rating_key: String, grouping_key: String? }
+
+              class EventOutputConfig < Orb::Internal::Type::BaseModel
+                attr_accessor unit_rating_key: String
+
+                attr_accessor grouping_key: String?
+
+                def initialize: (
+                  unit_rating_key: String,
+                  ?grouping_key: String?
+                ) -> void
+
+                def to_hash: -> {
+                  unit_rating_key: String,
+                  grouping_key: String?
+                }
+              end
+            end
+
             def self?.variants: -> ::Array[Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::price]
           end
         end
@@ -598,6 +741,7 @@ module Orb
             | Orb::NewPlanScalableMatrixWithTieredPricingPrice
             | Orb::NewPlanCumulativeGroupedBulkPrice
             | Orb::NewPlanMinimumCompositePrice
+            | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput
 
           module Price
             extend Orb::Internal::Type::Union
@@ -911,6 +1055,148 @@ module Orb
                   maximum_charge: String,
                   minimum_charge: String,
                   per_unit_rate: String
+                }
+              end
+            end
+
+            type event_output =
+              {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
+                event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+                item_id: String,
+                model_type: :event_output,
+                name: String,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+            class EventOutput < Orb::Internal::Type::BaseModel
+              attr_accessor cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence
+
+              attr_accessor event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig
+
+              attr_accessor item_id: String
+
+              attr_accessor model_type: :event_output
+
+              attr_accessor name: String
+
+              attr_accessor billable_metric_id: String?
+
+              attr_accessor billed_in_advance: bool?
+
+              attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor conversion_rate: Float?
+
+              attr_accessor conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::conversion_rate_config?
+
+              attr_accessor currency: String?
+
+              attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+              attr_accessor external_price_id: String?
+
+              attr_accessor fixed_price_quantity: Float?
+
+              attr_accessor invoice_grouping_key: String?
+
+              attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              attr_accessor reference_id: String?
+
+              def initialize: (
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
+                event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+                item_id: String,
+                name: String,
+                ?billable_metric_id: String?,
+                ?billed_in_advance: bool?,
+                ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?conversion_rate: Float?,
+                ?conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::conversion_rate_config?,
+                ?currency: String?,
+                ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                ?external_price_id: String?,
+                ?fixed_price_quantity: Float?,
+                ?invoice_grouping_key: String?,
+                ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?reference_id: String?,
+                ?model_type: :event_output
+              ) -> void
+
+              def to_hash: -> {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
+                event_output_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+                item_id: String,
+                model_type: :event_output,
+                name: String,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+              type cadence =
+                :annual
+                | :semi_annual
+                | :monthly
+                | :quarterly
+                | :one_time
+                | :custom
+
+              module Cadence
+                extend Orb::Internal::Type::Enum
+
+                ANNUAL: :annual
+                SEMI_ANNUAL: :semi_annual
+                MONTHLY: :monthly
+                QUARTERLY: :quarterly
+                ONE_TIME: :one_time
+                CUSTOM: :custom
+
+                def self?.values: -> ::Array[Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence]
+              end
+
+              type event_output_config =
+                { unit_rating_key: String, grouping_key: String? }
+
+              class EventOutputConfig < Orb::Internal::Type::BaseModel
+                attr_accessor unit_rating_key: String
+
+                attr_accessor grouping_key: String?
+
+                def initialize: (
+                  unit_rating_key: String,
+                  ?grouping_key: String?
+                ) -> void
+
+                def to_hash: -> {
+                  unit_rating_key: String,
+                  grouping_key: String?
                 }
               end
             end
