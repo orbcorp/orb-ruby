@@ -414,6 +414,17 @@ module Orb
       end
       attr_writer :minimum_config
 
+      # Configuration for percent pricing
+      sig { returns(Orb::PriceCreateParams::PercentConfig) }
+      attr_reader :percent_config
+
+      sig do
+        params(
+          percent_config: Orb::PriceCreateParams::PercentConfig::OrHash
+        ).void
+      end
+      attr_writer :percent_config
+
       # Configuration for event_output pricing
       sig { returns(Orb::PriceCreateParams::EventOutputConfig) }
       attr_reader :event_output_config
@@ -480,6 +491,7 @@ module Orb
           cumulative_grouped_bulk_config:
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
           minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
+          percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
           event_output_config:
             Orb::PriceCreateParams::EventOutputConfig::OrHash,
           billable_metric_id: T.nilable(String),
@@ -570,6 +582,8 @@ module Orb
         cumulative_grouped_bulk_config:,
         # Configuration for minimum pricing
         minimum_config:,
+        # Configuration for percent pricing
+        percent_config:,
         # Configuration for event_output pricing
         event_output_config:,
         # The id of the billable metric for the price. Only needed if the price is
@@ -678,6 +692,7 @@ module Orb
             cumulative_grouped_bulk_config:
               Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
             minimum_config: Orb::PriceCreateParams::MinimumConfig,
+            percent_config: Orb::PriceCreateParams::PercentConfig,
             event_output_config: Orb::PriceCreateParams::EventOutputConfig,
             request_options: Orb::RequestOptions
           }
@@ -2616,6 +2631,29 @@ module Orb
         sig do
           override.returns({ minimum_amount: String, prorated: T::Boolean })
         end
+        def to_hash
+        end
+      end
+
+      class PercentConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::PriceCreateParams::PercentConfig, Orb::Internal::AnyHash)
+          end
+
+        # What percent of the component subtotals to charge
+        sig { returns(Float) }
+        attr_accessor :percent
+
+        # Configuration for percent pricing
+        sig { params(percent: Float).returns(T.attached_class) }
+        def self.new(
+          # What percent of the component subtotals to charge
+          percent:
+        )
+        end
+
+        sig { override.returns({ percent: Float }) }
         def to_hash
         end
       end
