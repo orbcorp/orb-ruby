@@ -47,6 +47,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
       in Orb::Price::Minimum
+      in Orb::Price::Percent
       in Orb::Price::EventOutput
       end
     end
@@ -860,6 +861,36 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Minimum::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :percent,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::Percent::BillingMode,
+        cadence: Orb::Price::Percent::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Percent::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        percent_config: Orb::Price::Percent::PercentConfig,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -933,6 +964,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
       in Orb::Price::Minimum
+      in Orb::Price::Percent
       in Orb::Price::EventOutput
       end
     end
@@ -1746,6 +1778,36 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Minimum::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :percent,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::Percent::BillingMode,
+        cadence: Orb::Price::Percent::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Percent::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        percent_config: Orb::Price::Percent::PercentConfig,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -1826,6 +1888,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
       in Orb::Price::Minimum
+      in Orb::Price::Percent
       in Orb::Price::EventOutput
       end
     end
@@ -2639,6 +2702,36 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Minimum::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :percent,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::Percent::BillingMode,
+        cadence: Orb::Price::Percent::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Percent::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        percent_config: Orb::Price::Percent::PercentConfig,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }
@@ -2767,6 +2860,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::ScalableMatrixWithTieredPricing
       in Orb::Price::CumulativeGroupedBulk
       in Orb::Price::Minimum
+      in Orb::Price::Percent
       in Orb::Price::EventOutput
       end
     end
@@ -3580,6 +3674,36 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         name: String,
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Minimum::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+      }
+      in {
+        model_type: :percent,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::Percent::BillingMode,
+        cadence: Orb::Price::Percent::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::Percent::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        percent_config: Orb::Price::Percent::PercentConfig,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
       }

@@ -45,6 +45,7 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig
       }
       & Orb::Internal::Type::request_parameters
@@ -139,6 +140,8 @@ module Orb
 
       attr_accessor minimum_config: Orb::PriceCreateParams::MinimumConfig
 
+      attr_accessor percent_config: Orb::PriceCreateParams::PercentConfig
+
       attr_accessor event_output_config: Orb::PriceCreateParams::EventOutputConfig
 
       def initialize: (
@@ -174,6 +177,7 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,
         ?billable_metric_id: String?,
         ?billed_in_advance: bool?,
@@ -233,6 +237,7 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
+        percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,
         request_options: Orb::RequestOptions
       }
@@ -1052,6 +1057,16 @@ module Orb
         def initialize: (minimum_amount: String, ?prorated: bool) -> void
 
         def to_hash: -> { minimum_amount: String, prorated: bool }
+      end
+
+      type percent_config = { percent: Float }
+
+      class PercentConfig < Orb::Internal::Type::BaseModel
+        attr_accessor percent: Float
+
+        def initialize: (percent: Float) -> void
+
+        def to_hash: -> { percent: Float }
       end
 
       type event_output_config =
