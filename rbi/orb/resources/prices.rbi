@@ -71,6 +71,7 @@ module Orb
           cumulative_grouped_bulk_config:
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
           minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
+          percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
           event_output_config:
             Orb::PriceCreateParams::EventOutputConfig::OrHash,
           billable_metric_id: T.nilable(String),
@@ -161,6 +162,8 @@ module Orb
         cumulative_grouped_bulk_config:,
         # Configuration for minimum pricing
         minimum_config:,
+        # Configuration for percent pricing
+        percent_config:,
         # Configuration for event_output pricing
         event_output_config:,
         # The id of the billable metric for the price. Only needed if the price is

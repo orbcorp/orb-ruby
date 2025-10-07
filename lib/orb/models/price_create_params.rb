@@ -278,13 +278,19 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::MinimumConfig]
       required :minimum_config, -> { Orb::PriceCreateParams::MinimumConfig }
 
+      # @!attribute percent_config
+      #   Configuration for percent pricing
+      #
+      #   @return [Orb::Models::PriceCreateParams::PercentConfig]
+      required :percent_config, -> { Orb::PriceCreateParams::PercentConfig }
+
       # @!attribute event_output_config
       #   Configuration for event_output pricing
       #
       #   @return [Orb::Models::PriceCreateParams::EventOutputConfig]
       required :event_output_config, -> { Orb::PriceCreateParams::EventOutputConfig }
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -351,6 +357,8 @@ module Orb
       #   @param cumulative_grouped_bulk_config [Orb::Models::PriceCreateParams::CumulativeGroupedBulkConfig] Configuration for cumulative_grouped_bulk pricing
       #
       #   @param minimum_config [Orb::Models::PriceCreateParams::MinimumConfig] Configuration for minimum pricing
+      #
+      #   @param percent_config [Orb::Models::PriceCreateParams::PercentConfig] Configuration for percent pricing
       #
       #   @param event_output_config [Orb::Models::PriceCreateParams::EventOutputConfig] Configuration for event_output pricing
       #
@@ -1392,6 +1400,19 @@ module Orb
         #   @param minimum_amount [String] The minimum amount to apply
         #
         #   @param prorated [Boolean] If true, subtotals from this price are prorated based on the service period
+      end
+
+      class PercentConfig < Orb::Internal::Type::BaseModel
+        # @!attribute percent
+        #   What percent of the component subtotals to charge
+        #
+        #   @return [Float]
+        required :percent, Float
+
+        # @!method initialize(percent:)
+        #   Configuration for percent pricing
+        #
+        #   @param percent [Float] What percent of the component subtotals to charge
       end
 
       class EventOutputConfig < Orb::Internal::Type::BaseModel

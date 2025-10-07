@@ -1253,6 +1253,7 @@ module Orb
                 Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
                 Orb::Price::CumulativeGroupedBulk::OrHash,
                 Orb::Price::Minimum::OrHash,
+                Orb::Price::Percent::OrHash,
                 Orb::Price::EventOutput::OrHash
               ),
             quantity: Float,
