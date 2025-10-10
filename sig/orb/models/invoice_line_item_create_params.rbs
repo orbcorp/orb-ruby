@@ -5,9 +5,10 @@ module Orb
         amount: String,
         end_date: Date,
         invoice_id: String,
-        name: String,
         quantity: Float,
-        start_date: Date
+        start_date: Date,
+        item_id: String?,
+        name: String?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -21,19 +22,22 @@ module Orb
 
       attr_accessor invoice_id: String
 
-      attr_accessor name: String
-
       attr_accessor quantity: Float
 
       attr_accessor start_date: Date
+
+      attr_accessor item_id: String?
+
+      attr_accessor name: String?
 
       def initialize: (
         amount: String,
         end_date: Date,
         invoice_id: String,
-        name: String,
         quantity: Float,
         start_date: Date,
+        ?item_id: String?,
+        ?name: String?,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -41,9 +45,10 @@ module Orb
         amount: String,
         end_date: Date,
         invoice_id: String,
-        name: String,
         quantity: Float,
         start_date: Date,
+        item_id: String?,
+        name: String?,
         request_options: Orb::RequestOptions
       }
     end
