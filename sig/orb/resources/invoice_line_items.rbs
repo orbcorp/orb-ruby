@@ -5,9 +5,10 @@ module Orb
         amount: String,
         end_date: Date,
         invoice_id: String,
-        name: String,
         quantity: Float,
         start_date: Date,
+        ?item_id: String?,
+        ?name: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::InvoiceLineItemCreateResponse
 
