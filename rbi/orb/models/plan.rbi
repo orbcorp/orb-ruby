@@ -164,6 +164,7 @@ module Orb
                 Orb::Price::Unit::OrHash,
                 Orb::Price::Tiered::OrHash,
                 Orb::Price::Bulk::OrHash,
+                Orb::Price::BulkWithFilters::OrHash,
                 Orb::Price::Package::OrHash,
                 Orb::Price::Matrix::OrHash,
                 Orb::Price::ThresholdTotalAmount::OrHash,

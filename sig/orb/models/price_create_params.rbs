@@ -21,6 +21,7 @@ module Orb
         metadata: ::Hash[Symbol, String?]?,
         tiered_config: Orb::TieredConfig,
         bulk_config: Orb::BulkConfig,
+        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
         package_config: Orb::PackageConfig,
         matrix_config: Orb::MatrixConfig,
         threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
@@ -92,6 +93,8 @@ module Orb
 
       attr_accessor bulk_config: Orb::BulkConfig
 
+      attr_accessor bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig
+
       attr_accessor package_config: Orb::PackageConfig
 
       attr_accessor matrix_config: Orb::MatrixConfig
@@ -153,6 +156,7 @@ module Orb
         unit_config: Orb::UnitConfig,
         tiered_config: Orb::TieredConfig,
         bulk_config: Orb::BulkConfig,
+        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
         package_config: Orb::PackageConfig,
         matrix_config: Orb::MatrixConfig,
         threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
@@ -213,6 +217,7 @@ module Orb
         metadata: ::Hash[Symbol, String?]?,
         tiered_config: Orb::TieredConfig,
         bulk_config: Orb::BulkConfig,
+        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
         package_config: Orb::PackageConfig,
         matrix_config: Orb::MatrixConfig,
         threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
@@ -266,6 +271,55 @@ module Orb
         EVENT_OUTPUT: :event_output
 
         def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
+      end
+
+      type bulk_with_filters_config =
+        {
+          filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
+          tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
+        }
+
+      class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+        attr_accessor filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter]
+
+        attr_accessor tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
+
+        def initialize: (
+          filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
+          tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
+        ) -> void
+
+        def to_hash: -> {
+          filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
+          tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
+        }
+
+        type filter = { property_key: String, property_value: String }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor property_key: String
+
+          attr_accessor property_value: String
+
+          def initialize: (property_key: String, property_value: String) -> void
+
+          def to_hash: -> { property_key: String, property_value: String }
+        end
+
+        type tier = { unit_amount: String, tier_lower_bound: String? }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor unit_amount: String
+
+          attr_accessor tier_lower_bound: String?
+
+          def initialize: (
+            unit_amount: String,
+            ?tier_lower_bound: String?
+          ) -> void
+
+          def to_hash: -> { unit_amount: String, tier_lower_bound: String? }
+        end
       end
 
       type threshold_total_amount_config =

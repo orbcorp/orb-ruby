@@ -134,6 +134,18 @@ module Orb
       sig { params(bulk_config: Orb::BulkConfig::OrHash).void }
       attr_writer :bulk_config
 
+      # Configuration for bulk_with_filters pricing
+      sig { returns(Orb::PriceCreateParams::BulkWithFiltersConfig) }
+      attr_reader :bulk_with_filters_config
+
+      sig do
+        params(
+          bulk_with_filters_config:
+            Orb::PriceCreateParams::BulkWithFiltersConfig::OrHash
+        ).void
+      end
+      attr_writer :bulk_with_filters_config
+
       # Configuration for package pricing
       sig { returns(Orb::PackageConfig) }
       attr_reader :package_config
@@ -446,6 +458,8 @@ module Orb
           unit_config: Orb::UnitConfig::OrHash,
           tiered_config: Orb::TieredConfig::OrHash,
           bulk_config: Orb::BulkConfig::OrHash,
+          bulk_with_filters_config:
+            Orb::PriceCreateParams::BulkWithFiltersConfig::OrHash,
           package_config: Orb::PackageConfig::OrHash,
           matrix_config: Orb::MatrixConfig::OrHash,
           threshold_total_amount_config:
@@ -534,6 +548,8 @@ module Orb
         tiered_config:,
         # Configuration for bulk pricing
         bulk_config:,
+        # Configuration for bulk_with_filters pricing
+        bulk_with_filters_config:,
         # Configuration for package pricing
         package_config:,
         # Configuration for matrix pricing
@@ -650,6 +666,8 @@ module Orb
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             tiered_config: Orb::TieredConfig,
             bulk_config: Orb::BulkConfig,
+            bulk_with_filters_config:
+              Orb::PriceCreateParams::BulkWithFiltersConfig,
             package_config: Orb::PackageConfig,
             matrix_config: Orb::MatrixConfig,
             threshold_total_amount_config:
@@ -745,6 +763,143 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::BulkWithFiltersConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Property filters to apply (all must match)
+        sig do
+          returns(
+            T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter]
+          )
+        end
+        attr_accessor :filters
+
+        # Bulk tiers for rating based on total usage volume
+        sig do
+          returns(T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier])
+        end
+        attr_accessor :tiers
+
+        # Configuration for bulk_with_filters pricing
+        sig do
+          params(
+            filters:
+              T::Array[
+                Orb::PriceCreateParams::BulkWithFiltersConfig::Filter::OrHash
+              ],
+            tiers:
+              T::Array[
+                Orb::PriceCreateParams::BulkWithFiltersConfig::Tier::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Property filters to apply (all must match)
+          filters:,
+          # Bulk tiers for rating based on total usage volume
+          tiers:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              filters:
+                T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
+              tiers:
+                T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Filter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::BulkWithFiltersConfig::Filter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Event property key to filter on
+          sig { returns(String) }
+          attr_accessor :property_key
+
+          # Event property value to match
+          sig { returns(String) }
+          attr_accessor :property_value
+
+          # Configuration for a single property filter
+          sig do
+            params(property_key: String, property_value: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Event property key to filter on
+            property_key:,
+            # Event property value to match
+            property_value:
+          )
+          end
+
+          sig do
+            override.returns({ property_key: String, property_value: String })
+          end
+          def to_hash
+          end
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::BulkWithFiltersConfig::Tier,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Amount per unit
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # The lower bound for this tier
+          sig { returns(T.nilable(String)) }
+          attr_accessor :tier_lower_bound
+
+          # Configuration for a single bulk pricing tier
+          sig do
+            params(
+              unit_amount: String,
+              tier_lower_bound: T.nilable(String)
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Amount per unit
+            unit_amount:,
+            # The lower bound for this tier
+            tier_lower_bound: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { unit_amount: String, tier_lower_bound: T.nilable(String) }
+            )
+          end
+          def to_hash
+          end
         end
       end
 
