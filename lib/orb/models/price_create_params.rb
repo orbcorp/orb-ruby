@@ -128,6 +128,12 @@ module Orb
       #   @return [Orb::Models::BulkConfig]
       required :bulk_config, -> { Orb::BulkConfig }
 
+      # @!attribute bulk_with_filters_config
+      #   Configuration for bulk_with_filters pricing
+      #
+      #   @return [Orb::Models::PriceCreateParams::BulkWithFiltersConfig]
+      required :bulk_with_filters_config, -> { Orb::PriceCreateParams::BulkWithFiltersConfig }
+
       # @!attribute package_config
       #   Configuration for package pricing
       #
@@ -290,7 +296,7 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::EventOutputConfig]
       required :event_output_config, -> { Orb::PriceCreateParams::EventOutputConfig }
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -309,6 +315,8 @@ module Orb
       #   @param tiered_config [Orb::Models::TieredConfig] Configuration for tiered pricing
       #
       #   @param bulk_config [Orb::Models::BulkConfig] Configuration for bulk pricing
+      #
+      #   @param bulk_with_filters_config [Orb::Models::PriceCreateParams::BulkWithFiltersConfig] Configuration for bulk_with_filters pricing
       #
       #   @param package_config [Orb::Models::PackageConfig] Configuration for package pricing
       #
@@ -409,6 +417,70 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+        # @!attribute filters
+        #   Property filters to apply (all must match)
+        #
+        #   @return [Array<Orb::Models::PriceCreateParams::BulkWithFiltersConfig::Filter>]
+        required :filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter] }
+
+        # @!attribute tiers
+        #   Bulk tiers for rating based on total usage volume
+        #
+        #   @return [Array<Orb::Models::PriceCreateParams::BulkWithFiltersConfig::Tier>]
+        required :tiers, -> { Orb::Internal::Type::ArrayOf[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier] }
+
+        # @!method initialize(filters:, tiers:)
+        #   Configuration for bulk_with_filters pricing
+        #
+        #   @param filters [Array<Orb::Models::PriceCreateParams::BulkWithFiltersConfig::Filter>] Property filters to apply (all must match)
+        #
+        #   @param tiers [Array<Orb::Models::PriceCreateParams::BulkWithFiltersConfig::Tier>] Bulk tiers for rating based on total usage volume
+
+        class Filter < Orb::Internal::Type::BaseModel
+          # @!attribute property_key
+          #   Event property key to filter on
+          #
+          #   @return [String]
+          required :property_key, String
+
+          # @!attribute property_value
+          #   Event property value to match
+          #
+          #   @return [String]
+          required :property_value, String
+
+          # @!method initialize(property_key:, property_value:)
+          #   Configuration for a single property filter
+          #
+          #   @param property_key [String] Event property key to filter on
+          #
+          #   @param property_value [String] Event property value to match
+        end
+
+        class Tier < Orb::Internal::Type::BaseModel
+          # @!attribute unit_amount
+          #   Amount per unit
+          #
+          #   @return [String]
+          required :unit_amount, String
+
+          # @!attribute tier_lower_bound
+          #   The lower bound for this tier
+          #
+          #   @return [String, nil]
+          optional :tier_lower_bound, String, nil?: true
+
+          # @!method initialize(unit_amount:, tier_lower_bound: nil)
+          #   Configuration for a single bulk pricing tier
+          #
+          #   @param unit_amount [String] Amount per unit
+          #
+          #   @param tier_lower_bound [String, nil] The lower bound for this tier
+        end
       end
 
       class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
