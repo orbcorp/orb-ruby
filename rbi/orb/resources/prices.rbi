@@ -26,6 +26,8 @@ module Orb
           unit_config: Orb::UnitConfig::OrHash,
           tiered_config: Orb::TieredConfig::OrHash,
           bulk_config: Orb::BulkConfig::OrHash,
+          bulk_with_filters_config:
+            Orb::PriceCreateParams::BulkWithFiltersConfig::OrHash,
           package_config: Orb::PackageConfig::OrHash,
           matrix_config: Orb::MatrixConfig::OrHash,
           threshold_total_amount_config:
@@ -114,6 +116,8 @@ module Orb
         tiered_config:,
         # Configuration for bulk pricing
         bulk_config:,
+        # Configuration for bulk_with_filters pricing
+        bulk_with_filters_config:,
         # Configuration for package pricing
         package_config:,
         # Configuration for matrix pricing

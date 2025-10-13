@@ -121,6 +121,7 @@ module Orb
                 Orb::NewFloatingUnitPrice,
                 Orb::NewFloatingTieredPrice,
                 Orb::NewFloatingBulkPrice,
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters,
                 Orb::NewFloatingPackagePrice,
                 Orb::NewFloatingMatrixPrice,
                 Orb::NewFloatingThresholdTotalAmountPrice,
@@ -168,6 +169,7 @@ module Orb
                   Orb::NewFloatingUnitPrice::OrHash,
                   Orb::NewFloatingTieredPrice::OrHash,
                   Orb::NewFloatingBulkPrice::OrHash,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::OrHash,
                   Orb::NewFloatingPackagePrice::OrHash,
                   Orb::NewFloatingMatrixPrice::OrHash,
                   Orb::NewFloatingThresholdTotalAmountPrice::OrHash,
@@ -229,6 +231,7 @@ module Orb
                     Orb::NewFloatingUnitPrice,
                     Orb::NewFloatingTieredPrice,
                     Orb::NewFloatingBulkPrice,
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters,
                     Orb::NewFloatingPackagePrice,
                     Orb::NewFloatingMatrixPrice,
                     Orb::NewFloatingThresholdTotalAmountPrice,
@@ -274,6 +277,7 @@ module Orb
                 Orb::NewFloatingUnitPrice,
                 Orb::NewFloatingTieredPrice,
                 Orb::NewFloatingBulkPrice,
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters,
                 Orb::NewFloatingPackagePrice,
                 Orb::NewFloatingMatrixPrice,
                 Orb::NewFloatingThresholdTotalAmountPrice,
@@ -302,6 +306,458 @@ module Orb
                 Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::EventOutput
               )
             end
+
+          class BulkWithFilters < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # Configuration for bulk_with_filters pricing
+            sig do
+              returns(
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig
+              )
+            end
+            attr_reader :bulk_with_filters_config
+
+            sig do
+              params(
+                bulk_with_filters_config:
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash
+              ).void
+            end
+            attr_writer :bulk_with_filters_config
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # An ISO 4217 currency string for which this price is billed in.
+            sig { returns(String) }
+            attr_accessor :currency
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            # The pricing model type
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # The configuration for the rate of the price currency to the invoicing currency.
+            sig do
+              returns(
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig,
+                    Orb::TieredConversionRateConfig
+                  )
+                )
+              )
+            end
+            attr_accessor :conversion_rate_config
+
+            # For dimensional price: specifies a price group and dimension values
+            sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            sig do
+              params(
+                bulk_with_filters_config:
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash,
+                cadence:
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::OrSymbol,
+                currency: String,
+                item_id: String,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig::OrHash,
+                      Orb::TieredConversionRateConfig::OrHash
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Configuration for bulk_with_filters pricing
+              bulk_with_filters_config:,
+              # The cadence to bill for this price on.
+              cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
+              currency:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # The configuration for the rate of the price currency to the invoicing currency.
+              conversion_rate_config: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # The pricing model type
+              model_type: :bulk_with_filters
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  bulk_with_filters_config:
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig,
+                  cadence:
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::OrSymbol,
+                  currency: String,
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(Orb::NewBillingCycleConfiguration),
+                  conversion_rate: T.nilable(Float),
+                  conversion_rate_config:
+                    T.nilable(
+                      T.any(
+                        Orb::UnitConversionRateConfig,
+                        Orb::TieredConversionRateConfig
+                      )
+                    ),
+                  dimensional_price_configuration:
+                    T.nilable(Orb::NewDimensionalPriceConfiguration),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(Orb::NewBillingCycleConfiguration),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Property filters to apply (all must match)
+              sig do
+                returns(
+                  T::Array[
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
+                  ]
+                )
+              end
+              attr_accessor :filters
+
+              # Bulk tiers for rating based on total usage volume
+              sig do
+                returns(
+                  T::Array[
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
+                  ]
+                )
+              end
+              attr_accessor :tiers
+
+              # Configuration for bulk_with_filters pricing
+              sig do
+                params(
+                  filters:
+                    T::Array[
+                      Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Filter::OrHash
+                    ],
+                  tiers:
+                    T::Array[
+                      Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Tier::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Property filters to apply (all must match)
+                filters:,
+                # Bulk tiers for rating based on total usage volume
+                tiers:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    filters:
+                      T::Array[
+                        Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
+                      ],
+                    tiers:
+                      T::Array[
+                        Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class Filter < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Filter,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Event property key to filter on
+                sig { returns(String) }
+                attr_accessor :property_key
+
+                # Event property value to match
+                sig { returns(String) }
+                attr_accessor :property_value
+
+                # Configuration for a single property filter
+                sig do
+                  params(property_key: String, property_value: String).returns(
+                    T.attached_class
+                  )
+                end
+                def self.new(
+                  # Event property key to filter on
+                  property_key:,
+                  # Event property value to match
+                  property_value:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { property_key: String, property_value: String }
+                  )
+                end
+                def to_hash
+                end
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::BulkWithFiltersConfig::Tier,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # Amount per unit
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # The lower bound for this tier
+                sig { returns(T.nilable(String)) }
+                attr_accessor :tier_lower_bound
+
+                # Configuration for a single bulk pricing tier
+                sig do
+                  params(
+                    unit_amount: String,
+                    tier_lower_bound: T.nilable(String)
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # Amount per unit
+                  unit_amount:,
+                  # The lower bound for this tier
+                  tier_lower_bound: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { unit_amount: String, tier_lower_bound: T.nilable(String) }
+                  )
+                end
+                def to_hash
+                end
+              end
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
 
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
             OrHash =

@@ -12,6 +12,7 @@ module Orb
         unit_config: Orb::UnitConfig,
         tiered_config: Orb::TieredConfig,
         bulk_config: Orb::BulkConfig,
+        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
         package_config: Orb::PackageConfig,
         matrix_config: Orb::MatrixConfig,
         threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
