@@ -270,6 +270,11 @@ module Orb
             end
             attr_accessor :invoice_date
 
+            # The ID of the Item to be used for the invoice line item. If not provided, a
+            # default 'Credits' item will be used.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :item_id
+
             # An optional memo to display on the invoice.
             sig { returns(T.nilable(String)) }
             attr_accessor :memo
@@ -298,6 +303,7 @@ module Orb
                   T.nilable(
                     Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
                   ),
+                item_id: T.nilable(String),
                 memo: T.nilable(String),
                 require_successful_payment: T::Boolean
               ).returns(T.attached_class)
@@ -319,6 +325,9 @@ module Orb
               # customer's timezone. If not provided, the invoice date will default to the
               # credit block's effective date.
               invoice_date: nil,
+              # The ID of the Item to be used for the invoice line item. If not provided, a
+              # default 'Credits' item will be used.
+              item_id: nil,
               # An optional memo to display on the invoice.
               memo: nil,
               # If true, the new credit block will require that the corresponding invoice is
@@ -340,6 +349,7 @@ module Orb
                     T.nilable(
                       Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
                     ),
+                  item_id: T.nilable(String),
                   memo: T.nilable(String),
                   require_successful_payment: T::Boolean
                 }
