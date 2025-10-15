@@ -177,6 +177,13 @@ module Orb
                      },
                      nil?: true
 
+            # @!attribute item_id
+            #   The ID of the Item to be used for the invoice line item. If not provided, a
+            #   default 'Credits' item will be used.
+            #
+            #   @return [String, nil]
+            optional :item_id, String, nil?: true
+
             # @!attribute memo
             #   An optional memo to display on the invoice.
             #
@@ -190,7 +197,7 @@ module Orb
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean
 
-            # @!method initialize(auto_collection:, net_terms:, custom_due_date: nil, invoice_date: nil, memo: nil, require_successful_payment: nil)
+            # @!method initialize(auto_collection:, net_terms:, custom_due_date: nil, invoice_date: nil, item_id: nil, memo: nil, require_successful_payment: nil)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings} for
             #   more details.
@@ -207,6 +214,8 @@ module Orb
             #   @param custom_due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
             #
             #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
+            #
+            #   @param item_id [String, nil] The ID of the Item to be used for the invoice line item. If not provided, a defa
             #
             #   @param memo [String, nil] An optional memo to display on the invoice.
             #
