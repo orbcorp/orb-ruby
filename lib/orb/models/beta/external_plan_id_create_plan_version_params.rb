@@ -1354,6 +1354,14 @@ module Orb
                 #   @return [String]
                 required :unit_rating_key, String
 
+                # @!attribute default_unit_rate
+                #   If provided, this amount will be used as the unit rate when an event does not
+                #   have a value for the `unit_rating_key`. If not provided, events missing a unit
+                #   rate will be ignored.
+                #
+                #   @return [String, nil]
+                optional :default_unit_rate, String, nil?: true
+
                 # @!attribute grouping_key
                 #   An optional key in the event data to group by (e.g., event ID). All events will
                 #   also be grouped by their unit rate.
@@ -1361,7 +1369,7 @@ module Orb
                 #   @return [String, nil]
                 optional :grouping_key, String, nil?: true
 
-                # @!method initialize(unit_rating_key:, grouping_key: nil)
+                # @!method initialize(unit_rating_key:, default_unit_rate: nil, grouping_key: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig}
                 #   for more details.
@@ -1369,6 +1377,8 @@ module Orb
                 #   Configuration for event_output pricing
                 #
                 #   @param unit_rating_key [String] The key in the event data to extract the unit rate from.
+                #
+                #   @param default_unit_rate [String, nil] If provided, this amount will be used as the unit rate when an event does not ha
                 #
                 #   @param grouping_key [String, nil] An optional key in the event data to group by (e.g., event ID). All events will
               end
@@ -2688,6 +2698,14 @@ module Orb
                 #   @return [String]
                 required :unit_rating_key, String
 
+                # @!attribute default_unit_rate
+                #   If provided, this amount will be used as the unit rate when an event does not
+                #   have a value for the `unit_rating_key`. If not provided, events missing a unit
+                #   rate will be ignored.
+                #
+                #   @return [String, nil]
+                optional :default_unit_rate, String, nil?: true
+
                 # @!attribute grouping_key
                 #   An optional key in the event data to group by (e.g., event ID). All events will
                 #   also be grouped by their unit rate.
@@ -2695,7 +2713,7 @@ module Orb
                 #   @return [String, nil]
                 optional :grouping_key, String, nil?: true
 
-                # @!method initialize(unit_rating_key:, grouping_key: nil)
+                # @!method initialize(unit_rating_key:, default_unit_rate: nil, grouping_key: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig}
                 #   for more details.
@@ -2703,6 +2721,8 @@ module Orb
                 #   Configuration for event_output pricing
                 #
                 #   @param unit_rating_key [String] The key in the event data to extract the unit rate from.
+                #
+                #   @param default_unit_rate [String, nil] If provided, this amount will be used as the unit rate when an event does not ha
                 #
                 #   @param grouping_key [String, nil] An optional key in the event data to group by (e.g., event ID). All events will
               end
