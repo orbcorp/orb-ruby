@@ -2159,6 +2159,12 @@ module Orb
               sig { returns(String) }
               attr_accessor :unit_rating_key
 
+              # If provided, this amount will be used as the unit rate when an event does not
+              # have a value for the `unit_rating_key`. If not provided, events missing a unit
+              # rate will be ignored.
+              sig { returns(T.nilable(String)) }
+              attr_accessor :default_unit_rate
+
               # An optional key in the event data to group by (e.g., event ID). All events will
               # also be grouped by their unit rate.
               sig { returns(T.nilable(String)) }
@@ -2168,12 +2174,17 @@ module Orb
               sig do
                 params(
                   unit_rating_key: String,
+                  default_unit_rate: T.nilable(String),
                   grouping_key: T.nilable(String)
                 ).returns(T.attached_class)
               end
               def self.new(
                 # The key in the event data to extract the unit rate from.
                 unit_rating_key:,
+                # If provided, this amount will be used as the unit rate when an event does not
+                # have a value for the `unit_rating_key`. If not provided, events missing a unit
+                # rate will be ignored.
+                default_unit_rate: nil,
                 # An optional key in the event data to group by (e.g., event ID). All events will
                 # also be grouped by their unit rate.
                 grouping_key: nil
@@ -2182,7 +2193,11 @@ module Orb
 
               sig do
                 override.returns(
-                  { unit_rating_key: String, grouping_key: T.nilable(String) }
+                  {
+                    unit_rating_key: String,
+                    default_unit_rate: T.nilable(String),
+                    grouping_key: T.nilable(String)
+                  }
                 )
               end
               def to_hash

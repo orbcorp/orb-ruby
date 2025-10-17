@@ -105,9 +105,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Unit::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Unit::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -249,7 +249,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Unit::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Unit::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -321,6 +321,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Unit::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Unit::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Unit::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Unit::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Unit::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Unit::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Unit::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Unit::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Unit#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -362,9 +418,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Tiered::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Tiered::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -506,7 +562,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Tiered::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Tiered::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -578,6 +634,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Tiered::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Tiered::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Tiered::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Tiered::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Tiered::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Tiered::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Tiered::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Tiered::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Tiered#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -625,9 +737,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Bulk::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Bulk::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -765,7 +877,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Bulk::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Bulk::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -835,6 +947,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Bulk::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Bulk::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Bulk::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Bulk::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Bulk::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Bulk::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Bulk::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Bulk::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Bulk#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -882,9 +1050,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::BulkWithFilters::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::BulkWithFilters::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -1024,7 +1192,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::BulkWithFilters::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::BulkWithFilters::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -1160,6 +1328,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::BulkWithFilters::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::BulkWithFilters::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::BulkWithFilters::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::BulkWithFilters::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::BulkWithFilters::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::BulkWithFilters::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::BulkWithFilters::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::BulkWithFilters::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::BulkWithFilters#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1201,9 +1425,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Package::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Package::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -1345,7 +1569,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Package::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Package::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -1417,6 +1641,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Package::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Package::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Package::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Package::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Package::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Package::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Package::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Package::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Package#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1458,9 +1738,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Matrix::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Matrix::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -1602,7 +1882,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Matrix::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Matrix::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -1674,6 +1954,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Matrix::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Matrix::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Matrix::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Matrix::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Matrix::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Matrix::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Matrix::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Matrix::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Matrix#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -1715,9 +2051,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::ThresholdTotalAmount::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -1862,7 +2198,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::ThresholdTotalAmount::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -1932,6 +2268,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::ThresholdTotalAmount#price_type
@@ -2024,9 +2416,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::TieredPackage::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredPackage::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -2170,7 +2562,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackage::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::TieredPackage::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2240,6 +2632,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredPackage::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::TieredPackage::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredPackage::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::TieredPackage::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::TieredPackage::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::TieredPackage::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::TieredPackage::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::TieredPackage::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::TieredPackage#price_type
@@ -2332,9 +2780,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::TieredWithMinimum::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredWithMinimum::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -2478,7 +2926,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithMinimum::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::TieredWithMinimum::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2548,6 +2996,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::TieredWithMinimum::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::TieredWithMinimum::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::TieredWithMinimum::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::TieredWithMinimum#price_type
@@ -2656,9 +3160,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::GroupedTiered::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedTiered::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -2802,7 +3306,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTiered::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::GroupedTiered::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -2872,6 +3376,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedTiered::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::GroupedTiered::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedTiered::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::GroupedTiered::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::GroupedTiered::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::GroupedTiered::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::GroupedTiered::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::GroupedTiered::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::GroupedTiered#grouped_tiered_config
@@ -2962,9 +3522,11 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::TieredPackageWithMinimum::CompositePriceFilter]
+                 },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -3109,7 +3671,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredPackageWithMinimum::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3179,6 +3741,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::TieredPackageWithMinimum#price_type
@@ -3279,9 +3897,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::PackageWithAllocation::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::PackageWithAllocation::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -3426,7 +4044,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::PackageWithAllocation::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::PackageWithAllocation::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3496,6 +4114,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::PackageWithAllocation::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::PackageWithAllocation::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::PackageWithAllocation::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::PackageWithAllocation#package_with_allocation_config
@@ -3569,9 +4243,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::UnitWithPercent::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::UnitWithPercent::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -3715,7 +4389,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithPercent::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::UnitWithPercent::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -3787,6 +4461,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::UnitWithPercent::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::UnitWithPercent::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::UnitWithPercent::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::UnitWithPercent::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::UnitWithPercent::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::UnitWithPercent::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::UnitWithPercent::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::UnitWithPercent::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::UnitWithPercent#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -3850,9 +4580,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithAllocation::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -3996,7 +4726,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithAllocation::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4068,6 +4798,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::MatrixWithAllocation#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4109,9 +4895,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::TieredWithProration::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::TieredWithProration::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -4255,7 +5041,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::TieredWithProration::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::TieredWithProration::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4325,6 +5111,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredWithProration::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::TieredWithProration::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::TieredWithProration::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::TieredWithProration::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::TieredWithProration::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::TieredWithProration::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::TieredWithProration::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::TieredWithProration::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::TieredWithProration#price_type
@@ -4409,9 +5251,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::UnitWithProration::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::UnitWithProration::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -4555,7 +5397,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::UnitWithProration::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::UnitWithProration::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4627,6 +5469,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::UnitWithProration::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::UnitWithProration::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::UnitWithProration::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::UnitWithProration::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::UnitWithProration::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::UnitWithProration::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::UnitWithProration::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::UnitWithProration::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::UnitWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -4682,9 +5580,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::GroupedAllocation::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedAllocation::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -4828,7 +5726,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedAllocation::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::GroupedAllocation::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -4898,6 +5796,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedAllocation::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::GroupedAllocation::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedAllocation::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::GroupedAllocation::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::GroupedAllocation::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::GroupedAllocation::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::GroupedAllocation::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::GroupedAllocation::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::GroupedAllocation#grouped_allocation_config
@@ -4977,9 +5931,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::BulkWithProration::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::BulkWithProration::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -5119,7 +6073,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::BulkWithProration::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::BulkWithProration::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5225,6 +6179,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::BulkWithProration::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::BulkWithProration::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::BulkWithProration::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::BulkWithProration::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::BulkWithProration::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::BulkWithProration::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::BulkWithProration::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::BulkWithProration::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::BulkWithProration#price_type
         module PriceType
           extend Orb::Internal::Type::Enum
@@ -5266,9 +6276,11 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter]
+                 },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -5413,7 +6425,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5483,6 +6495,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithProratedMinimum#grouped_with_prorated_minimum_config
@@ -5556,9 +6624,11 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter]
+                 },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -5703,7 +6773,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -5773,6 +6843,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithMeteredMinimum#grouped_with_metered_minimum_config
@@ -5920,9 +7046,11 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter]
+                 },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -6067,7 +7195,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6137,6 +7265,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::GroupedWithMinMaxThresholds#grouped_with_min_max_thresholds_config
@@ -6218,9 +7402,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithDisplayName::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -6365,7 +7549,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::MatrixWithDisplayName::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6435,6 +7619,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::MatrixWithDisplayName#matrix_with_display_name_config
@@ -6530,9 +7770,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::GroupedTieredPackage::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -6677,7 +7917,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::GroupedTieredPackage::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -6747,6 +7987,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::GroupedTieredPackage#grouped_tiered_package_config
@@ -6847,9 +8143,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::MaxGroupTieredPackage::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -6994,7 +8290,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::MaxGroupTieredPackage::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -7064,6 +8360,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::MaxGroupTieredPackage#max_group_tiered_package_config
@@ -7163,9 +8515,11 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter]
+                 },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -7310,7 +8664,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -7380,6 +8734,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#price_type
@@ -7499,9 +8909,11 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter]
+                 },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -7646,7 +9058,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -7716,6 +9128,63 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator]
+          required :operator,
+                   enum: -> { Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#price_type
@@ -7849,9 +9318,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::CumulativeGroupedBulk::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -7996,7 +9465,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::CumulativeGroupedBulk::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -8066,6 +9535,62 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see Orb::Models::Price::CumulativeGroupedBulk#cumulative_grouped_bulk_config
@@ -8161,9 +9686,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Minimum::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Minimum::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -8305,7 +9830,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Minimum::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Minimum::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -8377,6 +9902,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Minimum::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Minimum::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Minimum::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Minimum::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Minimum::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Minimum::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Minimum::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Minimum::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Minimum#minimum_config
         class MinimumConfig < Orb::Internal::Type::BaseModel
           # @!attribute minimum_amount
@@ -8440,9 +10021,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::Percent::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::Percent::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -8584,7 +10165,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::Percent::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::Percent::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -8656,6 +10237,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::Percent::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::Percent::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::Percent::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::Percent::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::Percent::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::Percent::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::Percent::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::Percent::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::Percent#percent_config
         class PercentConfig < Orb::Internal::Type::BaseModel
           # @!attribute percent
@@ -8711,9 +10348,9 @@ module Orb
 
         # @!attribute composite_price_filters
         #
-        #   @return [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @return [Array<Orb::Models::Price::EventOutput::CompositePriceFilter>, nil]
         required :composite_price_filters,
-                 -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] },
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::EventOutput::CompositePriceFilter] },
                  nil?: true
 
         # @!attribute conversion_rate
@@ -8859,7 +10496,7 @@ module Orb
         #
         #   @param cadence [Symbol, Orb::Models::Price::EventOutput::Cadence]
         #
-        #   @param composite_price_filters [Array<Orb::Models::TransformPriceFilter>, nil]
+        #   @param composite_price_filters [Array<Orb::Models::Price::EventOutput::CompositePriceFilter>, nil]
         #
         #   @param conversion_rate [Float, nil]
         #
@@ -8931,6 +10568,62 @@ module Orb
           #   @return [Array<Symbol>]
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::EventOutput::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::EventOutput::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::EventOutput::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::EventOutput::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::EventOutput::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::EventOutput::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::EventOutput::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::EventOutput::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         # @see Orb::Models::Price::EventOutput#event_output_config
         class EventOutputConfig < Orb::Internal::Type::BaseModel
           # @!attribute unit_rating_key
@@ -8939,6 +10632,14 @@ module Orb
           #   @return [String]
           required :unit_rating_key, String
 
+          # @!attribute default_unit_rate
+          #   If provided, this amount will be used as the unit rate when an event does not
+          #   have a value for the `unit_rating_key`. If not provided, events missing a unit
+          #   rate will be ignored.
+          #
+          #   @return [String, nil]
+          optional :default_unit_rate, String, nil?: true
+
           # @!attribute grouping_key
           #   An optional key in the event data to group by (e.g., event ID). All events will
           #   also be grouped by their unit rate.
@@ -8946,13 +10647,15 @@ module Orb
           #   @return [String, nil]
           optional :grouping_key, String, nil?: true
 
-          # @!method initialize(unit_rating_key:, grouping_key: nil)
+          # @!method initialize(unit_rating_key:, default_unit_rate: nil, grouping_key: nil)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::EventOutput::EventOutputConfig} for more details.
           #
           #   Configuration for event_output pricing
           #
           #   @param unit_rating_key [String] The key in the event data to extract the unit rate from.
+          #
+          #   @param default_unit_rate [String, nil] If provided, this amount will be used as the unit rate when an event does not ha
           #
           #   @param grouping_key [String, nil] An optional key in the event data to group by (e.g., event ID). All events will
         end

@@ -30,7 +30,9 @@ module Orb
       attr_accessor :applies_to_price_ids
 
       # The filters that determine which prices to apply this adjustment to.
-      sig { returns(T::Array[Orb::TransformPriceFilter]) }
+      sig do
+        returns(T::Array[Orb::MonetaryPercentageDiscountAdjustment::Filter])
+      end
       attr_accessor :filters
 
       # True for adjustments that apply to an entire invoice, false for adjustments that
@@ -59,7 +61,8 @@ module Orb
             Orb::MonetaryPercentageDiscountAdjustment::AdjustmentType::OrSymbol,
           amount: String,
           applies_to_price_ids: T::Array[String],
-          filters: T::Array[Orb::TransformPriceFilter::OrHash],
+          filters:
+            T::Array[Orb::MonetaryPercentageDiscountAdjustment::Filter::OrHash],
           is_invoice_level: T::Boolean,
           percentage_discount: Float,
           reason: T.nilable(String),
@@ -97,7 +100,8 @@ module Orb
               Orb::MonetaryPercentageDiscountAdjustment::AdjustmentType::TaggedSymbol,
             amount: String,
             applies_to_price_ids: T::Array[String],
-            filters: T::Array[Orb::TransformPriceFilter],
+            filters:
+              T::Array[Orb::MonetaryPercentageDiscountAdjustment::Filter],
             is_invoice_level: T::Boolean,
             percentage_discount: Float,
             reason: T.nilable(String),
@@ -134,6 +138,154 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class Filter < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::MonetaryPercentageDiscountAdjustment::Filter,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The property of the price to filter on.
+        sig do
+          returns(
+            Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+          )
+        end
+        attr_accessor :field
+
+        # Should prices that match the filter be included or excluded.
+        sig do
+          returns(
+            Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator::TaggedSymbol
+          )
+        end
+        attr_accessor :operator
+
+        # The IDs or values that match this filter.
+        sig { returns(T::Array[String]) }
+        attr_accessor :values
+
+        sig do
+          params(
+            field:
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::OrSymbol,
+            operator:
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator::OrSymbol,
+            values: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The property of the price to filter on.
+          field:,
+          # Should prices that match the filter be included or excluded.
+          operator:,
+          # The IDs or values that match this filter.
+          values:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              field:
+                Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol,
+              operator:
+                Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator::TaggedSymbol,
+              values: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The property of the price to filter on.
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::MonetaryPercentageDiscountAdjustment::Filter::Field
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PRICE_ID =
+            T.let(
+              :price_id,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+            )
+          ITEM_ID =
+            T.let(
+              :item_id,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+            )
+          PRICE_TYPE =
+            T.let(
+              :price_type,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+            )
+          CURRENCY =
+            T.let(
+              :currency,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+            )
+          PRICING_UNIT_ID =
+            T.let(
+              :pricing_unit_id,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::MonetaryPercentageDiscountAdjustment::Filter::Field::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Should prices that match the filter be included or excluded.
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INCLUDES =
+            T.let(
+              :includes,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator::TaggedSymbol
+            )
+          EXCLUDES =
+            T.let(
+              :excludes,
+              Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::MonetaryPercentageDiscountAdjustment::Filter::Operator::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

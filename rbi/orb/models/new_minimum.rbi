@@ -32,7 +32,7 @@ module Orb
       attr_accessor :currency
 
       # A list of filters that determine which prices this adjustment will apply to.
-      sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+      sig { returns(T.nilable(T::Array[Orb::NewMinimum::Filter])) }
       attr_accessor :filters
 
       # When false, this adjustment will be applied to a single price. Otherwise, it
@@ -56,7 +56,7 @@ module Orb
           applies_to_item_ids: T.nilable(T::Array[String]),
           applies_to_price_ids: T.nilable(T::Array[String]),
           currency: T.nilable(String),
-          filters: T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+          filters: T.nilable(T::Array[Orb::NewMinimum::Filter::OrHash]),
           is_invoice_level: T::Boolean,
           price_type: T.nilable(Orb::NewMinimum::PriceType::OrSymbol)
         ).returns(T.attached_class)
@@ -94,7 +94,7 @@ module Orb
             applies_to_item_ids: T.nilable(T::Array[String]),
             applies_to_price_ids: T.nilable(T::Array[String]),
             currency: T.nilable(String),
-            filters: T.nilable(T::Array[Orb::TransformPriceFilter]),
+            filters: T.nilable(T::Array[Orb::NewMinimum::Filter]),
             is_invoice_level: T::Boolean,
             price_type: T.nilable(Orb::NewMinimum::PriceType::OrSymbol)
           }
@@ -137,6 +137,107 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class Filter < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::NewMinimum::Filter, Orb::Internal::AnyHash)
+          end
+
+        # The property of the price to filter on.
+        sig { returns(Orb::NewMinimum::Filter::Field::OrSymbol) }
+        attr_accessor :field
+
+        # Should prices that match the filter be included or excluded.
+        sig { returns(Orb::NewMinimum::Filter::Operator::OrSymbol) }
+        attr_accessor :operator
+
+        # The IDs or values that match this filter.
+        sig { returns(T::Array[String]) }
+        attr_accessor :values
+
+        sig do
+          params(
+            field: Orb::NewMinimum::Filter::Field::OrSymbol,
+            operator: Orb::NewMinimum::Filter::Operator::OrSymbol,
+            values: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The property of the price to filter on.
+          field:,
+          # Should prices that match the filter be included or excluded.
+          operator:,
+          # The IDs or values that match this filter.
+          values:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              field: Orb::NewMinimum::Filter::Field::OrSymbol,
+              operator: Orb::NewMinimum::Filter::Operator::OrSymbol,
+              values: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The property of the price to filter on.
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::NewMinimum::Filter::Field) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PRICE_ID =
+            T.let(:price_id, Orb::NewMinimum::Filter::Field::TaggedSymbol)
+          ITEM_ID =
+            T.let(:item_id, Orb::NewMinimum::Filter::Field::TaggedSymbol)
+          PRICE_TYPE =
+            T.let(:price_type, Orb::NewMinimum::Filter::Field::TaggedSymbol)
+          CURRENCY =
+            T.let(:currency, Orb::NewMinimum::Filter::Field::TaggedSymbol)
+          PRICING_UNIT_ID =
+            T.let(
+              :pricing_unit_id,
+              Orb::NewMinimum::Filter::Field::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::NewMinimum::Filter::Field::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Should prices that match the filter be included or excluded.
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::NewMinimum::Filter::Operator) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INCLUDES =
+            T.let(:includes, Orb::NewMinimum::Filter::Operator::TaggedSymbol)
+          EXCLUDES =
+            T.let(:excludes, Orb::NewMinimum::Filter::Operator::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::NewMinimum::Filter::Operator::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
 

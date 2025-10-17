@@ -879,19 +879,30 @@ module Orb
             end
 
             type event_output_config =
-              { unit_rating_key: String, grouping_key: String? }
+              {
+                unit_rating_key: String,
+                default_unit_rate: String?,
+                grouping_key: String?
+              }
 
             class EventOutputConfig < Orb::Internal::Type::BaseModel
               attr_accessor unit_rating_key: String
+
+              attr_accessor default_unit_rate: String?
 
               attr_accessor grouping_key: String?
 
               def initialize: (
                 unit_rating_key: String,
+                ?default_unit_rate: String?,
                 ?grouping_key: String?
               ) -> void
 
-              def to_hash: -> { unit_rating_key: String, grouping_key: String? }
+              def to_hash: -> {
+                unit_rating_key: String,
+                default_unit_rate: String?,
+                grouping_key: String?
+              }
             end
           end
 

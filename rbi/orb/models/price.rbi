@@ -84,7 +84,9 @@ module Orb
         sig { returns(Orb::Price::Unit::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(T.nilable(T::Array[Orb::Price::Unit::CompositePriceFilter]))
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -206,7 +208,9 @@ module Orb
             billing_mode: Orb::Price::Unit::BillingMode::OrSymbol,
             cadence: Orb::Price::Unit::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Unit::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -298,7 +302,7 @@ module Orb
               billing_mode: Orb::Price::Unit::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Unit::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Unit::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants),
@@ -373,6 +377,145 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Unit::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol)
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Unit::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Unit::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Unit::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Unit::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Unit::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Unit::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Unit::CompositePriceFilter::Operator)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Unit::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Unit::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Unit::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -430,7 +573,9 @@ module Orb
         sig { returns(Orb::Price::Tiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(T.nilable(T::Array[Orb::Price::Tiered::CompositePriceFilter]))
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -552,7 +697,9 @@ module Orb
             billing_mode: Orb::Price::Tiered::BillingMode::OrSymbol,
             cadence: Orb::Price::Tiered::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Tiered::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -644,7 +791,7 @@ module Orb
               billing_mode: Orb::Price::Tiered::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Tiered::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Tiered::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants),
@@ -722,6 +869,150 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Tiered::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Tiered::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Tiered::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Tiered::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Tiered::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Tiered::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Tiered::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Tiered::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Tiered::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Tiered::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Tiered::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -786,7 +1077,9 @@ module Orb
         sig { returns(Orb::Price::Bulk::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(T.nilable(T::Array[Orb::Price::Bulk::CompositePriceFilter]))
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -902,7 +1195,9 @@ module Orb
             bulk_config: Orb::BulkConfig::OrHash,
             cadence: Orb::Price::Bulk::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Bulk::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -994,7 +1289,7 @@ module Orb
               bulk_config: Orb::BulkConfig,
               cadence: Orb::Price::Bulk::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Bulk::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants),
@@ -1065,6 +1360,145 @@ module Orb
             override.returns(T::Array[Orb::Price::Bulk::Cadence::TaggedSymbol])
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Bulk::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol)
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Bulk::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Bulk::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Bulk::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Bulk::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Bulk::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Bulk::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Bulk::CompositePriceFilter::Operator)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Bulk::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Bulk::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Bulk::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -1139,7 +1573,13 @@ module Orb
         sig { returns(Orb::Price::BulkWithFilters::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::BulkWithFilters::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -1260,7 +1700,11 @@ module Orb
               Orb::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash,
             cadence: Orb::Price::BulkWithFilters::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -1354,7 +1798,9 @@ module Orb
                 Orb::Price::BulkWithFilters::BulkWithFiltersConfig,
               cadence: Orb::Price::BulkWithFilters::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::BulkWithFilters::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -1596,6 +2042,154 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithFilters::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::BulkWithFilters::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::BulkWithFilters::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkWithFilters::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -1664,7 +2258,11 @@ module Orb
         sig { returns(Orb::Price::Package::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::Price::Package::CompositePriceFilter])
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -1788,7 +2386,9 @@ module Orb
             billing_mode: Orb::Price::Package::BillingMode::OrSymbol,
             cadence: Orb::Price::Package::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Package::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -1880,7 +2480,7 @@ module Orb
               billing_mode: Orb::Price::Package::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Package::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Package::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Package::ConversionRateConfig::Variants),
@@ -1959,6 +2559,150 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Package::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Package::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Package::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Package::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Package::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Package::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Package::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Package::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Package::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Package::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Package::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -2019,7 +2763,9 @@ module Orb
         sig { returns(Orb::Price::Matrix::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(T.nilable(T::Array[Orb::Price::Matrix::CompositePriceFilter]))
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -2141,7 +2887,9 @@ module Orb
             billing_mode: Orb::Price::Matrix::BillingMode::OrSymbol,
             cadence: Orb::Price::Matrix::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Matrix::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -2233,7 +2981,7 @@ module Orb
               billing_mode: Orb::Price::Matrix::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Matrix::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Matrix::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants),
@@ -2311,6 +3059,150 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Matrix::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Matrix::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Matrix::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Matrix::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Matrix::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Matrix::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Matrix::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Matrix::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Matrix::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Matrix::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Matrix::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -2372,7 +3264,13 @@ module Orb
         sig { returns(Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::ThresholdTotalAmount::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -2508,7 +3406,11 @@ module Orb
               Orb::Price::ThresholdTotalAmount::BillingMode::OrSymbol,
             cadence: Orb::Price::ThresholdTotalAmount::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -2602,7 +3504,11 @@ module Orb
                 Orb::Price::ThresholdTotalAmount::BillingMode::TaggedSymbol,
               cadence: Orb::Price::ThresholdTotalAmount::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::ThresholdTotalAmount::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -2715,6 +3621,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ThresholdTotalAmount::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -2886,7 +3940,11 @@ module Orb
         sig { returns(Orb::Price::TieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::Price::TieredPackage::CompositePriceFilter])
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -3015,7 +4073,11 @@ module Orb
             billing_mode: Orb::Price::TieredPackage::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredPackage::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::TieredPackage::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -3109,7 +4171,9 @@ module Orb
                 Orb::Price::TieredPackage::BillingMode::TaggedSymbol,
               cadence: Orb::Price::TieredPackage::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::TieredPackage::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -3202,6 +4266,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::TieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::TieredPackage::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::TieredPackage::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::TieredPackage::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackage::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackage::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackage::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::TieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::TieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -3371,7 +4583,13 @@ module Orb
         sig { returns(Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::TieredWithMinimum::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -3502,7 +4720,11 @@ module Orb
             billing_mode: Orb::Price::TieredWithMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredWithMinimum::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -3596,7 +4818,9 @@ module Orb
                 Orb::Price::TieredWithMinimum::BillingMode::TaggedSymbol,
               cadence: Orb::Price::TieredWithMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::TieredWithMinimum::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -3701,6 +4925,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -3898,7 +5270,11 @@ module Orb
         sig { returns(Orb::Price::GroupedTiered::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::Price::GroupedTiered::CompositePriceFilter])
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -4027,7 +5403,11 @@ module Orb
             billing_mode: Orb::Price::GroupedTiered::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedTiered::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::GroupedTiered::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -4121,7 +5501,9 @@ module Orb
                 Orb::Price::GroupedTiered::BillingMode::TaggedSymbol,
               cadence: Orb::Price::GroupedTiered::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::GroupedTiered::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -4214,6 +5596,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::GroupedTiered::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::GroupedTiered::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::GroupedTiered::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::GroupedTiered::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTiered::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTiered::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTiered::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::GroupedTiered::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTiered::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -4385,7 +5915,15 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter
+              ]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -4523,7 +6061,11 @@ module Orb
               Orb::Price::TieredPackageWithMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredPackageWithMinimum::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -4619,7 +6161,11 @@ module Orb
               cadence:
                 Orb::Price::TieredPackageWithMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::TieredPackageWithMinimum::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -4734,6 +6280,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredPackageWithMinimum::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -4923,7 +6617,13 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::PackageWithAllocation::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -5061,7 +6761,11 @@ module Orb
               Orb::Price::PackageWithAllocation::BillingMode::OrSymbol,
             cadence: Orb::Price::PackageWithAllocation::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -5155,7 +6859,11 @@ module Orb
                 Orb::Price::PackageWithAllocation::BillingMode::TaggedSymbol,
               cadence: Orb::Price::PackageWithAllocation::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::PackageWithAllocation::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -5268,6 +6976,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::PackageWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -5395,7 +7251,13 @@ module Orb
         sig { returns(Orb::Price::UnitWithPercent::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::UnitWithPercent::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -5526,7 +7388,11 @@ module Orb
             billing_mode: Orb::Price::UnitWithPercent::BillingMode::OrSymbol,
             cadence: Orb::Price::UnitWithPercent::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -5620,7 +7486,9 @@ module Orb
                 Orb::Price::UnitWithPercent::BillingMode::TaggedSymbol,
               cadence: Orb::Price::UnitWithPercent::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::UnitWithPercent::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -5716,6 +7584,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::UnitWithPercent::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::UnitWithPercent::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithPercent::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -5827,7 +7843,13 @@ module Orb
         sig { returns(Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::MatrixWithAllocation::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -5961,7 +7983,11 @@ module Orb
               Orb::Price::MatrixWithAllocation::BillingMode::OrSymbol,
             cadence: Orb::Price::MatrixWithAllocation::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -6055,7 +8081,11 @@ module Orb
                 Orb::Price::MatrixWithAllocation::BillingMode::TaggedSymbol,
               cadence: Orb::Price::MatrixWithAllocation::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::MatrixWithAllocation::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -6170,6 +8200,154 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -6244,7 +8422,13 @@ module Orb
         sig { returns(Orb::Price::TieredWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::TieredWithProration::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -6380,7 +8564,11 @@ module Orb
               Orb::Price::TieredWithProration::BillingMode::OrSymbol,
             cadence: Orb::Price::TieredWithProration::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::TieredWithProration::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -6474,7 +8662,11 @@ module Orb
                 Orb::Price::TieredWithProration::BillingMode::TaggedSymbol,
               cadence: Orb::Price::TieredWithProration::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::TieredWithProration::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -6587,6 +8779,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::TieredWithProration::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::TieredWithProration::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::TieredWithProration::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::TieredWithProration::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithProration::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithProration::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredWithProration::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::TieredWithProration::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredWithProration::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -6752,7 +9092,13 @@ module Orb
         sig { returns(Orb::Price::UnitWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::UnitWithProration::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -6883,7 +9229,11 @@ module Orb
             billing_mode: Orb::Price::UnitWithProration::BillingMode::OrSymbol,
             cadence: Orb::Price::UnitWithProration::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::UnitWithProration::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -6977,7 +9327,9 @@ module Orb
                 Orb::Price::UnitWithProration::BillingMode::TaggedSymbol,
               cadence: Orb::Price::UnitWithProration::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::UnitWithProration::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -7085,6 +9437,154 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::UnitWithProration::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::UnitWithProration::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::UnitWithProration::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::UnitWithProration::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithProration::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithProration::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::UnitWithProration::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::UnitWithProration::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::UnitWithProration::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -7183,7 +9683,13 @@ module Orb
         sig { returns(Orb::Price::GroupedAllocation::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::GroupedAllocation::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -7314,7 +9820,11 @@ module Orb
             billing_mode: Orb::Price::GroupedAllocation::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedAllocation::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -7408,7 +9918,9 @@ module Orb
                 Orb::Price::GroupedAllocation::BillingMode::TaggedSymbol,
               cadence: Orb::Price::GroupedAllocation::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::GroupedAllocation::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -7513,6 +10025,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::GroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::GroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -7652,7 +10312,13 @@ module Orb
         sig { returns(Orb::Price::BulkWithProration::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::BulkWithProration::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -7773,7 +10439,11 @@ module Orb
               Orb::Price::BulkWithProration::BulkWithProrationConfig::OrHash,
             cadence: Orb::Price::BulkWithProration::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::BulkWithProration::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -7867,7 +10537,9 @@ module Orb
                 Orb::Price::BulkWithProration::BulkWithProrationConfig,
               cadence: Orb::Price::BulkWithProration::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::BulkWithProration::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -8062,6 +10734,154 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::BulkWithProration::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::BulkWithProration::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::BulkWithProration::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::BulkWithProration::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkWithProration::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkWithProration::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::BulkWithProration::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::BulkWithProration::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::BulkWithProration::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         module PriceType
           extend Orb::Internal::Type::Enum
 
@@ -8141,7 +10961,15 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter
+              ]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -8281,7 +11109,11 @@ module Orb
               Orb::Price::GroupedWithProratedMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedWithProratedMinimum::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -8377,7 +11209,11 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithProratedMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -8492,6 +11328,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -8621,7 +11605,15 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter
+              ]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -8761,7 +11753,11 @@ module Orb
               Orb::Price::GroupedWithMeteredMinimum::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedWithMeteredMinimum::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -8857,7 +11853,11 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithMeteredMinimum::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -8972,6 +11972,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -9240,7 +12388,15 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter
+              ]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -9380,7 +12536,11 @@ module Orb
               Orb::Price::GroupedWithMinMaxThresholds::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -9476,7 +12636,11 @@ module Orb
               cadence:
                 Orb::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -9594,6 +12758,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -9733,7 +13045,13 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::MatrixWithDisplayName::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -9871,7 +13189,11 @@ module Orb
               Orb::Price::MatrixWithDisplayName::BillingMode::OrSymbol,
             cadence: Orb::Price::MatrixWithDisplayName::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -9965,7 +13287,11 @@ module Orb
                 Orb::Price::MatrixWithDisplayName::BillingMode::TaggedSymbol,
               cadence: Orb::Price::MatrixWithDisplayName::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::MatrixWithDisplayName::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -10078,6 +13404,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MatrixWithDisplayName::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -10263,7 +13737,13 @@ module Orb
         sig { returns(Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::GroupedTieredPackage::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -10399,7 +13879,11 @@ module Orb
               Orb::Price::GroupedTieredPackage::BillingMode::OrSymbol,
             cadence: Orb::Price::GroupedTieredPackage::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -10493,7 +13977,11 @@ module Orb
                 Orb::Price::GroupedTieredPackage::BillingMode::TaggedSymbol,
               cadence: Orb::Price::GroupedTieredPackage::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::GroupedTieredPackage::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -10606,6 +14094,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::GroupedTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -10789,7 +14425,13 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::MaxGroupTieredPackage::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -10927,7 +14569,11 @@ module Orb
               Orb::Price::MaxGroupTieredPackage::BillingMode::OrSymbol,
             cadence: Orb::Price::MaxGroupTieredPackage::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -11021,7 +14667,11 @@ module Orb
                 Orb::Price::MaxGroupTieredPackage::BillingMode::TaggedSymbol,
               cadence: Orb::Price::MaxGroupTieredPackage::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::MaxGroupTieredPackage::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -11134,6 +14784,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MaxGroupTieredPackage::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -11324,7 +15122,15 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter
+              ]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -11465,7 +15271,11 @@ module Orb
             cadence:
               Orb::Price::ScalableMatrixWithUnitPricing::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -11561,7 +15371,11 @@ module Orb
               cadence:
                 Orb::Price::ScalableMatrixWithUnitPricing::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -11679,6 +15493,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -11900,7 +15862,15 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter
+              ]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -12041,7 +16011,11 @@ module Orb
             cadence:
               Orb::Price::ScalableMatrixWithTieredPricing::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -12137,7 +16111,11 @@ module Orb
               cadence:
                 Orb::Price::ScalableMatrixWithTieredPricing::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -12258,6 +16236,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -12516,7 +16642,13 @@ module Orb
         end
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::CumulativeGroupedBulk::CompositePriceFilter]
+            )
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -12654,7 +16786,11 @@ module Orb
               Orb::Price::CumulativeGroupedBulk::BillingMode::OrSymbol,
             cadence: Orb::Price::CumulativeGroupedBulk::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::OrHash
+                ]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -12748,7 +16884,11 @@ module Orb
                 Orb::Price::CumulativeGroupedBulk::BillingMode::TaggedSymbol,
               cadence: Orb::Price::CumulativeGroupedBulk::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[
+                    Orb::Price::CumulativeGroupedBulk::CompositePriceFilter
+                  ]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -12861,6 +17001,154 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::CumulativeGroupedBulk::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -13042,7 +17330,11 @@ module Orb
         sig { returns(Orb::Price::Minimum::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::Price::Minimum::CompositePriceFilter])
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -13170,7 +17462,9 @@ module Orb
             billing_mode: Orb::Price::Minimum::BillingMode::OrSymbol,
             cadence: Orb::Price::Minimum::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Minimum::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -13262,7 +17556,7 @@ module Orb
               billing_mode: Orb::Price::Minimum::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Minimum::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Minimum::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Minimum::ConversionRateConfig::Variants),
@@ -13338,6 +17632,150 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Minimum::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Minimum::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Minimum::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Minimum::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Minimum::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Minimum::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Minimum::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Minimum::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Minimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Minimum::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Minimum::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -13439,7 +17877,11 @@ module Orb
         sig { returns(Orb::Price::Percent::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::Price::Percent::CompositePriceFilter])
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -13567,7 +18009,9 @@ module Orb
             billing_mode: Orb::Price::Percent::BillingMode::OrSymbol,
             cadence: Orb::Price::Percent::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::Percent::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -13659,7 +18103,7 @@ module Orb
               billing_mode: Orb::Price::Percent::BillingMode::TaggedSymbol,
               cadence: Orb::Price::Percent::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(T::Array[Orb::Price::Percent::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(Orb::Price::Percent::ConversionRateConfig::Variants),
@@ -13735,6 +18179,150 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::Percent::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::Percent::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field: Orb::Price::Percent::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::Percent::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::Percent::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::Price::Percent::CompositePriceFilter::Field)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Percent::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::Percent::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::Percent::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::Percent::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::Percent::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -13823,7 +18411,11 @@ module Orb
         sig { returns(Orb::Price::EventOutput::Cadence::TaggedSymbol) }
         attr_accessor :cadence
 
-        sig { returns(T.nilable(T::Array[Orb::TransformPriceFilter])) }
+        sig do
+          returns(
+            T.nilable(T::Array[Orb::Price::EventOutput::CompositePriceFilter])
+          )
+        end
         attr_accessor :composite_price_filters
 
         sig { returns(T.nilable(Float)) }
@@ -13952,7 +18544,9 @@ module Orb
             billing_mode: Orb::Price::EventOutput::BillingMode::OrSymbol,
             cadence: Orb::Price::EventOutput::Cadence::OrSymbol,
             composite_price_filters:
-              T.nilable(T::Array[Orb::TransformPriceFilter::OrHash]),
+              T.nilable(
+                T::Array[Orb::Price::EventOutput::CompositePriceFilter::OrHash]
+              ),
             conversion_rate: T.nilable(Float),
             conversion_rate_config:
               T.nilable(
@@ -14045,7 +18639,9 @@ module Orb
               billing_mode: Orb::Price::EventOutput::BillingMode::TaggedSymbol,
               cadence: Orb::Price::EventOutput::Cadence::TaggedSymbol,
               composite_price_filters:
-                T.nilable(T::Array[Orb::TransformPriceFilter]),
+                T.nilable(
+                  T::Array[Orb::Price::EventOutput::CompositePriceFilter]
+                ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
                 T.nilable(
@@ -14135,6 +18731,154 @@ module Orb
           end
         end
 
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::EventOutput::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::EventOutput::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::EventOutput::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::EventOutput::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::EventOutput::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::EventOutput::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::EventOutput::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::EventOutput::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::EventOutput::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::EventOutput::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::EventOutput::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
         class EventOutputConfig < Orb::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
@@ -14148,6 +18892,12 @@ module Orb
           sig { returns(String) }
           attr_accessor :unit_rating_key
 
+          # If provided, this amount will be used as the unit rate when an event does not
+          # have a value for the `unit_rating_key`. If not provided, events missing a unit
+          # rate will be ignored.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :default_unit_rate
+
           # An optional key in the event data to group by (e.g., event ID). All events will
           # also be grouped by their unit rate.
           sig { returns(T.nilable(String)) }
@@ -14157,12 +18907,17 @@ module Orb
           sig do
             params(
               unit_rating_key: String,
+              default_unit_rate: T.nilable(String),
               grouping_key: T.nilable(String)
             ).returns(T.attached_class)
           end
           def self.new(
             # The key in the event data to extract the unit rate from.
             unit_rating_key:,
+            # If provided, this amount will be used as the unit rate when an event does not
+            # have a value for the `unit_rating_key`. If not provided, events missing a unit
+            # rate will be ignored.
+            default_unit_rate: nil,
             # An optional key in the event data to group by (e.g., event ID). All events will
             # also be grouped by their unit rate.
             grouping_key: nil
@@ -14171,7 +18926,11 @@ module Orb
 
           sig do
             override.returns(
-              { unit_rating_key: String, grouping_key: T.nilable(String) }
+              {
+                unit_rating_key: String,
+                default_unit_rate: T.nilable(String),
+                grouping_key: T.nilable(String)
+              }
             )
           end
           def to_hash
