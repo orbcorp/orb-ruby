@@ -42,7 +42,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Unit::billing_mode,
           cadence: Orb::Models::Price::Unit::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Unit::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
@@ -78,7 +78,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Unit::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Unit::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -130,7 +130,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Unit::billing_mode,
           cadence: Orb::Models::Price::Unit::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Unit::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
@@ -161,7 +161,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Unit::billing_mode,
           cadence: Orb::Models::Price::Unit::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Unit::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Unit::conversion_rate_config?,
           created_at: Time,
@@ -213,6 +213,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Unit::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Unit::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Unit::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Unit::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Unit::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Unit::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Unit::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Unit::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Unit::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Unit::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Unit::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -233,7 +286,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Tiered::billing_mode,
           cadence: Orb::Models::Price::Tiered::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Tiered::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
@@ -269,7 +322,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Tiered::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Tiered::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -321,7 +374,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Tiered::billing_mode,
           cadence: Orb::Models::Price::Tiered::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Tiered::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
@@ -352,7 +405,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Tiered::billing_mode,
           cadence: Orb::Models::Price::Tiered::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Tiered::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Tiered::conversion_rate_config?,
           created_at: Time,
@@ -404,6 +457,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Tiered::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Tiered::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Tiered::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Tiered::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Tiered::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Tiered::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Tiered::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Tiered::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Tiered::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Tiered::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -425,7 +531,7 @@ module Orb
           billing_mode: Orb::Models::Price::Bulk::billing_mode,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Bulk::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
@@ -462,7 +568,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Bulk::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Bulk::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -513,7 +619,7 @@ module Orb
           billing_mode: Orb::Models::Price::Bulk::billing_mode,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Bulk::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
@@ -544,7 +650,7 @@ module Orb
           billing_mode: Orb::Models::Price::Bulk::billing_mode,
           bulk_config: Orb::BulkConfig,
           cadence: Orb::Models::Price::Bulk::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Bulk::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Bulk::conversion_rate_config?,
           created_at: Time,
@@ -595,6 +701,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Bulk::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Bulk::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Bulk::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Bulk::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Bulk::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Bulk::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Bulk::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Bulk::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Bulk::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Bulk::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -616,7 +775,7 @@ module Orb
           billing_mode: Orb::Models::Price::BulkWithFilters::billing_mode,
           bulk_with_filters_config: Orb::Price::BulkWithFilters::BulkWithFiltersConfig,
           cadence: Orb::Models::Price::BulkWithFilters::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::BulkWithFilters::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::BulkWithFilters::conversion_rate_config?,
           created_at: Time,
@@ -653,7 +812,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::BulkWithFilters::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::BulkWithFilters::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -704,7 +863,7 @@ module Orb
           billing_mode: Orb::Models::Price::BulkWithFilters::billing_mode,
           bulk_with_filters_config: Orb::Price::BulkWithFilters::BulkWithFiltersConfig,
           cadence: Orb::Models::Price::BulkWithFilters::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::BulkWithFilters::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::BulkWithFilters::conversion_rate_config?,
           created_at: Time,
@@ -735,7 +894,7 @@ module Orb
           billing_mode: Orb::Models::Price::BulkWithFilters::billing_mode,
           bulk_with_filters_config: Orb::Price::BulkWithFilters::BulkWithFiltersConfig,
           cadence: Orb::Models::Price::BulkWithFilters::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::BulkWithFilters::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::BulkWithFilters::conversion_rate_config?,
           created_at: Time,
@@ -838,6 +997,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithFilters::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::field,
+            operator: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::field,
+            operator: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::field,
+            operator: Orb::Models::Price::BulkWithFilters::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::BulkWithFilters::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::BulkWithFilters::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -858,7 +1070,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Package::billing_mode,
           cadence: Orb::Models::Price::Package::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Package::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
@@ -894,7 +1106,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Package::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Package::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -946,7 +1158,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Package::billing_mode,
           cadence: Orb::Models::Price::Package::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Package::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
@@ -977,7 +1189,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Package::billing_mode,
           cadence: Orb::Models::Price::Package::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Package::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Package::conversion_rate_config?,
           created_at: Time,
@@ -1029,6 +1241,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Package::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Package::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Package::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Package::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Package::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Package::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Package::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Package::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Package::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Package::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Package::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -1049,7 +1314,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Matrix::billing_mode,
           cadence: Orb::Models::Price::Matrix::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Matrix::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
@@ -1085,7 +1350,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Matrix::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Matrix::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -1137,7 +1402,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Matrix::billing_mode,
           cadence: Orb::Models::Price::Matrix::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Matrix::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
@@ -1168,7 +1433,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Matrix::billing_mode,
           cadence: Orb::Models::Price::Matrix::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Matrix::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Matrix::conversion_rate_config?,
           created_at: Time,
@@ -1220,6 +1485,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Matrix::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Matrix::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Matrix::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Matrix::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Matrix::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Matrix::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Matrix::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Matrix::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Matrix::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Matrix::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -1240,7 +1558,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ThresholdTotalAmount::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
@@ -1276,7 +1594,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::ThresholdTotalAmount::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::ThresholdTotalAmount::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -1328,7 +1646,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ThresholdTotalAmount::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
@@ -1359,7 +1677,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ThresholdTotalAmount::billing_mode,
           cadence: Orb::Models::Price::ThresholdTotalAmount::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ThresholdTotalAmount::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ThresholdTotalAmount::conversion_rate_config?,
           created_at: Time,
@@ -1409,6 +1727,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::ThresholdTotalAmount::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -1465,7 +1836,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredPackage::billing_mode,
           cadence: Orb::Models::Price::TieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -1501,7 +1872,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredPackage::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::TieredPackage::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -1553,7 +1924,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredPackage::billing_mode,
           cadence: Orb::Models::Price::TieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -1584,7 +1955,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredPackage::billing_mode,
           cadence: Orb::Models::Price::TieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -1634,6 +2005,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::TieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::TieredPackage::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::TieredPackage::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::TieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::TieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredPackage::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -1690,7 +2114,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredWithMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
@@ -1726,7 +2150,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredWithMinimum::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::TieredWithMinimum::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -1778,7 +2202,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredWithMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
@@ -1809,7 +2233,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredWithMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredWithMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredWithMinimum::conversion_rate_config?,
           created_at: Time,
@@ -1859,6 +2283,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredWithMinimum::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -1939,7 +2416,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedTiered::billing_mode,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedTiered::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
@@ -1975,7 +2452,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedTiered::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::GroupedTiered::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -2027,7 +2504,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedTiered::billing_mode,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedTiered::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
@@ -2058,7 +2535,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedTiered::billing_mode,
           cadence: Orb::Models::Price::GroupedTiered::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedTiered::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedTiered::conversion_rate_config?,
           created_at: Time,
@@ -2108,6 +2585,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::GroupedTiered::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedTiered::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::GroupedTiered::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::GroupedTiered::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::GroupedTiered::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedTiered::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::GroupedTiered::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedTiered::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::CompositePriceFilter::operator]
+          end
         end
 
         type grouped_tiered_config =
@@ -2167,7 +2697,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredPackageWithMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
@@ -2203,7 +2733,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::TieredPackageWithMinimum::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -2255,7 +2785,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredPackageWithMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
@@ -2286,7 +2816,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredPackageWithMinimum::billing_mode,
           cadence: Orb::Models::Price::TieredPackageWithMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredPackageWithMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredPackageWithMinimum::conversion_rate_config?,
           created_at: Time,
@@ -2336,6 +2866,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredPackageWithMinimum::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -2407,7 +2990,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::PackageWithAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
@@ -2443,7 +3026,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::PackageWithAllocation::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::PackageWithAllocation::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -2495,7 +3078,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::PackageWithAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
@@ -2526,7 +3109,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::PackageWithAllocation::billing_mode,
           cadence: Orb::Models::Price::PackageWithAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::PackageWithAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::PackageWithAllocation::conversion_rate_config?,
           created_at: Time,
@@ -2578,6 +3161,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::CompositePriceFilter::operator]
+          end
+        end
+
         type package_with_allocation_config =
           { allocation: String, package_amount: String, package_size: String }
 
@@ -2621,7 +3257,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::UnitWithPercent::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
@@ -2657,7 +3293,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::UnitWithPercent::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::UnitWithPercent::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -2709,7 +3345,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::UnitWithPercent::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
@@ -2740,7 +3376,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::UnitWithPercent::billing_mode,
           cadence: Orb::Models::Price::UnitWithPercent::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::UnitWithPercent::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::UnitWithPercent::conversion_rate_config?,
           created_at: Time,
@@ -2792,6 +3428,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::field,
+            operator: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::field,
+            operator: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::field,
+            operator: Orb::Models::Price::UnitWithPercent::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::UnitWithPercent::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -2824,7 +3513,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MatrixWithAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
@@ -2860,7 +3549,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::MatrixWithAllocation::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::MatrixWithAllocation::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -2912,7 +3601,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MatrixWithAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
@@ -2943,7 +3632,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MatrixWithAllocation::billing_mode,
           cadence: Orb::Models::Price::MatrixWithAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MatrixWithAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MatrixWithAllocation::conversion_rate_config?,
           created_at: Time,
@@ -2995,6 +3684,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -3015,7 +3757,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredWithProration::billing_mode,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3051,7 +3793,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::TieredWithProration::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::TieredWithProration::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -3103,7 +3845,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredWithProration::billing_mode,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3134,7 +3876,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::TieredWithProration::billing_mode,
           cadence: Orb::Models::Price::TieredWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::TieredWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::TieredWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3184,6 +3926,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::TieredWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::TieredWithProration::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::TieredWithProration::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::TieredWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::TieredWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::TieredWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::TieredWithProration::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -3238,7 +4033,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::UnitWithProration::billing_mode,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::UnitWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3274,7 +4069,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::UnitWithProration::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::UnitWithProration::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -3326,7 +4121,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::UnitWithProration::billing_mode,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::UnitWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3357,7 +4152,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::UnitWithProration::billing_mode,
           cadence: Orb::Models::Price::UnitWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::UnitWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::UnitWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3409,6 +4204,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::UnitWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::UnitWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::UnitWithProration::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::UnitWithProration::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::UnitWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::UnitWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::UnitWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::UnitWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::UnitWithProration::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -3439,7 +4287,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
@@ -3475,7 +4323,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedAllocation::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::GroupedAllocation::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -3527,7 +4375,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
@@ -3558,7 +4406,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedAllocation::billing_mode,
           cadence: Orb::Models::Price::GroupedAllocation::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedAllocation::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedAllocation::conversion_rate_config?,
           created_at: Time,
@@ -3610,6 +4458,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedAllocation::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::CompositePriceFilter::operator]
+          end
+        end
+
         type grouped_allocation_config =
           {
             allocation: String,
@@ -3658,7 +4559,7 @@ module Orb
           billing_mode: Orb::Models::Price::BulkWithProration::billing_mode,
           bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
           cadence: Orb::Models::Price::BulkWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::BulkWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3695,7 +4596,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::BulkWithProration::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::BulkWithProration::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -3746,7 +4647,7 @@ module Orb
           billing_mode: Orb::Models::Price::BulkWithProration::billing_mode,
           bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
           cadence: Orb::Models::Price::BulkWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::BulkWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3777,7 +4678,7 @@ module Orb
           billing_mode: Orb::Models::Price::BulkWithProration::billing_mode,
           bulk_with_proration_config: Orb::Price::BulkWithProration::BulkWithProrationConfig,
           cadence: Orb::Models::Price::BulkWithProration::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::BulkWithProration::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::BulkWithProration::conversion_rate_config?,
           created_at: Time,
@@ -3860,6 +4761,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::BulkWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::BulkWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::BulkWithProration::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::BulkWithProration::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::BulkWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::BulkWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::BulkWithProration::CompositePriceFilter::field,
+            operator: Orb::Models::Price::BulkWithProration::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::CompositePriceFilter::operator]
+          end
+        end
+
         type price_type = :usage_price | :fixed_price | :composite_price
 
         module PriceType
@@ -3880,7 +4834,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
@@ -3916,7 +4870,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -3968,7 +4922,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
@@ -3999,7 +4953,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithProratedMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithProratedMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithProratedMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithProratedMinimum::conversion_rate_config?,
           created_at: Time,
@@ -4051,6 +5005,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::CompositePriceFilter::operator]
+          end
+        end
+
         type grouped_with_prorated_minimum_config =
           { grouping_key: String, minimum: String, unit_rate: String }
 
@@ -4094,7 +5101,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
@@ -4130,7 +5137,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -4182,7 +5189,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
@@ -4213,7 +5220,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithMeteredMinimum::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMeteredMinimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithMeteredMinimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithMeteredMinimum::conversion_rate_config?,
           created_at: Time,
@@ -4263,6 +5270,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::CompositePriceFilter::operator]
+          end
         end
 
         type grouped_with_metered_minimum_config =
@@ -4355,7 +5415,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
           created_at: Time,
@@ -4391,7 +5451,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -4443,7 +5503,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
           created_at: Time,
@@ -4474,7 +5534,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedWithMinMaxThresholds::billing_mode,
           cadence: Orb::Models::Price::GroupedWithMinMaxThresholds::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedWithMinMaxThresholds::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
           created_at: Time,
@@ -4524,6 +5584,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::CompositePriceFilter::operator]
+          end
         end
 
         type grouped_with_min_max_thresholds_config =
@@ -4578,7 +5691,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MatrixWithDisplayName::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
@@ -4614,7 +5727,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::MatrixWithDisplayName::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::MatrixWithDisplayName::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -4666,7 +5779,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MatrixWithDisplayName::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
@@ -4697,7 +5810,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MatrixWithDisplayName::billing_mode,
           cadence: Orb::Models::Price::MatrixWithDisplayName::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MatrixWithDisplayName::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MatrixWithDisplayName::conversion_rate_config?,
           created_at: Time,
@@ -4747,6 +5860,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::CompositePriceFilter::operator]
+          end
         end
 
         type matrix_with_display_name_config =
@@ -4818,7 +5984,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedTieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -4854,7 +6020,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::GroupedTieredPackage::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::GroupedTieredPackage::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -4906,7 +6072,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedTieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -4937,7 +6103,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::GroupedTieredPackage::billing_mode,
           cadence: Orb::Models::Price::GroupedTieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::GroupedTieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::GroupedTieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -4987,6 +6153,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::CompositePriceFilter::operator]
+          end
         end
 
         type grouped_tiered_package_config =
@@ -5048,7 +6267,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MaxGroupTieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -5084,7 +6303,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::MaxGroupTieredPackage::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -5136,7 +6355,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MaxGroupTieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -5167,7 +6386,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::MaxGroupTieredPackage::billing_mode,
           cadence: Orb::Models::Price::MaxGroupTieredPackage::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::MaxGroupTieredPackage::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::MaxGroupTieredPackage::conversion_rate_config?,
           created_at: Time,
@@ -5217,6 +6436,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::field,
+            operator: Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::CompositePriceFilter::operator]
+          end
         end
 
         type max_group_tiered_package_config =
@@ -5281,7 +6553,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
@@ -5317,7 +6589,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -5369,7 +6641,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
@@ -5400,7 +6672,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ScalableMatrixWithUnitPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ScalableMatrixWithUnitPricing::conversion_rate_config?,
           created_at: Time,
@@ -5450,6 +6722,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithUnitPricing::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -5536,7 +6861,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
@@ -5572,7 +6897,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -5624,7 +6949,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
@@ -5655,7 +6980,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::ScalableMatrixWithTieredPricing::billing_mode,
           cadence: Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::ScalableMatrixWithTieredPricing::conversion_rate_config?,
           created_at: Time,
@@ -5705,6 +7030,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::field,
+            operator: Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::ScalableMatrixWithTieredPricing::CompositePriceFilter::operator]
+          end
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price
@@ -5801,7 +7179,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::CumulativeGroupedBulk::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
@@ -5837,7 +7215,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::CumulativeGroupedBulk::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -5889,7 +7267,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::CumulativeGroupedBulk::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
@@ -5920,7 +7298,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::CumulativeGroupedBulk::billing_mode,
           cadence: Orb::Models::Price::CumulativeGroupedBulk::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::CumulativeGroupedBulk::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::CumulativeGroupedBulk::conversion_rate_config?,
           created_at: Time,
@@ -5970,6 +7348,59 @@ module Orb
           CUSTOM: :custom
 
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::cadence]
+        end
+
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::field,
+            operator: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::field,
+            operator: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::field,
+            operator: Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::CompositePriceFilter::operator]
+          end
         end
 
         type cumulative_grouped_bulk_config =
@@ -6041,7 +7472,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Minimum::billing_mode,
           cadence: Orb::Models::Price::Minimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Minimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Minimum::conversion_rate_config?,
           created_at: Time,
@@ -6077,7 +7508,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Minimum::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Minimum::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -6129,7 +7560,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Minimum::billing_mode,
           cadence: Orb::Models::Price::Minimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Minimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Minimum::conversion_rate_config?,
           created_at: Time,
@@ -6160,7 +7591,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Minimum::billing_mode,
           cadence: Orb::Models::Price::Minimum::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Minimum::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Minimum::conversion_rate_config?,
           created_at: Time,
@@ -6212,6 +7643,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Minimum::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Minimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Minimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Minimum::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Minimum::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Minimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Minimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Minimum::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Minimum::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Minimum::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Minimum::CompositePriceFilter::operator]
+          end
+        end
+
         type minimum_config = { minimum_amount: String, prorated: bool }
 
         class MinimumConfig < Orb::Internal::Type::BaseModel
@@ -6246,7 +7730,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Percent::billing_mode,
           cadence: Orb::Models::Price::Percent::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Percent::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Percent::conversion_rate_config?,
           created_at: Time,
@@ -6282,7 +7766,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::Percent::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::Percent::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -6334,7 +7818,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Percent::billing_mode,
           cadence: Orb::Models::Price::Percent::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Percent::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Percent::conversion_rate_config?,
           created_at: Time,
@@ -6365,7 +7849,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::Percent::billing_mode,
           cadence: Orb::Models::Price::Percent::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::Percent::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::Percent::conversion_rate_config?,
           created_at: Time,
@@ -6417,6 +7901,59 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::Percent::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::Percent::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Percent::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::Percent::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::Percent::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::Percent::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Percent::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::Percent::CompositePriceFilter::field,
+            operator: Orb::Models::Price::Percent::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::Percent::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::Percent::CompositePriceFilter::operator]
+          end
+        end
+
         type percent_config = { percent: Float }
 
         class PercentConfig < Orb::Internal::Type::BaseModel
@@ -6447,7 +7984,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::EventOutput::billing_mode,
           cadence: Orb::Models::Price::EventOutput::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::EventOutput::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::EventOutput::conversion_rate_config?,
           created_at: Time,
@@ -6483,7 +8020,7 @@ module Orb
 
         attr_accessor cadence: Orb::Models::Price::EventOutput::cadence
 
-        attr_accessor composite_price_filters: ::Array[Orb::TransformPriceFilter]?
+        attr_accessor composite_price_filters: ::Array[Orb::Price::EventOutput::CompositePriceFilter]?
 
         attr_accessor conversion_rate: Float?
 
@@ -6535,7 +8072,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::EventOutput::billing_mode,
           cadence: Orb::Models::Price::EventOutput::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::EventOutput::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::EventOutput::conversion_rate_config?,
           created_at: Time,
@@ -6566,7 +8103,7 @@ module Orb
           billing_cycle_configuration: Orb::BillingCycleConfiguration,
           billing_mode: Orb::Models::Price::EventOutput::billing_mode,
           cadence: Orb::Models::Price::EventOutput::cadence,
-          composite_price_filters: ::Array[Orb::TransformPriceFilter]?,
+          composite_price_filters: ::Array[Orb::Price::EventOutput::CompositePriceFilter]?,
           conversion_rate: Float?,
           conversion_rate_config: Orb::Models::Price::EventOutput::conversion_rate_config?,
           created_at: Time,
@@ -6618,20 +8155,84 @@ module Orb
           def self?.values: -> ::Array[Orb::Models::Price::EventOutput::cadence]
         end
 
+        type composite_price_filter =
+          {
+            field: Orb::Models::Price::EventOutput::CompositePriceFilter::field,
+            operator: Orb::Models::Price::EventOutput::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Price::EventOutput::CompositePriceFilter::field
+
+          attr_accessor operator: Orb::Models::Price::EventOutput::CompositePriceFilter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Price::EventOutput::CompositePriceFilter::field,
+            operator: Orb::Models::Price::EventOutput::CompositePriceFilter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Price::EventOutput::CompositePriceFilter::field,
+            operator: Orb::Models::Price::EventOutput::CompositePriceFilter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Price::EventOutput::CompositePriceFilter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Price::EventOutput::CompositePriceFilter::operator]
+          end
+        end
+
         type event_output_config =
-          { unit_rating_key: String, grouping_key: String? }
+          {
+            unit_rating_key: String,
+            default_unit_rate: String?,
+            grouping_key: String?
+          }
 
         class EventOutputConfig < Orb::Internal::Type::BaseModel
           attr_accessor unit_rating_key: String
+
+          attr_accessor default_unit_rate: String?
 
           attr_accessor grouping_key: String?
 
           def initialize: (
             unit_rating_key: String,
+            ?default_unit_rate: String?,
             ?grouping_key: String?
           ) -> void
 
-          def to_hash: -> { unit_rating_key: String, grouping_key: String? }
+          def to_hash: -> {
+            unit_rating_key: String,
+            default_unit_rate: String?,
+            grouping_key: String?
+          }
         end
 
         type price_type = :usage_price | :fixed_price | :composite_price

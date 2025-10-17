@@ -584,8 +584,6 @@ module Orb
 
   TopLevelPingParams = Orb::Models::TopLevelPingParams
 
-  TransformPriceFilter = Orb::Models::TransformPriceFilter
-
   TrialDiscount = Orb::Models::TrialDiscount
 
   UnitConfig = Orb::Models::UnitConfig

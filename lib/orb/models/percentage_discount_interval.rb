@@ -23,8 +23,8 @@ module Orb
       # @!attribute filters
       #   The filters that determine which prices this discount interval applies to.
       #
-      #   @return [Array<Orb::Models::TransformPriceFilter>]
-      required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::TransformPriceFilter] }
+      #   @return [Array<Orb::Models::PercentageDiscountInterval::Filter>]
+      required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::PercentageDiscountInterval::Filter] }
 
       # @!attribute percentage_discount
       #   Only available if discount_type is `percentage`.This is a number between 0
@@ -49,7 +49,7 @@ module Orb
       #
       #   @param end_date [Time, nil] The end date of the discount interval.
       #
-      #   @param filters [Array<Orb::Models::TransformPriceFilter>] The filters that determine which prices this discount interval applies to.
+      #   @param filters [Array<Orb::Models::PercentageDiscountInterval::Filter>] The filters that determine which prices this discount interval applies to.
       #
       #   @param percentage_discount [Float] Only available if discount_type is `percentage`.This is a number between 0 and 1
       #
@@ -63,6 +63,62 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class Filter < Orb::Internal::Type::BaseModel
+        # @!attribute field
+        #   The property of the price to filter on.
+        #
+        #   @return [Symbol, Orb::Models::PercentageDiscountInterval::Filter::Field]
+        required :field, enum: -> { Orb::PercentageDiscountInterval::Filter::Field }
+
+        # @!attribute operator
+        #   Should prices that match the filter be included or excluded.
+        #
+        #   @return [Symbol, Orb::Models::PercentageDiscountInterval::Filter::Operator]
+        required :operator, enum: -> { Orb::PercentageDiscountInterval::Filter::Operator }
+
+        # @!attribute values
+        #   The IDs or values that match this filter.
+        #
+        #   @return [Array<String>]
+        required :values, Orb::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(field:, operator:, values:)
+        #   @param field [Symbol, Orb::Models::PercentageDiscountInterval::Filter::Field] The property of the price to filter on.
+        #
+        #   @param operator [Symbol, Orb::Models::PercentageDiscountInterval::Filter::Operator] Should prices that match the filter be included or excluded.
+        #
+        #   @param values [Array<String>] The IDs or values that match this filter.
+
+        # The property of the price to filter on.
+        #
+        # @see Orb::Models::PercentageDiscountInterval::Filter#field
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          PRICE_ID = :price_id
+          ITEM_ID = :item_id
+          PRICE_TYPE = :price_type
+          CURRENCY = :currency
+          PRICING_UNIT_ID = :pricing_unit_id
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Should prices that match the filter be included or excluded.
+        #
+        # @see Orb::Models::PercentageDiscountInterval::Filter#operator
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          INCLUDES = :includes
+          EXCLUDES = :excludes
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

@@ -25,7 +25,7 @@ module Orb
       attr_accessor :applies_to_price_ids
 
       # The filters that determine which prices to apply this adjustment to.
-      sig { returns(T::Array[Orb::TransformPriceFilter]) }
+      sig { returns(T::Array[Orb::MonetaryMaximumAdjustment::Filter]) }
       attr_accessor :filters
 
       # True for adjustments that apply to an entire invoice, false for adjustments that
@@ -54,7 +54,7 @@ module Orb
             Orb::MonetaryMaximumAdjustment::AdjustmentType::OrSymbol,
           amount: String,
           applies_to_price_ids: T::Array[String],
-          filters: T::Array[Orb::TransformPriceFilter::OrHash],
+          filters: T::Array[Orb::MonetaryMaximumAdjustment::Filter::OrHash],
           is_invoice_level: T::Boolean,
           maximum_amount: String,
           reason: T.nilable(String),
@@ -92,7 +92,7 @@ module Orb
               Orb::MonetaryMaximumAdjustment::AdjustmentType::TaggedSymbol,
             amount: String,
             applies_to_price_ids: T::Array[String],
-            filters: T::Array[Orb::TransformPriceFilter],
+            filters: T::Array[Orb::MonetaryMaximumAdjustment::Filter],
             is_invoice_level: T::Boolean,
             maximum_amount: String,
             reason: T.nilable(String),
@@ -126,6 +126,145 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class Filter < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::MonetaryMaximumAdjustment::Filter,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The property of the price to filter on.
+        sig do
+          returns(Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol)
+        end
+        attr_accessor :field
+
+        # Should prices that match the filter be included or excluded.
+        sig do
+          returns(
+            Orb::MonetaryMaximumAdjustment::Filter::Operator::TaggedSymbol
+          )
+        end
+        attr_accessor :operator
+
+        # The IDs or values that match this filter.
+        sig { returns(T::Array[String]) }
+        attr_accessor :values
+
+        sig do
+          params(
+            field: Orb::MonetaryMaximumAdjustment::Filter::Field::OrSymbol,
+            operator:
+              Orb::MonetaryMaximumAdjustment::Filter::Operator::OrSymbol,
+            values: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The property of the price to filter on.
+          field:,
+          # Should prices that match the filter be included or excluded.
+          operator:,
+          # The IDs or values that match this filter.
+          values:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              field:
+                Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol,
+              operator:
+                Orb::MonetaryMaximumAdjustment::Filter::Operator::TaggedSymbol,
+              values: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The property of the price to filter on.
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::MonetaryMaximumAdjustment::Filter::Field)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PRICE_ID =
+            T.let(
+              :price_id,
+              Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol
+            )
+          ITEM_ID =
+            T.let(
+              :item_id,
+              Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol
+            )
+          PRICE_TYPE =
+            T.let(
+              :price_type,
+              Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol
+            )
+          CURRENCY =
+            T.let(
+              :currency,
+              Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol
+            )
+          PRICING_UNIT_ID =
+            T.let(
+              :pricing_unit_id,
+              Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::MonetaryMaximumAdjustment::Filter::Field::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Should prices that match the filter be included or excluded.
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::MonetaryMaximumAdjustment::Filter::Operator)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INCLUDES =
+            T.let(
+              :includes,
+              Orb::MonetaryMaximumAdjustment::Filter::Operator::TaggedSymbol
+            )
+          EXCLUDES =
+            T.let(
+              :excludes,
+              Orb::MonetaryMaximumAdjustment::Filter::Operator::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::MonetaryMaximumAdjustment::Filter::Operator::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end
