@@ -4,6 +4,9 @@ module Orb
       {
         description: String?,
         mark_as_paid: bool?,
+        payment_external_id: String?,
+        payment_notes: String?,
+        payment_received_date: Date?,
         previously_collected_amount: String?
       }
       & Orb::Internal::Type::request_parameters
@@ -16,11 +19,20 @@ module Orb
 
       attr_accessor mark_as_paid: bool?
 
+      attr_accessor payment_external_id: String?
+
+      attr_accessor payment_notes: String?
+
+      attr_accessor payment_received_date: Date?
+
       attr_accessor previously_collected_amount: String?
 
       def initialize: (
         ?description: String?,
         ?mark_as_paid: bool?,
+        ?payment_external_id: String?,
+        ?payment_notes: String?,
+        ?payment_received_date: Date?,
         ?previously_collected_amount: String?,
         ?request_options: Orb::request_opts
       ) -> void
@@ -28,6 +40,9 @@ module Orb
       def to_hash: -> {
         description: String?,
         mark_as_paid: bool?,
+        payment_external_id: String?,
+        payment_notes: String?,
+        payment_received_date: Date?,
         previously_collected_amount: String?,
         request_options: Orb::RequestOptions
       }
