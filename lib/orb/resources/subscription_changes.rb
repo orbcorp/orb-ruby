@@ -37,13 +37,19 @@ module Orb
       # is passed with a request to this endpoint, any eligible invoices that were
       # created will be issued immediately if they only contain in-advance fees.
       #
-      # @overload apply(subscription_change_id, description: nil, mark_as_paid: nil, previously_collected_amount: nil, request_options: {})
+      # @overload apply(subscription_change_id, description: nil, mark_as_paid: nil, payment_external_id: nil, payment_notes: nil, payment_received_date: nil, previously_collected_amount: nil, request_options: {})
       #
       # @param subscription_change_id [String]
       #
       # @param description [String, nil] Description to apply to the balance transaction representing this credit.
       #
       # @param mark_as_paid [Boolean, nil] Mark all pending invoices that are payable as paid. If amount is also provided,
+      #
+      # @param payment_external_id [String, nil] An optional external ID to associate with the payment. Only applicable when mark
+      #
+      # @param payment_notes [String, nil] Optional notes about the payment. Only applicable when mark_as_paid is true.
+      #
+      # @param payment_received_date [Date, nil] A date string to specify the date the payment was received. Only applicable when
       #
       # @param previously_collected_amount [String, nil] Amount already collected to apply to the customer's balance. If mark_as_paid is
       #
