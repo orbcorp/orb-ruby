@@ -10,6 +10,9 @@ module Orb
         String subscription_change_id,
         ?description: String?,
         ?mark_as_paid: bool?,
+        ?payment_external_id: String?,
+        ?payment_notes: String?,
+        ?payment_received_date: Date?,
         ?previously_collected_amount: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::SubscriptionChangeApplyResponse
