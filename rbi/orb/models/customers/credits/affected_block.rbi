@@ -16,17 +16,13 @@ module Orb
           sig { returns(String) }
           attr_accessor :id
 
-          sig do
-            returns(
-              T.nilable(
-                T::Array[Orb::Customers::Credits::AffectedBlock::BlockFilter]
-              )
-            )
-          end
-          attr_accessor :block_filters
-
           sig { returns(T.nilable(Time)) }
           attr_accessor :expiry_date
+
+          sig do
+            returns(T::Array[Orb::Customers::Credits::AffectedBlock::Filter])
+          end
+          attr_accessor :filters
 
           sig { returns(T.nilable(String)) }
           attr_accessor :per_unit_cost_basis
@@ -34,30 +30,24 @@ module Orb
           sig do
             params(
               id: String,
-              block_filters:
-                T.nilable(
-                  T::Array[
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::OrHash
-                  ]
-                ),
               expiry_date: T.nilable(Time),
+              filters:
+                T::Array[
+                  Orb::Customers::Credits::AffectedBlock::Filter::OrHash
+                ],
               per_unit_cost_basis: T.nilable(String)
             ).returns(T.attached_class)
           end
-          def self.new(id:, block_filters:, expiry_date:, per_unit_cost_basis:)
+          def self.new(id:, expiry_date:, filters:, per_unit_cost_basis:)
           end
 
           sig do
             override.returns(
               {
                 id: String,
-                block_filters:
-                  T.nilable(
-                    T::Array[
-                      Orb::Customers::Credits::AffectedBlock::BlockFilter
-                    ]
-                  ),
                 expiry_date: T.nilable(Time),
+                filters:
+                  T::Array[Orb::Customers::Credits::AffectedBlock::Filter],
                 per_unit_cost_basis: T.nilable(String)
               }
             )
@@ -65,11 +55,11 @@ module Orb
           def to_hash
           end
 
-          class BlockFilter < Orb::Internal::Type::BaseModel
+          class Filter < Orb::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter,
+                  Orb::Customers::Credits::AffectedBlock::Filter,
                   Orb::Internal::AnyHash
                 )
               end
@@ -77,7 +67,7 @@ module Orb
             # The property of the price to filter on.
             sig do
               returns(
-                Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
               )
             end
             attr_accessor :field
@@ -85,7 +75,7 @@ module Orb
             # Should prices that match the filter be included or excluded.
             sig do
               returns(
-                Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator::TaggedSymbol
+                Orb::Customers::Credits::AffectedBlock::Filter::Operator::TaggedSymbol
               )
             end
             attr_accessor :operator
@@ -97,9 +87,9 @@ module Orb
             sig do
               params(
                 field:
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::OrSymbol,
+                  Orb::Customers::Credits::AffectedBlock::Filter::Field::OrSymbol,
                 operator:
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator::OrSymbol,
+                  Orb::Customers::Credits::AffectedBlock::Filter::Operator::OrSymbol,
                 values: T::Array[String]
               ).returns(T.attached_class)
             end
@@ -117,9 +107,9 @@ module Orb
               override.returns(
                 {
                   field:
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol,
+                    Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol,
                   operator:
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator::TaggedSymbol,
+                    Orb::Customers::Credits::AffectedBlock::Filter::Operator::TaggedSymbol,
                   values: T::Array[String]
                 }
               )
@@ -135,7 +125,7 @@ module Orb
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::Field
+                    Orb::Customers::Credits::AffectedBlock::Filter::Field
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -143,33 +133,33 @@ module Orb
               PRICE_ID =
                 T.let(
                   :price_id,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
                 )
               ITEM_ID =
                 T.let(
                   :item_id,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
                 )
               PRICE_TYPE =
                 T.let(
                   :price_type,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
                 )
               CURRENCY =
                 T.let(
                   :currency,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
                 )
               PRICING_UNIT_ID =
                 T.let(
                   :pricing_unit_id,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::Field::TaggedSymbol
+                    Orb::Customers::Credits::AffectedBlock::Filter::Field::TaggedSymbol
                   ]
                 )
               end
@@ -185,7 +175,7 @@ module Orb
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator
+                    Orb::Customers::Credits::AffectedBlock::Filter::Operator
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -193,18 +183,18 @@ module Orb
               INCLUDES =
                 T.let(
                   :includes,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Operator::TaggedSymbol
                 )
               EXCLUDES =
                 T.let(
                   :excludes,
-                  Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator::TaggedSymbol
+                  Orb::Customers::Credits::AffectedBlock::Filter::Operator::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator::TaggedSymbol
+                    Orb::Customers::Credits::AffectedBlock::Filter::Operator::TaggedSymbol
                   ]
                 )
               end

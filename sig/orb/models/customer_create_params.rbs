@@ -132,20 +132,63 @@ module Orb
         | Orb::NewTaxJarConfiguration
         | Orb::NewSphereConfiguration
         | Orb::CustomerCreateParams::TaxConfiguration::Numeral
+        | Orb::CustomerCreateParams::TaxConfiguration::Anrok
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
 
-        type numeral = { tax_exempt: bool, tax_provider: :numeral }
+        type numeral =
+          {
+            tax_exempt: bool,
+            tax_provider: :numeral,
+            automatic_tax_enabled: bool?
+          }
 
         class Numeral < Orb::Internal::Type::BaseModel
           attr_accessor tax_exempt: bool
 
           attr_accessor tax_provider: :numeral
 
-          def initialize: (tax_exempt: bool, ?tax_provider: :numeral) -> void
+          attr_accessor automatic_tax_enabled: bool?
 
-          def to_hash: -> { tax_exempt: bool, tax_provider: :numeral }
+          def initialize: (
+            tax_exempt: bool,
+            ?automatic_tax_enabled: bool?,
+            ?tax_provider: :numeral
+          ) -> void
+
+          def to_hash: -> {
+            tax_exempt: bool,
+            tax_provider: :numeral,
+            automatic_tax_enabled: bool?
+          }
+        end
+
+        type anrok =
+          {
+            tax_exempt: bool,
+            tax_provider: :anrok,
+            automatic_tax_enabled: bool?
+          }
+
+        class Anrok < Orb::Internal::Type::BaseModel
+          attr_accessor tax_exempt: bool
+
+          attr_accessor tax_provider: :anrok
+
+          attr_accessor automatic_tax_enabled: bool?
+
+          def initialize: (
+            tax_exempt: bool,
+            ?automatic_tax_enabled: bool?,
+            ?tax_provider: :anrok
+          ) -> void
+
+          def to_hash: -> {
+            tax_exempt: bool,
+            tax_provider: :anrok,
+            automatic_tax_enabled: bool?
+          }
         end
 
         def self?.variants: -> ::Array[Orb::Models::CustomerCreateParams::tax_configuration]

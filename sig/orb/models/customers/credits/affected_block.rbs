@@ -5,57 +5,57 @@ module Orb
         type affected_block =
           {
             id: String,
-            block_filters: ::Array[Orb::Customers::Credits::AffectedBlock::BlockFilter]?,
             expiry_date: Time?,
+            filters: ::Array[Orb::Customers::Credits::AffectedBlock::Filter],
             per_unit_cost_basis: String?
           }
 
         class AffectedBlock < Orb::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor block_filters: ::Array[Orb::Customers::Credits::AffectedBlock::BlockFilter]?
-
           attr_accessor expiry_date: Time?
+
+          attr_accessor filters: ::Array[Orb::Customers::Credits::AffectedBlock::Filter]
 
           attr_accessor per_unit_cost_basis: String?
 
           def initialize: (
             id: String,
-            block_filters: ::Array[Orb::Customers::Credits::AffectedBlock::BlockFilter]?,
             expiry_date: Time?,
+            filters: ::Array[Orb::Customers::Credits::AffectedBlock::Filter],
             per_unit_cost_basis: String?
           ) -> void
 
           def to_hash: -> {
             id: String,
-            block_filters: ::Array[Orb::Customers::Credits::AffectedBlock::BlockFilter]?,
             expiry_date: Time?,
+            filters: ::Array[Orb::Customers::Credits::AffectedBlock::Filter],
             per_unit_cost_basis: String?
           }
 
-          type block_filter =
+          type filter =
             {
-              field: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::field,
-              operator: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::operator,
+              field: Orb::Models::Customers::Credits::AffectedBlock::Filter::field,
+              operator: Orb::Models::Customers::Credits::AffectedBlock::Filter::operator,
               values: ::Array[String]
             }
 
-          class BlockFilter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::field
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Customers::Credits::AffectedBlock::Filter::field
 
-            attr_accessor operator: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::operator
+            attr_accessor operator: Orb::Models::Customers::Credits::AffectedBlock::Filter::operator
 
             attr_accessor values: ::Array[String]
 
             def initialize: (
-              field: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::field,
-              operator: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::operator,
+              field: Orb::Models::Customers::Credits::AffectedBlock::Filter::field,
+              operator: Orb::Models::Customers::Credits::AffectedBlock::Filter::operator,
               values: ::Array[String]
             ) -> void
 
             def to_hash: -> {
-              field: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::field,
-              operator: Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::operator,
+              field: Orb::Models::Customers::Credits::AffectedBlock::Filter::field,
+              operator: Orb::Models::Customers::Credits::AffectedBlock::Filter::operator,
               values: ::Array[String]
             }
 
@@ -71,7 +71,7 @@ module Orb
               CURRENCY: :currency
               PRICING_UNIT_ID: :pricing_unit_id
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::field]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::AffectedBlock::Filter::field]
             end
 
             type operator = :includes | :excludes
@@ -82,7 +82,7 @@ module Orb
               INCLUDES: :includes
               EXCLUDES: :excludes
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::operator]
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::AffectedBlock::Filter::operator]
             end
           end
         end

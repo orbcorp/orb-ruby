@@ -34,6 +34,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         tax_id: Orb::CustomerTaxID | nil,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
+        automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
       }
     end
@@ -70,6 +71,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         tax_id: Orb::CustomerTaxID | nil,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
+        automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
       }
     end
@@ -113,6 +115,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         tax_id: Orb::CustomerTaxID | nil,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
+        automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
       }
     end
@@ -157,6 +160,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         tax_id: Orb::CustomerTaxID | nil,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
+        automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
       }
     end
@@ -193,6 +197,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         tax_id: Orb::CustomerTaxID | nil,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
+        automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
       }
     end
@@ -246,6 +251,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         tax_id: Orb::CustomerTaxID | nil,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
+        automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
       }
     end
