@@ -37,6 +37,14 @@ module Orb
       #   @return [Boolean, nil]
       optional :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute automatic_tax_enabled
+      #   Whether automatic tax calculation is enabled for this customer. When null,
+      #   inherits from account-level setting. When true or false, overrides the account
+      #   setting.
+      #
+      #   @return [Boolean, nil]
+      optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute billing_address
       #
       #   @return [Orb::Models::AddressInput, nil]
@@ -121,7 +129,7 @@ module Orb
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, nil]
+      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateParams::TaxConfiguration::Anrok, nil]
       optional :tax_configuration, union: -> { Orb::CustomerUpdateParams::TaxConfiguration }, nil?: true
 
       # @!attribute tax_id
@@ -273,7 +281,7 @@ module Orb
       #   @return [Orb::Models::CustomerTaxID, nil]
       optional :tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
-      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, automatic_tax_enabled: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateParams} for more details.
       #
@@ -284,6 +292,8 @@ module Orb
       #   @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
       #
       #   @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
+      #
+      #   @param automatic_tax_enabled [Boolean, nil] Whether automatic tax calculation is enabled for this customer. When null, inher
       #
       #   @param billing_address [Orb::Models::AddressInput, nil]
       #
@@ -309,7 +319,7 @@ module Orb
       #
       #   @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, nil]
+      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateParams::TaxConfiguration::Anrok, nil]
       #
       #   @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -348,6 +358,8 @@ module Orb
 
         variant :numeral, -> { Orb::CustomerUpdateParams::TaxConfiguration::Numeral }
 
+        variant :anrok, -> { Orb::CustomerUpdateParams::TaxConfiguration::Anrok }
+
         class Numeral < Orb::Internal::Type::BaseModel
           # @!attribute tax_exempt
           #
@@ -359,13 +371,55 @@ module Orb
           #   @return [Symbol, :numeral]
           required :tax_provider, const: :numeral
 
-          # @!method initialize(tax_exempt:, tax_provider: :numeral)
+          # @!attribute automatic_tax_enabled
+          #   Whether to automatically calculate tax for this customer. When null, inherits
+          #   from account-level setting. When true or false, overrides the account setting.
+          #
+          #   @return [Boolean, nil]
+          optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!method initialize(tax_exempt:, automatic_tax_enabled: nil, tax_provider: :numeral)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral} for more details.
+          #
           #   @param tax_exempt [Boolean]
+          #
+          #   @param automatic_tax_enabled [Boolean, nil] Whether to automatically calculate tax for this customer. When null, inherits fr
+          #
           #   @param tax_provider [Symbol, :numeral]
         end
 
+        class Anrok < Orb::Internal::Type::BaseModel
+          # @!attribute tax_exempt
+          #
+          #   @return [Boolean]
+          required :tax_exempt, Orb::Internal::Type::Boolean
+
+          # @!attribute tax_provider
+          #
+          #   @return [Symbol, :anrok]
+          required :tax_provider, const: :anrok
+
+          # @!attribute automatic_tax_enabled
+          #   Whether to automatically calculate tax for this customer. When null, inherits
+          #   from account-level setting. When true or false, overrides the account setting.
+          #
+          #   @return [Boolean, nil]
+          optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!method initialize(tax_exempt:, automatic_tax_enabled: nil, tax_provider: :anrok)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::CustomerUpdateParams::TaxConfiguration::Anrok} for more details.
+          #
+          #   @param tax_exempt [Boolean]
+          #
+          #   @param automatic_tax_enabled [Boolean, nil] Whether to automatically calculate tax for this customer. When null, inherits fr
+          #
+          #   @param tax_provider [Symbol, :anrok]
+        end
+
         # @!method self.variants
-        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral)]
+        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateParams::TaxConfiguration::Anrok)]
       end
     end
   end

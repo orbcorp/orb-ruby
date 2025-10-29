@@ -14,6 +14,11 @@ module Orb
       sig { returns(Orb::NewAvalaraTaxConfiguration::TaxProvider::OrSymbol) }
       attr_accessor :tax_provider
 
+      # Whether to automatically calculate tax for this customer. When null, inherits
+      # from account-level setting. When true or false, overrides the account setting.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :automatic_tax_enabled
+
       sig { returns(T.nilable(String)) }
       attr_accessor :tax_exemption_code
 
@@ -21,10 +26,18 @@ module Orb
         params(
           tax_exempt: T::Boolean,
           tax_provider: Orb::NewAvalaraTaxConfiguration::TaxProvider::OrSymbol,
+          automatic_tax_enabled: T.nilable(T::Boolean),
           tax_exemption_code: T.nilable(String)
         ).returns(T.attached_class)
       end
-      def self.new(tax_exempt:, tax_provider:, tax_exemption_code: nil)
+      def self.new(
+        tax_exempt:,
+        tax_provider:,
+        # Whether to automatically calculate tax for this customer. When null, inherits
+        # from account-level setting. When true or false, overrides the account setting.
+        automatic_tax_enabled: nil,
+        tax_exemption_code: nil
+      )
       end
 
       sig do
@@ -33,6 +46,7 @@ module Orb
             tax_exempt: T::Boolean,
             tax_provider:
               Orb::NewAvalaraTaxConfiguration::TaxProvider::OrSymbol,
+            automatic_tax_enabled: T.nilable(T::Boolean),
             tax_exemption_code: T.nilable(String)
           }
         )

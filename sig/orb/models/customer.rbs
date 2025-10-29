@@ -24,6 +24,7 @@ module Orb
         tax_id: Orb::CustomerTaxID?,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
+        automatic_tax_enabled: bool?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
       }
 
@@ -72,6 +73,8 @@ module Orb
 
       attr_accessor accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?
 
+      attr_accessor automatic_tax_enabled: bool?
+
       attr_accessor reporting_configuration: Orb::Customer::ReportingConfiguration?
 
       def initialize: (
@@ -97,6 +100,7 @@ module Orb
         tax_id: Orb::CustomerTaxID?,
         timezone: String,
         ?accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
+        ?automatic_tax_enabled: bool?,
         ?reporting_configuration: Orb::Customer::ReportingConfiguration?
       ) -> void
 
@@ -123,6 +127,7 @@ module Orb
         tax_id: Orb::CustomerTaxID?,
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
+        automatic_tax_enabled: bool?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
       }
 

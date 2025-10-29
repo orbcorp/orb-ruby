@@ -117,7 +117,7 @@ module Orb
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, nil]
+      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, Orb::Models::CustomerCreateParams::TaxConfiguration::Anrok, nil]
       optional :tax_configuration, union: -> { Orb::CustomerCreateParams::TaxConfiguration }, nil?: true
 
       # @!attribute tax_id
@@ -313,7 +313,7 @@ module Orb
       #
       #   @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, nil]
+      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, Orb::Models::CustomerCreateParams::TaxConfiguration::Anrok, nil]
       #
       #   @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -350,6 +350,8 @@ module Orb
 
         variant :numeral, -> { Orb::CustomerCreateParams::TaxConfiguration::Numeral }
 
+        variant :anrok, -> { Orb::CustomerCreateParams::TaxConfiguration::Anrok }
+
         class Numeral < Orb::Internal::Type::BaseModel
           # @!attribute tax_exempt
           #
@@ -361,13 +363,55 @@ module Orb
           #   @return [Symbol, :numeral]
           required :tax_provider, const: :numeral
 
-          # @!method initialize(tax_exempt:, tax_provider: :numeral)
+          # @!attribute automatic_tax_enabled
+          #   Whether to automatically calculate tax for this customer. When null, inherits
+          #   from account-level setting. When true or false, overrides the account setting.
+          #
+          #   @return [Boolean, nil]
+          optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!method initialize(tax_exempt:, automatic_tax_enabled: nil, tax_provider: :numeral)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral} for more details.
+          #
           #   @param tax_exempt [Boolean]
+          #
+          #   @param automatic_tax_enabled [Boolean, nil] Whether to automatically calculate tax for this customer. When null, inherits fr
+          #
           #   @param tax_provider [Symbol, :numeral]
         end
 
+        class Anrok < Orb::Internal::Type::BaseModel
+          # @!attribute tax_exempt
+          #
+          #   @return [Boolean]
+          required :tax_exempt, Orb::Internal::Type::Boolean
+
+          # @!attribute tax_provider
+          #
+          #   @return [Symbol, :anrok]
+          required :tax_provider, const: :anrok
+
+          # @!attribute automatic_tax_enabled
+          #   Whether to automatically calculate tax for this customer. When null, inherits
+          #   from account-level setting. When true or false, overrides the account setting.
+          #
+          #   @return [Boolean, nil]
+          optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!method initialize(tax_exempt:, automatic_tax_enabled: nil, tax_provider: :anrok)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::CustomerCreateParams::TaxConfiguration::Anrok} for more details.
+          #
+          #   @param tax_exempt [Boolean]
+          #
+          #   @param automatic_tax_enabled [Boolean, nil] Whether to automatically calculate tax for this customer. When null, inherits fr
+          #
+          #   @param tax_provider [Symbol, :anrok]
+        end
+
         # @!method self.variants
-        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral)]
+        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, Orb::Models::CustomerCreateParams::TaxConfiguration::Anrok)]
       end
     end
   end

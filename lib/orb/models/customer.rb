@@ -282,12 +282,19 @@ module Orb
       #   @return [Orb::Models::Customer::AccountingSyncConfiguration, nil]
       optional :accounting_sync_configuration, -> { Orb::Customer::AccountingSyncConfiguration }, nil?: true
 
+      # @!attribute automatic_tax_enabled
+      #   Whether automatic tax calculation is enabled for this customer. This field is
+      #   nullable for backwards compatibility but will always return a boolean value.
+      #
+      #   @return [Boolean, nil]
+      optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute reporting_configuration
       #
       #   @return [Orb::Models::Customer::ReportingConfiguration, nil]
       optional :reporting_configuration, -> { Orb::Customer::ReportingConfiguration }, nil?: true
 
-      # @!method initialize(id:, additional_emails:, auto_collection:, auto_issuance:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, reporting_configuration: nil)
+      # @!method initialize(id:, additional_emails:, auto_collection:, auto_issuance:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, automatic_tax_enabled: nil, reporting_configuration: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Customer}
       #   for more details.
       #
@@ -353,6 +360,8 @@ module Orb
       #   @param timezone [String] A timezone identifier from the IANA timezone database, such as "America/Los_Ange
       #
       #   @param accounting_sync_configuration [Orb::Models::Customer::AccountingSyncConfiguration, nil]
+      #
+      #   @param automatic_tax_enabled [Boolean, nil] Whether automatic tax calculation is enabled for this customer. This field is nu
       #
       #   @param reporting_configuration [Orb::Models::Customer::ReportingConfiguration, nil]
 

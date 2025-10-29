@@ -10,41 +10,39 @@ module Orb
           #   @return [String]
           required :id, String
 
-          # @!attribute block_filters
-          #
-          #   @return [Array<Orb::Models::Customers::Credits::AffectedBlock::BlockFilter>, nil]
-          required :block_filters,
-                   -> { Orb::Internal::Type::ArrayOf[Orb::Customers::Credits::AffectedBlock::BlockFilter] },
-                   nil?: true
-
           # @!attribute expiry_date
           #
           #   @return [Time, nil]
           required :expiry_date, Time, nil?: true
+
+          # @!attribute filters
+          #
+          #   @return [Array<Orb::Models::Customers::Credits::AffectedBlock::Filter>]
+          required :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Customers::Credits::AffectedBlock::Filter] }
 
           # @!attribute per_unit_cost_basis
           #
           #   @return [String, nil]
           required :per_unit_cost_basis, String, nil?: true
 
-          # @!method initialize(id:, block_filters:, expiry_date:, per_unit_cost_basis:)
+          # @!method initialize(id:, expiry_date:, filters:, per_unit_cost_basis:)
           #   @param id [String]
-          #   @param block_filters [Array<Orb::Models::Customers::Credits::AffectedBlock::BlockFilter>, nil]
           #   @param expiry_date [Time, nil]
+          #   @param filters [Array<Orb::Models::Customers::Credits::AffectedBlock::Filter>]
           #   @param per_unit_cost_basis [String, nil]
 
-          class BlockFilter < Orb::Internal::Type::BaseModel
+          class Filter < Orb::Internal::Type::BaseModel
             # @!attribute field
             #   The property of the price to filter on.
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::Field]
-            required :field, enum: -> { Orb::Customers::Credits::AffectedBlock::BlockFilter::Field }
+            #   @return [Symbol, Orb::Models::Customers::Credits::AffectedBlock::Filter::Field]
+            required :field, enum: -> { Orb::Customers::Credits::AffectedBlock::Filter::Field }
 
             # @!attribute operator
             #   Should prices that match the filter be included or excluded.
             #
-            #   @return [Symbol, Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::Operator]
-            required :operator, enum: -> { Orb::Customers::Credits::AffectedBlock::BlockFilter::Operator }
+            #   @return [Symbol, Orb::Models::Customers::Credits::AffectedBlock::Filter::Operator]
+            required :operator, enum: -> { Orb::Customers::Credits::AffectedBlock::Filter::Operator }
 
             # @!attribute values
             #   The IDs or values that match this filter.
@@ -53,15 +51,15 @@ module Orb
             required :values, Orb::Internal::Type::ArrayOf[String]
 
             # @!method initialize(field:, operator:, values:)
-            #   @param field [Symbol, Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::Field] The property of the price to filter on.
+            #   @param field [Symbol, Orb::Models::Customers::Credits::AffectedBlock::Filter::Field] The property of the price to filter on.
             #
-            #   @param operator [Symbol, Orb::Models::Customers::Credits::AffectedBlock::BlockFilter::Operator] Should prices that match the filter be included or excluded.
+            #   @param operator [Symbol, Orb::Models::Customers::Credits::AffectedBlock::Filter::Operator] Should prices that match the filter be included or excluded.
             #
             #   @param values [Array<String>] The IDs or values that match this filter.
 
             # The property of the price to filter on.
             #
-            # @see Orb::Models::Customers::Credits::AffectedBlock::BlockFilter#field
+            # @see Orb::Models::Customers::Credits::AffectedBlock::Filter#field
             module Field
               extend Orb::Internal::Type::Enum
 
@@ -77,7 +75,7 @@ module Orb
 
             # Should prices that match the filter be included or excluded.
             #
-            # @see Orb::Models::Customers::Credits::AffectedBlock::BlockFilter#operator
+            # @see Orb::Models::Customers::Credits::AffectedBlock::Filter#operator
             module Operator
               extend Orb::Internal::Type::Enum
 

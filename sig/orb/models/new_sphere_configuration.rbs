@@ -3,7 +3,8 @@ module Orb
     type new_sphere_configuration =
       {
         tax_exempt: bool,
-        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider,
+        automatic_tax_enabled: bool?
       }
 
     class NewSphereConfiguration < Orb::Internal::Type::BaseModel
@@ -11,14 +12,18 @@ module Orb
 
       attr_accessor tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
 
+      attr_accessor automatic_tax_enabled: bool?
+
       def initialize: (
         tax_exempt: bool,
-        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider,
+        ?automatic_tax_enabled: bool?
       ) -> void
 
       def to_hash: -> {
         tax_exempt: bool,
-        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider
+        tax_provider: Orb::Models::NewSphereConfiguration::tax_provider,
+        automatic_tax_enabled: bool?
       }
 
       type tax_provider = :sphere

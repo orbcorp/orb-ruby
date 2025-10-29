@@ -4,6 +4,7 @@ module Orb
       {
         tax_exempt: bool,
         tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider,
+        automatic_tax_enabled: bool?,
         tax_exemption_code: String?
       }
 
@@ -12,17 +13,21 @@ module Orb
 
       attr_accessor tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider
 
+      attr_accessor automatic_tax_enabled: bool?
+
       attr_accessor tax_exemption_code: String?
 
       def initialize: (
         tax_exempt: bool,
         tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider,
+        ?automatic_tax_enabled: bool?,
         ?tax_exemption_code: String?
       ) -> void
 
       def to_hash: -> {
         tax_exempt: bool,
         tax_provider: Orb::Models::NewAvalaraTaxConfiguration::tax_provider,
+        automatic_tax_enabled: bool?,
         tax_exemption_code: String?
       }
 
