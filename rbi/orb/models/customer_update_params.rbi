@@ -41,6 +41,12 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_issuance
 
+      # Whether automatic tax calculation is enabled for this customer. When null,
+      # inherits from account-level setting. When true or false, overrides the account
+      # setting.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :automatic_tax_enabled
+
       sig { returns(T.nilable(Orb::AddressInput)) }
       attr_reader :billing_address
 
@@ -129,7 +135,8 @@ module Orb
               Orb::NewAvalaraTaxConfiguration,
               Orb::NewTaxJarConfiguration,
               Orb::NewSphereConfiguration,
-              Orb::CustomerUpdateParams::TaxConfiguration::Numeral
+              Orb::CustomerUpdateParams::TaxConfiguration::Numeral,
+              Orb::CustomerUpdateParams::TaxConfiguration::Anrok
             )
           )
         )
@@ -293,6 +300,7 @@ module Orb
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
+          automatic_tax_enabled: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
           email: T.nilable(String),
@@ -313,7 +321,8 @@ module Orb
                 Orb::NewAvalaraTaxConfiguration::OrHash,
                 Orb::NewTaxJarConfiguration::OrHash,
                 Orb::NewSphereConfiguration::OrHash,
-                Orb::CustomerUpdateParams::TaxConfiguration::Numeral::OrHash
+                Orb::CustomerUpdateParams::TaxConfiguration::Numeral::OrHash,
+                Orb::CustomerUpdateParams::TaxConfiguration::Anrok::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -335,6 +344,10 @@ module Orb
         # manual approval.If `null` is specified, the customer's auto issuance setting
         # will be inherited from the account-level setting.
         auto_issuance: nil,
+        # Whether automatic tax calculation is enabled for this customer. When null,
+        # inherits from account-level setting. When true or false, overrides the account
+        # setting.
+        automatic_tax_enabled: nil,
         billing_address: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
@@ -527,6 +540,7 @@ module Orb
             additional_emails: T.nilable(T::Array[String]),
             auto_collection: T.nilable(T::Boolean),
             auto_issuance: T.nilable(T::Boolean),
+            automatic_tax_enabled: T.nilable(T::Boolean),
             billing_address: T.nilable(Orb::AddressInput),
             currency: T.nilable(String),
             email: T.nilable(String),
@@ -546,7 +560,8 @@ module Orb
                   Orb::NewAvalaraTaxConfiguration,
                   Orb::NewTaxJarConfiguration,
                   Orb::NewSphereConfiguration,
-                  Orb::CustomerUpdateParams::TaxConfiguration::Numeral
+                  Orb::CustomerUpdateParams::TaxConfiguration::Numeral,
+                  Orb::CustomerUpdateParams::TaxConfiguration::Anrok
                 )
               ),
             tax_id: T.nilable(Orb::CustomerTaxID),
@@ -617,7 +632,8 @@ module Orb
               Orb::NewAvalaraTaxConfiguration,
               Orb::NewTaxJarConfiguration,
               Orb::NewSphereConfiguration,
-              Orb::CustomerUpdateParams::TaxConfiguration::Numeral
+              Orb::CustomerUpdateParams::TaxConfiguration::Numeral,
+              Orb::CustomerUpdateParams::TaxConfiguration::Anrok
             )
           end
 
@@ -636,16 +652,84 @@ module Orb
           sig { returns(Symbol) }
           attr_accessor :tax_provider
 
+          # Whether to automatically calculate tax for this customer. When null, inherits
+          # from account-level setting. When true or false, overrides the account setting.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :automatic_tax_enabled
+
           sig do
-            params(tax_exempt: T::Boolean, tax_provider: Symbol).returns(
-              T.attached_class
-            )
+            params(
+              tax_exempt: T::Boolean,
+              automatic_tax_enabled: T.nilable(T::Boolean),
+              tax_provider: Symbol
+            ).returns(T.attached_class)
           end
-          def self.new(tax_exempt:, tax_provider: :numeral)
+          def self.new(
+            tax_exempt:,
+            # Whether to automatically calculate tax for this customer. When null, inherits
+            # from account-level setting. When true or false, overrides the account setting.
+            automatic_tax_enabled: nil,
+            tax_provider: :numeral
+          )
           end
 
           sig do
-            override.returns({ tax_exempt: T::Boolean, tax_provider: Symbol })
+            override.returns(
+              {
+                tax_exempt: T::Boolean,
+                tax_provider: Symbol,
+                automatic_tax_enabled: T.nilable(T::Boolean)
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class Anrok < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerUpdateParams::TaxConfiguration::Anrok,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T::Boolean) }
+          attr_accessor :tax_exempt
+
+          sig { returns(Symbol) }
+          attr_accessor :tax_provider
+
+          # Whether to automatically calculate tax for this customer. When null, inherits
+          # from account-level setting. When true or false, overrides the account setting.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :automatic_tax_enabled
+
+          sig do
+            params(
+              tax_exempt: T::Boolean,
+              automatic_tax_enabled: T.nilable(T::Boolean),
+              tax_provider: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            tax_exempt:,
+            # Whether to automatically calculate tax for this customer. When null, inherits
+            # from account-level setting. When true or false, overrides the account setting.
+            automatic_tax_enabled: nil,
+            tax_provider: :anrok
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                tax_exempt: T::Boolean,
+                tax_provider: Symbol,
+                automatic_tax_enabled: T.nilable(T::Boolean)
+              }
+            )
           end
           def to_hash
           end

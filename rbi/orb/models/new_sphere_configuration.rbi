@@ -14,20 +14,33 @@ module Orb
       sig { returns(Orb::NewSphereConfiguration::TaxProvider::OrSymbol) }
       attr_accessor :tax_provider
 
+      # Whether to automatically calculate tax for this customer. When null, inherits
+      # from account-level setting. When true or false, overrides the account setting.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :automatic_tax_enabled
+
       sig do
         params(
           tax_exempt: T::Boolean,
-          tax_provider: Orb::NewSphereConfiguration::TaxProvider::OrSymbol
+          tax_provider: Orb::NewSphereConfiguration::TaxProvider::OrSymbol,
+          automatic_tax_enabled: T.nilable(T::Boolean)
         ).returns(T.attached_class)
       end
-      def self.new(tax_exempt:, tax_provider:)
+      def self.new(
+        tax_exempt:,
+        tax_provider:,
+        # Whether to automatically calculate tax for this customer. When null, inherits
+        # from account-level setting. When true or false, overrides the account setting.
+        automatic_tax_enabled: nil
+      )
       end
 
       sig do
         override.returns(
           {
             tax_exempt: T::Boolean,
-            tax_provider: Orb::NewSphereConfiguration::TaxProvider::OrSymbol
+            tax_provider: Orb::NewSphereConfiguration::TaxProvider::OrSymbol,
+            automatic_tax_enabled: T.nilable(T::Boolean)
           }
         )
       end

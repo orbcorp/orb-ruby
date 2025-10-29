@@ -259,6 +259,11 @@ module Orb
       end
       attr_writer :accounting_sync_configuration
 
+      # Whether automatic tax calculation is enabled for this customer. This field is
+      # nullable for backwards compatibility but will always return a boolean value.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :automatic_tax_enabled
+
       sig { returns(T.nilable(Orb::Customer::ReportingConfiguration)) }
       attr_reader :reporting_configuration
 
@@ -313,6 +318,7 @@ module Orb
           timezone: String,
           accounting_sync_configuration:
             T.nilable(Orb::Customer::AccountingSyncConfiguration::OrHash),
+          automatic_tax_enabled: T.nilable(T::Boolean),
           reporting_configuration:
             T.nilable(Orb::Customer::ReportingConfiguration::OrHash)
         ).returns(T.attached_class)
@@ -508,6 +514,9 @@ module Orb
         # This cannot be changed after customer creation.
         timezone:,
         accounting_sync_configuration: nil,
+        # Whether automatic tax calculation is enabled for this customer. This field is
+        # nullable for backwards compatibility but will always return a boolean value.
+        automatic_tax_enabled: nil,
         reporting_configuration: nil
       )
       end
@@ -539,6 +548,7 @@ module Orb
             timezone: String,
             accounting_sync_configuration:
               T.nilable(Orb::Customer::AccountingSyncConfiguration),
+            automatic_tax_enabled: T.nilable(T::Boolean),
             reporting_configuration:
               T.nilable(Orb::Customer::ReportingConfiguration)
           }

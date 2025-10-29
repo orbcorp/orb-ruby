@@ -62,7 +62,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, nil]
+      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerCreateParams::TaxConfiguration::Numeral, Orb::Models::CustomerCreateParams::TaxConfiguration::Anrok, nil]
       #
       # @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -93,7 +93,7 @@ module Orb
       # `additional_emails` of an existing customer. Other fields on a customer are
       # currently immutable.
       #
-      # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, automatic_tax_enabled: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
       # @param customer_id [String]
       #
@@ -104,6 +104,8 @@ module Orb
       # @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
       #
       # @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
+      #
+      # @param automatic_tax_enabled [Boolean, nil] Whether automatic tax calculation is enabled for this customer. When null, inher
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
       #
@@ -129,7 +131,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, nil]
+      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateParams::TaxConfiguration::Anrok, nil]
       #
       # @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -331,7 +333,7 @@ module Orb
       # resource and semantics of this endpoint exactly mirror
       # [Update Customer](update-customer).
       #
-      # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, automatic_tax_enabled: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
       # @param id [String]
       #
@@ -342,6 +344,8 @@ module Orb
       # @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
       #
       # @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
+      #
+      # @param automatic_tax_enabled [Boolean, nil] Whether automatic tax calculation is enabled for this customer. When null, inher
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
       #
@@ -367,7 +371,7 @@ module Orb
       #
       # @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, nil]
+      # @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok, nil]
       #
       # @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
