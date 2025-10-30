@@ -14,6 +14,12 @@ module Orb
       sig { returns(T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants)) }
       attr_accessor :due_date
 
+      # The date of the invoice. Can only be modified for one-off draft invoices.
+      sig do
+        returns(T.nilable(Orb::InvoiceUpdateParams::InvoiceDate::Variants))
+      end
+      attr_accessor :invoice_date
+
       # User-specified key/value pairs for the resource. Individual keys can be removed
       # by setting the value to `null`, and the entire metadata mapping can be cleared
       # by setting `metadata` to `null`.
@@ -31,6 +37,8 @@ module Orb
       sig do
         params(
           due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
+          invoice_date:
+            T.nilable(Orb::InvoiceUpdateParams::InvoiceDate::Variants),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
           request_options: Orb::RequestOptions::OrHash
@@ -40,6 +48,8 @@ module Orb
         # An optional custom due date for the invoice. If not set, the due date will be
         # calculated based on the `net_terms` value.
         due_date: nil,
+        # The date of the invoice. Can only be modified for one-off draft invoices.
+        invoice_date: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
@@ -58,6 +68,8 @@ module Orb
         override.returns(
           {
             due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
+            invoice_date:
+              T.nilable(Orb::InvoiceUpdateParams::InvoiceDate::Variants),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             net_terms: T.nilable(Integer),
             request_options: Orb::RequestOptions
@@ -77,6 +89,21 @@ module Orb
         sig do
           override.returns(
             T::Array[Orb::InvoiceUpdateParams::DueDate::Variants]
+          )
+        end
+        def self.variants
+        end
+      end
+
+      # The date of the invoice. Can only be modified for one-off draft invoices.
+      module InvoiceDate
+        extend Orb::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(Date, Time) }
+
+        sig do
+          override.returns(
+            T::Array[Orb::InvoiceUpdateParams::InvoiceDate::Variants]
           )
         end
         def self.variants

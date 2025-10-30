@@ -14,6 +14,12 @@ module Orb
       #   @return [Date, Time, nil]
       optional :due_date, union: -> { Orb::InvoiceUpdateParams::DueDate }, nil?: true
 
+      # @!attribute invoice_date
+      #   The date of the invoice. Can only be modified for one-off draft invoices.
+      #
+      #   @return [Date, Time, nil]
+      optional :invoice_date, union: -> { Orb::InvoiceUpdateParams::InvoiceDate }, nil?: true
+
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
       #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -32,11 +38,13 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!method initialize(due_date: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @!method initialize(due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceUpdateParams} for more details.
       #
       #   @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
+      #   @param invoice_date [Date, Time, nil] The date of the invoice. Can only be modified for one-off draft invoices.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
@@ -47,6 +55,18 @@ module Orb
       # An optional custom due date for the invoice. If not set, the due date will be
       # calculated based on the `net_terms` value.
       module DueDate
+        extend Orb::Internal::Type::Union
+
+        variant Date
+
+        variant Time
+
+        # @!method self.variants
+        #   @return [Array(Date, Time)]
+      end
+
+      # The date of the invoice. Can only be modified for one-off draft invoices.
+      module InvoiceDate
         extend Orb::Internal::Type::Union
 
         variant Date

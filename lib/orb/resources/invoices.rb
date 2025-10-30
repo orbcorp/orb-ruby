@@ -45,18 +45,21 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::InvoiceUpdateParams} for more details.
       #
-      # This endpoint allows you to update the `metadata`, `net_terms`, and `due_date`
-      # properties on an invoice. If you pass null for the metadata value, it will clear
-      # any existing metadata for that invoice.
+      # This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
+      # `invoice_date` properties on an invoice. If you pass null for the metadata
+      # value, it will clear any existing metadata for that invoice.
       #
-      # `metadata` can be modified regardless of invoice state. `net_terms` and
-      # `due_date` can only be modified if the invoice is in a `draft` state.
+      # `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
+      # and `invoice_date` can only be modified if the invoice is in a `draft` state.
+      # `invoice_date` can only be modified for non-subscription invoices.
       #
-      # @overload update(invoice_id, due_date: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @overload update(invoice_id, due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
       #
       # @param invoice_id [String]
       #
       # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
+      # @param invoice_date [Date, Time, nil] The date of the invoice. Can only be modified for one-off draft invoices.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #

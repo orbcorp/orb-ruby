@@ -68,16 +68,19 @@ module Orb
       )
       end
 
-      # This endpoint allows you to update the `metadata`, `net_terms`, and `due_date`
-      # properties on an invoice. If you pass null for the metadata value, it will clear
-      # any existing metadata for that invoice.
+      # This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
+      # `invoice_date` properties on an invoice. If you pass null for the metadata
+      # value, it will clear any existing metadata for that invoice.
       #
-      # `metadata` can be modified regardless of invoice state. `net_terms` and
-      # `due_date` can only be modified if the invoice is in a `draft` state.
+      # `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
+      # and `invoice_date` can only be modified if the invoice is in a `draft` state.
+      # `invoice_date` can only be modified for non-subscription invoices.
       sig do
         params(
           invoice_id: String,
           due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
+          invoice_date:
+            T.nilable(Orb::InvoiceUpdateParams::InvoiceDate::Variants),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
           request_options: Orb::RequestOptions::OrHash
@@ -88,6 +91,8 @@ module Orb
         # An optional custom due date for the invoice. If not set, the due date will be
         # calculated based on the `net_terms` value.
         due_date: nil,
+        # The date of the invoice. Can only be modified for one-off draft invoices.
+        invoice_date: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
