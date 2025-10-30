@@ -3,6 +3,7 @@ module Orb
     type invoice_update_params =
       {
         due_date: Orb::Models::InvoiceUpdateParams::due_date?,
+        invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?
       }
@@ -14,12 +15,15 @@ module Orb
 
       attr_accessor due_date: Orb::Models::InvoiceUpdateParams::due_date?
 
+      attr_accessor invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?
+
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       attr_accessor net_terms: Integer?
 
       def initialize: (
         ?due_date: Orb::Models::InvoiceUpdateParams::due_date?,
+        ?invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
         ?request_options: Orb::request_opts
@@ -27,6 +31,7 @@ module Orb
 
       def to_hash: -> {
         due_date: Orb::Models::InvoiceUpdateParams::due_date?,
+        invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?,
         request_options: Orb::RequestOptions
@@ -38,6 +43,14 @@ module Orb
         extend Orb::Internal::Type::Union
 
         def self?.variants: -> ::Array[Orb::Models::InvoiceUpdateParams::due_date]
+      end
+
+      type invoice_date = Date | Time
+
+      module InvoiceDate
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::InvoiceUpdateParams::invoice_date]
       end
     end
   end
