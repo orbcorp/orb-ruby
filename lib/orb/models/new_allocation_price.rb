@@ -35,7 +35,13 @@ module Orb
       #   @return [Boolean, nil]
       optional :expires_at_end_of_cadence, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil)
+      # @!attribute filters
+      #   The filters that determine which items the allocation applies to.
+      #
+      #   @return [Array<Orb::Models::NewAllocationPrice::Filter>, nil]
+      optional :filters, -> { Orb::Internal::Type::ArrayOf[Orb::NewAllocationPrice::Filter] }, nil?: true
+
+      # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil, filters: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewAllocationPrice} for more details.
       #
@@ -48,6 +54,8 @@ module Orb
       #   @param custom_expiration [Orb::Models::CustomExpiration, nil] The custom expiration for the allocation.
       #
       #   @param expires_at_end_of_cadence [Boolean, nil] Whether the allocated amount should expire at the end of the cadence or roll ove
+      #
+      #   @param filters [Array<Orb::Models::NewAllocationPrice::Filter>, nil] The filters that determine which items the allocation applies to.
 
       # The cadence at which to allocate the amount to the customer.
       #
@@ -63,6 +71,60 @@ module Orb
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class Filter < Orb::Internal::Type::BaseModel
+        # @!attribute field
+        #   The property of the price the block applies to. Only item_id is supported.
+        #
+        #   @return [Symbol, Orb::Models::NewAllocationPrice::Filter::Field]
+        required :field, enum: -> { Orb::NewAllocationPrice::Filter::Field }
+
+        # @!attribute operator
+        #   Should prices that match the filter be included or excluded.
+        #
+        #   @return [Symbol, Orb::Models::NewAllocationPrice::Filter::Operator]
+        required :operator, enum: -> { Orb::NewAllocationPrice::Filter::Operator }
+
+        # @!attribute values
+        #   The IDs or values that match this filter.
+        #
+        #   @return [Array<String>]
+        required :values, Orb::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(field:, operator:, values:)
+        #   A PriceFilter that only allows item_id field for block filters.
+        #
+        #   @param field [Symbol, Orb::Models::NewAllocationPrice::Filter::Field] The property of the price the block applies to. Only item_id is supported.
+        #
+        #   @param operator [Symbol, Orb::Models::NewAllocationPrice::Filter::Operator] Should prices that match the filter be included or excluded.
+        #
+        #   @param values [Array<String>] The IDs or values that match this filter.
+
+        # The property of the price the block applies to. Only item_id is supported.
+        #
+        # @see Orb::Models::NewAllocationPrice::Filter#field
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          ITEM_ID = :item_id
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Should prices that match the filter be included or excluded.
+        #
+        # @see Orb::Models::NewAllocationPrice::Filter#operator
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          INCLUDES = :includes
+          EXCLUDES = :excludes
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

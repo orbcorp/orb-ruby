@@ -250,7 +250,7 @@ module Orb
           # that was originally decremented from, and `amount` indicates how many credits to
           # return to the customer, up to the block's initial balance.
           #
-          # @overload create_entry(customer_id, amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          # @overload create_entry(customer_id, amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
           #
           # @param customer_id [String]
           #
@@ -269,6 +269,8 @@ module Orb
           # @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
           #
           # @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
+          #
+          # @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
           #
           # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
@@ -409,7 +411,7 @@ module Orb
           # that was originally decremented from, and `amount` indicates how many credits to
           # return to the customer, up to the block's initial balance.
           #
-          # @overload create_entry_by_external_id(external_customer_id, amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          # @overload create_entry_by_external_id(external_customer_id, amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
           #
           # @param external_customer_id [String]
           #
@@ -428,6 +430,8 @@ module Orb
           # @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
           #
           # @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
+          #
+          # @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
           #
           # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
