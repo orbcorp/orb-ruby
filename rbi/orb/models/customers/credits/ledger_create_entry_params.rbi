@@ -48,6 +48,19 @@ module Orb
           sig { returns(T.nilable(Time)) }
           attr_accessor :expiry_date
 
+          # Optional filter to specify which items this credit block applies to. If not
+          # specified, the block will apply to all items for the pricing unit.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter
+                ]
+              )
+            )
+          end
+          attr_accessor :filters
+
           # Passing `invoice_settings` automatically generates an invoice for the newly
           # added credits. If `invoice_settings` is passed, you must specify
           # per_unit_cost_basis, as the calculation of the invoice total is done on that
@@ -113,6 +126,12 @@ module Orb
               description: T.nilable(String),
               effective_date: T.nilable(Time),
               expiry_date: T.nilable(Time),
+              filters:
+                T.nilable(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::OrHash
+                  ]
+                ),
               invoice_settings:
                 T.nilable(
                   Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
@@ -149,6 +168,9 @@ module Orb
             effective_date: nil,
             # An ISO 8601 format date that identifies the origination credit block to expire
             expiry_date: nil,
+            # Optional filter to specify which items this credit block applies to. If not
+            # specified, the block will apply to all items for the pricing unit.
+            filters: nil,
             # Passing `invoice_settings` automatically generates an invoice for the newly
             # added credits. If `invoice_settings` is passed, you must specify
             # per_unit_cost_basis, as the calculation of the invoice total is done on that
@@ -177,6 +199,12 @@ module Orb
                 description: T.nilable(String),
                 effective_date: T.nilable(Time),
                 expiry_date: T.nilable(Time),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::Customers::Credits::LedgerCreateEntryParams::Filter
+                    ]
+                  ),
                 invoice_settings:
                   T.nilable(
                     Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings
@@ -222,6 +250,135 @@ module Orb
               )
             end
             def self.values
+            end
+          end
+
+          class Filter < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The property of the price the block applies to. Only item_id is supported.
+            sig do
+              returns(
+                Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field::OrSymbol
+              )
+            end
+            attr_accessor :field
+
+            # Should prices that match the filter be included or excluded.
+            sig do
+              returns(
+                Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator::OrSymbol
+              )
+            end
+            attr_accessor :operator
+
+            # The IDs or values that match this filter.
+            sig { returns(T::Array[String]) }
+            attr_accessor :values
+
+            # A PriceFilter that only allows item_id field for block filters.
+            sig do
+              params(
+                field:
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field::OrSymbol,
+                operator:
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator::OrSymbol,
+                values: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The property of the price the block applies to. Only item_id is supported.
+              field:,
+              # Should prices that match the filter be included or excluded.
+              operator:,
+              # The IDs or values that match this filter.
+              values:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  field:
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The property of the price the block applies to. Only item_id is supported.
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ITEM_ID =
+                T.let(
+                  :item_id,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Should prices that match the filter be included or excluded.
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              INCLUDES =
+                T.let(
+                  :includes,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator::TaggedSymbol
+                )
+              EXCLUDES =
+                T.let(
+                  :excludes,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 

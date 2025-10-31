@@ -10,6 +10,7 @@ module Orb
             description: String?,
             effective_date: Time?,
             expiry_date: Time?,
+            filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
             invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
             metadata: ::Hash[Symbol, String?]?,
             per_unit_cost_basis: String?,
@@ -35,6 +36,8 @@ module Orb
 
           attr_accessor expiry_date: Time?
 
+          attr_accessor filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?
+
           attr_accessor invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?
 
           attr_accessor metadata: ::Hash[Symbol, String?]?
@@ -56,6 +59,7 @@ module Orb
             ?description: String?,
             ?effective_date: Time?,
             ?expiry_date: Time?,
+            ?filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
             ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
             ?metadata: ::Hash[Symbol, String?]?,
             ?per_unit_cost_basis: String?,
@@ -70,6 +74,7 @@ module Orb
             description: String?,
             effective_date: Time?,
             expiry_date: Time?,
+            filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
             invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
             metadata: ::Hash[Symbol, String?]?,
             per_unit_cost_basis: String?,
@@ -87,6 +92,54 @@ module Orb
             AMENDMENT: :amendment
 
             def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type]
+          end
+
+          type filter =
+            {
+              field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field,
+              operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field
+
+            attr_accessor operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field,
+              operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field,
+              operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field = :item_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              ITEM_ID: :item_id
+
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator]
+            end
           end
 
           type invoice_settings =

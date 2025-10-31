@@ -254,6 +254,12 @@ module Orb
               description: T.nilable(String),
               effective_date: T.nilable(Time),
               expiry_date: T.nilable(Time),
+              filters:
+                T.nilable(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::OrHash
+                  ]
+                ),
               invoice_settings:
                 T.nilable(
                   Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
@@ -293,6 +299,9 @@ module Orb
             effective_date: nil,
             # An ISO 8601 format date that identifies the origination credit block to expire
             expiry_date: nil,
+            # Optional filter to specify which items this credit block applies to. If not
+            # specified, the block will apply to all items for the pricing unit.
+            filters: nil,
             # Passing `invoice_settings` automatically generates an invoice for the newly
             # added credits. If `invoice_settings` is passed, you must specify
             # per_unit_cost_basis, as the calculation of the invoice total is done on that
@@ -433,6 +442,12 @@ module Orb
               description: T.nilable(String),
               effective_date: T.nilable(Time),
               expiry_date: T.nilable(Time),
+              filters:
+                T.nilable(
+                  T::Array[
+                    Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::OrHash
+                  ]
+                ),
               invoice_settings:
                 T.nilable(
                   Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::OrHash
@@ -472,6 +487,9 @@ module Orb
             effective_date: nil,
             # An ISO 8601 format date that identifies the origination credit block to expire
             expiry_date: nil,
+            # Optional filter to specify which items this credit block applies to. If not
+            # specified, the block will apply to all items for the pricing unit.
+            filters: nil,
             # Passing `invoice_settings` automatically generates an invoice for the newly
             # added credits. If `invoice_settings` is passed, you must specify
             # per_unit_cost_basis, as the calculation of the invoice total is done on that

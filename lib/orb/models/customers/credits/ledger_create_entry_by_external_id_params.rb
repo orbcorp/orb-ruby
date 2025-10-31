@@ -49,6 +49,17 @@ module Orb
           #   @return [Time, nil]
           optional :expiry_date, Time, nil?: true
 
+          # @!attribute filters
+          #   Optional filter to specify which items this credit block applies to. If not
+          #   specified, the block will apply to all items for the pricing unit.
+          #
+          #   @return [Array<Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter>, nil]
+          optional :filters,
+                   -> {
+                     Orb::Internal::Type::ArrayOf[Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter]
+                   },
+                   nil?: true
+
           # @!attribute invoice_settings
           #   Passing `invoice_settings` automatically generates an invoice for the newly
           #   added credits. If `invoice_settings` is passed, you must specify
@@ -97,7 +108,7 @@ module Orb
                    enum: -> { Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason },
                    nil?: true
 
-          # @!method initialize(amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          # @!method initialize(amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams} for more
           #   details.
@@ -118,6 +129,8 @@ module Orb
           #
           #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
           #
+          #   @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
+          #
           #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
           #
           #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
@@ -135,6 +148,61 @@ module Orb
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price the block applies to. Only item_id is supported.
+            #
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::Field]
+            required :field, enum: -> { Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::Operator]
+            required :operator,
+                     enum: -> { Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   A PriceFilter that only allows item_id field for block filters.
+            #
+            #   @param field [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::Field] The property of the price the block applies to. Only item_id is supported.
+            #
+            #   @param operator [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price the block applies to. Only item_id is supported.
+            #
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              ITEM_ID = :item_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
