@@ -7,6 +7,7 @@ module Orb
           balance: Float,
           effective_date: Time?,
           expiry_date: Time?,
+          filters: ::Array[Orb::Models::Customers::CreditListResponse::Filter],
           maximum_initial_balance: Float?,
           per_unit_cost_basis: String?,
           status: Orb::Models::Customers::CreditListResponse::status
@@ -21,6 +22,8 @@ module Orb
 
         attr_accessor expiry_date: Time?
 
+        attr_accessor filters: ::Array[Orb::Models::Customers::CreditListResponse::Filter]
+
         attr_accessor maximum_initial_balance: Float?
 
         attr_accessor per_unit_cost_basis: String?
@@ -32,6 +35,7 @@ module Orb
           balance: Float,
           effective_date: Time?,
           expiry_date: Time?,
+          filters: ::Array[Orb::Models::Customers::CreditListResponse::Filter],
           maximum_initial_balance: Float?,
           per_unit_cost_basis: String?,
           status: Orb::Models::Customers::CreditListResponse::status
@@ -42,10 +46,64 @@ module Orb
           balance: Float,
           effective_date: Time?,
           expiry_date: Time?,
+          filters: ::Array[Orb::Models::Customers::CreditListResponse::Filter],
           maximum_initial_balance: Float?,
           per_unit_cost_basis: String?,
           status: Orb::Models::Customers::CreditListResponse::status
         }
+
+        type filter =
+          {
+            field: Orb::Models::Customers::CreditListResponse::Filter::field,
+            operator: Orb::Models::Customers::CreditListResponse::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::Customers::CreditListResponse::Filter::field
+
+          attr_accessor operator: Orb::Models::Customers::CreditListResponse::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::Customers::CreditListResponse::Filter::field,
+            operator: Orb::Models::Customers::CreditListResponse::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::Customers::CreditListResponse::Filter::field,
+            operator: Orb::Models::Customers::CreditListResponse::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::Customers::CreditListResponse::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::Customers::CreditListResponse::Filter::operator]
+          end
+        end
 
         type status = :active | :pending_payment
 

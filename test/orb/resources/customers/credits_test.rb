@@ -23,6 +23,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
         balance: Float,
         effective_date: Time | nil,
         expiry_date: Time | nil,
+        filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CreditListResponse::Filter]),
         maximum_initial_balance: Float | nil,
         per_unit_cost_basis: String | nil,
         status: Orb::Models::Customers::CreditListResponse::Status
@@ -50,6 +51,7 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
         balance: Float,
         effective_date: Time | nil,
         expiry_date: Time | nil,
+        filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CreditListByExternalIDResponse::Filter]),
         maximum_initial_balance: Float | nil,
         per_unit_cost_basis: String | nil,
         status: Orb::Models::Customers::CreditListByExternalIDResponse::Status
