@@ -6,7 +6,8 @@ module Orb
         cadence: Orb::Models::NewAllocationPrice::cadence,
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
-        expires_at_end_of_cadence: bool?
+        expires_at_end_of_cadence: bool?,
+        filters: ::Array[Orb::NewAllocationPrice::Filter]?
       }
 
     class NewAllocationPrice < Orb::Internal::Type::BaseModel
@@ -20,12 +21,15 @@ module Orb
 
       attr_accessor expires_at_end_of_cadence: bool?
 
+      attr_accessor filters: ::Array[Orb::NewAllocationPrice::Filter]?
+
       def initialize: (
         amount: String,
         cadence: Orb::Models::NewAllocationPrice::cadence,
         currency: String,
         ?custom_expiration: Orb::CustomExpiration?,
-        ?expires_at_end_of_cadence: bool?
+        ?expires_at_end_of_cadence: bool?,
+        ?filters: ::Array[Orb::NewAllocationPrice::Filter]?
       ) -> void
 
       def to_hash: -> {
@@ -33,7 +37,8 @@ module Orb
         cadence: Orb::Models::NewAllocationPrice::cadence,
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
-        expires_at_end_of_cadence: bool?
+        expires_at_end_of_cadence: bool?,
+        filters: ::Array[Orb::NewAllocationPrice::Filter]?
       }
 
       type cadence = :one_time | :monthly | :quarterly | :semi_annual | :annual
@@ -48,6 +53,54 @@ module Orb
         ANNUAL: :annual
 
         def self?.values: -> ::Array[Orb::Models::NewAllocationPrice::cadence]
+      end
+
+      type filter =
+        {
+          field: Orb::Models::NewAllocationPrice::Filter::field,
+          operator: Orb::Models::NewAllocationPrice::Filter::operator,
+          values: ::Array[String]
+        }
+
+      class Filter < Orb::Internal::Type::BaseModel
+        attr_accessor field: Orb::Models::NewAllocationPrice::Filter::field
+
+        attr_accessor operator: Orb::Models::NewAllocationPrice::Filter::operator
+
+        attr_accessor values: ::Array[String]
+
+        def initialize: (
+          field: Orb::Models::NewAllocationPrice::Filter::field,
+          operator: Orb::Models::NewAllocationPrice::Filter::operator,
+          values: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          field: Orb::Models::NewAllocationPrice::Filter::field,
+          operator: Orb::Models::NewAllocationPrice::Filter::operator,
+          values: ::Array[String]
+        }
+
+        type field = :item_id
+
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          ITEM_ID: :item_id
+
+          def self?.values: -> ::Array[Orb::Models::NewAllocationPrice::Filter::field]
+        end
+
+        type operator = :includes | :excludes
+
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          INCLUDES: :includes
+          EXCLUDES: :excludes
+
+          def self?.values: -> ::Array[Orb::Models::NewAllocationPrice::Filter::operator]
+        end
       end
     end
   end

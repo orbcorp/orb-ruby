@@ -33,13 +33,18 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :expires_at_end_of_cadence
 
+      # The filters that determine which items the allocation applies to.
+      sig { returns(T.nilable(T::Array[Orb::NewAllocationPrice::Filter])) }
+      attr_accessor :filters
+
       sig do
         params(
           amount: String,
           cadence: Orb::NewAllocationPrice::Cadence::OrSymbol,
           currency: String,
           custom_expiration: T.nilable(Orb::CustomExpiration::OrHash),
-          expires_at_end_of_cadence: T.nilable(T::Boolean)
+          expires_at_end_of_cadence: T.nilable(T::Boolean),
+          filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter::OrHash])
         ).returns(T.attached_class)
       end
       def self.new(
@@ -54,7 +59,9 @@ module Orb
         custom_expiration: nil,
         # Whether the allocated amount should expire at the end of the cadence or roll
         # over to the next period. Set to null if using custom_expiration.
-        expires_at_end_of_cadence: nil
+        expires_at_end_of_cadence: nil,
+        # The filters that determine which items the allocation applies to.
+        filters: nil
       )
       end
 
@@ -65,7 +72,8 @@ module Orb
             cadence: Orb::NewAllocationPrice::Cadence::OrSymbol,
             currency: String,
             custom_expiration: T.nilable(Orb::CustomExpiration),
-            expires_at_end_of_cadence: T.nilable(T::Boolean)
+            expires_at_end_of_cadence: T.nilable(T::Boolean),
+            filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter])
           }
         )
       end
@@ -96,6 +104,110 @@ module Orb
           )
         end
         def self.values
+        end
+      end
+
+      class Filter < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::NewAllocationPrice::Filter, Orb::Internal::AnyHash)
+          end
+
+        # The property of the price the block applies to. Only item_id is supported.
+        sig { returns(Orb::NewAllocationPrice::Filter::Field::OrSymbol) }
+        attr_accessor :field
+
+        # Should prices that match the filter be included or excluded.
+        sig { returns(Orb::NewAllocationPrice::Filter::Operator::OrSymbol) }
+        attr_accessor :operator
+
+        # The IDs or values that match this filter.
+        sig { returns(T::Array[String]) }
+        attr_accessor :values
+
+        # A PriceFilter that only allows item_id field for block filters.
+        sig do
+          params(
+            field: Orb::NewAllocationPrice::Filter::Field::OrSymbol,
+            operator: Orb::NewAllocationPrice::Filter::Operator::OrSymbol,
+            values: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The property of the price the block applies to. Only item_id is supported.
+          field:,
+          # Should prices that match the filter be included or excluded.
+          operator:,
+          # The IDs or values that match this filter.
+          values:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              field: Orb::NewAllocationPrice::Filter::Field::OrSymbol,
+              operator: Orb::NewAllocationPrice::Filter::Operator::OrSymbol,
+              values: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The property of the price the block applies to. Only item_id is supported.
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::NewAllocationPrice::Filter::Field)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ITEM_ID =
+            T.let(
+              :item_id,
+              Orb::NewAllocationPrice::Filter::Field::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::NewAllocationPrice::Filter::Field::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Should prices that match the filter be included or excluded.
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::NewAllocationPrice::Filter::Operator)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INCLUDES =
+            T.let(
+              :includes,
+              Orb::NewAllocationPrice::Filter::Operator::TaggedSymbol
+            )
+          EXCLUDES =
+            T.let(
+              :excludes,
+              Orb::NewAllocationPrice::Filter::Operator::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::NewAllocationPrice::Filter::Operator::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
         end
       end
     end
