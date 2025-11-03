@@ -65,9 +65,6 @@ module Orb
       )
       end
 
-      # This API endpoint is in beta and its interface may change. It is recommended for
-      # use only in test mode.
-      #
       # This endpoint is used to fetch a plan version. It returns the phases, prices,
       # and adjustments present on this version of the plan.
       sig do
@@ -80,9 +77,6 @@ module Orb
       def fetch_plan_version(version, plan_id:, request_options: {})
       end
 
-      # This API endpoint is in beta and its interface may change. It is recommended for
-      # use only in test mode.
-      #
       # This endpoint allows setting the default version of a plan.
       sig do
         params(
