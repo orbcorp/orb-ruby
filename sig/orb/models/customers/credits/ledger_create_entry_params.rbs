@@ -145,18 +145,16 @@ module Orb
           type invoice_settings =
             {
               auto_collection: bool,
-              net_terms: Integer?,
               custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               item_id: String?,
               memo: String?,
+              net_terms: Integer?,
               require_successful_payment: bool
             }
 
           class InvoiceSettings < Orb::Internal::Type::BaseModel
             attr_accessor auto_collection: bool
-
-            attr_accessor net_terms: Integer?
 
             attr_accessor custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?
 
@@ -166,27 +164,29 @@ module Orb
 
             attr_accessor memo: String?
 
+            attr_accessor net_terms: Integer?
+
             attr_reader require_successful_payment: bool?
 
             def require_successful_payment=: (bool) -> bool
 
             def initialize: (
               auto_collection: bool,
-              net_terms: Integer?,
               ?custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               ?item_id: String?,
               ?memo: String?,
+              ?net_terms: Integer?,
               ?require_successful_payment: bool
             ) -> void
 
             def to_hash: -> {
               auto_collection: bool,
-              net_terms: Integer?,
               custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               item_id: String?,
               memo: String?,
+              net_terms: Integer?,
               require_successful_payment: bool
             }
 

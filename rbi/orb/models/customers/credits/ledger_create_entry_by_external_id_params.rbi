@@ -396,14 +396,6 @@ module Orb
             sig { returns(T::Boolean) }
             attr_accessor :auto_collection
 
-            # The net terms determines the due date of the invoice. Due date is calculated
-            # based on the invoice or issuance date, depending on the account's configured due
-            # date calculation method. A value of '0' here represents that the invoice is due
-            # on issue, whereas a value of '30' represents that the customer has 30 days to
-            # pay the invoice. Do not set this field if you want to set a custom due date.
-            sig { returns(T.nilable(Integer)) }
-            attr_accessor :net_terms
-
             # An optional custom due date for the invoice. If not set, the due date will be
             # calculated based on the `net_terms` value.
             sig do
@@ -436,6 +428,14 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :memo
 
+            # The net terms determines the due date of the invoice. Due date is calculated
+            # based on the invoice or issuance date, depending on the account's configured due
+            # date calculation method. A value of '0' here represents that the invoice is due
+            # on issue, whereas a value of '30' represents that the customer has 30 days to
+            # pay the invoice. Do not set this field if you want to set a custom due date.
+            sig { returns(T.nilable(Integer)) }
+            attr_accessor :net_terms
+
             # If true, the new credit block will require that the corresponding invoice is
             # paid before it can be drawn down from.
             sig { returns(T.nilable(T::Boolean)) }
@@ -451,7 +451,6 @@ module Orb
             sig do
               params(
                 auto_collection: T::Boolean,
-                net_terms: T.nilable(Integer),
                 custom_due_date:
                   T.nilable(
                     Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::CustomDueDate::Variants
@@ -462,6 +461,7 @@ module Orb
                   ),
                 item_id: T.nilable(String),
                 memo: T.nilable(String),
+                net_terms: T.nilable(Integer),
                 require_successful_payment: T::Boolean
               ).returns(T.attached_class)
             end
@@ -469,12 +469,6 @@ module Orb
               # Whether the credits purchase invoice should auto collect with the customer's
               # saved payment method.
               auto_collection:,
-              # The net terms determines the due date of the invoice. Due date is calculated
-              # based on the invoice or issuance date, depending on the account's configured due
-              # date calculation method. A value of '0' here represents that the invoice is due
-              # on issue, whereas a value of '30' represents that the customer has 30 days to
-              # pay the invoice. Do not set this field if you want to set a custom due date.
-              net_terms:,
               # An optional custom due date for the invoice. If not set, the due date will be
               # calculated based on the `net_terms` value.
               custom_due_date: nil,
@@ -487,6 +481,12 @@ module Orb
               item_id: nil,
               # An optional memo to display on the invoice.
               memo: nil,
+              # The net terms determines the due date of the invoice. Due date is calculated
+              # based on the invoice or issuance date, depending on the account's configured due
+              # date calculation method. A value of '0' here represents that the invoice is due
+              # on issue, whereas a value of '30' represents that the customer has 30 days to
+              # pay the invoice. Do not set this field if you want to set a custom due date.
+              net_terms: nil,
               # If true, the new credit block will require that the corresponding invoice is
               # paid before it can be drawn down from.
               require_successful_payment: nil
@@ -497,7 +497,6 @@ module Orb
               override.returns(
                 {
                   auto_collection: T::Boolean,
-                  net_terms: T.nilable(Integer),
                   custom_due_date:
                     T.nilable(
                       Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::CustomDueDate::Variants
@@ -508,6 +507,7 @@ module Orb
                     ),
                   item_id: T.nilable(String),
                   memo: T.nilable(String),
+                  net_terms: T.nilable(Integer),
                   require_successful_payment: T::Boolean
                 }
               )
