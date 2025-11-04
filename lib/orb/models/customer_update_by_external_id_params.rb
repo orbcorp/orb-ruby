@@ -37,14 +37,6 @@ module Orb
       #   @return [Boolean, nil]
       optional :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!attribute automatic_tax_enabled
-      #   Whether automatic tax calculation is enabled for this customer. When null,
-      #   inherits from account-level setting. When true or false, overrides the account
-      #   setting.
-      #
-      #   @return [Boolean, nil]
-      optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
-
       # @!attribute billing_address
       #
       #   @return [Orb::Models::AddressInput, nil]
@@ -285,7 +277,7 @@ module Orb
       #   @return [Orb::Models::CustomerTaxID, nil]
       optional :tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
-      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, automatic_tax_enabled: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateByExternalIDParams} for more details.
       #
@@ -296,8 +288,6 @@ module Orb
       #   @param auto_collection [Boolean, nil] Used to determine if invoices for this customer will automatically attempt to ch
       #
       #   @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
-      #
-      #   @param automatic_tax_enabled [Boolean, nil] Whether automatic tax calculation is enabled for this customer. When null, inher
       #
       #   @param billing_address [Orb::Models::AddressInput, nil]
       #
