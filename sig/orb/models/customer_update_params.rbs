@@ -6,7 +6,6 @@ module Orb
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
         auto_issuance: bool?,
-        automatic_tax_enabled: bool?,
         billing_address: Orb::AddressInput?,
         currency: String?,
         email: String?,
@@ -35,8 +34,6 @@ module Orb
       attr_accessor auto_collection: bool?
 
       attr_accessor auto_issuance: bool?
-
-      attr_accessor automatic_tax_enabled: bool?
 
       attr_accessor billing_address: Orb::AddressInput?
 
@@ -71,7 +68,6 @@ module Orb
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
         ?auto_issuance: bool?,
-        ?automatic_tax_enabled: bool?,
         ?billing_address: Orb::AddressInput?,
         ?currency: String?,
         ?email: String?,
@@ -94,7 +90,6 @@ module Orb
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
         auto_issuance: bool?,
-        automatic_tax_enabled: bool?,
         billing_address: Orb::AddressInput?,
         currency: String?,
         email: String?,
