@@ -272,7 +272,6 @@ module Orb
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
-          automatic_tax_enabled: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
           email: T.nilable(String),
@@ -317,10 +316,6 @@ module Orb
         # manual approval.If `null` is specified, the customer's auto issuance setting
         # will be inherited from the account-level setting.
         auto_issuance: nil,
-        # Whether automatic tax calculation is enabled for this customer. When null,
-        # inherits from account-level setting. When true or false, overrides the account
-        # setting.
-        automatic_tax_enabled: nil,
         billing_address: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
@@ -631,7 +626,6 @@ module Orb
           additional_emails: T.nilable(T::Array[String]),
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
-          automatic_tax_enabled: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
           email: T.nilable(String),
@@ -678,10 +672,6 @@ module Orb
         # manual approval.If `null` is specified, the customer's auto issuance setting
         # will be inherited from the account-level setting.
         auto_issuance: nil,
-        # Whether automatic tax calculation is enabled for this customer. When null,
-        # inherits from account-level setting. When true or false, overrides the account
-        # setting.
-        automatic_tax_enabled: nil,
         billing_address: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
