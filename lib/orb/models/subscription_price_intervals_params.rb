@@ -28,6 +28,14 @@ module Orb
       #   @return [Boolean, nil]
       optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute can_defer_billing
+      #   If true, ending an in-arrears price interval mid-cycle will defer billing the
+      #   final line itemuntil the next scheduled invoice. If false, it will be billed on
+      #   its end date. If not provided, behaviorwill follow account default.
+      #
+      #   @return [Boolean, nil]
+      optional :can_defer_billing, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute edit
       #   A list of price intervals to edit on the subscription.
       #
@@ -41,7 +49,7 @@ module Orb
       optional :edit_adjustments,
                -> { Orb::Internal::Type::ArrayOf[Orb::SubscriptionPriceIntervalsParams::EditAdjustment] }
 
-      # @!method initialize(add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, edit: nil, edit_adjustments: nil, request_options: {})
+      # @!method initialize(add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, can_defer_billing: nil, edit: nil, edit_adjustments: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionPriceIntervalsParams} for more details.
       #
@@ -50,6 +58,8 @@ module Orb
       #   @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>] A list of adjustments to add to the subscription.
       #
       #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      #
+      #   @param can_defer_billing [Boolean, nil] If true, ending an in-arrears price interval mid-cycle will defer billing the fi
       #
       #   @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>] A list of price intervals to edit on the subscription.
       #
@@ -1361,6 +1371,14 @@ module Orb
         #   @return [Integer, nil]
         optional :billing_cycle_day, Integer, nil?: true
 
+        # @!attribute can_defer_billing
+        #   If true, ending an in-arrears price interval mid-cycle will defer billing the
+        #   final line itemuntil the next scheduled invoice. If false, it will be billed on
+        #   its end date. If not provided, behaviorwill follow account default.
+        #
+        #   @return [Boolean, nil]
+        optional :can_defer_billing, Orb::Internal::Type::Boolean, nil?: true
+
         # @!attribute end_date
         #   The updated end date of this price interval. If not specified, the end date will
         #   not be updated.
@@ -1407,13 +1425,15 @@ module Orb
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!method initialize(price_interval_id:, billing_cycle_day: nil, end_date: nil, filter: nil, fixed_fee_quantity_transitions: nil, start_date: nil, usage_customer_ids: nil)
+        # @!method initialize(price_interval_id:, billing_cycle_day: nil, can_defer_billing: nil, end_date: nil, filter: nil, fixed_fee_quantity_transitions: nil, start_date: nil, usage_customer_ids: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionPriceIntervalsParams::Edit} for more details.
         #
         #   @param price_interval_id [String] The id of the price interval to edit.
         #
         #   @param billing_cycle_day [Integer, nil] The updated billing cycle day for this price interval. If not specified, the bil
+        #
+        #   @param can_defer_billing [Boolean, nil] If true, ending an in-arrears price interval mid-cycle will defer billing the fi
         #
         #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil] The updated end date of this price interval. If not specified, the end date will
         #

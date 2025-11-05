@@ -983,6 +983,7 @@ module Orb
               Orb::SubscriptionPriceIntervalsParams::AddAdjustment::OrHash
             ],
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
+          can_defer_billing: T.nilable(T::Boolean),
           edit: T::Array[Orb::SubscriptionPriceIntervalsParams::Edit::OrHash],
           edit_adjustments:
             T::Array[
@@ -1001,6 +1002,10 @@ module Orb
         # credit note. Consider using this as a safety mechanism if you do not expect
         # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
+        # If true, ending an in-arrears price interval mid-cycle will defer billing the
+        # final line itemuntil the next scheduled invoice. If false, it will be billed on
+        # its end date. If not provided, behaviorwill follow account default.
+        can_defer_billing: nil,
         # A list of price intervals to edit on the subscription.
         edit: nil,
         # A list of adjustments to edit on the subscription.
