@@ -1,13 +1,17 @@
 module Orb
   module Models
-    type tiered_config = { tiers: ::Array[Orb::Tier] }
+    type tiered_config = { tiers: ::Array[Orb::Tier], prorated: bool }
 
     class TieredConfig < Orb::Internal::Type::BaseModel
       attr_accessor tiers: ::Array[Orb::Tier]
 
-      def initialize: (tiers: ::Array[Orb::Tier]) -> void
+      attr_reader prorated: bool?
 
-      def to_hash: -> { tiers: ::Array[Orb::Tier] }
+      def prorated=: (bool) -> bool
+
+      def initialize: (tiers: ::Array[Orb::Tier], ?prorated: bool) -> void
+
+      def to_hash: -> { tiers: ::Array[Orb::Tier], prorated: bool }
     end
   end
 end

@@ -116,6 +116,7 @@ module Orb
         ?add: ::Array[Orb::SubscriptionPriceIntervalsParams::Add],
         ?add_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],
         ?allow_invoice_credit_or_void: bool?,
+        ?can_defer_billing: bool?,
         ?edit: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit],
         ?edit_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::EditAdjustment],
         ?request_options: Orb::request_opts

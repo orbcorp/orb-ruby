@@ -13,6 +13,12 @@ module Orb
       sig { returns(Integer) }
       attr_accessor :billing_cycle_day
 
+      # For in-arrears prices. If true, and the price interval ends mid-cycle, the final
+      # line item will be deferred to the next scheduled invoice instead of being billed
+      # mid-cycle.
+      sig { returns(T::Boolean) }
+      attr_accessor :can_defer_billing
+
       # The end of the current billing period. This is an exclusive timestamp, such that
       # the instant returned is exactly the end of the billing period. Set to null if
       # this price interval is not currently active.
@@ -69,6 +75,7 @@ module Orb
         params(
           id: String,
           billing_cycle_day: Integer,
+          can_defer_billing: T::Boolean,
           current_billing_period_end_date: T.nilable(Time),
           current_billing_period_start_date: T.nilable(Time),
           end_date: T.nilable(Time),
@@ -116,6 +123,10 @@ module Orb
         id:,
         # The day of the month that Orb bills for this price
         billing_cycle_day:,
+        # For in-arrears prices. If true, and the price interval ends mid-cycle, the final
+        # line item will be deferred to the next scheduled invoice instead of being billed
+        # mid-cycle.
+        can_defer_billing:,
         # The end of the current billing period. This is an exclusive timestamp, such that
         # the instant returned is exactly the end of the billing period. Set to null if
         # this price interval is not currently active.
@@ -157,6 +168,7 @@ module Orb
           {
             id: String,
             billing_cycle_day: Integer,
+            can_defer_billing: T::Boolean,
             current_billing_period_end_date: T.nilable(Time),
             current_billing_period_start_date: T.nilable(Time),
             end_date: T.nilable(Time),
