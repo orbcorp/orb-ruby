@@ -9,17 +9,31 @@ module Orb
       sig { returns(T::Array[Orb::Tier]) }
       attr_accessor :tiers
 
+      # If true, subtotals from this price are prorated based on the service period
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :prorated
+
+      sig { params(prorated: T::Boolean).void }
+      attr_writer :prorated
+
       # Configuration for tiered pricing
       sig do
-        params(tiers: T::Array[Orb::Tier::OrHash]).returns(T.attached_class)
+        params(
+          tiers: T::Array[Orb::Tier::OrHash],
+          prorated: T::Boolean
+        ).returns(T.attached_class)
       end
       def self.new(
         # Tiers for rating based on total usage quantities into the specified tier
-        tiers:
+        tiers:,
+        # If true, subtotals from this price are prorated based on the service period
+        prorated: nil
       )
       end
 
-      sig { override.returns({ tiers: T::Array[Orb::Tier] }) }
+      sig do
+        override.returns({ tiers: T::Array[Orb::Tier], prorated: T::Boolean })
+      end
       def to_hash
       end
     end

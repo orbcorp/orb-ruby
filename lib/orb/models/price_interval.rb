@@ -14,6 +14,14 @@ module Orb
       #   @return [Integer]
       required :billing_cycle_day, Integer
 
+      # @!attribute can_defer_billing
+      #   For in-arrears prices. If true, and the price interval ends mid-cycle, the final
+      #   line item will be deferred to the next scheduled invoice instead of being billed
+      #   mid-cycle.
+      #
+      #   @return [Boolean]
+      required :can_defer_billing, Orb::Internal::Type::Boolean
+
       # @!attribute current_billing_period_end_date
       #   The end of the current billing period. This is an exclusive timestamp, such that
       #   the instant returned is exactly the end of the billing period. Set to null if
@@ -81,7 +89,7 @@ module Orb
       #   @return [Array<String>, nil]
       required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!method initialize(id:, billing_cycle_day:, current_billing_period_end_date:, current_billing_period_start_date:, end_date:, filter:, fixed_fee_quantity_transitions:, price:, start_date:, usage_customer_ids:)
+      # @!method initialize(id:, billing_cycle_day:, can_defer_billing:, current_billing_period_end_date:, current_billing_period_start_date:, end_date:, filter:, fixed_fee_quantity_transitions:, price:, start_date:, usage_customer_ids:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceInterval} for more details.
       #
@@ -92,6 +100,8 @@ module Orb
       #   @param id [String]
       #
       #   @param billing_cycle_day [Integer] The day of the month that Orb bills for this price
+      #
+      #   @param can_defer_billing [Boolean] For in-arrears prices. If true, and the price interval ends mid-cycle, the final
       #
       #   @param current_billing_period_end_date [Time, nil] The end of the current billing period. This is an exclusive timestamp, such that
       #

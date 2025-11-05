@@ -956,7 +956,7 @@ module Orb
       # `fixed_fee_quantity_transitions` property on a subscription’s serialized price
       # intervals.
       #
-      # @overload price_intervals(subscription_id, add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, edit: nil, edit_adjustments: nil, request_options: {})
+      # @overload price_intervals(subscription_id, add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, can_defer_billing: nil, edit: nil, edit_adjustments: nil, request_options: {})
       #
       # @param subscription_id [String]
       #
@@ -965,6 +965,8 @@ module Orb
       # @param add_adjustments [Array<Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment>] A list of adjustments to add to the subscription.
       #
       # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
+      #
+      # @param can_defer_billing [Boolean, nil] If true, ending an in-arrears price interval mid-cycle will defer billing the fi
       #
       # @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>] A list of price intervals to edit on the subscription.
       #

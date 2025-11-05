@@ -1,13 +1,17 @@
 module Orb
   module Models
-    type unit_config = { unit_amount: String }
+    type unit_config = { unit_amount: String, prorated: bool }
 
     class UnitConfig < Orb::Internal::Type::BaseModel
       attr_accessor unit_amount: String
 
-      def initialize: (unit_amount: String) -> void
+      attr_reader prorated: bool?
 
-      def to_hash: -> { unit_amount: String }
+      def prorated=: (bool) -> bool
+
+      def initialize: (unit_amount: String, ?prorated: bool) -> void
+
+      def to_hash: -> { unit_amount: String, prorated: bool }
     end
   end
 end

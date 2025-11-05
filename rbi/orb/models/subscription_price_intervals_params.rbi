@@ -50,6 +50,12 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :allow_invoice_credit_or_void
 
+      # If true, ending an in-arrears price interval mid-cycle will defer billing the
+      # final line itemuntil the next scheduled invoice. If false, it will be billed on
+      # its end date. If not provided, behaviorwill follow account default.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :can_defer_billing
+
       # A list of price intervals to edit on the subscription.
       sig do
         returns(
@@ -93,6 +99,7 @@ module Orb
               Orb::SubscriptionPriceIntervalsParams::AddAdjustment::OrHash
             ],
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
+          can_defer_billing: T.nilable(T::Boolean),
           edit: T::Array[Orb::SubscriptionPriceIntervalsParams::Edit::OrHash],
           edit_adjustments:
             T::Array[
@@ -110,6 +117,10 @@ module Orb
         # credit note. Consider using this as a safety mechanism if you do not expect
         # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
+        # If true, ending an in-arrears price interval mid-cycle will defer billing the
+        # final line itemuntil the next scheduled invoice. If false, it will be billed on
+        # its end date. If not provided, behaviorwill follow account default.
+        can_defer_billing: nil,
         # A list of price intervals to edit on the subscription.
         edit: nil,
         # A list of adjustments to edit on the subscription.
@@ -125,6 +136,7 @@ module Orb
             add_adjustments:
               T::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],
             allow_invoice_credit_or_void: T.nilable(T::Boolean),
+            can_defer_billing: T.nilable(T::Boolean),
             edit: T::Array[Orb::SubscriptionPriceIntervalsParams::Edit],
             edit_adjustments:
               T::Array[Orb::SubscriptionPriceIntervalsParams::EditAdjustment],
@@ -2419,6 +2431,12 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :billing_cycle_day
 
+        # If true, ending an in-arrears price interval mid-cycle will defer billing the
+        # final line itemuntil the next scheduled invoice. If false, it will be billed on
+        # its end date. If not provided, behaviorwill follow account default.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :can_defer_billing
+
         # The updated end date of this price interval. If not specified, the end date will
         # not be updated.
         sig do
@@ -2478,6 +2496,7 @@ module Orb
           params(
             price_interval_id: String,
             billing_cycle_day: T.nilable(Integer),
+            can_defer_billing: T.nilable(T::Boolean),
             end_date:
               T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
             filter: T.nilable(String),
@@ -2498,6 +2517,10 @@ module Orb
           # billing cycle day will not be updated. Note that overlapping price intervals
           # must have the same billing cycle day.
           billing_cycle_day: nil,
+          # If true, ending an in-arrears price interval mid-cycle will defer billing the
+          # final line itemuntil the next scheduled invoice. If false, it will be billed on
+          # its end date. If not provided, behaviorwill follow account default.
+          can_defer_billing: nil,
           # The updated end date of this price interval. If not specified, the end date will
           # not be updated.
           end_date: nil,
@@ -2528,6 +2551,7 @@ module Orb
             {
               price_interval_id: String,
               billing_cycle_day: T.nilable(Integer),
+              can_defer_billing: T.nilable(T::Boolean),
               end_date:
                 T.nilable(T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol)),
               filter: T.nilable(String),
