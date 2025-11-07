@@ -57,7 +57,7 @@ module Orb
 
         class Filter < Orb::Internal::Type::BaseModel
           # @!attribute field
-          #   The property of the price to filter on.
+          #   The property of the price the block applies to. Only item_id is supported.
           #
           #   @return [Symbol, Orb::Models::Customers::CreditListResponse::Filter::Field]
           required :field, enum: -> { Orb::Models::Customers::CreditListResponse::Filter::Field }
@@ -75,23 +75,21 @@ module Orb
           required :values, Orb::Internal::Type::ArrayOf[String]
 
           # @!method initialize(field:, operator:, values:)
-          #   @param field [Symbol, Orb::Models::Customers::CreditListResponse::Filter::Field] The property of the price to filter on.
+          #   A PriceFilter that only allows item_id field for block filters.
+          #
+          #   @param field [Symbol, Orb::Models::Customers::CreditListResponse::Filter::Field] The property of the price the block applies to. Only item_id is supported.
           #
           #   @param operator [Symbol, Orb::Models::Customers::CreditListResponse::Filter::Operator] Should prices that match the filter be included or excluded.
           #
           #   @param values [Array<String>] The IDs or values that match this filter.
 
-          # The property of the price to filter on.
+          # The property of the price the block applies to. Only item_id is supported.
           #
           # @see Orb::Models::Customers::CreditListResponse::Filter#field
           module Field
             extend Orb::Internal::Type::Enum
 
-            PRICE_ID = :price_id
             ITEM_ID = :item_id
-            PRICE_TYPE = :price_type
-            CURRENCY = :currency
-            PRICING_UNIT_ID = :pricing_unit_id
 
             # @!method self.values
             #   @return [Array<Symbol>]

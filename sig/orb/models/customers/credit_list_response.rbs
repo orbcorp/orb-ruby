@@ -78,17 +78,12 @@ module Orb
             values: ::Array[String]
           }
 
-          type field =
-            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+          type field = :item_id
 
           module Field
             extend Orb::Internal::Type::Enum
 
-            PRICE_ID: :price_id
             ITEM_ID: :item_id
-            PRICE_TYPE: :price_type
-            CURRENCY: :currency
-            PRICING_UNIT_ID: :pricing_unit_id
 
             def self?.values: -> ::Array[Orb::Models::Customers::CreditListResponse::Filter::field]
           end
