@@ -45,6 +45,9 @@ module Orb
         # expressiveness of computed properties allows you to deprecate existing events
         # based on both a period of time and specific property values.
         #
+        # You may not have multiple backfills in a pending or pending_revert state with
+        # overlapping timeframes.
+        #
         # @overload create(timeframe_end:, timeframe_start:, close_time: nil, customer_id: nil, deprecation_filter: nil, external_customer_id: nil, replace_existing_events: nil, request_options: {})
         #
         # @param timeframe_end [Time] The (exclusive) end of the usage timeframe affected by this backfill. By default
