@@ -97,7 +97,7 @@ module Orb
               )
             end
 
-          # The property of the price to filter on.
+          # The property of the price the block applies to. Only item_id is supported.
           sig do
             returns(
               Orb::Models::Customers::CreditListResponse::Filter::Field::TaggedSymbol
@@ -117,6 +117,7 @@ module Orb
           sig { returns(T::Array[String]) }
           attr_accessor :values
 
+          # A PriceFilter that only allows item_id field for block filters.
           sig do
             params(
               field:
@@ -127,7 +128,7 @@ module Orb
             ).returns(T.attached_class)
           end
           def self.new(
-            # The property of the price to filter on.
+            # The property of the price the block applies to. Only item_id is supported.
             field:,
             # Should prices that match the filter be included or excluded.
             operator:,
@@ -150,7 +151,7 @@ module Orb
           def to_hash
           end
 
-          # The property of the price to filter on.
+          # The property of the price the block applies to. Only item_id is supported.
           module Field
             extend Orb::Internal::Type::Enum
 
@@ -163,29 +164,9 @@ module Orb
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            PRICE_ID =
-              T.let(
-                :price_id,
-                Orb::Models::Customers::CreditListResponse::Filter::Field::TaggedSymbol
-              )
             ITEM_ID =
               T.let(
                 :item_id,
-                Orb::Models::Customers::CreditListResponse::Filter::Field::TaggedSymbol
-              )
-            PRICE_TYPE =
-              T.let(
-                :price_type,
-                Orb::Models::Customers::CreditListResponse::Filter::Field::TaggedSymbol
-              )
-            CURRENCY =
-              T.let(
-                :currency,
-                Orb::Models::Customers::CreditListResponse::Filter::Field::TaggedSymbol
-              )
-            PRICING_UNIT_ID =
-              T.let(
-                :pricing_unit_id,
                 Orb::Models::Customers::CreditListResponse::Filter::Field::TaggedSymbol
               )
 
