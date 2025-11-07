@@ -52,7 +52,8 @@ module Orb
                 Orb::NewTaxJarConfiguration::OrHash,
                 Orb::NewSphereConfiguration::OrHash,
                 Orb::CustomerCreateParams::TaxConfiguration::Numeral::OrHash,
-                Orb::CustomerCreateParams::TaxConfiguration::Anrok::OrHash
+                Orb::CustomerCreateParams::TaxConfiguration::Anrok::OrHash,
+                Orb::CustomerCreateParams::TaxConfiguration::Stripe::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -293,7 +294,8 @@ module Orb
                 Orb::NewTaxJarConfiguration::OrHash,
                 Orb::NewSphereConfiguration::OrHash,
                 Orb::CustomerUpdateParams::TaxConfiguration::Numeral::OrHash,
-                Orb::CustomerUpdateParams::TaxConfiguration::Anrok::OrHash
+                Orb::CustomerUpdateParams::TaxConfiguration::Anrok::OrHash,
+                Orb::CustomerUpdateParams::TaxConfiguration::Stripe::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -649,7 +651,8 @@ module Orb
                 Orb::NewTaxJarConfiguration::OrHash,
                 Orb::NewSphereConfiguration::OrHash,
                 Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral::OrHash,
-                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok::OrHash
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok::OrHash,
+                Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Stripe::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
