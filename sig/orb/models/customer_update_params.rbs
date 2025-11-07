@@ -128,6 +128,7 @@ module Orb
         | Orb::NewSphereConfiguration
         | Orb::CustomerUpdateParams::TaxConfiguration::Numeral
         | Orb::CustomerUpdateParams::TaxConfiguration::Anrok
+        | Orb::CustomerUpdateParams::TaxConfiguration::Stripe
 
       module TaxConfiguration
         extend Orb::Internal::Type::Union
@@ -182,6 +183,33 @@ module Orb
           def to_hash: -> {
             tax_exempt: bool,
             tax_provider: :anrok,
+            automatic_tax_enabled: bool?
+          }
+        end
+
+        type stripe =
+          {
+            tax_exempt: bool,
+            tax_provider: :stripe,
+            automatic_tax_enabled: bool?
+          }
+
+        class Stripe < Orb::Internal::Type::BaseModel
+          attr_accessor tax_exempt: bool
+
+          attr_accessor tax_provider: :stripe
+
+          attr_accessor automatic_tax_enabled: bool?
+
+          def initialize: (
+            tax_exempt: bool,
+            ?automatic_tax_enabled: bool?,
+            ?tax_provider: :stripe
+          ) -> void
+
+          def to_hash: -> {
+            tax_exempt: bool,
+            tax_provider: :stripe,
             automatic_tax_enabled: bool?
           }
         end

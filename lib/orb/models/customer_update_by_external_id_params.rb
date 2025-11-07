@@ -123,7 +123,7 @@ module Orb
 
       # @!attribute tax_configuration
       #
-      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok, nil]
+      #   @return [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Stripe, nil]
       optional :tax_configuration,
                union: -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration },
                nil?: true
@@ -313,7 +313,7 @@ module Orb
       #
       #   @param shipping_address [Orb::Models::AddressInput, nil]
       #
-      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok, nil]
+      #   @param tax_configuration [Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Stripe, nil]
       #
       #   @param tax_id [Orb::Models::CustomerTaxID, nil] Tax IDs are commonly required to be displayed on customer invoices, which are ad
       #
@@ -353,6 +353,8 @@ module Orb
         variant :numeral, -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral }
 
         variant :anrok, -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok }
+
+        variant :stripe, -> { Orb::CustomerUpdateByExternalIDParams::TaxConfiguration::Stripe }
 
         class Numeral < Orb::Internal::Type::BaseModel
           # @!attribute tax_exempt
@@ -414,8 +416,38 @@ module Orb
           #   @param tax_provider [Symbol, :anrok]
         end
 
+        class Stripe < Orb::Internal::Type::BaseModel
+          # @!attribute tax_exempt
+          #
+          #   @return [Boolean]
+          required :tax_exempt, Orb::Internal::Type::Boolean
+
+          # @!attribute tax_provider
+          #
+          #   @return [Symbol, :stripe]
+          required :tax_provider, const: :stripe
+
+          # @!attribute automatic_tax_enabled
+          #   Whether to automatically calculate tax for this customer. When null, inherits
+          #   from account-level setting. When true or false, overrides the account setting.
+          #
+          #   @return [Boolean, nil]
+          optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!method initialize(tax_exempt:, automatic_tax_enabled: nil, tax_provider: :stripe)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Stripe} for
+          #   more details.
+          #
+          #   @param tax_exempt [Boolean]
+          #
+          #   @param automatic_tax_enabled [Boolean, nil] Whether to automatically calculate tax for this customer. When null, inherits fr
+          #
+          #   @param tax_provider [Symbol, :stripe]
+        end
+
         # @!method self.variants
-        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok)]
+        #   @return [Array(Orb::Models::NewAvalaraTaxConfiguration, Orb::Models::NewTaxJarConfiguration, Orb::Models::NewSphereConfiguration, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Numeral, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Anrok, Orb::Models::CustomerUpdateByExternalIDParams::TaxConfiguration::Stripe)]
       end
     end
   end

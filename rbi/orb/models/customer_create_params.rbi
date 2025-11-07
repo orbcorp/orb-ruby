@@ -126,7 +126,8 @@ module Orb
               Orb::NewTaxJarConfiguration,
               Orb::NewSphereConfiguration,
               Orb::CustomerCreateParams::TaxConfiguration::Numeral,
-              Orb::CustomerCreateParams::TaxConfiguration::Anrok
+              Orb::CustomerCreateParams::TaxConfiguration::Anrok,
+              Orb::CustomerCreateParams::TaxConfiguration::Stripe
             )
           )
         )
@@ -317,7 +318,8 @@ module Orb
                 Orb::NewTaxJarConfiguration::OrHash,
                 Orb::NewSphereConfiguration::OrHash,
                 Orb::CustomerCreateParams::TaxConfiguration::Numeral::OrHash,
-                Orb::CustomerCreateParams::TaxConfiguration::Anrok::OrHash
+                Orb::CustomerCreateParams::TaxConfiguration::Anrok::OrHash,
+                Orb::CustomerCreateParams::TaxConfiguration::Stripe::OrHash
               )
             ),
           tax_id: T.nilable(Orb::CustomerTaxID::OrHash),
@@ -552,7 +554,8 @@ module Orb
                   Orb::NewTaxJarConfiguration,
                   Orb::NewSphereConfiguration,
                   Orb::CustomerCreateParams::TaxConfiguration::Numeral,
-                  Orb::CustomerCreateParams::TaxConfiguration::Anrok
+                  Orb::CustomerCreateParams::TaxConfiguration::Anrok,
+                  Orb::CustomerCreateParams::TaxConfiguration::Stripe
                 )
               ),
             tax_id: T.nilable(Orb::CustomerTaxID),
@@ -621,7 +624,8 @@ module Orb
               Orb::NewTaxJarConfiguration,
               Orb::NewSphereConfiguration,
               Orb::CustomerCreateParams::TaxConfiguration::Numeral,
-              Orb::CustomerCreateParams::TaxConfiguration::Anrok
+              Orb::CustomerCreateParams::TaxConfiguration::Anrok,
+              Orb::CustomerCreateParams::TaxConfiguration::Stripe
             )
           end
 
@@ -707,6 +711,55 @@ module Orb
             # from account-level setting. When true or false, overrides the account setting.
             automatic_tax_enabled: nil,
             tax_provider: :anrok
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                tax_exempt: T::Boolean,
+                tax_provider: Symbol,
+                automatic_tax_enabled: T.nilable(T::Boolean)
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        class Stripe < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerCreateParams::TaxConfiguration::Stripe,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          sig { returns(T::Boolean) }
+          attr_accessor :tax_exempt
+
+          sig { returns(Symbol) }
+          attr_accessor :tax_provider
+
+          # Whether to automatically calculate tax for this customer. When null, inherits
+          # from account-level setting. When true or false, overrides the account setting.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :automatic_tax_enabled
+
+          sig do
+            params(
+              tax_exempt: T::Boolean,
+              automatic_tax_enabled: T.nilable(T::Boolean),
+              tax_provider: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            tax_exempt:,
+            # Whether to automatically calculate tax for this customer. When null, inherits
+            # from account-level setting. When true or false, overrides the account setting.
+            automatic_tax_enabled: nil,
+            tax_provider: :stripe
           )
           end
 
