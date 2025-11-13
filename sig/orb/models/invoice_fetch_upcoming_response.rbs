@@ -416,14 +416,9 @@ module Orb
           adjustments: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::adjustment],
           amount: String,
           credits_applied: String,
-          discount: Orb::Models::discount?,
           end_date: Time,
           filter: String?,
           grouping: String?,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
           name: String,
           partially_invoiced_amount: String,
           price: Orb::Models::price,
@@ -446,21 +441,11 @@ module Orb
 
         attr_accessor credits_applied: String
 
-        attr_accessor discount: Orb::Models::discount?
-
         attr_accessor end_date: Time
 
         attr_accessor filter: String?
 
         attr_accessor grouping: String?
-
-        attr_accessor maximum: Orb::Maximum?
-
-        attr_accessor maximum_amount: String?
-
-        attr_accessor minimum: Orb::Minimum?
-
-        attr_accessor minimum_amount: String?
 
         attr_accessor name: String
 
@@ -486,14 +471,9 @@ module Orb
           adjustments: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::adjustment],
           amount: String,
           credits_applied: String,
-          discount: Orb::Models::discount?,
           end_date: Time,
           filter: String?,
           grouping: String?,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
           name: String,
           partially_invoiced_amount: String,
           price: Orb::Models::price,
@@ -511,14 +491,9 @@ module Orb
           adjustments: ::Array[Orb::Models::InvoiceFetchUpcomingResponse::LineItem::adjustment],
           amount: String,
           credits_applied: String,
-          discount: Orb::Models::discount?,
           end_date: Time,
           filter: String?,
           grouping: String?,
-          maximum: Orb::Maximum?,
-          maximum_amount: String?,
-          minimum: Orb::Minimum?,
-          minimum_amount: String?,
           name: String,
           partially_invoiced_amount: String,
           price: Orb::Models::price,
