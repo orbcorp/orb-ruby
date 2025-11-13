@@ -41,10 +41,6 @@ module Orb
       sig { returns(String) }
       attr_accessor :credits_applied
 
-      # This field is deprecated in favor of `adjustments`
-      sig { returns(T.nilable(Orb::Discount::Variants)) }
-      attr_accessor :discount
-
       # The end date of the range of time applied for this line item's price.
       sig { returns(Time) }
       attr_accessor :end_date
@@ -58,28 +54,6 @@ module Orb
       # values for this particular grouping.
       sig { returns(T.nilable(String)) }
       attr_accessor :grouping
-
-      # This field is deprecated in favor of `adjustments`.
-      sig { returns(T.nilable(Orb::Maximum)) }
-      attr_reader :maximum
-
-      sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
-      attr_writer :maximum
-
-      # This field is deprecated in favor of `adjustments`.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :maximum_amount
-
-      # This field is deprecated in favor of `adjustments`.
-      sig { returns(T.nilable(Orb::Minimum)) }
-      attr_reader :minimum
-
-      sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
-      attr_writer :minimum
-
-      # This field is deprecated in favor of `adjustments`.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :minimum_amount
 
       # The name of the price associated with this line item.
       sig { returns(String) }
@@ -150,22 +124,9 @@ module Orb
             ],
           amount: String,
           credits_applied: String,
-          discount:
-            T.nilable(
-              T.any(
-                Orb::PercentageDiscount::OrHash,
-                Orb::TrialDiscount::OrHash,
-                Orb::UsageDiscount::OrHash,
-                Orb::AmountDiscount::OrHash
-              )
-            ),
           end_date: Time,
           filter: T.nilable(String),
           grouping: T.nilable(String),
-          maximum: T.nilable(Orb::Maximum::OrHash),
-          maximum_amount: T.nilable(String),
-          minimum: T.nilable(Orb::Minimum::OrHash),
-          minimum_amount: T.nilable(String),
           name: String,
           partially_invoiced_amount: String,
           price:
@@ -231,8 +192,6 @@ module Orb
         amount:,
         # The number of prepaid credits applied.
         credits_applied:,
-        # This field is deprecated in favor of `adjustments`
-        discount:,
         # The end date of the range of time applied for this line item's price.
         end_date:,
         # An additional filter that was used to calculate the usage for this line item.
@@ -241,14 +200,6 @@ module Orb
         # be populated with the key and a value. The `amount` and `subtotal` will be the
         # values for this particular grouping.
         grouping:,
-        # This field is deprecated in favor of `adjustments`.
-        maximum:,
-        # This field is deprecated in favor of `adjustments`.
-        maximum_amount:,
-        # This field is deprecated in favor of `adjustments`.
-        minimum:,
-        # This field is deprecated in favor of `adjustments`.
-        minimum_amount:,
         # The name of the price associated with this line item.
         name:,
         # Any amount applied from a partial invoice
@@ -292,14 +243,9 @@ module Orb
               ],
             amount: String,
             credits_applied: String,
-            discount: T.nilable(Orb::Discount::Variants),
             end_date: Time,
             filter: T.nilable(String),
             grouping: T.nilable(String),
-            maximum: T.nilable(Orb::Maximum),
-            maximum_amount: T.nilable(String),
-            minimum: T.nilable(Orb::Minimum),
-            minimum_amount: T.nilable(String),
             name: String,
             partially_invoiced_amount: String,
             price: Orb::Price::Variants,
