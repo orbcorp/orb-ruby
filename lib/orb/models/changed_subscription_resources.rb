@@ -807,14 +807,6 @@ module Orb
           #   @return [String]
           required :credits_applied, String
 
-          # @!attribute discount
-          #   @deprecated
-          #
-          #   This field is deprecated in favor of `adjustments`
-          #
-          #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
-          required :discount, union: -> { Orb::Discount }, nil?: true
-
           # @!attribute end_date
           #   The end date of the range of time applied for this line item's price.
           #
@@ -834,38 +826,6 @@ module Orb
           #
           #   @return [String, nil]
           required :grouping, String, nil?: true
-
-          # @!attribute maximum
-          #   @deprecated
-          #
-          #   This field is deprecated in favor of `adjustments`.
-          #
-          #   @return [Orb::Models::Maximum, nil]
-          required :maximum, -> { Orb::Maximum }, nil?: true
-
-          # @!attribute maximum_amount
-          #   @deprecated
-          #
-          #   This field is deprecated in favor of `adjustments`.
-          #
-          #   @return [String, nil]
-          required :maximum_amount, String, nil?: true
-
-          # @!attribute minimum
-          #   @deprecated
-          #
-          #   This field is deprecated in favor of `adjustments`.
-          #
-          #   @return [Orb::Models::Minimum, nil]
-          required :minimum, -> { Orb::Minimum }, nil?: true
-
-          # @!attribute minimum_amount
-          #   @deprecated
-          #
-          #   This field is deprecated in favor of `adjustments`.
-          #
-          #   @return [String, nil]
-          required :minimum_amount, String, nil?: true
 
           # @!attribute name
           #   The name of the price associated with this line item.
@@ -933,7 +893,7 @@ module Orb
           #   @return [Array<String>, nil]
           required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-          # @!method initialize(id:, adjusted_subtotal:, adjustments:, amount:, credits_applied:, discount:, end_date:, filter:, grouping:, maximum:, maximum_amount:, minimum:, minimum_amount:, name:, partially_invoiced_amount:, price:, quantity:, start_date:, sub_line_items:, subtotal:, tax_amounts:, usage_customer_ids:)
+          # @!method initialize(id:, adjusted_subtotal:, adjustments:, amount:, credits_applied:, end_date:, filter:, grouping:, name:, partially_invoiced_amount:, price:, quantity:, start_date:, sub_line_items:, subtotal:, tax_amounts:, usage_customer_ids:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem} for more
           #   details.
@@ -948,21 +908,11 @@ module Orb
           #
           #   @param credits_applied [String] The number of prepaid credits applied.
           #
-          #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] This field is deprecated in favor of `adjustments`
-          #
           #   @param end_date [Time] The end date of the range of time applied for this line item's price.
           #
           #   @param filter [String, nil] An additional filter that was used to calculate the usage for this line item.
           #
           #   @param grouping [String, nil] [DEPRECATED] For configured prices that are split by a grouping key, this will b
-          #
-          #   @param maximum [Orb::Models::Maximum, nil] This field is deprecated in favor of `adjustments`.
-          #
-          #   @param maximum_amount [String, nil] This field is deprecated in favor of `adjustments`.
-          #
-          #   @param minimum [Orb::Models::Minimum, nil] This field is deprecated in favor of `adjustments`.
-          #
-          #   @param minimum_amount [String, nil] This field is deprecated in favor of `adjustments`.
           #
           #   @param name [String] The name of the price associated with this line item.
           #
