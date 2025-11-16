@@ -72,6 +72,8 @@ module Orb
             Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::OrHash,
           cumulative_grouped_bulk_config:
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
+          cumulative_grouped_allocation_config:
+            Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash,
           minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
           event_output_config:
@@ -164,6 +166,8 @@ module Orb
         scalable_matrix_with_tiered_pricing_config:,
         # Configuration for cumulative_grouped_bulk pricing
         cumulative_grouped_bulk_config:,
+        # Configuration for cumulative_grouped_allocation pricing
+        cumulative_grouped_allocation_config:,
         # Configuration for minimum pricing
         minimum_config:,
         # Configuration for percent pricing
