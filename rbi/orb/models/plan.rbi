@@ -13,6 +13,17 @@ module Orb
       sig { returns(T::Array[Orb::Plan::Adjustment::Variants]) }
       attr_accessor :adjustments
 
+      sig { returns(T.nilable(Orb::Plan::BasePlan)) }
+      attr_reader :base_plan
+
+      sig { params(base_plan: T.nilable(Orb::Plan::BasePlan::OrHash)).void }
+      attr_writer :base_plan
+
+      # The parent plan id if the given plan was created by overriding one or more of
+      # the parent's prices
+      sig { returns(T.nilable(String)) }
+      attr_accessor :base_plan_id
+
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -105,17 +116,6 @@ module Orb
       sig { returns(Integer) }
       attr_accessor :version
 
-      sig { returns(T.nilable(Orb::Plan::BasePlan)) }
-      attr_reader :base_plan
-
-      sig { params(base_plan: T.nilable(Orb::Plan::BasePlan::OrHash)).void }
-      attr_writer :base_plan
-
-      # The parent plan id if the given plan was created by overriding one or more of
-      # the parent's prices
-      sig { returns(T.nilable(String)) }
-      attr_accessor :base_plan_id
-
       # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
       # subscribed to by a customer. Plans define the billing behavior of the
       # subscription. You can see more about how to configure prices in the
@@ -133,6 +133,8 @@ module Orb
                 Orb::PlanPhaseMaximumAdjustment::OrHash
               )
             ],
+          base_plan: T.nilable(Orb::Plan::BasePlan::OrHash),
+          base_plan_id: T.nilable(String),
           created_at: Time,
           currency: String,
           default_invoice_memo: T.nilable(String),
@@ -195,9 +197,7 @@ module Orb
           product: Orb::Plan::Product::OrHash,
           status: Orb::Plan::Status::OrSymbol,
           trial_config: Orb::Plan::TrialConfig::OrHash,
-          version: Integer,
-          base_plan: T.nilable(Orb::Plan::BasePlan::OrHash),
-          base_plan_id: T.nilable(String)
+          version: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -205,6 +205,10 @@ module Orb
         # Adjustments for this plan. If the plan has phases, this includes adjustments
         # across all phases of the plan.
         adjustments:,
+        base_plan:,
+        # The parent plan id if the given plan was created by overriding one or more of
+        # the parent's prices
+        base_plan_id:,
         created_at:,
         # An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
         # prices.
@@ -244,11 +248,7 @@ module Orb
         product:,
         status:,
         trial_config:,
-        version:,
-        base_plan: nil,
-        # The parent plan id if the given plan was created by overriding one or more of
-        # the parent's prices
-        base_plan_id: nil
+        version:
       )
       end
 
@@ -257,6 +257,8 @@ module Orb
           {
             id: String,
             adjustments: T::Array[Orb::Plan::Adjustment::Variants],
+            base_plan: T.nilable(Orb::Plan::BasePlan),
+            base_plan_id: T.nilable(String),
             created_at: Time,
             currency: String,
             default_invoice_memo: T.nilable(String),
@@ -276,9 +278,7 @@ module Orb
             product: Orb::Plan::Product,
             status: Orb::Plan::Status::TaggedSymbol,
             trial_config: Orb::Plan::TrialConfig,
-            version: Integer,
-            base_plan: T.nilable(Orb::Plan::BasePlan),
-            base_plan_id: T.nilable(String)
+            version: Integer
           }
         )
       end
@@ -301,6 +301,52 @@ module Orb
 
         sig { override.returns(T::Array[Orb::Plan::Adjustment::Variants]) }
         def self.variants
+        end
+      end
+
+      class BasePlan < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(Orb::Plan::BasePlan, Orb::Internal::AnyHash) }
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :id
+
+        # An optional user-defined ID for this plan resource, used throughout the system
+        # as an alias for this Plan. Use this field to identify a plan by an existing
+        # identifier in your system.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_plan_id
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :name
+
+        sig do
+          params(
+            id: T.nilable(String),
+            external_plan_id: T.nilable(String),
+            name: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          id:,
+          # An optional user-defined ID for this plan resource, used throughout the system
+          # as an alias for this Plan. Use this field to identify a plan by an existing
+          # identifier in your system.
+          external_plan_id:,
+          name:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: T.nilable(String),
+              external_plan_id: T.nilable(String),
+              name: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
         end
       end
 
@@ -537,52 +583,6 @@ module Orb
           end
           def self.values
           end
-        end
-      end
-
-      class BasePlan < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(Orb::Plan::BasePlan, Orb::Internal::AnyHash) }
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :id
-
-        # An optional user-defined ID for this plan resource, used throughout the system
-        # as an alias for this Plan. Use this field to identify a plan by an existing
-        # identifier in your system.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :external_plan_id
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :name
-
-        sig do
-          params(
-            id: T.nilable(String),
-            external_plan_id: T.nilable(String),
-            name: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          id:,
-          # An optional user-defined ID for this plan resource, used throughout the system
-          # as an alias for this Plan. Use this field to identify a plan by an existing
-          # identifier in your system.
-          external_plan_id:,
-          name:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              id: T.nilable(String),
-              external_plan_id: T.nilable(String),
-              name: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
         end
       end
     end

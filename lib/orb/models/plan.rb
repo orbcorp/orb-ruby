@@ -16,6 +16,18 @@ module Orb
       #   @return [Array<Orb::Models::PlanPhaseUsageDiscountAdjustment, Orb::Models::PlanPhaseAmountDiscountAdjustment, Orb::Models::PlanPhasePercentageDiscountAdjustment, Orb::Models::PlanPhaseMinimumAdjustment, Orb::Models::PlanPhaseMaximumAdjustment>]
       required :adjustments, -> { Orb::Internal::Type::ArrayOf[union: Orb::Plan::Adjustment] }
 
+      # @!attribute base_plan
+      #
+      #   @return [Orb::Models::Plan::BasePlan, nil]
+      required :base_plan, -> { Orb::Plan::BasePlan }, nil?: true
+
+      # @!attribute base_plan_id
+      #   The parent plan id if the given plan was created by overriding one or more of
+      #   the parent's prices
+      #
+      #   @return [String, nil]
+      required :base_plan_id, String, nil?: true
+
       # @!attribute created_at
       #
       #   @return [Time]
@@ -143,19 +155,7 @@ module Orb
       #   @return [Integer]
       required :version, Integer
 
-      # @!attribute base_plan
-      #
-      #   @return [Orb::Models::Plan::BasePlan, nil]
-      optional :base_plan, -> { Orb::Plan::BasePlan }, nil?: true
-
-      # @!attribute base_plan_id
-      #   The parent plan id if the given plan was created by overriding one or more of
-      #   the parent's prices
-      #
-      #   @return [String, nil]
-      optional :base_plan_id, String, nil?: true
-
-      # @!method initialize(id:, adjustments:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:, base_plan: nil, base_plan_id: nil)
+      # @!method initialize(id:, adjustments:, base_plan:, base_plan_id:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:)
       #   Some parameter documentations has been truncated, see {Orb::Models::Plan} for
       #   more details.
       #
@@ -167,6 +167,10 @@ module Orb
       #   @param id [String]
       #
       #   @param adjustments [Array<Orb::Models::PlanPhaseUsageDiscountAdjustment, Orb::Models::PlanPhaseAmountDiscountAdjustment, Orb::Models::PlanPhasePercentageDiscountAdjustment, Orb::Models::PlanPhaseMinimumAdjustment, Orb::Models::PlanPhaseMaximumAdjustment>] Adjustments for this plan. If the plan has phases, this includes adjustments acr
+      #
+      #   @param base_plan [Orb::Models::Plan::BasePlan, nil]
+      #
+      #   @param base_plan_id [String, nil] The parent plan id if the given plan was created by overriding one or more of th
       #
       #   @param created_at [Time]
       #
@@ -207,10 +211,6 @@ module Orb
       #   @param trial_config [Orb::Models::Plan::TrialConfig]
       #
       #   @param version [Integer]
-      #
-      #   @param base_plan [Orb::Models::Plan::BasePlan, nil]
-      #
-      #   @param base_plan_id [String, nil] The parent plan id if the given plan was created by overriding one or more of th
 
       module Adjustment
         extend Orb::Internal::Type::Union
@@ -229,6 +229,37 @@ module Orb
 
         # @!method self.variants
         #   @return [Array(Orb::Models::PlanPhaseUsageDiscountAdjustment, Orb::Models::PlanPhaseAmountDiscountAdjustment, Orb::Models::PlanPhasePercentageDiscountAdjustment, Orb::Models::PlanPhaseMinimumAdjustment, Orb::Models::PlanPhaseMaximumAdjustment)]
+      end
+
+      # @see Orb::Models::Plan#base_plan
+      class BasePlan < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String, nil]
+        required :id, String, nil?: true
+
+        # @!attribute external_plan_id
+        #   An optional user-defined ID for this plan resource, used throughout the system
+        #   as an alias for this Plan. Use this field to identify a plan by an existing
+        #   identifier in your system.
+        #
+        #   @return [String, nil]
+        required :external_plan_id, String, nil?: true
+
+        # @!attribute name
+        #
+        #   @return [String, nil]
+        required :name, String, nil?: true
+
+        # @!method initialize(id:, external_plan_id:, name:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Plan::BasePlan} for more details.
+        #
+        #   @param id [String, nil]
+        #
+        #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
+        #
+        #   @param name [String, nil]
       end
 
       class PlanPhase < Orb::Internal::Type::BaseModel
@@ -391,37 +422,6 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      # @see Orb::Models::Plan#base_plan
-      class BasePlan < Orb::Internal::Type::BaseModel
-        # @!attribute id
-        #
-        #   @return [String, nil]
-        required :id, String, nil?: true
-
-        # @!attribute external_plan_id
-        #   An optional user-defined ID for this plan resource, used throughout the system
-        #   as an alias for this Plan. Use this field to identify a plan by an existing
-        #   identifier in your system.
-        #
-        #   @return [String, nil]
-        required :external_plan_id, String, nil?: true
-
-        # @!attribute name
-        #
-        #   @return [String, nil]
-        required :name, String, nil?: true
-
-        # @!method initialize(id:, external_plan_id:, name:)
-        #   Some parameter documentations has been truncated, see
-        #   {Orb::Models::Plan::BasePlan} for more details.
-        #
-        #   @param id [String, nil]
-        #
-        #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
-        #
-        #   @param name [String, nil]
       end
     end
   end
