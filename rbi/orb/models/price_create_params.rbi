@@ -415,6 +415,18 @@ module Orb
       end
       attr_writer :cumulative_grouped_bulk_config
 
+      # Configuration for cumulative_grouped_allocation pricing
+      sig { returns(Orb::PriceCreateParams::CumulativeGroupedAllocationConfig) }
+      attr_reader :cumulative_grouped_allocation_config
+
+      sig do
+        params(
+          cumulative_grouped_allocation_config:
+            Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash
+        ).void
+      end
+      attr_writer :cumulative_grouped_allocation_config
+
       # Configuration for minimum pricing
       sig { returns(Orb::PriceCreateParams::MinimumConfig) }
       attr_reader :minimum_config
@@ -504,6 +516,8 @@ module Orb
             Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::OrHash,
           cumulative_grouped_bulk_config:
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
+          cumulative_grouped_allocation_config:
+            Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash,
           minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
           event_output_config:
@@ -596,6 +610,8 @@ module Orb
         scalable_matrix_with_tiered_pricing_config:,
         # Configuration for cumulative_grouped_bulk pricing
         cumulative_grouped_bulk_config:,
+        # Configuration for cumulative_grouped_allocation pricing
+        cumulative_grouped_allocation_config:,
         # Configuration for minimum pricing
         minimum_config:,
         # Configuration for percent pricing
@@ -709,6 +725,8 @@ module Orb
               Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
             cumulative_grouped_bulk_config:
               Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
+            cumulative_grouped_allocation_config:
+              Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
             minimum_config: Orb::PriceCreateParams::MinimumConfig,
             percent_config: Orb::PriceCreateParams::PercentConfig,
             event_output_config: Orb::PriceCreateParams::EventOutputConfig,
@@ -2749,6 +2767,66 @@ module Orb
           end
           def to_hash
           end
+        end
+      end
+
+      class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # The overall allocation across all groups
+        sig { returns(String) }
+        attr_accessor :cumulative_allocation
+
+        # The allocation per individual group
+        sig { returns(String) }
+        attr_accessor :group_allocation
+
+        # The event property used to group usage before applying allocations
+        sig { returns(String) }
+        attr_accessor :grouping_key
+
+        # The amount to charge for each unit outside of the allocation
+        sig { returns(String) }
+        attr_accessor :unit_amount
+
+        # Configuration for cumulative_grouped_allocation pricing
+        sig do
+          params(
+            cumulative_allocation: String,
+            group_allocation: String,
+            grouping_key: String,
+            unit_amount: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The overall allocation across all groups
+          cumulative_allocation:,
+          # The allocation per individual group
+          group_allocation:,
+          # The event property used to group usage before applying allocations
+          grouping_key:,
+          # The amount to charge for each unit outside of the allocation
+          unit_amount:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              cumulative_allocation: String,
+              group_allocation: String,
+              grouping_key: String,
+              unit_amount: String
+            }
+          )
+        end
+        def to_hash
         end
       end
 

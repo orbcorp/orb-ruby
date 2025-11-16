@@ -45,6 +45,7 @@ module Orb
             Orb::Price::ScalableMatrixWithUnitPricing,
             Orb::Price::ScalableMatrixWithTieredPricing,
             Orb::Price::CumulativeGroupedBulk,
+            Orb::Price::CumulativeGroupedAllocation,
             Orb::Price::Minimum,
             Orb::Price::Percent,
             Orb::Price::EventOutput
@@ -17289,6 +17290,670 @@ module Orb
             override.returns(
               T::Array[
                 Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
+      class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Price::CumulativeGroupedAllocation,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        sig { returns(String) }
+        attr_accessor :id
+
+        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
+        attr_reader :billable_metric
+
+        sig do
+          params(
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
+          ).void
+        end
+        attr_writer :billable_metric
+
+        sig { returns(Orb::BillingCycleConfiguration) }
+        attr_reader :billing_cycle_configuration
+
+        sig do
+          params(
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
+          ).void
+        end
+        attr_writer :billing_cycle_configuration
+
+        sig do
+          returns(
+            Orb::Price::CumulativeGroupedAllocation::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
+          returns(
+            Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+          )
+        end
+        attr_accessor :cadence
+
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter
+              ]
+            )
+          )
+        end
+        attr_accessor :composite_price_filters
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::CumulativeGroupedAllocation::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
+
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        sig { returns(T.nilable(Orb::Allocation)) }
+        attr_reader :credit_allocation
+
+        sig do
+          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
+        end
+        attr_writer :credit_allocation
+
+        # Configuration for cumulative_grouped_allocation pricing
+        sig do
+          returns(
+            Orb::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
+          )
+        end
+        attr_reader :cumulative_grouped_allocation_config
+
+        sig do
+          params(
+            cumulative_grouped_allocation_config:
+              Orb::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash
+          ).void
+        end
+        attr_writer :cumulative_grouped_allocation_config
+
+        sig { returns(String) }
+        attr_accessor :currency
+
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
+        attr_accessor :discount
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :fixed_price_quantity
+
+        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
+        attr_reader :invoicing_cycle_configuration
+
+        sig do
+          params(
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :invoicing_cycle_configuration
+
+        # A minimal representation of an Item containing only the essential identifying
+        # information.
+        sig { returns(Orb::ItemSlim) }
+        attr_reader :item
+
+        sig { params(item: Orb::ItemSlim::OrHash).void }
+        attr_writer :item
+
+        sig { returns(T.nilable(Orb::Maximum)) }
+        attr_reader :maximum
+
+        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
+        attr_writer :maximum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :maximum_amount
+
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
+        sig { returns(T.nilable(Orb::Minimum)) }
+        attr_reader :minimum
+
+        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
+        attr_writer :minimum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :minimum_amount
+
+        # The pricing model type
+        sig { returns(Symbol) }
+        attr_accessor :model_type
+
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig do
+          returns(
+            Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol
+          )
+        end
+        attr_accessor :price_type
+
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
+        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
+        attr_reader :dimensional_price_configuration
+
+        sig do
+          params(
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :dimensional_price_configuration
+
+        sig do
+          params(
+            id: String,
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::CumulativeGroupedAllocation::BillingMode::OrSymbol,
+            cadence: Orb::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(
+                T::Array[
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::OrHash
+                ]
+              ),
+            conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
+            created_at: Time,
+            credit_allocation: T.nilable(Orb::Allocation::OrHash),
+            cumulative_grouped_allocation_config:
+              Orb::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash,
+            currency: String,
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash),
+            item: Orb::ItemSlim::OrHash,
+            maximum: T.nilable(Orb::Maximum::OrHash),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            minimum: T.nilable(Orb::Minimum::OrHash),
+            minimum_amount: T.nilable(String),
+            name: String,
+            plan_phase_order: T.nilable(Integer),
+            price_type:
+              Orb::Price::CumulativeGroupedAllocation::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            model_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          id:,
+          billable_metric:,
+          billing_cycle_configuration:,
+          billing_mode:,
+          cadence:,
+          composite_price_filters:,
+          conversion_rate:,
+          conversion_rate_config:,
+          created_at:,
+          credit_allocation:,
+          # Configuration for cumulative_grouped_allocation pricing
+          cumulative_grouped_allocation_config:,
+          currency:,
+          discount:,
+          external_price_id:,
+          fixed_price_quantity:,
+          invoicing_cycle_configuration:,
+          # A minimal representation of an Item containing only the essential identifying
+          # information.
+          item:,
+          maximum:,
+          maximum_amount:,
+          # User specified key-value pairs for the resource. If not present, this defaults
+          # to an empty dictionary. Individual keys can be removed by setting the value to
+          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+          # `null`.
+          metadata:,
+          minimum:,
+          minimum_amount:,
+          name:,
+          plan_phase_order:,
+          price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
+          dimensional_price_configuration: nil,
+          # The pricing model type
+          model_type: :cumulative_grouped_allocation
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::BillableMetricTiny),
+              billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::CumulativeGroupedAllocation::BillingMode::TaggedSymbol,
+              cadence:
+                Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(
+                  T::Array[
+                    Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter
+                  ]
+                ),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::CumulativeGroupedAllocation::ConversionRateConfig::Variants
+                ),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Allocation),
+              cumulative_grouped_allocation_config:
+                Orb::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              currency: String,
+              discount: T.nilable(Orb::Discount::Variants),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::BillingCycleConfiguration),
+              item: Orb::ItemSlim,
+              maximum: T.nilable(Orb::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
+              dimensional_price_configuration:
+                T.nilable(Orb::DimensionalPriceConfiguration)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Price::CumulativeGroupedAllocation::BillingMode
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::CumulativeGroupedAllocation::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::CumulativeGroupedAllocation::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedAllocation::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::CumulativeGroupedAllocation::Cadence)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::CumulativeGroupedAllocation::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The overall allocation across all groups
+          sig { returns(String) }
+          attr_accessor :cumulative_allocation
+
+          # The allocation per individual group
+          sig { returns(String) }
+          attr_accessor :group_allocation
+
+          # The event property used to group usage before applying allocations
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The amount to charge for each unit outside of the allocation
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Configuration for cumulative_grouped_allocation pricing
+          sig do
+            params(
+              cumulative_allocation: String,
+              group_allocation: String,
+              grouping_key: String,
+              unit_amount: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The overall allocation across all groups
+            cumulative_allocation:,
+            # The allocation per individual group
+            group_allocation:,
+            # The event property used to group usage before applying allocations
+            grouping_key:,
+            # The amount to charge for each unit outside of the allocation
+            unit_amount:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                cumulative_allocation: String,
+                group_allocation: String,
+                grouping_key: String,
+                unit_amount: String
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::CumulativeGroupedAllocation::PriceType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol
               ]
             )
           end

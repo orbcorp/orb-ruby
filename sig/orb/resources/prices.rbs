@@ -36,6 +36,7 @@ module Orb
         scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
+        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,

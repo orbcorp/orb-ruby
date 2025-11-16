@@ -278,6 +278,13 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::CumulativeGroupedBulkConfig]
       required :cumulative_grouped_bulk_config, -> { Orb::PriceCreateParams::CumulativeGroupedBulkConfig }
 
+      # @!attribute cumulative_grouped_allocation_config
+      #   Configuration for cumulative_grouped_allocation pricing
+      #
+      #   @return [Orb::Models::PriceCreateParams::CumulativeGroupedAllocationConfig]
+      required :cumulative_grouped_allocation_config,
+               -> { Orb::PriceCreateParams::CumulativeGroupedAllocationConfig }
+
       # @!attribute minimum_config
       #   Configuration for minimum pricing
       #
@@ -296,7 +303,7 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::EventOutputConfig]
       required :event_output_config, -> { Orb::PriceCreateParams::EventOutputConfig }
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, minimum_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, cumulative_grouped_allocation_config:, minimum_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -363,6 +370,8 @@ module Orb
       #   @param scalable_matrix_with_tiered_pricing_config [Orb::Models::PriceCreateParams::ScalableMatrixWithTieredPricingConfig] Configuration for scalable_matrix_with_tiered_pricing pricing
       #
       #   @param cumulative_grouped_bulk_config [Orb::Models::PriceCreateParams::CumulativeGroupedBulkConfig] Configuration for cumulative_grouped_bulk pricing
+      #
+      #   @param cumulative_grouped_allocation_config [Orb::Models::PriceCreateParams::CumulativeGroupedAllocationConfig] Configuration for cumulative_grouped_allocation pricing
       #
       #   @param minimum_config [Orb::Models::PriceCreateParams::MinimumConfig] Configuration for minimum pricing
       #
@@ -1451,6 +1460,43 @@ module Orb
           #
           #   @param unit_amount [String] Unit amount for this combination
         end
+      end
+
+      class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+        # @!attribute cumulative_allocation
+        #   The overall allocation across all groups
+        #
+        #   @return [String]
+        required :cumulative_allocation, String
+
+        # @!attribute group_allocation
+        #   The allocation per individual group
+        #
+        #   @return [String]
+        required :group_allocation, String
+
+        # @!attribute grouping_key
+        #   The event property used to group usage before applying allocations
+        #
+        #   @return [String]
+        required :grouping_key, String
+
+        # @!attribute unit_amount
+        #   The amount to charge for each unit outside of the allocation
+        #
+        #   @return [String]
+        required :unit_amount, String
+
+        # @!method initialize(cumulative_allocation:, group_allocation:, grouping_key:, unit_amount:)
+        #   Configuration for cumulative_grouped_allocation pricing
+        #
+        #   @param cumulative_allocation [String] The overall allocation across all groups
+        #
+        #   @param group_allocation [String] The allocation per individual group
+        #
+        #   @param grouping_key [String] The event property used to group usage before applying allocations
+        #
+        #   @param unit_amount [String] The amount to charge for each unit outside of the allocation
       end
 
       class MinimumConfig < Orb::Internal::Type::BaseModel
