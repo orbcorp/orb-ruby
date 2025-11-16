@@ -45,6 +45,7 @@ module Orb
         scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
+        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig
@@ -141,6 +142,8 @@ module Orb
 
       attr_accessor cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig
 
+      attr_accessor cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig
+
       attr_accessor minimum_config: Orb::PriceCreateParams::MinimumConfig
 
       attr_accessor percent_config: Orb::PriceCreateParams::PercentConfig
@@ -180,6 +183,7 @@ module Orb
         scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
+        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,
@@ -241,6 +245,7 @@ module Orb
         scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
+        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
         minimum_config: Orb::PriceCreateParams::MinimumConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,
@@ -1097,6 +1102,38 @@ module Orb
             unit_amount: String
           }
         end
+      end
+
+      type cumulative_grouped_allocation_config =
+        {
+          cumulative_allocation: String,
+          group_allocation: String,
+          grouping_key: String,
+          unit_amount: String
+        }
+
+      class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+        attr_accessor cumulative_allocation: String
+
+        attr_accessor group_allocation: String
+
+        attr_accessor grouping_key: String
+
+        attr_accessor unit_amount: String
+
+        def initialize: (
+          cumulative_allocation: String,
+          group_allocation: String,
+          grouping_key: String,
+          unit_amount: String
+        ) -> void
+
+        def to_hash: -> {
+          cumulative_allocation: String,
+          group_allocation: String,
+          grouping_key: String,
+          unit_amount: String
+        }
       end
 
       type minimum_config = { minimum_amount: String, prorated: bool }

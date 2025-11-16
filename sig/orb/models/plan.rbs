@@ -4,8 +4,6 @@ module Orb
       {
         id: String,
         adjustments: ::Array[Orb::Models::Plan::adjustment],
-        base_plan: Orb::Plan::BasePlan?,
-        base_plan_id: String?,
         created_at: Time,
         currency: String,
         default_invoice_memo: String?,
@@ -25,17 +23,15 @@ module Orb
         product: Orb::Plan::Product,
         status: Orb::Models::Plan::status,
         trial_config: Orb::Plan::TrialConfig,
-        version: Integer
+        version: Integer,
+        base_plan: Orb::Plan::BasePlan?,
+        base_plan_id: String?
       }
 
     class Plan < Orb::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor adjustments: ::Array[Orb::Models::Plan::adjustment]
-
-      attr_accessor base_plan: Orb::Plan::BasePlan?
-
-      attr_accessor base_plan_id: String?
 
       attr_accessor created_at: Time
 
@@ -77,11 +73,13 @@ module Orb
 
       attr_accessor version: Integer
 
+      attr_accessor base_plan: Orb::Plan::BasePlan?
+
+      attr_accessor base_plan_id: String?
+
       def initialize: (
         id: String,
         adjustments: ::Array[Orb::Models::Plan::adjustment],
-        base_plan: Orb::Plan::BasePlan?,
-        base_plan_id: String?,
         created_at: Time,
         currency: String,
         default_invoice_memo: String?,
@@ -101,14 +99,14 @@ module Orb
         product: Orb::Plan::Product,
         status: Orb::Models::Plan::status,
         trial_config: Orb::Plan::TrialConfig,
-        version: Integer
+        version: Integer,
+        ?base_plan: Orb::Plan::BasePlan?,
+        ?base_plan_id: String?
       ) -> void
 
       def to_hash: -> {
         id: String,
         adjustments: ::Array[Orb::Models::Plan::adjustment],
-        base_plan: Orb::Plan::BasePlan?,
-        base_plan_id: String?,
         created_at: Time,
         currency: String,
         default_invoice_memo: String?,
@@ -128,7 +126,9 @@ module Orb
         product: Orb::Plan::Product,
         status: Orb::Models::Plan::status,
         trial_config: Orb::Plan::TrialConfig,
-        version: Integer
+        version: Integer,
+        base_plan: Orb::Plan::BasePlan?,
+        base_plan_id: String?
       }
 
       type adjustment =
@@ -142,28 +142,6 @@ module Orb
         extend Orb::Internal::Type::Union
 
         def self?.variants: -> ::Array[Orb::Models::Plan::adjustment]
-      end
-
-      type base_plan = { id: String?, external_plan_id: String?, name: String? }
-
-      class BasePlan < Orb::Internal::Type::BaseModel
-        attr_accessor id: String?
-
-        attr_accessor external_plan_id: String?
-
-        attr_accessor name: String?
-
-        def initialize: (
-          id: String?,
-          external_plan_id: String?,
-          name: String?
-        ) -> void
-
-        def to_hash: -> {
-          id: String?,
-          external_plan_id: String?,
-          name: String?
-        }
       end
 
       type plan_phase =
@@ -304,6 +282,28 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Plan::TrialConfig::trial_period_unit]
         end
+      end
+
+      type base_plan = { id: String?, external_plan_id: String?, name: String? }
+
+      class BasePlan < Orb::Internal::Type::BaseModel
+        attr_accessor id: String?
+
+        attr_accessor external_plan_id: String?
+
+        attr_accessor name: String?
+
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        }
       end
     end
   end

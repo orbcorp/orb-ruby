@@ -14,8 +14,6 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
       response => {
         id: String,
         adjustments: ^(Orb::Internal::Type::ArrayOf[union: Orb::Plan::Adjustment]),
-        base_plan: Orb::Plan::BasePlan | nil,
-        base_plan_id: String | nil,
         created_at: Time,
         currency: String,
         default_invoice_memo: String | nil,
@@ -35,7 +33,9 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
         product: Orb::Plan::Product,
         status: Orb::Plan::Status,
         trial_config: Orb::Plan::TrialConfig,
-        version: Integer
+        version: Integer,
+        base_plan: Orb::Plan::BasePlan | nil,
+        base_plan_id: String | nil
       }
     end
   end
@@ -51,8 +51,6 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
       response => {
         id: String,
         adjustments: ^(Orb::Internal::Type::ArrayOf[union: Orb::Plan::Adjustment]),
-        base_plan: Orb::Plan::BasePlan | nil,
-        base_plan_id: String | nil,
         created_at: Time,
         currency: String,
         default_invoice_memo: String | nil,
@@ -72,7 +70,9 @@ class Orb::Test::Resources::Plans::ExternalPlanIDTest < Orb::Test::ResourceTest
         product: Orb::Plan::Product,
         status: Orb::Plan::Status,
         trial_config: Orb::Plan::TrialConfig,
-        version: Integer
+        version: Integer,
+        base_plan: Orb::Plan::BasePlan | nil,
+        base_plan_id: String | nil
       }
     end
   end
