@@ -13,14 +13,16 @@ module Orb
       sig { returns(T::Array[Orb::Plan::Adjustment::Variants]) }
       attr_accessor :adjustments
 
+      # Legacy field representing the parent plan if the current plan is a 'child plan',
+      # overriding prices from the parent.
       sig { returns(T.nilable(Orb::Plan::BasePlan)) }
       attr_reader :base_plan
 
       sig { params(base_plan: T.nilable(Orb::Plan::BasePlan::OrHash)).void }
       attr_writer :base_plan
 
-      # The parent plan id if the given plan was created by overriding one or more of
-      # the parent's prices
+      # Legacy field representing the parent plan ID if the current plan is a 'child
+      # plan', overriding prices from the parent.
       sig { returns(T.nilable(String)) }
       attr_accessor :base_plan_id
 
@@ -205,9 +207,11 @@ module Orb
         # Adjustments for this plan. If the plan has phases, this includes adjustments
         # across all phases of the plan.
         adjustments:,
+        # Legacy field representing the parent plan if the current plan is a 'child plan',
+        # overriding prices from the parent.
         base_plan:,
-        # The parent plan id if the given plan was created by overriding one or more of
-        # the parent's prices
+        # Legacy field representing the parent plan ID if the current plan is a 'child
+        # plan', overriding prices from the parent.
         base_plan_id:,
         created_at:,
         # An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
@@ -320,6 +324,8 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :name
 
+        # Legacy field representing the parent plan if the current plan is a 'child plan',
+        # overriding prices from the parent.
         sig do
           params(
             id: T.nilable(String),

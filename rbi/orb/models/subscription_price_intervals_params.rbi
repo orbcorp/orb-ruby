@@ -2799,8 +2799,8 @@ module Orb
         attr_accessor :billing_cycle_day
 
         # If true, ending an in-arrears price interval mid-cycle will defer billing the
-        # final line itemuntil the next scheduled invoice. If false, it will be billed on
-        # its end date. If not provided, behaviorwill follow account default.
+        # final line item until the next scheduled invoice. If false, it will be billed on
+        # its end date. If not provided, behavior will follow account default.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :can_defer_billing
 
@@ -2885,8 +2885,8 @@ module Orb
           # must have the same billing cycle day.
           billing_cycle_day: nil,
           # If true, ending an in-arrears price interval mid-cycle will defer billing the
-          # final line itemuntil the next scheduled invoice. If false, it will be billed on
-          # its end date. If not provided, behaviorwill follow account default.
+          # final line item until the next scheduled invoice. If false, it will be billed on
+          # its end date. If not provided, behavior will follow account default.
           can_defer_billing: nil,
           # The updated end date of this price interval. If not specified, the end date will
           # not be updated.
