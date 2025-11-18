@@ -17,13 +17,19 @@ module Orb
       required :adjustments, -> { Orb::Internal::Type::ArrayOf[union: Orb::Plan::Adjustment] }
 
       # @!attribute base_plan
+      #   @deprecated
+      #
+      #   Legacy field representing the parent plan if the current plan is a 'child plan',
+      #   overriding prices from the parent.
       #
       #   @return [Orb::Models::Plan::BasePlan, nil]
       required :base_plan, -> { Orb::Plan::BasePlan }, nil?: true
 
       # @!attribute base_plan_id
-      #   The parent plan id if the given plan was created by overriding one or more of
-      #   the parent's prices
+      #   @deprecated
+      #
+      #   Legacy field representing the parent plan ID if the current plan is a 'child
+      #   plan', overriding prices from the parent.
       #
       #   @return [String, nil]
       required :base_plan_id, String, nil?: true
@@ -168,9 +174,9 @@ module Orb
       #
       #   @param adjustments [Array<Orb::Models::PlanPhaseUsageDiscountAdjustment, Orb::Models::PlanPhaseAmountDiscountAdjustment, Orb::Models::PlanPhasePercentageDiscountAdjustment, Orb::Models::PlanPhaseMinimumAdjustment, Orb::Models::PlanPhaseMaximumAdjustment>] Adjustments for this plan. If the plan has phases, this includes adjustments acr
       #
-      #   @param base_plan [Orb::Models::Plan::BasePlan, nil]
+      #   @param base_plan [Orb::Models::Plan::BasePlan, nil] Legacy field representing the parent plan if the current plan is a 'child plan',
       #
-      #   @param base_plan_id [String, nil] The parent plan id if the given plan was created by overriding one or more of th
+      #   @param base_plan_id [String, nil] Legacy field representing the parent plan ID if the current plan is a 'child pla
       #
       #   @param created_at [Time]
       #
@@ -231,6 +237,8 @@ module Orb
         #   @return [Array(Orb::Models::PlanPhaseUsageDiscountAdjustment, Orb::Models::PlanPhaseAmountDiscountAdjustment, Orb::Models::PlanPhasePercentageDiscountAdjustment, Orb::Models::PlanPhaseMinimumAdjustment, Orb::Models::PlanPhaseMaximumAdjustment)]
       end
 
+      # @deprecated
+      #
       # @see Orb::Models::Plan#base_plan
       class BasePlan < Orb::Internal::Type::BaseModel
         # @!attribute id
@@ -254,6 +262,9 @@ module Orb
         # @!method initialize(id:, external_plan_id:, name:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plan::BasePlan} for more details.
+        #
+        #   Legacy field representing the parent plan if the current plan is a 'child plan',
+        #   overriding prices from the parent.
         #
         #   @param id [String, nil]
         #
