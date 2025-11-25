@@ -7,7 +7,9 @@ module Orb
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
         expires_at_end_of_cadence: bool?,
-        filters: ::Array[Orb::NewAllocationPrice::Filter]?
+        filters: ::Array[Orb::NewAllocationPrice::Filter]?,
+        item_id: String?,
+        per_unit_cost_basis: String
       }
 
     class NewAllocationPrice < Orb::Internal::Type::BaseModel
@@ -23,13 +25,21 @@ module Orb
 
       attr_accessor filters: ::Array[Orb::NewAllocationPrice::Filter]?
 
+      attr_accessor item_id: String?
+
+      attr_reader per_unit_cost_basis: String?
+
+      def per_unit_cost_basis=: (String) -> String
+
       def initialize: (
         amount: String,
         cadence: Orb::Models::NewAllocationPrice::cadence,
         currency: String,
         ?custom_expiration: Orb::CustomExpiration?,
         ?expires_at_end_of_cadence: bool?,
-        ?filters: ::Array[Orb::NewAllocationPrice::Filter]?
+        ?filters: ::Array[Orb::NewAllocationPrice::Filter]?,
+        ?item_id: String?,
+        ?per_unit_cost_basis: String
       ) -> void
 
       def to_hash: -> {
@@ -38,7 +48,9 @@ module Orb
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
         expires_at_end_of_cadence: bool?,
-        filters: ::Array[Orb::NewAllocationPrice::Filter]?
+        filters: ::Array[Orb::NewAllocationPrice::Filter]?,
+        item_id: String?,
+        per_unit_cost_basis: String
       }
 
       type cadence = :one_time | :monthly | :quarterly | :semi_annual | :annual

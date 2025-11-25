@@ -50,9 +50,8 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :allow_invoice_credit_or_void
 
-      # If true, ending an in-arrears price interval mid-cycle will defer billing the
-      # final line itemuntil the next scheduled invoice. If false, it will be billed on
-      # its end date. If not provided, behaviorwill follow account default.
+      # If set, the default value to use for added/edited price intervals with an
+      # end_date set.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :can_defer_billing
 
@@ -117,9 +116,8 @@ module Orb
         # credit note. Consider using this as a safety mechanism if you do not expect
         # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
-        # If true, ending an in-arrears price interval mid-cycle will defer billing the
-        # final line itemuntil the next scheduled invoice. If false, it will be billed on
-        # its end date. If not provided, behaviorwill follow account default.
+        # If set, the default value to use for added/edited price intervals with an
+        # end_date set.
         can_defer_billing: nil,
         # A list of price intervals to edit on the subscription.
         edit: nil,
@@ -171,6 +169,12 @@ module Orb
           ).void
         end
         attr_writer :allocation_price
+
+        # If true, an in-arrears price interval ending mid-cycle will defer billing the
+        # final line item until the next scheduled invoice. If false, it will be billed on
+        # its end date.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_accessor :can_defer_billing
 
         # A list of discounts to initialize on the price interval.
         sig do
@@ -289,6 +293,7 @@ module Orb
           params(
             start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
             allocation_price: T.nilable(Orb::NewAllocationPrice::OrHash),
+            can_defer_billing: T.nilable(T::Boolean),
             discounts:
               T.nilable(
                 T::Array[
@@ -357,6 +362,10 @@ module Orb
           start_date:,
           # The definition of a new allocation price to create and add to the subscription.
           allocation_price: nil,
+          # If true, an in-arrears price interval ending mid-cycle will defer billing the
+          # final line item until the next scheduled invoice. If false, it will be billed on
+          # its end date.
+          can_defer_billing: nil,
           # A list of discounts to initialize on the price interval.
           discounts: nil,
           # The end date of the price interval. This is the date that the price will stop
@@ -396,6 +405,7 @@ module Orb
             {
               start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
               allocation_price: T.nilable(Orb::NewAllocationPrice),
+              can_defer_billing: T.nilable(T::Boolean),
               discounts:
                 T.nilable(
                   T::Array[
@@ -2798,9 +2808,9 @@ module Orb
         sig { returns(T.nilable(Integer)) }
         attr_accessor :billing_cycle_day
 
-        # If true, ending an in-arrears price interval mid-cycle will defer billing the
+        # If true, an in-arrears price interval ending mid-cycle will defer billing the
         # final line item until the next scheduled invoice. If false, it will be billed on
-        # its end date. If not provided, behavior will follow account default.
+        # its end date.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :can_defer_billing
 
@@ -2884,9 +2894,9 @@ module Orb
           # billing cycle day will not be updated. Note that overlapping price intervals
           # must have the same billing cycle day.
           billing_cycle_day: nil,
-          # If true, ending an in-arrears price interval mid-cycle will defer billing the
+          # If true, an in-arrears price interval ending mid-cycle will defer billing the
           # final line item until the next scheduled invoice. If false, it will be billed on
-          # its end date. If not provided, behavior will follow account default.
+          # its end date.
           can_defer_billing: nil,
           # The updated end date of this price interval. If not specified, the end date will
           # not be updated.
