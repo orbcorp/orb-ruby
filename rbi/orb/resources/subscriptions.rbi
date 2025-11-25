@@ -1002,9 +1002,8 @@ module Orb
         # credit note. Consider using this as a safety mechanism if you do not expect
         # existing invoices to be changed.
         allow_invoice_credit_or_void: nil,
-        # If true, ending an in-arrears price interval mid-cycle will defer billing the
-        # final line itemuntil the next scheduled invoice. If false, it will be billed on
-        # its end date. If not provided, behaviorwill follow account default.
+        # If set, the default value to use for added/edited price intervals with an
+        # end_date set.
         can_defer_billing: nil,
         # A list of price intervals to edit on the subscription.
         edit: nil,

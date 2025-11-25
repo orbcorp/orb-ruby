@@ -966,7 +966,7 @@ module Orb
       #
       # @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #
-      # @param can_defer_billing [Boolean, nil] If true, ending an in-arrears price interval mid-cycle will defer billing the fi
+      # @param can_defer_billing [Boolean, nil] If set, the default value to use for added/edited price intervals with an end_da
       #
       # @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>] A list of price intervals to edit on the subscription.
       #
