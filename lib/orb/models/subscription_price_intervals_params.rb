@@ -29,9 +29,8 @@ module Orb
       optional :allow_invoice_credit_or_void, Orb::Internal::Type::Boolean, nil?: true
 
       # @!attribute can_defer_billing
-      #   If true, ending an in-arrears price interval mid-cycle will defer billing the
-      #   final line itemuntil the next scheduled invoice. If false, it will be billed on
-      #   its end date. If not provided, behaviorwill follow account default.
+      #   If set, the default value to use for added/edited price intervals with an
+      #   end_date set.
       #
       #   @return [Boolean, nil]
       optional :can_defer_billing, Orb::Internal::Type::Boolean, nil?: true
@@ -59,7 +58,7 @@ module Orb
       #
       #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #
-      #   @param can_defer_billing [Boolean, nil] If true, ending an in-arrears price interval mid-cycle will defer billing the fi
+      #   @param can_defer_billing [Boolean, nil] If set, the default value to use for added/edited price intervals with an end_da
       #
       #   @param edit [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit>] A list of price intervals to edit on the subscription.
       #
@@ -80,6 +79,14 @@ module Orb
         #
         #   @return [Orb::Models::NewAllocationPrice, nil]
         optional :allocation_price, -> { Orb::NewAllocationPrice }, nil?: true
+
+        # @!attribute can_defer_billing
+        #   If true, an in-arrears price interval ending mid-cycle will defer billing the
+        #   final line item until the next scheduled invoice. If false, it will be billed on
+        #   its end date.
+        #
+        #   @return [Boolean, nil]
+        optional :can_defer_billing, Orb::Internal::Type::Boolean, nil?: true
 
         # @!attribute discounts
         #   A list of discounts to initialize on the price interval.
@@ -160,13 +167,15 @@ module Orb
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!method initialize(start_date:, allocation_price: nil, discounts: nil, end_date: nil, external_price_id: nil, filter: nil, fixed_fee_quantity_transitions: nil, maximum_amount: nil, minimum_amount: nil, price: nil, price_id: nil, usage_customer_ids: nil)
+        # @!method initialize(start_date:, allocation_price: nil, can_defer_billing: nil, discounts: nil, end_date: nil, external_price_id: nil, filter: nil, fixed_fee_quantity_transitions: nil, maximum_amount: nil, minimum_amount: nil, price: nil, price_id: nil, usage_customer_ids: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionPriceIntervalsParams::Add} for more details.
         #
         #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate] The start date of the price interval. This is the date that the price will start
         #
         #   @param allocation_price [Orb::Models::NewAllocationPrice, nil] The definition of a new allocation price to create and add to the subscription.
+        #
+        #   @param can_defer_billing [Boolean, nil] If true, an in-arrears price interval ending mid-cycle will defer billing the fi
         #
         #   @param discounts [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::Amount, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::Percentage, Orb::Models::SubscriptionPriceIntervalsParams::Add::Discount::Usage>, nil] A list of discounts to initialize on the price interval.
         #
@@ -1590,9 +1599,9 @@ module Orb
         optional :billing_cycle_day, Integer, nil?: true
 
         # @!attribute can_defer_billing
-        #   If true, ending an in-arrears price interval mid-cycle will defer billing the
+        #   If true, an in-arrears price interval ending mid-cycle will defer billing the
         #   final line item until the next scheduled invoice. If false, it will be billed on
-        #   its end date. If not provided, behavior will follow account default.
+        #   its end date.
         #
         #   @return [Boolean, nil]
         optional :can_defer_billing, Orb::Internal::Type::Boolean, nil?: true
@@ -1651,7 +1660,7 @@ module Orb
         #
         #   @param billing_cycle_day [Integer, nil] The updated billing cycle day for this price interval. If not specified, the bil
         #
-        #   @param can_defer_billing [Boolean, nil] If true, ending an in-arrears price interval mid-cycle will defer billing the fi
+        #   @param can_defer_billing [Boolean, nil] If true, an in-arrears price interval ending mid-cycle will defer billing the fi
         #
         #   @param end_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate, nil] The updated end date of this price interval. If not specified, the end date will
         #

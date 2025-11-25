@@ -37,6 +37,21 @@ module Orb
       sig { returns(T.nilable(T::Array[Orb::NewAllocationPrice::Filter])) }
       attr_accessor :filters
 
+      # The item ID that line items representing charges for this allocation will be
+      # associated with. If not provided, the default allocation item for the currency
+      # will be used (e.g. 'Included Allocation (USD)').
+      sig { returns(T.nilable(String)) }
+      attr_accessor :item_id
+
+      # The (per-unit) cost basis of each created block. If non-zero, a customer will be
+      # invoiced according to the quantity and per unit cost basis specified for the
+      # allocation each cadence.
+      sig { returns(T.nilable(String)) }
+      attr_reader :per_unit_cost_basis
+
+      sig { params(per_unit_cost_basis: String).void }
+      attr_writer :per_unit_cost_basis
+
       sig do
         params(
           amount: String,
@@ -44,7 +59,9 @@ module Orb
           currency: String,
           custom_expiration: T.nilable(Orb::CustomExpiration::OrHash),
           expires_at_end_of_cadence: T.nilable(T::Boolean),
-          filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter::OrHash])
+          filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter::OrHash]),
+          item_id: T.nilable(String),
+          per_unit_cost_basis: String
         ).returns(T.attached_class)
       end
       def self.new(
@@ -61,7 +78,15 @@ module Orb
         # over to the next period. Set to null if using custom_expiration.
         expires_at_end_of_cadence: nil,
         # The filters that determine which items the allocation applies to.
-        filters: nil
+        filters: nil,
+        # The item ID that line items representing charges for this allocation will be
+        # associated with. If not provided, the default allocation item for the currency
+        # will be used (e.g. 'Included Allocation (USD)').
+        item_id: nil,
+        # The (per-unit) cost basis of each created block. If non-zero, a customer will be
+        # invoiced according to the quantity and per unit cost basis specified for the
+        # allocation each cadence.
+        per_unit_cost_basis: nil
       )
       end
 
@@ -73,7 +98,9 @@ module Orb
             currency: String,
             custom_expiration: T.nilable(Orb::CustomExpiration),
             expires_at_end_of_cadence: T.nilable(T::Boolean),
-            filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter])
+            filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter]),
+            item_id: T.nilable(String),
+            per_unit_cost_basis: String
           }
         )
       end

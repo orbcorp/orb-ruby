@@ -67,6 +67,7 @@ module Orb
         {
           start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date,
           allocation_price: Orb::NewAllocationPrice?,
+          can_defer_billing: bool?,
           discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
           external_price_id: String?,
@@ -83,6 +84,8 @@ module Orb
         attr_accessor start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date
 
         attr_accessor allocation_price: Orb::NewAllocationPrice?
+
+        attr_accessor can_defer_billing: bool?
 
         attr_accessor discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?
 
@@ -107,6 +110,7 @@ module Orb
         def initialize: (
           start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date,
           ?allocation_price: Orb::NewAllocationPrice?,
+          ?can_defer_billing: bool?,
           ?discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
           ?end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
           ?external_price_id: String?,
@@ -122,6 +126,7 @@ module Orb
         def to_hash: -> {
           start_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::start_date,
           allocation_price: Orb::NewAllocationPrice?,
+          can_defer_billing: bool?,
           discounts: ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::discount]?,
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::Add::end_date?,
           external_price_id: String?,

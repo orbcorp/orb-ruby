@@ -41,7 +41,23 @@ module Orb
       #   @return [Array<Orb::Models::NewAllocationPrice::Filter>, nil]
       optional :filters, -> { Orb::Internal::Type::ArrayOf[Orb::NewAllocationPrice::Filter] }, nil?: true
 
-      # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil, filters: nil)
+      # @!attribute item_id
+      #   The item ID that line items representing charges for this allocation will be
+      #   associated with. If not provided, the default allocation item for the currency
+      #   will be used (e.g. 'Included Allocation (USD)').
+      #
+      #   @return [String, nil]
+      optional :item_id, String, nil?: true
+
+      # @!attribute per_unit_cost_basis
+      #   The (per-unit) cost basis of each created block. If non-zero, a customer will be
+      #   invoiced according to the quantity and per unit cost basis specified for the
+      #   allocation each cadence.
+      #
+      #   @return [String, nil]
+      optional :per_unit_cost_basis, String
+
+      # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil, filters: nil, item_id: nil, per_unit_cost_basis: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewAllocationPrice} for more details.
       #
@@ -56,6 +72,10 @@ module Orb
       #   @param expires_at_end_of_cadence [Boolean, nil] Whether the allocated amount should expire at the end of the cadence or roll ove
       #
       #   @param filters [Array<Orb::Models::NewAllocationPrice::Filter>, nil] The filters that determine which items the allocation applies to.
+      #
+      #   @param item_id [String, nil] The item ID that line items representing charges for this allocation will be ass
+      #
+      #   @param per_unit_cost_basis [String] The (per-unit) cost basis of each created block. If non-zero, a customer will be
 
       # The cadence at which to allocate the amount to the customer.
       #
