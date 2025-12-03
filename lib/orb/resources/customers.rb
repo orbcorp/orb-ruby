@@ -28,7 +28,7 @@ module Orb
       # - [Timezone localization](/essentials/timezones) can be configured on a
       #   per-customer basis by setting the `timezone` parameter
       #
-      # @overload create(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
+      # @overload create(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
       #
       # @param email [String] A valid customer email, to be used for notifications. When Orb triggers payment
       #
@@ -53,6 +53,8 @@ module Orb
       # @param hierarchy [Orb::Models::CustomerHierarchyConfig, nil] The hierarchical relationships for this customer.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param payment_configuration [Orb::Models::CustomerCreateParams::PaymentConfiguration, nil] Payment configuration for the customer, applicable when using Orb Invoicing with
       #
       # @param payment_provider [Symbol, Orb::Models::CustomerCreateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
@@ -93,7 +95,7 @@ module Orb
       # `additional_emails` of an existing customer. Other fields on a customer are
       # currently immutable.
       #
-      # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
       # @param customer_id [String]
       #
@@ -120,6 +122,8 @@ module Orb
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       # @param name [String, nil] The full name of the customer
+      #
+      # @param payment_configuration [Orb::Models::CustomerUpdateParams::PaymentConfiguration, nil] Payment configuration for the customer, applicable when using Orb Invoicing with
       #
       # @param payment_provider [Symbol, Orb::Models::CustomerUpdateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
@@ -331,7 +335,7 @@ module Orb
       # resource and semantics of this endpoint exactly mirror
       # [Update Customer](update-customer).
       #
-      # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
       # @param id [String]
       #
@@ -358,6 +362,8 @@ module Orb
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       # @param name [String, nil] The full name of the customer
+      #
+      # @param payment_configuration [Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration, nil] Payment configuration for the customer, applicable when using Orb Invoicing with
       #
       # @param payment_provider [Symbol, Orb::Models::CustomerUpdateByExternalIDParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #

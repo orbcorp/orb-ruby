@@ -14,6 +14,7 @@ module Orb
         hierarchy: Orb::CustomerHierarchyConfig?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?,
+        payment_configuration: Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration?,
         payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         payment_provider_id: String?,
         reporting_configuration: Orb::NewReportingConfiguration?,
@@ -51,6 +52,8 @@ module Orb
 
       attr_accessor name: String?
 
+      attr_accessor payment_configuration: Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration?
+
       attr_accessor payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?
 
       attr_accessor payment_provider_id: String?
@@ -76,6 +79,7 @@ module Orb
         ?hierarchy: Orb::CustomerHierarchyConfig?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
+        ?payment_configuration: Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration?,
         ?payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         ?payment_provider_id: String?,
         ?reporting_configuration: Orb::NewReportingConfiguration?,
@@ -98,6 +102,7 @@ module Orb
         hierarchy: Orb::CustomerHierarchyConfig?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?,
+        payment_configuration: Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration?,
         payment_provider: Orb::Models::CustomerUpdateByExternalIDParams::payment_provider?,
         payment_provider_id: String?,
         reporting_configuration: Orb::NewReportingConfiguration?,
@@ -106,6 +111,63 @@ module Orb
         tax_id: Orb::CustomerTaxID?,
         request_options: Orb::RequestOptions
       }
+
+      type payment_configuration =
+        {
+          payment_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider]
+        }
+
+      class PaymentConfiguration < Orb::Internal::Type::BaseModel
+        attr_reader payment_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider]?
+
+        def payment_providers=: (
+          ::Array[Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider]
+        ) -> ::Array[Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider]
+
+        def initialize: (
+          ?payment_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider]
+        ) -> void
+
+        def to_hash: -> {
+          payment_providers: ::Array[Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider]
+        }
+
+        type payment_provider =
+          {
+            provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type,
+            excluded_payment_method_types: ::Array[String]
+          }
+
+        class PaymentProvider < Orb::Internal::Type::BaseModel
+          attr_accessor provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type
+
+          attr_reader excluded_payment_method_types: ::Array[String]?
+
+          def excluded_payment_method_types=: (
+            ::Array[String]
+          ) -> ::Array[String]
+
+          def initialize: (
+            provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type,
+            ?excluded_payment_method_types: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type,
+            excluded_payment_method_types: ::Array[String]
+          }
+
+          type provider_type = :stripe
+
+          module ProviderType
+            extend Orb::Internal::Type::Enum
+
+            STRIPE: :stripe
+
+            def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type]
+          end
+        end
+      end
 
       type payment_provider =
         :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite

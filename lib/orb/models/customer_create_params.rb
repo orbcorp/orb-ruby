@@ -90,6 +90,13 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
+      # @!attribute payment_configuration
+      #   Payment configuration for the customer, applicable when using Orb Invoicing with
+      #   a supported payment provider such as Stripe.
+      #
+      #   @return [Orb::Models::CustomerCreateParams::PaymentConfiguration, nil]
+      optional :payment_configuration, -> { Orb::CustomerCreateParams::PaymentConfiguration }, nil?: true
+
       # @!attribute payment_provider
       #   This is used for creating charges or invoices in an external system via Orb.
       #   When not in test mode, the connection must first be configured in the Orb
@@ -277,7 +284,7 @@ module Orb
       #   @return [String, nil]
       optional :timezone, String, nil?: true
 
-      # @!method initialize(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
+      # @!method initialize(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerCreateParams} for more details.
       #
@@ -305,6 +312,8 @@ module Orb
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
+      #   @param payment_configuration [Orb::Models::CustomerCreateParams::PaymentConfiguration, nil] Payment configuration for the customer, applicable when using Orb Invoicing with
+      #
       #   @param payment_provider [Symbol, Orb::Models::CustomerCreateParams::PaymentProvider, nil] This is used for creating charges or invoices in an external system via Orb. Whe
       #
       #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
@@ -320,6 +329,61 @@ module Orb
       #   @param timezone [String, nil] A timezone identifier from the IANA timezone database, such as `"America/Los_Ang
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
+
+      class PaymentConfiguration < Orb::Internal::Type::BaseModel
+        # @!attribute payment_providers
+        #   Provider-specific payment configuration.
+        #
+        #   @return [Array<Orb::Models::CustomerCreateParams::PaymentConfiguration::PaymentProvider>, nil]
+        optional :payment_providers,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider] }
+
+        # @!method initialize(payment_providers: nil)
+        #   Payment configuration for the customer, applicable when using Orb Invoicing with
+        #   a supported payment provider such as Stripe.
+        #
+        #   @param payment_providers [Array<Orb::Models::CustomerCreateParams::PaymentConfiguration::PaymentProvider>] Provider-specific payment configuration.
+
+        class PaymentProvider < Orb::Internal::Type::BaseModel
+          # @!attribute provider_type
+          #   The payment provider to configure.
+          #
+          #   @return [Symbol, Orb::Models::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType]
+          required :provider_type,
+                   enum: -> { Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType }
+
+          # @!attribute excluded_payment_method_types
+          #   List of Stripe payment method types to exclude for this customer. Excluded
+          #   payment methods will not be available for the customer to select during payment,
+          #   and will not be used for auto-collection. If a customer's default payment method
+          #   becomes excluded, Orb will attempt to use the next available compatible payment
+          #   method for auto-collection.
+          #
+          #   @return [Array<String>, nil]
+          optional :excluded_payment_method_types, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(provider_type:, excluded_payment_method_types: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::CustomerCreateParams::PaymentConfiguration::PaymentProvider} for
+          #   more details.
+          #
+          #   @param provider_type [Symbol, Orb::Models::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType] The payment provider to configure.
+          #
+          #   @param excluded_payment_method_types [Array<String>] List of Stripe payment method types to exclude for this customer. Excluded payme
+
+          # The payment provider to configure.
+          #
+          # @see Orb::Models::CustomerCreateParams::PaymentConfiguration::PaymentProvider#provider_type
+          module ProviderType
+            extend Orb::Internal::Type::Enum
+
+            STRIPE = :stripe
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+      end
 
       # This is used for creating charges or invoices in an external system via Orb.
       # When not in test mode, the connection must first be configured in the Orb
