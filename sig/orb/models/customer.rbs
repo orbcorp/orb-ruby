@@ -25,6 +25,7 @@ module Orb
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         automatic_tax_enabled: bool?,
+        payment_configuration: Orb::Customer::PaymentConfiguration?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
       }
 
@@ -75,6 +76,8 @@ module Orb
 
       attr_accessor automatic_tax_enabled: bool?
 
+      attr_accessor payment_configuration: Orb::Customer::PaymentConfiguration?
+
       attr_accessor reporting_configuration: Orb::Customer::ReportingConfiguration?
 
       def initialize: (
@@ -101,6 +104,7 @@ module Orb
         timezone: String,
         ?accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         ?automatic_tax_enabled: bool?,
+        ?payment_configuration: Orb::Customer::PaymentConfiguration?,
         ?reporting_configuration: Orb::Customer::ReportingConfiguration?
       ) -> void
 
@@ -128,6 +132,7 @@ module Orb
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         automatic_tax_enabled: bool?,
+        payment_configuration: Orb::Customer::PaymentConfiguration?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
       }
 
@@ -219,6 +224,63 @@ module Orb
             NETSUITE: :netsuite
 
             def self?.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
+          end
+        end
+      end
+
+      type payment_configuration =
+        {
+          payment_providers: ::Array[Orb::Customer::PaymentConfiguration::PaymentProvider]
+        }
+
+      class PaymentConfiguration < Orb::Internal::Type::BaseModel
+        attr_reader payment_providers: ::Array[Orb::Customer::PaymentConfiguration::PaymentProvider]?
+
+        def payment_providers=: (
+          ::Array[Orb::Customer::PaymentConfiguration::PaymentProvider]
+        ) -> ::Array[Orb::Customer::PaymentConfiguration::PaymentProvider]
+
+        def initialize: (
+          ?payment_providers: ::Array[Orb::Customer::PaymentConfiguration::PaymentProvider]
+        ) -> void
+
+        def to_hash: -> {
+          payment_providers: ::Array[Orb::Customer::PaymentConfiguration::PaymentProvider]
+        }
+
+        type payment_provider =
+          {
+            provider_type: Orb::Models::Customer::PaymentConfiguration::PaymentProvider::provider_type,
+            excluded_payment_method_types: ::Array[String]
+          }
+
+        class PaymentProvider < Orb::Internal::Type::BaseModel
+          attr_accessor provider_type: Orb::Models::Customer::PaymentConfiguration::PaymentProvider::provider_type
+
+          attr_reader excluded_payment_method_types: ::Array[String]?
+
+          def excluded_payment_method_types=: (
+            ::Array[String]
+          ) -> ::Array[String]
+
+          def initialize: (
+            provider_type: Orb::Models::Customer::PaymentConfiguration::PaymentProvider::provider_type,
+            ?excluded_payment_method_types: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            provider_type: Orb::Models::Customer::PaymentConfiguration::PaymentProvider::provider_type,
+            excluded_payment_method_types: ::Array[String]
+          }
+
+          type provider_type = :stripe
+
+          module ProviderType
+            extend Orb::Internal::Type::Enum
+
+            STRIPE: :stripe
+
+            def self?.values: -> ::Array[Orb::Models::Customer::PaymentConfiguration::PaymentProvider::provider_type]
           end
         end
       end

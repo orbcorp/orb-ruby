@@ -86,6 +86,21 @@ module Orb
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
+      # Payment configuration for the customer, applicable when using Orb Invoicing with
+      # a supported payment provider such as Stripe.
+      sig do
+        returns(T.nilable(Orb::CustomerCreateParams::PaymentConfiguration))
+      end
+      attr_reader :payment_configuration
+
+      sig do
+        params(
+          payment_configuration:
+            T.nilable(Orb::CustomerCreateParams::PaymentConfiguration::OrHash)
+        ).void
+      end
+      attr_writer :payment_configuration
+
       # This is used for creating charges or invoices in an external system via Orb.
       # When not in test mode, the connection must first be configured in the Orb
       # webapp.
@@ -305,6 +320,8 @@ module Orb
           external_customer_id: T.nilable(String),
           hierarchy: T.nilable(Orb::CustomerHierarchyConfig::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          payment_configuration:
+            T.nilable(Orb::CustomerCreateParams::PaymentConfiguration::OrHash),
           payment_provider:
             T.nilable(Orb::CustomerCreateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
@@ -363,6 +380,9 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
+        # Payment configuration for the customer, applicable when using Orb Invoicing with
+        # a supported payment provider such as Stripe.
+        payment_configuration: nil,
         # This is used for creating charges or invoices in an external system via Orb.
         # When not in test mode, the connection must first be configured in the Orb
         # webapp.
@@ -542,6 +562,8 @@ module Orb
             external_customer_id: T.nilable(String),
             hierarchy: T.nilable(Orb::CustomerHierarchyConfig),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            payment_configuration:
+              T.nilable(Orb::CustomerCreateParams::PaymentConfiguration),
             payment_provider:
               T.nilable(Orb::CustomerCreateParams::PaymentProvider::OrSymbol),
             payment_provider_id: T.nilable(String),
@@ -565,6 +587,157 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      class PaymentConfiguration < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::CustomerCreateParams::PaymentConfiguration,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        # Provider-specific payment configuration.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider
+              ]
+            )
+          )
+        end
+        attr_reader :payment_providers
+
+        sig do
+          params(
+            payment_providers:
+              T::Array[
+                Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::OrHash
+              ]
+          ).void
+        end
+        attr_writer :payment_providers
+
+        # Payment configuration for the customer, applicable when using Orb Invoicing with
+        # a supported payment provider such as Stripe.
+        sig do
+          params(
+            payment_providers:
+              T::Array[
+                Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Provider-specific payment configuration.
+          payment_providers: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              payment_providers:
+                T::Array[
+                  Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class PaymentProvider < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The payment provider to configure.
+          sig do
+            returns(
+              Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::OrSymbol
+            )
+          end
+          attr_accessor :provider_type
+
+          # List of Stripe payment method types to exclude for this customer. Excluded
+          # payment methods will not be available for the customer to select during payment,
+          # and will not be used for auto-collection. If a customer's default payment method
+          # becomes excluded, Orb will attempt to use the next available compatible payment
+          # method for auto-collection.
+          sig { returns(T.nilable(T::Array[String])) }
+          attr_reader :excluded_payment_method_types
+
+          sig { params(excluded_payment_method_types: T::Array[String]).void }
+          attr_writer :excluded_payment_method_types
+
+          sig do
+            params(
+              provider_type:
+                Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::OrSymbol,
+              excluded_payment_method_types: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The payment provider to configure.
+            provider_type:,
+            # List of Stripe payment method types to exclude for this customer. Excluded
+            # payment methods will not be available for the customer to select during payment,
+            # and will not be used for auto-collection. If a customer's default payment method
+            # becomes excluded, Orb will attempt to use the next available compatible payment
+            # method for auto-collection.
+            excluded_payment_method_types: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                provider_type:
+                  Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::OrSymbol,
+                excluded_payment_method_types: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The payment provider to configure.
+          module ProviderType
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            STRIPE =
+              T.let(
+                :stripe,
+                Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
       end
 
       # This is used for creating charges or invoices in an external system via Orb.
