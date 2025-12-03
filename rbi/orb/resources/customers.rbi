@@ -39,6 +39,8 @@ module Orb
           external_customer_id: T.nilable(String),
           hierarchy: T.nilable(Orb::CustomerHierarchyConfig::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          payment_configuration:
+            T.nilable(Orb::CustomerCreateParams::PaymentConfiguration::OrHash),
           payment_provider:
             T.nilable(Orb::CustomerCreateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
@@ -97,6 +99,9 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
+        # Payment configuration for the customer, applicable when using Orb Invoicing with
+        # a supported payment provider such as Stripe.
+        payment_configuration: nil,
         # This is used for creating charges or invoices in an external system via Orb.
         # When not in test mode, the connection must first be configured in the Orb
         # webapp.
@@ -281,6 +286,8 @@ module Orb
           hierarchy: T.nilable(Orb::CustomerHierarchyConfig::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
+          payment_configuration:
+            T.nilable(Orb::CustomerUpdateParams::PaymentConfiguration::OrHash),
           payment_provider:
             T.nilable(Orb::CustomerUpdateParams::PaymentProvider::OrSymbol),
           payment_provider_id: T.nilable(String),
@@ -339,6 +346,9 @@ module Orb
         metadata: nil,
         # The full name of the customer
         name: nil,
+        # Payment configuration for the customer, applicable when using Orb Invoicing with
+        # a supported payment provider such as Stripe.
+        payment_configuration: nil,
         # This is used for creating charges or invoices in an external system via Orb.
         # When not in test mode:
         #
@@ -636,6 +646,10 @@ module Orb
           hierarchy: T.nilable(Orb::CustomerHierarchyConfig::OrHash),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           name: T.nilable(String),
+          payment_configuration:
+            T.nilable(
+              Orb::CustomerUpdateByExternalIDParams::PaymentConfiguration::OrHash
+            ),
           payment_provider:
             T.nilable(
               Orb::CustomerUpdateByExternalIDParams::PaymentProvider::OrSymbol
@@ -696,6 +710,9 @@ module Orb
         metadata: nil,
         # The full name of the customer
         name: nil,
+        # Payment configuration for the customer, applicable when using Orb Invoicing with
+        # a supported payment provider such as Stripe.
+        payment_configuration: nil,
         # This is used for creating charges or invoices in an external system via Orb.
         # When not in test mode:
         #
