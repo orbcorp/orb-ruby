@@ -3,15 +3,22 @@ module Orb
     type subscription_change_apply_response =
       {
         id: String,
+        change_type: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeApplyResponse::status,
         subscription: Orb::MutatedSubscription?,
         applied_at: Time?,
-        cancelled_at: Time?
+        billing_cycle_alignment: String?,
+        cancelled_at: Time?,
+        change_option: String?,
+        effective_date: Time?,
+        plan_id: String?
       }
 
     class SubscriptionChangeApplyResponse < Orb::Internal::Type::BaseModel
       attr_accessor id: String
+
+      attr_accessor change_type: String
 
       attr_accessor expiration_time: Time
 
@@ -21,24 +28,42 @@ module Orb
 
       attr_accessor applied_at: Time?
 
+      attr_accessor billing_cycle_alignment: String?
+
       attr_accessor cancelled_at: Time?
+
+      attr_accessor change_option: String?
+
+      attr_accessor effective_date: Time?
+
+      attr_accessor plan_id: String?
 
       def initialize: (
         id: String,
+        change_type: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeApplyResponse::status,
         subscription: Orb::MutatedSubscription?,
         ?applied_at: Time?,
-        ?cancelled_at: Time?
+        ?billing_cycle_alignment: String?,
+        ?cancelled_at: Time?,
+        ?change_option: String?,
+        ?effective_date: Time?,
+        ?plan_id: String?
       ) -> void
 
       def to_hash: -> {
         id: String,
+        change_type: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeApplyResponse::status,
         subscription: Orb::MutatedSubscription?,
         applied_at: Time?,
-        cancelled_at: Time?
+        billing_cycle_alignment: String?,
+        cancelled_at: Time?,
+        change_option: String?,
+        effective_date: Time?,
+        plan_id: String?
       }
 
       type status = :pending | :applied | :cancelled

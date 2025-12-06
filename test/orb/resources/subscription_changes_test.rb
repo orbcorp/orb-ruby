@@ -13,11 +13,16 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
+        change_type: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeRetrieveResponse::Status,
         subscription: Orb::MutatedSubscription | nil,
         applied_at: Time | nil,
-        cancelled_at: Time | nil
+        billing_cycle_alignment: String | nil,
+        cancelled_at: Time | nil,
+        change_option: String | nil,
+        effective_date: Time | nil,
+        plan_id: String | nil
       }
     end
   end
@@ -32,11 +37,16 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
+        change_type: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeApplyResponse::Status,
         subscription: Orb::MutatedSubscription | nil,
         applied_at: Time | nil,
-        cancelled_at: Time | nil
+        billing_cycle_alignment: String | nil,
+        cancelled_at: Time | nil,
+        change_option: String | nil,
+        effective_date: Time | nil,
+        plan_id: String | nil
       }
     end
   end
@@ -51,11 +61,16 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
+        change_type: String,
         expiration_time: Time,
         status: Orb::Models::SubscriptionChangeCancelResponse::Status,
         subscription: Orb::MutatedSubscription | nil,
         applied_at: Time | nil,
-        cancelled_at: Time | nil
+        billing_cycle_alignment: String | nil,
+        cancelled_at: Time | nil,
+        change_option: String | nil,
+        effective_date: Time | nil,
+        plan_id: String | nil
       }
     end
   end
