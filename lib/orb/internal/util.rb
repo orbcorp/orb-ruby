@@ -655,7 +655,8 @@ module Orb
         def decode_content(headers, stream:, suppress_error: false)
           case (content_type = headers["content-type"])
           in Orb::Internal::Util::JSON_CONTENT
-            json = stream.to_a.join
+            return nil if (json = stream.to_a.join).empty?
+
             begin
               JSON.parse(json, symbolize_names: true)
             rescue JSON::ParserError => e
@@ -665,7 +666,11 @@ module Orb
           in Orb::Internal::Util::JSONL_CONTENT
             lines = decode_lines(stream)
             chain_fused(lines) do |y|
-              lines.each { y << JSON.parse(_1, symbolize_names: true) }
+              lines.each do
+                next if _1.empty?
+
+                y << JSON.parse(_1, symbolize_names: true)
+              end
             end
           in %r{^text/event-stream}
             lines = decode_lines(stream)
