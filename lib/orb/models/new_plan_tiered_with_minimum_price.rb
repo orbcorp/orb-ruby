@@ -228,13 +228,11 @@ module Orb
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute minimum_amount
-          #   Minimum amount
           #
           #   @return [String]
           required :minimum_amount, String
 
           # @!attribute tier_lower_bound
-          #   Tier lower bound
           #
           #   @return [String]
           required :tier_lower_bound, String
@@ -248,9 +246,9 @@ module Orb
           # @!method initialize(minimum_amount:, tier_lower_bound:, unit_amount:)
           #   Configuration for a single tier
           #
-          #   @param minimum_amount [String] Minimum amount
+          #   @param minimum_amount [String]
           #
-          #   @param tier_lower_bound [String] Tier lower bound
+          #   @param tier_lower_bound [String]
           #
           #   @param unit_amount [String] Per unit amount
         end

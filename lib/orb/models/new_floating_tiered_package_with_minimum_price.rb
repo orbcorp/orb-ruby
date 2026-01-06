@@ -185,7 +185,6 @@ module Orb
       # @see Orb::Models::NewFloatingTieredPackageWithMinimumPrice#tiered_package_with_minimum_config
       class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
         # @!attribute package_size
-        #   Package size
         #
         #   @return [Float]
         required :package_size, Float
@@ -205,25 +204,22 @@ module Orb
         #
         #   Configuration for tiered_package_with_minimum pricing
         #
-        #   @param package_size [Float] Package size
+        #   @param package_size [Float]
         #
         #   @param tiers [Array<Orb::Models::NewFloatingTieredPackageWithMinimumPrice::TieredPackageWithMinimumConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute minimum_amount
-          #   Minimum amount
           #
           #   @return [String]
           required :minimum_amount, String
 
           # @!attribute per_unit
-          #   Price per package
           #
           #   @return [String]
           required :per_unit, String
 
           # @!attribute tier_lower_bound
-          #   Tier lower bound
           #
           #   @return [String]
           required :tier_lower_bound, String
@@ -231,11 +227,9 @@ module Orb
           # @!method initialize(minimum_amount:, per_unit:, tier_lower_bound:)
           #   Configuration for a single tier
           #
-          #   @param minimum_amount [String] Minimum amount
-          #
-          #   @param per_unit [String] Price per package
-          #
-          #   @param tier_lower_bound [String] Tier lower bound
+          #   @param minimum_amount [String]
+          #   @param per_unit [String]
+          #   @param tier_lower_bound [String]
         end
       end
     end

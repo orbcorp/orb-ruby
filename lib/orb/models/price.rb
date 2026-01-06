@@ -2369,7 +2369,6 @@ module Orb
 
           class ConsumptionTable < Orb::Internal::Type::BaseModel
             # @!attribute threshold
-            #   Quantity threshold
             #
             #   @return [String]
             required :threshold, String
@@ -2383,7 +2382,7 @@ module Orb
             # @!method initialize(threshold:, total_amount:)
             #   Configuration for a single threshold
             #
-            #   @param threshold [String] Quantity threshold
+            #   @param threshold [String]
             #
             #   @param total_amount [String] Total amount for this threshold
           end
@@ -2707,7 +2706,6 @@ module Orb
         # @see Orb::Models::Price::TieredPackage#tiered_package_config
         class TieredPackageConfig < Orb::Internal::Type::BaseModel
           # @!attribute package_size
-          #   Package size
           #
           #   @return [String]
           required :package_size, String
@@ -2727,7 +2725,7 @@ module Orb
           #
           #   Configuration for tiered_package pricing
           #
-          #   @param package_size [String] Package size
+          #   @param package_size [String]
           #
           #   @param tiers [Array<Orb::Models::Price::TieredPackage::TieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
 
@@ -2739,7 +2737,6 @@ module Orb
             required :per_unit, String
 
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
@@ -2749,7 +2746,7 @@ module Orb
             #
             #   @param per_unit [String] Price per package
             #
-            #   @param tier_lower_bound [String] Tier lower bound
+            #   @param tier_lower_bound [String]
           end
         end
       end
@@ -3105,13 +3102,11 @@ module Orb
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute minimum_amount
-            #   Minimum amount
             #
             #   @return [String]
             required :minimum_amount, String
 
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
@@ -3125,9 +3120,9 @@ module Orb
             # @!method initialize(minimum_amount:, tier_lower_bound:, unit_amount:)
             #   Configuration for a single tier
             #
-            #   @param minimum_amount [String] Minimum amount
+            #   @param minimum_amount [String]
             #
-            #   @param tier_lower_bound [String] Tier lower bound
+            #   @param tier_lower_bound [String]
             #
             #   @param unit_amount [String] Per unit amount
           end
@@ -3463,7 +3458,6 @@ module Orb
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
@@ -3477,7 +3471,7 @@ module Orb
             # @!method initialize(tier_lower_bound:, unit_amount:)
             #   Configuration for a single tier
             #
-            #   @param tier_lower_bound [String] Tier lower bound
+            #   @param tier_lower_bound [String]
             #
             #   @param unit_amount [String] Per unit amount
           end
@@ -3816,7 +3810,6 @@ module Orb
         # @see Orb::Models::Price::TieredPackageWithMinimum#tiered_package_with_minimum_config
         class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
           # @!attribute package_size
-          #   Package size
           #
           #   @return [Float]
           required :package_size, Float
@@ -3836,25 +3829,22 @@ module Orb
           #
           #   Configuration for tiered_package_with_minimum pricing
           #
-          #   @param package_size [Float] Package size
+          #   @param package_size [Float]
           #
           #   @param tiers [Array<Orb::Models::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute minimum_amount
-            #   Minimum amount
             #
             #   @return [String]
             required :minimum_amount, String
 
             # @!attribute per_unit
-            #   Price per package
             #
             #   @return [String]
             required :per_unit, String
 
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
@@ -3862,11 +3852,9 @@ module Orb
             # @!method initialize(minimum_amount:, per_unit:, tier_lower_bound:)
             #   Configuration for a single tier
             #
-            #   @param minimum_amount [String] Minimum amount
-            #
-            #   @param per_unit [String] Price per package
-            #
-            #   @param tier_lower_bound [String] Tier lower bound
+            #   @param minimum_amount [String]
+            #   @param per_unit [String]
+            #   @param tier_lower_bound [String]
           end
         end
       end
@@ -4177,19 +4165,16 @@ module Orb
         # @see Orb::Models::Price::PackageWithAllocation#package_with_allocation_config
         class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
           # @!attribute allocation
-          #   Usage allocation
           #
           #   @return [String]
           required :allocation, String
 
           # @!attribute package_amount
-          #   Price per package
           #
           #   @return [String]
           required :package_amount, String
 
           # @!attribute package_size
-          #   Package size
           #
           #   @return [String]
           required :package_size, String
@@ -4197,11 +4182,9 @@ module Orb
           # @!method initialize(allocation:, package_amount:, package_size:)
           #   Configuration for package_with_allocation pricing
           #
-          #   @param allocation [String] Usage allocation
-          #
-          #   @param package_amount [String] Price per package
-          #
-          #   @param package_size [String] Package size
+          #   @param allocation [String]
+          #   @param package_amount [String]
+          #   @param package_size [String]
         end
 
         # @see Orb::Models::Price::PackageWithAllocation#price_type
@@ -6966,13 +6949,11 @@ module Orb
 
           class ScalingFactor < Orb::Internal::Type::BaseModel
             # @!attribute scaling_factor
-            #   Scaling factor
             #
             #   @return [String]
             required :scaling_factor, String
 
             # @!attribute scaling_value
-            #   Scaling value
             #
             #   @return [String]
             required :scaling_value, String
@@ -6980,14 +6961,12 @@ module Orb
             # @!method initialize(scaling_factor:, scaling_value:)
             #   Configuration for a scaling factor
             #
-            #   @param scaling_factor [String] Scaling factor
-            #
-            #   @param scaling_value [String] Scaling value
+            #   @param scaling_factor [String]
+            #   @param scaling_value [String]
           end
 
           class UnitAmount < Orb::Internal::Type::BaseModel
             # @!attribute pricing_value
-            #   Pricing value
             #
             #   @return [String]
             required :pricing_value, String
@@ -7001,7 +6980,7 @@ module Orb
             # @!method initialize(pricing_value:, unit_amount:)
             #   Configuration for a unit amount
             #
-            #   @param pricing_value [String] Pricing value
+            #   @param pricing_value [String]
             #
             #   @param unit_amount [String] Per unit amount
           end
@@ -8056,7 +8035,6 @@ module Orb
           required :grouping_key, String
 
           # @!attribute package_size
-          #   Package size
           #
           #   @return [String]
           required :package_size, String
@@ -8078,19 +8056,18 @@ module Orb
           #
           #   @param grouping_key [String] The event property used to group before tiering
           #
-          #   @param package_size [String] Package size
+          #   @param package_size [String]
           #
           #   @param tiers [Array<Orb::Models::Price::GroupedTieredPackage::GroupedTieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute per_unit
-            #   Price per package
+            #   Per package
             #
             #   @return [String]
             required :per_unit, String
 
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
@@ -8098,9 +8075,9 @@ module Orb
             # @!method initialize(per_unit:, tier_lower_bound:)
             #   Configuration for a single tier
             #
-            #   @param per_unit [String] Price per package
+            #   @param per_unit [String] Per package
             #
-            #   @param tier_lower_bound [String] Tier lower bound
+            #   @param tier_lower_bound [String]
           end
         end
 
@@ -8429,7 +8406,6 @@ module Orb
           required :grouping_key, String
 
           # @!attribute package_size
-          #   Package size
           #
           #   @return [String]
           required :package_size, String
@@ -8450,13 +8426,12 @@ module Orb
           #
           #   @param grouping_key [String] The event property used to group before tiering the group with the highest value
           #
-          #   @param package_size [String] Package size
+          #   @param package_size [String]
           #
           #   @param tiers [Array<Orb::Models::Price::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier>] Apply tiered pricing to the largest group after grouping with the provided key.
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
@@ -8470,7 +8445,7 @@ module Orb
             # @!method initialize(tier_lower_bound:, unit_amount:)
             #   Configuration for a single tier
             #
-            #   @param tier_lower_bound [String] Tier lower bound
+            #   @param tier_lower_bound [String]
             #
             #   @param unit_amount [String] Per unit amount
           end
@@ -8854,19 +8829,16 @@ module Orb
 
           class MatrixScalingFactor < Orb::Internal::Type::BaseModel
             # @!attribute first_dimension_value
-            #   First dimension value
             #
             #   @return [String]
             required :first_dimension_value, String
 
             # @!attribute scaling_factor
-            #   Scaling factor
             #
             #   @return [String]
             required :scaling_factor, String
 
             # @!attribute second_dimension_value
-            #   Second dimension value (optional)
             #
             #   @return [String, nil]
             optional :second_dimension_value, String, nil?: true
@@ -8874,11 +8846,9 @@ module Orb
             # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
             #   Configuration for a single matrix scaling factor
             #
-            #   @param first_dimension_value [String] First dimension value
-            #
-            #   @param scaling_factor [String] Scaling factor
-            #
-            #   @param second_dimension_value [String, nil] Second dimension value (optional)
+            #   @param first_dimension_value [String]
+            #   @param scaling_factor [String]
+            #   @param second_dimension_value [String, nil]
           end
         end
       end
@@ -9217,7 +9187,6 @@ module Orb
                    -> { Orb::Internal::Type::ArrayOf[Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor] }
 
           # @!attribute tiers
-          #   Tier pricing structure
           #
           #   @return [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>]
           required :tiers,
@@ -9236,25 +9205,22 @@ module Orb
           #
           #   @param matrix_scaling_factors [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
           #
-          #   @param tiers [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>] Tier pricing structure
+          #   @param tiers [Array<Orb::Models::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>]
           #
           #   @param second_dimension [String, nil] Used for the scalable matrix second dimension (optional)
 
           class MatrixScalingFactor < Orb::Internal::Type::BaseModel
             # @!attribute first_dimension_value
-            #   First dimension value
             #
             #   @return [String]
             required :first_dimension_value, String
 
             # @!attribute scaling_factor
-            #   Scaling factor
             #
             #   @return [String]
             required :scaling_factor, String
 
             # @!attribute second_dimension_value
-            #   Second dimension value (optional)
             #
             #   @return [String, nil]
             optional :second_dimension_value, String, nil?: true
@@ -9262,22 +9228,18 @@ module Orb
             # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
             #   Configuration for a single matrix scaling factor
             #
-            #   @param first_dimension_value [String] First dimension value
-            #
-            #   @param scaling_factor [String] Scaling factor
-            #
-            #   @param second_dimension_value [String, nil] Second dimension value (optional)
+            #   @param first_dimension_value [String]
+            #   @param scaling_factor [String]
+            #   @param second_dimension_value [String, nil]
           end
 
           class Tier < Orb::Internal::Type::BaseModel
             # @!attribute tier_lower_bound
-            #   Tier lower bound
             #
             #   @return [String]
             required :tier_lower_bound, String
 
             # @!attribute unit_amount
-            #   Per unit amount
             #
             #   @return [String]
             required :unit_amount, String
@@ -9285,9 +9247,8 @@ module Orb
             # @!method initialize(tier_lower_bound:, unit_amount:)
             #   Configuration for a single tier entry with business logic
             #
-            #   @param tier_lower_bound [String] Tier lower bound
-            #
-            #   @param unit_amount [String] Per unit amount
+            #   @param tier_lower_bound [String]
+            #   @param unit_amount [String]
           end
         end
       end
@@ -9605,7 +9566,6 @@ module Orb
                    -> { Orb::Internal::Type::ArrayOf[Orb::Price::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue] }
 
           # @!attribute group
-          #   Grouping key name
           #
           #   @return [String]
           required :group, String
@@ -9615,7 +9575,7 @@ module Orb
           #
           #   @param dimension_values [Array<Orb::Models::Price::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue>] Each tier lower bound must have the same group of values.
           #
-          #   @param group [String] Grouping key name
+          #   @param group [String]
 
           class DimensionValue < Orb::Internal::Type::BaseModel
             # @!attribute grouping_key

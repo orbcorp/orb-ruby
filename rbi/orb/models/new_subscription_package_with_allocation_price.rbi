@@ -361,15 +361,12 @@ module Orb
             )
           end
 
-        # Usage allocation
         sig { returns(String) }
         attr_accessor :allocation
 
-        # Price per package
         sig { returns(String) }
         attr_accessor :package_amount
 
-        # Package size
         sig { returns(String) }
         attr_accessor :package_size
 
@@ -381,14 +378,7 @@ module Orb
             package_size: String
           ).returns(T.attached_class)
         end
-        def self.new(
-          # Usage allocation
-          allocation:,
-          # Price per package
-          package_amount:,
-          # Package size
-          package_size:
-        )
+        def self.new(allocation:, package_amount:, package_size:)
         end
 
         sig do

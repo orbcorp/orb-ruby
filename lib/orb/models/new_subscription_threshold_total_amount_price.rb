@@ -221,7 +221,6 @@ module Orb
 
         class ConsumptionTable < Orb::Internal::Type::BaseModel
           # @!attribute threshold
-          #   Quantity threshold
           #
           #   @return [String]
           required :threshold, String
@@ -235,7 +234,7 @@ module Orb
           # @!method initialize(threshold:, total_amount:)
           #   Configuration for a single threshold
           #
-          #   @param threshold [String] Quantity threshold
+          #   @param threshold [String]
           #
           #   @param total_amount [String] Total amount for this threshold
         end

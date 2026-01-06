@@ -185,19 +185,16 @@ module Orb
       # @see Orb::Models::NewFloatingPackageWithAllocationPrice#package_with_allocation_config
       class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
         # @!attribute allocation
-        #   Usage allocation
         #
         #   @return [String]
         required :allocation, String
 
         # @!attribute package_amount
-        #   Price per package
         #
         #   @return [String]
         required :package_amount, String
 
         # @!attribute package_size
-        #   Package size
         #
         #   @return [String]
         required :package_size, String
@@ -205,11 +202,9 @@ module Orb
         # @!method initialize(allocation:, package_amount:, package_size:)
         #   Configuration for package_with_allocation pricing
         #
-        #   @param allocation [String] Usage allocation
-        #
-        #   @param package_amount [String] Price per package
-        #
-        #   @param package_size [String] Package size
+        #   @param allocation [String]
+        #   @param package_amount [String]
+        #   @param package_size [String]
       end
     end
   end

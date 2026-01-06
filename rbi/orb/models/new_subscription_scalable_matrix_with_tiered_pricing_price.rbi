@@ -375,7 +375,6 @@ module Orb
         end
         attr_accessor :matrix_scaling_factors
 
-        # Tier pricing structure
         sig do
           returns(
             T::Array[
@@ -409,7 +408,6 @@ module Orb
           first_dimension:,
           # Apply a scaling factor to each dimension
           matrix_scaling_factors:,
-          # Tier pricing structure
           tiers:,
           # Used for the scalable matrix second dimension (optional)
           second_dimension: nil
@@ -444,15 +442,12 @@ module Orb
               )
             end
 
-          # First dimension value
           sig { returns(String) }
           attr_accessor :first_dimension_value
 
-          # Scaling factor
           sig { returns(String) }
           attr_accessor :scaling_factor
 
-          # Second dimension value (optional)
           sig { returns(T.nilable(String)) }
           attr_accessor :second_dimension_value
 
@@ -465,11 +460,8 @@ module Orb
             ).returns(T.attached_class)
           end
           def self.new(
-            # First dimension value
             first_dimension_value:,
-            # Scaling factor
             scaling_factor:,
-            # Second dimension value (optional)
             second_dimension_value: nil
           )
           end
@@ -496,11 +488,9 @@ module Orb
               )
             end
 
-          # Tier lower bound
           sig { returns(String) }
           attr_accessor :tier_lower_bound
 
-          # Per unit amount
           sig { returns(String) }
           attr_accessor :unit_amount
 
@@ -510,12 +500,7 @@ module Orb
               T.attached_class
             )
           end
-          def self.new(
-            # Tier lower bound
-            tier_lower_bound:,
-            # Per unit amount
-            unit_amount:
-          )
+          def self.new(tier_lower_bound:, unit_amount:)
           end
 
           sig do

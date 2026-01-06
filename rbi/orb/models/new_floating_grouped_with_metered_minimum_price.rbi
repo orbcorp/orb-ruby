@@ -422,11 +422,9 @@ module Orb
               )
             end
 
-          # Scaling factor
           sig { returns(String) }
           attr_accessor :scaling_factor
 
-          # Scaling value
           sig { returns(String) }
           attr_accessor :scaling_value
 
@@ -436,12 +434,7 @@ module Orb
               T.attached_class
             )
           end
-          def self.new(
-            # Scaling factor
-            scaling_factor:,
-            # Scaling value
-            scaling_value:
-          )
+          def self.new(scaling_factor:, scaling_value:)
           end
 
           sig do
@@ -460,7 +453,6 @@ module Orb
               )
             end
 
-          # Pricing value
           sig { returns(String) }
           attr_accessor :pricing_value
 
@@ -475,7 +467,6 @@ module Orb
             )
           end
           def self.new(
-            # Pricing value
             pricing_value:,
             # Per unit amount
             unit_amount:
