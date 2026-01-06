@@ -322,7 +322,6 @@ module Orb
             )
           end
 
-        # Package size
         sig { returns(String) }
         attr_accessor :package_size
 
@@ -350,7 +349,6 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
-          # Package size
           package_size:,
           # Apply tiered pricing after rounding up the quantity to the package size. Tiers
           # are defined using exclusive lower bounds. The tier bounds are defined based on
@@ -387,7 +385,6 @@ module Orb
           sig { returns(String) }
           attr_accessor :per_unit
 
-          # Tier lower bound
           sig { returns(String) }
           attr_accessor :tier_lower_bound
 
@@ -400,7 +397,6 @@ module Orb
           def self.new(
             # Price per package
             per_unit:,
-            # Tier lower bound
             tier_lower_bound:
           )
           end

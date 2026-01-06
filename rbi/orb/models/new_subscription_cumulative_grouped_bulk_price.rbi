@@ -341,7 +341,6 @@ module Orb
         end
         attr_accessor :dimension_values
 
-        # Grouping key name
         sig { returns(String) }
         attr_accessor :group
 
@@ -358,7 +357,6 @@ module Orb
         def self.new(
           # Each tier lower bound must have the same group of values.
           dimension_values:,
-          # Grouping key name
           group:
         )
         end

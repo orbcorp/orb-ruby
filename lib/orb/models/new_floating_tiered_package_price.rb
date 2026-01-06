@@ -184,7 +184,6 @@ module Orb
       # @see Orb::Models::NewFloatingTieredPackagePrice#tiered_package_config
       class TieredPackageConfig < Orb::Internal::Type::BaseModel
         # @!attribute package_size
-        #   Package size
         #
         #   @return [String]
         required :package_size, String
@@ -206,7 +205,7 @@ module Orb
         #
         #   Configuration for tiered_package pricing
         #
-        #   @param package_size [String] Package size
+        #   @param package_size [String]
         #
         #   @param tiers [Array<Orb::Models::NewFloatingTieredPackagePrice::TieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
 
@@ -218,7 +217,6 @@ module Orb
           required :per_unit, String
 
           # @!attribute tier_lower_bound
-          #   Tier lower bound
           #
           #   @return [String]
           required :tier_lower_bound, String
@@ -228,7 +226,7 @@ module Orb
           #
           #   @param per_unit [String] Price per package
           #
-          #   @param tier_lower_bound [String] Tier lower bound
+          #   @param tier_lower_bound [String]
         end
       end
     end

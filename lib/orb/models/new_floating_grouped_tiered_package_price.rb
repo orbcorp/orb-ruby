@@ -179,7 +179,6 @@ module Orb
         required :grouping_key, String
 
         # @!attribute package_size
-        #   Package size
         #
         #   @return [String]
         required :package_size, String
@@ -201,19 +200,18 @@ module Orb
         #
         #   @param grouping_key [String] The event property used to group before tiering
         #
-        #   @param package_size [String] Package size
+        #   @param package_size [String]
         #
         #   @param tiers [Array<Orb::Models::NewFloatingGroupedTieredPackagePrice::GroupedTieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute per_unit
-          #   Price per package
+          #   Per package
           #
           #   @return [String]
           required :per_unit, String
 
           # @!attribute tier_lower_bound
-          #   Tier lower bound
           #
           #   @return [String]
           required :tier_lower_bound, String
@@ -221,9 +219,9 @@ module Orb
           # @!method initialize(per_unit:, tier_lower_bound:)
           #   Configuration for a single tier
           #
-          #   @param per_unit [String] Price per package
+          #   @param per_unit [String] Per package
           #
-          #   @param tier_lower_bound [String] Tier lower bound
+          #   @param tier_lower_bound [String]
         end
       end
 

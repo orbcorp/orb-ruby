@@ -190,7 +190,6 @@ module Orb
                  -> { Orb::Internal::Type::ArrayOf[Orb::NewSubscriptionCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue] }
 
         # @!attribute group
-        #   Grouping key name
         #
         #   @return [String]
         required :group, String
@@ -200,7 +199,7 @@ module Orb
         #
         #   @param dimension_values [Array<Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice::CumulativeGroupedBulkConfig::DimensionValue>] Each tier lower bound must have the same group of values.
         #
-        #   @param group [String] Grouping key name
+        #   @param group [String]
 
         class DimensionValue < Orb::Internal::Type::BaseModel
           # @!attribute grouping_key
