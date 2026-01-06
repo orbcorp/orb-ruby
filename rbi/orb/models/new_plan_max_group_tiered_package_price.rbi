@@ -321,7 +321,6 @@ module Orb
         sig { returns(String) }
         attr_accessor :grouping_key
 
-        # Package size
         sig { returns(String) }
         attr_accessor :package_size
 
@@ -349,7 +348,6 @@ module Orb
         def self.new(
           # The event property used to group before tiering the group with the highest value
           grouping_key:,
-          # Package size
           package_size:,
           # Apply tiered pricing to the largest group after grouping with the provided key.
           tiers:
@@ -380,7 +378,6 @@ module Orb
               )
             end
 
-          # Tier lower bound
           sig { returns(String) }
           attr_accessor :tier_lower_bound
 
@@ -395,7 +392,6 @@ module Orb
             )
           end
           def self.new(
-            # Tier lower bound
             tier_lower_bound:,
             # Per unit amount
             unit_amount:

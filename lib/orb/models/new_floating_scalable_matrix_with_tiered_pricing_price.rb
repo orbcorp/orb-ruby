@@ -202,7 +202,6 @@ module Orb
                  end
 
         # @!attribute tiers
-        #   Tier pricing structure
         #
         #   @return [Array<Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier>]
         required :tiers,
@@ -221,25 +220,22 @@ module Orb
         #
         #   @param matrix_scaling_factors [Array<Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
         #
-        #   @param tiers [Array<Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier>] Tier pricing structure
+        #   @param tiers [Array<Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice::ScalableMatrixWithTieredPricingConfig::Tier>]
         #
         #   @param second_dimension [String, nil] Used for the scalable matrix second dimension (optional)
 
         class MatrixScalingFactor < Orb::Internal::Type::BaseModel
           # @!attribute first_dimension_value
-          #   First dimension value
           #
           #   @return [String]
           required :first_dimension_value, String
 
           # @!attribute scaling_factor
-          #   Scaling factor
           #
           #   @return [String]
           required :scaling_factor, String
 
           # @!attribute second_dimension_value
-          #   Second dimension value (optional)
           #
           #   @return [String, nil]
           optional :second_dimension_value, String, nil?: true
@@ -247,22 +243,18 @@ module Orb
           # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
           #   Configuration for a single matrix scaling factor
           #
-          #   @param first_dimension_value [String] First dimension value
-          #
-          #   @param scaling_factor [String] Scaling factor
-          #
-          #   @param second_dimension_value [String, nil] Second dimension value (optional)
+          #   @param first_dimension_value [String]
+          #   @param scaling_factor [String]
+          #   @param second_dimension_value [String, nil]
         end
 
         class Tier < Orb::Internal::Type::BaseModel
           # @!attribute tier_lower_bound
-          #   Tier lower bound
           #
           #   @return [String]
           required :tier_lower_bound, String
 
           # @!attribute unit_amount
-          #   Per unit amount
           #
           #   @return [String]
           required :unit_amount, String
@@ -270,9 +262,8 @@ module Orb
           # @!method initialize(tier_lower_bound:, unit_amount:)
           #   Configuration for a single tier entry with business logic
           #
-          #   @param tier_lower_bound [String] Tier lower bound
-          #
-          #   @param unit_amount [String] Per unit amount
+          #   @param tier_lower_bound [String]
+          #   @param unit_amount [String]
         end
       end
     end

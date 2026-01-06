@@ -233,13 +233,11 @@ module Orb
 
         class ScalingFactor < Orb::Internal::Type::BaseModel
           # @!attribute scaling_factor
-          #   Scaling factor
           #
           #   @return [String]
           required :scaling_factor, String
 
           # @!attribute scaling_value
-          #   Scaling value
           #
           #   @return [String]
           required :scaling_value, String
@@ -247,14 +245,12 @@ module Orb
           # @!method initialize(scaling_factor:, scaling_value:)
           #   Configuration for a scaling factor
           #
-          #   @param scaling_factor [String] Scaling factor
-          #
-          #   @param scaling_value [String] Scaling value
+          #   @param scaling_factor [String]
+          #   @param scaling_value [String]
         end
 
         class UnitAmount < Orb::Internal::Type::BaseModel
           # @!attribute pricing_value
-          #   Pricing value
           #
           #   @return [String]
           required :pricing_value, String
@@ -268,7 +264,7 @@ module Orb
           # @!method initialize(pricing_value:, unit_amount:)
           #   Configuration for a unit amount
           #
-          #   @param pricing_value [String] Pricing value
+          #   @param pricing_value [String]
           #
           #   @param unit_amount [String] Per unit amount
         end

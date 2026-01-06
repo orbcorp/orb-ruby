@@ -401,7 +401,6 @@ module Orb
               )
             end
 
-          # Quantity threshold
           sig { returns(String) }
           attr_accessor :threshold
 
@@ -416,7 +415,6 @@ module Orb
             )
           end
           def self.new(
-            # Quantity threshold
             threshold:,
             # Total amount for this threshold
             total_amount:

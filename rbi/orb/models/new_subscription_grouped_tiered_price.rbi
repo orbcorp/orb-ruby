@@ -372,7 +372,6 @@ module Orb
               )
             end
 
-          # Tier lower bound
           sig { returns(String) }
           attr_accessor :tier_lower_bound
 
@@ -387,7 +386,6 @@ module Orb
             )
           end
           def self.new(
-            # Tier lower bound
             tier_lower_bound:,
             # Per unit amount
             unit_amount:

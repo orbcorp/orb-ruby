@@ -407,11 +407,9 @@ module Orb
               )
             end
 
-          # Minimum amount
           sig { returns(String) }
           attr_accessor :minimum_amount
 
-          # Tier lower bound
           sig { returns(String) }
           attr_accessor :tier_lower_bound
 
@@ -428,9 +426,7 @@ module Orb
             ).returns(T.attached_class)
           end
           def self.new(
-            # Minimum amount
             minimum_amount:,
-            # Tier lower bound
             tier_lower_bound:,
             # Per unit amount
             unit_amount:
