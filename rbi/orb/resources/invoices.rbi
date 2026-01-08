@@ -175,6 +175,21 @@ module Orb
       )
       end
 
+      # This endpoint deletes an invoice line item from a draft invoice.
+      #
+      # This endpoint only allows deletion of one-off line items (not subscription-based
+      # line items). The invoice must be in a draft status for this operation to
+      # succeed.
+      sig do
+        params(
+          line_item_id: String,
+          invoice_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).void
+      end
+      def delete_line_item(line_item_id, invoice_id:, request_options: {})
+      end
+
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       # identifier.
       sig do
@@ -219,6 +234,78 @@ module Orb
         # provider, a successful response from this endpoint guarantees the invoice is
         # present in the provider.
         synchronous: nil,
+        request_options: {}
+      )
+      end
+
+      # This is a lighter-weight endpoint that returns a list of all
+      # [`Invoice`](/core-concepts#invoice) summaries for an account in a list format.
+      #
+      # These invoice summaries do not include line item details, minimums, maximums,
+      # and discounts, making this endpoint more efficient.
+      #
+      # The list of invoices is ordered starting from the most recently issued invoice
+      # date. The response also includes
+      # [`pagination_metadata`](/api-reference/pagination), which lets the caller
+      # retrieve the next page of results if they exist.
+      #
+      # By default, this only returns invoices that are `issued`, `paid`, or `synced`.
+      #
+      # When fetching any `draft` invoices, this returns the last-computed invoice
+      # values for each draft invoice, which may not always be up-to-date since Orb
+      # regularly refreshes invoices asynchronously.
+      sig do
+        params(
+          amount: T.nilable(String),
+          amount_gt: T.nilable(String),
+          amount_lt: T.nilable(String),
+          cursor: T.nilable(String),
+          customer_id: T.nilable(String),
+          date_type:
+            T.nilable(Orb::InvoiceListSummaryParams::DateType::OrSymbol),
+          due_date: T.nilable(Date),
+          due_date_window: T.nilable(String),
+          due_date_gt: T.nilable(Date),
+          due_date_lt: T.nilable(Date),
+          external_customer_id: T.nilable(String),
+          invoice_date_gt: T.nilable(Time),
+          invoice_date_gte: T.nilable(Time),
+          invoice_date_lt: T.nilable(Time),
+          invoice_date_lte: T.nilable(Time),
+          is_recurring: T.nilable(T::Boolean),
+          limit: Integer,
+          status: T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol),
+          subscription_id: T.nilable(String),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Internal::Page[Orb::Models::InvoiceListSummaryResponse])
+      end
+      def list_summary(
+        amount: nil,
+        amount_gt: nil,
+        amount_lt: nil,
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # from the initial request.
+        cursor: nil,
+        customer_id: nil,
+        date_type: nil,
+        due_date: nil,
+        # Filters invoices by their due dates within a specific time range in the past.
+        # Specify the range as a number followed by 'd' (days) or 'm' (months). For
+        # example, '7d' filters invoices due in the last 7 days, and '2m' filters those
+        # due in the last 2 months.
+        due_date_window: nil,
+        due_date_gt: nil,
+        due_date_lt: nil,
+        external_customer_id: nil,
+        invoice_date_gt: nil,
+        invoice_date_gte: nil,
+        invoice_date_lt: nil,
+        invoice_date_lte: nil,
+        is_recurring: nil,
+        # The number of items to fetch. Defaults to 20.
+        limit: nil,
+        status: nil,
+        subscription_id: nil,
         request_options: {}
       )
       end

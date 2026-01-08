@@ -1,0 +1,60 @@
+module Orb
+  module Models
+    type subscription_change_list_params =
+      {
+        cursor: String?,
+        customer_id: String?,
+        external_customer_id: String?,
+        limit: Integer,
+        status: Orb::Models::SubscriptionChangeListParams::status?
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class SubscriptionChangeListParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor cursor: String?
+
+      attr_accessor customer_id: String?
+
+      attr_accessor external_customer_id: String?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_accessor status: Orb::Models::SubscriptionChangeListParams::status?
+
+      def initialize: (
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?external_customer_id: String?,
+        ?limit: Integer,
+        ?status: Orb::Models::SubscriptionChangeListParams::status?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cursor: String?,
+        customer_id: String?,
+        external_customer_id: String?,
+        limit: Integer,
+        status: Orb::Models::SubscriptionChangeListParams::status?,
+        request_options: Orb::RequestOptions
+      }
+
+      type status = :pending | :applied | :cancelled
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        PENDING: :pending
+        APPLIED: :applied
+        CANCELLED: :cancelled
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionChangeListParams::status]
+      end
+    end
+  end
+end

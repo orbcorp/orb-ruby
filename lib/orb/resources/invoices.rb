@@ -164,6 +164,35 @@ module Orb
         )
       end
 
+      # This endpoint deletes an invoice line item from a draft invoice.
+      #
+      # This endpoint only allows deletion of one-off line items (not subscription-based
+      # line items). The invoice must be in a draft status for this operation to
+      # succeed.
+      #
+      # @overload delete_line_item(line_item_id, invoice_id:, request_options: {})
+      #
+      # @param line_item_id [String]
+      # @param invoice_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [nil]
+      #
+      # @see Orb::Models::InvoiceDeleteLineItemParams
+      def delete_line_item(line_item_id, params)
+        parsed, options = Orb::InvoiceDeleteLineItemParams.dump_request(params)
+        invoice_id =
+          parsed.delete(:invoice_id) do
+            raise ArgumentError.new("missing required path argument #{_1}")
+          end
+        @client.request(
+          method: :delete,
+          path: ["invoices/%1$s/invoice_line_items/%2$s", invoice_id, line_item_id],
+          model: NilClass,
+          options: options
+        )
+      end
+
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       # identifier.
       #
@@ -235,6 +264,92 @@ module Orb
           path: ["invoices/%1$s/issue", invoice_id],
           body: parsed,
           model: Orb::Invoice,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::InvoiceListSummaryParams} for more details.
+      #
+      # This is a lighter-weight endpoint that returns a list of all
+      # [`Invoice`](/core-concepts#invoice) summaries for an account in a list format.
+      #
+      # These invoice summaries do not include line item details, minimums, maximums,
+      # and discounts, making this endpoint more efficient.
+      #
+      # The list of invoices is ordered starting from the most recently issued invoice
+      # date. The response also includes
+      # [`pagination_metadata`](/api-reference/pagination), which lets the caller
+      # retrieve the next page of results if they exist.
+      #
+      # By default, this only returns invoices that are `issued`, `paid`, or `synced`.
+      #
+      # When fetching any `draft` invoices, this returns the last-computed invoice
+      # values for each draft invoice, which may not always be up-to-date since Orb
+      # regularly refreshes invoices asynchronously.
+      #
+      # @overload list_summary(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      #
+      # @param amount [String, nil]
+      #
+      # @param amount_gt [String, nil]
+      #
+      # @param amount_lt [String, nil]
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #
+      # @param customer_id [String, nil]
+      #
+      # @param date_type [Symbol, Orb::Models::InvoiceListSummaryParams::DateType, nil]
+      #
+      # @param due_date [Date, nil]
+      #
+      # @param due_date_window [String, nil] Filters invoices by their due dates within a specific time range in the past. Sp
+      #
+      # @param due_date_gt [Date, nil]
+      #
+      # @param due_date_lt [Date, nil]
+      #
+      # @param external_customer_id [String, nil]
+      #
+      # @param invoice_date_gt [Time, nil]
+      #
+      # @param invoice_date_gte [Time, nil]
+      #
+      # @param invoice_date_lt [Time, nil]
+      #
+      # @param invoice_date_lte [Time, nil]
+      #
+      # @param is_recurring [Boolean, nil]
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param status [Symbol, Orb::Models::InvoiceListSummaryParams::Status, nil]
+      #
+      # @param subscription_id [String, nil]
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Internal::Page<Orb::Models::InvoiceListSummaryResponse>]
+      #
+      # @see Orb::Models::InvoiceListSummaryParams
+      def list_summary(params = {})
+        parsed, options = Orb::InvoiceListSummaryParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "invoices/summary",
+          query: parsed.transform_keys(
+            amount_gt: "amount[gt]",
+            amount_lt: "amount[lt]",
+            due_date_gt: "due_date[gt]",
+            due_date_lt: "due_date[lt]",
+            invoice_date_gt: "invoice_date[gt]",
+            invoice_date_gte: "invoice_date[gte]",
+            invoice_date_lt: "invoice_date[lt]",
+            invoice_date_lte: "invoice_date[lte]"
+          ),
+          page: Orb::Internal::Page,
+          model: Orb::Models::InvoiceListSummaryResponse,
           options: options
         )
       end

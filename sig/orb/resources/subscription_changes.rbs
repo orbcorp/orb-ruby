@@ -6,6 +6,15 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Models::SubscriptionChangeRetrieveResponse
 
+      def list: (
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?external_customer_id: String?,
+        ?limit: Integer,
+        ?status: Orb::Models::SubscriptionChangeListParams::status?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Internal::Page[Orb::Models::SubscriptionChangeListResponse]
+
       def apply: (
         String subscription_change_id,
         ?description: String?,

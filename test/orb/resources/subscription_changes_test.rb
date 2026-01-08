@@ -27,6 +27,32 @@ class Orb::Test::Resources::SubscriptionChangesTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_list
+    response = @orb.subscription_changes.list
+
+    assert_pattern do
+      response => Orb::Internal::Page
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Orb::Models::SubscriptionChangeListResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        expiration_time: Time,
+        status: Orb::Models::SubscriptionChangeListResponse::Status,
+        subscription_id: String | nil,
+        applied_at: Time | nil,
+        cancelled_at: Time | nil
+      }
+    end
+  end
+
   def test_apply
     response = @orb.subscription_changes.apply("subscription_change_id")
 

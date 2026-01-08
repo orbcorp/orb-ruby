@@ -21,6 +21,35 @@ module Orb
       def retrieve(subscription_change_id, request_options: {})
       end
 
+      # This endpoint returns a list of pending subscription changes for a customer. Use
+      # the [Fetch Subscription Change](fetch-subscription-change) endpoint to retrieve
+      # the expected subscription state after the pending change is applied.
+      sig do
+        params(
+          cursor: T.nilable(String),
+          customer_id: T.nilable(String),
+          external_customer_id: T.nilable(String),
+          limit: Integer,
+          status:
+            T.nilable(Orb::SubscriptionChangeListParams::Status::OrSymbol),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(
+          Orb::Internal::Page[Orb::Models::SubscriptionChangeListResponse]
+        )
+      end
+      def list(
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # from the initial request.
+        cursor: nil,
+        customer_id: nil,
+        external_customer_id: nil,
+        # The number of items to fetch. Defaults to 20.
+        limit: nil,
+        status: nil,
+        request_options: {}
+      )
+      end
+
       # Apply a subscription change to perform the intended action. If a positive amount
       # is passed with a request to this endpoint, any eligible invoices that were
       # created will be issued immediately if they only contain in-advance fees.

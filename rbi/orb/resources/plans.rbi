@@ -6,6 +6,9 @@ module Orb
       sig { returns(Orb::Resources::Plans::ExternalPlanID) }
       attr_reader :external_plan_id
 
+      sig { returns(Orb::Resources::Plans::Migrations) }
+      attr_reader :migrations
+
       # This endpoint allows creation of plans including their prices.
       sig do
         params(

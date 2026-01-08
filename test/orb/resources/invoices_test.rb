@@ -187,6 +187,14 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_delete_line_item_required_params
+    response = @orb.invoices.delete_line_item("line_item_id", invoice_id: "invoice_id")
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_fetch
     response = @orb.invoices.fetch("invoice_id")
 
@@ -341,6 +349,59 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
         status: Orb::Invoice::Status,
         subscription: Orb::SubscriptionMinified | nil,
         subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::Internal::Type::Boolean
+      }
+    end
+  end
+
+  def test_list_summary
+    response = @orb.invoices.list_summary
+
+    assert_pattern do
+      response => Orb::Internal::Page
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Orb::Models::InvoiceListSummaryResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Models::InvoiceListSummaryResponse::AutoCollection,
+        billing_address: Orb::Address | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceListSummaryResponse::CreditNote]),
+        currency: String,
+        customer: Orb::CustomerMinified,
+        customer_balance_transactions: ^(Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceListSummaryResponse::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::CustomerTaxID | nil,
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Models::InvoiceListSummaryResponse::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        memo: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::Internal::Type::ArrayOf[Orb::Models::InvoiceListSummaryResponse::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Address | nil,
+        status: Orb::Models::InvoiceListSummaryResponse::Status,
+        subscription: Orb::SubscriptionMinified | nil,
         sync_failed_at: Time | nil,
         total: String,
         voided_at: Time | nil,

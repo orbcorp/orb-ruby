@@ -1,0 +1,69 @@
+# frozen_string_literal: true
+
+module Orb
+  module Models
+    # @see Orb::Resources::SubscriptionChanges#list
+    class SubscriptionChangeListResponse < Orb::Internal::Type::BaseModel
+      # @!attribute id
+      #
+      #   @return [String]
+      required :id, String
+
+      # @!attribute expiration_time
+      #   Subscription change will be cancelled at this time and can no longer be applied.
+      #
+      #   @return [Time]
+      required :expiration_time, Time
+
+      # @!attribute status
+      #
+      #   @return [Symbol, Orb::Models::SubscriptionChangeListResponse::Status]
+      required :status, enum: -> { Orb::Models::SubscriptionChangeListResponse::Status }
+
+      # @!attribute subscription_id
+      #
+      #   @return [String, nil]
+      required :subscription_id, String, nil?: true
+
+      # @!attribute applied_at
+      #   When this change was applied.
+      #
+      #   @return [Time, nil]
+      optional :applied_at, Time, nil?: true
+
+      # @!attribute cancelled_at
+      #   When this change was cancelled.
+      #
+      #   @return [Time, nil]
+      optional :cancelled_at, Time, nil?: true
+
+      # @!method initialize(id:, expiration_time:, status:, subscription_id:, applied_at: nil, cancelled_at: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::SubscriptionChangeListResponse} for more details.
+      #
+      #   @param id [String]
+      #
+      #   @param expiration_time [Time] Subscription change will be cancelled at this time and can no longer be applied.
+      #
+      #   @param status [Symbol, Orb::Models::SubscriptionChangeListResponse::Status]
+      #
+      #   @param subscription_id [String, nil]
+      #
+      #   @param applied_at [Time, nil] When this change was applied.
+      #
+      #   @param cancelled_at [Time, nil] When this change was cancelled.
+
+      # @see Orb::Models::SubscriptionChangeListResponse#status
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        PENDING = :pending
+        APPLIED = :applied
+        CANCELLED = :cancelled
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+    end
+  end
+end
