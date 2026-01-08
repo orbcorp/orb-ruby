@@ -3,6 +3,8 @@ module Orb
     class Plans
       attr_reader external_plan_id: Orb::Resources::Plans::ExternalPlanID
 
+      attr_reader migrations: Orb::Resources::Plans::Migrations
+
       def create: (
         currency: String,
         name: String,

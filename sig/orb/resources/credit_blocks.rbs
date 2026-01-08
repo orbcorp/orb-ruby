@@ -1,0 +1,14 @@
+module Orb
+  module Resources
+    class CreditBlocks
+      def retrieve: (
+        String block_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::CreditBlockRetrieveResponse
+
+      def delete: (String block_id, ?request_options: Orb::request_opts) -> nil
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

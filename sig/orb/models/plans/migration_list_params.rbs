@@ -1,0 +1,32 @@
+module Orb
+  module Models
+    module Plans
+      type migration_list_params =
+        { cursor: String?, limit: Integer }
+        & Orb::Internal::Type::request_parameters
+
+      class MigrationListParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        def initialize: (
+          ?cursor: String?,
+          ?limit: Integer,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          cursor: String?,
+          limit: Integer,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end

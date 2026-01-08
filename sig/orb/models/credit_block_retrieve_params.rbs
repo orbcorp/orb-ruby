@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type credit_block_retrieve_params =
+      {  } & Orb::Internal::Type::request_parameters
+
+    class CreditBlockRetrieveParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Orb::request_opts) -> void
+
+      def to_hash: -> { request_options: Orb::RequestOptions }
+    end
+  end
+end

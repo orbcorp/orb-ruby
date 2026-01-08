@@ -6,6 +6,9 @@ module Orb
       # @return [Orb::Resources::Plans::ExternalPlanID]
       attr_reader :external_plan_id
 
+      # @return [Orb::Resources::Plans::Migrations]
+      attr_reader :migrations
+
       # Some parameter documentations has been truncated, see
       # {Orb::Models::PlanCreateParams} for more details.
       #
@@ -163,6 +166,7 @@ module Orb
       def initialize(client:)
         @client = client
         @external_plan_id = Orb::Resources::Plans::ExternalPlanID.new(client: client)
+        @migrations = Orb::Resources::Plans::Migrations.new(client: client)
       end
     end
   end

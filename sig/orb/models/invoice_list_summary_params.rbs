@@ -1,0 +1,143 @@
+module Orb
+  module Models
+    type invoice_list_summary_params =
+      {
+        amount: String?,
+        amount_gt: String?,
+        amount_lt: String?,
+        cursor: String?,
+        customer_id: String?,
+        date_type: Orb::Models::InvoiceListSummaryParams::date_type?,
+        due_date: Date?,
+        due_date_window: String?,
+        due_date_gt: Date?,
+        due_date_lt: Date?,
+        external_customer_id: String?,
+        invoice_date_gt: Time?,
+        invoice_date_gte: Time?,
+        invoice_date_lt: Time?,
+        invoice_date_lte: Time?,
+        is_recurring: bool?,
+        limit: Integer,
+        status: Orb::Models::InvoiceListSummaryParams::status?,
+        subscription_id: String?
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class InvoiceListSummaryParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor amount: String?
+
+      attr_accessor amount_gt: String?
+
+      attr_accessor amount_lt: String?
+
+      attr_accessor cursor: String?
+
+      attr_accessor customer_id: String?
+
+      attr_accessor date_type: Orb::Models::InvoiceListSummaryParams::date_type?
+
+      attr_accessor due_date: Date?
+
+      attr_accessor due_date_window: String?
+
+      attr_accessor due_date_gt: Date?
+
+      attr_accessor due_date_lt: Date?
+
+      attr_accessor external_customer_id: String?
+
+      attr_accessor invoice_date_gt: Time?
+
+      attr_accessor invoice_date_gte: Time?
+
+      attr_accessor invoice_date_lt: Time?
+
+      attr_accessor invoice_date_lte: Time?
+
+      attr_accessor is_recurring: bool?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_accessor status: Orb::Models::InvoiceListSummaryParams::status?
+
+      attr_accessor subscription_id: String?
+
+      def initialize: (
+        ?amount: String?,
+        ?amount_gt: String?,
+        ?amount_lt: String?,
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?date_type: Orb::Models::InvoiceListSummaryParams::date_type?,
+        ?due_date: Date?,
+        ?due_date_window: String?,
+        ?due_date_gt: Date?,
+        ?due_date_lt: Date?,
+        ?external_customer_id: String?,
+        ?invoice_date_gt: Time?,
+        ?invoice_date_gte: Time?,
+        ?invoice_date_lt: Time?,
+        ?invoice_date_lte: Time?,
+        ?is_recurring: bool?,
+        ?limit: Integer,
+        ?status: Orb::Models::InvoiceListSummaryParams::status?,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        amount: String?,
+        amount_gt: String?,
+        amount_lt: String?,
+        cursor: String?,
+        customer_id: String?,
+        date_type: Orb::Models::InvoiceListSummaryParams::date_type?,
+        due_date: Date?,
+        due_date_window: String?,
+        due_date_gt: Date?,
+        due_date_lt: Date?,
+        external_customer_id: String?,
+        invoice_date_gt: Time?,
+        invoice_date_gte: Time?,
+        invoice_date_lt: Time?,
+        invoice_date_lte: Time?,
+        is_recurring: bool?,
+        limit: Integer,
+        status: Orb::Models::InvoiceListSummaryParams::status?,
+        subscription_id: String?,
+        request_options: Orb::RequestOptions
+      }
+
+      type date_type = :due_date | :invoice_date
+
+      module DateType
+        extend Orb::Internal::Type::Enum
+
+        DUE_DATE: :due_date
+        INVOICE_DATE: :invoice_date
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceListSummaryParams::date_type]
+      end
+
+      type status = :draft | :issued | :paid | :synced | :void
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        DRAFT: :draft
+        ISSUED: :issued
+        PAID: :paid
+        SYNCED: :synced
+        VOID: :void
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceListSummaryParams::status]
+      end
+    end
+  end
+end

@@ -48,6 +48,12 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::Invoice]
 
+      def delete_line_item: (
+        String line_item_id,
+        invoice_id: String,
+        ?request_options: Orb::request_opts
+      ) -> nil
+
       def fetch: (
         String invoice_id,
         ?request_options: Orb::request_opts
@@ -63,6 +69,29 @@ module Orb
         ?synchronous: bool,
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
+
+      def list_summary: (
+        ?amount: String?,
+        ?amount_gt: String?,
+        ?amount_lt: String?,
+        ?cursor: String?,
+        ?customer_id: String?,
+        ?date_type: Orb::Models::InvoiceListSummaryParams::date_type?,
+        ?due_date: Date?,
+        ?due_date_window: String?,
+        ?due_date_gt: Date?,
+        ?due_date_lt: Date?,
+        ?external_customer_id: String?,
+        ?invoice_date_gt: Time?,
+        ?invoice_date_gte: Time?,
+        ?invoice_date_lt: Time?,
+        ?invoice_date_lte: Time?,
+        ?is_recurring: bool?,
+        ?limit: Integer,
+        ?status: Orb::Models::InvoiceListSummaryParams::status?,
+        ?subscription_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Internal::Page[Orb::Models::InvoiceListSummaryResponse]
 
       def mark_paid: (
         String invoice_id,

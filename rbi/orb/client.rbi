@@ -61,6 +61,9 @@ module Orb
     sig { returns(Orb::Resources::SubscriptionChanges) }
     attr_reader :subscription_changes
 
+    sig { returns(Orb::Resources::CreditBlocks) }
+    attr_reader :credit_blocks
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
