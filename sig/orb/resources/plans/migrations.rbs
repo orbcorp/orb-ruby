@@ -1,0 +1,28 @@
+module Orb
+  module Resources
+    class Plans
+      class Migrations
+        def retrieve: (
+          String migration_id,
+          plan_id: String,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Plans::MigrationRetrieveResponse
+
+        def list: (
+          String plan_id,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Internal::Page[Orb::Models::Plans::MigrationListResponse]
+
+        def cancel: (
+          String migration_id,
+          plan_id: String,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Plans::MigrationCancelResponse
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

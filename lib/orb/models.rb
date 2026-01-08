@@ -117,6 +117,10 @@ module Orb
 
   Coupons = Orb::Models::Coupons
 
+  CreditBlockDeleteParams = Orb::Models::CreditBlockDeleteParams
+
+  CreditBlockRetrieveParams = Orb::Models::CreditBlockRetrieveParams
+
   CreditNote = Orb::Models::CreditNote
 
   CreditNoteCreateParams = Orb::Models::CreditNoteCreateParams
@@ -198,6 +202,8 @@ module Orb
 
   InvoiceCreateParams = Orb::Models::InvoiceCreateParams
 
+  InvoiceDeleteLineItemParams = Orb::Models::InvoiceDeleteLineItemParams
+
   InvoiceFetchParams = Orb::Models::InvoiceFetchParams
 
   InvoiceFetchUpcomingParams = Orb::Models::InvoiceFetchUpcomingParams
@@ -209,6 +215,8 @@ module Orb
   InvoiceLineItemCreateParams = Orb::Models::InvoiceLineItemCreateParams
 
   InvoiceListParams = Orb::Models::InvoiceListParams
+
+  InvoiceListSummaryParams = Orb::Models::InvoiceListSummaryParams
 
   InvoiceMarkPaidParams = Orb::Models::InvoiceMarkPaidParams
 
@@ -523,6 +531,8 @@ module Orb
   SubscriptionChangeApplyParams = Orb::Models::SubscriptionChangeApplyParams
 
   SubscriptionChangeCancelParams = Orb::Models::SubscriptionChangeCancelParams
+
+  SubscriptionChangeListParams = Orb::Models::SubscriptionChangeListParams
 
   SubscriptionChangeMinified = Orb::Models::SubscriptionChangeMinified
 

@@ -1,0 +1,57 @@
+module Orb
+  module Models
+    type subscription_change_list_response =
+      {
+        id: String,
+        expiration_time: Time,
+        status: Orb::Models::SubscriptionChangeListResponse::status,
+        subscription_id: String?,
+        applied_at: Time?,
+        cancelled_at: Time?
+      }
+
+    class SubscriptionChangeListResponse < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor expiration_time: Time
+
+      attr_accessor status: Orb::Models::SubscriptionChangeListResponse::status
+
+      attr_accessor subscription_id: String?
+
+      attr_accessor applied_at: Time?
+
+      attr_accessor cancelled_at: Time?
+
+      def initialize: (
+        id: String,
+        expiration_time: Time,
+        status: Orb::Models::SubscriptionChangeListResponse::status,
+        subscription_id: String?,
+        ?applied_at: Time?,
+        ?cancelled_at: Time?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        expiration_time: Time,
+        status: Orb::Models::SubscriptionChangeListResponse::status,
+        subscription_id: String?,
+        applied_at: Time?,
+        cancelled_at: Time?
+      }
+
+      type status = :pending | :applied | :cancelled
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        PENDING: :pending
+        APPLIED: :applied
+        CANCELLED: :cancelled
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionChangeListResponse::status]
+      end
+    end
+  end
+end

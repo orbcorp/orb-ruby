@@ -1,0 +1,62 @@
+module Orb
+  module Models
+    module Plans
+      type migration_retrieve_response =
+        {
+          id: String,
+          effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?,
+          plan_id: String,
+          status: Orb::Models::Plans::MigrationRetrieveResponse::status
+        }
+
+      class MigrationRetrieveResponse < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?
+
+        attr_accessor plan_id: String
+
+        attr_accessor status: Orb::Models::Plans::MigrationRetrieveResponse::status
+
+        def initialize: (
+          id: String,
+          effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?,
+          plan_id: String,
+          status: Orb::Models::Plans::MigrationRetrieveResponse::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?,
+          plan_id: String,
+          status: Orb::Models::Plans::MigrationRetrieveResponse::status
+        }
+
+        type effective_time = Date | Time | :end_of_term
+
+        module EffectiveTime
+          extend Orb::Internal::Type::Union
+
+          def self?.variants: -> ::Array[Orb::Models::Plans::MigrationRetrieveResponse::effective_time]
+
+          END_OF_TERM: :end_of_term
+        end
+
+        type status =
+          :not_started | :in_progress | :completed | :action_needed | :canceled
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          NOT_STARTED: :not_started
+          IN_PROGRESS: :in_progress
+          COMPLETED: :completed
+          ACTION_NEEDED: :action_needed
+          CANCELED: :canceled
+
+          def self?.values: -> ::Array[Orb::Models::Plans::MigrationRetrieveResponse::status]
+        end
+      end
+    end
+  end
+end

@@ -31,6 +31,42 @@ module Orb
       end
 
       # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionChangeListParams} for more details.
+      #
+      # This endpoint returns a list of pending subscription changes for a customer. Use
+      # the [Fetch Subscription Change](fetch-subscription-change) endpoint to retrieve
+      # the expected subscription state after the pending change is applied.
+      #
+      # @overload list(cursor: nil, customer_id: nil, external_customer_id: nil, limit: nil, status: nil, request_options: {})
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #
+      # @param customer_id [String, nil]
+      #
+      # @param external_customer_id [String, nil]
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param status [Symbol, Orb::Models::SubscriptionChangeListParams::Status, nil]
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Internal::Page<Orb::Models::SubscriptionChangeListResponse>]
+      #
+      # @see Orb::Models::SubscriptionChangeListParams
+      def list(params = {})
+        parsed, options = Orb::SubscriptionChangeListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "subscription_changes",
+          query: parsed,
+          page: Orb::Internal::Page,
+          model: Orb::Models::SubscriptionChangeListResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Orb::Models::SubscriptionChangeApplyParams} for more details.
       #
       # Apply a subscription change to perform the intended action. If a positive amount
