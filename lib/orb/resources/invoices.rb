@@ -324,7 +324,7 @@ module Orb
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      # @param status [Symbol, Orb::Models::InvoiceListSummaryParams::Status, nil]
+      # @param status [Array<Symbol, Orb::Models::InvoiceListSummaryParams::Status>, nil]
       #
       # @param subscription_id [String, nil]
       #
