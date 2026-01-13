@@ -347,7 +347,7 @@ module Orb
         ).returns(Orb::Models::EventIngestResponse)
       end
       def ingest(
-        # Body param:
+        # Body param
         events:,
         # Query param: If this ingestion request is part of a backfill, this parameter
         # ties the ingested events to the backfill
