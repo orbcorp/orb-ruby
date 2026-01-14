@@ -5,7 +5,7 @@ module Orb
         cadence: Orb::Models::NewFloatingMinimumCompositePrice::cadence,
         currency: String,
         item_id: String,
-        minimum_config: Orb::NewFloatingMinimumCompositePrice::MinimumConfig,
+        minimum_composite_config: Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig,
         model_type: Orb::Models::NewFloatingMinimumCompositePrice::model_type,
         name: String,
         billable_metric_id: String?,
@@ -28,7 +28,7 @@ module Orb
 
       attr_accessor item_id: String
 
-      attr_accessor minimum_config: Orb::NewFloatingMinimumCompositePrice::MinimumConfig
+      attr_accessor minimum_composite_config: Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig
 
       attr_accessor model_type: Orb::Models::NewFloatingMinimumCompositePrice::model_type
 
@@ -60,7 +60,7 @@ module Orb
         cadence: Orb::Models::NewFloatingMinimumCompositePrice::cadence,
         currency: String,
         item_id: String,
-        minimum_config: Orb::NewFloatingMinimumCompositePrice::MinimumConfig,
+        minimum_composite_config: Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig,
         model_type: Orb::Models::NewFloatingMinimumCompositePrice::model_type,
         name: String,
         ?billable_metric_id: String?,
@@ -80,7 +80,7 @@ module Orb
         cadence: Orb::Models::NewFloatingMinimumCompositePrice::cadence,
         currency: String,
         item_id: String,
-        minimum_config: Orb::NewFloatingMinimumCompositePrice::MinimumConfig,
+        minimum_composite_config: Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig,
         model_type: Orb::Models::NewFloatingMinimumCompositePrice::model_type,
         name: String,
         billable_metric_id: String?,
@@ -112,9 +112,9 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::NewFloatingMinimumCompositePrice::cadence]
       end
 
-      type minimum_config = { minimum_amount: String, prorated: bool }
+      type minimum_composite_config = { minimum_amount: String, prorated: bool }
 
-      class MinimumConfig < Orb::Internal::Type::BaseModel
+      class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
         attr_accessor minimum_amount: String
 
         attr_reader prorated: bool?
@@ -126,12 +126,12 @@ module Orb
         def to_hash: -> { minimum_amount: String, prorated: bool }
       end
 
-      type model_type = :minimum
+      type model_type = :minimum_composite
 
       module ModelType
         extend Orb::Internal::Type::Enum
 
-        MINIMUM: :minimum
+        MINIMUM_COMPOSITE: :minimum_composite
 
         def self?.values: -> ::Array[Orb::Models::NewFloatingMinimumCompositePrice::model_type]
       end

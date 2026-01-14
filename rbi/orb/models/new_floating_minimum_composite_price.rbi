@@ -20,17 +20,19 @@ module Orb
       sig { returns(String) }
       attr_accessor :item_id
 
-      # Configuration for minimum pricing
-      sig { returns(Orb::NewFloatingMinimumCompositePrice::MinimumConfig) }
-      attr_reader :minimum_config
+      # Configuration for minimum_composite pricing
+      sig do
+        returns(Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig)
+      end
+      attr_reader :minimum_composite_config
 
       sig do
         params(
-          minimum_config:
-            Orb::NewFloatingMinimumCompositePrice::MinimumConfig::OrHash
+          minimum_composite_config:
+            Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig::OrHash
         ).void
       end
-      attr_writer :minimum_config
+      attr_writer :minimum_composite_config
 
       # The pricing model type
       sig do
@@ -131,8 +133,8 @@ module Orb
           cadence: Orb::NewFloatingMinimumCompositePrice::Cadence::OrSymbol,
           currency: String,
           item_id: String,
-          minimum_config:
-            Orb::NewFloatingMinimumCompositePrice::MinimumConfig::OrHash,
+          minimum_composite_config:
+            Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig::OrHash,
           model_type:
             Orb::NewFloatingMinimumCompositePrice::ModelType::OrSymbol,
           name: String,
@@ -165,8 +167,8 @@ module Orb
         currency:,
         # The id of the item the price will be associated with.
         item_id:,
-        # Configuration for minimum pricing
-        minimum_config:,
+        # Configuration for minimum_composite pricing
+        minimum_composite_config:,
         # The pricing model type
         model_type:,
         # The name of the price.
@@ -209,8 +211,8 @@ module Orb
             cadence: Orb::NewFloatingMinimumCompositePrice::Cadence::OrSymbol,
             currency: String,
             item_id: String,
-            minimum_config:
-              Orb::NewFloatingMinimumCompositePrice::MinimumConfig,
+            minimum_composite_config:
+              Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig,
             model_type:
               Orb::NewFloatingMinimumCompositePrice::ModelType::OrSymbol,
             name: String,
@@ -292,11 +294,11 @@ module Orb
         end
       end
 
-      class MinimumConfig < Orb::Internal::Type::BaseModel
+      class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              Orb::NewFloatingMinimumCompositePrice::MinimumConfig,
+              Orb::NewFloatingMinimumCompositePrice::MinimumCompositeConfig,
               Orb::Internal::AnyHash
             )
           end
@@ -312,7 +314,7 @@ module Orb
         sig { params(prorated: T::Boolean).void }
         attr_writer :prorated
 
-        # Configuration for minimum pricing
+        # Configuration for minimum_composite pricing
         sig do
           params(minimum_amount: String, prorated: T::Boolean).returns(
             T.attached_class
@@ -343,9 +345,9 @@ module Orb
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        MINIMUM =
+        MINIMUM_COMPOSITE =
           T.let(
-            :minimum,
+            :minimum_composite,
             Orb::NewFloatingMinimumCompositePrice::ModelType::TaggedSymbol
           )
 
