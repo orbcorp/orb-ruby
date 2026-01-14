@@ -295,6 +295,7 @@ module Orb
           | Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice
           | Orb::NewSubscriptionCumulativeGroupedBulkPrice
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation
+          | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum
           | Orb::NewSubscriptionMinimumCompositePrice
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput
@@ -948,6 +949,143 @@ module Orb
             end
           end
 
+          type minimum =
+            {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::cadence,
+              item_id: String,
+              minimum_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::MinimumConfig,
+              model_type: :minimum,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class Minimum < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor minimum_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::MinimumConfig
+
+            attr_accessor model_type: :minimum
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::cadence,
+              item_id: String,
+              minimum_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::MinimumConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :minimum
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::cadence,
+              item_id: String,
+              minimum_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::MinimumConfig,
+              model_type: :minimum,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Minimum::cadence]
+            end
+
+            type minimum_config = { minimum_amount: String, prorated: bool }
+
+            class MinimumConfig < Orb::Internal::Type::BaseModel
+              attr_accessor minimum_amount: String
+
+              attr_reader prorated: bool?
+
+              def prorated=: (bool) -> bool
+
+              def initialize: (minimum_amount: String, ?prorated: bool) -> void
+
+              def to_hash: -> { minimum_amount: String, prorated: bool }
+            end
+          end
+
           type percent =
             {
               cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent::cadence,
@@ -1393,6 +1531,7 @@ module Orb
           | Orb::NewSubscriptionScalableMatrixWithTieredPricingPrice
           | Orb::NewSubscriptionCumulativeGroupedBulkPrice
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation
+          | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum
           | Orb::NewSubscriptionMinimumCompositePrice
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput
@@ -2043,6 +2182,143 @@ module Orb
                 grouping_key: String,
                 unit_amount: String
               }
+            end
+          end
+
+          type minimum =
+            {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::cadence,
+              item_id: String,
+              minimum_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::MinimumConfig,
+              model_type: :minimum,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class Minimum < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor minimum_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::MinimumConfig
+
+            attr_accessor model_type: :minimum
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::cadence,
+              item_id: String,
+              minimum_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::MinimumConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :minimum
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::cadence,
+              item_id: String,
+              minimum_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::MinimumConfig,
+              model_type: :minimum,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Minimum::cadence]
+            end
+
+            type minimum_config = { minimum_amount: String, prorated: bool }
+
+            class MinimumConfig < Orb::Internal::Type::BaseModel
+              attr_accessor minimum_amount: String
+
+              attr_reader prorated: bool?
+
+              def prorated=: (bool) -> bool
+
+              def initialize: (minimum_amount: String, ?prorated: bool) -> void
+
+              def to_hash: -> { minimum_amount: String, prorated: bool }
             end
           end
 

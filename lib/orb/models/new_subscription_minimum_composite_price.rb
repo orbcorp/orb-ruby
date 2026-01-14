@@ -15,11 +15,12 @@ module Orb
       #   @return [String]
       required :item_id, String
 
-      # @!attribute minimum_config
-      #   Configuration for minimum pricing
+      # @!attribute minimum_composite_config
+      #   Configuration for minimum_composite pricing
       #
-      #   @return [Orb::Models::NewSubscriptionMinimumCompositePrice::MinimumConfig]
-      required :minimum_config, -> { Orb::NewSubscriptionMinimumCompositePrice::MinimumConfig }
+      #   @return [Orb::Models::NewSubscriptionMinimumCompositePrice::MinimumCompositeConfig]
+      required :minimum_composite_config,
+               -> { Orb::NewSubscriptionMinimumCompositePrice::MinimumCompositeConfig }
 
       # @!attribute model_type
       #   The pricing model type
@@ -122,7 +123,7 @@ module Orb
       #   @return [String, nil]
       optional :reference_id, String, nil?: true
 
-      # @!method initialize(cadence:, item_id:, minimum_config:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil)
+      # @!method initialize(cadence:, item_id:, minimum_composite_config:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewSubscriptionMinimumCompositePrice} for more details.
       #
@@ -130,7 +131,7 @@ module Orb
       #
       #   @param item_id [String] The id of the item the price will be associated with.
       #
-      #   @param minimum_config [Orb::Models::NewSubscriptionMinimumCompositePrice::MinimumConfig] Configuration for minimum pricing
+      #   @param minimum_composite_config [Orb::Models::NewSubscriptionMinimumCompositePrice::MinimumCompositeConfig] Configuration for minimum_composite pricing
       #
       #   @param model_type [Symbol, Orb::Models::NewSubscriptionMinimumCompositePrice::ModelType] The pricing model type
       #
@@ -179,8 +180,8 @@ module Orb
         #   @return [Array<Symbol>]
       end
 
-      # @see Orb::Models::NewSubscriptionMinimumCompositePrice#minimum_config
-      class MinimumConfig < Orb::Internal::Type::BaseModel
+      # @see Orb::Models::NewSubscriptionMinimumCompositePrice#minimum_composite_config
+      class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
         # @!attribute minimum_amount
         #   The minimum amount to apply
         #
@@ -194,7 +195,7 @@ module Orb
         optional :prorated, Orb::Internal::Type::Boolean
 
         # @!method initialize(minimum_amount:, prorated: nil)
-        #   Configuration for minimum pricing
+        #   Configuration for minimum_composite pricing
         #
         #   @param minimum_amount [String] The minimum amount to apply
         #
@@ -207,7 +208,7 @@ module Orb
       module ModelType
         extend Orb::Internal::Type::Enum
 
-        MINIMUM = :minimum
+        MINIMUM_COMPOSITE = :minimum_composite
 
         # @!method self.values
         #   @return [Array<Symbol>]

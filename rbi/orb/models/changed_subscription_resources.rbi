@@ -1411,6 +1411,7 @@ module Orb
                   Orb::Price::CumulativeGroupedBulk::OrHash,
                   Orb::Price::CumulativeGroupedAllocation::OrHash,
                   Orb::Price::Minimum::OrHash,
+                  Orb::Price::MinimumComposite::OrHash,
                   Orb::Price::Percent::OrHash,
                   Orb::Price::EventOutput::OrHash
                 ),
