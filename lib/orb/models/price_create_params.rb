@@ -291,6 +291,12 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::MinimumConfig]
       required :minimum_config, -> { Orb::PriceCreateParams::MinimumConfig }
 
+      # @!attribute minimum_composite_config
+      #   Configuration for minimum_composite pricing
+      #
+      #   @return [Orb::Models::PriceCreateParams::MinimumCompositeConfig]
+      required :minimum_composite_config, -> { Orb::PriceCreateParams::MinimumCompositeConfig }
+
       # @!attribute percent_config
       #   Configuration for percent pricing
       #
@@ -303,7 +309,7 @@ module Orb
       #   @return [Orb::Models::PriceCreateParams::EventOutputConfig]
       required :event_output_config, -> { Orb::PriceCreateParams::EventOutputConfig }
 
-      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, cumulative_grouped_allocation_config:, minimum_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @!method initialize(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, cumulative_grouped_allocation_config:, minimum_config:, minimum_composite_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceCreateParams} for more details.
       #
@@ -374,6 +380,8 @@ module Orb
       #   @param cumulative_grouped_allocation_config [Orb::Models::PriceCreateParams::CumulativeGroupedAllocationConfig] Configuration for cumulative_grouped_allocation pricing
       #
       #   @param minimum_config [Orb::Models::PriceCreateParams::MinimumConfig] Configuration for minimum pricing
+      #
+      #   @param minimum_composite_config [Orb::Models::PriceCreateParams::MinimumCompositeConfig] Configuration for minimum_composite pricing
       #
       #   @param percent_config [Orb::Models::PriceCreateParams::PercentConfig] Configuration for percent pricing
       #
@@ -1474,6 +1482,27 @@ module Orb
 
         # @!method initialize(minimum_amount:, prorated: nil)
         #   Configuration for minimum pricing
+        #
+        #   @param minimum_amount [String] The minimum amount to apply
+        #
+        #   @param prorated [Boolean] If true, subtotals from this price are prorated based on the service period
+      end
+
+      class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
+        # @!attribute minimum_amount
+        #   The minimum amount to apply
+        #
+        #   @return [String]
+        required :minimum_amount, String
+
+        # @!attribute prorated
+        #   If true, subtotals from this price are prorated based on the service period
+        #
+        #   @return [Boolean, nil]
+        optional :prorated, Orb::Internal::Type::Boolean
+
+        # @!method initialize(minimum_amount:, prorated: nil)
+        #   Configuration for minimum_composite pricing
         #
         #   @param minimum_amount [String] The minimum amount to apply
         #

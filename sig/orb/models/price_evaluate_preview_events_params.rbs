@@ -159,6 +159,7 @@ module Orb
           | Orb::NewFloatingScalableMatrixWithTieredPricingPrice
           | Orb::NewFloatingCumulativeGroupedBulkPrice
           | Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::CumulativeGroupedAllocation
+          | Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum
           | Orb::NewFloatingMinimumCompositePrice
           | Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Percent
           | Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::EventOutput
@@ -636,6 +637,138 @@ module Orb
                 grouping_key: String,
                 unit_amount: String
               }
+            end
+          end
+
+          type minimum =
+            {
+              cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::cadence,
+              currency: String,
+              item_id: String,
+              minimum_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig,
+              model_type: :minimum,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+          class Minimum < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::cadence
+
+            attr_accessor currency: String
+
+            attr_accessor item_id: String
+
+            attr_accessor minimum_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig
+
+            attr_accessor model_type: :minimum
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::conversion_rate_config?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            def initialize: (
+              cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::cadence,
+              currency: String,
+              item_id: String,
+              minimum_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::conversion_rate_config?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :minimum
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::cadence,
+              currency: String,
+              item_id: String,
+              minimum_config: Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::MinimumConfig,
+              model_type: :minimum,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Minimum::cadence]
+            end
+
+            type minimum_config = { minimum_amount: String, prorated: bool }
+
+            class MinimumConfig < Orb::Internal::Type::BaseModel
+              attr_accessor minimum_amount: String
+
+              attr_reader prorated: bool?
+
+              def prorated=: (bool) -> bool
+
+              def initialize: (minimum_amount: String, ?prorated: bool) -> void
+
+              def to_hash: -> { minimum_amount: String, prorated: bool }
             end
           end
 
