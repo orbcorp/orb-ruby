@@ -427,17 +427,6 @@ module Orb
       end
       attr_writer :cumulative_grouped_allocation_config
 
-      # Configuration for minimum pricing
-      sig { returns(Orb::PriceCreateParams::MinimumConfig) }
-      attr_reader :minimum_config
-
-      sig do
-        params(
-          minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash
-        ).void
-      end
-      attr_writer :minimum_config
-
       # Configuration for minimum_composite pricing
       sig { returns(Orb::PriceCreateParams::MinimumCompositeConfig) }
       attr_reader :minimum_composite_config
@@ -530,7 +519,6 @@ module Orb
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
           cumulative_grouped_allocation_config:
             Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash,
-          minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           minimum_composite_config:
             Orb::PriceCreateParams::MinimumCompositeConfig::OrHash,
           percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
@@ -626,8 +614,6 @@ module Orb
         cumulative_grouped_bulk_config:,
         # Configuration for cumulative_grouped_allocation pricing
         cumulative_grouped_allocation_config:,
-        # Configuration for minimum pricing
-        minimum_config:,
         # Configuration for minimum_composite pricing
         minimum_composite_config:,
         # Configuration for percent pricing
@@ -743,7 +729,6 @@ module Orb
               Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
             cumulative_grouped_allocation_config:
               Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-            minimum_config: Orb::PriceCreateParams::MinimumConfig,
             minimum_composite_config:
               Orb::PriceCreateParams::MinimumCompositeConfig,
             percent_config: Orb::PriceCreateParams::PercentConfig,
@@ -2769,44 +2754,6 @@ module Orb
               unit_amount: String
             }
           )
-        end
-        def to_hash
-        end
-      end
-
-      class MinimumConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Orb::PriceCreateParams::MinimumConfig, Orb::Internal::AnyHash)
-          end
-
-        # The minimum amount to apply
-        sig { returns(String) }
-        attr_accessor :minimum_amount
-
-        # If true, subtotals from this price are prorated based on the service period
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :prorated
-
-        sig { params(prorated: T::Boolean).void }
-        attr_writer :prorated
-
-        # Configuration for minimum pricing
-        sig do
-          params(minimum_amount: String, prorated: T::Boolean).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # The minimum amount to apply
-          minimum_amount:,
-          # If true, subtotals from this price are prorated based on the service period
-          prorated: nil
-        )
-        end
-
-        sig do
-          override.returns({ minimum_amount: String, prorated: T::Boolean })
         end
         def to_hash
         end
