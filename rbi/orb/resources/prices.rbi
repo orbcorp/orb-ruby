@@ -74,7 +74,6 @@ module Orb
             Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
           cumulative_grouped_allocation_config:
             Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash,
-          minimum_config: Orb::PriceCreateParams::MinimumConfig::OrHash,
           minimum_composite_config:
             Orb::PriceCreateParams::MinimumCompositeConfig::OrHash,
           percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
@@ -170,8 +169,6 @@ module Orb
         cumulative_grouped_bulk_config:,
         # Configuration for cumulative_grouped_allocation pricing
         cumulative_grouped_allocation_config:,
-        # Configuration for minimum pricing
-        minimum_config:,
         # Configuration for minimum_composite pricing
         minimum_composite_config:,
         # Configuration for percent pricing

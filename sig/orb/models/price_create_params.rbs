@@ -46,7 +46,6 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-        minimum_config: Orb::PriceCreateParams::MinimumConfig,
         minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig
@@ -145,8 +144,6 @@ module Orb
 
       attr_accessor cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig
 
-      attr_accessor minimum_config: Orb::PriceCreateParams::MinimumConfig
-
       attr_accessor minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig
 
       attr_accessor percent_config: Orb::PriceCreateParams::PercentConfig
@@ -187,7 +184,6 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-        minimum_config: Orb::PriceCreateParams::MinimumConfig,
         minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,
@@ -250,7 +246,6 @@ module Orb
         scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
         cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
         cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-        minimum_config: Orb::PriceCreateParams::MinimumConfig,
         minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig,
         percent_config: Orb::PriceCreateParams::PercentConfig,
         event_output_config: Orb::PriceCreateParams::EventOutputConfig,
@@ -1139,20 +1134,6 @@ module Orb
           grouping_key: String,
           unit_amount: String
         }
-      end
-
-      type minimum_config = { minimum_amount: String, prorated: bool }
-
-      class MinimumConfig < Orb::Internal::Type::BaseModel
-        attr_accessor minimum_amount: String
-
-        attr_reader prorated: bool?
-
-        def prorated=: (bool) -> bool
-
-        def initialize: (minimum_amount: String, ?prorated: bool) -> void
-
-        def to_hash: -> { minimum_amount: String, prorated: bool }
       end
 
       type minimum_composite_config = { minimum_amount: String, prorated: bool }
