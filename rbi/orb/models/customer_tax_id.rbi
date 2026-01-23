@@ -121,6 +121,7 @@ module Orb
       # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
+      # | Poland                 | `pl_nip`     | Polish Tax ID Number                                                                                    |
       # | Portugal               | `eu_vat`     | European VAT Number                                                                                     |
       # | Romania                | `eu_vat`     | European VAT Number                                                                                     |
       # | Romania                | `ro_tin`     | Romanian Tax ID Number                                                                                  |
@@ -397,6 +398,7 @@ module Orb
         OM_VAT = T.let(:om_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         PE_RUC = T.let(:pe_ruc, Orb::CustomerTaxID::Type::TaggedSymbol)
         PH_TIN = T.let(:ph_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
+        PL_NIP = T.let(:pl_nip, Orb::CustomerTaxID::Type::TaggedSymbol)
         RO_TIN = T.let(:ro_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
         RS_PIB = T.let(:rs_pib, Orb::CustomerTaxID::Type::TaggedSymbol)
         RU_INN = T.let(:ru_inn, Orb::CustomerTaxID::Type::TaggedSymbol)

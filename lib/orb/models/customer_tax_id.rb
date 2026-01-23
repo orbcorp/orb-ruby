@@ -125,6 +125,7 @@ module Orb
       #   | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       #   | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       #   | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Poland                 | `pl_nip`     | Polish Tax ID Number                                                                                    |
       #   | Portugal               | `eu_vat`     | European VAT Number                                                                                     |
       #   | Romania                | `eu_vat`     | European VAT Number                                                                                     |
       #   | Romania                | `ro_tin`     | Romanian Tax ID Number                                                                                  |
@@ -376,6 +377,7 @@ module Orb
         OM_VAT = :om_vat
         PE_RUC = :pe_ruc
         PH_TIN = :ph_tin
+        PL_NIP = :pl_nip
         RO_TIN = :ro_tin
         RS_PIB = :rs_pib
         RU_INN = :ru_inn
