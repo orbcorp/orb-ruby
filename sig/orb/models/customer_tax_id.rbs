@@ -343,6 +343,7 @@ module Orb
         | :om_vat
         | :pe_ruc
         | :ph_tin
+        | :pl_nip
         | :ro_tin
         | :rs_pib
         | :ru_inn
@@ -457,6 +458,7 @@ module Orb
         OM_VAT: :om_vat
         PE_RUC: :pe_ruc
         PH_TIN: :ph_tin
+        PL_NIP: :pl_nip
         RO_TIN: :ro_tin
         RS_PIB: :rs_pib
         RU_INN: :ru_inn
