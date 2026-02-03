@@ -22,7 +22,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -46,7 +47,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -79,7 +81,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -104,7 +107,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -133,7 +137,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -158,7 +163,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -182,7 +188,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end
@@ -206,7 +213,8 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         subscription: Orb::SubscriptionMinified | nil,
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
-        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        license_type: Orb::Alert::LicenseType | nil
       }
     end
   end

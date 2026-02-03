@@ -74,7 +74,13 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus] },
                nil?: true
 
-      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil)
+      # @!attribute license_type
+      #   Minified license type for alert serialization.
+      #
+      #   @return [Orb::Models::Alert::LicenseType, nil]
+      optional :license_type, -> { Orb::Alert::LicenseType }, nil?: true
+
+      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil, license_type: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Alert} for
       #   more details.
       #
@@ -105,6 +111,8 @@ module Orb
       #   @param type [Symbol, Orb::Models::Alert::Type] The type of alert. This must be a valid alert type.
       #
       #   @param balance_alert_status [Array<Orb::Models::Alert::BalanceAlertStatus>, nil] The current status of the alert. This field is only present for credit balance a
+      #
+      #   @param license_type [Orb::Models::Alert::LicenseType, nil] Minified license type for alert serialization.
 
       # @see Orb::Models::Alert#metric
       class Metric < Orb::Internal::Type::BaseModel
@@ -170,6 +178,7 @@ module Orb
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
+        LICENSE_BALANCE_THRESHOLD_REACHED = :license_balance_threshold_reached
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -194,6 +203,19 @@ module Orb
         #   @param in_alert [Boolean] Whether the alert is currently in-alert or not.
         #
         #   @param threshold_value [Float] The value of the threshold that defines the alert status.
+      end
+
+      # @see Orb::Models::Alert#license_type
+      class LicenseType < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!method initialize(id:)
+        #   Minified license type for alert serialization.
+        #
+        #   @param id [String]
       end
     end
   end

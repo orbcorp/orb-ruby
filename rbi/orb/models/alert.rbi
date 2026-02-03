@@ -65,6 +65,15 @@ module Orb
       sig { returns(T.nilable(T::Array[Orb::Alert::BalanceAlertStatus])) }
       attr_accessor :balance_alert_status
 
+      # Minified license type for alert serialization.
+      sig { returns(T.nilable(Orb::Alert::LicenseType)) }
+      attr_reader :license_type
+
+      sig do
+        params(license_type: T.nilable(Orb::Alert::LicenseType::OrHash)).void
+      end
+      attr_writer :license_type
+
       # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
       # usage, or credit balance and trigger webhooks when a threshold is exceeded.
       #
@@ -83,7 +92,8 @@ module Orb
           thresholds: T.nilable(T::Array[Orb::Threshold::OrHash]),
           type: Orb::Alert::Type::OrSymbol,
           balance_alert_status:
-            T.nilable(T::Array[Orb::Alert::BalanceAlertStatus::OrHash])
+            T.nilable(T::Array[Orb::Alert::BalanceAlertStatus::OrHash]),
+          license_type: T.nilable(Orb::Alert::LicenseType::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -110,7 +120,9 @@ module Orb
         type:,
         # The current status of the alert. This field is only present for credit balance
         # alerts.
-        balance_alert_status: nil
+        balance_alert_status: nil,
+        # Minified license type for alert serialization.
+        license_type: nil
       )
       end
 
@@ -128,7 +140,8 @@ module Orb
             thresholds: T.nilable(T::Array[Orb::Threshold]),
             type: Orb::Alert::Type::TaggedSymbol,
             balance_alert_status:
-              T.nilable(T::Array[Orb::Alert::BalanceAlertStatus])
+              T.nilable(T::Array[Orb::Alert::BalanceAlertStatus]),
+            license_type: T.nilable(Orb::Alert::LicenseType)
           }
         )
       end
@@ -220,6 +233,11 @@ module Orb
           T.let(:credit_balance_recovered, Orb::Alert::Type::TaggedSymbol)
         USAGE_EXCEEDED = T.let(:usage_exceeded, Orb::Alert::Type::TaggedSymbol)
         COST_EXCEEDED = T.let(:cost_exceeded, Orb::Alert::Type::TaggedSymbol)
+        LICENSE_BALANCE_THRESHOLD_REACHED =
+          T.let(
+            :license_balance_threshold_reached,
+            Orb::Alert::Type::TaggedSymbol
+          )
 
         sig { override.returns(T::Array[Orb::Alert::Type::TaggedSymbol]) }
         def self.values
@@ -257,6 +275,25 @@ module Orb
         sig do
           override.returns({ in_alert: T::Boolean, threshold_value: Float })
         end
+        def to_hash
+        end
+      end
+
+      class LicenseType < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Alert::LicenseType, Orb::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :id
+
+        # Minified license type for alert serialization.
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:)
+        end
+
+        sig { override.returns({ id: String }) }
         def to_hash
         end
       end
