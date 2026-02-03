@@ -12,7 +12,8 @@ module Orb
         subscription: Orb::SubscriptionMinified?,
         thresholds: ::Array[Orb::Threshold]?,
         type: Orb::Models::Alert::type_,
-        balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
+        balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
+        license_type: Orb::Alert::LicenseType?
       }
 
     class Alert < Orb::Internal::Type::BaseModel
@@ -38,6 +39,8 @@ module Orb
 
       attr_accessor balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
 
+      attr_accessor license_type: Orb::Alert::LicenseType?
+
       def initialize: (
         id: String,
         created_at: Time,
@@ -49,7 +52,8 @@ module Orb
         subscription: Orb::SubscriptionMinified?,
         thresholds: ::Array[Orb::Threshold]?,
         type: Orb::Models::Alert::type_,
-        ?balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
+        ?balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
+        ?license_type: Orb::Alert::LicenseType?
       ) -> void
 
       def to_hash: -> {
@@ -63,7 +67,8 @@ module Orb
         subscription: Orb::SubscriptionMinified?,
         thresholds: ::Array[Orb::Threshold]?,
         type: Orb::Models::Alert::type_,
-        balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
+        balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
+        license_type: Orb::Alert::LicenseType?
       }
 
       type metric = { id: String }
@@ -114,6 +119,7 @@ module Orb
         | :credit_balance_recovered
         | :usage_exceeded
         | :cost_exceeded
+        | :license_balance_threshold_reached
 
       module Type
         extend Orb::Internal::Type::Enum
@@ -123,6 +129,7 @@ module Orb
         CREDIT_BALANCE_RECOVERED: :credit_balance_recovered
         USAGE_EXCEEDED: :usage_exceeded
         COST_EXCEEDED: :cost_exceeded
+        LICENSE_BALANCE_THRESHOLD_REACHED: :license_balance_threshold_reached
 
         def self?.values: -> ::Array[Orb::Models::Alert::type_]
       end
@@ -137,6 +144,16 @@ module Orb
         def initialize: (in_alert: bool, threshold_value: Float) -> void
 
         def to_hash: -> { in_alert: bool, threshold_value: Float }
+      end
+
+      type license_type = { id: String }
+
+      class LicenseType < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        def initialize: (id: String) -> void
+
+        def to_hash: -> { id: String }
       end
     end
   end
