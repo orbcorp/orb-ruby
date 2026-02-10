@@ -5,7 +5,8 @@ module Orb
         allows_rollover: bool,
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
-        filters: ::Array[Orb::Allocation::Filter]
+        filters: ::Array[Orb::Allocation::Filter],
+        license_type_id: String?
       }
 
     class Allocation < Orb::Internal::Type::BaseModel
@@ -21,18 +22,22 @@ module Orb
         ::Array[Orb::Allocation::Filter]
       ) -> ::Array[Orb::Allocation::Filter]
 
+      attr_accessor license_type_id: String?
+
       def initialize: (
         allows_rollover: bool,
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
-        ?filters: ::Array[Orb::Allocation::Filter]
+        ?filters: ::Array[Orb::Allocation::Filter],
+        ?license_type_id: String?
       ) -> void
 
       def to_hash: -> {
         allows_rollover: bool,
         currency: String,
         custom_expiration: Orb::CustomExpiration?,
-        filters: ::Array[Orb::Allocation::Filter]
+        filters: ::Array[Orb::Allocation::Filter],
+        license_type_id: String?
       }
 
       type filter =

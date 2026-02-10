@@ -344,6 +344,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -381,6 +382,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -401,6 +404,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :bulk_with_filters
@@ -423,6 +427,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -522,6 +527,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -559,6 +565,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -579,6 +587,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :tiered_with_proration
@@ -601,6 +610,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -680,6 +690,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -717,6 +728,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -737,6 +750,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :grouped_with_min_max_thresholds
@@ -759,6 +773,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -835,6 +850,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -872,6 +888,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -892,6 +910,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :cumulative_grouped_allocation
@@ -914,6 +933,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -990,6 +1010,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1027,6 +1048,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -1047,6 +1070,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :percent
@@ -1069,6 +1093,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1123,6 +1148,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1160,6 +1186,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -1180,6 +1208,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :event_output
@@ -1202,6 +1231,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1441,6 +1471,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1478,6 +1509,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -1498,6 +1531,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :bulk_with_filters
@@ -1520,6 +1554,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1619,6 +1654,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1656,6 +1692,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -1676,6 +1714,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :tiered_with_proration
@@ -1698,6 +1737,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1777,6 +1817,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1814,6 +1855,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -1834,6 +1877,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :grouped_with_min_max_thresholds
@@ -1856,6 +1900,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1932,6 +1977,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -1969,6 +2015,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -1989,6 +2037,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :cumulative_grouped_allocation
@@ -2011,6 +2060,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -2087,6 +2137,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -2124,6 +2175,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -2144,6 +2197,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :percent
@@ -2166,6 +2220,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -2220,6 +2275,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }
@@ -2257,6 +2313,8 @@ module Orb
 
             attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
+            attr_accessor license_type_id: String?
+
             attr_accessor metadata: ::Hash[Symbol, String?]?
 
             attr_accessor reference_id: String?
@@ -2277,6 +2335,7 @@ module Orb
               ?fixed_price_quantity: Float?,
               ?invoice_grouping_key: String?,
               ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
               ?metadata: ::Hash[Symbol, String?]?,
               ?reference_id: String?,
               ?model_type: :event_output
@@ -2299,6 +2358,7 @@ module Orb
               fixed_price_quantity: Float?,
               invoice_grouping_key: String?,
               invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
               metadata: ::Hash[Symbol, String?]?,
               reference_id: String?
             }

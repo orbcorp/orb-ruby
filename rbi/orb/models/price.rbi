@@ -201,6 +201,19 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::Unit::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type: T.nilable(Orb::Price::Unit::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -249,6 +262,7 @@ module Orb
             unit_config: Orb::UnitConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type: T.nilable(Orb::Price::Unit::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -289,6 +303,10 @@ module Orb
           # Configuration for unit pricing
           unit_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :unit
         )
@@ -328,7 +346,8 @@ module Orb
               replaces_price_id: T.nilable(String),
               unit_config: Orb::UnitConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::Unit::LicenseType)
             }
           )
         end
@@ -539,6 +558,51 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Unit::LicenseType, Orb::Internal::AnyHash)
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class Tiered < Orb::Internal::Type::BaseModel
@@ -690,6 +754,19 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::Tiered::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type: T.nilable(Orb::Price::Tiered::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -738,6 +815,7 @@ module Orb
             tiered_config: Orb::TieredConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type: T.nilable(Orb::Price::Tiered::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -778,6 +856,10 @@ module Orb
           # Configuration for tiered pricing
           tiered_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :tiered
         )
@@ -817,7 +899,8 @@ module Orb
               replaces_price_id: T.nilable(String),
               tiered_config: Orb::TieredConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::Tiered::LicenseType)
             }
           )
         end
@@ -1036,6 +1119,51 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Tiered::LicenseType, Orb::Internal::AnyHash)
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class Bulk < Orb::Internal::Type::BaseModel
@@ -1187,6 +1315,19 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::Bulk::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type: T.nilable(Orb::Price::Bulk::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -1235,6 +1376,7 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type: T.nilable(Orb::Price::Bulk::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -1275,6 +1417,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :bulk
         )
@@ -1314,7 +1460,8 @@ module Orb
               price_type: Orb::Price::Bulk::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::Bulk::LicenseType)
             }
           )
         end
@@ -1525,6 +1672,51 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Bulk::LicenseType, Orb::Internal::AnyHash)
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class BulkWithFilters < Orb::Internal::Type::BaseModel
@@ -1691,6 +1883,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::BulkWithFilters::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::BulkWithFilters::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -1742,6 +1948,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::BulkWithFilters::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -1782,6 +1990,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :bulk_with_filters
         )
@@ -1827,7 +2039,8 @@ module Orb
               price_type: Orb::Price::BulkWithFilters::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::BulkWithFilters::LicenseType)
             }
           )
         end
@@ -2224,6 +2437,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithFilters::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class Package < Orb::Internal::Type::BaseModel
@@ -2379,6 +2640,19 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::Package::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type: T.nilable(Orb::Price::Package::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -2427,6 +2701,7 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type: T.nilable(Orb::Price::Package::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -2467,6 +2742,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :package
         )
@@ -2506,7 +2785,8 @@ module Orb
               price_type: Orb::Price::Package::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::Package::LicenseType)
             }
           )
         end
@@ -2729,6 +3009,51 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Package::LicenseType, Orb::Internal::AnyHash)
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class Matrix < Orb::Internal::Type::BaseModel
@@ -2880,6 +3205,19 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::Matrix::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type: T.nilable(Orb::Price::Matrix::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -2928,6 +3266,7 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type: T.nilable(Orb::Price::Matrix::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -2968,6 +3307,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :matrix
         )
@@ -3007,7 +3350,8 @@ module Orb
               price_type: Orb::Price::Matrix::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::Matrix::LicenseType)
             }
           )
         end
@@ -3226,6 +3570,51 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Matrix::LicenseType, Orb::Internal::AnyHash)
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
@@ -3398,6 +3787,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::ThresholdTotalAmount::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::ThresholdTotalAmount::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -3450,6 +3855,8 @@ module Orb
               Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::ThresholdTotalAmount::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -3490,6 +3897,10 @@ module Orb
           # Configuration for threshold_total_amount pricing
           threshold_total_amount_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :threshold_total_amount
         )
@@ -3538,7 +3949,9 @@ module Orb
               threshold_total_amount_config:
                 Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::ThresholdTotalAmount::LicenseType)
             }
           )
         end
@@ -3902,6 +4315,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ThresholdTotalAmount::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class TieredPackage < Orb::Internal::Type::BaseModel
@@ -4064,6 +4525,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::TieredPackage::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::TieredPackage::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -4115,6 +4590,8 @@ module Orb
               Orb::Price::TieredPackage::TieredPackageConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::TieredPackage::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -4155,6 +4632,10 @@ module Orb
           # Configuration for tiered_package pricing
           tiered_package_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :tiered_package
         )
@@ -4200,7 +4681,8 @@ module Orb
               tiered_package_config:
                 Orb::Price::TieredPackage::TieredPackageConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::TieredPackage::LicenseType)
             }
           )
         end
@@ -4539,6 +5021,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackage::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class TieredWithMinimum < Orb::Internal::Type::BaseModel
@@ -4707,6 +5237,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::TieredWithMinimum::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::TieredWithMinimum::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -4758,6 +5302,8 @@ module Orb
               Orb::Price::TieredWithMinimum::TieredWithMinimumConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::TieredWithMinimum::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -4798,6 +5344,10 @@ module Orb
           # Configuration for tiered_with_minimum pricing
           tiered_with_minimum_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :tiered_with_minimum
         )
@@ -4844,7 +5394,9 @@ module Orb
               tiered_with_minimum_config:
                 Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::TieredWithMinimum::LicenseType)
             }
           )
         end
@@ -5224,6 +5776,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithMinimum::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class GroupedTiered < Orb::Internal::Type::BaseModel
@@ -5386,6 +5986,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::GroupedTiered::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::GroupedTiered::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -5437,6 +6051,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::GroupedTiered::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -5477,6 +6093,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :grouped_tiered
         )
@@ -5522,7 +6142,8 @@ module Orb
               price_type: Orb::Price::GroupedTiered::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::GroupedTiered::LicenseType)
             }
           )
         end
@@ -5861,6 +6482,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTiered::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
@@ -6041,6 +6710,24 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::TieredPackageWithMinimum::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -6094,6 +6781,10 @@ module Orb
               Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::TieredPackageWithMinimum::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -6134,6 +6825,10 @@ module Orb
           # Configuration for tiered_package_with_minimum pricing
           tiered_package_with_minimum_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :tiered_package_with_minimum
         )
@@ -6183,7 +6878,9 @@ module Orb
               tiered_package_with_minimum_config:
                 Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::TieredPackageWithMinimum::LicenseType)
             }
           )
         end
@@ -6553,6 +7250,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredPackageWithMinimum::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class PackageWithAllocation < Orb::Internal::Type::BaseModel
@@ -6729,6 +7474,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::PackageWithAllocation::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::PackageWithAllocation::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -6781,6 +7542,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::PackageWithAllocation::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -6821,6 +7584,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :package_with_allocation
         )
@@ -6869,7 +7636,9 @@ module Orb
                 Orb::Price::PackageWithAllocation::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::PackageWithAllocation::LicenseType)
             }
           )
         end
@@ -7181,6 +7950,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::PackageWithAllocation::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class UnitWithPercent < Orb::Internal::Type::BaseModel
@@ -7347,6 +8164,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::UnitWithPercent::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::UnitWithPercent::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -7398,6 +8229,8 @@ module Orb
               Orb::Price::UnitWithPercent::UnitWithPercentConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::UnitWithPercent::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -7438,6 +8271,10 @@ module Orb
           # Configuration for unit_with_percent pricing
           unit_with_percent_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :unit_with_percent
         )
@@ -7483,7 +8320,8 @@ module Orb
               unit_with_percent_config:
                 Orb::Price::UnitWithPercent::UnitWithPercentConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::UnitWithPercent::LicenseType)
             }
           )
         end
@@ -7771,6 +8609,54 @@ module Orb
           def to_hash
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithPercent::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class MatrixWithAllocation < Orb::Internal::Type::BaseModel
@@ -7941,6 +8827,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::MatrixWithAllocation::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::MatrixWithAllocation::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -7993,6 +8895,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::MatrixWithAllocation::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -8033,6 +8937,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :matrix_with_allocation
         )
@@ -8080,7 +8988,9 @@ module Orb
                 Orb::Price::MatrixWithAllocation::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::MatrixWithAllocation::LicenseType)
             }
           )
         end
@@ -8350,6 +9260,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithAllocation::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class TieredWithProration < Orb::Internal::Type::BaseModel
@@ -8522,6 +9480,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::TieredWithProration::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::TieredWithProration::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -8574,6 +9546,8 @@ module Orb
               Orb::Price::TieredWithProration::TieredWithProrationConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::TieredWithProration::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -8614,6 +9588,10 @@ module Orb
           # Configuration for tiered_with_proration pricing
           tiered_with_proration_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :tiered_with_proration
         )
@@ -8662,7 +9640,9 @@ module Orb
               tiered_with_proration_config:
                 Orb::Price::TieredWithProration::TieredWithProrationConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::TieredWithProration::LicenseType)
             }
           )
         end
@@ -9020,6 +10000,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredWithProration::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class UnitWithProration < Orb::Internal::Type::BaseModel
@@ -9188,6 +10216,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::UnitWithProration::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::UnitWithProration::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -9239,6 +10281,8 @@ module Orb
               Orb::Price::UnitWithProration::UnitWithProrationConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::UnitWithProration::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -9279,6 +10323,10 @@ module Orb
           # Configuration for unit_with_proration pricing
           unit_with_proration_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :unit_with_proration
         )
@@ -9325,7 +10373,9 @@ module Orb
               unit_with_proration_config:
                 Orb::Price::UnitWithProration::UnitWithProrationConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::UnitWithProration::LicenseType)
             }
           )
         end
@@ -9611,6 +10661,54 @@ module Orb
           def to_hash
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::UnitWithProration::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class GroupedAllocation < Orb::Internal::Type::BaseModel
@@ -9779,6 +10877,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::GroupedAllocation::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::GroupedAllocation::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -9830,6 +10942,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::GroupedAllocation::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -9870,6 +10984,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :grouped_allocation
         )
@@ -9916,7 +11034,9 @@ module Orb
                 Orb::Price::GroupedAllocation::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::GroupedAllocation::LicenseType)
             }
           )
         end
@@ -10228,6 +11348,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedAllocation::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class BulkWithProration < Orb::Internal::Type::BaseModel
@@ -10396,6 +11564,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::BulkWithProration::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::BulkWithProration::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -10447,6 +11629,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::BulkWithProration::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -10487,6 +11671,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :bulk_with_proration
         )
@@ -10533,7 +11721,9 @@ module Orb
                 Orb::Price::BulkWithProration::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::BulkWithProration::LicenseType)
             }
           )
         end
@@ -10882,6 +12072,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::BulkWithProration::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
@@ -11067,6 +12305,26 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedWithProratedMinimum::LicenseType)
+          )
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -11120,6 +12378,10 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::GroupedWithProratedMinimum::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -11160,6 +12422,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :grouped_with_prorated_minimum
         )
@@ -11209,7 +12475,9 @@ module Orb
                 Orb::Price::GroupedWithProratedMinimum::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::GroupedWithProratedMinimum::LicenseType)
             }
           )
         end
@@ -11529,6 +12797,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithProratedMinimum::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
@@ -11711,6 +13027,24 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::GroupedWithMeteredMinimum::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -11764,6 +13098,10 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::GroupedWithMeteredMinimum::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -11804,6 +13142,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :grouped_with_metered_minimum
         )
@@ -11853,7 +13195,9 @@ module Orb
                 Orb::Price::GroupedWithMeteredMinimum::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::GroupedWithMeteredMinimum::LicenseType)
             }
           )
         end
@@ -12298,6 +13642,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMeteredMinimum::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
@@ -12485,6 +13877,26 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(
+            T.nilable(Orb::Price::GroupedWithMinMaxThresholds::LicenseType)
+          )
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::GroupedWithMinMaxThresholds::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -12538,6 +13950,10 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::GroupedWithMinMaxThresholds::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -12578,6 +13994,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :grouped_with_min_max_thresholds
         )
@@ -12627,7 +14047,9 @@ module Orb
                 Orb::Price::GroupedWithMinMaxThresholds::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::GroupedWithMinMaxThresholds::LicenseType)
             }
           )
         end
@@ -12962,6 +14384,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedWithMinMaxThresholds::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
@@ -13138,6 +14608,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::MatrixWithDisplayName::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::MatrixWithDisplayName::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -13190,6 +14676,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::MatrixWithDisplayName::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -13230,6 +14718,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :matrix_with_display_name
         )
@@ -13278,7 +14770,9 @@ module Orb
                 Orb::Price::MatrixWithDisplayName::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::MatrixWithDisplayName::LicenseType)
             }
           )
         end
@@ -13656,6 +15150,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MatrixWithDisplayName::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class GroupedTieredPackage < Orb::Internal::Type::BaseModel
@@ -13828,6 +15370,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::GroupedTieredPackage::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::GroupedTieredPackage::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -13880,6 +15438,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::GroupedTieredPackage::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -13920,6 +15480,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :grouped_tiered_package
         )
@@ -13968,7 +15532,9 @@ module Orb
                 Orb::Price::GroupedTieredPackage::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::GroupedTieredPackage::LicenseType)
             }
           )
         end
@@ -14338,6 +15904,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::GroupedTieredPackage::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
@@ -14514,6 +16128,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::MaxGroupTieredPackage::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::MaxGroupTieredPackage::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -14566,6 +16196,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::MaxGroupTieredPackage::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -14606,6 +16238,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :max_group_tiered_package
         )
@@ -14654,7 +16290,9 @@ module Orb
                 Orb::Price::MaxGroupTieredPackage::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::MaxGroupTieredPackage::LicenseType)
             }
           )
         end
@@ -15024,6 +16662,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MaxGroupTieredPackage::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
@@ -15211,6 +16897,26 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(
+            T.nilable(Orb::Price::ScalableMatrixWithUnitPricing::LicenseType)
+          )
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -15265,6 +16971,10 @@ module Orb
               Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithUnitPricing::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -15305,6 +17015,10 @@ module Orb
           # Configuration for scalable_matrix_with_unit_pricing pricing
           scalable_matrix_with_unit_pricing_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :scalable_matrix_with_unit_pricing
         )
@@ -15354,7 +17068,11 @@ module Orb
               scalable_matrix_with_unit_pricing_config:
                 Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithUnitPricing::LicenseType
+                )
             }
           )
         end
@@ -15758,6 +17476,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithUnitPricing::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
@@ -15945,6 +17711,26 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(
+            T.nilable(Orb::Price::ScalableMatrixWithTieredPricing::LicenseType)
+          )
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -15999,6 +17785,10 @@ module Orb
               Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::OrHash,
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::ScalableMatrixWithTieredPricing::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -16039,6 +17829,10 @@ module Orb
           # Configuration for scalable_matrix_with_tiered_pricing pricing
           scalable_matrix_with_tiered_pricing_config:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :scalable_matrix_with_tiered_pricing
         )
@@ -16088,7 +17882,11 @@ module Orb
               scalable_matrix_with_tiered_pricing_config:
                 Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(
+                  Orb::Price::ScalableMatrixWithTieredPricing::LicenseType
+                )
             }
           )
         end
@@ -16530,6 +18328,54 @@ module Orb
             end
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::ScalableMatrixWithTieredPricing::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
@@ -16706,6 +18552,22 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(T.nilable(Orb::Price::CumulativeGroupedBulk::LicenseType))
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::CumulativeGroupedBulk::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -16758,6 +18620,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::CumulativeGroupedBulk::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -16798,6 +18662,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :cumulative_grouped_bulk
         )
@@ -16846,7 +18714,9 @@ module Orb
                 Orb::Price::CumulativeGroupedBulk::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::CumulativeGroupedBulk::LicenseType)
             }
           )
         end
@@ -17222,6 +19092,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedBulk::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
@@ -17409,6 +19327,26 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(
+            T.nilable(Orb::Price::CumulativeGroupedAllocation::LicenseType)
+          )
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::CumulativeGroupedAllocation::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -17462,6 +19400,10 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::CumulativeGroupedAllocation::LicenseType::OrHash
+              ),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -17502,6 +19444,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :cumulative_grouped_allocation
         )
@@ -17551,7 +19497,9 @@ module Orb
                 Orb::Price::CumulativeGroupedAllocation::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::CumulativeGroupedAllocation::LicenseType)
             }
           )
         end
@@ -17886,6 +19834,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::CumulativeGroupedAllocation::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class MinimumComposite < Orb::Internal::Type::BaseModel
@@ -18052,6 +20048,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::MinimumComposite::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::MinimumComposite::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -18103,6 +20113,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::MinimumComposite::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -18143,6 +20155,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :minimum_composite
         )
@@ -18188,7 +20204,8 @@ module Orb
               price_type: Orb::Price::MinimumComposite::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::MinimumComposite::LicenseType)
             }
           )
         end
@@ -18486,6 +20503,54 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MinimumComposite::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class Percent < Orb::Internal::Type::BaseModel
@@ -18645,6 +20710,19 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::Percent::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type: T.nilable(Orb::Price::Percent::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -18693,6 +20771,7 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type: T.nilable(Orb::Price::Percent::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -18733,6 +20812,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :percent
         )
@@ -18772,7 +20855,8 @@ module Orb
               price_type: Orb::Price::Percent::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::Percent::LicenseType)
             }
           )
         end
@@ -19018,6 +21102,51 @@ module Orb
           def self.values
           end
         end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(Orb::Price::Percent::LicenseType, Orb::Internal::AnyHash)
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
       end
 
       class EventOutput < Orb::Internal::Type::BaseModel
@@ -19180,6 +21309,20 @@ module Orb
         end
         attr_writer :dimensional_price_configuration
 
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::EventOutput::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::EventOutput::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
         sig do
           params(
             id: String,
@@ -19229,6 +21372,8 @@ module Orb
             replaces_price_id: T.nilable(String),
             dimensional_price_configuration:
               T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::EventOutput::LicenseType::OrHash),
             model_type: Symbol
           ).returns(T.attached_class)
         end
@@ -19269,6 +21414,10 @@ module Orb
           # price in plan version migrations.
           replaces_price_id:,
           dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
           # The pricing model type
           model_type: :event_output
         )
@@ -19312,7 +21461,8 @@ module Orb
               price_type: Orb::Price::EventOutput::PriceType::TaggedSymbol,
               replaces_price_id: T.nilable(String),
               dimensional_price_configuration:
-                T.nilable(Orb::DimensionalPriceConfiguration)
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::EventOutput::LicenseType)
             }
           )
         end
@@ -19610,6 +21760,54 @@ module Orb
             )
           end
           def self.values
+          end
+        end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::EventOutput::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
           end
         end
       end

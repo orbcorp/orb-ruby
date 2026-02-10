@@ -9,6 +9,7 @@ module Orb
         expires_at_end_of_cadence: bool?,
         filters: ::Array[Orb::NewAllocationPrice::Filter]?,
         item_id: String?,
+        license_type_id: String?,
         per_unit_cost_basis: String
       }
 
@@ -27,6 +28,8 @@ module Orb
 
       attr_accessor item_id: String?
 
+      attr_accessor license_type_id: String?
+
       attr_reader per_unit_cost_basis: String?
 
       def per_unit_cost_basis=: (String) -> String
@@ -39,6 +42,7 @@ module Orb
         ?expires_at_end_of_cadence: bool?,
         ?filters: ::Array[Orb::NewAllocationPrice::Filter]?,
         ?item_id: String?,
+        ?license_type_id: String?,
         ?per_unit_cost_basis: String
       ) -> void
 
@@ -50,6 +54,7 @@ module Orb
         expires_at_end_of_cadence: bool?,
         filters: ::Array[Orb::NewAllocationPrice::Filter]?,
         item_id: String?,
+        license_type_id: String?,
         per_unit_cost_basis: String
       }
 

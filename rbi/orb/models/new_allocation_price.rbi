@@ -43,6 +43,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :item_id
 
+      # The license type ID to associate the price with license allocation.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :license_type_id
+
       # The (per-unit) cost basis of each created block. If non-zero, a customer will be
       # invoiced according to the quantity and per unit cost basis specified for the
       # allocation each cadence.
@@ -61,6 +65,7 @@ module Orb
           expires_at_end_of_cadence: T.nilable(T::Boolean),
           filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter::OrHash]),
           item_id: T.nilable(String),
+          license_type_id: T.nilable(String),
           per_unit_cost_basis: String
         ).returns(T.attached_class)
       end
@@ -83,6 +88,8 @@ module Orb
         # associated with. If not provided, the default allocation item for the currency
         # will be used (e.g. 'Included Allocation (USD)').
         item_id: nil,
+        # The license type ID to associate the price with license allocation.
+        license_type_id: nil,
         # The (per-unit) cost basis of each created block. If non-zero, a customer will be
         # invoiced according to the quantity and per unit cost basis specified for the
         # allocation each cadence.
@@ -100,6 +107,7 @@ module Orb
             expires_at_end_of_cadence: T.nilable(T::Boolean),
             filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter]),
             item_id: T.nilable(String),
+            license_type_id: T.nilable(String),
             per_unit_cost_basis: String
           }
         )

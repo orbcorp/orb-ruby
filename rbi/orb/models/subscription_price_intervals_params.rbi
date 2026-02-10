@@ -853,6 +853,10 @@ module Orb
             end
             attr_writer :invoicing_cycle_configuration
 
+            # The ID of the license type to associate with this price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :license_type_id
+
             # User-specified key/value pairs for the resource. Individual keys can be removed
             # by setting the value to `null`, and the entire metadata mapping can be cleared
             # by setting `metadata` to `null`.
@@ -887,6 +891,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration:
                   T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                license_type_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                 model_type: Symbol
               ).returns(T.attached_class)
@@ -927,6 +932,8 @@ module Orb
               # Within each billing cycle, specifies the cadence at which invoices are produced.
               # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # The ID of the license type to associate with this price.
+              license_type_id: nil,
               # User-specified key/value pairs for the resource. Individual keys can be removed
               # by setting the value to `null`, and the entire metadata mapping can be cleared
               # by setting `metadata` to `null`.
@@ -966,6 +973,7 @@ module Orb
                   invoice_grouping_key: T.nilable(String),
                   invoicing_cycle_configuration:
                     T.nilable(Orb::NewBillingCycleConfiguration),
+                  license_type_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
                 }
               )
@@ -1305,6 +1313,10 @@ module Orb
             end
             attr_writer :invoicing_cycle_configuration
 
+            # The ID of the license type to associate with this price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :license_type_id
+
             # User-specified key/value pairs for the resource. Individual keys can be removed
             # by setting the value to `null`, and the entire metadata mapping can be cleared
             # by setting `metadata` to `null`.
@@ -1339,6 +1351,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration:
                   T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                license_type_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                 model_type: Symbol
               ).returns(T.attached_class)
@@ -1379,6 +1392,8 @@ module Orb
               # Within each billing cycle, specifies the cadence at which invoices are produced.
               # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # The ID of the license type to associate with this price.
+              license_type_id: nil,
               # User-specified key/value pairs for the resource. Individual keys can be removed
               # by setting the value to `null`, and the entire metadata mapping can be cleared
               # by setting `metadata` to `null`.
@@ -1418,6 +1433,7 @@ module Orb
                   invoice_grouping_key: T.nilable(String),
                   invoicing_cycle_configuration:
                     T.nilable(Orb::NewBillingCycleConfiguration),
+                  license_type_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
                 }
               )
@@ -1668,6 +1684,10 @@ module Orb
             end
             attr_writer :invoicing_cycle_configuration
 
+            # The ID of the license type to associate with this price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :license_type_id
+
             # User-specified key/value pairs for the resource. Individual keys can be removed
             # by setting the value to `null`, and the entire metadata mapping can be cleared
             # by setting `metadata` to `null`.
@@ -1702,6 +1722,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration:
                   T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                license_type_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                 model_type: Symbol
               ).returns(T.attached_class)
@@ -1742,6 +1763,8 @@ module Orb
               # Within each billing cycle, specifies the cadence at which invoices are produced.
               # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # The ID of the license type to associate with this price.
+              license_type_id: nil,
               # User-specified key/value pairs for the resource. Individual keys can be removed
               # by setting the value to `null`, and the entire metadata mapping can be cleared
               # by setting `metadata` to `null`.
@@ -1781,6 +1804,7 @@ module Orb
                   invoice_grouping_key: T.nilable(String),
                   invoicing_cycle_configuration:
                     T.nilable(Orb::NewBillingCycleConfiguration),
+                  license_type_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
                 }
               )
@@ -2031,6 +2055,10 @@ module Orb
             end
             attr_writer :invoicing_cycle_configuration
 
+            # The ID of the license type to associate with this price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :license_type_id
+
             # User-specified key/value pairs for the resource. Individual keys can be removed
             # by setting the value to `null`, and the entire metadata mapping can be cleared
             # by setting `metadata` to `null`.
@@ -2065,6 +2093,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration:
                   T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                license_type_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                 model_type: Symbol
               ).returns(T.attached_class)
@@ -2105,6 +2134,8 @@ module Orb
               # Within each billing cycle, specifies the cadence at which invoices are produced.
               # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # The ID of the license type to associate with this price.
+              license_type_id: nil,
               # User-specified key/value pairs for the resource. Individual keys can be removed
               # by setting the value to `null`, and the entire metadata mapping can be cleared
               # by setting `metadata` to `null`.
@@ -2144,6 +2175,7 @@ module Orb
                   invoice_grouping_key: T.nilable(String),
                   invoicing_cycle_configuration:
                     T.nilable(Orb::NewBillingCycleConfiguration),
+                  license_type_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
                 }
               )
@@ -2360,6 +2392,10 @@ module Orb
             end
             attr_writer :invoicing_cycle_configuration
 
+            # The ID of the license type to associate with this price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :license_type_id
+
             # User-specified key/value pairs for the resource. Individual keys can be removed
             # by setting the value to `null`, and the entire metadata mapping can be cleared
             # by setting `metadata` to `null`.
@@ -2394,6 +2430,7 @@ module Orb
                 invoice_grouping_key: T.nilable(String),
                 invoicing_cycle_configuration:
                   T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                license_type_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
                 model_type: Symbol
               ).returns(T.attached_class)
@@ -2434,6 +2471,8 @@ module Orb
               # Within each billing cycle, specifies the cadence at which invoices are produced.
               # If unspecified, a single invoice is produced per billing cycle.
               invoicing_cycle_configuration: nil,
+              # The ID of the license type to associate with this price.
+              license_type_id: nil,
               # User-specified key/value pairs for the resource. Individual keys can be removed
               # by setting the value to `null`, and the entire metadata mapping can be cleared
               # by setting `metadata` to `null`.
@@ -2473,6 +2512,7 @@ module Orb
                   invoice_grouping_key: T.nilable(String),
                   invoicing_cycle_configuration:
                     T.nilable(Orb::NewBillingCycleConfiguration),
+                  license_type_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
                 }
               )

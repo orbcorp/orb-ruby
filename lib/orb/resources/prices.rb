@@ -20,7 +20,7 @@ module Orb
       # See the [Price resource](/product-catalog/price-configuration) for the
       # specification of different price model configurations possible in this endpoint.
       #
-      # @overload create(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, cumulative_grouped_allocation_config:, minimum_composite_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, request_options: {})
+      # @overload create(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, cumulative_grouped_allocation_config:, minimum_composite_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, request_options: {})
       #
       # @param cadence [Symbol, Orb::Models::PriceCreateParams::Cadence] The cadence to bill for this price on.
       #
@@ -113,6 +113,8 @@ module Orb
       # @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
       #
       # @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+      #
+      # @param license_type_id [String, nil] The ID of the license type to associate with this price.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
