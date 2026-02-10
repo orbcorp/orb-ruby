@@ -65,7 +65,8 @@ module Orb
           price_type: Orb::Models::Price::Unit::price_type,
           replaces_price_id: String?,
           unit_config: Orb::UnitConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Unit::LicenseType?
         }
 
       class Unit < Orb::Internal::Type::BaseModel
@@ -125,6 +126,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::Unit::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -153,6 +156,7 @@ module Orb
           replaces_price_id: String?,
           unit_config: Orb::UnitConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::Unit::LicenseType?,
           ?model_type: :unit
         ) -> void
 
@@ -184,7 +188,8 @@ module Orb
           price_type: Orb::Models::Price::Unit::price_type,
           replaces_price_id: String?,
           unit_config: Orb::UnitConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Unit::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -278,6 +283,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::Unit::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type tiered =
@@ -309,7 +332,8 @@ module Orb
           price_type: Orb::Models::Price::Tiered::price_type,
           replaces_price_id: String?,
           tiered_config: Orb::TieredConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Tiered::LicenseType?
         }
 
       class Tiered < Orb::Internal::Type::BaseModel
@@ -369,6 +393,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::Tiered::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -397,6 +423,7 @@ module Orb
           replaces_price_id: String?,
           tiered_config: Orb::TieredConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::Tiered::LicenseType?,
           ?model_type: :tiered
         ) -> void
 
@@ -428,7 +455,8 @@ module Orb
           price_type: Orb::Models::Price::Tiered::price_type,
           replaces_price_id: String?,
           tiered_config: Orb::TieredConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Tiered::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -522,6 +550,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::Tiered::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type bulk =
@@ -553,7 +599,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Bulk::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Bulk::LicenseType?
         }
 
       class Bulk < Orb::Internal::Type::BaseModel
@@ -613,6 +660,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::Bulk::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -641,6 +690,7 @@ module Orb
           price_type: Orb::Models::Price::Bulk::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::Bulk::LicenseType?,
           ?model_type: :bulk
         ) -> void
 
@@ -672,7 +722,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Bulk::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Bulk::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -766,6 +817,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::Bulk::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type bulk_with_filters =
@@ -797,7 +866,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithFilters::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::BulkWithFilters::LicenseType?
         }
 
       class BulkWithFilters < Orb::Internal::Type::BaseModel
@@ -857,6 +927,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::BulkWithFilters::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -885,6 +957,7 @@ module Orb
           price_type: Orb::Models::Price::BulkWithFilters::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::BulkWithFilters::LicenseType?,
           ?model_type: :bulk_with_filters
         ) -> void
 
@@ -916,7 +989,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithFilters::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::BulkWithFilters::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -1062,6 +1136,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithFilters::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type package =
@@ -1093,7 +1185,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Package::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Package::LicenseType?
         }
 
       class Package < Orb::Internal::Type::BaseModel
@@ -1153,6 +1246,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::Package::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -1181,6 +1276,7 @@ module Orb
           price_type: Orb::Models::Price::Package::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::Package::LicenseType?,
           ?model_type: :package
         ) -> void
 
@@ -1212,7 +1308,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Package::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Package::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -1306,6 +1403,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::Package::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type matrix =
@@ -1337,7 +1452,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Matrix::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Matrix::LicenseType?
         }
 
       class Matrix < Orb::Internal::Type::BaseModel
@@ -1397,6 +1513,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::Matrix::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -1425,6 +1543,7 @@ module Orb
           price_type: Orb::Models::Price::Matrix::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::Matrix::LicenseType?,
           ?model_type: :matrix
         ) -> void
 
@@ -1456,7 +1575,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Matrix::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Matrix::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -1550,6 +1670,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::Matrix::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type threshold_total_amount =
@@ -1581,7 +1719,8 @@ module Orb
           price_type: Orb::Models::Price::ThresholdTotalAmount::price_type,
           replaces_price_id: String?,
           threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::ThresholdTotalAmount::LicenseType?
         }
 
       class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
@@ -1641,6 +1780,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::ThresholdTotalAmount::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -1669,6 +1810,7 @@ module Orb
           replaces_price_id: String?,
           threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::ThresholdTotalAmount::LicenseType?,
           ?model_type: :threshold_total_amount
         ) -> void
 
@@ -1700,7 +1842,8 @@ module Orb
           price_type: Orb::Models::Price::ThresholdTotalAmount::price_type,
           replaces_price_id: String?,
           threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::ThresholdTotalAmount::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -1828,6 +1971,24 @@ module Orb
             def to_hash: -> { threshold: String, total_amount: String }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type tiered_package =
@@ -1859,7 +2020,8 @@ module Orb
           price_type: Orb::Models::Price::TieredPackage::price_type,
           replaces_price_id: String?,
           tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredPackage::LicenseType?
         }
 
       class TieredPackage < Orb::Internal::Type::BaseModel
@@ -1919,6 +2081,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::TieredPackage::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -1947,6 +2111,7 @@ module Orb
           replaces_price_id: String?,
           tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::TieredPackage::LicenseType?,
           ?model_type: :tiered_package
         ) -> void
 
@@ -1978,7 +2143,8 @@ module Orb
           price_type: Orb::Models::Price::TieredPackage::price_type,
           replaces_price_id: String?,
           tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredPackage::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -2106,6 +2272,24 @@ module Orb
             def to_hash: -> { per_unit: String, tier_lower_bound: String }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type tiered_with_minimum =
@@ -2137,7 +2321,8 @@ module Orb
           price_type: Orb::Models::Price::TieredWithMinimum::price_type,
           replaces_price_id: String?,
           tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredWithMinimum::LicenseType?
         }
 
       class TieredWithMinimum < Orb::Internal::Type::BaseModel
@@ -2197,6 +2382,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::TieredWithMinimum::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -2225,6 +2412,7 @@ module Orb
           replaces_price_id: String?,
           tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::TieredWithMinimum::LicenseType?,
           ?model_type: :tiered_with_minimum
         ) -> void
 
@@ -2256,7 +2444,8 @@ module Orb
           price_type: Orb::Models::Price::TieredWithMinimum::price_type,
           replaces_price_id: String?,
           tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredWithMinimum::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -2408,6 +2597,24 @@ module Orb
             }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type grouped_tiered =
@@ -2439,7 +2646,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTiered::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedTiered::LicenseType?
         }
 
       class GroupedTiered < Orb::Internal::Type::BaseModel
@@ -2499,6 +2707,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::GroupedTiered::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -2527,6 +2737,7 @@ module Orb
           price_type: Orb::Models::Price::GroupedTiered::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::GroupedTiered::LicenseType?,
           ?model_type: :grouped_tiered
         ) -> void
 
@@ -2558,7 +2769,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTiered::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedTiered::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -2689,6 +2901,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTiered::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type tiered_package_with_minimum =
@@ -2720,7 +2950,8 @@ module Orb
           price_type: Orb::Models::Price::TieredPackageWithMinimum::price_type,
           replaces_price_id: String?,
           tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredPackageWithMinimum::LicenseType?
         }
 
       class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
@@ -2780,6 +3011,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::TieredPackageWithMinimum::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -2808,6 +3041,7 @@ module Orb
           replaces_price_id: String?,
           tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::TieredPackageWithMinimum::LicenseType?,
           ?model_type: :tiered_package_with_minimum
         ) -> void
 
@@ -2839,7 +3073,8 @@ module Orb
           price_type: Orb::Models::Price::TieredPackageWithMinimum::price_type,
           replaces_price_id: String?,
           tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredPackageWithMinimum::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -2982,6 +3217,24 @@ module Orb
             }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type package_with_allocation =
@@ -3013,7 +3266,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::PackageWithAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::PackageWithAllocation::LicenseType?
         }
 
       class PackageWithAllocation < Orb::Internal::Type::BaseModel
@@ -3073,6 +3327,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::PackageWithAllocation::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -3101,6 +3357,7 @@ module Orb
           price_type: Orb::Models::Price::PackageWithAllocation::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::PackageWithAllocation::LicenseType?,
           ?model_type: :package_with_allocation
         ) -> void
 
@@ -3132,7 +3389,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::PackageWithAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::PackageWithAllocation::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -3249,6 +3507,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::PackageWithAllocation::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type unit_with_percent =
@@ -3280,7 +3556,8 @@ module Orb
           price_type: Orb::Models::Price::UnitWithPercent::price_type,
           replaces_price_id: String?,
           unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::UnitWithPercent::LicenseType?
         }
 
       class UnitWithPercent < Orb::Internal::Type::BaseModel
@@ -3340,6 +3617,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::UnitWithPercent::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -3368,6 +3647,7 @@ module Orb
           replaces_price_id: String?,
           unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::UnitWithPercent::LicenseType?,
           ?model_type: :unit_with_percent
         ) -> void
 
@@ -3399,7 +3679,8 @@ module Orb
           price_type: Orb::Models::Price::UnitWithPercent::price_type,
           replaces_price_id: String?,
           unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::UnitWithPercent::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -3505,6 +3786,24 @@ module Orb
 
           def to_hash: -> { percent: String, unit_amount: String }
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type matrix_with_allocation =
@@ -3536,7 +3835,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MatrixWithAllocation::LicenseType?
         }
 
       class MatrixWithAllocation < Orb::Internal::Type::BaseModel
@@ -3596,6 +3896,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::MatrixWithAllocation::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -3624,6 +3926,7 @@ module Orb
           price_type: Orb::Models::Price::MatrixWithAllocation::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::MatrixWithAllocation::LicenseType?,
           ?model_type: :matrix_with_allocation
         ) -> void
 
@@ -3655,7 +3958,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MatrixWithAllocation::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -3749,6 +4053,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithAllocation::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type tiered_with_proration =
@@ -3780,7 +4102,8 @@ module Orb
           price_type: Orb::Models::Price::TieredWithProration::price_type,
           replaces_price_id: String?,
           tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredWithProration::LicenseType?
         }
 
       class TieredWithProration < Orb::Internal::Type::BaseModel
@@ -3840,6 +4163,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::TieredWithProration::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -3868,6 +4193,7 @@ module Orb
           replaces_price_id: String?,
           tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::TieredWithProration::LicenseType?,
           ?model_type: :tiered_with_proration
         ) -> void
 
@@ -3899,7 +4225,8 @@ module Orb
           price_type: Orb::Models::Price::TieredWithProration::price_type,
           replaces_price_id: String?,
           tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::TieredWithProration::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -4025,6 +4352,24 @@ module Orb
             def to_hash: -> { tier_lower_bound: String, unit_amount: String }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type unit_with_proration =
@@ -4056,7 +4401,8 @@ module Orb
           price_type: Orb::Models::Price::UnitWithProration::price_type,
           replaces_price_id: String?,
           unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::UnitWithProration::LicenseType?
         }
 
       class UnitWithProration < Orb::Internal::Type::BaseModel
@@ -4116,6 +4462,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::UnitWithProration::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -4144,6 +4492,7 @@ module Orb
           replaces_price_id: String?,
           unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::UnitWithProration::LicenseType?,
           ?model_type: :unit_with_proration
         ) -> void
 
@@ -4175,7 +4524,8 @@ module Orb
           price_type: Orb::Models::Price::UnitWithProration::price_type,
           replaces_price_id: String?,
           unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::UnitWithProration::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -4279,6 +4629,24 @@ module Orb
 
           def to_hash: -> { unit_amount: String }
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type grouped_allocation =
@@ -4310,7 +4678,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedAllocation::LicenseType?
         }
 
       class GroupedAllocation < Orb::Internal::Type::BaseModel
@@ -4370,6 +4739,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::GroupedAllocation::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -4398,6 +4769,7 @@ module Orb
           price_type: Orb::Models::Price::GroupedAllocation::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::GroupedAllocation::LicenseType?,
           ?model_type: :grouped_allocation
         ) -> void
 
@@ -4429,7 +4801,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedAllocation::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -4550,6 +4923,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedAllocation::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type bulk_with_proration =
@@ -4581,7 +4972,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithProration::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::BulkWithProration::LicenseType?
         }
 
       class BulkWithProration < Orb::Internal::Type::BaseModel
@@ -4641,6 +5033,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::BulkWithProration::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -4669,6 +5063,7 @@ module Orb
           price_type: Orb::Models::Price::BulkWithProration::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::BulkWithProration::LicenseType?,
           ?model_type: :bulk_with_proration
         ) -> void
 
@@ -4700,7 +5095,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::BulkWithProration::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::BulkWithProration::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -4826,6 +5222,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::BulkWithProration::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type grouped_with_prorated_minimum =
@@ -4857,7 +5271,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType?
         }
 
       class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
@@ -4917,6 +5332,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -4945,6 +5362,7 @@ module Orb
           price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType?,
           ?model_type: :grouped_with_prorated_minimum
         ) -> void
 
@@ -4976,7 +5394,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithProratedMinimum::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -5093,6 +5512,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithProratedMinimum::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type grouped_with_metered_minimum =
@@ -5124,7 +5561,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType?
         }
 
       class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
@@ -5184,6 +5622,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -5212,6 +5652,7 @@ module Orb
           price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType?,
           ?model_type: :grouped_with_metered_minimum
         ) -> void
 
@@ -5243,7 +5684,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMeteredMinimum::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -5407,6 +5849,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMeteredMinimum::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type grouped_with_min_max_thresholds =
@@ -5438,7 +5898,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMinMaxThresholds::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType?
         }
 
       class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
@@ -5498,6 +5959,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -5526,6 +5989,7 @@ module Orb
           price_type: Orb::Models::Price::GroupedWithMinMaxThresholds::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType?,
           ?model_type: :grouped_with_min_max_thresholds
         ) -> void
 
@@ -5557,7 +6021,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedWithMinMaxThresholds::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -5683,6 +6148,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedWithMinMaxThresholds::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type matrix_with_display_name =
@@ -5714,7 +6197,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithDisplayName::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MatrixWithDisplayName::LicenseType?
         }
 
       class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
@@ -5774,6 +6258,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::MatrixWithDisplayName::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -5802,6 +6288,7 @@ module Orb
           price_type: Orb::Models::Price::MatrixWithDisplayName::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::MatrixWithDisplayName::LicenseType?,
           ?model_type: :matrix_with_display_name
         ) -> void
 
@@ -5833,7 +6320,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MatrixWithDisplayName::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MatrixWithDisplayName::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -5976,6 +6464,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::MatrixWithDisplayName::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type grouped_tiered_package =
@@ -6007,7 +6513,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTieredPackage::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedTieredPackage::LicenseType?
         }
 
       class GroupedTieredPackage < Orb::Internal::Type::BaseModel
@@ -6067,6 +6574,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::GroupedTieredPackage::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -6095,6 +6604,7 @@ module Orb
           price_type: Orb::Models::Price::GroupedTieredPackage::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::GroupedTieredPackage::LicenseType?,
           ?model_type: :grouped_tiered_package
         ) -> void
 
@@ -6126,7 +6636,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::GroupedTieredPackage::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::GroupedTieredPackage::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -6259,6 +6770,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::GroupedTieredPackage::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type max_group_tiered_package =
@@ -6290,7 +6819,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MaxGroupTieredPackage::LicenseType?
         }
 
       class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
@@ -6350,6 +6880,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::MaxGroupTieredPackage::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -6378,6 +6910,7 @@ module Orb
           price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::MaxGroupTieredPackage::LicenseType?,
           ?model_type: :max_group_tiered_package
         ) -> void
 
@@ -6409,7 +6942,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MaxGroupTieredPackage::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MaxGroupTieredPackage::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -6545,6 +7079,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::MaxGroupTieredPackage::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type scalable_matrix_with_unit_pricing =
@@ -6576,7 +7128,8 @@ module Orb
           price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type,
           replaces_price_id: String?,
           scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType?
         }
 
       class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
@@ -6636,6 +7189,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -6664,6 +7219,7 @@ module Orb
           replaces_price_id: String?,
           scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType?,
           ?model_type: :scalable_matrix_with_unit_pricing
         ) -> void
 
@@ -6695,7 +7251,8 @@ module Orb
           price_type: Orb::Models::Price::ScalableMatrixWithUnitPricing::price_type,
           replaces_price_id: String?,
           scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -6853,6 +7410,24 @@ module Orb
             }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type scalable_matrix_with_tiered_pricing =
@@ -6884,7 +7459,8 @@ module Orb
           price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type,
           replaces_price_id: String?,
           scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType?
         }
 
       class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
@@ -6944,6 +7520,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -6972,6 +7550,7 @@ module Orb
           replaces_price_id: String?,
           scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType?,
           ?model_type: :scalable_matrix_with_tiered_pricing
         ) -> void
 
@@ -7003,7 +7582,8 @@ module Orb
           price_type: Orb::Models::Price::ScalableMatrixWithTieredPricing::price_type,
           replaces_price_id: String?,
           scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -7171,6 +7751,24 @@ module Orb
             def to_hash: -> { tier_lower_bound: String, unit_amount: String }
           end
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type cumulative_grouped_bulk =
@@ -7202,7 +7800,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::CumulativeGroupedBulk::LicenseType?
         }
 
       class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
@@ -7262,6 +7861,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::CumulativeGroupedBulk::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -7290,6 +7891,7 @@ module Orb
           price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::CumulativeGroupedBulk::LicenseType?,
           ?model_type: :cumulative_grouped_bulk
         ) -> void
 
@@ -7321,7 +7923,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedBulk::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::CumulativeGroupedBulk::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -7464,6 +8067,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedBulk::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type cumulative_grouped_allocation =
@@ -7495,7 +8116,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType?
         }
 
       class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
@@ -7555,6 +8177,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -7583,6 +8207,7 @@ module Orb
           price_type: Orb::Models::Price::CumulativeGroupedAllocation::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType?,
           ?model_type: :cumulative_grouped_allocation
         ) -> void
 
@@ -7614,7 +8239,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::CumulativeGroupedAllocation::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -7740,6 +8366,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::CumulativeGroupedAllocation::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type minimum_composite =
@@ -7771,7 +8415,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MinimumComposite::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MinimumComposite::LicenseType?
         }
 
       class MinimumComposite < Orb::Internal::Type::BaseModel
@@ -7831,6 +8476,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::MinimumComposite::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -7859,6 +8506,7 @@ module Orb
           price_type: Orb::Models::Price::MinimumComposite::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::MinimumComposite::LicenseType?,
           ?model_type: :minimum_composite
         ) -> void
 
@@ -7890,7 +8538,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::MinimumComposite::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::MinimumComposite::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -7999,6 +8648,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::MinimumComposite::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type percent =
@@ -8030,7 +8697,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Percent::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Percent::LicenseType?
         }
 
       class Percent < Orb::Internal::Type::BaseModel
@@ -8090,6 +8758,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::Percent::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -8118,6 +8788,7 @@ module Orb
           price_type: Orb::Models::Price::Percent::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::Percent::LicenseType?,
           ?model_type: :percent
         ) -> void
 
@@ -8149,7 +8820,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::Percent::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::Percent::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -8253,6 +8925,24 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::Price::Percent::price_type]
         end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
+        end
       end
 
       type event_output =
@@ -8284,7 +8974,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::EventOutput::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::EventOutput::LicenseType?
         }
 
       class EventOutput < Orb::Internal::Type::BaseModel
@@ -8344,6 +9035,8 @@ module Orb
 
         attr_accessor dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
 
+        attr_accessor license_type: Orb::Price::EventOutput::LicenseType?
+
         def initialize: (
           id: String,
           billable_metric: Orb::BillableMetricTiny?,
@@ -8372,6 +9065,7 @@ module Orb
           price_type: Orb::Models::Price::EventOutput::price_type,
           replaces_price_id: String?,
           ?dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          ?license_type: Orb::Price::EventOutput::LicenseType?,
           ?model_type: :event_output
         ) -> void
 
@@ -8403,7 +9097,8 @@ module Orb
           plan_phase_order: Integer?,
           price_type: Orb::Models::Price::EventOutput::price_type,
           replaces_price_id: String?,
-          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?
+          dimensional_price_configuration: Orb::DimensionalPriceConfiguration?,
+          license_type: Orb::Price::EventOutput::LicenseType?
         }
 
         type billing_mode = :in_advance | :in_arrear
@@ -8523,6 +9218,24 @@ module Orb
           COMPOSITE_PRICE: :composite_price
 
           def self?.values: -> ::Array[Orb::Models::Price::EventOutput::price_type]
+        end
+
+        type license_type = { id: String, grouping_key: String, name: String }
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor grouping_key: String
+
+          attr_accessor name: String
+
+          def initialize: (
+            id: String,
+            grouping_key: String,
+            name: String
+          ) -> void
+
+          def to_hash: -> { id: String, grouping_key: String, name: String }
         end
       end
 

@@ -666,6 +666,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -681,7 +687,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(bulk_with_filters_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_filters)
+            # @!method initialize(bulk_with_filters_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_filters)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::AddPrice::Price::BulkWithFilters} for
             #   more details.
@@ -715,6 +721,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -919,6 +927,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -934,7 +948,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
+            # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::AddPrice::Price::TieredWithProration}
             #   for more details.
@@ -968,6 +982,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -1147,6 +1163,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1162,7 +1184,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, grouped_with_min_max_thresholds_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_min_max_thresholds)
+            # @!method initialize(cadence:, grouped_with_min_max_thresholds_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_min_max_thresholds)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::AddPrice::Price::GroupedWithMinMaxThresholds}
             #   for more details.
@@ -1196,6 +1218,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -1372,6 +1396,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1387,7 +1417,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, cumulative_grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_allocation)
+            # @!method initialize(cadence:, cumulative_grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_allocation)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::AddPrice::Price::CumulativeGroupedAllocation}
             #   for more details.
@@ -1421,6 +1451,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -1595,6 +1627,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1610,7 +1648,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, item_id:, name:, percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :percent)
+            # @!method initialize(cadence:, item_id:, name:, percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :percent)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::AddPrice::Price::Percent} for more
             #   details.
@@ -1644,6 +1682,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -1795,6 +1835,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -1810,7 +1856,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, event_output_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :event_output)
+            # @!method initialize(cadence:, event_output_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :event_output)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::AddPrice::Price::EventOutput} for more
             #   details.
@@ -1844,6 +1890,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -2267,6 +2315,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2282,7 +2336,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(bulk_with_filters_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_filters)
+            # @!method initialize(bulk_with_filters_config:, cadence:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_filters)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::BulkWithFilters}
             #   for more details.
@@ -2316,6 +2370,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -2520,6 +2576,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2535,7 +2597,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
+            # @!method initialize(cadence:, item_id:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration}
             #   for more details.
@@ -2569,6 +2631,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -2748,6 +2812,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2763,7 +2833,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, grouped_with_min_max_thresholds_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_min_max_thresholds)
+            # @!method initialize(cadence:, grouped_with_min_max_thresholds_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_min_max_thresholds)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds}
             #   for more details.
@@ -2797,6 +2867,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -2973,6 +3045,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -2988,7 +3066,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, cumulative_grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_allocation)
+            # @!method initialize(cadence:, cumulative_grouped_allocation_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_allocation)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedAllocation}
             #   for more details.
@@ -3022,6 +3100,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -3197,6 +3277,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3212,7 +3298,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, item_id:, name:, percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :percent)
+            # @!method initialize(cadence:, item_id:, name:, percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :percent)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::Percent} for more
             #   details.
@@ -3246,6 +3332,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #
@@ -3397,6 +3485,12 @@ module Orb
             #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
             optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
             # @!attribute metadata
             #   User-specified key/value pairs for the resource. Individual keys can be removed
             #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -3412,7 +3506,7 @@ module Orb
             #   @return [String, nil]
             optional :reference_id, String, nil?: true
 
-            # @!method initialize(cadence:, event_output_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil, reference_id: nil, model_type: :event_output)
+            # @!method initialize(cadence:, event_output_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :event_output)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::EventOutput} for
             #   more details.
@@ -3446,6 +3540,8 @@ module Orb
             #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
             #
             #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
             #
             #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
             #

@@ -237,7 +237,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, model_type: :unit)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::Unit::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::Unit::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Unit}
         #   for more details.
         #
@@ -294,6 +302,8 @@ module Orb
         #   @param unit_config [Orb::Models::UnitConfig] Configuration for unit pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::Unit::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :unit] The pricing model type
 
@@ -389,6 +399,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Unit#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Unit::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -550,7 +596,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, model_type: :tiered)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::Tiered::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::Tiered::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Tiered} for more details.
         #
@@ -607,6 +661,8 @@ module Orb
         #   @param tiered_config [Orb::Models::TieredConfig] Configuration for tiered pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::Tiered::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :tiered] The pricing model type
 
@@ -702,6 +758,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Tiered#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Tiered::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -863,7 +955,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::Bulk::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::Bulk::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Bulk}
         #   for more details.
         #
@@ -920,6 +1020,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::Bulk::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :bulk] The pricing model type
 
@@ -1015,6 +1117,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Bulk#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Bulk::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -1178,7 +1316,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_filters_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_filters)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::BulkWithFilters::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::BulkWithFilters::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_filters_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk_with_filters)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithFilters} for more details.
         #
@@ -1235,6 +1381,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::BulkWithFilters::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :bulk_with_filters] The pricing model type
 
@@ -1397,6 +1545,42 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+
+        # @see Orb::Models::Price::BulkWithFilters#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkWithFilters::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
+        end
       end
 
       class Package < Orb::Internal::Type::BaseModel
@@ -1557,7 +1741,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::Package::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::Package::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Package} for more details.
         #
@@ -1614,6 +1806,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::Package::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :package] The pricing model type
 
@@ -1709,6 +1903,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Package#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Package::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -1870,7 +2100,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::Matrix::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::Matrix::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Matrix} for more details.
         #
@@ -1927,6 +2165,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::Matrix::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :matrix] The pricing model type
 
@@ -2022,6 +2262,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Matrix#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Matrix::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -2186,7 +2462,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, model_type: :threshold_total_amount)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::ThresholdTotalAmount::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::ThresholdTotalAmount::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :threshold_total_amount)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ThresholdTotalAmount} for more details.
         #
@@ -2243,6 +2527,8 @@ module Orb
         #   @param threshold_total_amount_config [Orb::Models::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig] Configuration for threshold_total_amount pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::ThresholdTotalAmount::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :threshold_total_amount] The pricing model type
 
@@ -2386,6 +2672,42 @@ module Orb
             #
             #   @param total_amount [String] Total amount for this threshold
           end
+        end
+
+        # @see Orb::Models::Price::ThresholdTotalAmount#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ThresholdTotalAmount::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -2549,7 +2871,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, model_type: :tiered_package)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::TieredPackage::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::TieredPackage::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackage} for more details.
         #
@@ -2606,6 +2936,8 @@ module Orb
         #   @param tiered_package_config [Orb::Models::Price::TieredPackage::TieredPackageConfig] Configuration for tiered_package pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::TieredPackage::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :tiered_package] The pricing model type
 
@@ -2748,6 +3080,42 @@ module Orb
             #
             #   @param tier_lower_bound [String]
           end
+        end
+
+        # @see Orb::Models::Price::TieredPackage#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPackage::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -2911,7 +3279,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_with_minimum)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::TieredWithMinimum::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::TieredWithMinimum::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithMinimum} for more details.
         #
@@ -2968,6 +3344,8 @@ module Orb
         #   @param tiered_with_minimum_config [Orb::Models::Price::TieredWithMinimum::TieredWithMinimumConfig] Configuration for tiered_with_minimum pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::TieredWithMinimum::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :tiered_with_minimum] The pricing model type
 
@@ -3126,6 +3504,42 @@ module Orb
             #
             #   @param unit_amount [String] Per unit amount
           end
+        end
+
+        # @see Orb::Models::Price::TieredWithMinimum#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredWithMinimum::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -3289,7 +3703,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::GroupedTiered::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::GroupedTiered::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTiered} for more details.
         #
@@ -3346,6 +3768,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::GroupedTiered::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :grouped_tiered] The pricing model type
 
@@ -3487,6 +3911,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::GroupedTiered#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedTiered::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -3653,7 +4113,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, model_type: :tiered_package_with_minimum)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::TieredPackageWithMinimum::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::TieredPackageWithMinimum::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_package_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackageWithMinimum} for more details.
         #
@@ -3710,6 +4178,8 @@ module Orb
         #   @param tiered_package_with_minimum_config [Orb::Models::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig] Configuration for tiered_package_with_minimum pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::TieredPackageWithMinimum::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :tiered_package_with_minimum] The pricing model type
 
@@ -3856,6 +4326,42 @@ module Orb
             #   @param per_unit [String]
             #   @param tier_lower_bound [String]
           end
+        end
+
+        # @see Orb::Models::Price::TieredPackageWithMinimum#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredPackageWithMinimum::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -4020,7 +4526,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :package_with_allocation)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::PackageWithAllocation::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::PackageWithAllocation::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :package_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::PackageWithAllocation} for more details.
         #
@@ -4077,6 +4591,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::PackageWithAllocation::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :package_with_allocation] The pricing model type
 
@@ -4197,6 +4713,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::PackageWithAllocation#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::PackageWithAllocation::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -4360,7 +4912,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, model_type: :unit_with_percent)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::UnitWithPercent::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::UnitWithPercent::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit_with_percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithPercent} for more details.
         #
@@ -4417,6 +4977,8 @@ module Orb
         #   @param unit_with_percent_config [Orb::Models::Price::UnitWithPercent::UnitWithPercentConfig] Configuration for unit_with_percent pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::UnitWithPercent::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :unit_with_percent] The pricing model type
 
@@ -4534,6 +5096,42 @@ module Orb
           #   @param percent [String] What percent, out of 100, of the calculated total to charge
           #
           #   @param unit_amount [String] Rate per unit of usage
+        end
+
+        # @see Orb::Models::Price::UnitWithPercent#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitWithPercent::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -4697,7 +5295,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_allocation)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::MatrixWithAllocation::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::MatrixWithAllocation::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithAllocation} for more details.
         #
@@ -4754,6 +5360,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::MatrixWithAllocation::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :matrix_with_allocation] The pricing model type
 
@@ -4849,6 +5457,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::MatrixWithAllocation#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithAllocation::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -5012,7 +5656,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, model_type: :tiered_with_proration)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::TieredWithProration::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::TieredWithProration::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithProration} for more details.
         #
@@ -5069,6 +5721,8 @@ module Orb
         #   @param tiered_with_proration_config [Orb::Models::Price::TieredWithProration::TieredWithProrationConfig] Configuration for tiered_with_proration pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::TieredWithProration::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :tiered_with_proration] The pricing model type
 
@@ -5205,6 +5859,42 @@ module Orb
             #
             #   @param unit_amount [String] Amount per unit
           end
+        end
+
+        # @see Orb::Models::Price::TieredWithProration#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::TieredWithProration::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -5368,7 +6058,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, model_type: :unit_with_proration)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::UnitWithProration::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::UnitWithProration::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithProration} for more details.
         #
@@ -5425,6 +6123,8 @@ module Orb
         #   @param unit_with_proration_config [Orb::Models::Price::UnitWithProration::UnitWithProrationConfig] Configuration for unit_with_proration pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::UnitWithProration::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :unit_with_proration] The pricing model type
 
@@ -5534,6 +6234,42 @@ module Orb
           #   Configuration for unit_with_proration pricing
           #
           #   @param unit_amount [String] Rate per unit of usage
+        end
+
+        # @see Orb::Models::Price::UnitWithProration#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::UnitWithProration::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -5697,7 +6433,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_allocation)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::GroupedAllocation::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::GroupedAllocation::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedAllocation} for more details.
         #
@@ -5754,6 +6498,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::GroupedAllocation::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :grouped_allocation] The pricing model type
 
@@ -5879,6 +6625,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::GroupedAllocation#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedAllocation::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -6042,7 +6824,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :bulk_with_proration)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::BulkWithProration::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::BulkWithProration::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithProration} for more details.
         #
@@ -6099,6 +6889,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::BulkWithProration::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :bulk_with_proration] The pricing model type
 
@@ -6230,6 +7022,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::BulkWithProration#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::BulkWithProration::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -6396,7 +7224,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_prorated_minimum)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::GroupedWithProratedMinimum::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::GroupedWithProratedMinimum::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_prorated_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithProratedMinimum} for more details.
         #
@@ -6453,6 +7289,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::GroupedWithProratedMinimum::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :grouped_with_prorated_minimum] The pricing model type
 
@@ -6578,6 +7416,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::GroupedWithProratedMinimum#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithProratedMinimum::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -6744,7 +7618,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_metered_minimum)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::GroupedWithMeteredMinimum::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::GroupedWithMeteredMinimum::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_metered_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMeteredMinimum} for more details.
         #
@@ -6801,6 +7683,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::GroupedWithMeteredMinimum::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :grouped_with_metered_minimum] The pricing model type
 
@@ -6997,6 +7881,42 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+
+        # @see Orb::Models::Price::GroupedWithMeteredMinimum#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithMeteredMinimum::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
+        end
       end
 
       class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
@@ -7162,7 +8082,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_with_min_max_thresholds)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::GroupedWithMinMaxThresholds::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::GroupedWithMinMaxThresholds::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_min_max_thresholds)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMinMaxThresholds} for more details.
         #
@@ -7219,6 +8147,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::GroupedWithMinMaxThresholds::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :grouped_with_min_max_thresholds] The pricing model type
 
@@ -7352,6 +8282,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::GroupedWithMinMaxThresholds#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedWithMinMaxThresholds::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -7516,7 +8482,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :matrix_with_display_name)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::MatrixWithDisplayName::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::MatrixWithDisplayName::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_display_name)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithDisplayName} for more details.
         #
@@ -7573,6 +8547,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::MatrixWithDisplayName::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :matrix_with_display_name] The pricing model type
 
@@ -7720,6 +8696,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::MatrixWithDisplayName#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithDisplayName::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -7884,7 +8896,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :grouped_tiered_package)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::GroupedTieredPackage::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::GroupedTieredPackage::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTieredPackage} for more details.
         #
@@ -7941,6 +8961,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::GroupedTieredPackage::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :grouped_tiered_package] The pricing model type
 
@@ -8091,6 +9113,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::GroupedTieredPackage#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::GroupedTieredPackage::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -8255,7 +9313,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :max_group_tiered_package)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::MaxGroupTieredPackage::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::MaxGroupTieredPackage::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :max_group_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MaxGroupTieredPackage} for more details.
         #
@@ -8312,6 +9378,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::MaxGroupTieredPackage::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :max_group_tiered_package] The pricing model type
 
@@ -8461,6 +9529,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::MaxGroupTieredPackage#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MaxGroupTieredPackage::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -8627,7 +9731,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_unit_pricing)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::ScalableMatrixWithUnitPricing::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::ScalableMatrixWithUnitPricing::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :scalable_matrix_with_unit_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithUnitPricing} for more details.
         #
@@ -8684,6 +9796,8 @@ module Orb
         #   @param scalable_matrix_with_unit_pricing_config [Orb::Models::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig] Configuration for scalable_matrix_with_unit_pricing pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::ScalableMatrixWithUnitPricing::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing] The pricing model type
 
@@ -8851,6 +9965,43 @@ module Orb
             #   @param second_dimension_value [String, nil]
           end
         end
+
+        # @see Orb::Models::Price::ScalableMatrixWithUnitPricing#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ScalableMatrixWithUnitPricing::LicenseType} for more
+          #   details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
+        end
       end
 
       class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
@@ -9016,7 +10167,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricing::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::ScalableMatrixWithTieredPricing::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :scalable_matrix_with_tiered_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithTieredPricing} for more details.
         #
@@ -9073,6 +10232,8 @@ module Orb
         #   @param scalable_matrix_with_tiered_pricing_config [Orb::Models::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig] Configuration for scalable_matrix_with_tiered_pricing pricing
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::ScalableMatrixWithTieredPricing::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing] The pricing model type
 
@@ -9251,6 +10412,43 @@ module Orb
             #   @param unit_amount [String]
           end
         end
+
+        # @see Orb::Models::Price::ScalableMatrixWithTieredPricing#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::ScalableMatrixWithTieredPricing::LicenseType} for more
+          #   details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
+        end
       end
 
       class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
@@ -9414,7 +10612,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_bulk)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::CumulativeGroupedBulk::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::CumulativeGroupedBulk::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :cumulative_grouped_bulk)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedBulk} for more details.
         #
@@ -9471,6 +10677,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::CumulativeGroupedBulk::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :cumulative_grouped_bulk] The pricing model type
 
@@ -9617,6 +10825,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::CumulativeGroupedBulk#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::CumulativeGroupedBulk::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -9783,7 +11027,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_allocation_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :cumulative_grouped_allocation)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::CumulativeGroupedAllocation::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::CumulativeGroupedAllocation::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_allocation_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :cumulative_grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedAllocation} for more details.
         #
@@ -9840,6 +11092,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::CumulativeGroupedAllocation::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :cumulative_grouped_allocation] The pricing model type
 
@@ -9973,6 +11227,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::CumulativeGroupedAllocation#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::CumulativeGroupedAllocation::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -10136,7 +11426,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_composite_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :minimum_composite)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::MinimumComposite::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::MinimumComposite::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_composite_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :minimum_composite)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MinimumComposite} for more details.
         #
@@ -10193,6 +11491,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::MinimumComposite::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :minimum_composite] The pricing model type
 
@@ -10310,6 +11610,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::MinimumComposite#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MinimumComposite::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -10471,7 +11807,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, percent_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :percent)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::Percent::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::Percent::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, percent_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Percent} for more details.
         #
@@ -10528,6 +11872,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::Percent::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :percent] The pricing model type
 
@@ -10637,6 +11983,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::Percent#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::Percent::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
@@ -10802,7 +12184,15 @@ module Orb
         #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
         optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, event_output_config:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, model_type: :event_output)
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::EventOutput::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::EventOutput::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, event_output_config:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :event_output)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::EventOutput} for more details.
         #
@@ -10859,6 +12249,8 @@ module Orb
         #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
         #
         #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::EventOutput::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
         #
         #   @param model_type [Symbol, :event_output] The pricing model type
 
@@ -10990,6 +12382,42 @@ module Orb
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::EventOutput#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::EventOutput::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
         end
       end
 
