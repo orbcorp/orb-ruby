@@ -18,6 +18,7 @@ module Orb
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
         invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        license_type_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         tiered_config: Orb::TieredConfig,
         bulk_config: Orb::BulkConfig,
@@ -87,6 +88,8 @@ module Orb
       attr_accessor invoice_grouping_key: String?
 
       attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+      attr_accessor license_type_id: String?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
@@ -197,6 +200,7 @@ module Orb
         ?fixed_price_quantity: Float?,
         ?invoice_grouping_key: String?,
         ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?license_type_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
@@ -218,6 +222,7 @@ module Orb
         fixed_price_quantity: Float?,
         invoice_grouping_key: String?,
         invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        license_type_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         tiered_config: Orb::TieredConfig,
         bulk_config: Orb::BulkConfig,

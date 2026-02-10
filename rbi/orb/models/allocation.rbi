@@ -25,19 +25,24 @@ module Orb
       sig { params(filters: T::Array[Orb::Allocation::Filter::OrHash]).void }
       attr_writer :filters
 
+      sig { returns(T.nilable(String)) }
+      attr_accessor :license_type_id
+
       sig do
         params(
           allows_rollover: T::Boolean,
           currency: String,
           custom_expiration: T.nilable(Orb::CustomExpiration::OrHash),
-          filters: T::Array[Orb::Allocation::Filter::OrHash]
+          filters: T::Array[Orb::Allocation::Filter::OrHash],
+          license_type_id: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
         allows_rollover:,
         currency:,
         custom_expiration:,
-        filters: nil
+        filters: nil,
+        license_type_id: nil
       )
       end
 
@@ -47,7 +52,8 @@ module Orb
             allows_rollover: T::Boolean,
             currency: String,
             custom_expiration: T.nilable(Orb::CustomExpiration),
-            filters: T::Array[Orb::Allocation::Filter]
+            filters: T::Array[Orb::Allocation::Filter],
+            license_type_id: T.nilable(String)
           }
         )
       end

@@ -23,11 +23,17 @@ module Orb
       #   @return [Array<Orb::Models::Allocation::Filter>, nil]
       optional :filters, -> { Orb::Internal::Type::ArrayOf[Orb::Allocation::Filter] }
 
-      # @!method initialize(allows_rollover:, currency:, custom_expiration:, filters: nil)
+      # @!attribute license_type_id
+      #
+      #   @return [String, nil]
+      optional :license_type_id, String, nil?: true
+
+      # @!method initialize(allows_rollover:, currency:, custom_expiration:, filters: nil, license_type_id: nil)
       #   @param allows_rollover [Boolean]
       #   @param currency [String]
       #   @param custom_expiration [Orb::Models::CustomExpiration, nil]
       #   @param filters [Array<Orb::Models::Allocation::Filter>]
+      #   @param license_type_id [String, nil]
 
       class Filter < Orb::Internal::Type::BaseModel
         # @!attribute field

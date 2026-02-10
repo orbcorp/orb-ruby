@@ -84,7 +84,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Unit::PriceType,
         replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Unit::LicenseType | nil
       }
       in {
         model_type: :tiered,
@@ -114,7 +115,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Tiered::PriceType,
         replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Tiered::LicenseType | nil
       }
       in {
         model_type: :bulk,
@@ -144,7 +146,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Bulk::LicenseType | nil
       }
       in {
         model_type: :bulk_with_filters,
@@ -174,7 +177,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithFilters::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithFilters::LicenseType | nil
       }
       in {
         model_type: :package,
@@ -204,7 +208,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Package::LicenseType | nil
       }
       in {
         model_type: :matrix,
@@ -234,7 +239,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Matrix::LicenseType | nil
       }
       in {
         model_type: :threshold_total_amount,
@@ -264,7 +270,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
         replaces_price_id: String | nil,
         threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ThresholdTotalAmount::LicenseType | nil
       }
       in {
         model_type: :tiered_package,
@@ -294,7 +301,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackage::PriceType,
         replaces_price_id: String | nil,
         tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackage::LicenseType | nil
       }
       in {
         model_type: :tiered_with_minimum,
@@ -324,7 +332,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered,
@@ -354,7 +363,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTiered::LicenseType | nil
       }
       in {
         model_type: :tiered_package_with_minimum,
@@ -384,7 +394,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackageWithMinimum::LicenseType | nil
       }
       in {
         model_type: :package_with_allocation,
@@ -414,7 +425,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::PackageWithAllocation::LicenseType | nil
       }
       in {
         model_type: :unit_with_percent,
@@ -444,7 +456,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithPercent::PriceType,
         replaces_price_id: String | nil,
         unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithPercent::LicenseType | nil
       }
       in {
         model_type: :matrix_with_allocation,
@@ -474,7 +487,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -504,7 +518,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithProration::PriceType,
         replaces_price_id: String | nil,
         tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithProration::LicenseType | nil
       }
       in {
         model_type: :unit_with_proration,
@@ -534,7 +549,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithProration::PriceType,
         replaces_price_id: String | nil,
         unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_allocation,
@@ -564,7 +580,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :bulk_with_proration,
@@ -594,7 +611,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_with_prorated_minimum,
@@ -624,7 +642,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_metered_minimum,
@@ -654,7 +673,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_min_max_thresholds,
@@ -684,7 +704,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType | nil
       }
       in {
         model_type: :matrix_with_display_name,
@@ -714,7 +735,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithDisplayName::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered_package,
@@ -744,7 +766,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTieredPackage::LicenseType | nil
       }
       in {
         model_type: :max_group_tiered_package,
@@ -774,7 +797,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MaxGroupTieredPackage::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_unit_pricing,
@@ -804,7 +828,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_tiered_pricing,
@@ -834,7 +859,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_bulk,
@@ -864,7 +890,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedBulk::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_allocation,
@@ -894,7 +921,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :minimum_composite,
@@ -924,7 +952,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MinimumComposite::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MinimumComposite::LicenseType | nil
       }
       in {
         model_type: :percent,
@@ -954,7 +983,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Percent::LicenseType | nil
       }
       in {
         model_type: :event_output,
@@ -984,7 +1014,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::EventOutput::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::EventOutput::LicenseType | nil
       }
       end
     end
@@ -1063,7 +1094,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Unit::PriceType,
         replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Unit::LicenseType | nil
       }
       in {
         model_type: :tiered,
@@ -1093,7 +1125,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Tiered::PriceType,
         replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Tiered::LicenseType | nil
       }
       in {
         model_type: :bulk,
@@ -1123,7 +1156,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Bulk::LicenseType | nil
       }
       in {
         model_type: :bulk_with_filters,
@@ -1153,7 +1187,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithFilters::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithFilters::LicenseType | nil
       }
       in {
         model_type: :package,
@@ -1183,7 +1218,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Package::LicenseType | nil
       }
       in {
         model_type: :matrix,
@@ -1213,7 +1249,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Matrix::LicenseType | nil
       }
       in {
         model_type: :threshold_total_amount,
@@ -1243,7 +1280,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
         replaces_price_id: String | nil,
         threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ThresholdTotalAmount::LicenseType | nil
       }
       in {
         model_type: :tiered_package,
@@ -1273,7 +1311,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackage::PriceType,
         replaces_price_id: String | nil,
         tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackage::LicenseType | nil
       }
       in {
         model_type: :tiered_with_minimum,
@@ -1303,7 +1342,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered,
@@ -1333,7 +1373,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTiered::LicenseType | nil
       }
       in {
         model_type: :tiered_package_with_minimum,
@@ -1363,7 +1404,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackageWithMinimum::LicenseType | nil
       }
       in {
         model_type: :package_with_allocation,
@@ -1393,7 +1435,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::PackageWithAllocation::LicenseType | nil
       }
       in {
         model_type: :unit_with_percent,
@@ -1423,7 +1466,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithPercent::PriceType,
         replaces_price_id: String | nil,
         unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithPercent::LicenseType | nil
       }
       in {
         model_type: :matrix_with_allocation,
@@ -1453,7 +1497,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -1483,7 +1528,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithProration::PriceType,
         replaces_price_id: String | nil,
         tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithProration::LicenseType | nil
       }
       in {
         model_type: :unit_with_proration,
@@ -1513,7 +1559,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithProration::PriceType,
         replaces_price_id: String | nil,
         unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_allocation,
@@ -1543,7 +1590,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :bulk_with_proration,
@@ -1573,7 +1621,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_with_prorated_minimum,
@@ -1603,7 +1652,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_metered_minimum,
@@ -1633,7 +1683,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_min_max_thresholds,
@@ -1663,7 +1714,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType | nil
       }
       in {
         model_type: :matrix_with_display_name,
@@ -1693,7 +1745,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithDisplayName::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered_package,
@@ -1723,7 +1776,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTieredPackage::LicenseType | nil
       }
       in {
         model_type: :max_group_tiered_package,
@@ -1753,7 +1807,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MaxGroupTieredPackage::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_unit_pricing,
@@ -1783,7 +1838,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_tiered_pricing,
@@ -1813,7 +1869,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_bulk,
@@ -1843,7 +1900,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedBulk::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_allocation,
@@ -1873,7 +1931,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :minimum_composite,
@@ -1903,7 +1962,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MinimumComposite::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MinimumComposite::LicenseType | nil
       }
       in {
         model_type: :percent,
@@ -1933,7 +1993,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Percent::LicenseType | nil
       }
       in {
         model_type: :event_output,
@@ -1963,7 +2024,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::EventOutput::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::EventOutput::LicenseType | nil
       }
       end
     end
@@ -2049,7 +2111,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Unit::PriceType,
         replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Unit::LicenseType | nil
       }
       in {
         model_type: :tiered,
@@ -2079,7 +2142,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Tiered::PriceType,
         replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Tiered::LicenseType | nil
       }
       in {
         model_type: :bulk,
@@ -2109,7 +2173,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Bulk::LicenseType | nil
       }
       in {
         model_type: :bulk_with_filters,
@@ -2139,7 +2204,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithFilters::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithFilters::LicenseType | nil
       }
       in {
         model_type: :package,
@@ -2169,7 +2235,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Package::LicenseType | nil
       }
       in {
         model_type: :matrix,
@@ -2199,7 +2266,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Matrix::LicenseType | nil
       }
       in {
         model_type: :threshold_total_amount,
@@ -2229,7 +2297,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
         replaces_price_id: String | nil,
         threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ThresholdTotalAmount::LicenseType | nil
       }
       in {
         model_type: :tiered_package,
@@ -2259,7 +2328,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackage::PriceType,
         replaces_price_id: String | nil,
         tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackage::LicenseType | nil
       }
       in {
         model_type: :tiered_with_minimum,
@@ -2289,7 +2359,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered,
@@ -2319,7 +2390,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTiered::LicenseType | nil
       }
       in {
         model_type: :tiered_package_with_minimum,
@@ -2349,7 +2421,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackageWithMinimum::LicenseType | nil
       }
       in {
         model_type: :package_with_allocation,
@@ -2379,7 +2452,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::PackageWithAllocation::LicenseType | nil
       }
       in {
         model_type: :unit_with_percent,
@@ -2409,7 +2483,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithPercent::PriceType,
         replaces_price_id: String | nil,
         unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithPercent::LicenseType | nil
       }
       in {
         model_type: :matrix_with_allocation,
@@ -2439,7 +2514,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -2469,7 +2545,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithProration::PriceType,
         replaces_price_id: String | nil,
         tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithProration::LicenseType | nil
       }
       in {
         model_type: :unit_with_proration,
@@ -2499,7 +2576,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithProration::PriceType,
         replaces_price_id: String | nil,
         unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_allocation,
@@ -2529,7 +2607,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :bulk_with_proration,
@@ -2559,7 +2638,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_with_prorated_minimum,
@@ -2589,7 +2669,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_metered_minimum,
@@ -2619,7 +2700,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_min_max_thresholds,
@@ -2649,7 +2731,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType | nil
       }
       in {
         model_type: :matrix_with_display_name,
@@ -2679,7 +2762,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithDisplayName::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered_package,
@@ -2709,7 +2793,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTieredPackage::LicenseType | nil
       }
       in {
         model_type: :max_group_tiered_package,
@@ -2739,7 +2824,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MaxGroupTieredPackage::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_unit_pricing,
@@ -2769,7 +2855,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_tiered_pricing,
@@ -2799,7 +2886,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_bulk,
@@ -2829,7 +2917,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedBulk::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_allocation,
@@ -2859,7 +2948,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :minimum_composite,
@@ -2889,7 +2979,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MinimumComposite::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MinimumComposite::LicenseType | nil
       }
       in {
         model_type: :percent,
@@ -2919,7 +3010,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Percent::LicenseType | nil
       }
       in {
         model_type: :event_output,
@@ -2949,7 +3041,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::EventOutput::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::EventOutput::LicenseType | nil
       }
       end
     end
@@ -3083,7 +3176,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Unit::PriceType,
         replaces_price_id: String | nil,
         unit_config: Orb::UnitConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Unit::LicenseType | nil
       }
       in {
         model_type: :tiered,
@@ -3113,7 +3207,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::Tiered::PriceType,
         replaces_price_id: String | nil,
         tiered_config: Orb::TieredConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Tiered::LicenseType | nil
       }
       in {
         model_type: :bulk,
@@ -3143,7 +3238,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Bulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Bulk::LicenseType | nil
       }
       in {
         model_type: :bulk_with_filters,
@@ -3173,7 +3269,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithFilters::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithFilters::LicenseType | nil
       }
       in {
         model_type: :package,
@@ -3203,7 +3300,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Package::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Package::LicenseType | nil
       }
       in {
         model_type: :matrix,
@@ -3233,7 +3331,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Matrix::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Matrix::LicenseType | nil
       }
       in {
         model_type: :threshold_total_amount,
@@ -3263,7 +3362,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ThresholdTotalAmount::PriceType,
         replaces_price_id: String | nil,
         threshold_total_amount_config: Orb::Price::ThresholdTotalAmount::ThresholdTotalAmountConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ThresholdTotalAmount::LicenseType | nil
       }
       in {
         model_type: :tiered_package,
@@ -3293,7 +3393,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackage::PriceType,
         replaces_price_id: String | nil,
         tiered_package_config: Orb::Price::TieredPackage::TieredPackageConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackage::LicenseType | nil
       }
       in {
         model_type: :tiered_with_minimum,
@@ -3323,7 +3424,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_with_minimum_config: Orb::Price::TieredWithMinimum::TieredWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered,
@@ -3353,7 +3455,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTiered::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTiered::LicenseType | nil
       }
       in {
         model_type: :tiered_package_with_minimum,
@@ -3383,7 +3486,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredPackageWithMinimum::PriceType,
         replaces_price_id: String | nil,
         tiered_package_with_minimum_config: Orb::Price::TieredPackageWithMinimum::TieredPackageWithMinimumConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredPackageWithMinimum::LicenseType | nil
       }
       in {
         model_type: :package_with_allocation,
@@ -3413,7 +3517,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::PackageWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::PackageWithAllocation::LicenseType | nil
       }
       in {
         model_type: :unit_with_percent,
@@ -3443,7 +3548,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithPercent::PriceType,
         replaces_price_id: String | nil,
         unit_with_percent_config: Orb::Price::UnitWithPercent::UnitWithPercentConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithPercent::LicenseType | nil
       }
       in {
         model_type: :matrix_with_allocation,
@@ -3473,7 +3579,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -3503,7 +3610,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::TieredWithProration::PriceType,
         replaces_price_id: String | nil,
         tiered_with_proration_config: Orb::Price::TieredWithProration::TieredWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::TieredWithProration::LicenseType | nil
       }
       in {
         model_type: :unit_with_proration,
@@ -3533,7 +3641,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::UnitWithProration::PriceType,
         replaces_price_id: String | nil,
         unit_with_proration_config: Orb::Price::UnitWithProration::UnitWithProrationConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::UnitWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_allocation,
@@ -3563,7 +3672,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :bulk_with_proration,
@@ -3593,7 +3703,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::BulkWithProration::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::BulkWithProration::LicenseType | nil
       }
       in {
         model_type: :grouped_with_prorated_minimum,
@@ -3623,7 +3734,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithProratedMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithProratedMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_metered_minimum,
@@ -3653,7 +3765,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMeteredMinimum::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMeteredMinimum::LicenseType | nil
       }
       in {
         model_type: :grouped_with_min_max_thresholds,
@@ -3683,7 +3796,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedWithMinMaxThresholds::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedWithMinMaxThresholds::LicenseType | nil
       }
       in {
         model_type: :matrix_with_display_name,
@@ -3713,7 +3827,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MatrixWithDisplayName::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithDisplayName::LicenseType | nil
       }
       in {
         model_type: :grouped_tiered_package,
@@ -3743,7 +3858,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::GroupedTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::GroupedTieredPackage::LicenseType | nil
       }
       in {
         model_type: :max_group_tiered_package,
@@ -3773,7 +3889,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MaxGroupTieredPackage::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MaxGroupTieredPackage::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_unit_pricing,
@@ -3803,7 +3920,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithUnitPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_unit_pricing_config: Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithUnitPricing::LicenseType | nil
       }
       in {
         model_type: :scalable_matrix_with_tiered_pricing,
@@ -3833,7 +3951,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         price_type: Orb::Price::ScalableMatrixWithTieredPricing::PriceType,
         replaces_price_id: String | nil,
         scalable_matrix_with_tiered_pricing_config: Orb::Price::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::ScalableMatrixWithTieredPricing::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_bulk,
@@ -3863,7 +3982,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedBulk::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedBulk::LicenseType | nil
       }
       in {
         model_type: :cumulative_grouped_allocation,
@@ -3893,7 +4013,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::CumulativeGroupedAllocation::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::CumulativeGroupedAllocation::LicenseType | nil
       }
       in {
         model_type: :minimum_composite,
@@ -3923,7 +4044,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::MinimumComposite::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MinimumComposite::LicenseType | nil
       }
       in {
         model_type: :percent,
@@ -3953,7 +4075,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::Percent::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::Percent::LicenseType | nil
       }
       in {
         model_type: :event_output,
@@ -3983,7 +4106,8 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         plan_phase_order: Integer | nil,
         price_type: Orb::Price::EventOutput::PriceType,
         replaces_price_id: String | nil,
-        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::EventOutput::LicenseType | nil
       }
       end
     end

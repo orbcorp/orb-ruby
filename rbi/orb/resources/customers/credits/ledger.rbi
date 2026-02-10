@@ -180,7 +180,8 @@ module Orb
           # also generate a one-off invoice for the customer for the credits pre-purchase.
           # Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
           # on the invoice are calculated by multiplying the cost basis with the number of
-          # credit units added.
+          # credit units added. Additionally, Orb also enforces invoice generation when a
+          # non-zero `per_unit_cost_basis` value is provided.
           #
           # ## Deducting Credits
           #
@@ -368,7 +369,8 @@ module Orb
           # also generate a one-off invoice for the customer for the credits pre-purchase.
           # Note that you _must_ provide the `per_unit_cost_basis`, since the total charges
           # on the invoice are calculated by multiplying the cost basis with the number of
-          # credit units added.
+          # credit units added. Additionally, Orb also enforces invoice generation when a
+          # non-zero `per_unit_cost_basis` value is provided.
           #
           # ## Deducting Credits
           #

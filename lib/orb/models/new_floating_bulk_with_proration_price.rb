@@ -107,6 +107,12 @@ module Orb
       #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
       optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
+      # @!attribute license_type_id
+      #   The ID of the license type to associate with this price.
+      #
+      #   @return [String, nil]
+      optional :license_type_id, String, nil?: true
+
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
       #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -115,7 +121,7 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!method initialize(bulk_with_proration_config:, cadence:, currency:, item_id:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, metadata: nil)
+      # @!method initialize(bulk_with_proration_config:, cadence:, currency:, item_id:, model_type:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewFloatingBulkWithProrationPrice} for more details.
       #
@@ -150,6 +156,8 @@ module Orb
       #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
       #
       #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+      #
+      #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
 

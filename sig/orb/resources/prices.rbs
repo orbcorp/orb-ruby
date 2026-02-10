@@ -50,6 +50,7 @@ module Orb
         ?fixed_price_quantity: Float?,
         ?invoice_grouping_key: String?,
         ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+        ?license_type_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::price
