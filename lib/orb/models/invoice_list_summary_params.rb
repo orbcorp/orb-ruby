@@ -101,10 +101,8 @@ module Orb
 
       # @!attribute status
       #
-      #   @return [Array<Symbol, Orb::Models::InvoiceListSummaryParams::Status>, nil]
-      optional :status,
-               -> { Orb::Internal::Type::ArrayOf[enum: Orb::InvoiceListSummaryParams::Status] },
-               nil?: true
+      #   @return [Symbol, Orb::Models::InvoiceListSummaryParams::Status, nil]
+      optional :status, enum: -> { Orb::InvoiceListSummaryParams::Status }, nil?: true
 
       # @!attribute subscription_id
       #
@@ -149,7 +147,7 @@ module Orb
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      #   @param status [Array<Symbol, Orb::Models::InvoiceListSummaryParams::Status>, nil]
+      #   @param status [Symbol, Orb::Models::InvoiceListSummaryParams::Status, nil]
       #
       #   @param subscription_id [String, nil]
       #
