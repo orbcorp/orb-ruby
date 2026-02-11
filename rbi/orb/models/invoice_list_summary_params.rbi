@@ -75,9 +75,7 @@ module Orb
       attr_writer :limit
 
       sig do
-        returns(
-          T.nilable(T::Array[Orb::InvoiceListSummaryParams::Status::OrSymbol])
-        )
+        returns(T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol))
       end
       attr_accessor :status
 
@@ -104,10 +102,7 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status:
-            T.nilable(
-              T::Array[Orb::InvoiceListSummaryParams::Status::OrSymbol]
-            ),
+          status: T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol),
           subscription_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -164,10 +159,7 @@ module Orb
             invoice_date_lte: T.nilable(Time),
             is_recurring: T.nilable(T::Boolean),
             limit: Integer,
-            status:
-              T.nilable(
-                T::Array[Orb::InvoiceListSummaryParams::Status::OrSymbol]
-              ),
+            status: T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol),
             subscription_id: T.nilable(String),
             request_options: Orb::RequestOptions
           }
