@@ -88,7 +88,7 @@ module Orb
         ?invoice_date_lte: Time?,
         ?is_recurring: bool?,
         ?limit: Integer,
-        ?status: ::Array[Orb::Models::InvoiceListSummaryParams::status]?,
+        ?status: Orb::Models::InvoiceListSummaryParams::status?,
         ?subscription_id: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::Models::InvoiceListSummaryResponse]
