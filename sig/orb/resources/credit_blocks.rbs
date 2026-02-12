@@ -8,6 +8,11 @@ module Orb
 
       def delete: (String block_id, ?request_options: Orb::request_opts) -> nil
 
+      def list_invoices: (
+        String block_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::CreditBlockListInvoicesResponse
+
       def initialize: (client: Orb::Client) -> void
     end
   end

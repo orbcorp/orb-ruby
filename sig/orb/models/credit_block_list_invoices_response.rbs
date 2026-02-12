@@ -1,0 +1,197 @@
+module Orb
+  module Models
+    type credit_block_list_invoices_response =
+      {
+        block: Orb::Models::CreditBlockListInvoicesResponse::Block,
+        invoices: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Invoice]
+      }
+
+    class CreditBlockListInvoicesResponse < Orb::Internal::Type::BaseModel
+      attr_accessor block: Orb::Models::CreditBlockListInvoicesResponse::Block
+
+      attr_accessor invoices: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Invoice]
+
+      def initialize: (
+        block: Orb::Models::CreditBlockListInvoicesResponse::Block,
+        invoices: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Invoice]
+      ) -> void
+
+      def to_hash: -> {
+        block: Orb::Models::CreditBlockListInvoicesResponse::Block,
+        invoices: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Invoice]
+      }
+
+      type block =
+        {
+          id: String,
+          balance: Float,
+          effective_date: Time?,
+          expiry_date: Time?,
+          filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter],
+          maximum_initial_balance: Float?,
+          metadata: ::Hash[Symbol, String],
+          per_unit_cost_basis: String?,
+          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+        }
+
+      class Block < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor balance: Float
+
+        attr_accessor effective_date: Time?
+
+        attr_accessor expiry_date: Time?
+
+        attr_accessor filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter]
+
+        attr_accessor maximum_initial_balance: Float?
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor per_unit_cost_basis: String?
+
+        attr_accessor status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+
+        def initialize: (
+          id: String,
+          balance: Float,
+          effective_date: Time?,
+          expiry_date: Time?,
+          filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter],
+          maximum_initial_balance: Float?,
+          metadata: ::Hash[Symbol, String],
+          per_unit_cost_basis: String?,
+          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          balance: Float,
+          effective_date: Time?,
+          expiry_date: Time?,
+          filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter],
+          maximum_initial_balance: Float?,
+          metadata: ::Hash[Symbol, String],
+          per_unit_cost_basis: String?,
+          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+        }
+
+        type filter =
+          {
+            field: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::field,
+            operator: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::field
+
+          attr_accessor operator: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::field,
+            operator: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::field,
+            operator: Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter::operator]
+          end
+        end
+
+        type status = :active | :pending_payment
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ACTIVE: :active
+          PENDING_PAYMENT: :pending_payment
+
+          def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::status]
+        end
+      end
+
+      type invoice =
+        {
+          id: String,
+          customer: Orb::CustomerMinified,
+          invoice_number: String,
+          status: Orb::Models::CreditBlockListInvoicesResponse::Invoice::status,
+          subscription: Orb::SubscriptionMinified?
+        }
+
+      class Invoice < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer: Orb::CustomerMinified
+
+        attr_accessor invoice_number: String
+
+        attr_accessor status: Orb::Models::CreditBlockListInvoicesResponse::Invoice::status
+
+        attr_accessor subscription: Orb::SubscriptionMinified?
+
+        def initialize: (
+          id: String,
+          customer: Orb::CustomerMinified,
+          invoice_number: String,
+          status: Orb::Models::CreditBlockListInvoicesResponse::Invoice::status,
+          subscription: Orb::SubscriptionMinified?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          customer: Orb::CustomerMinified,
+          invoice_number: String,
+          status: Orb::Models::CreditBlockListInvoicesResponse::Invoice::status,
+          subscription: Orb::SubscriptionMinified?
+        }
+
+        type status = :issued | :paid | :synced | :void | :draft
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ISSUED: :issued
+          PAID: :paid
+          SYNCED: :synced
+          VOID: :void
+          DRAFT: :draft
+
+          def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Invoice::status]
+        end
+      end
+    end
+  end
+end

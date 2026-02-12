@@ -32,4 +32,19 @@ class Orb::Test::Resources::CreditBlocksTest < Orb::Test::ResourceTest
       response => nil
     end
   end
+
+  def test_list_invoices
+    response = @orb.credit_blocks.list_invoices("block_id")
+
+    assert_pattern do
+      response => Orb::Models::CreditBlockListInvoicesResponse
+    end
+
+    assert_pattern do
+      response => {
+        block: Orb::Models::CreditBlockListInvoicesResponse::Block,
+        invoices: ^(Orb::Internal::Type::ArrayOf[Orb::Models::CreditBlockListInvoicesResponse::Invoice])
+      }
+    end
+  end
 end

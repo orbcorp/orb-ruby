@@ -1,0 +1,46 @@
+module Orb
+  module Models
+    type license_create_params =
+      {
+        external_license_id: String,
+        license_type_id: String,
+        subscription_id: String,
+        end_date: Date?,
+        start_date: Date?
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class LicenseCreateParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor external_license_id: String
+
+      attr_accessor license_type_id: String
+
+      attr_accessor subscription_id: String
+
+      attr_accessor end_date: Date?
+
+      attr_accessor start_date: Date?
+
+      def initialize: (
+        external_license_id: String,
+        license_type_id: String,
+        subscription_id: String,
+        ?end_date: Date?,
+        ?start_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        external_license_id: String,
+        license_type_id: String,
+        subscription_id: String,
+        end_date: Date?,
+        start_date: Date?,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end

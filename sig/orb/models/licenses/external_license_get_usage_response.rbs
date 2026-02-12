@@ -1,0 +1,99 @@
+module Orb
+  module Models
+    module Licenses
+      type external_license_get_usage_response =
+        {
+          data: ::Array[Orb::Models::Licenses::ExternalLicenseGetUsageResponse::Data],
+          pagination_metadata: Orb::PaginationMetadata
+        }
+
+      class ExternalLicenseGetUsageResponse < Orb::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Orb::Models::Licenses::ExternalLicenseGetUsageResponse::Data]
+
+        attr_accessor pagination_metadata: Orb::PaginationMetadata
+
+        def initialize: (
+          data: ::Array[Orb::Models::Licenses::ExternalLicenseGetUsageResponse::Data],
+          pagination_metadata: Orb::PaginationMetadata
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[Orb::Models::Licenses::ExternalLicenseGetUsageResponse::Data],
+          pagination_metadata: Orb::PaginationMetadata
+        }
+
+        type data =
+          {
+            allocated_credits: Float,
+            consumed_credits: Float,
+            end_date: Date,
+            license_type_id: String,
+            pricing_unit: String,
+            remaining_credits: Float,
+            start_date: Date,
+            subscription_id: String,
+            allocation_eligible_credits: Float?,
+            external_license_id: String?,
+            license_id: String?,
+            shared_pool_credits: Float?
+          }
+
+        class Data < Orb::Internal::Type::BaseModel
+          attr_accessor allocated_credits: Float
+
+          attr_accessor consumed_credits: Float
+
+          attr_accessor end_date: Date
+
+          attr_accessor license_type_id: String
+
+          attr_accessor pricing_unit: String
+
+          attr_accessor remaining_credits: Float
+
+          attr_accessor start_date: Date
+
+          attr_accessor subscription_id: String
+
+          attr_accessor allocation_eligible_credits: Float?
+
+          attr_accessor external_license_id: String?
+
+          attr_accessor license_id: String?
+
+          attr_accessor shared_pool_credits: Float?
+
+          def initialize: (
+            allocated_credits: Float,
+            consumed_credits: Float,
+            end_date: Date,
+            license_type_id: String,
+            pricing_unit: String,
+            remaining_credits: Float,
+            start_date: Date,
+            subscription_id: String,
+            ?allocation_eligible_credits: Float?,
+            ?external_license_id: String?,
+            ?license_id: String?,
+            ?shared_pool_credits: Float?
+          ) -> void
+
+          def to_hash: -> {
+            allocated_credits: Float,
+            consumed_credits: Float,
+            end_date: Date,
+            license_type_id: String,
+            pricing_unit: String,
+            remaining_credits: Float,
+            start_date: Date,
+            subscription_id: String,
+            allocation_eligible_credits: Float?,
+            external_license_id: String?,
+            license_id: String?,
+            shared_pool_credits: Float?
+          }
+        end
+      end
+    end
+  end
+end

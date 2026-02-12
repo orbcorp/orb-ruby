@@ -119,6 +119,8 @@ module Orb
 
   CreditBlockDeleteParams = Orb::Models::CreditBlockDeleteParams
 
+  CreditBlockListInvoicesParams = Orb::Models::CreditBlockListInvoicesParams
+
   CreditBlockRetrieveParams = Orb::Models::CreditBlockRetrieveParams
 
   CreditNote = Orb::Models::CreditNote
@@ -210,6 +212,8 @@ module Orb
 
   InvoiceIssueParams = Orb::Models::InvoiceIssueParams
 
+  InvoiceIssueSummaryParams = Orb::Models::InvoiceIssueSummaryParams
+
   InvoiceLevelDiscount = Orb::Models::InvoiceLevelDiscount
 
   InvoiceLineItemCreateParams = Orb::Models::InvoiceLineItemCreateParams
@@ -241,6 +245,24 @@ module Orb
   ItemSlim = Orb::Models::ItemSlim
 
   ItemUpdateParams = Orb::Models::ItemUpdateParams
+
+  LicenseCreateParams = Orb::Models::LicenseCreateParams
+
+  LicenseDeactivateParams = Orb::Models::LicenseDeactivateParams
+
+  LicenseListParams = Orb::Models::LicenseListParams
+
+  LicenseRetrieveByExternalIDParams = Orb::Models::LicenseRetrieveByExternalIDParams
+
+  LicenseRetrieveParams = Orb::Models::LicenseRetrieveParams
+
+  Licenses = Orb::Models::Licenses
+
+  LicenseTypeCreateParams = Orb::Models::LicenseTypeCreateParams
+
+  LicenseTypeListParams = Orb::Models::LicenseTypeListParams
+
+  LicenseTypeRetrieveParams = Orb::Models::LicenseTypeRetrieveParams
 
   MatrixConfig = Orb::Models::MatrixConfig
 
