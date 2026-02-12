@@ -1,0 +1,64 @@
+module Orb
+  module Models
+    type license_list_params =
+      {
+        subscription_id: String,
+        cursor: String?,
+        external_license_id: String?,
+        license_type_id: String?,
+        limit: Integer,
+        status: Orb::Models::LicenseListParams::status?
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class LicenseListParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor subscription_id: String
+
+      attr_accessor cursor: String?
+
+      attr_accessor external_license_id: String?
+
+      attr_accessor license_type_id: String?
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_accessor status: Orb::Models::LicenseListParams::status?
+
+      def initialize: (
+        subscription_id: String,
+        ?cursor: String?,
+        ?external_license_id: String?,
+        ?license_type_id: String?,
+        ?limit: Integer,
+        ?status: Orb::Models::LicenseListParams::status?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        subscription_id: String,
+        cursor: String?,
+        external_license_id: String?,
+        license_type_id: String?,
+        limit: Integer,
+        status: Orb::Models::LicenseListParams::status?,
+        request_options: Orb::RequestOptions
+      }
+
+      type status = :active | :inactive
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE: :active
+        INACTIVE: :inactive
+
+        def self?.values: -> ::Array[Orb::Models::LicenseListParams::status]
+      end
+    end
+  end
+end

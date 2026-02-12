@@ -1,0 +1,24 @@
+module Orb
+  module Resources
+    class LicenseTypes
+      def create: (
+        grouping_key: String,
+        name: String,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::LicenseTypeCreateResponse
+
+      def retrieve: (
+        String license_type_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::LicenseTypeRetrieveResponse
+
+      def list: (
+        ?cursor: String?,
+        ?limit: Integer,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Internal::Page[Orb::Models::LicenseTypeListResponse]
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

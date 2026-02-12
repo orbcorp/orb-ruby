@@ -23,6 +23,9 @@ module Orb
       module Events
       end
 
+      module Licenses
+      end
+
       module Plans
       end
 

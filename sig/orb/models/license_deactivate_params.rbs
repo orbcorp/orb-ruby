@@ -1,0 +1,20 @@
+module Orb
+  module Models
+    type license_deactivate_params =
+      { end_date: Date? } & Orb::Internal::Type::request_parameters
+
+    class LicenseDeactivateParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor end_date: Date?
+
+      def initialize: (
+        ?end_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> { end_date: Date?, request_options: Orb::RequestOptions }
+    end
+  end
+end

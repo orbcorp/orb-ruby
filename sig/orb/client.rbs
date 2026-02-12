@@ -44,6 +44,10 @@ module Orb
 
     attr_reader credit_blocks: Orb::Resources::CreditBlocks
 
+    attr_reader license_types: Orb::Resources::LicenseTypes
+
+    attr_reader licenses: Orb::Resources::Licenses
+
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (

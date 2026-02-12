@@ -269,6 +269,41 @@ module Orb
       end
 
       # Some parameter documentations has been truncated, see
+      # {Orb::Models::InvoiceIssueSummaryParams} for more details.
+      #
+      # This endpoint allows an eligible invoice to be issued manually. This is only
+      # possible with invoices where status is `draft`, `will_auto_issue` is false, and
+      # an `eligible_to_issue_at` is a time in the past. Issuing an invoice could
+      # possibly trigger side effects, some of which could be customer-visible (e.g.
+      # sending emails, auto-collecting payment, syncing the invoice to external
+      # providers, etc).
+      #
+      # This is a lighter-weight alternative to the issue invoice endpoint, returning an
+      # invoice summary without any line item details.
+      #
+      # @overload issue_summary(invoice_id, synchronous: nil, request_options: {})
+      #
+      # @param invoice_id [String]
+      #
+      # @param synchronous [Boolean] If true, the invoice will be issued synchronously. If false, the invoice will be
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::InvoiceIssueSummaryResponse]
+      #
+      # @see Orb::Models::InvoiceIssueSummaryParams
+      def issue_summary(invoice_id, params = {})
+        parsed, options = Orb::InvoiceIssueSummaryParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["invoices/summary/%1$s/issue", invoice_id],
+          body: parsed,
+          model: Orb::Models::InvoiceIssueSummaryResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Orb::Models::InvoiceListSummaryParams} for more details.
       #
       # This is a lighter-weight endpoint that returns a list of all

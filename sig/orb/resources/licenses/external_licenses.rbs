@@ -1,0 +1,21 @@
+module Orb
+  module Resources
+    class Licenses
+      class ExternalLicenses
+        def get_usage: (
+          String external_license_id,
+          license_type_id: String,
+          subscription_id: String,
+          ?cursor: String?,
+          ?end_date: Date?,
+          ?group_by: ::Array[String]?,
+          ?limit: Integer,
+          ?start_date: Date?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Licenses::ExternalLicenseGetUsageResponse
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,18 @@
+module Orb
+  module Models
+    type license_type_retrieve_response =
+      { id: String, grouping_key: String, name: String }
+
+    class LicenseTypeRetrieveResponse < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor grouping_key: String
+
+      attr_accessor name: String
+
+      def initialize: (id: String, grouping_key: String, name: String) -> void
+
+      def to_hash: -> { id: String, grouping_key: String, name: String }
+    end
+  end
+end

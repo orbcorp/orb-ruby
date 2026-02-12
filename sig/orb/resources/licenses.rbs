@@ -1,0 +1,48 @@
+module Orb
+  module Resources
+    class Licenses
+      attr_reader external_licenses: Orb::Resources::Licenses::ExternalLicenses
+
+      attr_reader usage: Orb::Resources::Licenses::Usage
+
+      def create: (
+        external_license_id: String,
+        license_type_id: String,
+        subscription_id: String,
+        ?end_date: Date?,
+        ?start_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::LicenseCreateResponse
+
+      def retrieve: (
+        String license_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::LicenseRetrieveResponse
+
+      def list: (
+        subscription_id: String,
+        ?cursor: String?,
+        ?external_license_id: String?,
+        ?license_type_id: String?,
+        ?limit: Integer,
+        ?status: Orb::Models::LicenseListParams::status?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Internal::Page[Orb::Models::LicenseListResponse]
+
+      def deactivate: (
+        String license_id,
+        ?end_date: Date?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::LicenseDeactivateResponse
+
+      def retrieve_by_external_id: (
+        String external_license_id,
+        license_type_id: String,
+        subscription_id: String,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::LicenseRetrieveByExternalIDResponse
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

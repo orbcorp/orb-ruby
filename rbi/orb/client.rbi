@@ -64,6 +64,12 @@ module Orb
     sig { returns(Orb::Resources::CreditBlocks) }
     attr_reader :credit_blocks
 
+    sig { returns(Orb::Resources::LicenseTypes) }
+    attr_reader :license_types
+
+    sig { returns(Orb::Resources::Licenses) }
+    attr_reader :licenses
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

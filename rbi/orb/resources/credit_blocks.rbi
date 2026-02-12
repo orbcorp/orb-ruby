@@ -37,6 +37,29 @@ module Orb
       def delete(block_id, request_options: {})
       end
 
+      # This endpoint returns the credit block and its associated purchasing invoices.
+      #
+      # If a credit block was purchased (as opposed to being manually added or allocated
+      # from a subscription), this endpoint returns the invoices that were created to
+      # charge the customer for the credit block. For credit blocks with payment
+      # schedules spanning multiple periods (e.g., monthly payments over 12 months),
+      # multiple invoices will be returned.
+      #
+      # If the credit block was not purchased (e.g., manual increment, allocation), an
+      # empty invoices list is returned.
+      #
+      # **Note: This endpoint is currently experimental and its interface may change in
+      # future releases. Please contact support before building production integrations
+      # against this endpoint.**
+      sig do
+        params(
+          block_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::CreditBlockListInvoicesResponse)
+      end
+      def list_invoices(block_id, request_options: {})
+      end
+
       # @api private
       sig { params(client: Orb::Client).returns(T.attached_class) }
       def self.new(client:)
