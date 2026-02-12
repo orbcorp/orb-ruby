@@ -18,6 +18,7 @@ class Orb::Test::Resources::CreditBlocksTest < Orb::Test::ResourceTest
         expiry_date: Time | nil,
         filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::CreditBlockRetrieveResponse::Filter]),
         maximum_initial_balance: Float | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
         status: Orb::Models::CreditBlockRetrieveResponse::Status
       }

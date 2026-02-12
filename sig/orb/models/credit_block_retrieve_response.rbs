@@ -8,6 +8,7 @@ module Orb
         expiry_date: Time?,
         filters: ::Array[Orb::Models::CreditBlockRetrieveResponse::Filter],
         maximum_initial_balance: Float?,
+        metadata: ::Hash[Symbol, String],
         per_unit_cost_basis: String?,
         status: Orb::Models::CreditBlockRetrieveResponse::status
       }
@@ -25,6 +26,8 @@ module Orb
 
       attr_accessor maximum_initial_balance: Float?
 
+      attr_accessor metadata: ::Hash[Symbol, String]
+
       attr_accessor per_unit_cost_basis: String?
 
       attr_accessor status: Orb::Models::CreditBlockRetrieveResponse::status
@@ -36,6 +39,7 @@ module Orb
         expiry_date: Time?,
         filters: ::Array[Orb::Models::CreditBlockRetrieveResponse::Filter],
         maximum_initial_balance: Float?,
+        metadata: ::Hash[Symbol, String],
         per_unit_cost_basis: String?,
         status: Orb::Models::CreditBlockRetrieveResponse::status
       ) -> void
@@ -47,6 +51,7 @@ module Orb
         expiry_date: Time?,
         filters: ::Array[Orb::Models::CreditBlockRetrieveResponse::Filter],
         maximum_initial_balance: Float?,
+        metadata: ::Hash[Symbol, String],
         per_unit_cost_basis: String?,
         status: Orb::Models::CreditBlockRetrieveResponse::status
       }
