@@ -21,6 +21,26 @@ module Orb
         #   @return [String, nil]
         optional :cursor, String, nil?: true
 
+        # @!attribute effective_date_gt
+        #
+        #   @return [Time, nil]
+        optional :effective_date_gt, Time, nil?: true
+
+        # @!attribute effective_date_gte
+        #
+        #   @return [Time, nil]
+        optional :effective_date_gte, Time, nil?: true
+
+        # @!attribute effective_date_lt
+        #
+        #   @return [Time, nil]
+        optional :effective_date_lt, Time, nil?: true
+
+        # @!attribute effective_date_lte
+        #
+        #   @return [Time, nil]
+        optional :effective_date_lte, Time, nil?: true
+
         # @!attribute include_all_blocks
         #   If set to True, all expired and depleted blocks, as well as active block will be
         #   returned.
@@ -34,13 +54,21 @@ module Orb
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!method initialize(currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        # @!method initialize(currency: nil, cursor: nil, effective_date_gt: nil, effective_date_gte: nil, effective_date_lt: nil, effective_date_lte: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Customers::CreditListParams} for more details.
         #
         #   @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #
         #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #
+        #   @param effective_date_gt [Time, nil]
+        #
+        #   @param effective_date_gte [Time, nil]
+        #
+        #   @param effective_date_lt [Time, nil]
+        #
+        #   @param effective_date_lte [Time, nil]
         #
         #   @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
         #

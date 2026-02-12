@@ -21,6 +21,18 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :cursor
 
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :effective_date_gt
+
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :effective_date_gte
+
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :effective_date_lt
+
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :effective_date_lte
+
         # If set to True, all expired and depleted blocks, as well as active block will be
         # returned.
         sig { returns(T.nilable(T::Boolean)) }
@@ -40,6 +52,10 @@ module Orb
           params(
             currency: T.nilable(String),
             cursor: T.nilable(String),
+            effective_date_gt: T.nilable(Time),
+            effective_date_gte: T.nilable(Time),
+            effective_date_lt: T.nilable(Time),
+            effective_date_lte: T.nilable(Time),
             include_all_blocks: T::Boolean,
             limit: Integer,
             request_options: Orb::RequestOptions::OrHash
@@ -51,6 +67,10 @@ module Orb
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
           # from the initial request.
           cursor: nil,
+          effective_date_gt: nil,
+          effective_date_gte: nil,
+          effective_date_lt: nil,
+          effective_date_lte: nil,
           # If set to True, all expired and depleted blocks, as well as active block will be
           # returned.
           include_all_blocks: nil,
@@ -65,6 +85,10 @@ module Orb
             {
               currency: T.nilable(String),
               cursor: T.nilable(String),
+              effective_date_gt: T.nilable(Time),
+              effective_date_gte: T.nilable(Time),
+              effective_date_lt: T.nilable(Time),
+              effective_date_lte: T.nilable(Time),
               include_all_blocks: T::Boolean,
               limit: Integer,
               request_options: Orb::RequestOptions

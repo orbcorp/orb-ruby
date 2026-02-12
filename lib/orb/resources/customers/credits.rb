@@ -21,13 +21,26 @@ module Orb
         # Note that `currency` defaults to credits if not specified. To use a real world
         # currency, set `currency` to an ISO 4217 string.
         #
-        # @overload list(customer_id, currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        # Results can be filtered by the block's `effective_date` using the
+        # `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        # `effective_date[lte]` query parameters. This filters on when the credit block
+        # becomes effective, which may differ from creation time for backdated credits.
+        #
+        # @overload list(customer_id, currency: nil, cursor: nil, effective_date_gt: nil, effective_date_gte: nil, effective_date_lt: nil, effective_date_lte: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #
+        # @param effective_date_gt [Time, nil]
+        #
+        # @param effective_date_gte [Time, nil]
+        #
+        # @param effective_date_lt [Time, nil]
+        #
+        # @param effective_date_lte [Time, nil]
         #
         # @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
         #
@@ -43,7 +56,12 @@ module Orb
           @client.request(
             method: :get,
             path: ["customers/%1$s/credits", customer_id],
-            query: parsed,
+            query: parsed.transform_keys(
+              effective_date_gt: "effective_date[gt]",
+              effective_date_gte: "effective_date[gte]",
+              effective_date_lt: "effective_date[lt]",
+              effective_date_lte: "effective_date[lte]"
+            ),
             page: Orb::Internal::Page,
             model: Orb::Models::Customers::CreditListResponse,
             options: options
@@ -61,13 +79,26 @@ module Orb
         # Note that `currency` defaults to credits if not specified. To use a real world
         # currency, set `currency` to an ISO 4217 string.
         #
-        # @overload list_by_external_id(external_customer_id, currency: nil, cursor: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        # Results can be filtered by the block's `effective_date` using the
+        # `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        # `effective_date[lte]` query parameters. This filters on when the credit block
+        # becomes effective, which may differ from creation time for backdated credits.
+        #
+        # @overload list_by_external_id(external_customer_id, currency: nil, cursor: nil, effective_date_gt: nil, effective_date_gte: nil, effective_date_lt: nil, effective_date_lte: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #
         # @param external_customer_id [String]
         #
         # @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+        #
+        # @param effective_date_gt [Time, nil]
+        #
+        # @param effective_date_gte [Time, nil]
+        #
+        # @param effective_date_lt [Time, nil]
+        #
+        # @param effective_date_lte [Time, nil]
         #
         # @param include_all_blocks [Boolean] If set to True, all expired and depleted blocks, as well as active block will be
         #
@@ -83,7 +114,12 @@ module Orb
           @client.request(
             method: :get,
             path: ["customers/external_customer_id/%1$s/credits", external_customer_id],
-            query: parsed,
+            query: parsed.transform_keys(
+              effective_date_gt: "effective_date[gt]",
+              effective_date_gte: "effective_date[gte]",
+              effective_date_lt: "effective_date[lt]",
+              effective_date_lte: "effective_date[lte]"
+            ),
             page: Orb::Internal::Page,
             model: Orb::Models::Customers::CreditListByExternalIDResponse,
             options: options

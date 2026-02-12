@@ -17,11 +17,20 @@ module Orb
         #
         # Note that `currency` defaults to credits if not specified. To use a real world
         # currency, set `currency` to an ISO 4217 string.
+        #
+        # Results can be filtered by the block's `effective_date` using the
+        # `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        # `effective_date[lte]` query parameters. This filters on when the credit block
+        # becomes effective, which may differ from creation time for backdated credits.
         sig do
           params(
             customer_id: String,
             currency: T.nilable(String),
             cursor: T.nilable(String),
+            effective_date_gt: T.nilable(Time),
+            effective_date_gte: T.nilable(Time),
+            effective_date_lt: T.nilable(Time),
+            effective_date_lte: T.nilable(Time),
             include_all_blocks: T::Boolean,
             limit: Integer,
             request_options: Orb::RequestOptions::OrHash
@@ -36,6 +45,10 @@ module Orb
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
           # from the initial request.
           cursor: nil,
+          effective_date_gt: nil,
+          effective_date_gte: nil,
+          effective_date_lt: nil,
+          effective_date_lte: nil,
           # If set to True, all expired and depleted blocks, as well as active block will be
           # returned.
           include_all_blocks: nil,
@@ -52,11 +65,20 @@ module Orb
         #
         # Note that `currency` defaults to credits if not specified. To use a real world
         # currency, set `currency` to an ISO 4217 string.
+        #
+        # Results can be filtered by the block's `effective_date` using the
+        # `effective_date[gte]`, `effective_date[gt]`, `effective_date[lt]`, and
+        # `effective_date[lte]` query parameters. This filters on when the credit block
+        # becomes effective, which may differ from creation time for backdated credits.
         sig do
           params(
             external_customer_id: String,
             currency: T.nilable(String),
             cursor: T.nilable(String),
+            effective_date_gt: T.nilable(Time),
+            effective_date_gte: T.nilable(Time),
+            effective_date_lt: T.nilable(Time),
+            effective_date_lte: T.nilable(Time),
             include_all_blocks: T::Boolean,
             limit: Integer,
             request_options: Orb::RequestOptions::OrHash
@@ -73,6 +95,10 @@ module Orb
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
           # from the initial request.
           cursor: nil,
+          effective_date_gt: nil,
+          effective_date_gte: nil,
+          effective_date_lt: nil,
+          effective_date_lte: nil,
           # If set to True, all expired and depleted blocks, as well as active block will be
           # returned.
           include_all_blocks: nil,
