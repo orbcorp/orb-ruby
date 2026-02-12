@@ -1,0 +1,61 @@
+module Orb
+  module Models
+    type license_retrieve_response =
+      {
+        id: String,
+        end_date: Time?,
+        external_license_id: String,
+        license_type_id: String,
+        start_date: Time,
+        status: Orb::Models::LicenseRetrieveResponse::status,
+        subscription_id: String
+      }
+
+    class LicenseRetrieveResponse < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor end_date: Time?
+
+      attr_accessor external_license_id: String
+
+      attr_accessor license_type_id: String
+
+      attr_accessor start_date: Time
+
+      attr_accessor status: Orb::Models::LicenseRetrieveResponse::status
+
+      attr_accessor subscription_id: String
+
+      def initialize: (
+        id: String,
+        end_date: Time?,
+        external_license_id: String,
+        license_type_id: String,
+        start_date: Time,
+        status: Orb::Models::LicenseRetrieveResponse::status,
+        subscription_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        end_date: Time?,
+        external_license_id: String,
+        license_type_id: String,
+        start_date: Time,
+        status: Orb::Models::LicenseRetrieveResponse::status,
+        subscription_id: String
+      }
+
+      type status = :active | :inactive
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE: :active
+        INACTIVE: :inactive
+
+        def self?.values: -> ::Array[Orb::Models::LicenseRetrieveResponse::status]
+      end
+    end
+  end
+end

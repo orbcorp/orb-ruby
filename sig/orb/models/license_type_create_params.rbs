@@ -1,0 +1,28 @@
+module Orb
+  module Models
+    type license_type_create_params =
+      { grouping_key: String, name: String }
+      & Orb::Internal::Type::request_parameters
+
+    class LicenseTypeCreateParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor grouping_key: String
+
+      attr_accessor name: String
+
+      def initialize: (
+        grouping_key: String,
+        name: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        grouping_key: String,
+        name: String,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end

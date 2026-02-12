@@ -69,6 +69,12 @@ module Orb
     # @return [Orb::Resources::CreditBlocks]
     attr_reader :credit_blocks
 
+    # @return [Orb::Resources::LicenseTypes]
+    attr_reader :license_types
+
+    # @return [Orb::Resources::Licenses]
+    attr_reader :licenses
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -137,6 +143,8 @@ module Orb
       @dimensional_price_groups = Orb::Resources::DimensionalPriceGroups.new(client: self)
       @subscription_changes = Orb::Resources::SubscriptionChanges.new(client: self)
       @credit_blocks = Orb::Resources::CreditBlocks.new(client: self)
+      @license_types = Orb::Resources::LicenseTypes.new(client: self)
+      @licenses = Orb::Resources::Licenses.new(client: self)
     end
   end
 end

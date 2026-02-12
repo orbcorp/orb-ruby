@@ -70,6 +70,12 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
 
+      def issue_summary: (
+        String invoice_id,
+        ?synchronous: bool,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::InvoiceIssueSummaryResponse
+
       def list_summary: (
         ?amount: String?,
         ?amount_gt: String?,

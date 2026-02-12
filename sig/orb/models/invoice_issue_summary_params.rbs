@@ -1,0 +1,25 @@
+module Orb
+  module Models
+    type invoice_issue_summary_params =
+      { synchronous: bool } & Orb::Internal::Type::request_parameters
+
+    class InvoiceIssueSummaryParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_reader synchronous: bool?
+
+      def synchronous=: (bool) -> bool
+
+      def initialize: (
+        ?synchronous: bool,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        synchronous: bool,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end

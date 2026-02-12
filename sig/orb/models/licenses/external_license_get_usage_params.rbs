@@ -1,0 +1,60 @@
+module Orb
+  module Models
+    module Licenses
+      type external_license_get_usage_params =
+        {
+          license_type_id: String,
+          subscription_id: String,
+          cursor: String?,
+          end_date: Date?,
+          group_by: ::Array[String]?,
+          limit: Integer,
+          start_date: Date?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class ExternalLicenseGetUsageParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor license_type_id: String
+
+        attr_accessor subscription_id: String
+
+        attr_accessor cursor: String?
+
+        attr_accessor end_date: Date?
+
+        attr_accessor group_by: ::Array[String]?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_accessor start_date: Date?
+
+        def initialize: (
+          license_type_id: String,
+          subscription_id: String,
+          ?cursor: String?,
+          ?end_date: Date?,
+          ?group_by: ::Array[String]?,
+          ?limit: Integer,
+          ?start_date: Date?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          license_type_id: String,
+          subscription_id: String,
+          cursor: String?,
+          end_date: Date?,
+          group_by: ::Array[String]?,
+          limit: Integer,
+          start_date: Date?,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end
