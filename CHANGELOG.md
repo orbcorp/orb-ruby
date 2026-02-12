@@ -1,5 +1,103 @@
 # Changelog
 
+## 1.12.0 (2026-02-12)
+
+Full Changelog: [v1.11.2...v1.12.0](https://github.com/orbcorp/orb-ruby/compare/v1.11.2...v1.12.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** define shared model ConversionRateConfig
+
+### Features
+
+* **api:** api update ([25dea19](https://github.com/orbcorp/orb-ruby/commit/25dea196cdd20a1099d54e7f7872037cc76de888))
+* **api:** api update ([065b4c0](https://github.com/orbcorp/orb-ruby/commit/065b4c072106c25518386f10483230ce3b8369bf))
+* **api:** api update ([1cae097](https://github.com/orbcorp/orb-ruby/commit/1cae0970ef281a06ac1004bae27c2870d4015834))
+* **api:** api update ([20be312](https://github.com/orbcorp/orb-ruby/commit/20be31255b3b157e64bcee41c530767ebae7ae46))
+* **api:** api update ([82a95e1](https://github.com/orbcorp/orb-ruby/commit/82a95e16b9a27835527f87601e8017029dbb6adf))
+* **api:** api update ([b28aaa6](https://github.com/orbcorp/orb-ruby/commit/b28aaa6a7b47420b5006876f407e81da69da2960))
+* **api:** api update ([99c34e5](https://github.com/orbcorp/orb-ruby/commit/99c34e5534e553bb0d1371029ebb187a4996d8a0))
+* **api:** api update ([06f2f3a](https://github.com/orbcorp/orb-ruby/commit/06f2f3a630bebb897c6d8179d26b874d57aa5170))
+* **api:** api update ([becbbfb](https://github.com/orbcorp/orb-ruby/commit/becbbfbda376e7262edc85e8b62033c900802aa3))
+* **api:** api update ([b6cd2e4](https://github.com/orbcorp/orb-ruby/commit/b6cd2e48e6f93bd9c35a03370bf2bcaec81dfe40))
+* **api:** api update ([87a0726](https://github.com/orbcorp/orb-ruby/commit/87a07260f66116747a5e9fc1fef8b04e2ed2ce73))
+* **api:** api update ([be086a4](https://github.com/orbcorp/orb-ruby/commit/be086a41778e92515daa377fd87f6f0abfca72ae))
+* **api:** api update ([9f52897](https://github.com/orbcorp/orb-ruby/commit/9f528979375caa801a1cf91f8bf5d3918a09c4ef))
+* **api:** api update ([98aaf7c](https://github.com/orbcorp/orb-ruby/commit/98aaf7c01983329fe7900895b91f79192b38e15e))
+* **api:** api update ([921d3c6](https://github.com/orbcorp/orb-ruby/commit/921d3c6a87d758ce6a1cc3fcfd7f4b81e0482d86))
+* **api:** api update ([88e3262](https://github.com/orbcorp/orb-ruby/commit/88e32624c94e7de29738f086c90e41b07dcdd760))
+* **api:** api update ([4de7f17](https://github.com/orbcorp/orb-ruby/commit/4de7f17ac1c5fe9b440348e06529528ef41a317e))
+* **api:** api update ([6ada340](https://github.com/orbcorp/orb-ruby/commit/6ada3406fbcb73e97da781bffaa5c0dcc81d3ad1))
+* **api:** api update ([455c9c1](https://github.com/orbcorp/orb-ruby/commit/455c9c18b77ee41a6b9c27fc791cc622553b83f8))
+* **api:** api update ([024cfe9](https://github.com/orbcorp/orb-ruby/commit/024cfe9ce8ec66066224003fd8476cde441dfcba))
+* **api:** api update ([d677c86](https://github.com/orbcorp/orb-ruby/commit/d677c8652f13f00ab40e63799223f64807d4d624))
+* **api:** api update ([97803ff](https://github.com/orbcorp/orb-ruby/commit/97803ffbb43d1730ebb2f23386b241a3e9f99ee4))
+* **api:** api update ([e883731](https://github.com/orbcorp/orb-ruby/commit/e8837312b28020f32d984bc83003be7c5d0bbe58))
+* **api:** api update ([c82723f](https://github.com/orbcorp/orb-ruby/commit/c82723f6b075de5b8b806f4523437c31bc3f4d36))
+* **api:** api update ([b3fa16d](https://github.com/orbcorp/orb-ruby/commit/b3fa16d2ae0fa06ed8c04f7c10634d240152e8b5))
+* **api:** api update ([863a72d](https://github.com/orbcorp/orb-ruby/commit/863a72d5bc1ed22405334019d51e987daadedff4))
+* **api:** api update ([6df80f0](https://github.com/orbcorp/orb-ruby/commit/6df80f039a079ed7c9c15201e6693ac88e64ee12))
+* **api:** api update ([34d9e85](https://github.com/orbcorp/orb-ruby/commit/34d9e857f7863e718aaa844dcf0c299e234e9ab7))
+* **api:** api update ([21271b0](https://github.com/orbcorp/orb-ruby/commit/21271b04f2b4b3af856b02dd156542770683f6d8))
+* **api:** api update ([182e255](https://github.com/orbcorp/orb-ruby/commit/182e255a2ed9a39f774afb700320ff762da40e6d))
+* **api:** api update ([87ab4bb](https://github.com/orbcorp/orb-ruby/commit/87ab4bb08910a9c6e5a7995ca307e8a80c737c39))
+* **api:** api update ([dbeafc7](https://github.com/orbcorp/orb-ruby/commit/dbeafc76cc391a10d8cb21f5db2ef8bb825aee1c))
+* **api:** api update ([f8b2792](https://github.com/orbcorp/orb-ruby/commit/f8b27927f181b45c2196de229a35b5eae6122f46))
+* **api:** api update ([f8c9f2c](https://github.com/orbcorp/orb-ruby/commit/f8c9f2c57e94d09130d68b080b0adc5ae38bbd30))
+* **api:** api update ([d1fc414](https://github.com/orbcorp/orb-ruby/commit/d1fc414cb976afe6bb19dc284dceb7ed7bfa38c2))
+* **api:** api update ([83a6ffd](https://github.com/orbcorp/orb-ruby/commit/83a6ffda9613b6571029f01235d673d179294c94))
+* **api:** api update ([343fa0b](https://github.com/orbcorp/orb-ruby/commit/343fa0b8a9a724b73f8abe5e9de34795f232e065))
+* **api:** api update ([b89ea6d](https://github.com/orbcorp/orb-ruby/commit/b89ea6d10a12909e77c76617d11068ade5cf6fc8))
+* **api:** api update ([be80854](https://github.com/orbcorp/orb-ruby/commit/be80854305b7dd24350c0a955de536d37233bc35))
+* **api:** api update ([8e3ac4b](https://github.com/orbcorp/orb-ruby/commit/8e3ac4b248b2aca6ac6d5360f34be8521b05bc83))
+* **api:** api update ([246283d](https://github.com/orbcorp/orb-ruby/commit/246283dc41fd3d9b128ac44ccd8550ae7b987578))
+* **api:** api update ([bc6c8f9](https://github.com/orbcorp/orb-ruby/commit/bc6c8f9914220783adeb80fa6a9eb87d009fa58d))
+* **api:** api update ([394af82](https://github.com/orbcorp/orb-ruby/commit/394af826a5ba3cd462447304c8ec659038e67617))
+* **api:** define shared model ConversionRateConfig ([aa669fe](https://github.com/orbcorp/orb-ruby/commit/aa669fef9079dbac856be83d56cabd826e3c47c0))
+* **api:** manual updates ([85ded24](https://github.com/orbcorp/orb-ruby/commit/85ded24125953bfdaac7a5f862633929c07b0546))
+* **api:** manual updates ([45682e2](https://github.com/orbcorp/orb-ruby/commit/45682e2e4835f5575b9efc9c5d0bd307f5610baa))
+* expose response headers for both streams and errors ([cafba93](https://github.com/orbcorp/orb-ruby/commit/cafba93f8798a84815c9c9d1183327e498cb6b95))
+* extract minimum composite to type ([3bd8a47](https://github.com/orbcorp/orb-ruby/commit/3bd8a47a7c0601ccb9c43b472131562319a59e51))
+* handle thread interrupts in the core HTTP client ([bd23d78](https://github.com/orbcorp/orb-ruby/commit/bd23d789ed205441ea6f6d76324278867eaf59eb))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([22b2593](https://github.com/orbcorp/orb-ruby/commit/22b25937df7cf77dbf1e1a9836e5cd822087d338))
+* always send `filename=...` for multipart requests where a file is expected ([aefe58f](https://github.com/orbcorp/orb-ruby/commit/aefe58f92b1296aa30172ce8206f84723a3a326c))
+* better thread safety via early initializing SSL store during HTTP client creation ([89f6a24](https://github.com/orbcorp/orb-ruby/commit/89f6a24e6ed1147c45a583c91ac368932cf37ddb))
+* calling `break` out of streams should be instantaneous ([c7f51d6](https://github.com/orbcorp/orb-ruby/commit/c7f51d6d47678f33015fdffc78e6cff826a90a2c))
+* **client:** always add content-length to post body, even when empty ([59f4f8b](https://github.com/orbcorp/orb-ruby/commit/59f4f8b2416b68c556f75e8f4e89d647cd93a1fe))
+* **client:** loosen json header parsing ([60bf3f3](https://github.com/orbcorp/orb-ruby/commit/60bf3f3bfda9caa36269e75ccb5d5df6c4811bd0))
+* coroutine leaks from connection pool ([a4faf55](https://github.com/orbcorp/orb-ruby/commit/a4faf55a381bcdaae01f0a22cd8922038af38f69))
+* **internal:** use null byte as file separator in the fast formatting script ([58f092f](https://github.com/orbcorp/orb-ruby/commit/58f092f32214ae8deb17db5e002f10fafd60378e))
+* issue where json.parse errors when receiving HTTP 204 with nobody ([ecbf9f1](https://github.com/orbcorp/orb-ruby/commit/ecbf9f18b8229cb9d9c729a346a5f00dc1be2427))
+* shorten multipart boundary sep to less than RFC specificed max length ([984b6ad](https://github.com/orbcorp/orb-ruby/commit/984b6ad403302ab97275136e145dce322ce82e9b))
+* should not reuse buffers for `IO.copy_stream` interop ([11db4b2](https://github.com/orbcorp/orb-ruby/commit/11db4b2e6edf33581a21c6eacfbdaf347af418ea))
+
+
+### Performance Improvements
+
+* faster code formatting ([9538971](https://github.com/orbcorp/orb-ruby/commit/95389713d7c3b97ec3cf0963b86211d5fba72fe4))
+
+
+### Chores
+
+* allow fast-format to use bsd sed as well ([6566897](https://github.com/orbcorp/orb-ruby/commit/6566897b0797bdbad69e21ed05d97f4ce1509f07))
+* bump dependency version and update sorbet types ([26ac9ce](https://github.com/orbcorp/orb-ruby/commit/26ac9ce1b4ae0315417ece34fc02b63b569db0c6))
+* **client:** send user-agent header ([ed62aa3](https://github.com/orbcorp/orb-ruby/commit/ed62aa37562af4ddca14635d87bc44fe049df745))
+* do not install brew dependencies in ./scripts/bootstrap by default ([c7d1331](https://github.com/orbcorp/orb-ruby/commit/c7d13317194914b406f35048eb198c715e3645da))
+* **docs:** remove www prefix ([fd0b56a](https://github.com/orbcorp/orb-ruby/commit/fd0b56a55df0ae699a00fa168c3cf1524bff5a23))
+* explicitly require "base64" gem ([2dc59bc](https://github.com/orbcorp/orb-ruby/commit/2dc59bc83506fbb02785f784023a217e0472513e))
+* fix typo in descriptions ([ebb72da](https://github.com/orbcorp/orb-ruby/commit/ebb72daa8a4a736d1c4a68c44bf346d3fc93c45d))
+* ignore linter error for tests having large collections ([717bc2e](https://github.com/orbcorp/orb-ruby/commit/717bc2e5e09f3c6cea641189a2a9eb516dcbf0ec))
+* **internal:** codegen related update ([fced85a](https://github.com/orbcorp/orb-ruby/commit/fced85ad0524759c290f1a5afaad4e7baaa1525e))
+* **internal:** codegen related update ([01a2d5d](https://github.com/orbcorp/orb-ruby/commit/01a2d5dbfe250eab0597658dd7156ba234bf6424))
+* **internal:** codegen related update ([88e7ca5](https://github.com/orbcorp/orb-ruby/commit/88e7ca54ee9a3aeed69433c775638765f2838514))
+* **internal:** codegen related update ([d7dd0b8](https://github.com/orbcorp/orb-ruby/commit/d7dd0b8380fd9ec066388c3327ed16fdba9f7fa6))
+* **internal:** update `actions/checkout` version ([03524b6](https://github.com/orbcorp/orb-ruby/commit/03524b6b0a9252b46637bde590b46a98f67ec497))
+* move `cgi` into dependencies for ruby 4 ([09ae2b0](https://github.com/orbcorp/orb-ruby/commit/09ae2b03acf7b359b387b682250cd412e0834057))
+
 ## 1.11.2 (2025-08-29)
 
 Full Changelog: [v1.11.1...v1.11.2](https://github.com/orbcorp/orb-ruby/compare/v1.11.1...v1.11.2)
