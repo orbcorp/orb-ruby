@@ -34,6 +34,15 @@ module Orb
       #   @return [Float, nil]
       required :maximum_initial_balance, Float, nil?: true
 
+      # @!attribute metadata
+      #   User specified key-value pairs for the resource. If not present, this defaults
+      #   to an empty dictionary. Individual keys can be removed by setting the value to
+      #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+      #   `null`.
+      #
+      #   @return [Hash{Symbol=>String}]
+      required :metadata, Orb::Internal::Type::HashOf[String]
+
       # @!attribute per_unit_cost_basis
       #
       #   @return [String, nil]
@@ -44,16 +53,28 @@ module Orb
       #   @return [Symbol, Orb::Models::CreditBlockRetrieveResponse::Status]
       required :status, enum: -> { Orb::Models::CreditBlockRetrieveResponse::Status }
 
-      # @!method initialize(id:, balance:, effective_date:, expiry_date:, filters:, maximum_initial_balance:, per_unit_cost_basis:, status:)
+      # @!method initialize(id:, balance:, effective_date:, expiry_date:, filters:, maximum_initial_balance:, metadata:, per_unit_cost_basis:, status:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::CreditBlockRetrieveResponse} for more details.
+      #
       #   The Credit Block resource models prepaid credits within Orb.
       #
       #   @param id [String]
+      #
       #   @param balance [Float]
+      #
       #   @param effective_date [Time, nil]
+      #
       #   @param expiry_date [Time, nil]
+      #
       #   @param filters [Array<Orb::Models::CreditBlockRetrieveResponse::Filter>]
+      #
       #   @param maximum_initial_balance [Float, nil]
+      #
+      #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+      #
       #   @param per_unit_cost_basis [String, nil]
+      #
       #   @param status [Symbol, Orb::Models::CreditBlockRetrieveResponse::Status]
 
       class Filter < Orb::Internal::Type::BaseModel

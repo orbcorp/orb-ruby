@@ -32,6 +32,13 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :maximum_initial_balance
 
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
         sig { returns(T.nilable(String)) }
         attr_accessor :per_unit_cost_basis
 
@@ -53,6 +60,7 @@ module Orb
                 Orb::Models::Customers::CreditListResponse::Filter::OrHash
               ],
             maximum_initial_balance: T.nilable(Float),
+            metadata: T::Hash[Symbol, String],
             per_unit_cost_basis: T.nilable(String),
             status: Orb::Models::Customers::CreditListResponse::Status::OrSymbol
           ).returns(T.attached_class)
@@ -64,6 +72,11 @@ module Orb
           expiry_date:,
           filters:,
           maximum_initial_balance:,
+          # User specified key-value pairs for the resource. If not present, this defaults
+          # to an empty dictionary. Individual keys can be removed by setting the value to
+          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+          # `null`.
+          metadata:,
           per_unit_cost_basis:,
           status:
         )
@@ -79,6 +92,7 @@ module Orb
               filters:
                 T::Array[Orb::Models::Customers::CreditListResponse::Filter],
               maximum_initial_balance: T.nilable(Float),
+              metadata: T::Hash[Symbol, String],
               per_unit_cost_basis: T.nilable(String),
               status:
                 Orb::Models::Customers::CreditListResponse::Status::TaggedSymbol

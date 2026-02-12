@@ -5,6 +5,10 @@ module Orb
         {
           currency: String?,
           cursor: String?,
+          effective_date_gt: Time?,
+          effective_date_gte: Time?,
+          effective_date_lt: Time?,
+          effective_date_lte: Time?,
           include_all_blocks: bool,
           limit: Integer
         }
@@ -18,6 +22,14 @@ module Orb
 
         attr_accessor cursor: String?
 
+        attr_accessor effective_date_gt: Time?
+
+        attr_accessor effective_date_gte: Time?
+
+        attr_accessor effective_date_lt: Time?
+
+        attr_accessor effective_date_lte: Time?
+
         attr_reader include_all_blocks: bool?
 
         def include_all_blocks=: (bool) -> bool
@@ -29,6 +41,10 @@ module Orb
         def initialize: (
           ?currency: String?,
           ?cursor: String?,
+          ?effective_date_gt: Time?,
+          ?effective_date_gte: Time?,
+          ?effective_date_lt: Time?,
+          ?effective_date_lte: Time?,
           ?include_all_blocks: bool,
           ?limit: Integer,
           ?request_options: Orb::request_opts
@@ -37,6 +53,10 @@ module Orb
         def to_hash: -> {
           currency: String?,
           cursor: String?,
+          effective_date_gt: Time?,
+          effective_date_gte: Time?,
+          effective_date_lt: Time?,
+          effective_date_lte: Time?,
           include_all_blocks: bool,
           limit: Integer,
           request_options: Orb::RequestOptions
