@@ -148,6 +148,7 @@ module Orb
               custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               item_id: String?,
+              mark_as_paid: bool,
               memo: String?,
               net_terms: Integer?,
               require_successful_payment: bool
@@ -162,6 +163,10 @@ module Orb
 
             attr_accessor item_id: String?
 
+            attr_reader mark_as_paid: bool?
+
+            def mark_as_paid=: (bool) -> bool
+
             attr_accessor memo: String?
 
             attr_accessor net_terms: Integer?
@@ -175,6 +180,7 @@ module Orb
               ?custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               ?item_id: String?,
+              ?mark_as_paid: bool,
               ?memo: String?,
               ?net_terms: Integer?,
               ?require_successful_payment: bool
@@ -185,6 +191,7 @@ module Orb
               custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
               invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
               item_id: String?,
+              mark_as_paid: bool,
               memo: String?,
               net_terms: Integer?,
               require_successful_payment: bool
