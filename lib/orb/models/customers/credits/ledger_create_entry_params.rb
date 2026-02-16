@@ -241,6 +241,12 @@ module Orb
             #   @return [String, nil]
             optional :item_id, String, nil?: true
 
+            # @!attribute mark_as_paid
+            #   If true, the new credits purchase invoice will be marked as paid.
+            #
+            #   @return [Boolean, nil]
+            optional :mark_as_paid, Orb::Internal::Type::Boolean
+
             # @!attribute memo
             #   An optional memo to display on the invoice.
             #
@@ -264,7 +270,7 @@ module Orb
             #   @return [Boolean, nil]
             optional :require_successful_payment, Orb::Internal::Type::Boolean
 
-            # @!method initialize(auto_collection:, custom_due_date: nil, invoice_date: nil, item_id: nil, memo: nil, net_terms: nil, require_successful_payment: nil)
+            # @!method initialize(auto_collection:, custom_due_date: nil, invoice_date: nil, item_id: nil, mark_as_paid: nil, memo: nil, net_terms: nil, require_successful_payment: nil)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings} for
             #   more details.
@@ -281,6 +287,8 @@ module Orb
             #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
             #
             #   @param item_id [String, nil] The ID of the Item to be used for the invoice line item. If not provided, a defa
+            #
+            #   @param mark_as_paid [Boolean] If true, the new credits purchase invoice will be marked as paid.
             #
             #   @param memo [String, nil] An optional memo to display on the invoice.
             #

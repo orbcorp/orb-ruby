@@ -424,6 +424,13 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :item_id
 
+            # If true, the new credits purchase invoice will be marked as paid.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :mark_as_paid
+
+            sig { params(mark_as_paid: T::Boolean).void }
+            attr_writer :mark_as_paid
+
             # An optional memo to display on the invoice.
             sig { returns(T.nilable(String)) }
             attr_accessor :memo
@@ -460,6 +467,7 @@ module Orb
                     Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
                   ),
                 item_id: T.nilable(String),
+                mark_as_paid: T::Boolean,
                 memo: T.nilable(String),
                 net_terms: T.nilable(Integer),
                 require_successful_payment: T::Boolean
@@ -479,6 +487,8 @@ module Orb
               # The ID of the Item to be used for the invoice line item. If not provided, a
               # default 'Credits' item will be used.
               item_id: nil,
+              # If true, the new credits purchase invoice will be marked as paid.
+              mark_as_paid: nil,
               # An optional memo to display on the invoice.
               memo: nil,
               # The net terms determines the due date of the invoice. Due date is calculated
@@ -506,6 +516,7 @@ module Orb
                       Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::InvoiceDate::Variants
                     ),
                   item_id: T.nilable(String),
+                  mark_as_paid: T::Boolean,
                   memo: T.nilable(String),
                   net_terms: T.nilable(Integer),
                   require_successful_payment: T::Boolean
