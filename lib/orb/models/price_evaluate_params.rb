@@ -47,7 +47,16 @@ module Orb
       #   @return [Array<String>, nil]
       optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]
 
-      # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, request_options: {})
+      # @!attribute metric_parameter_overrides
+      #   Optional overrides for parameterized billable metric parameters. If the metric
+      #   has parameter definitions and no overrides are provided, defaults will be used.
+      #
+      #   @return [Hash{Symbol=>Object}, nil]
+      optional :metric_parameter_overrides,
+               Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+               nil?: true
+
+      # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, metric_parameter_overrides: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceEvaluateParams} for more details.
       #
@@ -62,6 +71,8 @@ module Orb
       #   @param filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
       #
       #   @param grouping_keys [Array<String>] Properties (or [computed properties](/extensibility/advanced-metrics#computed-pr
+      #
+      #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Optional overrides for parameterized billable metric parameters. If the metric h
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

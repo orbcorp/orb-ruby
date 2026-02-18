@@ -7,7 +7,8 @@ module Orb
         item: Orb::Item,
         metadata: ::Hash[Symbol, String],
         name: String,
-        status: Orb::Models::BillableMetric::status
+        status: Orb::Models::BillableMetric::status,
+        parameter_definitions: ::Array[::Hash[Symbol, top]]?
       }
 
     class BillableMetric < Orb::Internal::Type::BaseModel
@@ -23,13 +24,16 @@ module Orb
 
       attr_accessor status: Orb::Models::BillableMetric::status
 
+      attr_accessor parameter_definitions: ::Array[::Hash[Symbol, top]]?
+
       def initialize: (
         id: String,
         description: String?,
         item: Orb::Item,
         metadata: ::Hash[Symbol, String],
         name: String,
-        status: Orb::Models::BillableMetric::status
+        status: Orb::Models::BillableMetric::status,
+        ?parameter_definitions: ::Array[::Hash[Symbol, top]]?
       ) -> void
 
       def to_hash: -> {
@@ -38,7 +42,8 @@ module Orb
         item: Orb::Item,
         metadata: ::Hash[Symbol, String],
         name: String,
-        status: Orb::Models::BillableMetric::status
+        status: Orb::Models::BillableMetric::status,
+        parameter_definitions: ::Array[::Hash[Symbol, top]]?
       }
 
       type status = :active | :draft | :archived

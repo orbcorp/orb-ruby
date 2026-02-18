@@ -387,6 +387,15 @@ module Orb
         #   @return [String, nil]
         optional :maximum_amount, String, nil?: true
 
+        # @!attribute metric_parameter_overrides
+        #   Override values for parameterized billable metric variables. Keys are parameter
+        #   names, values are the override values.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metric_parameter_overrides,
+                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+                 nil?: true
+
         # @!attribute minimum_amount
         #   @deprecated
         #
@@ -422,7 +431,7 @@ module Orb
         #   @return [Time, nil]
         optional :start_date, Time, nil?: true
 
-        # @!method initialize(allocation_price: nil, discounts: nil, end_date: nil, external_price_id: nil, maximum_amount: nil, minimum_amount: nil, plan_phase_order: nil, price: nil, price_id: nil, start_date: nil)
+        # @!method initialize(allocation_price: nil, discounts: nil, end_date: nil, external_price_id: nil, maximum_amount: nil, metric_parameter_overrides: nil, minimum_amount: nil, plan_phase_order: nil, price: nil, price_id: nil, start_date: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice} for more details.
         #
@@ -435,6 +444,8 @@ module Orb
         #   @param external_price_id [String, nil] The external price id of the price to add to the subscription.
         #
         #   @param maximum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
+        #
+        #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Override values for parameterized billable metric variables. Keys are parameter
         #
         #   @param minimum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         #
@@ -2063,6 +2074,15 @@ module Orb
         #   @return [String, nil]
         optional :maximum_amount, String, nil?: true
 
+        # @!attribute metric_parameter_overrides
+        #   Override values for parameterized billable metric variables. Keys are parameter
+        #   names, values are the override values.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metric_parameter_overrides,
+                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+                 nil?: true
+
         # @!attribute minimum_amount
         #   @deprecated
         #
@@ -2088,7 +2108,7 @@ module Orb
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
-        # @!method initialize(replaces_price_id:, allocation_price: nil, discounts: nil, external_price_id: nil, fixed_price_quantity: nil, maximum_amount: nil, minimum_amount: nil, price: nil, price_id: nil)
+        # @!method initialize(replaces_price_id:, allocation_price: nil, discounts: nil, external_price_id: nil, fixed_price_quantity: nil, maximum_amount: nil, metric_parameter_overrides: nil, minimum_amount: nil, price: nil, price_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice} for more
         #   details.
@@ -2104,6 +2124,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil] The new quantity of the price, if the price is a fixed price.
         #
         #   @param maximum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
+        #
+        #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Override values for parameterized billable metric variables. Keys are parameter
         #
         #   @param minimum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         #

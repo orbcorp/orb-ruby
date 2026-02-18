@@ -7,7 +7,8 @@ module Orb
         customer_id: String?,
         external_customer_id: String?,
         filter: String?,
-        grouping_keys: ::Array[String]
+        grouping_keys: ::Array[String],
+        metric_parameter_overrides: ::Hash[Symbol, top]?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -29,6 +30,8 @@ module Orb
 
       def grouping_keys=: (::Array[String]) -> ::Array[String]
 
+      attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
       def initialize: (
         timeframe_end: Time,
         timeframe_start: Time,
@@ -36,6 +39,7 @@ module Orb
         ?external_customer_id: String?,
         ?filter: String?,
         ?grouping_keys: ::Array[String],
+        ?metric_parameter_overrides: ::Hash[Symbol, top]?,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -46,6 +50,7 @@ module Orb
         external_customer_id: String?,
         filter: String?,
         grouping_keys: ::Array[String],
+        metric_parameter_overrides: ::Hash[Symbol, top]?,
         request_options: Orb::RequestOptions
       }
     end

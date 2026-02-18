@@ -89,7 +89,16 @@ module Orb
       #   @return [Array<String>, nil]
       required :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!method initialize(id:, billing_cycle_day:, can_defer_billing:, current_billing_period_end_date:, current_billing_period_start_date:, end_date:, filter:, fixed_fee_quantity_transitions:, price:, start_date:, usage_customer_ids:)
+      # @!attribute metric_parameter_overrides
+      #   Override values for parameterized billable metric variables. Keys are parameter
+      #   names, values are the override values.
+      #
+      #   @return [Hash{Symbol=>Object}, nil]
+      optional :metric_parameter_overrides,
+               Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+               nil?: true
+
+      # @!method initialize(id:, billing_cycle_day:, can_defer_billing:, current_billing_period_end_date:, current_billing_period_start_date:, end_date:, filter:, fixed_fee_quantity_transitions:, price:, start_date:, usage_customer_ids:, metric_parameter_overrides: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceInterval} for more details.
       #
@@ -118,6 +127,8 @@ module Orb
       #   @param start_date [Time] The start date of the price interval. This is the date that Orb starts billing f
       #
       #   @param usage_customer_ids [Array<String>, nil] A list of customer IDs whose usage events will be aggregated and billed under th
+      #
+      #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Override values for parameterized billable metric variables. Keys are parameter
     end
   end
 end

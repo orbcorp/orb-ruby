@@ -229,6 +229,11 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :maximum_amount
 
+        # Override values for parameterized billable metric variables. Keys are parameter
+        # names, values are the override values (number or string).
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_accessor :metric_parameter_overrides
+
         # The minimum amount that will be billed for this price interval for a given
         # billing period.
         sig { returns(T.nilable(Float)) }
@@ -315,6 +320,7 @@ module Orb
                 ]
               ),
             maximum_amount: T.nilable(Float),
+            metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
             minimum_amount: T.nilable(Float),
             price:
               T.nilable(
@@ -383,6 +389,9 @@ module Orb
           # The maximum amount that will be billed for this price interval for a given
           # billing period.
           maximum_amount: nil,
+          # Override values for parameterized billable metric variables. Keys are parameter
+          # names, values are the override values (number or string).
+          metric_parameter_overrides: nil,
           # The minimum amount that will be billed for this price interval for a given
           # billing period.
           minimum_amount: nil,
@@ -427,6 +436,8 @@ module Orb
                   ]
                 ),
               maximum_amount: T.nilable(Float),
+              metric_parameter_overrides:
+                T.nilable(T::Hash[Symbol, T.anything]),
               minimum_amount: T.nilable(Float),
               price:
                 T.nilable(
@@ -2884,6 +2895,11 @@ module Orb
         end
         attr_accessor :fixed_fee_quantity_transitions
 
+        # Override values for parameterized billable metric variables. Keys are parameter
+        # names, values are the override values (number or string).
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_accessor :metric_parameter_overrides
+
         # The updated start date of this price interval. If not specified, the start date
         # will not be updated.
         sig do
@@ -2923,6 +2939,7 @@ module Orb
                   Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition::OrHash
                 ]
               ),
+            metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
             start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
             usage_customer_ids: T.nilable(T::Array[String])
           ).returns(T.attached_class)
@@ -2950,6 +2967,9 @@ module Orb
           # that this list will overwrite all existing fixed fee quantity transitions on the
           # price interval.
           fixed_fee_quantity_transitions: nil,
+          # Override values for parameterized billable metric variables. Keys are parameter
+          # names, values are the override values (number or string).
+          metric_parameter_overrides: nil,
           # The updated start date of this price interval. If not specified, the start date
           # will not be updated.
           start_date: nil,
@@ -2978,6 +2998,8 @@ module Orb
                     Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition
                   ]
                 ),
+              metric_parameter_overrides:
+                T.nilable(T::Hash[Symbol, T.anything]),
               start_date: T.any(Time, Orb::BillingCycleRelativeDate::OrSymbol),
               usage_customer_ids: T.nilable(T::Array[String])
             }

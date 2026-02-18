@@ -75,6 +75,7 @@ module Orb
         ?external_customer_id: String?,
         ?filter: String?,
         ?grouping_keys: ::Array[String],
+        ?metric_parameter_overrides: ::Hash[Symbol, top]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::PriceEvaluateResponse
 

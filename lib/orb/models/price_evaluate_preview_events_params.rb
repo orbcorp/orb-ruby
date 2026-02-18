@@ -132,6 +132,15 @@ module Orb
         #   @return [Array<String>, nil]
         optional :grouping_keys, Orb::Internal::Type::ArrayOf[String]
 
+        # @!attribute metric_parameter_overrides
+        #   Optional overrides for parameterized billable metric parameters. If the metric
+        #   has parameter definitions and no overrides are provided, defaults will be used.
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metric_parameter_overrides,
+                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+                 nil?: true
+
         # @!attribute price
         #   New floating price request body params.
         #
@@ -148,7 +157,7 @@ module Orb
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
-        # @!method initialize(external_price_id: nil, filter: nil, grouping_keys: nil, price: nil, price_id: nil)
+        # @!method initialize(external_price_id: nil, filter: nil, grouping_keys: nil, metric_parameter_overrides: nil, price: nil, price_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation} for more
         #   details.
@@ -158,6 +167,8 @@ module Orb
         #   @param filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
         #
         #   @param grouping_keys [Array<String>] Properties (or [computed properties](/extensibility/advanced-metrics#computed-pr
+        #
+        #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Optional overrides for parameterized billable metric parameters. If the metric h
         #
         #   @param price [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::CumulativeGroupedAllocation, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Percent, Orb::Models::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::EventOutput, nil] New floating price request body params.
         #

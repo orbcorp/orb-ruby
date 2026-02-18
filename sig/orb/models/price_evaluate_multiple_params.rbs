@@ -51,6 +51,7 @@ module Orb
           external_price_id: String?,
           filter: String?,
           grouping_keys: ::Array[String],
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?,
           price_id: String?
         }
@@ -64,6 +65,8 @@ module Orb
 
         def grouping_keys=: (::Array[String]) -> ::Array[String]
 
+        attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
         attr_accessor price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?
 
         attr_accessor price_id: String?
@@ -72,6 +75,7 @@ module Orb
           ?external_price_id: String?,
           ?filter: String?,
           ?grouping_keys: ::Array[String],
+          ?metric_parameter_overrides: ::Hash[Symbol, top]?,
           ?price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?,
           ?price_id: String?
         ) -> void
@@ -80,6 +84,7 @@ module Orb
           external_price_id: String?,
           filter: String?,
           grouping_keys: ::Array[String],
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           price: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::price?,
           price_id: String?
         }

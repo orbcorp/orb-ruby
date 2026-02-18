@@ -620,6 +620,11 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :maximum_amount
 
+        # Override values for parameterized billable metric variables. Keys are parameter
+        # names, values are the override values.
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_accessor :metric_parameter_overrides
+
         # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         # this price.
         sig { returns(T.nilable(String)) }
@@ -688,6 +693,7 @@ module Orb
             end_date: T.nilable(Time),
             external_price_id: T.nilable(String),
             maximum_amount: T.nilable(String),
+            metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
             minimum_amount: T.nilable(String),
             plan_phase_order: T.nilable(Integer),
             price:
@@ -745,6 +751,9 @@ module Orb
           # [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
           # this price.
           maximum_amount: nil,
+          # Override values for parameterized billable metric variables. Keys are parameter
+          # names, values are the override values.
+          metric_parameter_overrides: nil,
           # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
           # this price.
           minimum_amount: nil,
@@ -769,6 +778,8 @@ module Orb
               end_date: T.nilable(Time),
               external_price_id: T.nilable(String),
               maximum_amount: T.nilable(String),
+              metric_parameter_overrides:
+                T.nilable(T::Hash[Symbol, T.anything]),
               minimum_amount: T.nilable(String),
               plan_phase_order: T.nilable(Integer),
               price:
@@ -3494,6 +3505,11 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :maximum_amount
 
+        # Override values for parameterized billable metric variables. Keys are parameter
+        # names, values are the override values.
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_accessor :metric_parameter_overrides
+
         # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         # the replacement price.
         sig { returns(T.nilable(String)) }
@@ -3553,6 +3569,7 @@ module Orb
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
             maximum_amount: T.nilable(String),
+            metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
             minimum_amount: T.nilable(String),
             price:
               T.nilable(
@@ -3608,6 +3625,9 @@ module Orb
           # [DEPRECATED] Use add_adjustments instead. The subscription's maximum amount for
           # the replacement price.
           maximum_amount: nil,
+          # Override values for parameterized billable metric variables. Keys are parameter
+          # names, values are the override values.
+          metric_parameter_overrides: nil,
           # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
           # the replacement price.
           minimum_amount: nil,
@@ -3627,6 +3647,8 @@ module Orb
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
               maximum_amount: T.nilable(String),
+              metric_parameter_overrides:
+                T.nilable(T::Hash[Symbol, T.anything]),
               minimum_amount: T.nilable(String),
               price:
                 T.nilable(

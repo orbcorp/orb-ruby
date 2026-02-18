@@ -68,6 +68,11 @@ module Orb
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :usage_customer_ids
 
+      # Override values for parameterized billable metric variables. Keys are parameter
+      # names, values are the override values.
+      sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+      attr_accessor :metric_parameter_overrides
+
       # The Price Interval resource represents a period of time for which a price will
       # bill on a subscription. A subscription’s price intervals define its billing
       # behavior.
@@ -117,7 +122,8 @@ module Orb
               Orb::Price::EventOutput::OrHash
             ),
           start_date: Time,
-          usage_customer_ids: T.nilable(T::Array[String])
+          usage_customer_ids: T.nilable(T::Array[String]),
+          metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything])
         ).returns(T.attached_class)
       end
       def self.new(
@@ -160,7 +166,10 @@ module Orb
         start_date:,
         # A list of customer IDs whose usage events will be aggregated and billed under
         # this price interval.
-        usage_customer_ids:
+        usage_customer_ids:,
+        # Override values for parameterized billable metric variables. Keys are parameter
+        # names, values are the override values.
+        metric_parameter_overrides: nil
       )
       end
 
@@ -178,7 +187,8 @@ module Orb
               T.nilable(T::Array[Orb::FixedFeeQuantityTransition]),
             price: Orb::Price::Variants,
             start_date: Time,
-            usage_customer_ids: T.nilable(T::Array[String])
+            usage_customer_ids: T.nilable(T::Array[String]),
+            metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything])
           }
         )
       end
