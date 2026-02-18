@@ -137,6 +137,15 @@ module Orb
         #   @return [Float, nil]
         optional :maximum_amount, Float, nil?: true
 
+        # @!attribute metric_parameter_overrides
+        #   Override values for parameterized billable metric variables. Keys are parameter
+        #   names, values are the override values (number or string).
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metric_parameter_overrides,
+                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+                 nil?: true
+
         # @!attribute minimum_amount
         #   The minimum amount that will be billed for this price interval for a given
         #   billing period.
@@ -167,7 +176,7 @@ module Orb
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!method initialize(start_date:, allocation_price: nil, can_defer_billing: nil, discounts: nil, end_date: nil, external_price_id: nil, filter: nil, fixed_fee_quantity_transitions: nil, maximum_amount: nil, minimum_amount: nil, price: nil, price_id: nil, usage_customer_ids: nil)
+        # @!method initialize(start_date:, allocation_price: nil, can_defer_billing: nil, discounts: nil, end_date: nil, external_price_id: nil, filter: nil, fixed_fee_quantity_transitions: nil, maximum_amount: nil, metric_parameter_overrides: nil, minimum_amount: nil, price: nil, price_id: nil, usage_customer_ids: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionPriceIntervalsParams::Add} for more details.
         #
@@ -188,6 +197,8 @@ module Orb
         #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition>, nil] A list of fixed fee quantity transitions to initialize on the price interval.
         #
         #   @param maximum_amount [Float, nil] The maximum amount that will be billed for this price interval for a given billi
+        #
+        #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Override values for parameterized billable metric variables. Keys are parameter
         #
         #   @param minimum_amount [Float, nil] The minimum amount that will be billed for this price interval for a given billi
         #
@@ -1674,6 +1685,15 @@ module Orb
                  },
                  nil?: true
 
+        # @!attribute metric_parameter_overrides
+        #   Override values for parameterized billable metric variables. Keys are parameter
+        #   names, values are the override values (number or string).
+        #
+        #   @return [Hash{Symbol=>Object}, nil]
+        optional :metric_parameter_overrides,
+                 Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
+                 nil?: true
+
         # @!attribute start_date
         #   The updated start date of this price interval. If not specified, the start date
         #   will not be updated.
@@ -1692,7 +1712,7 @@ module Orb
         #   @return [Array<String>, nil]
         optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-        # @!method initialize(price_interval_id:, billing_cycle_day: nil, can_defer_billing: nil, end_date: nil, filter: nil, fixed_fee_quantity_transitions: nil, start_date: nil, usage_customer_ids: nil)
+        # @!method initialize(price_interval_id:, billing_cycle_day: nil, can_defer_billing: nil, end_date: nil, filter: nil, fixed_fee_quantity_transitions: nil, metric_parameter_overrides: nil, start_date: nil, usage_customer_ids: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionPriceIntervalsParams::Edit} for more details.
         #
@@ -1707,6 +1727,8 @@ module Orb
         #   @param filter [String, nil] An additional filter to apply to usage queries. This filter must be expressed as
         #
         #   @param fixed_fee_quantity_transitions [Array<Orb::Models::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition>, nil] A list of fixed fee quantity transitions to use for this price interval. Note th
+        #
+        #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Override values for parameterized billable metric variables. Keys are parameter
         #
         #   @param start_date [Time, Symbol, Orb::Models::BillingCycleRelativeDate] The updated start date of this price interval. If not specified, the start date
         #

@@ -41,7 +41,14 @@ module Orb
       #   @return [Symbol, Orb::Models::BillableMetric::Status]
       required :status, enum: -> { Orb::BillableMetric::Status }
 
-      # @!method initialize(id:, description:, item:, metadata:, name:, status:)
+      # @!attribute parameter_definitions
+      #
+      #   @return [Array<Hash{Symbol=>Object}>, nil]
+      optional :parameter_definitions,
+               Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]],
+               nil?: true
+
+      # @!method initialize(id:, description:, item:, metadata:, name:, status:, parameter_definitions: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::BillableMetric} for more details.
       #
@@ -60,6 +67,8 @@ module Orb
       #   @param name [String]
       #
       #   @param status [Symbol, Orb::Models::BillableMetric::Status]
+      #
+      #   @param parameter_definitions [Array<Hash{Symbol=>Object}>, nil]
 
       # @see Orb::Models::BillableMetric#status
       module Status

@@ -215,7 +215,7 @@ module Orb
       # endpoint rather than a GET endpoint because it employs a JSON body rather than
       # query parameters.
       #
-      # @overload evaluate(price_id, timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, request_options: {})
+      # @overload evaluate(price_id, timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, metric_parameter_overrides: nil, request_options: {})
       #
       # @param price_id [String]
       #
@@ -230,6 +230,8 @@ module Orb
       # @param filter [String, nil] A boolean [computed property](/extensibility/advanced-metrics#computed-propertie
       #
       # @param grouping_keys [Array<String>] Properties (or [computed properties](/extensibility/advanced-metrics#computed-pr
+      #
+      # @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Optional overrides for parameterized billable metric parameters. If the metric h
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

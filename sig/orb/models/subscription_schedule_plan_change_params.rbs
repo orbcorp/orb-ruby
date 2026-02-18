@@ -212,6 +212,7 @@ module Orb
           end_date: Time?,
           external_price_id: String?,
           maximum_amount: String?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           minimum_amount: String?,
           plan_phase_order: Integer?,
           price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::price?,
@@ -230,6 +231,8 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
+        attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
         attr_accessor minimum_amount: String?
 
         attr_accessor plan_phase_order: Integer?
@@ -246,6 +249,7 @@ module Orb
           ?end_date: Time?,
           ?external_price_id: String?,
           ?maximum_amount: String?,
+          ?metric_parameter_overrides: ::Hash[Symbol, top]?,
           ?minimum_amount: String?,
           ?plan_phase_order: Integer?,
           ?price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::price?,
@@ -259,6 +263,7 @@ module Orb
           end_date: Time?,
           external_price_id: String?,
           maximum_amount: String?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           minimum_amount: String?,
           plan_phase_order: Integer?,
           price: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::price?,
@@ -1346,6 +1351,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           maximum_amount: String?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           minimum_amount: String?,
           price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::price?,
           price_id: String?
@@ -1364,6 +1370,8 @@ module Orb
 
         attr_accessor maximum_amount: String?
 
+        attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
         attr_accessor minimum_amount: String?
 
         attr_accessor price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::price?
@@ -1377,6 +1385,7 @@ module Orb
           ?external_price_id: String?,
           ?fixed_price_quantity: Float?,
           ?maximum_amount: String?,
+          ?metric_parameter_overrides: ::Hash[Symbol, top]?,
           ?minimum_amount: String?,
           ?price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::price?,
           ?price_id: String?
@@ -1389,6 +1398,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           maximum_amount: String?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           minimum_amount: String?,
           price: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::price?,
           price_id: String?

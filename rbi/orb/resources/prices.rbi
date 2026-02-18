@@ -284,6 +284,7 @@ module Orb
           external_customer_id: T.nilable(String),
           filter: T.nilable(String),
           grouping_keys: T::Array[String],
+          metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::PriceEvaluateResponse)
       end
@@ -305,6 +306,9 @@ module Orb
         # [computed properties](/extensibility/advanced-metrics#computed-properties)) used
         # to group the underlying billable metric
         grouping_keys: nil,
+        # Optional overrides for parameterized billable metric parameters. If the metric
+        # has parameter definitions and no overrides are provided, defaults will be used.
+        metric_parameter_overrides: nil,
         request_options: {}
       )
       end

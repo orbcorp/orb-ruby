@@ -113,6 +113,11 @@ module Orb
         sig { params(grouping_keys: T::Array[String]).void }
         attr_writer :grouping_keys
 
+        # Optional overrides for parameterized billable metric parameters. If the metric
+        # has parameter definitions and no overrides are provided, defaults will be used.
+        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+        attr_accessor :metric_parameter_overrides
+
         # New floating price request body params.
         sig do
           returns(
@@ -164,6 +169,7 @@ module Orb
             external_price_id: T.nilable(String),
             filter: T.nilable(String),
             grouping_keys: T::Array[String],
+            metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
             price:
               T.nilable(
                 T.any(
@@ -214,6 +220,9 @@ module Orb
           # [computed properties](/extensibility/advanced-metrics#computed-properties)) used
           # to group the underlying billable metric
           grouping_keys: nil,
+          # Optional overrides for parameterized billable metric parameters. If the metric
+          # has parameter definitions and no overrides are provided, defaults will be used.
+          metric_parameter_overrides: nil,
           # New floating price request body params.
           price: nil,
           # The ID of a price to evaluate that exists in your Orb account.
@@ -227,6 +236,8 @@ module Orb
               external_price_id: T.nilable(String),
               filter: T.nilable(String),
               grouping_keys: T::Array[String],
+              metric_parameter_overrides:
+                T.nilable(T::Hash[Symbol, T.anything]),
               price:
                 T.nilable(
                   T.any(

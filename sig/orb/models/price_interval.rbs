@@ -12,7 +12,8 @@ module Orb
         fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?,
         price: Orb::Models::price,
         start_date: Time,
-        usage_customer_ids: ::Array[String]?
+        usage_customer_ids: ::Array[String]?,
+        metric_parameter_overrides: ::Hash[Symbol, top]?
       }
 
     class PriceInterval < Orb::Internal::Type::BaseModel
@@ -38,6 +39,8 @@ module Orb
 
       attr_accessor usage_customer_ids: ::Array[String]?
 
+      attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
       def initialize: (
         id: String,
         billing_cycle_day: Integer,
@@ -49,7 +52,8 @@ module Orb
         fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?,
         price: Orb::Models::price,
         start_date: Time,
-        usage_customer_ids: ::Array[String]?
+        usage_customer_ids: ::Array[String]?,
+        ?metric_parameter_overrides: ::Hash[Symbol, top]?
       ) -> void
 
       def to_hash: -> {
@@ -63,7 +67,8 @@ module Orb
         fixed_fee_quantity_transitions: ::Array[Orb::FixedFeeQuantityTransition]?,
         price: Orb::Models::price,
         start_date: Time,
-        usage_customer_ids: ::Array[String]?
+        usage_customer_ids: ::Array[String]?,
+        metric_parameter_overrides: ::Hash[Symbol, top]?
       }
     end
   end
