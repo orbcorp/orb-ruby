@@ -74,6 +74,7 @@ module Orb
           filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
           maximum_amount: Float?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           minimum_amount: Float?,
           price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
           price_id: String?,
@@ -99,6 +100,8 @@ module Orb
 
         attr_accessor maximum_amount: Float?
 
+        attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
         attr_accessor minimum_amount: Float?
 
         attr_accessor price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?
@@ -117,6 +120,7 @@ module Orb
           ?filter: String?,
           ?fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
           ?maximum_amount: Float?,
+          ?metric_parameter_overrides: ::Hash[Symbol, top]?,
           ?minimum_amount: Float?,
           ?price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
           ?price_id: String?,
@@ -133,6 +137,7 @@ module Orb
           filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::FixedFeeQuantityTransition]?,
           maximum_amount: Float?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           minimum_amount: Float?,
           price: Orb::Models::SubscriptionPriceIntervalsParams::Add::price?,
           price_id: String?,
@@ -1108,6 +1113,7 @@ module Orb
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
           filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
           usage_customer_ids: ::Array[String]?
         }
@@ -1125,6 +1131,8 @@ module Orb
 
         attr_accessor fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?
 
+        attr_accessor metric_parameter_overrides: ::Hash[Symbol, top]?
+
         attr_reader start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date?
 
         def start_date=: (
@@ -1140,6 +1148,7 @@ module Orb
           ?end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
           ?filter: String?,
           ?fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
+          ?metric_parameter_overrides: ::Hash[Symbol, top]?,
           ?start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
           ?usage_customer_ids: ::Array[String]?
         ) -> void
@@ -1151,6 +1160,7 @@ module Orb
           end_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::end_date?,
           filter: String?,
           fixed_fee_quantity_transitions: ::Array[Orb::SubscriptionPriceIntervalsParams::Edit::FixedFeeQuantityTransition]?,
+          metric_parameter_overrides: ::Hash[Symbol, top]?,
           start_date: Orb::Models::SubscriptionPriceIntervalsParams::Edit::start_date,
           usage_customer_ids: ::Array[String]?
         }

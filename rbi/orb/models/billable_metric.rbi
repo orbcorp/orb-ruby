@@ -34,6 +34,9 @@ module Orb
       sig { returns(Orb::BillableMetric::Status::TaggedSymbol) }
       attr_accessor :status
 
+      sig { returns(T.nilable(T::Array[T::Hash[Symbol, T.anything]])) }
+      attr_accessor :parameter_definitions
+
       # The Metric resource represents a calculation of a quantity based on events.
       # Metrics are defined by the query that transforms raw usage events into
       # meaningful values for your customers.
@@ -44,7 +47,9 @@ module Orb
           item: Orb::Item::OrHash,
           metadata: T::Hash[Symbol, String],
           name: String,
-          status: Orb::BillableMetric::Status::OrSymbol
+          status: Orb::BillableMetric::Status::OrSymbol,
+          parameter_definitions:
+            T.nilable(T::Array[T::Hash[Symbol, T.anything]])
         ).returns(T.attached_class)
       end
       def self.new(
@@ -60,7 +65,8 @@ module Orb
         # `null`.
         metadata:,
         name:,
-        status:
+        status:,
+        parameter_definitions: nil
       )
       end
 
@@ -72,7 +78,9 @@ module Orb
             item: Orb::Item,
             metadata: T::Hash[Symbol, String],
             name: String,
-            status: Orb::BillableMetric::Status::TaggedSymbol
+            status: Orb::BillableMetric::Status::TaggedSymbol,
+            parameter_definitions:
+              T.nilable(T::Array[T::Hash[Symbol, T.anything]])
           }
         )
       end
