@@ -75,6 +75,7 @@ module Orb
           AVALARA = :avalara
           ANROK = :anrok
           NUMERAL = :numeral
+          STRIPE_TAX = :stripe_tax
 
           # @!method self.values
           #   @return [Array<Symbol>]

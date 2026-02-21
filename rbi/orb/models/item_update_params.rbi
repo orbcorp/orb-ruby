@@ -162,6 +162,11 @@ module Orb
               :numeral,
               Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
             )
+          STRIPE_TAX =
+            T.let(
+              :stripe_tax,
+              Orb::ItemUpdateParams::ExternalConnection::ExternalConnectionName::TaggedSymbol
+            )
 
           sig do
             override.returns(

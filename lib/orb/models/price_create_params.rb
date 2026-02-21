@@ -1250,6 +1250,12 @@ module Orb
         #   @return [String]
         required :unit_price, String
 
+        # @!attribute grouping_key
+        #   The property used to group this price
+        #
+        #   @return [String, nil]
+        optional :grouping_key, String, nil?: true
+
         # @!attribute prorate
         #   If true, the unit price will be prorated to the billing period
         #
@@ -1262,7 +1268,7 @@ module Orb
         #   @return [String, nil]
         optional :second_dimension, String, nil?: true
 
-        # @!method initialize(first_dimension:, matrix_scaling_factors:, unit_price:, prorate: nil, second_dimension: nil)
+        # @!method initialize(first_dimension:, matrix_scaling_factors:, unit_price:, grouping_key: nil, prorate: nil, second_dimension: nil)
         #   Configuration for scalable_matrix_with_unit_pricing pricing
         #
         #   @param first_dimension [String] Used to determine the unit rate
@@ -1270,6 +1276,8 @@ module Orb
         #   @param matrix_scaling_factors [Array<Orb::Models::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
         #
         #   @param unit_price [String] The final unit price to rate against the output of the matrix
+        #
+        #   @param grouping_key [String, nil] The property used to group this price
         #
         #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
         #
