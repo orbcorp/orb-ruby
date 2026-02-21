@@ -62,6 +62,7 @@ module Orb
           | :avalara
           | :anrok
           | :numeral
+          | :stripe_tax
 
         module ExternalConnectionName
           extend Orb::Internal::Type::Enum
@@ -74,6 +75,7 @@ module Orb
           AVALARA: :avalara
           ANROK: :anrok
           NUMERAL: :numeral
+          STRIPE_TAX: :stripe_tax
 
           def self?.values: -> ::Array[Orb::Models::ItemUpdateParams::ExternalConnection::external_connection_name]
         end
