@@ -7352,6 +7352,7 @@ module Orb
             first_dimension: String,
             matrix_scaling_factors: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
             unit_price: String,
+            grouping_key: String?,
             prorate: bool?,
             second_dimension: String?
           }
@@ -7363,6 +7364,8 @@ module Orb
 
           attr_accessor unit_price: String
 
+          attr_accessor grouping_key: String?
+
           attr_accessor prorate: bool?
 
           attr_accessor second_dimension: String?
@@ -7371,6 +7374,7 @@ module Orb
             first_dimension: String,
             matrix_scaling_factors: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
             unit_price: String,
+            ?grouping_key: String?,
             ?prorate: bool?,
             ?second_dimension: String?
           ) -> void
@@ -7379,6 +7383,7 @@ module Orb
             first_dimension: String,
             matrix_scaling_factors: ::Array[Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
             unit_price: String,
+            grouping_key: String?,
             prorate: bool?,
             second_dimension: String?
           }

@@ -17378,6 +17378,10 @@ module Orb
           sig { returns(String) }
           attr_accessor :unit_price
 
+          # The property used to group this price
+          sig { returns(T.nilable(String)) }
+          attr_accessor :grouping_key
+
           # If true, the unit price will be prorated to the billing period
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :prorate
@@ -17395,6 +17399,7 @@ module Orb
                   Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor::OrHash
                 ],
               unit_price: String,
+              grouping_key: T.nilable(String),
               prorate: T.nilable(T::Boolean),
               second_dimension: T.nilable(String)
             ).returns(T.attached_class)
@@ -17406,6 +17411,8 @@ module Orb
             matrix_scaling_factors:,
             # The final unit price to rate against the output of the matrix
             unit_price:,
+            # The property used to group this price
+            grouping_key: nil,
             # If true, the unit price will be prorated to the billing period
             prorate: nil,
             # Used to determine the unit rate (optional)
@@ -17422,6 +17429,7 @@ module Orb
                     Orb::Price::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
                   ],
                 unit_price: String,
+                grouping_key: T.nilable(String),
                 prorate: T.nilable(T::Boolean),
                 second_dimension: T.nilable(String)
               }
