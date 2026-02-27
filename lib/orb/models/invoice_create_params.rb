@@ -26,6 +26,14 @@ module Orb
       #   @return [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       required :line_items, -> { Orb::Internal::Type::ArrayOf[Orb::InvoiceCreateParams::LineItem] }
 
+      # @!attribute auto_collection
+      #   Determines whether this invoice will automatically attempt to charge a saved
+      #   payment method, if any. If not specified, the invoice inherits the customer's
+      #   auto_collection setting.
+      #
+      #   @return [Boolean, nil]
+      optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute customer_id
       #   The id of the `Customer` to create this invoice for. One of `customer_id` and
       #   `external_customer_id` are required.
@@ -86,7 +94,7 @@ module Orb
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean
 
-      # @!method initialize(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
+      # @!method initialize(currency:, invoice_date:, line_items:, auto_collection: nil, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceCreateParams} for more details.
       #
@@ -95,6 +103,8 @@ module Orb
       #   @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
       #
       #   @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
+      #
+      #   @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #
       #   @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #

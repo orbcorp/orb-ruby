@@ -5,6 +5,7 @@ module Orb
         currency: String,
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
+        auto_collection: bool?,
         customer_id: String?,
         discount: Orb::Models::discount?,
         due_date: Orb::Models::InvoiceCreateParams::due_date?,
@@ -25,6 +26,8 @@ module Orb
       attr_accessor invoice_date: Time
 
       attr_accessor line_items: ::Array[Orb::InvoiceCreateParams::LineItem]
+
+      attr_accessor auto_collection: bool?
 
       attr_accessor customer_id: String?
 
@@ -48,6 +51,7 @@ module Orb
         currency: String,
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
+        ?auto_collection: bool?,
         ?customer_id: String?,
         ?discount: Orb::Models::discount?,
         ?due_date: Orb::Models::InvoiceCreateParams::due_date?,
@@ -63,6 +67,7 @@ module Orb
         currency: String,
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
+        auto_collection: bool?,
         customer_id: String?,
         discount: Orb::Models::discount?,
         due_date: Orb::Models::InvoiceCreateParams::due_date?,
