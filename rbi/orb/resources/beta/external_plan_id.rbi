@@ -3,6 +3,10 @@
 module Orb
   module Resources
     class Beta
+      # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      # subscribed to by a customer. Plans define the billing behavior of the
+      # subscription. You can see more about how to configure prices in the
+      # [Price resource](/reference/price).
       class ExternalPlanID
         # This endpoint allows the creation of a new plan version for an existing plan.
         sig do

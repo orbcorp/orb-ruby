@@ -4,6 +4,8 @@ module Orb
   module Resources
     class Customers
       class Credits
+        # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+        # credits within Orb.
         class TopUps
           # Some parameter documentations has been truncated, see
           # {Orb::Models::Customers::Credits::TopUpCreateParams} for more details.

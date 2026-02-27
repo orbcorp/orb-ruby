@@ -2,6 +2,9 @@
 
 module Orb
   module Resources
+    # The Metric resource represents a calculation of a quantity based on events.
+    # Metrics are defined by the query that transforms raw usage events into
+    # meaningful values for your customers.
     class Metrics
       # This endpoint is used to create a [metric](/core-concepts###metric) using a SQL
       # string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a

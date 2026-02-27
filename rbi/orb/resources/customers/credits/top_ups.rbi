@@ -4,6 +4,8 @@ module Orb
   module Resources
     class Customers
       class Credits
+        # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+        # credits within Orb.
         class TopUps
           # This endpoint allows you to create a new top-up for a specified customer's
           # balance. While this top-up is active, the customer's balance will added in

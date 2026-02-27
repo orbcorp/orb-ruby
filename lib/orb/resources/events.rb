@@ -2,10 +2,19 @@
 
 module Orb
   module Resources
+    # The [Event](/core-concepts#event) resource represents a usage event that has
+    # been created for a customer. Events are the core of Orb's usage-based billing
+    # model, and are used to calculate the usage charges for a given billing period.
     class Events
+      # The [Event](/core-concepts#event) resource represents a usage event that has
+      # been created for a customer. Events are the core of Orb's usage-based billing
+      # model, and are used to calculate the usage charges for a given billing period.
       # @return [Orb::Resources::Events::Backfills]
       attr_reader :backfills
 
+      # The [Event](/core-concepts#event) resource represents a usage event that has
+      # been created for a customer. Events are the core of Orb's usage-based billing
+      # model, and are used to calculate the usage charges for a given billing period.
       # @return [Orb::Resources::Events::Volume]
       attr_reader :volume
 

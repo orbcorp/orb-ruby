@@ -2,6 +2,9 @@
 
 module Orb
   module Resources
+    # The Item resource represents a sellable product or good. Items are associated
+    # with all line items, billable metrics, and prices and are used for defining
+    # external sync behavior for invoices and tax calculation purposes.
     class Items
       # This endpoint is used to create an [Item](/core-concepts#item).
       sig do

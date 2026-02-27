@@ -3,10 +3,16 @@
 module Orb
   module Resources
     class Customers
+      # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+      # credits within Orb.
       class Credits
+        # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+        # credits within Orb.
         # @return [Orb::Resources::Customers::Credits::Ledger]
         attr_reader :ledger
 
+        # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+        # credits within Orb.
         # @return [Orb::Resources::Customers::Credits::TopUps]
         attr_reader :top_ups
 

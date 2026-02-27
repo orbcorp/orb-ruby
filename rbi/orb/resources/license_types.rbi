@@ -2,6 +2,9 @@
 
 module Orb
   module Resources
+    # The LicenseType resource represents a type of license that can be assigned to
+    # users. License types are used during billing by grouping metrics on the
+    # configured grouping key.
     class LicenseTypes
       # This endpoint is used to create a new license type.
       #
