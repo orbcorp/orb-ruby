@@ -9,6 +9,12 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::InvoiceUpdateParams, Orb::Internal::AnyHash) }
 
+      # Determines whether this invoice will automatically attempt to charge a saved
+      # payment method, if any. Can only be modified on draft invoices. If not
+      # specified, the invoice's existing setting is unchanged.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :auto_collection
+
       # An optional custom due date for the invoice. If not set, the due date will be
       # calculated based on the `net_terms` value.
       sig { returns(T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants)) }
@@ -36,6 +42,7 @@ module Orb
 
       sig do
         params(
+          auto_collection: T.nilable(T::Boolean),
           due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
           invoice_date:
             T.nilable(Orb::InvoiceUpdateParams::InvoiceDate::Variants),
@@ -45,6 +52,10 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        # Determines whether this invoice will automatically attempt to charge a saved
+        # payment method, if any. Can only be modified on draft invoices. If not
+        # specified, the invoice's existing setting is unchanged.
+        auto_collection: nil,
         # An optional custom due date for the invoice. If not set, the due date will be
         # calculated based on the `net_terms` value.
         due_date: nil,
@@ -67,6 +78,7 @@ module Orb
       sig do
         override.returns(
           {
+            auto_collection: T.nilable(T::Boolean),
             due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
             invoice_date:
               T.nilable(Orb::InvoiceUpdateParams::InvoiceDate::Variants),

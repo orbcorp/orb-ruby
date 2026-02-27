@@ -2,6 +2,7 @@ module Orb
   module Models
     type invoice_update_params =
       {
+        auto_collection: bool?,
         due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         metadata: ::Hash[Symbol, String?]?,
@@ -13,6 +14,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor auto_collection: bool?
+
       attr_accessor due_date: Orb::Models::InvoiceUpdateParams::due_date?
 
       attr_accessor invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?
@@ -22,6 +25,7 @@ module Orb
       attr_accessor net_terms: Integer?
 
       def initialize: (
+        ?auto_collection: bool?,
         ?due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         ?invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         ?metadata: ::Hash[Symbol, String?]?,
@@ -30,6 +34,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        auto_collection: bool?,
         due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         metadata: ::Hash[Symbol, String?]?,

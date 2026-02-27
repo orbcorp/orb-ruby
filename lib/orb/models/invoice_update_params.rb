@@ -7,6 +7,14 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute auto_collection
+      #   Determines whether this invoice will automatically attempt to charge a saved
+      #   payment method, if any. Can only be modified on draft invoices. If not
+      #   specified, the invoice's existing setting is unchanged.
+      #
+      #   @return [Boolean, nil]
+      optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute due_date
       #   An optional custom due date for the invoice. If not set, the due date will be
       #   calculated based on the `net_terms` value.
@@ -38,9 +46,11 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!method initialize(due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @!method initialize(auto_collection: nil, due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceUpdateParams} for more details.
+      #
+      #   @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #
       #   @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
       #

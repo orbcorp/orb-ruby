@@ -13,13 +13,15 @@ module Orb
       #
       # This endpoint is used to create a one-off invoice for a customer.
       #
-      # @overload create(currency:, invoice_date:, line_items:, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
+      # @overload create(currency:, invoice_date:, line_items:, auto_collection: nil, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #
       # @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
       # @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
       #
       # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
+      #
+      # @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #
       # @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
@@ -50,17 +52,20 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::InvoiceUpdateParams} for more details.
       #
-      # This endpoint allows you to update the `metadata`, `net_terms`, `due_date`, and
-      # `invoice_date` properties on an invoice. If you pass null for the metadata
-      # value, it will clear any existing metadata for that invoice.
+      # This endpoint allows you to update the `metadata`, `net_terms`, `due_date`,
+      # `invoice_date`, and `auto_collection` properties on an invoice. If you pass null
+      # for the metadata value, it will clear any existing metadata for that invoice.
       #
       # `metadata` can be modified regardless of invoice state. `net_terms`, `due_date`,
-      # and `invoice_date` can only be modified if the invoice is in a `draft` state.
-      # `invoice_date` can only be modified for non-subscription invoices.
+      # `invoice_date`, and `auto_collection` can only be modified if the invoice is in
+      # a `draft` state. `invoice_date` can only be modified for non-subscription
+      # invoices.
       #
-      # @overload update(invoice_id, due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @overload update(invoice_id, auto_collection: nil, due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
       #
       # @param invoice_id [String]
+      #
+      # @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #
       # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
       #
