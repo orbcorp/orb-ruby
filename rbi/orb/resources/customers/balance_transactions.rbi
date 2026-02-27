@@ -3,6 +3,24 @@
 module Orb
   module Resources
     class Customers
+      # A customer is a buyer of your products, and the other party to the billing
+      # relationship.
+      #
+      # In Orb, customers are assigned system generated identifiers automatically, but
+      # it's often desirable to have these match existing identifiers in your system. To
+      # avoid having to denormalize Orb ID information, you can pass in an
+      # `external_customer_id` with your own identifier. See
+      # [Customer ID Aliases](/events-and-metrics/customer-aliases) for further
+      # information about how these aliases work in Orb.
+      #
+      # In addition to having an identifier in your system, a customer may exist in a
+      # payment provider solution like Stripe. Use the `payment_provider_id` and the
+      # `payment_provider` enum field to express this mapping.
+      #
+      # A customer also has a timezone (from the standard
+      # [IANA timezone database](https://www.iana.org/time-zones)), which defaults to
+      # your account's timezone. See [Timezone localization](/essentials/timezones) for
+      # information on what this timezone parameter influences within Orb.
       class BalanceTransactions
         # Creates an immutable balance transaction that updates the customer's balance and
         # returns back the newly created transaction.

@@ -2,6 +2,8 @@
 
 module Orb
   module Resources
+    # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
+    # been applied to a particular invoice.
     class CreditNotes
       # Some parameter documentations has been truncated, see
       # {Orb::Models::CreditNoteCreateParams} for more details.

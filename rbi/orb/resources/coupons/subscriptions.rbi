@@ -3,6 +3,11 @@
 module Orb
   module Resources
     class Coupons
+      # A coupon represents a reusable discount configuration that can be applied either
+      # as a fixed or percentage amount to an invoice or subscription. Coupons are
+      # activated using a redemption code, which applies the discount to a subscription
+      # or invoice. The duration of a coupon determines how long it remains available
+      # for use by end users.
       class Subscriptions
         # This endpoint returns a list of all subscriptions that have redeemed a given
         # coupon as a [paginated](/api-reference/pagination) list, ordered starting from

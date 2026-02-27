@@ -2,6 +2,8 @@
 
 module Orb
   module Resources
+    # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
+    # been applied to a particular invoice.
     class CreditNotes
       # This endpoint is used to create a single
       # [`Credit Note`](/invoicing/credit-notes).

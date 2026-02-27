@@ -4,6 +4,8 @@ module Orb
   module Resources
     class Customers
       class Credits
+        # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+        # credits within Orb.
         class Ledger
           # The credits ledger provides _auditing_ functionality over Orb's credits system
           # with a list of actions that have taken place to modify a customer's credit

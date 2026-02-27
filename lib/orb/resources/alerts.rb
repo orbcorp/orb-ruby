@@ -2,6 +2,11 @@
 
 module Orb
   module Resources
+    # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
+    # usage, or credit balance and trigger webhooks when a threshold is exceeded.
+    #
+    # Alerts created through the API can be scoped to either customers or
+    # subscriptions.
     class Alerts
       # This endpoint retrieves an alert by its ID.
       #
