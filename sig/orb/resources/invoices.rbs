@@ -5,6 +5,7 @@ module Orb
         currency: String,
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
+        ?auto_collection: bool?,
         ?customer_id: String?,
         ?discount: Orb::Models::discount?,
         ?due_date: Orb::Models::InvoiceCreateParams::due_date?,
@@ -18,6 +19,7 @@ module Orb
 
       def update: (
         String invoice_id,
+        ?auto_collection: bool?,
         ?due_date: Orb::Models::InvoiceUpdateParams::due_date?,
         ?invoice_date: Orb::Models::InvoiceUpdateParams::invoice_date?,
         ?metadata: ::Hash[Symbol, String?]?,
