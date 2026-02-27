@@ -145,10 +145,11 @@ module Orb
       # @see Orb::Models::InvoiceListParams
       def list(params = {})
         parsed, options = Orb::InvoiceListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "invoices",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             amount_gt: "amount[gt]",
             amount_lt: "amount[lt]",
             due_date_gt: "due_date[gt]",
@@ -227,10 +228,11 @@ module Orb
       # @see Orb::Models::InvoiceFetchUpcomingParams
       def fetch_upcoming(params)
         parsed, options = Orb::InvoiceFetchUpcomingParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "invoices/upcoming",
-          query: parsed,
+          query: query,
           model: Orb::Models::InvoiceFetchUpcomingResponse,
           options: options
         )
@@ -370,10 +372,11 @@ module Orb
       # @see Orb::Models::InvoiceListSummaryParams
       def list_summary(params = {})
         parsed, options = Orb::InvoiceListSummaryParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "invoices/summary",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             amount_gt: "amount[gt]",
             amount_lt: "amount[lt]",
             due_date_gt: "due_date[gt]",

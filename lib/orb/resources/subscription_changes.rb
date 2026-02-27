@@ -56,10 +56,11 @@ module Orb
       # @see Orb::Models::SubscriptionChangeListParams
       def list(params = {})
         parsed, options = Orb::SubscriptionChangeListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "subscription_changes",
-          query: parsed,
+          query: query,
           page: Orb::Internal::Page,
           model: Orb::Models::SubscriptionChangeListResponse,
           options: options

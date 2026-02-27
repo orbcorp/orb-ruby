@@ -91,10 +91,11 @@ module Orb
       # @see Orb::Models::LicenseListParams
       def list(params)
         parsed, options = Orb::LicenseListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "licenses",
-          query: parsed,
+          query: query,
           page: Orb::Internal::Page,
           model: Orb::Models::LicenseListResponse,
           options: options
@@ -149,10 +150,11 @@ module Orb
       # @see Orb::Models::LicenseRetrieveByExternalIDParams
       def retrieve_by_external_id(external_license_id, params)
         parsed, options = Orb::LicenseRetrieveByExternalIDParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["licenses/external_license_id/%1$s", external_license_id],
-          query: parsed,
+          query: query,
           model: Orb::Models::LicenseRetrieveByExternalIDResponse,
           options: options
         )

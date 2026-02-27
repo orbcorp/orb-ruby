@@ -432,10 +432,11 @@ module Orb
       # @see Orb::Models::SubscriptionListParams
       def list(params = {})
         parsed, options = Orb::SubscriptionListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "subscriptions",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             created_at_gt: "created_at[gt]",
             created_at_gte: "created_at[gte]",
             created_at_lt: "created_at[lt]",
@@ -591,10 +592,11 @@ module Orb
       # @see Orb::Models::SubscriptionFetchCostsParams
       def fetch_costs(subscription_id, params = {})
         parsed, options = Orb::SubscriptionFetchCostsParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["subscriptions/%1$s/costs", subscription_id],
-          query: parsed,
+          query: query,
           model: Orb::Models::SubscriptionFetchCostsResponse,
           options: options
         )
@@ -631,10 +633,11 @@ module Orb
       # @see Orb::Models::SubscriptionFetchScheduleParams
       def fetch_schedule(subscription_id, params = {})
         parsed, options = Orb::SubscriptionFetchScheduleParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["subscriptions/%1$s/schedule", subscription_id],
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             start_date_gt: "start_date[gt]",
             start_date_gte: "start_date[gte]",
             start_date_lt: "start_date[lt]",
@@ -875,10 +878,11 @@ module Orb
       # @see Orb::Models::SubscriptionFetchUsageParams
       def fetch_usage(subscription_id, params = {})
         parsed, options = Orb::SubscriptionFetchUsageParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["subscriptions/%1$s/usage", subscription_id],
-          query: parsed,
+          query: query,
           model: Orb::SubscriptionUsage,
           options: options
         )
