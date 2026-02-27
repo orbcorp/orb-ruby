@@ -3,6 +3,10 @@
 module Orb
   module Resources
     class Plans
+      # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      # subscribed to by a customer. Plans define the billing behavior of the
+      # subscription. You can see more about how to configure prices in the
+      # [Price resource](/reference/price).
       class ExternalPlanID
         # Some parameter documentations has been truncated, see
         # {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.

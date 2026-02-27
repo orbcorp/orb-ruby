@@ -2,6 +2,8 @@
 
 module Orb
   module Resources
+    # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
+    # credits within Orb.
     class CreditBlocks
       # This endpoint returns a credit block identified by its block_id.
       sig do
