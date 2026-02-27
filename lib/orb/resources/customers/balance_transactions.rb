@@ -81,10 +81,11 @@ module Orb
         # @see Orb::Models::Customers::BalanceTransactionListParams
         def list(customer_id, params = {})
           parsed, options = Orb::Customers::BalanceTransactionListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["customers/%1$s/balance_transactions", customer_id],
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               operation_time_gt: "operation_time[gt]",
               operation_time_gte: "operation_time[gte]",
               operation_time_lt: "operation_time[lt]",

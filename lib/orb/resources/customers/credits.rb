@@ -53,10 +53,11 @@ module Orb
         # @see Orb::Models::Customers::CreditListParams
         def list(customer_id, params = {})
           parsed, options = Orb::Customers::CreditListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["customers/%1$s/credits", customer_id],
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               effective_date_gt: "effective_date[gt]",
               effective_date_gte: "effective_date[gte]",
               effective_date_lt: "effective_date[lt]",
@@ -111,10 +112,11 @@ module Orb
         # @see Orb::Models::Customers::CreditListByExternalIDParams
         def list_by_external_id(external_customer_id, params = {})
           parsed, options = Orb::Customers::CreditListByExternalIDParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["customers/external_customer_id/%1$s/credits", external_customer_id],
-            query: parsed.transform_keys(
+            query: query.transform_keys(
               effective_date_gt: "effective_date[gt]",
               effective_date_gte: "effective_date[gte]",
               effective_date_lt: "effective_date[lt]",

@@ -79,10 +79,11 @@ module Orb
       # @see Orb::Models::LicenseTypeListParams
       def list(params = {})
         parsed, options = Orb::LicenseTypeListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "license_types",
-          query: parsed,
+          query: query,
           page: Orb::Internal::Page,
           model: Orb::Models::LicenseTypeListResponse,
           options: options

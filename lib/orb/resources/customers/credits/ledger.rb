@@ -119,10 +119,11 @@ module Orb
           # @see Orb::Models::Customers::Credits::LedgerListParams
           def list(customer_id, params = {})
             parsed, options = Orb::Customers::Credits::LedgerListParams.dump_request(params)
+            query = Orb::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["customers/%1$s/credits/ledger", customer_id],
-              query: parsed.transform_keys(
+              query: query.transform_keys(
                 created_at_gt: "created_at[gt]",
                 created_at_gte: "created_at[gte]",
                 created_at_lt: "created_at[lt]",
@@ -580,10 +581,11 @@ module Orb
           # @see Orb::Models::Customers::Credits::LedgerListByExternalIDParams
           def list_by_external_id(external_customer_id, params = {})
             parsed, options = Orb::Customers::Credits::LedgerListByExternalIDParams.dump_request(params)
+            query = Orb::Internal::Util.encode_query_params(parsed)
             @client.request(
               method: :get,
               path: ["customers/external_customer_id/%1$s/credits/ledger", external_customer_id],
-              query: parsed.transform_keys(
+              query: query.transform_keys(
                 created_at_gt: "created_at[gt]",
                 created_at_gte: "created_at[gte]",
                 created_at_lt: "created_at[lt]",

@@ -59,10 +59,11 @@ module Orb
       # @see Orb::Models::CouponListParams
       def list(params = {})
         parsed, options = Orb::CouponListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "coupons",
-          query: parsed,
+          query: query,
           page: Orb::Internal::Page,
           model: Orb::Coupon,
           options: options

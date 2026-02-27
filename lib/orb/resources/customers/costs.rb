@@ -144,10 +144,11 @@ module Orb
         # @see Orb::Models::Customers::CostListParams
         def list(customer_id, params = {})
           parsed, options = Orb::Customers::CostListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["customers/%1$s/costs", customer_id],
-            query: parsed,
+            query: query,
             model: Orb::Models::Customers::CostListResponse,
             options: options
           )
@@ -293,10 +294,11 @@ module Orb
         # @see Orb::Models::Customers::CostListByExternalIDParams
         def list_by_external_id(external_customer_id, params = {})
           parsed, options = Orb::Customers::CostListByExternalIDParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["customers/external_customer_id/%1$s/costs", external_customer_id],
-            query: parsed,
+            query: query,
             model: Orb::Models::Customers::CostListByExternalIDResponse,
             options: options
           )

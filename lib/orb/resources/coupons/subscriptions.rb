@@ -27,10 +27,11 @@ module Orb
         # @see Orb::Models::Coupons::SubscriptionListParams
         def list(coupon_id, params = {})
           parsed, options = Orb::Coupons::SubscriptionListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["coupons/%1$s/subscriptions", coupon_id],
-            query: parsed,
+            query: query,
             page: Orb::Internal::Page,
             model: Orb::Subscription,
             options: options

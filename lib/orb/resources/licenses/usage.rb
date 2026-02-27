@@ -35,10 +35,11 @@ module Orb
         # @see Orb::Models::Licenses::UsageGetAllUsageParams
         def get_all_usage(params)
           parsed, options = Orb::Licenses::UsageGetAllUsageParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "licenses/usage",
-            query: parsed,
+            query: query,
             model: Orb::Models::Licenses::UsageGetAllUsageResponse,
             options: options
           )
@@ -72,10 +73,11 @@ module Orb
         # @see Orb::Models::Licenses::UsageGetUsageParams
         def get_usage(license_id, params = {})
           parsed, options = Orb::Licenses::UsageGetUsageParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["licenses/%1$s/usage", license_id],
-            query: parsed,
+            query: query,
             model: Orb::Models::Licenses::UsageGetUsageResponse,
             options: options
           )
