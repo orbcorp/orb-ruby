@@ -52,10 +52,11 @@ module Orb
         # @see Orb::Models::Plans::MigrationListParams
         def list(plan_id, params = {})
           parsed, options = Orb::Plans::MigrationListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["plans/%1$s/migrations", plan_id],
-            query: parsed,
+            query: query,
             page: Orb::Internal::Page,
             model: Orb::Models::Plans::MigrationListResponse,
             options: options

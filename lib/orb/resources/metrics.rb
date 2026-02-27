@@ -95,10 +95,11 @@ module Orb
       # @see Orb::Models::MetricListParams
       def list(params = {})
         parsed, options = Orb::MetricListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "metrics",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             created_at_gt: "created_at[gt]",
             created_at_gte: "created_at[gte]",
             created_at_lt: "created_at[lt]",

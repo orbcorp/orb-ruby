@@ -104,10 +104,11 @@ module Orb
         # @see Orb::Models::Events::BackfillListParams
         def list(params = {})
           parsed, options = Orb::Events::BackfillListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "events/backfills",
-            query: parsed,
+            query: query,
             page: Orb::Internal::Page,
             model: Orb::Models::Events::BackfillListResponse,
             options: options

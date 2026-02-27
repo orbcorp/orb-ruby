@@ -38,10 +38,11 @@ module Orb
         # @see Orb::Models::Events::VolumeListParams
         def list(params)
           parsed, options = Orb::Events::VolumeListParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "events/volume",
-            query: parsed,
+            query: query,
             model: Orb::Events::EventVolumes,
             options: options
           )

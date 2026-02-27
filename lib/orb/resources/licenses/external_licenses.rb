@@ -37,10 +37,11 @@ module Orb
         # @see Orb::Models::Licenses::ExternalLicenseGetUsageParams
         def get_usage(external_license_id, params)
           parsed, options = Orb::Licenses::ExternalLicenseGetUsageParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: ["licenses/external_licenses/%1$s/usage", external_license_id],
-            query: parsed,
+            query: query,
             model: Orb::Models::Licenses::ExternalLicenseGetUsageResponse,
             options: options
           )

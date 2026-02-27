@@ -368,12 +368,13 @@ module Orb
       #
       # @see Orb::Models::EventIngestParams
       def ingest(params)
-        parsed, options = Orb::EventIngestParams.dump_request(params)
         query_params = [:backfill_id, :debug]
+        parsed, options = Orb::EventIngestParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(
           method: :post,
           path: "ingest",
-          query: parsed.slice(*query_params),
+          query: query,
           body: parsed.except(*query_params),
           model: Orb::Models::EventIngestResponse,
           options: options

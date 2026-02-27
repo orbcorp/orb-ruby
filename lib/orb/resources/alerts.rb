@@ -88,10 +88,11 @@ module Orb
       # @see Orb::Models::AlertListParams
       def list(params = {})
         parsed, options = Orb::AlertListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "alerts",
-          query: parsed.transform_keys(
+          query: query.transform_keys(
             created_at_gt: "created_at[gt]",
             created_at_gte: "created_at[gte]",
             created_at_lt: "created_at[lt]",
@@ -228,10 +229,11 @@ module Orb
       # @see Orb::Models::AlertDisableParams
       def disable(alert_configuration_id, params = {})
         parsed, options = Orb::AlertDisableParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :post,
           path: ["alerts/%1$s/disable", alert_configuration_id],
-          query: parsed,
+          query: query,
           model: Orb::Alert,
           options: options
         )
@@ -254,10 +256,11 @@ module Orb
       # @see Orb::Models::AlertEnableParams
       def enable(alert_configuration_id, params = {})
         parsed, options = Orb::AlertEnableParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :post,
           path: ["alerts/%1$s/enable", alert_configuration_id],
-          query: parsed,
+          query: query,
           model: Orb::Alert,
           options: options
         )

@@ -176,10 +176,11 @@ module Orb
       # @see Orb::Models::PriceListParams
       def list(params = {})
         parsed, options = Orb::PriceListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "prices",
-          query: parsed,
+          query: query,
           page: Orb::Internal::Page,
           model: Orb::Price,
           options: options

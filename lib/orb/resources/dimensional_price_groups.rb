@@ -114,10 +114,11 @@ module Orb
       # @see Orb::Models::DimensionalPriceGroupListParams
       def list(params = {})
         parsed, options = Orb::DimensionalPriceGroupListParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "dimensional_price_groups",
-          query: parsed,
+          query: query,
           page: Orb::Internal::Page,
           model: Orb::DimensionalPriceGroup,
           options: options
