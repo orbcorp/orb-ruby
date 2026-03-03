@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.13.0 (2026-03-03)
+
+Full Changelog: [v1.12.0...v1.13.0](https://github.com/orbcorp/orb-ruby/compare/v1.12.0...v1.13.0)
+
+### Features
+
+* **api:** api update ([c203926](https://github.com/orbcorp/orb-ruby/commit/c203926582b3237293d3078ada79bf3d221071d7))
+* **api:** api update ([fd4f82d](https://github.com/orbcorp/orb-ruby/commit/fd4f82dd2f04f36cd49a7413fdfaa5e1189f22c2))
+* **api:** api update ([a703c63](https://github.com/orbcorp/orb-ruby/commit/a703c638264d4dd7761a3534562f47a86b8da288))
+* **api:** api update ([49c2213](https://github.com/orbcorp/orb-ruby/commit/49c22131d40a8e0e050f894be9ff48d5958301aa))
+* **api:** api update ([357d2d4](https://github.com/orbcorp/orb-ruby/commit/357d2d4e2758c92578d1c7af1e26f1a1779738b0))
+
+
+### Bug Fixes
+
+* **client:** serialize query parameters properly ([003ab4e](https://github.com/orbcorp/orb-ruby/commit/003ab4e466176c051711b7e89e1e40be5de6a664))
+* properly mock time in ruby ci tests ([c8c588e](https://github.com/orbcorp/orb-ruby/commit/c8c588eb8bd5383d1875fef102cd7de66d6dff71))
+
+
+### Chores
+
+* **ci:** add build step ([b57c8a3](https://github.com/orbcorp/orb-ruby/commit/b57c8a3f52e22c5c67f3842357747437d12f56d7))
+* **docs:** add missing descriptions ([174bbeb](https://github.com/orbcorp/orb-ruby/commit/174bbebe6ed10a5c2c079232299b48b4269e470c))
+* update mock server docs ([4b838cf](https://github.com/orbcorp/orb-ruby/commit/4b838cf2bc89666bea9767ae25e66868d38bbeef))
+
 ## 1.12.0 (2026-02-12)
 
 Full Changelog: [v1.11.2...v1.12.0](https://github.com/orbcorp/orb-ruby/compare/v1.11.2...v1.12.0)

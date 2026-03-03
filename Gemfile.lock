@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    orb-billing (1.12.0)
+    orb-billing (1.13.0)
       cgi
       connection_pool
 
