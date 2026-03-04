@@ -134,6 +134,14 @@ module Orb
         #   @return [Orb::Models::NewAllocationPrice, nil]
         optional :allocation_price, -> { Orb::NewAllocationPrice }, nil?: true
 
+        # @!attribute license_allocation_price
+        #   The license allocation price to add to the plan.
+        #
+        #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput, nil]
+        optional :license_allocation_price,
+                 union: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice },
+                 nil?: true
+
         # @!attribute plan_phase_order
         #   The phase to add this price to.
         #
@@ -146,12 +154,8602 @@ module Orb
         #   @return [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::NewPlanMinimumCompositePrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput, nil]
         optional :price, union: -> { Orb::BetaCreatePlanVersionParams::AddPrice::Price }, nil?: true
 
-        # @!method initialize(allocation_price: nil, plan_phase_order: nil, price: nil)
+        # @!method initialize(allocation_price: nil, license_allocation_price: nil, plan_phase_order: nil, price: nil)
         #   @param allocation_price [Orb::Models::NewAllocationPrice, nil] The allocation price to add to the plan.
+        #
+        #   @param license_allocation_price [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput, nil] The license allocation price to add to the plan.
         #
         #   @param plan_phase_order [Integer, nil] The phase to add this price to.
         #
         #   @param price [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::NewPlanMinimumCompositePrice, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput, nil] New plan price request body params.
+
+        # The license allocation price to add to the plan.
+        #
+        # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice#license_allocation_price
+        module LicenseAllocationPrice
+          extend Orb::Internal::Type::Union
+
+          discriminator :model_type
+
+          variant :unit, -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit }
+
+          variant :tiered, -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered }
+
+          variant :bulk, -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk }
+
+          variant :bulk_with_filters,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters }
+
+          variant :package, -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package }
+
+          variant :matrix, -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix }
+
+          variant :threshold_total_amount,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount }
+
+          variant :tiered_package,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage }
+
+          variant :tiered_with_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum }
+
+          variant :grouped_tiered,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered }
+
+          variant :tiered_package_with_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum }
+
+          variant :package_with_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation }
+
+          variant :unit_with_percent,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent }
+
+          variant :matrix_with_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation }
+
+          variant :tiered_with_proration,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration }
+
+          variant :unit_with_proration,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration }
+
+          variant :grouped_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation }
+
+          variant :bulk_with_proration,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration }
+
+          variant :grouped_with_prorated_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum }
+
+          variant :grouped_with_metered_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum }
+
+          variant :grouped_with_min_max_thresholds,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds }
+
+          variant :matrix_with_display_name,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName }
+
+          variant :grouped_tiered_package,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage }
+
+          variant :max_group_tiered_package,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage }
+
+          variant :scalable_matrix_with_unit_pricing,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing }
+
+          variant :scalable_matrix_with_tiered_pricing,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing }
+
+          variant :cumulative_grouped_bulk,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk }
+
+          variant :cumulative_grouped_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation }
+
+          variant :minimum_composite,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite }
+
+          variant :percent, -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent }
+
+          variant :event_output,
+                  -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :unit]
+            required :model_type, const: :unit
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute unit_config
+            #   Configuration for unit pricing
+            #
+            #   @return [Orb::Models::UnitConfig]
+            required :unit_config, -> { Orb::UnitConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :unit)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param unit_config [Orb::Models::UnitConfig] Configuration for unit pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :unit] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered]
+            required :model_type, const: :tiered
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_config
+            #   Configuration for tiered pricing
+            #
+            #   @return [Orb::Models::TieredConfig]
+            required :tiered_config, -> { Orb::TieredConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_config [Orb::Models::TieredConfig] Configuration for tiered pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Bulk < Orb::Internal::Type::BaseModel
+            # @!attribute bulk_config
+            #   Configuration for bulk pricing
+            #
+            #   @return [Orb::Models::BulkConfig]
+            required :bulk_config, -> { Orb::BulkConfig }
+
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :bulk]
+            required :model_type, const: :bulk
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(bulk_config:, cadence:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk}
+            #   for more details.
+            #
+            #   @param bulk_config [Orb::Models::BulkConfig] Configuration for bulk pricing
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :bulk] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class BulkWithFilters < Orb::Internal::Type::BaseModel
+            # @!attribute bulk_with_filters_config
+            #   Configuration for bulk_with_filters pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig]
+            required :bulk_with_filters_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig }
+
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :bulk_with_filters]
+            required :model_type, const: :bulk_with_filters
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(bulk_with_filters_config:, cadence:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_filters)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters}
+            #   for more details.
+            #
+            #   @param bulk_with_filters_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig] Configuration for bulk_with_filters pricing
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :bulk_with_filters] The pricing model type
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters#bulk_with_filters_config
+            class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+              # @!attribute filters
+              #   Property filters to apply (all must match)
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Filter>]
+              required :filters,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Filter
+                         ]
+                       end
+
+              # @!attribute tiers
+              #   Bulk tiers for rating based on total usage volume
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(filters:, tiers:)
+              #   Configuration for bulk_with_filters pricing
+              #
+              #   @param filters [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Filter>] Property filters to apply (all must match)
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Tier>] Bulk tiers for rating based on total usage volume
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute property_key
+                #   Event property key to filter on
+                #
+                #   @return [String]
+                required :property_key, String
+
+                # @!attribute property_value
+                #   Event property value to match
+                #
+                #   @return [String]
+                required :property_value, String
+
+                # @!method initialize(property_key:, property_value:)
+                #   Configuration for a single property filter
+                #
+                #   @param property_key [String] Event property key to filter on
+                #
+                #   @param property_value [String] Event property value to match
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute unit_amount
+                #   Amount per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!attribute tier_lower_bound
+                #   The lower bound for this tier
+                #
+                #   @return [String, nil]
+                optional :tier_lower_bound, String, nil?: true
+
+                # @!method initialize(unit_amount:, tier_lower_bound: nil)
+                #   Configuration for a single bulk pricing tier
+                #
+                #   @param unit_amount [String] Amount per unit
+                #
+                #   @param tier_lower_bound [String, nil] The lower bound for this tier
+              end
+            end
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Package < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :package]
+            required :model_type, const: :package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute package_config
+            #   Configuration for package pricing
+            #
+            #   @return [Orb::Models::PackageConfig]
+            required :package_config, -> { Orb::PackageConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param package_config [Orb::Models::PackageConfig] Configuration for package pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Matrix < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::LicenseAllocation] }
+
+            # @!attribute matrix_config
+            #   Configuration for matrix pricing
+            #
+            #   @return [Orb::Models::MatrixConfig]
+            required :matrix_config, -> { Orb::MatrixConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :matrix]
+            required :model_type, const: :matrix
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :matrix)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param matrix_config [Orb::Models::MatrixConfig] Configuration for matrix pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :matrix] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :threshold_total_amount]
+            required :model_type, const: :threshold_total_amount
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute threshold_total_amount_config
+            #   Configuration for threshold_total_amount pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig]
+            required :threshold_total_amount_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :threshold_total_amount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param threshold_total_amount_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig] Configuration for threshold_total_amount pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :threshold_total_amount] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount#threshold_total_amount_config
+            class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
+              # @!attribute consumption_table
+              #   When the quantity consumed passes a provided threshold, the configured total
+              #   will be charged
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig::ConsumptionTable>]
+              required :consumption_table,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig::ConsumptionTable
+                         ]
+                       end
+
+              # @!attribute prorate
+              #   If true, the unit price will be prorated to the billing period
+              #
+              #   @return [Boolean, nil]
+              optional :prorate, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(consumption_table:, prorate: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig}
+              #   for more details.
+              #
+              #   Configuration for threshold_total_amount pricing
+              #
+              #   @param consumption_table [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig::ConsumptionTable>] When the quantity consumed passes a provided threshold, the configured total wil
+              #
+              #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
+
+              class ConsumptionTable < Orb::Internal::Type::BaseModel
+                # @!attribute threshold
+                #
+                #   @return [String]
+                required :threshold, String
+
+                # @!attribute total_amount
+                #   Total amount for this threshold
+                #
+                #   @return [String]
+                required :total_amount, String
+
+                # @!method initialize(threshold:, total_amount:)
+                #   Configuration for a single threshold
+                #
+                #   @param threshold [String]
+                #
+                #   @param total_amount [String] Total amount for this threshold
+              end
+            end
+          end
+
+          class TieredPackage < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_package]
+            required :model_type, const: :tiered_package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_package_config
+            #   Configuration for tiered_package pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig]
+            required :tiered_package_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_package_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig] Configuration for tiered_package pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage#tiered_package_config
+            class TieredPackageConfig < Orb::Internal::Type::BaseModel
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+              #   are defined using exclusive lower bounds. The tier bounds are defined based on
+              #   the total quantity rather than the number of packages, so they must be multiples
+              #   of the package size.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_package pricing
+              #
+              #   @param package_size [String]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute per_unit
+                #   Price per package
+                #
+                #   @return [String]
+                required :per_unit, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!method initialize(per_unit:, tier_lower_bound:)
+                #   Configuration for a single tier with business logic
+                #
+                #   @param per_unit [String] Price per package
+                #
+                #   @param tier_lower_bound [String]
+              end
+            end
+          end
+
+          class TieredWithMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_with_minimum]
+            required :model_type, const: :tiered_with_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_with_minimum_config
+            #   Configuration for tiered_with_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig]
+            required :tiered_with_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_with_minimum_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig] Configuration for tiered_with_minimum pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_with_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum#tiered_with_minimum_config
+            class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
+              #   defined using exclusive lower bounds.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig::Tier
+                         ]
+                       end
+
+              # @!attribute hide_zero_amount_tiers
+              #   If true, tiers with an accrued amount of 0 will not be included in the rating.
+              #
+              #   @return [Boolean, nil]
+              optional :hide_zero_amount_tiers, Orb::Internal::Type::Boolean
+
+              # @!attribute prorate
+              #   If true, the unit price will be prorated to the billing period
+              #
+              #   @return [Boolean, nil]
+              optional :prorate, Orb::Internal::Type::Boolean
+
+              # @!method initialize(tiers:, hide_zero_amount_tiers: nil, prorate: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_with_minimum pricing
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig::Tier>] Tiered pricing with a minimum amount dependent on the volume tier. Tiers are def
+              #
+              #   @param hide_zero_amount_tiers [Boolean] If true, tiers with an accrued amount of 0 will not be included in the rating.
+              #
+              #   @param prorate [Boolean] If true, the unit price will be prorated to the billing period
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute minimum_amount
+                #
+                #   @return [String]
+                required :minimum_amount, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(minimum_amount:, tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier
+                #
+                #   @param minimum_amount [String]
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+          end
+
+          class GroupedTiered < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::Cadence }
+
+            # @!attribute grouped_tiered_config
+            #   Configuration for grouped_tiered pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig]
+            required :grouped_tiered_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_tiered]
+            required :model_type, const: :grouped_tiered
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_tiered_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_tiered_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig] Configuration for grouped_tiered pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_tiered] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered#grouped_tiered_config
+            class GroupedTieredConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The billable metric property used to group before tiering
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing to each segment generated after grouping with the provided
+              #   key
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_tiered pricing
+              #
+              #   @param grouping_key [String] The billable metric property used to group before tiering
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig::Tier>] Apply tiered pricing to each segment generated after grouping with the provided
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_package_with_minimum]
+            required :model_type, const: :tiered_package_with_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_package_with_minimum_config
+            #   Configuration for tiered_package_with_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig]
+            required :tiered_package_with_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_package_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_package_with_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_package_with_minimum_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig] Configuration for tiered_package_with_minimum pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_package_with_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum#tiered_package_with_minimum_config
+            class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute package_size
+              #
+              #   @return [Float]
+              required :package_size, Float
+
+              # @!attribute tiers
+              #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+              #   are defined using exclusive lower bounds.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_package_with_minimum pricing
+              #
+              #   @param package_size [Float]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute minimum_amount
+                #
+                #   @return [String]
+                required :minimum_amount, String
+
+                # @!attribute per_unit
+                #
+                #   @return [String]
+                required :per_unit, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!method initialize(minimum_amount:, per_unit:, tier_lower_bound:)
+                #   Configuration for a single tier
+                #
+                #   @param minimum_amount [String]
+                #   @param per_unit [String]
+                #   @param tier_lower_bound [String]
+              end
+            end
+          end
+
+          class PackageWithAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :package_with_allocation]
+            required :model_type, const: :package_with_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute package_with_allocation_config
+            #   Configuration for package_with_allocation pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::PackageWithAllocationConfig]
+            required :package_with_allocation_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::PackageWithAllocationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :package_with_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param package_with_allocation_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation::PackageWithAllocationConfig] Configuration for package_with_allocation pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :package_with_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation#package_with_allocation_config
+            class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute allocation
+              #
+              #   @return [String]
+              required :allocation, String
+
+              # @!attribute package_amount
+              #
+              #   @return [String]
+              required :package_amount, String
+
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!method initialize(allocation:, package_amount:, package_size:)
+              #   Configuration for package_with_allocation pricing
+              #
+              #   @param allocation [String]
+              #   @param package_amount [String]
+              #   @param package_size [String]
+            end
+          end
+
+          class UnitWithPercent < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :unit_with_percent]
+            required :model_type, const: :unit_with_percent
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute unit_with_percent_config
+            #   Configuration for unit_with_percent pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::UnitWithPercentConfig]
+            required :unit_with_percent_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::UnitWithPercentConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :unit_with_percent)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param unit_with_percent_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent::UnitWithPercentConfig] Configuration for unit_with_percent pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :unit_with_percent] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent#unit_with_percent_config
+            class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
+              # @!attribute percent
+              #   What percent, out of 100, of the calculated total to charge
+              #
+              #   @return [String]
+              required :percent, String
+
+              # @!attribute unit_amount
+              #   Rate per unit of usage
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!method initialize(percent:, unit_amount:)
+              #   Configuration for unit_with_percent pricing
+              #
+              #   @param percent [String] What percent, out of 100, of the calculated total to charge
+              #
+              #   @param unit_amount [String] Rate per unit of usage
+            end
+          end
+
+          class MatrixWithAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute matrix_with_allocation_config
+            #   Configuration for matrix_with_allocation pricing
+            #
+            #   @return [Orb::Models::MatrixWithAllocationConfig]
+            required :matrix_with_allocation_config, -> { Orb::MatrixWithAllocationConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :matrix_with_allocation]
+            required :model_type, const: :matrix_with_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, matrix_with_allocation_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :matrix_with_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig] Configuration for matrix_with_allocation pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :matrix_with_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class TieredWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_with_proration]
+            required :model_type, const: :tiered_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_with_proration_config
+            #   Configuration for tiered_with_proration pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig]
+            required :tiered_with_proration_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_with_proration_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig] Configuration for tiered_with_proration pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_with_proration] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration#tiered_with_proration_config
+            class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Tiers for rating based on total usage quantities into the specified tier with
+              #   proration
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_with_proration pricing
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier with pr
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #   Inclusive tier starting value
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Amount per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tiered with proration tier
+                #
+                #   @param tier_lower_bound [String] Inclusive tier starting value
+                #
+                #   @param unit_amount [String] Amount per unit
+              end
+            end
+          end
+
+          class UnitWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :unit_with_proration]
+            required :model_type, const: :unit_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute unit_with_proration_config
+            #   Configuration for unit_with_proration pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::UnitWithProrationConfig]
+            required :unit_with_proration_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::UnitWithProrationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :unit_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param unit_with_proration_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration::UnitWithProrationConfig] Configuration for unit_with_proration pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :unit_with_proration] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration#unit_with_proration_config
+            class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute unit_amount
+              #   Rate per unit of usage
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!method initialize(unit_amount:)
+              #   Configuration for unit_with_proration pricing
+              #
+              #   @param unit_amount [String] Rate per unit of usage
+            end
+          end
+
+          class GroupedAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::Cadence }
+
+            # @!attribute grouped_allocation_config
+            #   Configuration for grouped_allocation pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::GroupedAllocationConfig]
+            required :grouped_allocation_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::GroupedAllocationConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_allocation]
+            required :model_type, const: :grouped_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_allocation_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_allocation_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::GroupedAllocationConfig] Configuration for grouped_allocation pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation#grouped_allocation_config
+            class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute allocation
+              #   Usage allocation per group
+              #
+              #   @return [String]
+              required :allocation, String
+
+              # @!attribute grouping_key
+              #   How to determine the groups that should each be allocated some quantity
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute overage_unit_rate
+              #   Unit rate for post-allocation
+              #
+              #   @return [String]
+              required :overage_unit_rate, String
+
+              # @!method initialize(allocation:, grouping_key:, overage_unit_rate:)
+              #   Configuration for grouped_allocation pricing
+              #
+              #   @param allocation [String] Usage allocation per group
+              #
+              #   @param grouping_key [String] How to determine the groups that should each be allocated some quantity
+              #
+              #   @param overage_unit_rate [String] Unit rate for post-allocation
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class BulkWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute bulk_with_proration_config
+            #   Configuration for bulk_with_proration pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig]
+            required :bulk_with_proration_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig }
+
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :bulk_with_proration]
+            required :model_type, const: :bulk_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(bulk_with_proration_config:, cadence:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration}
+            #   for more details.
+            #
+            #   @param bulk_with_proration_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig] Configuration for bulk_with_proration pricing
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :bulk_with_proration] The pricing model type
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration#bulk_with_proration_config
+            class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Bulk tiers for rating based on total usage volume
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(tiers:)
+              #   Configuration for bulk_with_proration pricing
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig::Tier>] Bulk tiers for rating based on total usage volume
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute unit_amount
+                #   Cost per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!attribute tier_lower_bound
+                #   The lower bound for this tier
+                #
+                #   @return [String, nil]
+                optional :tier_lower_bound, String, nil?: true
+
+                # @!method initialize(unit_amount:, tier_lower_bound: nil)
+                #   Configuration for a single bulk pricing tier with proration
+                #
+                #   @param unit_amount [String] Cost per unit
+                #
+                #   @param tier_lower_bound [String, nil] The lower bound for this tier
+              end
+            end
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::Cadence }
+
+            # @!attribute grouped_with_prorated_minimum_config
+            #   Configuration for grouped_with_prorated_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig]
+            required :grouped_with_prorated_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_with_prorated_minimum]
+            required :model_type, const: :grouped_with_prorated_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_with_prorated_minimum_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_prorated_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_with_prorated_minimum_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig] Configuration for grouped_with_prorated_minimum pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_with_prorated_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum#grouped_with_prorated_minimum_config
+            class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   How to determine the groups that should each have a minimum
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute minimum
+              #   The minimum amount to charge per group
+              #
+              #   @return [String]
+              required :minimum, String
+
+              # @!attribute unit_rate
+              #   The amount to charge per unit
+              #
+              #   @return [String]
+              required :unit_rate, String
+
+              # @!method initialize(grouping_key:, minimum:, unit_rate:)
+              #   Configuration for grouped_with_prorated_minimum pricing
+              #
+              #   @param grouping_key [String] How to determine the groups that should each have a minimum
+              #
+              #   @param minimum [String] The minimum amount to charge per group
+              #
+              #   @param unit_rate [String] The amount to charge per unit
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::Cadence }
+
+            # @!attribute grouped_with_metered_minimum_config
+            #   Configuration for grouped_with_metered_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig]
+            required :grouped_with_metered_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_with_metered_minimum]
+            required :model_type, const: :grouped_with_metered_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_with_metered_minimum_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_metered_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_with_metered_minimum_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig] Configuration for grouped_with_metered_minimum pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_with_metered_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum#grouped_with_metered_minimum_config
+            class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   Used to partition the usage into groups. The minimum amount is applied to each
+              #   group.
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute minimum_unit_amount
+              #   The minimum amount to charge per group per unit
+              #
+              #   @return [String]
+              required :minimum_unit_amount, String
+
+              # @!attribute pricing_key
+              #   Used to determine the unit rate
+              #
+              #   @return [String]
+              required :pricing_key, String
+
+              # @!attribute scaling_factors
+              #   Scale the unit rates by the scaling factor.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::ScalingFactor>]
+              required :scaling_factors,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::ScalingFactor
+                         ]
+                       end
+
+              # @!attribute scaling_key
+              #   Used to determine the unit rate scaling factor
+              #
+              #   @return [String]
+              required :scaling_key, String
+
+              # @!attribute unit_amounts
+              #   Apply per unit pricing to each pricing value. The minimum amount is applied any
+              #   unmatched usage.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::UnitAmount>]
+              required :unit_amounts,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::UnitAmount
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, minimum_unit_amount:, pricing_key:, scaling_factors:, scaling_key:, unit_amounts:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_with_metered_minimum pricing
+              #
+              #   @param grouping_key [String] Used to partition the usage into groups. The minimum amount is applied to each g
+              #
+              #   @param minimum_unit_amount [String] The minimum amount to charge per group per unit
+              #
+              #   @param pricing_key [String] Used to determine the unit rate
+              #
+              #   @param scaling_factors [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::ScalingFactor>] Scale the unit rates by the scaling factor.
+              #
+              #   @param scaling_key [String] Used to determine the unit rate scaling factor
+              #
+              #   @param unit_amounts [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::UnitAmount>] Apply per unit pricing to each pricing value. The minimum amount is applied any
+
+              class ScalingFactor < Orb::Internal::Type::BaseModel
+                # @!attribute scaling_factor
+                #
+                #   @return [String]
+                required :scaling_factor, String
+
+                # @!attribute scaling_value
+                #
+                #   @return [String]
+                required :scaling_value, String
+
+                # @!method initialize(scaling_factor:, scaling_value:)
+                #   Configuration for a scaling factor
+                #
+                #   @param scaling_factor [String]
+                #   @param scaling_value [String]
+              end
+
+              class UnitAmount < Orb::Internal::Type::BaseModel
+                # @!attribute pricing_value
+                #
+                #   @return [String]
+                required :pricing_value, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(pricing_value:, unit_amount:)
+                #   Configuration for a unit amount
+                #
+                #   @param pricing_value [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::Cadence }
+
+            # @!attribute grouped_with_min_max_thresholds_config
+            #   Configuration for grouped_with_min_max_thresholds pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig]
+            required :grouped_with_min_max_thresholds_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_with_min_max_thresholds]
+            required :model_type, const: :grouped_with_min_max_thresholds
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_with_min_max_thresholds_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_min_max_thresholds)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_with_min_max_thresholds_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig] Configuration for grouped_with_min_max_thresholds pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_with_min_max_thresholds] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds#grouped_with_min_max_thresholds_config
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before applying thresholds
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute maximum_charge
+              #   The maximum amount to charge each group
+              #
+              #   @return [String]
+              required :maximum_charge, String
+
+              # @!attribute minimum_charge
+              #   The minimum amount to charge each group, regardless of usage
+              #
+              #   @return [String]
+              required :minimum_charge, String
+
+              # @!attribute per_unit_rate
+              #   The base price charged per group
+              #
+              #   @return [String]
+              required :per_unit_rate, String
+
+              # @!method initialize(grouping_key:, maximum_charge:, minimum_charge:, per_unit_rate:)
+              #   Configuration for grouped_with_min_max_thresholds pricing
+              #
+              #   @param grouping_key [String] The event property used to group before applying thresholds
+              #
+              #   @param maximum_charge [String] The maximum amount to charge each group
+              #
+              #   @param minimum_charge [String] The minimum amount to charge each group, regardless of usage
+              #
+              #   @param per_unit_rate [String] The base price charged per group
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute matrix_with_display_name_config
+            #   Configuration for matrix_with_display_name pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig]
+            required :matrix_with_display_name_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :matrix_with_display_name]
+            required :model_type, const: :matrix_with_display_name
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :matrix_with_display_name)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param matrix_with_display_name_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig] Configuration for matrix_with_display_name pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :matrix_with_display_name] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName#matrix_with_display_name_config
+            class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
+              # @!attribute dimension
+              #   Used to determine the unit rate
+              #
+              #   @return [String]
+              required :dimension, String
+
+              # @!attribute unit_amounts
+              #   Apply per unit pricing to each dimension value
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig::UnitAmount>]
+              required :unit_amounts,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig::UnitAmount
+                         ]
+                       end
+
+              # @!method initialize(dimension:, unit_amounts:)
+              #   Configuration for matrix_with_display_name pricing
+              #
+              #   @param dimension [String] Used to determine the unit rate
+              #
+              #   @param unit_amounts [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig::UnitAmount>] Apply per unit pricing to each dimension value
+
+              class UnitAmount < Orb::Internal::Type::BaseModel
+                # @!attribute dimension_value
+                #   The dimension value
+                #
+                #   @return [String]
+                required :dimension_value, String
+
+                # @!attribute display_name
+                #   Display name for this dimension value
+                #
+                #   @return [String]
+                required :display_name, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(dimension_value:, display_name:, unit_amount:)
+                #   Configuration for a unit amount item
+                #
+                #   @param dimension_value [String] The dimension value
+                #
+                #   @param display_name [String] Display name for this dimension value
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+          end
+
+          class GroupedTieredPackage < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::Cadence }
+
+            # @!attribute grouped_tiered_package_config
+            #   Configuration for grouped_tiered_package pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig]
+            required :grouped_tiered_package_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_tiered_package]
+            required :model_type, const: :grouped_tiered_package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_tiered_package_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered_package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_tiered_package_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig] Configuration for grouped_tiered_package pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_tiered_package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage#grouped_tiered_package_config
+            class GroupedTieredPackageConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before tiering
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+              #   are defined using exclusive lower bounds.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_tiered_package pricing
+              #
+              #   @param grouping_key [String] The event property used to group before tiering
+              #
+              #   @param package_size [String]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute per_unit
+                #   Per package
+                #
+                #   @return [String]
+                required :per_unit, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!method initialize(per_unit:, tier_lower_bound:)
+                #   Configuration for a single tier
+                #
+                #   @param per_unit [String] Per package
+                #
+                #   @param tier_lower_bound [String]
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute max_group_tiered_package_config
+            #   Configuration for max_group_tiered_package pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig]
+            required :max_group_tiered_package_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :max_group_tiered_package]
+            required :model_type, const: :max_group_tiered_package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :max_group_tiered_package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param max_group_tiered_package_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig] Configuration for max_group_tiered_package pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :max_group_tiered_package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage#max_group_tiered_package_config
+            class MaxGroupTieredPackageConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before tiering the group with the highest value
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing to the largest group after grouping with the provided key.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig}
+              #   for more details.
+              #
+              #   Configuration for max_group_tiered_package pricing
+              #
+              #   @param grouping_key [String] The event property used to group before tiering the group with the highest value
+              #
+              #   @param package_size [String]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier>] Apply tiered pricing to the largest group after grouping with the provided key.
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+          end
+
+          class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :scalable_matrix_with_unit_pricing]
+            required :model_type, const: :scalable_matrix_with_unit_pricing
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute scalable_matrix_with_unit_pricing_config
+            #   Configuration for scalable_matrix_with_unit_pricing pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig]
+            required :scalable_matrix_with_unit_pricing_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_unit_pricing)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param scalable_matrix_with_unit_pricing_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig] Configuration for scalable_matrix_with_unit_pricing pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing#scalable_matrix_with_unit_pricing_config
+            class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
+              # @!attribute first_dimension
+              #   Used to determine the unit rate
+              #
+              #   @return [String]
+              required :first_dimension, String
+
+              # @!attribute matrix_scaling_factors
+              #   Apply a scaling factor to each dimension
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>]
+              required :matrix_scaling_factors,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
+                         ]
+                       end
+
+              # @!attribute unit_price
+              #   The final unit price to rate against the output of the matrix
+              #
+              #   @return [String]
+              required :unit_price, String
+
+              # @!attribute grouping_key
+              #   The property used to group this price
+              #
+              #   @return [String, nil]
+              optional :grouping_key, String, nil?: true
+
+              # @!attribute prorate
+              #   If true, the unit price will be prorated to the billing period
+              #
+              #   @return [Boolean, nil]
+              optional :prorate, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!attribute second_dimension
+              #   Used to determine the unit rate (optional)
+              #
+              #   @return [String, nil]
+              optional :second_dimension, String, nil?: true
+
+              # @!method initialize(first_dimension:, matrix_scaling_factors:, unit_price:, grouping_key: nil, prorate: nil, second_dimension: nil)
+              #   Configuration for scalable_matrix_with_unit_pricing pricing
+              #
+              #   @param first_dimension [String] Used to determine the unit rate
+              #
+              #   @param matrix_scaling_factors [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
+              #
+              #   @param unit_price [String] The final unit price to rate against the output of the matrix
+              #
+              #   @param grouping_key [String, nil] The property used to group this price
+              #
+              #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
+              #
+              #   @param second_dimension [String, nil] Used to determine the unit rate (optional)
+
+              class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+                # @!attribute first_dimension_value
+                #
+                #   @return [String]
+                required :first_dimension_value, String
+
+                # @!attribute scaling_factor
+                #
+                #   @return [String]
+                required :scaling_factor, String
+
+                # @!attribute second_dimension_value
+                #
+                #   @return [String, nil]
+                optional :second_dimension_value, String, nil?: true
+
+                # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
+                #   Configuration for a single matrix scaling factor
+                #
+                #   @param first_dimension_value [String]
+                #   @param scaling_factor [String]
+                #   @param second_dimension_value [String, nil]
+              end
+            end
+          end
+
+          class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :scalable_matrix_with_tiered_pricing]
+            required :model_type, const: :scalable_matrix_with_tiered_pricing
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute scalable_matrix_with_tiered_pricing_config
+            #   Configuration for scalable_matrix_with_tiered_pricing pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig]
+            required :scalable_matrix_with_tiered_pricing_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_tiered_pricing)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param scalable_matrix_with_tiered_pricing_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig] Configuration for scalable_matrix_with_tiered_pricing pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing#scalable_matrix_with_tiered_pricing_config
+            class ScalableMatrixWithTieredPricingConfig < Orb::Internal::Type::BaseModel
+              # @!attribute first_dimension
+              #   Used for the scalable matrix first dimension
+              #
+              #   @return [String]
+              required :first_dimension, String
+
+              # @!attribute matrix_scaling_factors
+              #   Apply a scaling factor to each dimension
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>]
+              required :matrix_scaling_factors,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor
+                         ]
+                       end
+
+              # @!attribute tiers
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier
+                         ]
+                       end
+
+              # @!attribute second_dimension
+              #   Used for the scalable matrix second dimension (optional)
+              #
+              #   @return [String, nil]
+              optional :second_dimension, String, nil?: true
+
+              # @!method initialize(first_dimension:, matrix_scaling_factors:, tiers:, second_dimension: nil)
+              #   Configuration for scalable_matrix_with_tiered_pricing pricing
+              #
+              #   @param first_dimension [String] Used for the scalable matrix first dimension
+              #
+              #   @param matrix_scaling_factors [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>]
+              #
+              #   @param second_dimension [String, nil] Used for the scalable matrix second dimension (optional)
+
+              class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+                # @!attribute first_dimension_value
+                #
+                #   @return [String]
+                required :first_dimension_value, String
+
+                # @!attribute scaling_factor
+                #
+                #   @return [String]
+                required :scaling_factor, String
+
+                # @!attribute second_dimension_value
+                #
+                #   @return [String, nil]
+                optional :second_dimension_value, String, nil?: true
+
+                # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
+                #   Configuration for a single matrix scaling factor
+                #
+                #   @param first_dimension_value [String]
+                #   @param scaling_factor [String]
+                #   @param second_dimension_value [String, nil]
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier entry with business logic
+                #
+                #   @param tier_lower_bound [String]
+                #   @param unit_amount [String]
+              end
+            end
+          end
+
+          class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::Cadence }
+
+            # @!attribute cumulative_grouped_bulk_config
+            #   Configuration for cumulative_grouped_bulk pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig]
+            required :cumulative_grouped_bulk_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :cumulative_grouped_bulk]
+            required :model_type, const: :cumulative_grouped_bulk
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, cumulative_grouped_bulk_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_bulk)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::Cadence] The cadence to bill for this price on.
+            #
+            #   @param cumulative_grouped_bulk_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig] Configuration for cumulative_grouped_bulk pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :cumulative_grouped_bulk] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk#cumulative_grouped_bulk_config
+            class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   Each tier lower bound must have the same group of values.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue>]
+              required :dimension_values,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue
+                         ]
+                       end
+
+              # @!attribute group
+              #
+              #   @return [String]
+              required :group, String
+
+              # @!method initialize(dimension_values:, group:)
+              #   Configuration for cumulative_grouped_bulk pricing
+              #
+              #   @param dimension_values [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue>] Each tier lower bound must have the same group of values.
+              #
+              #   @param group [String]
+
+              class DimensionValue < Orb::Internal::Type::BaseModel
+                # @!attribute grouping_key
+                #   Grouping key value
+                #
+                #   @return [String]
+                required :grouping_key, String
+
+                # @!attribute tier_lower_bound
+                #   Tier lower bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Unit amount for this combination
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(grouping_key:, tier_lower_bound:, unit_amount:)
+                #   Configuration for a dimension value entry
+                #
+                #   @param grouping_key [String] Grouping key value
+                #
+                #   @param tier_lower_bound [String] Tier lower bound
+                #
+                #   @param unit_amount [String] Unit amount for this combination
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::Cadence }
+
+            # @!attribute cumulative_grouped_allocation_config
+            #   Configuration for cumulative_grouped_allocation pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig]
+            required :cumulative_grouped_allocation_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :cumulative_grouped_allocation]
+            required :model_type, const: :cumulative_grouped_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, cumulative_grouped_allocation_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param cumulative_grouped_allocation_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig] Configuration for cumulative_grouped_allocation pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :cumulative_grouped_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation#cumulative_grouped_allocation_config
+            class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute cumulative_allocation
+              #   The overall allocation across all groups
+              #
+              #   @return [String]
+              required :cumulative_allocation, String
+
+              # @!attribute group_allocation
+              #   The allocation per individual group
+              #
+              #   @return [String]
+              required :group_allocation, String
+
+              # @!attribute grouping_key
+              #   The event property used to group usage before applying allocations
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute unit_amount
+              #   The amount to charge for each unit outside of the allocation
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!method initialize(cumulative_allocation:, group_allocation:, grouping_key:, unit_amount:)
+              #   Configuration for cumulative_grouped_allocation pricing
+              #
+              #   @param cumulative_allocation [String] The overall allocation across all groups
+              #
+              #   @param group_allocation [String] The allocation per individual group
+              #
+              #   @param grouping_key [String] The event property used to group usage before applying allocations
+              #
+              #   @param unit_amount [String] The amount to charge for each unit outside of the allocation
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class MinimumComposite < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::LicenseAllocation] }
+
+            # @!attribute minimum_composite_config
+            #   Configuration for minimum_composite pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::MinimumCompositeConfig]
+            required :minimum_composite_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::MinimumCompositeConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :minimum_composite]
+            required :model_type, const: :minimum_composite
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, minimum_composite_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :minimum_composite)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param minimum_composite_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite::MinimumCompositeConfig] Configuration for minimum_composite pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :minimum_composite] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite#minimum_composite_config
+            class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
+              # @!attribute minimum_amount
+              #   The minimum amount to apply
+              #
+              #   @return [String]
+              required :minimum_amount, String
+
+              # @!attribute prorated
+              #   If true, subtotals from this price are prorated based on the service period
+              #
+              #   @return [Boolean, nil]
+              optional :prorated, Orb::Internal::Type::Boolean
+
+              # @!method initialize(minimum_amount:, prorated: nil)
+              #   Configuration for minimum_composite pricing
+              #
+              #   @param minimum_amount [String] The minimum amount to apply
+              #
+              #   @param prorated [Boolean] If true, subtotals from this price are prorated based on the service period
+            end
+          end
+
+          class Percent < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :percent]
+            required :model_type, const: :percent
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute percent_config
+            #   Configuration for percent pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::PercentConfig]
+            required :percent_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::PercentConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :percent)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param percent_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent::PercentConfig] Configuration for percent pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :percent] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent#percent_config
+            class PercentConfig < Orb::Internal::Type::BaseModel
+              # @!attribute percent
+              #   What percent of the component subtotals to charge
+              #
+              #   @return [Float]
+              required :percent, Float
+
+              # @!method initialize(percent:)
+              #   Configuration for percent pricing
+              #
+              #   @param percent [Float] What percent of the component subtotals to charge
+            end
+          end
+
+          class EventOutput < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::Cadence }
+
+            # @!attribute event_output_config
+            #   Configuration for event_output pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::EventOutputConfig]
+            required :event_output_config,
+                     -> { Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::EventOutputConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :event_output]
+            required :model_type, const: :event_output
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, event_output_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :event_output)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::Cadence] The cadence to bill for this price on.
+            #
+            #   @param event_output_config [Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::EventOutputConfig] Configuration for event_output pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :event_output] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput#event_output_config
+            class EventOutputConfig < Orb::Internal::Type::BaseModel
+              # @!attribute unit_rating_key
+              #   The key in the event data to extract the unit rate from.
+              #
+              #   @return [String]
+              required :unit_rating_key, String
+
+              # @!attribute default_unit_rate
+              #   If provided, this amount will be used as the unit rate when an event does not
+              #   have a value for the `unit_rating_key`. If not provided, events missing a unit
+              #   rate will be ignored.
+              #
+              #   @return [String, nil]
+              optional :default_unit_rate, String, nil?: true
+
+              # @!attribute grouping_key
+              #   An optional key in the event data to group by (e.g., event ID). All events will
+              #   also be grouped by their unit rate.
+              #
+              #   @return [String, nil]
+              optional :grouping_key, String, nil?: true
+
+              # @!method initialize(unit_rating_key:, default_unit_rate: nil, grouping_key: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput::EventOutputConfig}
+              #   for more details.
+              #
+              #   Configuration for event_output pricing
+              #
+              #   @param unit_rating_key [String] The key in the event data to extract the unit rate from.
+              #
+              #   @param default_unit_rate [String, nil] If provided, this amount will be used as the unit rate when an event does not ha
+              #
+              #   @param grouping_key [String, nil] An optional key in the event data to group by (e.g., event ID). All events will
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Unit, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Tiered, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Bulk, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithFilters, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Package, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Matrix, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ThresholdTotalAmount, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTiered, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredPackageWithMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::PackageWithAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithPercent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::TieredWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::UnitWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::BulkWithProration, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithProratedMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMeteredMinimum, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MatrixWithDisplayName, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::GroupedTieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MaxGroupTieredPackage, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedBulk, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::CumulativeGroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::MinimumComposite, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Percent, Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::EventOutput)]
+        end
 
         # New plan price request body params.
         #
@@ -1732,6 +10330,14 @@ module Orb
         #   @return [Orb::Models::NewAllocationPrice, nil]
         optional :allocation_price, -> { Orb::NewAllocationPrice }, nil?: true
 
+        # @!attribute license_allocation_price
+        #   The license allocation price to add to the plan.
+        #
+        #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput, nil]
+        optional :license_allocation_price,
+                 union: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice },
+                 nil?: true
+
         # @!attribute plan_phase_order
         #   The phase to replace this price from.
         #
@@ -1744,14 +10350,8628 @@ module Orb
         #   @return [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::NewPlanMinimumCompositePrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput, nil]
         optional :price, union: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::Price }, nil?: true
 
-        # @!method initialize(replaces_price_id:, allocation_price: nil, plan_phase_order: nil, price: nil)
+        # @!method initialize(replaces_price_id:, allocation_price: nil, license_allocation_price: nil, plan_phase_order: nil, price: nil)
         #   @param replaces_price_id [String] The id of the price on the plan to replace in the plan.
         #
         #   @param allocation_price [Orb::Models::NewAllocationPrice, nil] The allocation price to add to the plan.
         #
+        #   @param license_allocation_price [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput, nil] The license allocation price to add to the plan.
+        #
         #   @param plan_phase_order [Integer, nil] The phase to replace this price from.
         #
         #   @param price [Orb::Models::NewPlanUnitPrice, Orb::Models::NewPlanTieredPrice, Orb::Models::NewPlanBulkPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewPlanPackagePrice, Orb::Models::NewPlanMatrixPrice, Orb::Models::NewPlanThresholdTotalAmountPrice, Orb::Models::NewPlanTieredPackagePrice, Orb::Models::NewPlanTieredWithMinimumPrice, Orb::Models::NewPlanGroupedTieredPrice, Orb::Models::NewPlanTieredPackageWithMinimumPrice, Orb::Models::NewPlanPackageWithAllocationPrice, Orb::Models::NewPlanUnitWithPercentPrice, Orb::Models::NewPlanMatrixWithAllocationPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewPlanUnitWithProrationPrice, Orb::Models::NewPlanGroupedAllocationPrice, Orb::Models::NewPlanBulkWithProrationPrice, Orb::Models::NewPlanGroupedWithProratedMinimumPrice, Orb::Models::NewPlanGroupedWithMeteredMinimumPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewPlanMatrixWithDisplayNamePrice, Orb::Models::NewPlanGroupedTieredPackagePrice, Orb::Models::NewPlanMaxGroupTieredPackagePrice, Orb::Models::NewPlanScalableMatrixWithUnitPricingPrice, Orb::Models::NewPlanScalableMatrixWithTieredPricingPrice, Orb::Models::NewPlanCumulativeGroupedBulkPrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::NewPlanMinimumCompositePrice, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput, nil] New plan price request body params.
+
+        # The license allocation price to add to the plan.
+        #
+        # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice#license_allocation_price
+        module LicenseAllocationPrice
+          extend Orb::Internal::Type::Union
+
+          discriminator :model_type
+
+          variant :unit, -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit }
+
+          variant :tiered, -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered }
+
+          variant :bulk, -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk }
+
+          variant :bulk_with_filters,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters }
+
+          variant :package, -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package }
+
+          variant :matrix, -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix }
+
+          variant :threshold_total_amount,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount }
+
+          variant :tiered_package,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage }
+
+          variant :tiered_with_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum }
+
+          variant :grouped_tiered,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered }
+
+          variant :tiered_package_with_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum }
+
+          variant :package_with_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation }
+
+          variant :unit_with_percent,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent }
+
+          variant :matrix_with_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation }
+
+          variant :tiered_with_proration,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration }
+
+          variant :unit_with_proration,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration }
+
+          variant :grouped_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation }
+
+          variant :bulk_with_proration,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration }
+
+          variant :grouped_with_prorated_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum }
+
+          variant :grouped_with_metered_minimum,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum }
+
+          variant :grouped_with_min_max_thresholds,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds }
+
+          variant :matrix_with_display_name,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName }
+
+          variant :grouped_tiered_package,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage }
+
+          variant :max_group_tiered_package,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage }
+
+          variant :scalable_matrix_with_unit_pricing,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing }
+
+          variant :scalable_matrix_with_tiered_pricing,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing }
+
+          variant :cumulative_grouped_bulk,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk }
+
+          variant :cumulative_grouped_allocation,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation }
+
+          variant :minimum_composite,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite }
+
+          variant :percent, -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent }
+
+          variant :event_output,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput }
+
+          class Unit < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :unit]
+            required :model_type, const: :unit
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute unit_config
+            #   Configuration for unit pricing
+            #
+            #   @return [Orb::Models::UnitConfig]
+            required :unit_config, -> { Orb::UnitConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, unit_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :unit)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param unit_config [Orb::Models::UnitConfig] Configuration for unit pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :unit] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Tiered < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered]
+            required :model_type, const: :tiered
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_config
+            #   Configuration for tiered pricing
+            #
+            #   @return [Orb::Models::TieredConfig]
+            required :tiered_config, -> { Orb::TieredConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_config [Orb::Models::TieredConfig] Configuration for tiered pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Bulk < Orb::Internal::Type::BaseModel
+            # @!attribute bulk_config
+            #   Configuration for bulk pricing
+            #
+            #   @return [Orb::Models::BulkConfig]
+            required :bulk_config, -> { Orb::BulkConfig }
+
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :bulk]
+            required :model_type, const: :bulk
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(bulk_config:, cadence:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk}
+            #   for more details.
+            #
+            #   @param bulk_config [Orb::Models::BulkConfig] Configuration for bulk pricing
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :bulk] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class BulkWithFilters < Orb::Internal::Type::BaseModel
+            # @!attribute bulk_with_filters_config
+            #   Configuration for bulk_with_filters pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig]
+            required :bulk_with_filters_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig }
+
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :bulk_with_filters]
+            required :model_type, const: :bulk_with_filters
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(bulk_with_filters_config:, cadence:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_filters)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters}
+            #   for more details.
+            #
+            #   @param bulk_with_filters_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig] Configuration for bulk_with_filters pricing
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :bulk_with_filters] The pricing model type
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters#bulk_with_filters_config
+            class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+              # @!attribute filters
+              #   Property filters to apply (all must match)
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Filter>]
+              required :filters,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Filter
+                         ]
+                       end
+
+              # @!attribute tiers
+              #   Bulk tiers for rating based on total usage volume
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(filters:, tiers:)
+              #   Configuration for bulk_with_filters pricing
+              #
+              #   @param filters [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Filter>] Property filters to apply (all must match)
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters::BulkWithFiltersConfig::Tier>] Bulk tiers for rating based on total usage volume
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute property_key
+                #   Event property key to filter on
+                #
+                #   @return [String]
+                required :property_key, String
+
+                # @!attribute property_value
+                #   Event property value to match
+                #
+                #   @return [String]
+                required :property_value, String
+
+                # @!method initialize(property_key:, property_value:)
+                #   Configuration for a single property filter
+                #
+                #   @param property_key [String] Event property key to filter on
+                #
+                #   @param property_value [String] Event property value to match
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute unit_amount
+                #   Amount per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!attribute tier_lower_bound
+                #   The lower bound for this tier
+                #
+                #   @return [String, nil]
+                optional :tier_lower_bound, String, nil?: true
+
+                # @!method initialize(unit_amount:, tier_lower_bound: nil)
+                #   Configuration for a single bulk pricing tier
+                #
+                #   @param unit_amount [String] Amount per unit
+                #
+                #   @param tier_lower_bound [String, nil] The lower bound for this tier
+              end
+            end
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Package < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :package]
+            required :model_type, const: :package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute package_config
+            #   Configuration for package pricing
+            #
+            #   @return [Orb::Models::PackageConfig]
+            required :package_config, -> { Orb::PackageConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param package_config [Orb::Models::PackageConfig] Configuration for package pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class Matrix < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::LicenseAllocation] }
+
+            # @!attribute matrix_config
+            #   Configuration for matrix pricing
+            #
+            #   @return [Orb::Models::MatrixConfig]
+            required :matrix_config, -> { Orb::MatrixConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :matrix]
+            required :model_type, const: :matrix
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, matrix_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :matrix)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param matrix_config [Orb::Models::MatrixConfig] Configuration for matrix pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :matrix] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class ThresholdTotalAmount < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :threshold_total_amount]
+            required :model_type, const: :threshold_total_amount
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute threshold_total_amount_config
+            #   Configuration for threshold_total_amount pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig]
+            required :threshold_total_amount_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, threshold_total_amount_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :threshold_total_amount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param threshold_total_amount_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig] Configuration for threshold_total_amount pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :threshold_total_amount] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount#threshold_total_amount_config
+            class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
+              # @!attribute consumption_table
+              #   When the quantity consumed passes a provided threshold, the configured total
+              #   will be charged
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig::ConsumptionTable>]
+              required :consumption_table,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig::ConsumptionTable
+                         ]
+                       end
+
+              # @!attribute prorate
+              #   If true, the unit price will be prorated to the billing period
+              #
+              #   @return [Boolean, nil]
+              optional :prorate, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(consumption_table:, prorate: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig}
+              #   for more details.
+              #
+              #   Configuration for threshold_total_amount pricing
+              #
+              #   @param consumption_table [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount::ThresholdTotalAmountConfig::ConsumptionTable>] When the quantity consumed passes a provided threshold, the configured total wil
+              #
+              #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
+
+              class ConsumptionTable < Orb::Internal::Type::BaseModel
+                # @!attribute threshold
+                #
+                #   @return [String]
+                required :threshold, String
+
+                # @!attribute total_amount
+                #   Total amount for this threshold
+                #
+                #   @return [String]
+                required :total_amount, String
+
+                # @!method initialize(threshold:, total_amount:)
+                #   Configuration for a single threshold
+                #
+                #   @param threshold [String]
+                #
+                #   @param total_amount [String] Total amount for this threshold
+              end
+            end
+          end
+
+          class TieredPackage < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_package]
+            required :model_type, const: :tiered_package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_package_config
+            #   Configuration for tiered_package pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig]
+            required :tiered_package_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_package_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_package_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig] Configuration for tiered_package pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage#tiered_package_config
+            class TieredPackageConfig < Orb::Internal::Type::BaseModel
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+              #   are defined using exclusive lower bounds. The tier bounds are defined based on
+              #   the total quantity rather than the number of packages, so they must be multiples
+              #   of the package size.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_package pricing
+              #
+              #   @param package_size [String]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage::TieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute per_unit
+                #   Price per package
+                #
+                #   @return [String]
+                required :per_unit, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!method initialize(per_unit:, tier_lower_bound:)
+                #   Configuration for a single tier with business logic
+                #
+                #   @param per_unit [String] Price per package
+                #
+                #   @param tier_lower_bound [String]
+              end
+            end
+          end
+
+          class TieredWithMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_with_minimum]
+            required :model_type, const: :tiered_with_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_with_minimum_config
+            #   Configuration for tiered_with_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig]
+            required :tiered_with_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_with_minimum_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig] Configuration for tiered_with_minimum pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_with_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum#tiered_with_minimum_config
+            class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
+              #   defined using exclusive lower bounds.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig::Tier
+                         ]
+                       end
+
+              # @!attribute hide_zero_amount_tiers
+              #   If true, tiers with an accrued amount of 0 will not be included in the rating.
+              #
+              #   @return [Boolean, nil]
+              optional :hide_zero_amount_tiers, Orb::Internal::Type::Boolean
+
+              # @!attribute prorate
+              #   If true, the unit price will be prorated to the billing period
+              #
+              #   @return [Boolean, nil]
+              optional :prorate, Orb::Internal::Type::Boolean
+
+              # @!method initialize(tiers:, hide_zero_amount_tiers: nil, prorate: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_with_minimum pricing
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum::TieredWithMinimumConfig::Tier>] Tiered pricing with a minimum amount dependent on the volume tier. Tiers are def
+              #
+              #   @param hide_zero_amount_tiers [Boolean] If true, tiers with an accrued amount of 0 will not be included in the rating.
+              #
+              #   @param prorate [Boolean] If true, the unit price will be prorated to the billing period
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute minimum_amount
+                #
+                #   @return [String]
+                required :minimum_amount, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(minimum_amount:, tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier
+                #
+                #   @param minimum_amount [String]
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+          end
+
+          class GroupedTiered < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::Cadence }
+
+            # @!attribute grouped_tiered_config
+            #   Configuration for grouped_tiered pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig]
+            required :grouped_tiered_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_tiered]
+            required :model_type, const: :grouped_tiered
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_tiered_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_tiered_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig] Configuration for grouped_tiered pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_tiered] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered#grouped_tiered_config
+            class GroupedTieredConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The billable metric property used to group before tiering
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing to each segment generated after grouping with the provided
+              #   key
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_tiered pricing
+              #
+              #   @param grouping_key [String] The billable metric property used to group before tiering
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered::GroupedTieredConfig::Tier>] Apply tiered pricing to each segment generated after grouping with the provided
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class TieredPackageWithMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_package_with_minimum]
+            required :model_type, const: :tiered_package_with_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_package_with_minimum_config
+            #   Configuration for tiered_package_with_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig]
+            required :tiered_package_with_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_package_with_minimum_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_package_with_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_package_with_minimum_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig] Configuration for tiered_package_with_minimum pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_package_with_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum#tiered_package_with_minimum_config
+            class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute package_size
+              #
+              #   @return [Float]
+              required :package_size, Float
+
+              # @!attribute tiers
+              #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+              #   are defined using exclusive lower bounds.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_package_with_minimum pricing
+              #
+              #   @param package_size [Float]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum::TieredPackageWithMinimumConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute minimum_amount
+                #
+                #   @return [String]
+                required :minimum_amount, String
+
+                # @!attribute per_unit
+                #
+                #   @return [String]
+                required :per_unit, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!method initialize(minimum_amount:, per_unit:, tier_lower_bound:)
+                #   Configuration for a single tier
+                #
+                #   @param minimum_amount [String]
+                #   @param per_unit [String]
+                #   @param tier_lower_bound [String]
+              end
+            end
+          end
+
+          class PackageWithAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :package_with_allocation]
+            required :model_type, const: :package_with_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute package_with_allocation_config
+            #   Configuration for package_with_allocation pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::PackageWithAllocationConfig]
+            required :package_with_allocation_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::PackageWithAllocationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, package_with_allocation_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :package_with_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param package_with_allocation_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation::PackageWithAllocationConfig] Configuration for package_with_allocation pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :package_with_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation#package_with_allocation_config
+            class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute allocation
+              #
+              #   @return [String]
+              required :allocation, String
+
+              # @!attribute package_amount
+              #
+              #   @return [String]
+              required :package_amount, String
+
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!method initialize(allocation:, package_amount:, package_size:)
+              #   Configuration for package_with_allocation pricing
+              #
+              #   @param allocation [String]
+              #   @param package_amount [String]
+              #   @param package_size [String]
+            end
+          end
+
+          class UnitWithPercent < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :unit_with_percent]
+            required :model_type, const: :unit_with_percent
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute unit_with_percent_config
+            #   Configuration for unit_with_percent pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::UnitWithPercentConfig]
+            required :unit_with_percent_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::UnitWithPercentConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, unit_with_percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :unit_with_percent)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param unit_with_percent_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent::UnitWithPercentConfig] Configuration for unit_with_percent pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :unit_with_percent] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent#unit_with_percent_config
+            class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
+              # @!attribute percent
+              #   What percent, out of 100, of the calculated total to charge
+              #
+              #   @return [String]
+              required :percent, String
+
+              # @!attribute unit_amount
+              #   Rate per unit of usage
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!method initialize(percent:, unit_amount:)
+              #   Configuration for unit_with_percent pricing
+              #
+              #   @param percent [String] What percent, out of 100, of the calculated total to charge
+              #
+              #   @param unit_amount [String] Rate per unit of usage
+            end
+          end
+
+          class MatrixWithAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute matrix_with_allocation_config
+            #   Configuration for matrix_with_allocation pricing
+            #
+            #   @return [Orb::Models::MatrixWithAllocationConfig]
+            required :matrix_with_allocation_config, -> { Orb::MatrixWithAllocationConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :matrix_with_allocation]
+            required :model_type, const: :matrix_with_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, matrix_with_allocation_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :matrix_with_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig] Configuration for matrix_with_allocation pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :matrix_with_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class TieredWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :tiered_with_proration]
+            required :model_type, const: :tiered_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute tiered_with_proration_config
+            #   Configuration for tiered_with_proration pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig]
+            required :tiered_with_proration_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, tiered_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :tiered_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param tiered_with_proration_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig] Configuration for tiered_with_proration pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :tiered_with_proration] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration#tiered_with_proration_config
+            class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Tiers for rating based on total usage quantities into the specified tier with
+              #   proration
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig}
+              #   for more details.
+              #
+              #   Configuration for tiered_with_proration pricing
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration::TieredWithProrationConfig::Tier>] Tiers for rating based on total usage quantities into the specified tier with pr
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #   Inclusive tier starting value
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Amount per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tiered with proration tier
+                #
+                #   @param tier_lower_bound [String] Inclusive tier starting value
+                #
+                #   @param unit_amount [String] Amount per unit
+              end
+            end
+          end
+
+          class UnitWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :unit_with_proration]
+            required :model_type, const: :unit_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute unit_with_proration_config
+            #   Configuration for unit_with_proration pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::UnitWithProrationConfig]
+            required :unit_with_proration_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::UnitWithProrationConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, unit_with_proration_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :unit_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param unit_with_proration_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration::UnitWithProrationConfig] Configuration for unit_with_proration pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :unit_with_proration] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration#unit_with_proration_config
+            class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute unit_amount
+              #   Rate per unit of usage
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!method initialize(unit_amount:)
+              #   Configuration for unit_with_proration pricing
+              #
+              #   @param unit_amount [String] Rate per unit of usage
+            end
+          end
+
+          class GroupedAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::Cadence }
+
+            # @!attribute grouped_allocation_config
+            #   Configuration for grouped_allocation pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::GroupedAllocationConfig]
+            required :grouped_allocation_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::GroupedAllocationConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_allocation]
+            required :model_type, const: :grouped_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_allocation_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_allocation_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::GroupedAllocationConfig] Configuration for grouped_allocation pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation#grouped_allocation_config
+            class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute allocation
+              #   Usage allocation per group
+              #
+              #   @return [String]
+              required :allocation, String
+
+              # @!attribute grouping_key
+              #   How to determine the groups that should each be allocated some quantity
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute overage_unit_rate
+              #   Unit rate for post-allocation
+              #
+              #   @return [String]
+              required :overage_unit_rate, String
+
+              # @!method initialize(allocation:, grouping_key:, overage_unit_rate:)
+              #   Configuration for grouped_allocation pricing
+              #
+              #   @param allocation [String] Usage allocation per group
+              #
+              #   @param grouping_key [String] How to determine the groups that should each be allocated some quantity
+              #
+              #   @param overage_unit_rate [String] Unit rate for post-allocation
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class BulkWithProration < Orb::Internal::Type::BaseModel
+            # @!attribute bulk_with_proration_config
+            #   Configuration for bulk_with_proration pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig]
+            required :bulk_with_proration_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig }
+
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :bulk_with_proration]
+            required :model_type, const: :bulk_with_proration
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(bulk_with_proration_config:, cadence:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :bulk_with_proration)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration}
+            #   for more details.
+            #
+            #   @param bulk_with_proration_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig] Configuration for bulk_with_proration pricing
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :bulk_with_proration] The pricing model type
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration#bulk_with_proration_config
+            class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute tiers
+              #   Bulk tiers for rating based on total usage volume
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(tiers:)
+              #   Configuration for bulk_with_proration pricing
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration::BulkWithProrationConfig::Tier>] Bulk tiers for rating based on total usage volume
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute unit_amount
+                #   Cost per unit
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!attribute tier_lower_bound
+                #   The lower bound for this tier
+                #
+                #   @return [String, nil]
+                optional :tier_lower_bound, String, nil?: true
+
+                # @!method initialize(unit_amount:, tier_lower_bound: nil)
+                #   Configuration for a single bulk pricing tier with proration
+                #
+                #   @param unit_amount [String] Cost per unit
+                #
+                #   @param tier_lower_bound [String, nil] The lower bound for this tier
+              end
+            end
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class GroupedWithProratedMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::Cadence }
+
+            # @!attribute grouped_with_prorated_minimum_config
+            #   Configuration for grouped_with_prorated_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig]
+            required :grouped_with_prorated_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_with_prorated_minimum]
+            required :model_type, const: :grouped_with_prorated_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_with_prorated_minimum_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_prorated_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_with_prorated_minimum_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig] Configuration for grouped_with_prorated_minimum pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_with_prorated_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum#grouped_with_prorated_minimum_config
+            class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   How to determine the groups that should each have a minimum
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute minimum
+              #   The minimum amount to charge per group
+              #
+              #   @return [String]
+              required :minimum, String
+
+              # @!attribute unit_rate
+              #   The amount to charge per unit
+              #
+              #   @return [String]
+              required :unit_rate, String
+
+              # @!method initialize(grouping_key:, minimum:, unit_rate:)
+              #   Configuration for grouped_with_prorated_minimum pricing
+              #
+              #   @param grouping_key [String] How to determine the groups that should each have a minimum
+              #
+              #   @param minimum [String] The minimum amount to charge per group
+              #
+              #   @param unit_rate [String] The amount to charge per unit
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class GroupedWithMeteredMinimum < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::Cadence }
+
+            # @!attribute grouped_with_metered_minimum_config
+            #   Configuration for grouped_with_metered_minimum pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig]
+            required :grouped_with_metered_minimum_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_with_metered_minimum]
+            required :model_type, const: :grouped_with_metered_minimum
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_with_metered_minimum_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_metered_minimum)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_with_metered_minimum_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig] Configuration for grouped_with_metered_minimum pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_with_metered_minimum] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum#grouped_with_metered_minimum_config
+            class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   Used to partition the usage into groups. The minimum amount is applied to each
+              #   group.
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute minimum_unit_amount
+              #   The minimum amount to charge per group per unit
+              #
+              #   @return [String]
+              required :minimum_unit_amount, String
+
+              # @!attribute pricing_key
+              #   Used to determine the unit rate
+              #
+              #   @return [String]
+              required :pricing_key, String
+
+              # @!attribute scaling_factors
+              #   Scale the unit rates by the scaling factor.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::ScalingFactor>]
+              required :scaling_factors,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::ScalingFactor
+                         ]
+                       end
+
+              # @!attribute scaling_key
+              #   Used to determine the unit rate scaling factor
+              #
+              #   @return [String]
+              required :scaling_key, String
+
+              # @!attribute unit_amounts
+              #   Apply per unit pricing to each pricing value. The minimum amount is applied any
+              #   unmatched usage.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::UnitAmount>]
+              required :unit_amounts,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::UnitAmount
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, minimum_unit_amount:, pricing_key:, scaling_factors:, scaling_key:, unit_amounts:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_with_metered_minimum pricing
+              #
+              #   @param grouping_key [String] Used to partition the usage into groups. The minimum amount is applied to each g
+              #
+              #   @param minimum_unit_amount [String] The minimum amount to charge per group per unit
+              #
+              #   @param pricing_key [String] Used to determine the unit rate
+              #
+              #   @param scaling_factors [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::ScalingFactor>] Scale the unit rates by the scaling factor.
+              #
+              #   @param scaling_key [String] Used to determine the unit rate scaling factor
+              #
+              #   @param unit_amounts [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::UnitAmount>] Apply per unit pricing to each pricing value. The minimum amount is applied any
+
+              class ScalingFactor < Orb::Internal::Type::BaseModel
+                # @!attribute scaling_factor
+                #
+                #   @return [String]
+                required :scaling_factor, String
+
+                # @!attribute scaling_value
+                #
+                #   @return [String]
+                required :scaling_value, String
+
+                # @!method initialize(scaling_factor:, scaling_value:)
+                #   Configuration for a scaling factor
+                #
+                #   @param scaling_factor [String]
+                #   @param scaling_value [String]
+              end
+
+              class UnitAmount < Orb::Internal::Type::BaseModel
+                # @!attribute pricing_value
+                #
+                #   @return [String]
+                required :pricing_value, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(pricing_value:, unit_amount:)
+                #   Configuration for a unit amount
+                #
+                #   @param pricing_value [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::Cadence }
+
+            # @!attribute grouped_with_min_max_thresholds_config
+            #   Configuration for grouped_with_min_max_thresholds pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig]
+            required :grouped_with_min_max_thresholds_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_with_min_max_thresholds]
+            required :model_type, const: :grouped_with_min_max_thresholds
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_with_min_max_thresholds_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_with_min_max_thresholds)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_with_min_max_thresholds_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig] Configuration for grouped_with_min_max_thresholds pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_with_min_max_thresholds] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds#grouped_with_min_max_thresholds_config
+            class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before applying thresholds
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute maximum_charge
+              #   The maximum amount to charge each group
+              #
+              #   @return [String]
+              required :maximum_charge, String
+
+              # @!attribute minimum_charge
+              #   The minimum amount to charge each group, regardless of usage
+              #
+              #   @return [String]
+              required :minimum_charge, String
+
+              # @!attribute per_unit_rate
+              #   The base price charged per group
+              #
+              #   @return [String]
+              required :per_unit_rate, String
+
+              # @!method initialize(grouping_key:, maximum_charge:, minimum_charge:, per_unit_rate:)
+              #   Configuration for grouped_with_min_max_thresholds pricing
+              #
+              #   @param grouping_key [String] The event property used to group before applying thresholds
+              #
+              #   @param maximum_charge [String] The maximum amount to charge each group
+              #
+              #   @param minimum_charge [String] The minimum amount to charge each group, regardless of usage
+              #
+              #   @param per_unit_rate [String] The base price charged per group
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class MatrixWithDisplayName < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute matrix_with_display_name_config
+            #   Configuration for matrix_with_display_name pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig]
+            required :matrix_with_display_name_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :matrix_with_display_name]
+            required :model_type, const: :matrix_with_display_name
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, matrix_with_display_name_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :matrix_with_display_name)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param matrix_with_display_name_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig] Configuration for matrix_with_display_name pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :matrix_with_display_name] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName#matrix_with_display_name_config
+            class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
+              # @!attribute dimension
+              #   Used to determine the unit rate
+              #
+              #   @return [String]
+              required :dimension, String
+
+              # @!attribute unit_amounts
+              #   Apply per unit pricing to each dimension value
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig::UnitAmount>]
+              required :unit_amounts,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig::UnitAmount
+                         ]
+                       end
+
+              # @!method initialize(dimension:, unit_amounts:)
+              #   Configuration for matrix_with_display_name pricing
+              #
+              #   @param dimension [String] Used to determine the unit rate
+              #
+              #   @param unit_amounts [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName::MatrixWithDisplayNameConfig::UnitAmount>] Apply per unit pricing to each dimension value
+
+              class UnitAmount < Orb::Internal::Type::BaseModel
+                # @!attribute dimension_value
+                #   The dimension value
+                #
+                #   @return [String]
+                required :dimension_value, String
+
+                # @!attribute display_name
+                #   Display name for this dimension value
+                #
+                #   @return [String]
+                required :display_name, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(dimension_value:, display_name:, unit_amount:)
+                #   Configuration for a unit amount item
+                #
+                #   @param dimension_value [String] The dimension value
+                #
+                #   @param display_name [String] Display name for this dimension value
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+          end
+
+          class GroupedTieredPackage < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::Cadence }
+
+            # @!attribute grouped_tiered_package_config
+            #   Configuration for grouped_tiered_package pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig]
+            required :grouped_tiered_package_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_tiered_package]
+            required :model_type, const: :grouped_tiered_package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_tiered_package_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered_package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_tiered_package_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig] Configuration for grouped_tiered_package pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_tiered_package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage#grouped_tiered_package_config
+            class GroupedTieredPackageConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before tiering
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing after rounding up the quantity to the package size. Tiers
+              #   are defined using exclusive lower bounds.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_tiered_package pricing
+              #
+              #   @param grouping_key [String] The event property used to group before tiering
+              #
+              #   @param package_size [String]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage::GroupedTieredPackageConfig::Tier>] Apply tiered pricing after rounding up the quantity to the package size. Tiers a
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute per_unit
+                #   Per package
+                #
+                #   @return [String]
+                required :per_unit, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!method initialize(per_unit:, tier_lower_bound:)
+                #   Configuration for a single tier
+                #
+                #   @param per_unit [String] Per package
+                #
+                #   @param tier_lower_bound [String]
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class MaxGroupTieredPackage < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute max_group_tiered_package_config
+            #   Configuration for max_group_tiered_package pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig]
+            required :max_group_tiered_package_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :max_group_tiered_package]
+            required :model_type, const: :max_group_tiered_package
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, max_group_tiered_package_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :max_group_tiered_package)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param max_group_tiered_package_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig] Configuration for max_group_tiered_package pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :max_group_tiered_package] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage#max_group_tiered_package_config
+            class MaxGroupTieredPackageConfig < Orb::Internal::Type::BaseModel
+              # @!attribute grouping_key
+              #   The event property used to group before tiering the group with the highest value
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute package_size
+              #
+              #   @return [String]
+              required :package_size, String
+
+              # @!attribute tiers
+              #   Apply tiered pricing to the largest group after grouping with the provided key.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(grouping_key:, package_size:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig}
+              #   for more details.
+              #
+              #   Configuration for max_group_tiered_package pricing
+              #
+              #   @param grouping_key [String] The event property used to group before tiering the group with the highest value
+              #
+              #   @param package_size [String]
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage::MaxGroupTieredPackageConfig::Tier>] Apply tiered pricing to the largest group after grouping with the provided key.
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
+            end
+          end
+
+          class ScalableMatrixWithUnitPricing < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :scalable_matrix_with_unit_pricing]
+            required :model_type, const: :scalable_matrix_with_unit_pricing
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute scalable_matrix_with_unit_pricing_config
+            #   Configuration for scalable_matrix_with_unit_pricing pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig]
+            required :scalable_matrix_with_unit_pricing_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, scalable_matrix_with_unit_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_unit_pricing)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param scalable_matrix_with_unit_pricing_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig] Configuration for scalable_matrix_with_unit_pricing pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :scalable_matrix_with_unit_pricing] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing#scalable_matrix_with_unit_pricing_config
+            class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
+              # @!attribute first_dimension
+              #   Used to determine the unit rate
+              #
+              #   @return [String]
+              required :first_dimension, String
+
+              # @!attribute matrix_scaling_factors
+              #   Apply a scaling factor to each dimension
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>]
+              required :matrix_scaling_factors,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
+                         ]
+                       end
+
+              # @!attribute unit_price
+              #   The final unit price to rate against the output of the matrix
+              #
+              #   @return [String]
+              required :unit_price, String
+
+              # @!attribute grouping_key
+              #   The property used to group this price
+              #
+              #   @return [String, nil]
+              optional :grouping_key, String, nil?: true
+
+              # @!attribute prorate
+              #   If true, the unit price will be prorated to the billing period
+              #
+              #   @return [Boolean, nil]
+              optional :prorate, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!attribute second_dimension
+              #   Used to determine the unit rate (optional)
+              #
+              #   @return [String, nil]
+              optional :second_dimension, String, nil?: true
+
+              # @!method initialize(first_dimension:, matrix_scaling_factors:, unit_price:, grouping_key: nil, prorate: nil, second_dimension: nil)
+              #   Configuration for scalable_matrix_with_unit_pricing pricing
+              #
+              #   @param first_dimension [String] Used to determine the unit rate
+              #
+              #   @param matrix_scaling_factors [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
+              #
+              #   @param unit_price [String] The final unit price to rate against the output of the matrix
+              #
+              #   @param grouping_key [String, nil] The property used to group this price
+              #
+              #   @param prorate [Boolean, nil] If true, the unit price will be prorated to the billing period
+              #
+              #   @param second_dimension [String, nil] Used to determine the unit rate (optional)
+
+              class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+                # @!attribute first_dimension_value
+                #
+                #   @return [String]
+                required :first_dimension_value, String
+
+                # @!attribute scaling_factor
+                #
+                #   @return [String]
+                required :scaling_factor, String
+
+                # @!attribute second_dimension_value
+                #
+                #   @return [String, nil]
+                optional :second_dimension_value, String, nil?: true
+
+                # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
+                #   Configuration for a single matrix scaling factor
+                #
+                #   @param first_dimension_value [String]
+                #   @param scaling_factor [String]
+                #   @param second_dimension_value [String, nil]
+              end
+            end
+          end
+
+          class ScalableMatrixWithTieredPricing < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :scalable_matrix_with_tiered_pricing]
+            required :model_type, const: :scalable_matrix_with_tiered_pricing
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute scalable_matrix_with_tiered_pricing_config
+            #   Configuration for scalable_matrix_with_tiered_pricing pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig]
+            required :scalable_matrix_with_tiered_pricing_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, scalable_matrix_with_tiered_pricing_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :scalable_matrix_with_tiered_pricing)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param scalable_matrix_with_tiered_pricing_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig] Configuration for scalable_matrix_with_tiered_pricing pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :scalable_matrix_with_tiered_pricing] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing#scalable_matrix_with_tiered_pricing_config
+            class ScalableMatrixWithTieredPricingConfig < Orb::Internal::Type::BaseModel
+              # @!attribute first_dimension
+              #   Used for the scalable matrix first dimension
+              #
+              #   @return [String]
+              required :first_dimension, String
+
+              # @!attribute matrix_scaling_factors
+              #   Apply a scaling factor to each dimension
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>]
+              required :matrix_scaling_factors,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor
+                         ]
+                       end
+
+              # @!attribute tiers
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier
+                         ]
+                       end
+
+              # @!attribute second_dimension
+              #   Used for the scalable matrix second dimension (optional)
+              #
+              #   @return [String, nil]
+              optional :second_dimension, String, nil?: true
+
+              # @!method initialize(first_dimension:, matrix_scaling_factors:, tiers:, second_dimension: nil)
+              #   Configuration for scalable_matrix_with_tiered_pricing pricing
+              #
+              #   @param first_dimension [String] Used for the scalable matrix first dimension
+              #
+              #   @param matrix_scaling_factors [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor>] Apply a scaling factor to each dimension
+              #
+              #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing::ScalableMatrixWithTieredPricingConfig::Tier>]
+              #
+              #   @param second_dimension [String, nil] Used for the scalable matrix second dimension (optional)
+
+              class MatrixScalingFactor < Orb::Internal::Type::BaseModel
+                # @!attribute first_dimension_value
+                #
+                #   @return [String]
+                required :first_dimension_value, String
+
+                # @!attribute scaling_factor
+                #
+                #   @return [String]
+                required :scaling_factor, String
+
+                # @!attribute second_dimension_value
+                #
+                #   @return [String, nil]
+                optional :second_dimension_value, String, nil?: true
+
+                # @!method initialize(first_dimension_value:, scaling_factor:, second_dimension_value: nil)
+                #   Configuration for a single matrix scaling factor
+                #
+                #   @param first_dimension_value [String]
+                #   @param scaling_factor [String]
+                #   @param second_dimension_value [String, nil]
+              end
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier entry with business logic
+                #
+                #   @param tier_lower_bound [String]
+                #   @param unit_amount [String]
+              end
+            end
+          end
+
+          class CumulativeGroupedBulk < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::Cadence }
+
+            # @!attribute cumulative_grouped_bulk_config
+            #   Configuration for cumulative_grouped_bulk pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig]
+            required :cumulative_grouped_bulk_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :cumulative_grouped_bulk]
+            required :model_type, const: :cumulative_grouped_bulk
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, cumulative_grouped_bulk_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_bulk)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::Cadence] The cadence to bill for this price on.
+            #
+            #   @param cumulative_grouped_bulk_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig] Configuration for cumulative_grouped_bulk pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :cumulative_grouped_bulk] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk#cumulative_grouped_bulk_config
+            class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
+              # @!attribute dimension_values
+              #   Each tier lower bound must have the same group of values.
+              #
+              #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue>]
+              required :dimension_values,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue
+                         ]
+                       end
+
+              # @!attribute group
+              #
+              #   @return [String]
+              required :group, String
+
+              # @!method initialize(dimension_values:, group:)
+              #   Configuration for cumulative_grouped_bulk pricing
+              #
+              #   @param dimension_values [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk::CumulativeGroupedBulkConfig::DimensionValue>] Each tier lower bound must have the same group of values.
+              #
+              #   @param group [String]
+
+              class DimensionValue < Orb::Internal::Type::BaseModel
+                # @!attribute grouping_key
+                #   Grouping key value
+                #
+                #   @return [String]
+                required :grouping_key, String
+
+                # @!attribute tier_lower_bound
+                #   Tier lower bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Unit amount for this combination
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(grouping_key:, tier_lower_bound:, unit_amount:)
+                #   Configuration for a dimension value entry
+                #
+                #   @param grouping_key [String] Grouping key value
+                #
+                #   @param tier_lower_bound [String] Tier lower bound
+                #
+                #   @param unit_amount [String] Unit amount for this combination
+              end
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::Cadence }
+
+            # @!attribute cumulative_grouped_allocation_config
+            #   Configuration for cumulative_grouped_allocation pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig]
+            required :cumulative_grouped_allocation_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :cumulative_grouped_allocation]
+            required :model_type, const: :cumulative_grouped_allocation
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, cumulative_grouped_allocation_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :cumulative_grouped_allocation)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::Cadence] The cadence to bill for this price on.
+            #
+            #   @param cumulative_grouped_allocation_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig] Configuration for cumulative_grouped_allocation pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :cumulative_grouped_allocation] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation#cumulative_grouped_allocation_config
+            class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+              # @!attribute cumulative_allocation
+              #   The overall allocation across all groups
+              #
+              #   @return [String]
+              required :cumulative_allocation, String
+
+              # @!attribute group_allocation
+              #   The allocation per individual group
+              #
+              #   @return [String]
+              required :group_allocation, String
+
+              # @!attribute grouping_key
+              #   The event property used to group usage before applying allocations
+              #
+              #   @return [String]
+              required :grouping_key, String
+
+              # @!attribute unit_amount
+              #   The amount to charge for each unit outside of the allocation
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!method initialize(cumulative_allocation:, group_allocation:, grouping_key:, unit_amount:)
+              #   Configuration for cumulative_grouped_allocation pricing
+              #
+              #   @param cumulative_allocation [String] The overall allocation across all groups
+              #
+              #   @param group_allocation [String] The allocation per individual group
+              #
+              #   @param grouping_key [String] The event property used to group usage before applying allocations
+              #
+              #   @param unit_amount [String] The amount to charge for each unit outside of the allocation
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          class MinimumComposite < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::LicenseAllocation>]
+            required :license_allocations,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::LicenseAllocation
+                       ]
+                     end
+
+            # @!attribute minimum_composite_config
+            #   Configuration for minimum_composite pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::MinimumCompositeConfig]
+            required :minimum_composite_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::MinimumCompositeConfig }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :minimum_composite]
+            required :model_type, const: :minimum_composite
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, minimum_composite_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :minimum_composite)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param minimum_composite_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite::MinimumCompositeConfig] Configuration for minimum_composite pricing
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :minimum_composite] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite#minimum_composite_config
+            class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
+              # @!attribute minimum_amount
+              #   The minimum amount to apply
+              #
+              #   @return [String]
+              required :minimum_amount, String
+
+              # @!attribute prorated
+              #   If true, subtotals from this price are prorated based on the service period
+              #
+              #   @return [Boolean, nil]
+              optional :prorated, Orb::Internal::Type::Boolean
+
+              # @!method initialize(minimum_amount:, prorated: nil)
+              #   Configuration for minimum_composite pricing
+              #
+              #   @param minimum_amount [String] The minimum amount to apply
+              #
+              #   @param prorated [Boolean] If true, subtotals from this price are prorated based on the service period
+            end
+          end
+
+          class Percent < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::Cadence }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :percent]
+            required :model_type, const: :percent
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute percent_config
+            #   Configuration for percent pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::PercentConfig]
+            required :percent_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::PercentConfig }
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, item_id:, license_allocations:, name:, percent_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :percent)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::Cadence] The cadence to bill for this price on.
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param percent_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent::PercentConfig] Configuration for percent pricing
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :percent] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent#percent_config
+            class PercentConfig < Orb::Internal::Type::BaseModel
+              # @!attribute percent
+              #   What percent of the component subtotals to charge
+              #
+              #   @return [Float]
+              required :percent, Float
+
+              # @!method initialize(percent:)
+              #   Configuration for percent pricing
+              #
+              #   @param percent [Float] What percent of the component subtotals to charge
+            end
+          end
+
+          class EventOutput < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::Cadence]
+            required :cadence,
+                     enum: -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::Cadence }
+
+            # @!attribute event_output_config
+            #   Configuration for event_output pricing
+            #
+            #   @return [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::EventOutputConfig]
+            required :event_output_config,
+                     -> { Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::EventOutputConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute license_allocations
+            #   License allocations to associate with this price. Each entry defines a
+            #   per-license credit pool granted each cadence. Requires license_type_id or
+            #   license_type_configuration to be set.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::LicenseAllocation>]
+            required :license_allocations,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::LicenseAllocation] }
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :event_output]
+            required :model_type, const: :event_output
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config,
+                     union: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::ConversionRateConfig
+                     },
+                     nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, event_output_config:, item_id:, license_allocations:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :event_output)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::Cadence] The cadence to bill for this price on.
+            #
+            #   @param event_output_config [Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::EventOutputConfig] Configuration for event_output pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param license_allocations [Array<Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::LicenseAllocation>] License allocations to associate with this price. Each entry defines a per-licen
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :event_output] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput#event_output_config
+            class EventOutputConfig < Orb::Internal::Type::BaseModel
+              # @!attribute unit_rating_key
+              #   The key in the event data to extract the unit rate from.
+              #
+              #   @return [String]
+              required :unit_rating_key, String
+
+              # @!attribute default_unit_rate
+              #   If provided, this amount will be used as the unit rate when an event does not
+              #   have a value for the `unit_rating_key`. If not provided, events missing a unit
+              #   rate will be ignored.
+              #
+              #   @return [String, nil]
+              optional :default_unit_rate, String, nil?: true
+
+              # @!attribute grouping_key
+              #   An optional key in the event data to group by (e.g., event ID). All events will
+              #   also be grouped by their unit rate.
+              #
+              #   @return [String, nil]
+              optional :grouping_key, String, nil?: true
+
+              # @!method initialize(unit_rating_key:, default_unit_rate: nil, grouping_key: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput::EventOutputConfig}
+              #   for more details.
+              #
+              #   Configuration for event_output pricing
+              #
+              #   @param unit_rating_key [String] The key in the event data to extract the unit rate from.
+              #
+              #   @param default_unit_rate [String, nil] If provided, this amount will be used as the unit rate when an event does not ha
+              #
+              #   @param grouping_key [String, nil] An optional key in the event data to group by (e.g., event ID). All events will
+            end
+
+            class LicenseAllocation < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The amount of credits granted per active license per cadence.
+              #
+              #   @return [String]
+              required :amount, String
+
+              # @!attribute currency
+              #   The currency of the license allocation.
+              #
+              #   @return [String]
+              required :currency, String
+
+              # @!attribute write_off_overage
+              #   When True, overage beyond the allocation is written off.
+              #
+              #   @return [Boolean, nil]
+              optional :write_off_overage, Orb::Internal::Type::Boolean, nil?: true
+
+              # @!method initialize(amount:, currency:, write_off_overage: nil)
+              #   @param amount [String] The amount of credits granted per active license per cadence.
+              #
+              #   @param currency [String] The currency of the license allocation.
+              #
+              #   @param write_off_overage [Boolean, nil] When True, overage beyond the allocation is written off.
+            end
+          end
+
+          # @!method self.variants
+          #   @return [Array(Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Unit, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Tiered, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Bulk, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithFilters, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Package, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Matrix, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ThresholdTotalAmount, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTiered, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredPackageWithMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::PackageWithAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithPercent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::TieredWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::UnitWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::BulkWithProration, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithProratedMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMeteredMinimum, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedWithMinMaxThresholds, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MatrixWithDisplayName, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::GroupedTieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MaxGroupTieredPackage, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithUnitPricing, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ScalableMatrixWithTieredPricing, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedBulk, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::CumulativeGroupedAllocation, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::MinimumComposite, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Percent, Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::EventOutput)]
+        end
 
         # New plan price request body params.
         #
