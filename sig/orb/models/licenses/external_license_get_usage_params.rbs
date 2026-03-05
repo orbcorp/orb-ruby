@@ -3,6 +3,7 @@ module Orb
     module Licenses
       type external_license_get_usage_params =
         {
+          external_license_id: String,
           license_type_id: String,
           subscription_id: String,
           cursor: String?,
@@ -16,6 +17,8 @@ module Orb
       class ExternalLicenseGetUsageParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
+
+        attr_accessor external_license_id: String
 
         attr_accessor license_type_id: String
 
@@ -34,6 +37,7 @@ module Orb
         attr_accessor start_date: Date?
 
         def initialize: (
+          external_license_id: String,
           license_type_id: String,
           subscription_id: String,
           ?cursor: String?,
@@ -45,6 +49,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          external_license_id: String,
           license_type_id: String,
           subscription_id: String,
           cursor: String?,

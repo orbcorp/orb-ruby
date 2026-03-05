@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute customer_id
+        #
+        #   @return [String]
+        required :customer_id, String
+
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned
         #   from the initial request.
@@ -41,9 +46,11 @@ module Orb
         #   @return [Time, nil]
         optional :operation_time_lte, Time, nil?: true
 
-        # @!method initialize(cursor: nil, limit: nil, operation_time_gt: nil, operation_time_gte: nil, operation_time_lt: nil, operation_time_lte: nil, request_options: {})
+        # @!method initialize(customer_id:, cursor: nil, limit: nil, operation_time_gt: nil, operation_time_gte: nil, operation_time_lt: nil, operation_time_lte: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Customers::BalanceTransactionListParams} for more details.
+        #
+        #   @param customer_id [String]
         #
         #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
         #

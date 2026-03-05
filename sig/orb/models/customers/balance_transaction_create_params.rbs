@@ -3,6 +3,7 @@ module Orb
     module Customers
       type balance_transaction_create_params =
         {
+          customer_id: String,
           amount: String,
           type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
           description: String?
@@ -13,6 +14,8 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        attr_accessor customer_id: String
+
         attr_accessor amount: String
 
         attr_accessor type: Orb::Models::Customers::BalanceTransactionCreateParams::type_
@@ -20,6 +23,7 @@ module Orb
         attr_accessor description: String?
 
         def initialize: (
+          customer_id: String,
           amount: String,
           type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
           ?description: String?,
@@ -27,6 +31,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          customer_id: String,
           amount: String,
           type: Orb::Models::Customers::BalanceTransactionCreateParams::type_,
           description: String?,

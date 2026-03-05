@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute cursor
       #   Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
@@ -40,9 +45,11 @@ module Orb
       #   @return [Time, nil]
       optional :start_date_lte, Time, nil?: true
 
-      # @!method initialize(cursor: nil, limit: nil, start_date_gt: nil, start_date_gte: nil, start_date_lt: nil, start_date_lte: nil, request_options: {})
+      # @!method initialize(subscription_id:, cursor: nil, limit: nil, start_date_gt: nil, start_date_gte: nil, start_date_lt: nil, start_date_lte: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionFetchScheduleParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #

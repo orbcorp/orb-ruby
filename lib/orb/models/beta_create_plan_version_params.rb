@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute plan_id
+      #
+      #   @return [String]
+      required :plan_id, String
+
       # @!attribute version
       #   New version number.
       #
@@ -67,7 +72,9 @@ module Orb
       #   @return [Boolean, nil]
       optional :set_as_default, Orb::Internal::Type::Boolean, nil?: true
 
-      # @!method initialize(version:, add_adjustments: nil, add_prices: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, set_as_default: nil, request_options: {})
+      # @!method initialize(plan_id:, version:, add_adjustments: nil, add_prices: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, set_as_default: nil, request_options: {})
+      #   @param plan_id [String]
+      #
       #   @param version [Integer] New version number.
       #
       #   @param add_adjustments [Array<Orb::Models::BetaCreatePlanVersionParams::AddAdjustment>, nil] Additional adjustments to be added to the plan.

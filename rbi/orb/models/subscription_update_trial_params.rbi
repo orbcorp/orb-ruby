@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionUpdateTrialParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # The new date that the trial should end, or the literal string `immediate` to end
       # the trial immediately.
       sig do
@@ -33,6 +36,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           trial_end_date:
             T.any(
               Time,
@@ -43,6 +47,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # The new date that the trial should end, or the literal string `immediate` to end
         # the trial immediately.
         trial_end_date:,
@@ -56,6 +61,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             trial_end_date:
               T.any(
                 Time,

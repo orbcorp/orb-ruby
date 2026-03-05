@@ -1,14 +1,23 @@
 module Orb
   module Models
-    type coupon_archive_params = {  } & Orb::Internal::Type::request_parameters
+    type coupon_archive_params =
+      { coupon_id: String } & Orb::Internal::Type::request_parameters
 
     class CouponArchiveParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Orb::request_opts) -> void
+      attr_accessor coupon_id: String
 
-      def to_hash: -> { request_options: Orb::RequestOptions }
+      def initialize: (
+        coupon_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        coupon_id: String,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute license_id
+        #
+        #   @return [String]
+        required :license_id, String
+
         # @!attribute cursor
         #   Pagination cursor from a previous request.
         #
@@ -41,9 +46,11 @@ module Orb
         #   @return [Date, nil]
         optional :start_date, Date, nil?: true
 
-        # @!method initialize(cursor: nil, end_date: nil, group_by: nil, limit: nil, start_date: nil, request_options: {})
+        # @!method initialize(license_id:, cursor: nil, end_date: nil, group_by: nil, limit: nil, start_date: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Licenses::UsageGetUsageParams} for more details.
+        #
+        #   @param license_id [String]
         #
         #   @param cursor [String, nil] Pagination cursor from a previous request.
         #

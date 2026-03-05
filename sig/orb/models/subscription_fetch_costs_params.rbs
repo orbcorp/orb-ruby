@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_fetch_costs_params =
       {
+        subscription_id: String,
         currency: String?,
         timeframe_end: Time?,
         timeframe_start: Time?,
@@ -13,6 +14,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor subscription_id: String
+
       attr_accessor currency: String?
 
       attr_accessor timeframe_end: Time?
@@ -22,6 +25,7 @@ module Orb
       attr_accessor view_mode: Orb::Models::SubscriptionFetchCostsParams::view_mode?
 
       def initialize: (
+        subscription_id: String,
         ?currency: String?,
         ?timeframe_end: Time?,
         ?timeframe_start: Time?,
@@ -30,6 +34,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         currency: String?,
         timeframe_end: Time?,
         timeframe_start: Time?,

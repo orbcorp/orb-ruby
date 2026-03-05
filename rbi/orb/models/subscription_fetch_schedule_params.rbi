@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionFetchScheduleParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       # from the initial request.
       sig { returns(T.nilable(String)) }
@@ -37,6 +40,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           cursor: T.nilable(String),
           limit: Integer,
           start_date_gt: T.nilable(Time),
@@ -47,6 +51,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         cursor: nil,
@@ -63,6 +68,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             cursor: T.nilable(String),
             limit: Integer,
             start_date_gt: T.nilable(Time),

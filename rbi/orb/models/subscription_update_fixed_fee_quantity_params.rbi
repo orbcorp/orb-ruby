@@ -14,6 +14,9 @@ module Orb
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # Price for which the quantity should be updated. Must be a fixed fee.
       sig { returns(String) }
       attr_accessor :price_id
@@ -55,6 +58,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           price_id: String,
           quantity: Float,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
@@ -65,6 +69,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # Price for which the quantity should be updated. Must be a fixed fee.
         price_id:,
         quantity:,
@@ -87,6 +92,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             price_id: String,
             quantity: Float,
             allow_invoice_credit_or_void: T.nilable(T::Boolean),

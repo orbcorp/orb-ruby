@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute other_external_plan_id
+        #
+        #   @return [String]
+        required :other_external_plan_id, String
+
         # @!attribute external_plan_id
         #   An optional user-defined ID for this plan resource, used throughout the system
         #   as an alias for this Plan. Use this field to identify a plan by an existing
@@ -24,9 +29,11 @@ module Orb
         #   @return [Hash{Symbol=>String, nil}, nil]
         optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-        # @!method initialize(external_plan_id: nil, metadata: nil, request_options: {})
+        # @!method initialize(other_external_plan_id:, external_plan_id: nil, metadata: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.
+        #
+        #   @param other_external_plan_id [String]
         #
         #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
         #

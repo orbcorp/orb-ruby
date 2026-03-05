@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionTriggerPhaseParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # If false, this request will fail if it would void an issued invoice or create a
       # credit note. Consider using this as a safety mechanism if you do not expect
       # existing invoices to be changed.
@@ -24,12 +27,14 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           effective_date: T.nilable(Date),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # If false, this request will fail if it would void an issued invoice or create a
         # credit note. Consider using this as a safety mechanism if you do not expect
         # existing invoices to be changed.
@@ -44,6 +49,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             allow_invoice_credit_or_void: T.nilable(T::Boolean),
             effective_date: T.nilable(Date),
             request_options: Orb::RequestOptions

@@ -9,6 +9,9 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::PriceEvaluateParams, Orb::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :price_id
+
       # The exclusive upper bound for event timestamps
       sig { returns(Time) }
       attr_accessor :timeframe_end
@@ -47,6 +50,7 @@ module Orb
 
       sig do
         params(
+          price_id: String,
           timeframe_end: Time,
           timeframe_start: Time,
           customer_id: T.nilable(String),
@@ -58,6 +62,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        price_id:,
         # The exclusive upper bound for event timestamps
         timeframe_end:,
         # The inclusive lower bound for event timestamps
@@ -84,6 +89,7 @@ module Orb
       sig do
         override.returns(
           {
+            price_id: String,
             timeframe_end: Time,
             timeframe_start: Time,
             customer_id: T.nilable(String),

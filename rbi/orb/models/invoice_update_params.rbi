@@ -9,6 +9,9 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::InvoiceUpdateParams, Orb::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :invoice_id
+
       # Determines whether this invoice will automatically attempt to charge a saved
       # payment method, if any. Can only be modified on draft invoices. If not
       # specified, the invoice's existing setting is unchanged.
@@ -42,6 +45,7 @@ module Orb
 
       sig do
         params(
+          invoice_id: String,
           auto_collection: T.nilable(T::Boolean),
           due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
           invoice_date:
@@ -52,6 +56,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        invoice_id:,
         # Determines whether this invoice will automatically attempt to charge a saved
         # payment method, if any. Can only be modified on draft invoices. If not
         # specified, the invoice's existing setting is unchanged.
@@ -78,6 +83,7 @@ module Orb
       sig do
         override.returns(
           {
+            invoice_id: String,
             auto_collection: T.nilable(T::Boolean),
             due_date: T.nilable(Orb::InvoiceUpdateParams::DueDate::Variants),
             invoice_date:

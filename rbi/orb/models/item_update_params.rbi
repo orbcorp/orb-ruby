@@ -9,6 +9,9 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::ItemUpdateParams, Orb::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :item_id
+
       sig do
         returns(T.nilable(T::Array[Orb::ItemUpdateParams::ExternalConnection]))
       end
@@ -25,6 +28,7 @@ module Orb
 
       sig do
         params(
+          item_id: String,
           external_connections:
             T.nilable(
               T::Array[Orb::ItemUpdateParams::ExternalConnection::OrHash]
@@ -35,6 +39,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        item_id:,
         external_connections: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -48,6 +53,7 @@ module Orb
       sig do
         override.returns(
           {
+            item_id: String,
             external_connections:
               T.nilable(T::Array[Orb::ItemUpdateParams::ExternalConnection]),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

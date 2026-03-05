@@ -2,12 +2,14 @@ module Orb
   module Models
     module Coupons
       type subscription_list_params =
-        { cursor: String?, limit: Integer }
+        { coupon_id: String, cursor: String?, limit: Integer }
         & Orb::Internal::Type::request_parameters
 
       class SubscriptionListParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
+
+        attr_accessor coupon_id: String
 
         attr_accessor cursor: String?
 
@@ -16,12 +18,14 @@ module Orb
         def limit=: (Integer) -> Integer
 
         def initialize: (
+          coupon_id: String,
           ?cursor: String?,
           ?limit: Integer,
           ?request_options: Orb::request_opts
         ) -> void
 
         def to_hash: -> {
+          coupon_id: String,
           cursor: String?,
           limit: Integer,
           request_options: Orb::RequestOptions

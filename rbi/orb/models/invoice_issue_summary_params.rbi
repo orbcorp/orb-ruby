@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::InvoiceIssueSummaryParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :invoice_id
+
       # If true, the invoice will be issued synchronously. If false, the invoice will be
       # issued asynchronously. The synchronous option is only available for invoices
       # that have no usage fees. If the invoice is configured to sync to an external
@@ -24,11 +27,13 @@ module Orb
 
       sig do
         params(
+          invoice_id: String,
           synchronous: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        invoice_id:,
         # If true, the invoice will be issued synchronously. If false, the invoice will be
         # issued asynchronously. The synchronous option is only available for invoices
         # that have no usage fees. If the invoice is configured to sync to an external
@@ -41,7 +46,11 @@ module Orb
 
       sig do
         override.returns(
-          { synchronous: T::Boolean, request_options: Orb::RequestOptions }
+          {
+            invoice_id: String,
+            synchronous: T::Boolean,
+            request_options: Orb::RequestOptions
+          }
         )
       end
       def to_hash

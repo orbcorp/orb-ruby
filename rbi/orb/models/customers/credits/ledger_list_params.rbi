@@ -16,6 +16,9 @@ module Orb
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :customer_id
+
           sig { returns(T.nilable(Time)) }
           attr_accessor :created_at_gt
 
@@ -67,6 +70,7 @@ module Orb
 
           sig do
             params(
+              customer_id: String,
               created_at_gt: T.nilable(Time),
               created_at_gte: T.nilable(Time),
               created_at_lt: T.nilable(Time),
@@ -87,6 +91,7 @@ module Orb
             ).returns(T.attached_class)
           end
           def self.new(
+            customer_id:,
             created_at_gt: nil,
             created_at_gte: nil,
             created_at_lt: nil,
@@ -108,6 +113,7 @@ module Orb
           sig do
             override.returns(
               {
+                customer_id: String,
                 created_at_gt: T.nilable(Time),
                 created_at_gte: T.nilable(Time),
                 created_at_lt: T.nilable(Time),

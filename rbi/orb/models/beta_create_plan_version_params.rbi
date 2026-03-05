@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::BetaCreatePlanVersionParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :plan_id
+
       # New version number.
       sig { returns(Integer) }
       attr_accessor :version
@@ -71,6 +74,7 @@ module Orb
 
       sig do
         params(
+          plan_id: String,
           version: Integer,
           add_adjustments:
             T.nilable(
@@ -105,6 +109,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        plan_id:,
         # New version number.
         version:,
         # Additional adjustments to be added to the plan.
@@ -128,6 +133,7 @@ module Orb
       sig do
         override.returns(
           {
+            plan_id: String,
             version: Integer,
             add_adjustments:
               T.nilable(

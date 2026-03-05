@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_price_intervals_params =
       {
+        subscription_id: String,
         add: ::Array[Orb::SubscriptionPriceIntervalsParams::Add],
         add_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],
         allow_invoice_credit_or_void: bool?,
@@ -14,6 +15,8 @@ module Orb
     class SubscriptionPriceIntervalsParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor subscription_id: String
 
       attr_reader add: ::Array[Orb::SubscriptionPriceIntervalsParams::Add]?
 
@@ -44,6 +47,7 @@ module Orb
       ) -> ::Array[Orb::SubscriptionPriceIntervalsParams::EditAdjustment]
 
       def initialize: (
+        subscription_id: String,
         ?add: ::Array[Orb::SubscriptionPriceIntervalsParams::Add],
         ?add_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],
         ?allow_invoice_credit_or_void: bool?,
@@ -54,6 +58,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         add: ::Array[Orb::SubscriptionPriceIntervalsParams::Add],
         add_adjustments: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],
         allow_invoice_credit_or_void: bool?,

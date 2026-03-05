@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionFetchUsageParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # When specified in conjunction with `group_by`, this parameter filters usage to a
       # single billable metric. Note that both `group_by` and `billable_metric_id` must
       # be specified together.
@@ -62,6 +65,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           billable_metric_id: T.nilable(String),
           first_dimension_key: T.nilable(String),
           first_dimension_value: T.nilable(String),
@@ -78,6 +82,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # When specified in conjunction with `group_by`, this parameter filters usage to a
         # single billable metric. Note that both `group_by` and `billable_metric_id` must
         # be specified together.
@@ -106,6 +111,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             billable_metric_id: T.nilable(String),
             first_dimension_key: T.nilable(String),
             first_dimension_value: T.nilable(String),

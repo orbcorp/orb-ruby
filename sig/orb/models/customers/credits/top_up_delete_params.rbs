@@ -3,7 +3,8 @@ module Orb
     module Customers
       module Credits
         type top_up_delete_params =
-          { customer_id: String } & Orb::Internal::Type::request_parameters
+          { customer_id: String, top_up_id: String }
+          & Orb::Internal::Type::request_parameters
 
         class TopUpDeleteParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
@@ -11,13 +12,17 @@ module Orb
 
           attr_accessor customer_id: String
 
+          attr_accessor top_up_id: String
+
           def initialize: (
             customer_id: String,
+            top_up_id: String,
             ?request_options: Orb::request_opts
           ) -> void
 
           def to_hash: -> {
             customer_id: String,
+            top_up_id: String,
             request_options: Orb::RequestOptions
           }
         end

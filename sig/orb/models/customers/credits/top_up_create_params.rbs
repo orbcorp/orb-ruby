@@ -4,6 +4,7 @@ module Orb
       module Credits
         type top_up_create_params =
           {
+            customer_id: String,
             amount: String,
             currency: String,
             invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,
@@ -18,6 +19,8 @@ module Orb
         class TopUpCreateParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
+
+          attr_accessor customer_id: String
 
           attr_accessor amount: String
 
@@ -36,6 +39,7 @@ module Orb
           attr_accessor expires_after_unit: Orb::Models::Customers::Credits::TopUpCreateParams::expires_after_unit?
 
           def initialize: (
+            customer_id: String,
             amount: String,
             currency: String,
             invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,
@@ -48,6 +52,7 @@ module Orb
           ) -> void
 
           def to_hash: -> {
+            customer_id: String,
             amount: String,
             currency: String,
             invoice_settings: Orb::Customers::Credits::TopUpCreateParams::InvoiceSettings,

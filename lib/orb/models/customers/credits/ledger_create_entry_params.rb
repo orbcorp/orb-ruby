@@ -9,334 +9,601 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
-          # @!attribute amount
-          #   The number of credits to effect. Note that this is required for increment,
-          #   decrement or void operations.
-          #
-          #   @return [Float]
-          required :amount, Float
-
-          # @!attribute entry_type
-          #
-          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
-          required :entry_type, enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::EntryType }
-
-          # @!attribute currency
-          #   The currency or custom pricing unit to use for this ledger entry. If this is a
-          #   real-world currency, it must match the customer's invoicing currency.
-          #
-          #   @return [String, nil]
-          optional :currency, String, nil?: true
-
-          # @!attribute description
-          #   Optional metadata that can be specified when adding ledger results via the API.
-          #   For example, this can be used to note an increment refers to trial credits, or
-          #   for noting corrections as a result of an incident, etc.
-          #
-          #   @return [String, nil]
-          optional :description, String, nil?: true
-
-          # @!attribute effective_date
-          #   An ISO 8601 format date that denotes when this credit balance should become
-          #   available for use.
-          #
-          #   @return [Time, nil]
-          optional :effective_date, Time, nil?: true
-
-          # @!attribute expiry_date
-          #   An ISO 8601 format date that identifies the origination credit block to expire
-          #
-          #   @return [Time, nil]
-          optional :expiry_date, Time, nil?: true
-
-          # @!attribute filters
-          #   Optional filter to specify which items this credit block applies to. If not
-          #   specified, the block will apply to all items for the pricing unit.
-          #
-          #   @return [Array<Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter>, nil]
-          optional :filters,
-                   -> {
-                     Orb::Internal::Type::ArrayOf[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]
-                   },
-                   nil?: true
-
-          # @!attribute invoice_settings
-          #   Passing `invoice_settings` automatically generates an invoice for the newly
-          #   added credits. If `invoice_settings` is passed, you must specify
-          #   per_unit_cost_basis, as the calculation of the invoice total is done on that
-          #   basis.
-          #
-          #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil]
-          optional :invoice_settings,
-                   -> { Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings },
-                   nil?: true
-
-          # @!attribute metadata
-          #   User-specified key/value pairs for the resource. Individual keys can be removed
-          #   by setting the value to `null`, and the entire metadata mapping can be cleared
-          #   by setting `metadata` to `null`.
-          #
-          #   @return [Hash{Symbol=>String, nil}, nil]
-          optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
-
-          # @!attribute per_unit_cost_basis
-          #   Can only be specified when entry_type=increment. How much, in the customer's
-          #   currency, a customer paid for a single credit in this block
-          #
-          #   @return [String, nil]
-          optional :per_unit_cost_basis, String, nil?: true
-
-          # @!attribute target_expiry_date
-          #   A future date (specified in YYYY-MM-DD format) used for expiration change,
-          #   denoting when credits transferred (as part of a partial block expiration) should
-          #   expire.
-          #
-          #   @return [Date]
-          required :target_expiry_date, Date
-
-          # @!attribute block_id
-          #   The ID of the block to reverse a decrement from.
+          # @!attribute customer_id
           #
           #   @return [String]
-          required :block_id, String
+          required :customer_id, String
 
-          # @!attribute void_reason
-          #   Can only be specified when `entry_type=void`. The reason for the void.
+          # @!attribute body
           #
-          #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil]
-          optional :void_reason,
-                   enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason },
-                   nil?: true
+          #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Amendment]
+          required :body, union: -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body }
 
-          # @!method initialize(amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
-          #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams} for more details.
-          #
-          #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
-          #
-          #   @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
-          #
-          #   @param target_expiry_date [Date] A future date (specified in YYYY-MM-DD format) used for expiration change, denot
-          #
-          #   @param block_id [String] The ID of the block to reverse a decrement from.
-          #
-          #   @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
-          #
-          #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
-          #
-          #   @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
-          #
-          #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
-          #
-          #   @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
-          #
-          #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
-          #
-          #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-          #
-          #   @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
-          #
-          #   @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
-          #
+          # @!method initialize(customer_id:, body:, request_options: {})
+          #   @param customer_id [String]
+          #   @param body [Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Amendment]
           #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
-          module EntryType
-            extend Orb::Internal::Type::Enum
+          module Body
+            extend Orb::Internal::Type::Union
 
-            AMENDMENT = :amendment
+            discriminator :entry_type
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
+            variant :increment, -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment }
 
-          class Filter < Orb::Internal::Type::BaseModel
-            # @!attribute field
-            #   The property of the price the block applies to. Only item_id is supported.
-            #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::Field]
-            required :field, enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Field }
+            variant :decrement, -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Decrement }
 
-            # @!attribute operator
-            #   Should prices that match the filter be included or excluded.
-            #
-            #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::Operator]
-            required :operator, enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::Filter::Operator }
+            variant :expiration_change,
+                    -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange }
 
-            # @!attribute values
-            #   The IDs or values that match this filter.
-            #
-            #   @return [Array<String>]
-            required :values, Orb::Internal::Type::ArrayOf[String]
+            variant :void, -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Void }
 
-            # @!method initialize(field:, operator:, values:)
-            #   A PriceFilter that only allows item_id field for block filters.
-            #
-            #   @param field [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::Field] The property of the price the block applies to. Only item_id is supported.
-            #
-            #   @param operator [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::Operator] Should prices that match the filter be included or excluded.
-            #
-            #   @param values [Array<String>] The IDs or values that match this filter.
+            variant :amendment, -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Amendment }
 
-            # The property of the price the block applies to. Only item_id is supported.
-            #
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter#field
-            module Field
-              extend Orb::Internal::Type::Enum
+            class Increment < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The number of credits to effect. Note that this is required for increment,
+              #   decrement, void, or undo operations.
+              #
+              #   @return [Float]
+              required :amount, Float
 
-              ITEM_ID = :item_id
+              # @!attribute entry_type
+              #
+              #   @return [Symbol, :increment]
+              required :entry_type, const: :increment
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              # @!attribute currency
+              #   The currency or custom pricing unit to use for this ledger entry. If this is a
+              #   real-world currency, it must match the customer's invoicing currency.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute description
+              #   Optional metadata that can be specified when adding ledger results via the API.
+              #   For example, this can be used to note an increment refers to trial credits, or
+              #   for noting corrections as a result of an incident, etc.
+              #
+              #   @return [String, nil]
+              optional :description, String, nil?: true
+
+              # @!attribute effective_date
+              #   An ISO 8601 format date that denotes when this credit balance should become
+              #   available for use.
+              #
+              #   @return [Time, nil]
+              optional :effective_date, Time, nil?: true
+
+              # @!attribute expiry_date
+              #   An ISO 8601 format date that denotes when this credit balance should expire.
+              #
+              #   @return [Time, nil]
+              optional :expiry_date, Time, nil?: true
+
+              # @!attribute filters
+              #   Optional filter to specify which items this credit block applies to. If not
+              #   specified, the block will apply to all items for the pricing unit.
+              #
+              #   @return [Array<Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter>, nil]
+              optional :filters,
+                       -> {
+                         Orb::Internal::Type::ArrayOf[Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter]
+                       },
+                       nil?: true
+
+              # @!attribute invoice_settings
+              #   Passing `invoice_settings` automatically generates an invoice for the newly
+              #   added credits. If `invoice_settings` is passed, you must specify
+              #   per_unit_cost_basis, as the calculation of the invoice total is done on that
+              #   basis.
+              #
+              #   @return [Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings, nil]
+              optional :invoice_settings,
+                       -> {
+                         Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings
+                       },
+                       nil?: true
+
+              # @!attribute metadata
+              #   User-specified key/value pairs for the resource. Individual keys can be removed
+              #   by setting the value to `null`, and the entire metadata mapping can be cleared
+              #   by setting `metadata` to `null`.
+              #
+              #   @return [Hash{Symbol=>String, nil}, nil]
+              optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+              # @!attribute per_unit_cost_basis
+              #   Can only be specified when entry_type=increment. How much, in the customer's
+              #   currency, a customer paid for a single credit in this block
+              #
+              #   @return [String, nil]
+              optional :per_unit_cost_basis, String, nil?: true
+
+              # @!method initialize(amount:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, entry_type: :increment)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment} for
+              #   more details.
+              #
+              #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
+              #
+              #   @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
+              #
+              #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
+              #
+              #   @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
+              #
+              #   @param expiry_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should expire.
+              #
+              #   @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
+              #
+              #   @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
+              #
+              #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+              #
+              #   @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
+              #
+              #   @param entry_type [Symbol, :increment]
+
+              class Filter < Orb::Internal::Type::BaseModel
+                # @!attribute field
+                #   The property of the price the block applies to. Only item_id is supported.
+                #
+                #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::Field]
+                required :field,
+                         enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::Field }
+
+                # @!attribute operator
+                #   Should prices that match the filter be included or excluded.
+                #
+                #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::Operator]
+                required :operator,
+                         enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::Operator }
+
+                # @!attribute values
+                #   The IDs or values that match this filter.
+                #
+                #   @return [Array<String>]
+                required :values, Orb::Internal::Type::ArrayOf[String]
+
+                # @!method initialize(field:, operator:, values:)
+                #   A PriceFilter that only allows item_id field for block filters.
+                #
+                #   @param field [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::Field] The property of the price the block applies to. Only item_id is supported.
+                #
+                #   @param operator [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::Operator] Should prices that match the filter be included or excluded.
+                #
+                #   @param values [Array<String>] The IDs or values that match this filter.
+
+                # The property of the price the block applies to. Only item_id is supported.
+                #
+                # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter#field
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  ITEM_ID = :item_id
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+
+                # Should prices that match the filter be included or excluded.
+                #
+                # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter#operator
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES = :includes
+                  EXCLUDES = :excludes
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment#invoice_settings
+              class InvoiceSettings < Orb::Internal::Type::BaseModel
+                # @!attribute auto_collection
+                #   Whether the credits purchase invoice should auto collect with the customer's
+                #   saved payment method.
+                #
+                #   @return [Boolean]
+                required :auto_collection, Orb::Internal::Type::Boolean
+
+                # @!attribute custom_due_date
+                #   An optional custom due date for the invoice. If not set, the due date will be
+                #   calculated based on the `net_terms` value.
+                #
+                #   @return [Date, Time, nil]
+                optional :custom_due_date,
+                         union: -> {
+                           Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::CustomDueDate
+                         },
+                         nil?: true
+
+                # @!attribute invoice_date
+                #   An ISO 8601 format date that denotes when this invoice should be dated in the
+                #   customer's timezone. If not provided, the invoice date will default to the
+                #   credit block's effective date.
+                #
+                #   @return [Date, Time, nil]
+                optional :invoice_date,
+                         union: -> {
+                           Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::InvoiceDate
+                         },
+                         nil?: true
+
+                # @!attribute item_id
+                #   The ID of the Item to be used for the invoice line item. If not provided, a
+                #   default 'Credits' item will be used.
+                #
+                #   @return [String, nil]
+                optional :item_id, String, nil?: true
+
+                # @!attribute mark_as_paid
+                #   If true, the new credits purchase invoice will be marked as paid.
+                #
+                #   @return [Boolean, nil]
+                optional :mark_as_paid, Orb::Internal::Type::Boolean
+
+                # @!attribute memo
+                #   An optional memo to display on the invoice.
+                #
+                #   @return [String, nil]
+                optional :memo, String, nil?: true
+
+                # @!attribute net_terms
+                #   The net terms determines the due date of the invoice. Due date is calculated
+                #   based on the invoice or issuance date, depending on the account's configured due
+                #   date calculation method. A value of '0' here represents that the invoice is due
+                #   on issue, whereas a value of '30' represents that the customer has 30 days to
+                #   pay the invoice. You must set either `net_terms` or `custom_due_date`, but not
+                #   both.
+                #
+                #   @return [Integer, nil]
+                optional :net_terms, Integer, nil?: true
+
+                # @!attribute require_successful_payment
+                #   If true, the new credit block will require that the corresponding invoice is
+                #   paid before it can be drawn down from.
+                #
+                #   @return [Boolean, nil]
+                optional :require_successful_payment, Orb::Internal::Type::Boolean
+
+                # @!method initialize(auto_collection:, custom_due_date: nil, invoice_date: nil, item_id: nil, mark_as_paid: nil, memo: nil, net_terms: nil, require_successful_payment: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings}
+                #   for more details.
+                #
+                #   Passing `invoice_settings` automatically generates an invoice for the newly
+                #   added credits. If `invoice_settings` is passed, you must specify
+                #   per_unit_cost_basis, as the calculation of the invoice total is done on that
+                #   basis.
+                #
+                #   @param auto_collection [Boolean] Whether the credits purchase invoice should auto collect with the customer's sav
+                #
+                #   @param custom_due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+                #
+                #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
+                #
+                #   @param item_id [String, nil] The ID of the Item to be used for the invoice line item. If not provided, a defa
+                #
+                #   @param mark_as_paid [Boolean] If true, the new credits purchase invoice will be marked as paid.
+                #
+                #   @param memo [String, nil] An optional memo to display on the invoice.
+                #
+                #   @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
+                #
+                #   @param require_successful_payment [Boolean] If true, the new credit block will require that the corresponding invoice is pai
+
+                # An optional custom due date for the invoice. If not set, the due date will be
+                # calculated based on the `net_terms` value.
+                #
+                # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings#custom_due_date
+                module CustomDueDate
+                  extend Orb::Internal::Type::Union
+
+                  variant Date
+
+                  variant Time
+
+                  # @!method self.variants
+                  #   @return [Array(Date, Time)]
+                end
+
+                # An ISO 8601 format date that denotes when this invoice should be dated in the
+                # customer's timezone. If not provided, the invoice date will default to the
+                # credit block's effective date.
+                #
+                # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings#invoice_date
+                module InvoiceDate
+                  extend Orb::Internal::Type::Union
+
+                  variant Date
+
+                  variant Time
+
+                  # @!method self.variants
+                  #   @return [Array(Date, Time)]
+                end
+              end
             end
 
-            # Should prices that match the filter be included or excluded.
-            #
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter#operator
-            module Operator
-              extend Orb::Internal::Type::Enum
+            class Decrement < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The number of credits to effect. Note that this is required for increment,
+              #   decrement, void, or undo operations.
+              #
+              #   @return [Float]
+              required :amount, Float
 
-              INCLUDES = :includes
-              EXCLUDES = :excludes
+              # @!attribute entry_type
+              #
+              #   @return [Symbol, :decrement]
+              required :entry_type, const: :decrement
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
+              # @!attribute currency
+              #   The currency or custom pricing unit to use for this ledger entry. If this is a
+              #   real-world currency, it must match the customer's invoicing currency.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
 
-          class InvoiceSettings < Orb::Internal::Type::BaseModel
-            # @!attribute auto_collection
-            #   Whether the credits purchase invoice should auto collect with the customer's
-            #   saved payment method.
-            #
-            #   @return [Boolean]
-            required :auto_collection, Orb::Internal::Type::Boolean
+              # @!attribute description
+              #   Optional metadata that can be specified when adding ledger results via the API.
+              #   For example, this can be used to note an increment refers to trial credits, or
+              #   for noting corrections as a result of an incident, etc.
+              #
+              #   @return [String, nil]
+              optional :description, String, nil?: true
 
-            # @!attribute custom_due_date
-            #   An optional custom due date for the invoice. If not set, the due date will be
-            #   calculated based on the `net_terms` value.
-            #
-            #   @return [Date, Time, nil]
-            optional :custom_due_date,
-                     union: -> {
-                       Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::CustomDueDate
-                     },
-                     nil?: true
+              # @!attribute metadata
+              #   User-specified key/value pairs for the resource. Individual keys can be removed
+              #   by setting the value to `null`, and the entire metadata mapping can be cleared
+              #   by setting `metadata` to `null`.
+              #
+              #   @return [Hash{Symbol=>String, nil}, nil]
+              optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-            # @!attribute invoice_date
-            #   An ISO 8601 format date that denotes when this invoice should be dated in the
-            #   customer's timezone. If not provided, the invoice date will default to the
-            #   credit block's effective date.
-            #
-            #   @return [Date, Time, nil]
-            optional :invoice_date,
-                     union: -> {
-                       Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::InvoiceDate
-                     },
-                     nil?: true
-
-            # @!attribute item_id
-            #   The ID of the Item to be used for the invoice line item. If not provided, a
-            #   default 'Credits' item will be used.
-            #
-            #   @return [String, nil]
-            optional :item_id, String, nil?: true
-
-            # @!attribute mark_as_paid
-            #   If true, the new credits purchase invoice will be marked as paid.
-            #
-            #   @return [Boolean, nil]
-            optional :mark_as_paid, Orb::Internal::Type::Boolean
-
-            # @!attribute memo
-            #   An optional memo to display on the invoice.
-            #
-            #   @return [String, nil]
-            optional :memo, String, nil?: true
-
-            # @!attribute net_terms
-            #   The net terms determines the due date of the invoice. Due date is calculated
-            #   based on the invoice or issuance date, depending on the account's configured due
-            #   date calculation method. A value of '0' here represents that the invoice is due
-            #   on issue, whereas a value of '30' represents that the customer has 30 days to
-            #   pay the invoice. You must set either `net_terms` or `custom_due_date`, but not
-            #   both.
-            #
-            #   @return [Integer, nil]
-            optional :net_terms, Integer, nil?: true
-
-            # @!attribute require_successful_payment
-            #   If true, the new credit block will require that the corresponding invoice is
-            #   paid before it can be drawn down from.
-            #
-            #   @return [Boolean, nil]
-            optional :require_successful_payment, Orb::Internal::Type::Boolean
-
-            # @!method initialize(auto_collection:, custom_due_date: nil, invoice_date: nil, item_id: nil, mark_as_paid: nil, memo: nil, net_terms: nil, require_successful_payment: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings} for
-            #   more details.
-            #
-            #   Passing `invoice_settings` automatically generates an invoice for the newly
-            #   added credits. If `invoice_settings` is passed, you must specify
-            #   per_unit_cost_basis, as the calculation of the invoice total is done on that
-            #   basis.
-            #
-            #   @param auto_collection [Boolean] Whether the credits purchase invoice should auto collect with the customer's sav
-            #
-            #   @param custom_due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
-            #
-            #   @param invoice_date [Date, Time, nil] An ISO 8601 format date that denotes when this invoice should be dated in the cu
-            #
-            #   @param item_id [String, nil] The ID of the Item to be used for the invoice line item. If not provided, a defa
-            #
-            #   @param mark_as_paid [Boolean] If true, the new credits purchase invoice will be marked as paid.
-            #
-            #   @param memo [String, nil] An optional memo to display on the invoice.
-            #
-            #   @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
-            #
-            #   @param require_successful_payment [Boolean] If true, the new credit block will require that the corresponding invoice is pai
-
-            # An optional custom due date for the invoice. If not set, the due date will be
-            # calculated based on the `net_terms` value.
-            #
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings#custom_due_date
-            module CustomDueDate
-              extend Orb::Internal::Type::Union
-
-              variant Date
-
-              variant Time
-
-              # @!method self.variants
-              #   @return [Array(Date, Time)]
+              # @!method initialize(amount:, currency: nil, description: nil, metadata: nil, entry_type: :decrement)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Decrement} for
+              #   more details.
+              #
+              #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
+              #
+              #   @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
+              #
+              #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
+              #
+              #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+              #
+              #   @param entry_type [Symbol, :decrement]
             end
 
-            # An ISO 8601 format date that denotes when this invoice should be dated in the
-            # customer's timezone. If not provided, the invoice date will default to the
-            # credit block's effective date.
-            #
-            # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings#invoice_date
-            module InvoiceDate
-              extend Orb::Internal::Type::Union
+            class ExpirationChange < Orb::Internal::Type::BaseModel
+              # @!attribute entry_type
+              #
+              #   @return [Symbol, :expiration_change]
+              required :entry_type, const: :expiration_change
 
-              variant Date
+              # @!attribute target_expiry_date
+              #   A future date (specified in YYYY-MM-DD format) used for expiration change,
+              #   denoting when credits transferred (as part of a partial block expiration) should
+              #   expire.
+              #
+              #   @return [Date]
+              required :target_expiry_date, Date
 
-              variant Time
+              # @!attribute amount
+              #   The number of credits to effect. Note that this is required for increment,
+              #   decrement, void, or undo operations.
+              #
+              #   @return [Float, nil]
+              optional :amount, Float, nil?: true
 
-              # @!method self.variants
-              #   @return [Array(Date, Time)]
+              # @!attribute block_id
+              #   The ID of the block affected by an expiration_change, used to differentiate
+              #   between multiple blocks with the same `expiry_date`.
+              #
+              #   @return [String, nil]
+              optional :block_id, String, nil?: true
+
+              # @!attribute currency
+              #   The currency or custom pricing unit to use for this ledger entry. If this is a
+              #   real-world currency, it must match the customer's invoicing currency.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute description
+              #   Optional metadata that can be specified when adding ledger results via the API.
+              #   For example, this can be used to note an increment refers to trial credits, or
+              #   for noting corrections as a result of an incident, etc.
+              #
+              #   @return [String, nil]
+              optional :description, String, nil?: true
+
+              # @!attribute expiry_date
+              #   An ISO 8601 format date that identifies the origination credit block to expire
+              #
+              #   @return [Time, nil]
+              optional :expiry_date, Time, nil?: true
+
+              # @!attribute metadata
+              #   User-specified key/value pairs for the resource. Individual keys can be removed
+              #   by setting the value to `null`, and the entire metadata mapping can be cleared
+              #   by setting `metadata` to `null`.
+              #
+              #   @return [Hash{Symbol=>String, nil}, nil]
+              optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+              # @!method initialize(target_expiry_date:, amount: nil, block_id: nil, currency: nil, description: nil, expiry_date: nil, metadata: nil, entry_type: :expiration_change)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange}
+              #   for more details.
+              #
+              #   @param target_expiry_date [Date] A future date (specified in YYYY-MM-DD format) used for expiration change, denot
+              #
+              #   @param amount [Float, nil] The number of credits to effect. Note that this is required for increment, decre
+              #
+              #   @param block_id [String, nil] The ID of the block affected by an expiration_change, used to differentiate betw
+              #
+              #   @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
+              #
+              #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
+              #
+              #   @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
+              #
+              #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+              #
+              #   @param entry_type [Symbol, :expiration_change]
             end
-          end
 
-          # Can only be specified when `entry_type=void`. The reason for the void.
-          module VoidReason
-            extend Orb::Internal::Type::Enum
+            class Void < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The number of credits to effect. Note that this is required for increment,
+              #   decrement, void, or undo operations.
+              #
+              #   @return [Float]
+              required :amount, Float
 
-            REFUND = :refund
+              # @!attribute block_id
+              #   The ID of the block to void.
+              #
+              #   @return [String]
+              required :block_id, String
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
+              # @!attribute entry_type
+              #
+              #   @return [Symbol, :void]
+              required :entry_type, const: :void
+
+              # @!attribute currency
+              #   The currency or custom pricing unit to use for this ledger entry. If this is a
+              #   real-world currency, it must match the customer's invoicing currency.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute description
+              #   Optional metadata that can be specified when adding ledger results via the API.
+              #   For example, this can be used to note an increment refers to trial credits, or
+              #   for noting corrections as a result of an incident, etc.
+              #
+              #   @return [String, nil]
+              optional :description, String, nil?: true
+
+              # @!attribute metadata
+              #   User-specified key/value pairs for the resource. Individual keys can be removed
+              #   by setting the value to `null`, and the entire metadata mapping can be cleared
+              #   by setting `metadata` to `null`.
+              #
+              #   @return [Hash{Symbol=>String, nil}, nil]
+              optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+              # @!attribute void_reason
+              #   Can only be specified when `entry_type=void`. The reason for the void.
+              #
+              #   @return [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::VoidReason, nil]
+              optional :void_reason,
+                       enum: -> { Orb::Customers::Credits::LedgerCreateEntryParams::Body::Void::VoidReason },
+                       nil?: true
+
+              # @!method initialize(amount:, block_id:, currency: nil, description: nil, metadata: nil, void_reason: nil, entry_type: :void)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void} for more
+              #   details.
+              #
+              #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
+              #
+              #   @param block_id [String] The ID of the block to void.
+              #
+              #   @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
+              #
+              #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
+              #
+              #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+              #
+              #   @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
+              #
+              #   @param entry_type [Symbol, :void]
+
+              # Can only be specified when `entry_type=void`. The reason for the void.
+              #
+              # @see Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void#void_reason
+              module VoidReason
+                extend Orb::Internal::Type::Enum
+
+                REFUND = :refund
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            class Amendment < Orb::Internal::Type::BaseModel
+              # @!attribute amount
+              #   The number of credits to effect. Note that this is required for increment,
+              #   decrement or void operations.
+              #
+              #   @return [Float]
+              required :amount, Float
+
+              # @!attribute block_id
+              #   The ID of the block to reverse a decrement from.
+              #
+              #   @return [String]
+              required :block_id, String
+
+              # @!attribute entry_type
+              #
+              #   @return [Symbol, :amendment]
+              required :entry_type, const: :amendment
+
+              # @!attribute currency
+              #   The currency or custom pricing unit to use for this ledger entry. If this is a
+              #   real-world currency, it must match the customer's invoicing currency.
+              #
+              #   @return [String, nil]
+              optional :currency, String, nil?: true
+
+              # @!attribute description
+              #   Optional metadata that can be specified when adding ledger results via the API.
+              #   For example, this can be used to note an increment refers to trial credits, or
+              #   for noting corrections as a result of an incident, etc.
+              #
+              #   @return [String, nil]
+              optional :description, String, nil?: true
+
+              # @!attribute metadata
+              #   User-specified key/value pairs for the resource. Individual keys can be removed
+              #   by setting the value to `null`, and the entire metadata mapping can be cleared
+              #   by setting `metadata` to `null`.
+              #
+              #   @return [Hash{Symbol=>String, nil}, nil]
+              optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+              # @!method initialize(amount:, block_id:, currency: nil, description: nil, metadata: nil, entry_type: :amendment)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Amendment} for
+              #   more details.
+              #
+              #   @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
+              #
+              #   @param block_id [String] The ID of the block to reverse a decrement from.
+              #
+              #   @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
+              #
+              #   @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
+              #
+              #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+              #
+              #   @param entry_type [Symbol, :amendment]
+            end
+
+            # @!method self.variants
+            #   @return [Array(Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Amendment)]
           end
         end
       end

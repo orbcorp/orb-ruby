@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute price_id
       #   Price for which the quantity should be updated. Must be a fixed fee.
       #
@@ -42,9 +47,11 @@ module Orb
       #   @return [Date, nil]
       optional :effective_date, Date, nil?: true
 
-      # @!method initialize(price_id:, quantity:, allow_invoice_credit_or_void: nil, change_option: nil, effective_date: nil, request_options: {})
+      # @!method initialize(subscription_id:, price_id:, quantity:, allow_invoice_credit_or_void: nil, change_option: nil, effective_date: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionUpdateFixedFeeQuantityParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param price_id [String] Price for which the quantity should be updated. Must be a fixed fee.
       #

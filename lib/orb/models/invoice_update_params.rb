@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute invoice_id
+      #
+      #   @return [String]
+      required :invoice_id, String
+
       # @!attribute auto_collection
       #   Determines whether this invoice will automatically attempt to charge a saved
       #   payment method, if any. Can only be modified on draft invoices. If not
@@ -46,9 +51,11 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!method initialize(auto_collection: nil, due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @!method initialize(invoice_id:, auto_collection: nil, due_date: nil, invoice_date: nil, metadata: nil, net_terms: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceUpdateParams} for more details.
+      #
+      #   @param invoice_id [String]
       #
       #   @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #

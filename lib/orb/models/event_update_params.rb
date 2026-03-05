@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute event_id
+      #
+      #   @return [String]
+      required :event_id, String
+
       # @!attribute event_name
       #   A name to meaningfully identify the action or event type.
       #
@@ -41,9 +46,11 @@ module Orb
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
 
-      # @!method initialize(event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
+      # @!method initialize(event_id:, event_name:, properties:, timestamp:, customer_id: nil, external_customer_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::EventUpdateParams} for more details.
+      #
+      #   @param event_id [String]
       #
       #   @param event_name [String] A name to meaningfully identify the action or event type.
       #

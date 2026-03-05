@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionFetchCostsParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # The currency or custom pricing unit to use.
       sig { returns(T.nilable(String)) }
       attr_accessor :currency
@@ -36,6 +39,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           currency: T.nilable(String),
           timeframe_end: T.nilable(Time),
           timeframe_start: T.nilable(Time),
@@ -45,6 +49,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # The currency or custom pricing unit to use.
         currency: nil,
         # Costs returned are exclusive of `timeframe_end`.
@@ -63,6 +68,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),

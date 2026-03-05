@@ -252,79 +252,20 @@ module Orb
           sig do
             params(
               customer_id: String,
-              amount: Float,
-              entry_type:
-                Orb::Customers::Credits::LedgerCreateEntryParams::EntryType::OrSymbol,
-              target_expiry_date: Date,
-              block_id: String,
-              currency: T.nilable(String),
-              description: T.nilable(String),
-              effective_date: T.nilable(Time),
-              expiry_date: T.nilable(Time),
-              filters:
-                T.nilable(
-                  T::Array[
-                    Orb::Customers::Credits::LedgerCreateEntryParams::Filter::OrHash
-                  ]
-                ),
-              invoice_settings:
-                T.nilable(
-                  Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::OrHash
-                ),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              per_unit_cost_basis: T.nilable(String),
-              void_reason:
-                T.nilable(
-                  Orb::Customers::Credits::LedgerCreateEntryParams::VoidReason::OrSymbol
+              body:
+                T.any(
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Body::Decrement::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Body::Void::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryParams::Body::Amendment::OrHash
                 ),
               request_options: Orb::RequestOptions::OrHash
             ).returns(
               Orb::Models::Customers::Credits::LedgerCreateEntryResponse::Variants
             )
           end
-          def create_entry(
-            customer_id,
-            # The number of credits to effect. Note that this is required for increment,
-            # decrement or void operations.
-            amount:,
-            entry_type:,
-            # A future date (specified in YYYY-MM-DD format) used for expiration change,
-            # denoting when credits transferred (as part of a partial block expiration) should
-            # expire.
-            target_expiry_date:,
-            # The ID of the block to reverse a decrement from.
-            block_id:,
-            # The currency or custom pricing unit to use for this ledger entry. If this is a
-            # real-world currency, it must match the customer's invoicing currency.
-            currency: nil,
-            # Optional metadata that can be specified when adding ledger results via the API.
-            # For example, this can be used to note an increment refers to trial credits, or
-            # for noting corrections as a result of an incident, etc.
-            description: nil,
-            # An ISO 8601 format date that denotes when this credit balance should become
-            # available for use.
-            effective_date: nil,
-            # An ISO 8601 format date that identifies the origination credit block to expire
-            expiry_date: nil,
-            # Optional filter to specify which items this credit block applies to. If not
-            # specified, the block will apply to all items for the pricing unit.
-            filters: nil,
-            # Passing `invoice_settings` automatically generates an invoice for the newly
-            # added credits. If `invoice_settings` is passed, you must specify
-            # per_unit_cost_basis, as the calculation of the invoice total is done on that
-            # basis.
-            invoice_settings: nil,
-            # User-specified key/value pairs for the resource. Individual keys can be removed
-            # by setting the value to `null`, and the entire metadata mapping can be cleared
-            # by setting `metadata` to `null`.
-            metadata: nil,
-            # Can only be specified when entry_type=increment. How much, in the customer's
-            # currency, a customer paid for a single credit in this block
-            per_unit_cost_basis: nil,
-            # Can only be specified when `entry_type=void`. The reason for the void.
-            void_reason: nil,
-            request_options: {}
-          )
+          def create_entry(customer_id, body:, request_options: {})
           end
 
           # This endpoint allows you to create a new ledger entry for a specified customer's
@@ -447,30 +388,13 @@ module Orb
           sig do
             params(
               external_customer_id: String,
-              amount: Float,
-              entry_type:
-                Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType::OrSymbol,
-              target_expiry_date: Date,
-              block_id: String,
-              currency: T.nilable(String),
-              description: T.nilable(String),
-              effective_date: T.nilable(Time),
-              expiry_date: T.nilable(Time),
-              filters:
-                T.nilable(
-                  T::Array[
-                    Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter::OrHash
-                  ]
-                ),
-              invoice_settings:
-                T.nilable(
-                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings::OrHash
-                ),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-              per_unit_cost_basis: T.nilable(String),
-              void_reason:
-                T.nilable(
-                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason::OrSymbol
+              body:
+                T.any(
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Increment::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Decrement::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::ExpirationChange::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Void::OrHash,
+                  Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Amendment::OrHash
                 ),
               request_options: Orb::RequestOptions::OrHash
             ).returns(
@@ -479,45 +403,7 @@ module Orb
           end
           def create_entry_by_external_id(
             external_customer_id,
-            # The number of credits to effect. Note that this is required for increment,
-            # decrement or void operations.
-            amount:,
-            entry_type:,
-            # A future date (specified in YYYY-MM-DD format) used for expiration change,
-            # denoting when credits transferred (as part of a partial block expiration) should
-            # expire.
-            target_expiry_date:,
-            # The ID of the block to reverse a decrement from.
-            block_id:,
-            # The currency or custom pricing unit to use for this ledger entry. If this is a
-            # real-world currency, it must match the customer's invoicing currency.
-            currency: nil,
-            # Optional metadata that can be specified when adding ledger results via the API.
-            # For example, this can be used to note an increment refers to trial credits, or
-            # for noting corrections as a result of an incident, etc.
-            description: nil,
-            # An ISO 8601 format date that denotes when this credit balance should become
-            # available for use.
-            effective_date: nil,
-            # An ISO 8601 format date that identifies the origination credit block to expire
-            expiry_date: nil,
-            # Optional filter to specify which items this credit block applies to. If not
-            # specified, the block will apply to all items for the pricing unit.
-            filters: nil,
-            # Passing `invoice_settings` automatically generates an invoice for the newly
-            # added credits. If `invoice_settings` is passed, you must specify
-            # per_unit_cost_basis, as the calculation of the invoice total is done on that
-            # basis.
-            invoice_settings: nil,
-            # User-specified key/value pairs for the resource. Individual keys can be removed
-            # by setting the value to `null`, and the entire metadata mapping can be cleared
-            # by setting `metadata` to `null`.
-            metadata: nil,
-            # Can only be specified when entry_type=increment. How much, in the customer's
-            # currency, a customer paid for a single credit in this block
-            per_unit_cost_basis: nil,
-            # Can only be specified when `entry_type=void`. The reason for the void.
-            void_reason: nil,
+            body:,
             request_options: {}
           )
           end

@@ -15,6 +15,9 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :other_external_plan_id
+
         # An optional user-defined ID for this plan resource, used throughout the system
         # as an alias for this Plan. Use this field to identify a plan by an existing
         # identifier in your system.
@@ -29,12 +32,14 @@ module Orb
 
         sig do
           params(
+            other_external_plan_id: String,
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             request_options: Orb::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          other_external_plan_id:,
           # An optional user-defined ID for this plan resource, used throughout the system
           # as an alias for this Plan. Use this field to identify a plan by an existing
           # identifier in your system.
@@ -50,6 +55,7 @@ module Orb
         sig do
           override.returns(
             {
+              other_external_plan_id: String,
               external_plan_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               request_options: Orb::RequestOptions

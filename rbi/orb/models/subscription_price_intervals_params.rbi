@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionPriceIntervalsParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # A list of price intervals to add to the subscription.
       sig do
         returns(T.nilable(T::Array[Orb::SubscriptionPriceIntervalsParams::Add]))
@@ -92,6 +95,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           add: T::Array[Orb::SubscriptionPriceIntervalsParams::Add::OrHash],
           add_adjustments:
             T::Array[
@@ -108,6 +112,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # A list of price intervals to add to the subscription.
         add: nil,
         # A list of adjustments to add to the subscription.
@@ -130,6 +135,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             add: T::Array[Orb::SubscriptionPriceIntervalsParams::Add],
             add_adjustments:
               T::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment],

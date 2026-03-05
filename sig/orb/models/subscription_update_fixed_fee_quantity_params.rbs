@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_update_fixed_fee_quantity_params =
       {
+        subscription_id: String,
         price_id: String,
         quantity: Float,
         allow_invoice_credit_or_void: bool?,
@@ -13,6 +14,8 @@ module Orb
     class SubscriptionUpdateFixedFeeQuantityParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor subscription_id: String
 
       attr_accessor price_id: String
 
@@ -29,6 +32,7 @@ module Orb
       attr_accessor effective_date: Date?
 
       def initialize: (
+        subscription_id: String,
         price_id: String,
         quantity: Float,
         ?allow_invoice_credit_or_void: bool?,
@@ -38,6 +42,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         price_id: String,
         quantity: Float,
         allow_invoice_credit_or_void: bool?,

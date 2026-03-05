@@ -8,7 +8,13 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute external_dimensional_price_group_id
+        #
+        #   @return [String]
+        required :external_dimensional_price_group_id, String
+
+        # @!method initialize(external_dimensional_price_group_id:, request_options: {})
+        #   @param external_dimensional_price_group_id [String]
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end

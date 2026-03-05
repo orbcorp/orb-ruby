@@ -2,6 +2,7 @@ module Orb
   module Models
     type event_update_params =
       {
+        event_id: String,
         event_name: String,
         properties: ::Hash[Symbol, top],
         timestamp: Time,
@@ -14,6 +15,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor event_id: String
+
       attr_accessor event_name: String
 
       attr_accessor properties: ::Hash[Symbol, top]
@@ -25,6 +28,7 @@ module Orb
       attr_accessor external_customer_id: String?
 
       def initialize: (
+        event_id: String,
         event_name: String,
         properties: ::Hash[Symbol, top],
         timestamp: Time,
@@ -34,6 +38,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        event_id: String,
         event_name: String,
         properties: ::Hash[Symbol, top],
         timestamp: Time,

@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_fetch_schedule_params =
       {
+        subscription_id: String,
         cursor: String?,
         limit: Integer,
         start_date_gt: Time?,
@@ -14,6 +15,8 @@ module Orb
     class SubscriptionFetchScheduleParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor subscription_id: String
 
       attr_accessor cursor: String?
 
@@ -30,6 +33,7 @@ module Orb
       attr_accessor start_date_lte: Time?
 
       def initialize: (
+        subscription_id: String,
         ?cursor: String?,
         ?limit: Integer,
         ?start_date_gt: Time?,
@@ -40,6 +44,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         cursor: String?,
         limit: Integer,
         start_date_gt: Time?,

@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute allow_invoice_credit_or_void
       #   If false, this request will fail if it would void an issued invoice or create a
       #   credit note. Consider using this as a safety mechanism if you do not expect
@@ -22,9 +27,11 @@ module Orb
       #   @return [Date, nil]
       optional :effective_date, Date, nil?: true
 
-      # @!method initialize(allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
+      # @!method initialize(subscription_id:, allow_invoice_credit_or_void: nil, effective_date: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionTriggerPhaseParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param allow_invoice_credit_or_void [Boolean, nil] If false, this request will fail if it would void an issued invoice or create a
       #

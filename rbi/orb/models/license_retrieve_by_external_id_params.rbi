@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::LicenseRetrieveByExternalIDParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :external_license_id
+
       # The ID of the license type to fetch the license for.
       sig { returns(String) }
       attr_accessor :license_type_id
@@ -21,12 +24,14 @@ module Orb
 
       sig do
         params(
+          external_license_id: String,
           license_type_id: String,
           subscription_id: String,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        external_license_id:,
         # The ID of the license type to fetch the license for.
         license_type_id:,
         # The ID of the subscription to fetch the license for.
@@ -38,6 +43,7 @@ module Orb
       sig do
         override.returns(
           {
+            external_license_id: String,
             license_type_id: String,
             subscription_id: String,
             request_options: Orb::RequestOptions

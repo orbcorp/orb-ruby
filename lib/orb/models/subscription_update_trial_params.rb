@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute trial_end_date
       #   The new date that the trial should end, or the literal string `immediate` to end
       #   the trial immediately.
@@ -21,9 +26,11 @@ module Orb
       #   @return [Boolean, nil]
       optional :shift, Orb::Internal::Type::Boolean
 
-      # @!method initialize(trial_end_date:, shift: nil, request_options: {})
+      # @!method initialize(subscription_id:, trial_end_date:, shift: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionUpdateTrialParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param trial_end_date [Time, Symbol, Orb::Models::SubscriptionUpdateTrialParams::TrialEndDate] The new date that the trial should end, or the literal string `immediate` to end
       #

@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute customer_id
+        #
+        #   @return [String]
+        required :customer_id, String
+
         # @!attribute currency
         #   The ledger currency or custom pricing unit to use.
         #
@@ -54,9 +59,11 @@ module Orb
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!method initialize(currency: nil, cursor: nil, effective_date_gt: nil, effective_date_gte: nil, effective_date_lt: nil, effective_date_lte: nil, include_all_blocks: nil, limit: nil, request_options: {})
+        # @!method initialize(customer_id:, currency: nil, cursor: nil, effective_date_gt: nil, effective_date_gte: nil, effective_date_lt: nil, effective_date_lte: nil, include_all_blocks: nil, limit: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Customers::CreditListParams} for more details.
+        #
+        #   @param customer_id [String]
         #
         #   @param currency [String, nil] The ledger currency or custom pricing unit to use.
         #

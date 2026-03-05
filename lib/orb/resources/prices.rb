@@ -26,9 +26,6 @@ module Orb
       # @return [Orb::Resources::Prices::ExternalPriceID]
       attr_reader :external_price_id
 
-      # Some parameter documentations has been truncated, see
-      # {Orb::Models::PriceCreateParams} for more details.
-      #
       # This endpoint is used to create a [price](/product-catalog/price-configuration).
       # A price created using this endpoint is always an add-on, meaning that it's not
       # associated with a specific plan and can instead be individually added to
@@ -40,103 +37,9 @@ module Orb
       # See the [Price resource](/product-catalog/price-configuration) for the
       # specification of different price model configurations possible in this endpoint.
       #
-      # @overload create(cadence:, currency:, item_id:, model_type:, name:, unit_config:, tiered_config:, bulk_config:, bulk_with_filters_config:, package_config:, matrix_config:, threshold_total_amount_config:, tiered_package_config:, tiered_with_minimum_config:, grouped_tiered_config:, tiered_package_with_minimum_config:, package_with_allocation_config:, unit_with_percent_config:, matrix_with_allocation_config:, tiered_with_proration_config:, unit_with_proration_config:, grouped_allocation_config:, bulk_with_proration_config:, grouped_with_prorated_minimum_config:, grouped_with_metered_minimum_config:, grouped_with_min_max_thresholds_config:, matrix_with_display_name_config:, grouped_tiered_package_config:, max_group_tiered_package_config:, scalable_matrix_with_unit_pricing_config:, scalable_matrix_with_tiered_pricing_config:, cumulative_grouped_bulk_config:, cumulative_grouped_allocation_config:, minimum_composite_config:, percent_config:, event_output_config:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, request_options: {})
+      # @overload create(body:, request_options: {})
       #
-      # @param cadence [Symbol, Orb::Models::PriceCreateParams::Cadence] The cadence to bill for this price on.
-      #
-      # @param currency [String] An ISO 4217 currency string for which this price is billed in.
-      #
-      # @param item_id [String] The id of the item the price will be associated with.
-      #
-      # @param model_type [Symbol, Orb::Models::PriceCreateParams::ModelType] The pricing model type
-      #
-      # @param name [String] The name of the price.
-      #
-      # @param unit_config [Orb::Models::UnitConfig] Configuration for unit pricing
-      #
-      # @param tiered_config [Orb::Models::TieredConfig] Configuration for tiered pricing
-      #
-      # @param bulk_config [Orb::Models::BulkConfig] Configuration for bulk pricing
-      #
-      # @param bulk_with_filters_config [Orb::Models::PriceCreateParams::BulkWithFiltersConfig] Configuration for bulk_with_filters pricing
-      #
-      # @param package_config [Orb::Models::PackageConfig] Configuration for package pricing
-      #
-      # @param matrix_config [Orb::Models::MatrixConfig] Configuration for matrix pricing
-      #
-      # @param threshold_total_amount_config [Orb::Models::PriceCreateParams::ThresholdTotalAmountConfig] Configuration for threshold_total_amount pricing
-      #
-      # @param tiered_package_config [Orb::Models::PriceCreateParams::TieredPackageConfig] Configuration for tiered_package pricing
-      #
-      # @param tiered_with_minimum_config [Orb::Models::PriceCreateParams::TieredWithMinimumConfig] Configuration for tiered_with_minimum pricing
-      #
-      # @param grouped_tiered_config [Orb::Models::PriceCreateParams::GroupedTieredConfig] Configuration for grouped_tiered pricing
-      #
-      # @param tiered_package_with_minimum_config [Orb::Models::PriceCreateParams::TieredPackageWithMinimumConfig] Configuration for tiered_package_with_minimum pricing
-      #
-      # @param package_with_allocation_config [Orb::Models::PriceCreateParams::PackageWithAllocationConfig] Configuration for package_with_allocation pricing
-      #
-      # @param unit_with_percent_config [Orb::Models::PriceCreateParams::UnitWithPercentConfig] Configuration for unit_with_percent pricing
-      #
-      # @param matrix_with_allocation_config [Orb::Models::MatrixWithAllocationConfig] Configuration for matrix_with_allocation pricing
-      #
-      # @param tiered_with_proration_config [Orb::Models::PriceCreateParams::TieredWithProrationConfig] Configuration for tiered_with_proration pricing
-      #
-      # @param unit_with_proration_config [Orb::Models::PriceCreateParams::UnitWithProrationConfig] Configuration for unit_with_proration pricing
-      #
-      # @param grouped_allocation_config [Orb::Models::PriceCreateParams::GroupedAllocationConfig] Configuration for grouped_allocation pricing
-      #
-      # @param bulk_with_proration_config [Orb::Models::PriceCreateParams::BulkWithProrationConfig] Configuration for bulk_with_proration pricing
-      #
-      # @param grouped_with_prorated_minimum_config [Orb::Models::PriceCreateParams::GroupedWithProratedMinimumConfig] Configuration for grouped_with_prorated_minimum pricing
-      #
-      # @param grouped_with_metered_minimum_config [Orb::Models::PriceCreateParams::GroupedWithMeteredMinimumConfig] Configuration for grouped_with_metered_minimum pricing
-      #
-      # @param grouped_with_min_max_thresholds_config [Orb::Models::PriceCreateParams::GroupedWithMinMaxThresholdsConfig] Configuration for grouped_with_min_max_thresholds pricing
-      #
-      # @param matrix_with_display_name_config [Orb::Models::PriceCreateParams::MatrixWithDisplayNameConfig] Configuration for matrix_with_display_name pricing
-      #
-      # @param grouped_tiered_package_config [Orb::Models::PriceCreateParams::GroupedTieredPackageConfig] Configuration for grouped_tiered_package pricing
-      #
-      # @param max_group_tiered_package_config [Orb::Models::PriceCreateParams::MaxGroupTieredPackageConfig] Configuration for max_group_tiered_package pricing
-      #
-      # @param scalable_matrix_with_unit_pricing_config [Orb::Models::PriceCreateParams::ScalableMatrixWithUnitPricingConfig] Configuration for scalable_matrix_with_unit_pricing pricing
-      #
-      # @param scalable_matrix_with_tiered_pricing_config [Orb::Models::PriceCreateParams::ScalableMatrixWithTieredPricingConfig] Configuration for scalable_matrix_with_tiered_pricing pricing
-      #
-      # @param cumulative_grouped_bulk_config [Orb::Models::PriceCreateParams::CumulativeGroupedBulkConfig] Configuration for cumulative_grouped_bulk pricing
-      #
-      # @param cumulative_grouped_allocation_config [Orb::Models::PriceCreateParams::CumulativeGroupedAllocationConfig] Configuration for cumulative_grouped_allocation pricing
-      #
-      # @param minimum_composite_config [Orb::Models::PriceCreateParams::MinimumCompositeConfig] Configuration for minimum_composite pricing
-      #
-      # @param percent_config [Orb::Models::PriceCreateParams::PercentConfig] Configuration for percent pricing
-      #
-      # @param event_output_config [Orb::Models::PriceCreateParams::EventOutputConfig] Configuration for event_output pricing
-      #
-      # @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
-      #
-      # @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
-      #
-      # @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
-      #
-      # @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
-      #
-      # @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
-      #
-      # @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
-      #
-      # @param external_price_id [String, nil] An alias for the price.
-      #
-      # @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
-      #
-      # @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
-      #
-      # @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
-      #
-      # @param license_type_id [String, nil] The ID of the license type to associate with this price.
-      #
-      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      # @param body [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput] New floating price request body params.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -145,7 +48,13 @@ module Orb
       # @see Orb::Models::PriceCreateParams
       def create(params)
         parsed, options = Orb::PriceCreateParams.dump_request(params)
-        @client.request(method: :post, path: "prices", body: parsed, model: Orb::Price, options: options)
+        @client.request(
+          method: :post,
+          path: "prices",
+          body: parsed[:body],
+          model: Orb::Price,
+          options: options
+        )
       end
 
       # Some parameter documentations has been truncated, see

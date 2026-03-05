@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::CustomerUpdateByExternalIDParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :id
+
       sig { returns(T.nilable(Orb::NewAccountingSyncConfiguration)) }
       attr_reader :accounting_sync_configuration
 
@@ -314,6 +317,7 @@ module Orb
 
       sig do
         params(
+          id: String,
           accounting_sync_configuration:
             T.nilable(Orb::NewAccountingSyncConfiguration::OrHash),
           additional_emails: T.nilable(T::Array[String]),
@@ -355,6 +359,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        id:,
         accounting_sync_configuration: nil,
         # Additional email addresses for this customer. If populated, these email
         # addresses will be CC'd for customer communications. The total number of email
@@ -560,6 +565,7 @@ module Orb
       sig do
         override.returns(
           {
+            id: String,
             accounting_sync_configuration:
               T.nilable(Orb::NewAccountingSyncConfiguration),
             additional_emails: T.nilable(T::Array[String]),

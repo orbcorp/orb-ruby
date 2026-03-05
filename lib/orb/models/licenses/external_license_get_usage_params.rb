@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute external_license_id
+        #
+        #   @return [String]
+        required :external_license_id, String
+
         # @!attribute license_type_id
         #   The license type ID to filter licenses by.
         #
@@ -53,9 +58,11 @@ module Orb
         #   @return [Date, nil]
         optional :start_date, Date, nil?: true
 
-        # @!method initialize(license_type_id:, subscription_id:, cursor: nil, end_date: nil, group_by: nil, limit: nil, start_date: nil, request_options: {})
+        # @!method initialize(external_license_id:, license_type_id:, subscription_id:, cursor: nil, end_date: nil, group_by: nil, limit: nil, start_date: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Licenses::ExternalLicenseGetUsageParams} for more details.
+        #
+        #   @param external_license_id [String]
         #
         #   @param license_type_id [String] The license type ID to filter licenses by.
         #

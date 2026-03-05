@@ -3,6 +3,7 @@ module Orb
     module Customers
       type balance_transaction_list_params =
         {
+          customer_id: String,
           cursor: String?,
           limit: Integer,
           operation_time_gt: Time?,
@@ -15,6 +16,8 @@ module Orb
       class BalanceTransactionListParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
 
         attr_accessor cursor: String?
 
@@ -31,6 +34,7 @@ module Orb
         attr_accessor operation_time_lte: Time?
 
         def initialize: (
+          customer_id: String,
           ?cursor: String?,
           ?limit: Integer,
           ?operation_time_gt: Time?,
@@ -41,6 +45,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          customer_id: String,
           cursor: String?,
           limit: Integer,
           operation_time_gt: Time?,

@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute customer_id
+      #
+      #   @return [String]
+      required :customer_id, String
+
       # @!attribute currency
       #   The case sensitive currency or custom pricing unit to use for this alert.
       #
@@ -25,7 +30,9 @@ module Orb
       #   @return [Array<Orb::Models::Threshold>, nil]
       optional :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }, nil?: true
 
-      # @!method initialize(currency:, type:, thresholds: nil, request_options: {})
+      # @!method initialize(customer_id:, currency:, type:, thresholds: nil, request_options: {})
+      #   @param customer_id [String]
+      #
       #   @param currency [String] The case sensitive currency or custom pricing unit to use for this alert.
       #
       #   @param type [Symbol, Orb::Models::AlertCreateForCustomerParams::Type] The type of alert to create. This must be a valid alert type.

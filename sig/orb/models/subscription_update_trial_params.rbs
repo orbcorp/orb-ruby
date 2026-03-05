@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_update_trial_params =
       {
+        subscription_id: String,
         trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
         shift: bool
       }
@@ -11,6 +12,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor subscription_id: String
+
       attr_accessor trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date
 
       attr_reader shift: bool?
@@ -18,12 +21,14 @@ module Orb
       def shift=: (bool) -> bool
 
       def initialize: (
+        subscription_id: String,
         trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
         ?shift: bool,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         trial_end_date: Orb::Models::SubscriptionUpdateTrialParams::trial_end_date,
         shift: bool,
         request_options: Orb::RequestOptions

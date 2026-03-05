@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::AlertCreateForSubscriptionParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # The thresholds that define the values at which the alert will be triggered.
       sig { returns(T::Array[Orb::Threshold]) }
       attr_accessor :thresholds
@@ -25,6 +28,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           thresholds: T::Array[Orb::Threshold::OrHash],
           type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
           metric_id: T.nilable(String),
@@ -32,6 +36,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # The thresholds that define the values at which the alert will be triggered.
         thresholds:,
         # The type of alert to create. This must be a valid alert type.
@@ -45,6 +50,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             thresholds: T::Array[Orb::Threshold],
             type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
             metric_id: T.nilable(String),

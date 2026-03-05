@@ -9,6 +9,11 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
+          # @!attribute external_customer_id
+          #
+          #   @return [String]
+          required :external_customer_id, String
+
           # @!attribute cursor
           #   Cursor for pagination. This can be populated by the `next_cursor` value returned
           #   from the initial request.
@@ -22,9 +27,11 @@ module Orb
           #   @return [Integer, nil]
           optional :limit, Integer
 
-          # @!method initialize(cursor: nil, limit: nil, request_options: {})
+          # @!method initialize(external_customer_id:, cursor: nil, limit: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Customers::Credits::TopUpListByExternalIDParams} for more details.
+          #
+          #   @param external_customer_id [String]
           #
           #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
           #

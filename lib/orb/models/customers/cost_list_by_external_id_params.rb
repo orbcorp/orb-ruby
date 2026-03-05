@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute external_customer_id
+        #
+        #   @return [String]
+        required :external_customer_id, String
+
         # @!attribute currency
         #   The currency or custom pricing unit to use.
         #
@@ -35,9 +40,11 @@ module Orb
         #   @return [Symbol, Orb::Models::Customers::CostListByExternalIDParams::ViewMode, nil]
         optional :view_mode, enum: -> { Orb::Customers::CostListByExternalIDParams::ViewMode }, nil?: true
 
-        # @!method initialize(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+        # @!method initialize(external_customer_id:, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Customers::CostListByExternalIDParams} for more details.
+        #
+        #   @param external_customer_id [String]
         #
         #   @param currency [String, nil] The currency or custom pricing unit to use.
         #
