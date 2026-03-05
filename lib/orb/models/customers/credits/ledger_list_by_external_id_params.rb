@@ -9,6 +9,11 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
+          # @!attribute external_customer_id
+          #
+          #   @return [String]
+          required :external_customer_id, String
+
           # @!attribute created_at_gt
           #
           #   @return [Time, nil]
@@ -67,10 +72,12 @@ module Orb
           #   @return [String, nil]
           optional :minimum_amount, String, nil?: true
 
-          # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, currency: nil, cursor: nil, entry_status: nil, entry_type: nil, limit: nil, minimum_amount: nil, request_options: {})
+          # @!method initialize(external_customer_id:, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, currency: nil, cursor: nil, entry_status: nil, entry_type: nil, limit: nil, minimum_amount: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Customers::Credits::LedgerListByExternalIDParams} for more
           #   details.
+          #
+          #   @param external_customer_id [String]
           #
           #   @param created_at_gt [Time, nil]
           #

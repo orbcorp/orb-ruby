@@ -7,7 +7,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute subscription_change_id
+      #
+      #   @return [String]
+      required :subscription_change_id, String
+
+      # @!method initialize(subscription_change_id:, request_options: {})
+      #   @param subscription_change_id [String]
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

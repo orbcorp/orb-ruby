@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute add
       #   A list of price intervals to add to the subscription.
       #
@@ -48,9 +53,11 @@ module Orb
       optional :edit_adjustments,
                -> { Orb::Internal::Type::ArrayOf[Orb::SubscriptionPriceIntervalsParams::EditAdjustment] }
 
-      # @!method initialize(add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, can_defer_billing: nil, edit: nil, edit_adjustments: nil, request_options: {})
+      # @!method initialize(subscription_id:, add: nil, add_adjustments: nil, allow_invoice_credit_or_void: nil, can_defer_billing: nil, edit: nil, edit_adjustments: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionPriceIntervalsParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param add [Array<Orb::Models::SubscriptionPriceIntervalsParams::Add>] A list of price intervals to add to the subscription.
       #

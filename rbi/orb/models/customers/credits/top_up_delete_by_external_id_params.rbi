@@ -19,19 +19,24 @@ module Orb
           sig { returns(String) }
           attr_accessor :external_customer_id
 
+          sig { returns(String) }
+          attr_accessor :top_up_id
+
           sig do
             params(
               external_customer_id: String,
+              top_up_id: String,
               request_options: Orb::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
-          def self.new(external_customer_id:, request_options: {})
+          def self.new(external_customer_id:, top_up_id:, request_options: {})
           end
 
           sig do
             override.returns(
               {
                 external_customer_id: String,
+                top_up_id: String,
                 request_options: Orb::RequestOptions
               }
             )

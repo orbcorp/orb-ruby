@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute invoice_id
+      #
+      #   @return [String]
+      required :invoice_id, String
+
       # @!attribute payment_received_date
       #   A date string to specify the date of the payment.
       #
@@ -25,7 +30,9 @@ module Orb
       #   @return [String, nil]
       optional :notes, String, nil?: true
 
-      # @!method initialize(payment_received_date:, external_id: nil, notes: nil, request_options: {})
+      # @!method initialize(invoice_id:, payment_received_date:, external_id: nil, notes: nil, request_options: {})
+      #   @param invoice_id [String]
+      #
       #   @param payment_received_date [Date] A date string to specify the date of the payment.
       #
       #   @param external_id [String, nil] An optional external ID to associate with the payment.

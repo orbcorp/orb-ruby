@@ -15,6 +15,9 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :external_price_id
+
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
@@ -23,11 +26,13 @@ module Orb
 
         sig do
           params(
+            external_price_id: String,
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             request_options: Orb::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          external_price_id:,
           # User-specified key/value pairs for the resource. Individual keys can be removed
           # by setting the value to `null`, and the entire metadata mapping can be cleared
           # by setting `metadata` to `null`.
@@ -39,6 +44,7 @@ module Orb
         sig do
           override.returns(
             {
+              external_price_id: String,
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               request_options: Orb::RequestOptions
             }

@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionUpdateParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # Determines whether issued invoices for this subscription will automatically be
       # charged with the saved payment method on the due date. This property defaults to
       # the plan's behavior.
@@ -43,6 +46,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           auto_collection: T.nilable(T::Boolean),
           default_invoice_memo: T.nilable(String),
           invoicing_threshold: T.nilable(String),
@@ -52,6 +56,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # Determines whether issued invoices for this subscription will automatically be
         # charged with the saved payment method on the due date. This property defaults to
         # the plan's behavior.
@@ -79,6 +84,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             auto_collection: T.nilable(T::Boolean),
             default_invoice_memo: T.nilable(String),
             invoicing_threshold: T.nilable(String),

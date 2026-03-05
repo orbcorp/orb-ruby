@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute plan_id
+        #
+        #   @return [String]
+        required :plan_id, String
+
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned
         #   from the initial request.
@@ -21,9 +26,11 @@ module Orb
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!method initialize(cursor: nil, limit: nil, request_options: {})
+        # @!method initialize(plan_id:, cursor: nil, limit: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plans::MigrationListParams} for more details.
+        #
+        #   @param plan_id [String]
         #
         #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
         #

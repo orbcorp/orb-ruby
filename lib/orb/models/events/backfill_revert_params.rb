@@ -8,7 +8,13 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
-        # @!method initialize(request_options: {})
+        # @!attribute backfill_id
+        #
+        #   @return [String]
+        required :backfill_id, String
+
+        # @!method initialize(backfill_id:, request_options: {})
+        #   @param backfill_id [String]
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end

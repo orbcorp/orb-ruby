@@ -3,6 +3,7 @@ module Orb
     module Customers
       type credit_list_by_external_id_params =
         {
+          external_customer_id: String,
           currency: String?,
           cursor: String?,
           effective_date_gt: Time?,
@@ -17,6 +18,8 @@ module Orb
       class CreditListByExternalIDParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
+
+        attr_accessor external_customer_id: String
 
         attr_accessor currency: String?
 
@@ -39,6 +42,7 @@ module Orb
         def limit=: (Integer) -> Integer
 
         def initialize: (
+          external_customer_id: String,
           ?currency: String?,
           ?cursor: String?,
           ?effective_date_gt: Time?,
@@ -51,6 +55,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          external_customer_id: String,
           currency: String?,
           cursor: String?,
           effective_date_gt: Time?,

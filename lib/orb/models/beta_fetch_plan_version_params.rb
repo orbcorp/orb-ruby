@@ -12,8 +12,14 @@ module Orb
       #   @return [String]
       required :plan_id, String
 
-      # @!method initialize(plan_id:, request_options: {})
+      # @!attribute version
+      #
+      #   @return [String]
+      required :version, String
+
+      # @!method initialize(plan_id:, version:, request_options: {})
       #   @param plan_id [String]
+      #   @param version [String]
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

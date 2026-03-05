@@ -15,6 +15,9 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :customer_id
+
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         sig { returns(T.nilable(String)) }
@@ -41,6 +44,7 @@ module Orb
 
         sig do
           params(
+            customer_id: String,
             cursor: T.nilable(String),
             limit: Integer,
             operation_time_gt: T.nilable(Time),
@@ -51,6 +55,7 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          customer_id:,
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
           # from the initial request.
           cursor: nil,
@@ -67,6 +72,7 @@ module Orb
         sig do
           override.returns(
             {
+              customer_id: String,
               cursor: T.nilable(String),
               limit: Integer,
               operation_time_gt: T.nilable(Time),

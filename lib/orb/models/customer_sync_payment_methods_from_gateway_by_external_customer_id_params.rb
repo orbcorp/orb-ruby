@@ -7,7 +7,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute external_customer_id
+      #
+      #   @return [String]
+      required :external_customer_id, String
+
+      # @!method initialize(external_customer_id:, request_options: {})
+      #   @param external_customer_id [String]
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

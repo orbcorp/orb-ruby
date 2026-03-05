@@ -1,1200 +1,805 @@
 module Orb
   module Models
     type price_create_params =
-      {
-        cadence: Orb::Models::PriceCreateParams::cadence,
-        currency: String,
-        item_id: String,
-        model_type: Orb::Models::PriceCreateParams::model_type,
-        name: String,
-        unit_config: Orb::UnitConfig,
-        billable_metric_id: String?,
-        billed_in_advance: bool?,
-        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        conversion_rate: Float?,
-        conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
-        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
-        external_price_id: String?,
-        fixed_price_quantity: Float?,
-        invoice_grouping_key: String?,
-        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        license_type_id: String?,
-        metadata: ::Hash[Symbol, String?]?,
-        tiered_config: Orb::TieredConfig,
-        bulk_config: Orb::BulkConfig,
-        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
-        package_config: Orb::PackageConfig,
-        matrix_config: Orb::MatrixConfig,
-        threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
-        tiered_package_config: Orb::PriceCreateParams::TieredPackageConfig,
-        tiered_with_minimum_config: Orb::PriceCreateParams::TieredWithMinimumConfig,
-        grouped_tiered_config: Orb::PriceCreateParams::GroupedTieredConfig,
-        tiered_package_with_minimum_config: Orb::PriceCreateParams::TieredPackageWithMinimumConfig,
-        package_with_allocation_config: Orb::PriceCreateParams::PackageWithAllocationConfig,
-        unit_with_percent_config: Orb::PriceCreateParams::UnitWithPercentConfig,
-        matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
-        tiered_with_proration_config: Orb::PriceCreateParams::TieredWithProrationConfig,
-        unit_with_proration_config: Orb::PriceCreateParams::UnitWithProrationConfig,
-        grouped_allocation_config: Orb::PriceCreateParams::GroupedAllocationConfig,
-        bulk_with_proration_config: Orb::PriceCreateParams::BulkWithProrationConfig,
-        grouped_with_prorated_minimum_config: Orb::PriceCreateParams::GroupedWithProratedMinimumConfig,
-        grouped_with_metered_minimum_config: Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig,
-        grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig,
-        matrix_with_display_name_config: Orb::PriceCreateParams::MatrixWithDisplayNameConfig,
-        grouped_tiered_package_config: Orb::PriceCreateParams::GroupedTieredPackageConfig,
-        max_group_tiered_package_config: Orb::PriceCreateParams::MaxGroupTieredPackageConfig,
-        scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
-        scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
-        cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
-        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-        minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig,
-        percent_config: Orb::PriceCreateParams::PercentConfig,
-        event_output_config: Orb::PriceCreateParams::EventOutputConfig
-      }
+      { body: Orb::Models::PriceCreateParams::body }
       & Orb::Internal::Type::request_parameters
 
     class PriceCreateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      attr_accessor cadence: Orb::Models::PriceCreateParams::cadence
-
-      attr_accessor currency: String
-
-      attr_accessor item_id: String
-
-      attr_accessor model_type: Orb::Models::PriceCreateParams::model_type
-
-      attr_accessor name: String
-
-      attr_accessor unit_config: Orb::UnitConfig
-
-      attr_accessor billable_metric_id: String?
-
-      attr_accessor billed_in_advance: bool?
-
-      attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
-
-      attr_accessor conversion_rate: Float?
-
-      attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?
-
-      attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
-
-      attr_accessor external_price_id: String?
-
-      attr_accessor fixed_price_quantity: Float?
-
-      attr_accessor invoice_grouping_key: String?
-
-      attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
-
-      attr_accessor license_type_id: String?
-
-      attr_accessor metadata: ::Hash[Symbol, String?]?
-
-      attr_accessor tiered_config: Orb::TieredConfig
-
-      attr_accessor bulk_config: Orb::BulkConfig
-
-      attr_accessor bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig
-
-      attr_accessor package_config: Orb::PackageConfig
-
-      attr_accessor matrix_config: Orb::MatrixConfig
-
-      attr_accessor threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig
-
-      attr_accessor tiered_package_config: Orb::PriceCreateParams::TieredPackageConfig
-
-      attr_accessor tiered_with_minimum_config: Orb::PriceCreateParams::TieredWithMinimumConfig
-
-      attr_accessor grouped_tiered_config: Orb::PriceCreateParams::GroupedTieredConfig
-
-      attr_accessor tiered_package_with_minimum_config: Orb::PriceCreateParams::TieredPackageWithMinimumConfig
-
-      attr_accessor package_with_allocation_config: Orb::PriceCreateParams::PackageWithAllocationConfig
-
-      attr_accessor unit_with_percent_config: Orb::PriceCreateParams::UnitWithPercentConfig
-
-      attr_accessor matrix_with_allocation_config: Orb::MatrixWithAllocationConfig
-
-      attr_accessor tiered_with_proration_config: Orb::PriceCreateParams::TieredWithProrationConfig
-
-      attr_accessor unit_with_proration_config: Orb::PriceCreateParams::UnitWithProrationConfig
-
-      attr_accessor grouped_allocation_config: Orb::PriceCreateParams::GroupedAllocationConfig
-
-      attr_accessor bulk_with_proration_config: Orb::PriceCreateParams::BulkWithProrationConfig
-
-      attr_accessor grouped_with_prorated_minimum_config: Orb::PriceCreateParams::GroupedWithProratedMinimumConfig
-
-      attr_accessor grouped_with_metered_minimum_config: Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig
-
-      attr_accessor grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig
-
-      attr_accessor matrix_with_display_name_config: Orb::PriceCreateParams::MatrixWithDisplayNameConfig
-
-      attr_accessor grouped_tiered_package_config: Orb::PriceCreateParams::GroupedTieredPackageConfig
-
-      attr_accessor max_group_tiered_package_config: Orb::PriceCreateParams::MaxGroupTieredPackageConfig
-
-      attr_accessor scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig
-
-      attr_accessor scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig
-
-      attr_accessor cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig
-
-      attr_accessor cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig
-
-      attr_accessor minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig
-
-      attr_accessor percent_config: Orb::PriceCreateParams::PercentConfig
-
-      attr_accessor event_output_config: Orb::PriceCreateParams::EventOutputConfig
+      attr_accessor body: Orb::Models::PriceCreateParams::body
 
       def initialize: (
-        cadence: Orb::Models::PriceCreateParams::cadence,
-        currency: String,
-        item_id: String,
-        model_type: Orb::Models::PriceCreateParams::model_type,
-        name: String,
-        unit_config: Orb::UnitConfig,
-        tiered_config: Orb::TieredConfig,
-        bulk_config: Orb::BulkConfig,
-        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
-        package_config: Orb::PackageConfig,
-        matrix_config: Orb::MatrixConfig,
-        threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
-        tiered_package_config: Orb::PriceCreateParams::TieredPackageConfig,
-        tiered_with_minimum_config: Orb::PriceCreateParams::TieredWithMinimumConfig,
-        grouped_tiered_config: Orb::PriceCreateParams::GroupedTieredConfig,
-        tiered_package_with_minimum_config: Orb::PriceCreateParams::TieredPackageWithMinimumConfig,
-        package_with_allocation_config: Orb::PriceCreateParams::PackageWithAllocationConfig,
-        unit_with_percent_config: Orb::PriceCreateParams::UnitWithPercentConfig,
-        matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
-        tiered_with_proration_config: Orb::PriceCreateParams::TieredWithProrationConfig,
-        unit_with_proration_config: Orb::PriceCreateParams::UnitWithProrationConfig,
-        grouped_allocation_config: Orb::PriceCreateParams::GroupedAllocationConfig,
-        bulk_with_proration_config: Orb::PriceCreateParams::BulkWithProrationConfig,
-        grouped_with_prorated_minimum_config: Orb::PriceCreateParams::GroupedWithProratedMinimumConfig,
-        grouped_with_metered_minimum_config: Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig,
-        grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig,
-        matrix_with_display_name_config: Orb::PriceCreateParams::MatrixWithDisplayNameConfig,
-        grouped_tiered_package_config: Orb::PriceCreateParams::GroupedTieredPackageConfig,
-        max_group_tiered_package_config: Orb::PriceCreateParams::MaxGroupTieredPackageConfig,
-        scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
-        scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
-        cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
-        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-        minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig,
-        percent_config: Orb::PriceCreateParams::PercentConfig,
-        event_output_config: Orb::PriceCreateParams::EventOutputConfig,
-        ?billable_metric_id: String?,
-        ?billed_in_advance: bool?,
-        ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        ?conversion_rate: Float?,
-        ?conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
-        ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
-        ?external_price_id: String?,
-        ?fixed_price_quantity: Float?,
-        ?invoice_grouping_key: String?,
-        ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        ?license_type_id: String?,
-        ?metadata: ::Hash[Symbol, String?]?,
+        body: Orb::Models::PriceCreateParams::body,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
-        cadence: Orb::Models::PriceCreateParams::cadence,
-        currency: String,
-        item_id: String,
-        model_type: Orb::Models::PriceCreateParams::model_type,
-        name: String,
-        unit_config: Orb::UnitConfig,
-        billable_metric_id: String?,
-        billed_in_advance: bool?,
-        billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        conversion_rate: Float?,
-        conversion_rate_config: Orb::Models::PriceCreateParams::conversion_rate_config?,
-        dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
-        external_price_id: String?,
-        fixed_price_quantity: Float?,
-        invoice_grouping_key: String?,
-        invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
-        license_type_id: String?,
-        metadata: ::Hash[Symbol, String?]?,
-        tiered_config: Orb::TieredConfig,
-        bulk_config: Orb::BulkConfig,
-        bulk_with_filters_config: Orb::PriceCreateParams::BulkWithFiltersConfig,
-        package_config: Orb::PackageConfig,
-        matrix_config: Orb::MatrixConfig,
-        threshold_total_amount_config: Orb::PriceCreateParams::ThresholdTotalAmountConfig,
-        tiered_package_config: Orb::PriceCreateParams::TieredPackageConfig,
-        tiered_with_minimum_config: Orb::PriceCreateParams::TieredWithMinimumConfig,
-        grouped_tiered_config: Orb::PriceCreateParams::GroupedTieredConfig,
-        tiered_package_with_minimum_config: Orb::PriceCreateParams::TieredPackageWithMinimumConfig,
-        package_with_allocation_config: Orb::PriceCreateParams::PackageWithAllocationConfig,
-        unit_with_percent_config: Orb::PriceCreateParams::UnitWithPercentConfig,
-        matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
-        tiered_with_proration_config: Orb::PriceCreateParams::TieredWithProrationConfig,
-        unit_with_proration_config: Orb::PriceCreateParams::UnitWithProrationConfig,
-        grouped_allocation_config: Orb::PriceCreateParams::GroupedAllocationConfig,
-        bulk_with_proration_config: Orb::PriceCreateParams::BulkWithProrationConfig,
-        grouped_with_prorated_minimum_config: Orb::PriceCreateParams::GroupedWithProratedMinimumConfig,
-        grouped_with_metered_minimum_config: Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig,
-        grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig,
-        matrix_with_display_name_config: Orb::PriceCreateParams::MatrixWithDisplayNameConfig,
-        grouped_tiered_package_config: Orb::PriceCreateParams::GroupedTieredPackageConfig,
-        max_group_tiered_package_config: Orb::PriceCreateParams::MaxGroupTieredPackageConfig,
-        scalable_matrix_with_unit_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
-        scalable_matrix_with_tiered_pricing_config: Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
-        cumulative_grouped_bulk_config: Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
-        cumulative_grouped_allocation_config: Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-        minimum_composite_config: Orb::PriceCreateParams::MinimumCompositeConfig,
-        percent_config: Orb::PriceCreateParams::PercentConfig,
-        event_output_config: Orb::PriceCreateParams::EventOutputConfig,
+        body: Orb::Models::PriceCreateParams::body,
         request_options: Orb::RequestOptions
       }
 
-      type cadence =
-        :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+      type body =
+        Orb::NewFloatingUnitPrice
+        | Orb::NewFloatingTieredPrice
+        | Orb::NewFloatingBulkPrice
+        | Orb::PriceCreateParams::Body::BulkWithFilters
+        | Orb::NewFloatingPackagePrice
+        | Orb::NewFloatingMatrixPrice
+        | Orb::NewFloatingThresholdTotalAmountPrice
+        | Orb::NewFloatingTieredPackagePrice
+        | Orb::NewFloatingTieredWithMinimumPrice
+        | Orb::NewFloatingGroupedTieredPrice
+        | Orb::NewFloatingTieredPackageWithMinimumPrice
+        | Orb::NewFloatingPackageWithAllocationPrice
+        | Orb::NewFloatingUnitWithPercentPrice
+        | Orb::NewFloatingMatrixWithAllocationPrice
+        | Orb::NewFloatingTieredWithProrationPrice
+        | Orb::NewFloatingUnitWithProrationPrice
+        | Orb::NewFloatingGroupedAllocationPrice
+        | Orb::NewFloatingBulkWithProrationPrice
+        | Orb::NewFloatingGroupedWithProratedMinimumPrice
+        | Orb::NewFloatingGroupedWithMeteredMinimumPrice
+        | Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds
+        | Orb::NewFloatingMatrixWithDisplayNamePrice
+        | Orb::NewFloatingGroupedTieredPackagePrice
+        | Orb::NewFloatingMaxGroupTieredPackagePrice
+        | Orb::NewFloatingScalableMatrixWithUnitPricingPrice
+        | Orb::NewFloatingScalableMatrixWithTieredPricingPrice
+        | Orb::NewFloatingCumulativeGroupedBulkPrice
+        | Orb::PriceCreateParams::Body::CumulativeGroupedAllocation
+        | Orb::NewFloatingMinimumCompositePrice
+        | Orb::PriceCreateParams::Body::Percent
+        | Orb::PriceCreateParams::Body::EventOutput
 
-      module Cadence
-        extend Orb::Internal::Type::Enum
+      module Body
+        extend Orb::Internal::Type::Union
 
-        ANNUAL: :annual
-        SEMI_ANNUAL: :semi_annual
-        MONTHLY: :monthly
-        QUARTERLY: :quarterly
-        ONE_TIME: :one_time
-        CUSTOM: :custom
-
-        def self?.values: -> ::Array[Orb::Models::PriceCreateParams::cadence]
-      end
-
-      type model_type = :event_output
-
-      module ModelType
-        extend Orb::Internal::Type::Enum
-
-        EVENT_OUTPUT: :event_output
-
-        def self?.values: -> ::Array[Orb::Models::PriceCreateParams::model_type]
-      end
-
-      type bulk_with_filters_config =
-        {
-          filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
-          tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
-        }
-
-      class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
-        attr_accessor filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter]
-
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
-
-        def initialize: (
-          filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
-          tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          filters: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
-          tiers: ::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
-        }
-
-        type filter = { property_key: String, property_value: String }
-
-        class Filter < Orb::Internal::Type::BaseModel
-          attr_accessor property_key: String
-
-          attr_accessor property_value: String
-
-          def initialize: (property_key: String, property_value: String) -> void
-
-          def to_hash: -> { property_key: String, property_value: String }
-        end
-
-        type tier = { unit_amount: String, tier_lower_bound: String? }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor unit_amount: String
-
-          attr_accessor tier_lower_bound: String?
-
-          def initialize: (
-            unit_amount: String,
-            ?tier_lower_bound: String?
-          ) -> void
-
-          def to_hash: -> { unit_amount: String, tier_lower_bound: String? }
-        end
-      end
-
-      type threshold_total_amount_config =
-        {
-          consumption_table: ::Array[Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable],
-          prorate: bool?
-        }
-
-      class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
-        attr_accessor consumption_table: ::Array[Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable]
-
-        attr_accessor prorate: bool?
-
-        def initialize: (
-          consumption_table: ::Array[Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable],
-          ?prorate: bool?
-        ) -> void
-
-        def to_hash: -> {
-          consumption_table: ::Array[Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable],
-          prorate: bool?
-        }
-
-        type consumption_table = { threshold: String, total_amount: String }
-
-        class ConsumptionTable < Orb::Internal::Type::BaseModel
-          attr_accessor threshold: String
-
-          attr_accessor total_amount: String
-
-          def initialize: (threshold: String, total_amount: String) -> void
-
-          def to_hash: -> { threshold: String, total_amount: String }
-        end
-      end
-
-      type tiered_package_config =
-        {
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::TieredPackageConfig::Tier]
-        }
-
-      class TieredPackageConfig < Orb::Internal::Type::BaseModel
-        attr_accessor package_size: String
-
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::TieredPackageConfig::Tier]
-
-        def initialize: (
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::TieredPackageConfig::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::TieredPackageConfig::Tier]
-        }
-
-        type tier = { per_unit: String, tier_lower_bound: String }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor per_unit: String
-
-          attr_accessor tier_lower_bound: String
-
-          def initialize: (per_unit: String, tier_lower_bound: String) -> void
-
-          def to_hash: -> { per_unit: String, tier_lower_bound: String }
-        end
-      end
-
-      type tiered_with_minimum_config =
-        {
-          tiers: ::Array[Orb::PriceCreateParams::TieredWithMinimumConfig::Tier],
-          hide_zero_amount_tiers: bool,
-          prorate: bool
-        }
-
-      class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::TieredWithMinimumConfig::Tier]
-
-        attr_reader hide_zero_amount_tiers: bool?
-
-        def hide_zero_amount_tiers=: (bool) -> bool
-
-        attr_reader prorate: bool?
-
-        def prorate=: (bool) -> bool
-
-        def initialize: (
-          tiers: ::Array[Orb::PriceCreateParams::TieredWithMinimumConfig::Tier],
-          ?hide_zero_amount_tiers: bool,
-          ?prorate: bool
-        ) -> void
-
-        def to_hash: -> {
-          tiers: ::Array[Orb::PriceCreateParams::TieredWithMinimumConfig::Tier],
-          hide_zero_amount_tiers: bool,
-          prorate: bool
-        }
-
-        type tier =
+        type bulk_with_filters =
           {
-            minimum_amount: String,
-            tier_lower_bound: String,
-            unit_amount: String
+            bulk_with_filters_config: Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig,
+            cadence: Orb::Models::PriceCreateParams::Body::BulkWithFilters::cadence,
+            currency: String,
+            item_id: String,
+            model_type: :bulk_with_filters,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::BulkWithFilters::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
 
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor minimum_amount: String
+        class BulkWithFilters < Orb::Internal::Type::BaseModel
+          attr_accessor bulk_with_filters_config: Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig
 
-          attr_accessor tier_lower_bound: String
+          attr_accessor cadence: Orb::Models::PriceCreateParams::Body::BulkWithFilters::cadence
 
-          attr_accessor unit_amount: String
+          attr_accessor currency: String
+
+          attr_accessor item_id: String
+
+          attr_accessor model_type: :bulk_with_filters
+
+          attr_accessor name: String
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::Body::BulkWithFilters::conversion_rate_config?
+
+          attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor license_type_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize: (
-            minimum_amount: String,
-            tier_lower_bound: String,
-            unit_amount: String
+            bulk_with_filters_config: Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig,
+            cadence: Orb::Models::PriceCreateParams::Body::BulkWithFilters::cadence,
+            currency: String,
+            item_id: String,
+            name: String,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?conversion_rate_config: Orb::Models::PriceCreateParams::Body::BulkWithFilters::conversion_rate_config?,
+            ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?license_type_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :bulk_with_filters
           ) -> void
 
           def to_hash: -> {
-            minimum_amount: String,
-            tier_lower_bound: String,
-            unit_amount: String
+            bulk_with_filters_config: Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig,
+            cadence: Orb::Models::PriceCreateParams::Body::BulkWithFilters::cadence,
+            currency: String,
+            item_id: String,
+            model_type: :bulk_with_filters,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::BulkWithFilters::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
-        end
-      end
 
-      type grouped_tiered_config =
-        {
-          grouping_key: String,
-          tiers: ::Array[Orb::PriceCreateParams::GroupedTieredConfig::Tier]
-        }
+          type bulk_with_filters_config =
+            {
+              filters: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter],
+              tiers: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier]
+            }
 
-      class GroupedTieredConfig < Orb::Internal::Type::BaseModel
-        attr_accessor grouping_key: String
+          class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+            attr_accessor filters: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter]
 
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::GroupedTieredConfig::Tier]
+            attr_accessor tiers: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier]
 
-        def initialize: (
-          grouping_key: String,
-          tiers: ::Array[Orb::PriceCreateParams::GroupedTieredConfig::Tier]
-        ) -> void
+            def initialize: (
+              filters: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter],
+              tiers: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier]
+            ) -> void
 
-        def to_hash: -> {
-          grouping_key: String,
-          tiers: ::Array[Orb::PriceCreateParams::GroupedTieredConfig::Tier]
-        }
+            def to_hash: -> {
+              filters: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter],
+              tiers: ::Array[Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier]
+            }
 
-        type tier = { tier_lower_bound: String, unit_amount: String }
+            type filter = { property_key: String, property_value: String }
 
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor tier_lower_bound: String
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor property_key: String
 
-          attr_accessor unit_amount: String
+              attr_accessor property_value: String
 
-          def initialize: (
-            tier_lower_bound: String,
-            unit_amount: String
-          ) -> void
+              def initialize: (
+                property_key: String,
+                property_value: String
+              ) -> void
 
-          def to_hash: -> { tier_lower_bound: String, unit_amount: String }
-        end
-      end
+              def to_hash: -> { property_key: String, property_value: String }
+            end
 
-      type tiered_package_with_minimum_config =
-        {
-          package_size: Float,
-          tiers: ::Array[Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier]
-        }
+            type tier = { unit_amount: String, tier_lower_bound: String? }
 
-      class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
-        attr_accessor package_size: Float
+            class Tier < Orb::Internal::Type::BaseModel
+              attr_accessor unit_amount: String
 
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier]
+              attr_accessor tier_lower_bound: String?
 
-        def initialize: (
-          package_size: Float,
-          tiers: ::Array[Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier]
-        ) -> void
+              def initialize: (
+                unit_amount: String,
+                ?tier_lower_bound: String?
+              ) -> void
 
-        def to_hash: -> {
-          package_size: Float,
-          tiers: ::Array[Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier]
-        }
+              def to_hash: -> { unit_amount: String, tier_lower_bound: String? }
+            end
+          end
 
-        type tier =
-          { minimum_amount: String, per_unit: String, tier_lower_bound: String }
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
 
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor minimum_amount: String
+          module Cadence
+            extend Orb::Internal::Type::Enum
 
-          attr_accessor per_unit: String
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
 
-          attr_accessor tier_lower_bound: String
-
-          def initialize: (
-            minimum_amount: String,
-            per_unit: String,
-            tier_lower_bound: String
-          ) -> void
-
-          def to_hash: -> {
-            minimum_amount: String,
-            per_unit: String,
-            tier_lower_bound: String
-          }
-        end
-      end
-
-      type package_with_allocation_config =
-        { allocation: String, package_amount: String, package_size: String }
-
-      class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
-        attr_accessor allocation: String
-
-        attr_accessor package_amount: String
-
-        attr_accessor package_size: String
-
-        def initialize: (
-          allocation: String,
-          package_amount: String,
-          package_size: String
-        ) -> void
-
-        def to_hash: -> {
-          allocation: String,
-          package_amount: String,
-          package_size: String
-        }
-      end
-
-      type unit_with_percent_config = { percent: String, unit_amount: String }
-
-      class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
-        attr_accessor percent: String
-
-        attr_accessor unit_amount: String
-
-        def initialize: (percent: String, unit_amount: String) -> void
-
-        def to_hash: -> { percent: String, unit_amount: String }
-      end
-
-      type tiered_with_proration_config =
-        {
-          tiers: ::Array[Orb::PriceCreateParams::TieredWithProrationConfig::Tier]
-        }
-
-      class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::TieredWithProrationConfig::Tier]
-
-        def initialize: (
-          tiers: ::Array[Orb::PriceCreateParams::TieredWithProrationConfig::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          tiers: ::Array[Orb::PriceCreateParams::TieredWithProrationConfig::Tier]
-        }
-
-        type tier = { tier_lower_bound: String, unit_amount: String }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor tier_lower_bound: String
-
-          attr_accessor unit_amount: String
-
-          def initialize: (
-            tier_lower_bound: String,
-            unit_amount: String
-          ) -> void
-
-          def to_hash: -> { tier_lower_bound: String, unit_amount: String }
-        end
-      end
-
-      type unit_with_proration_config = { unit_amount: String }
-
-      class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
-        attr_accessor unit_amount: String
-
-        def initialize: (unit_amount: String) -> void
-
-        def to_hash: -> { unit_amount: String }
-      end
-
-      type grouped_allocation_config =
-        { allocation: String, grouping_key: String, overage_unit_rate: String }
-
-      class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
-        attr_accessor allocation: String
-
-        attr_accessor grouping_key: String
-
-        attr_accessor overage_unit_rate: String
-
-        def initialize: (
-          allocation: String,
-          grouping_key: String,
-          overage_unit_rate: String
-        ) -> void
-
-        def to_hash: -> {
-          allocation: String,
-          grouping_key: String,
-          overage_unit_rate: String
-        }
-      end
-
-      type bulk_with_proration_config =
-        {
-          tiers: ::Array[Orb::PriceCreateParams::BulkWithProrationConfig::Tier]
-        }
-
-      class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::BulkWithProrationConfig::Tier]
-
-        def initialize: (
-          tiers: ::Array[Orb::PriceCreateParams::BulkWithProrationConfig::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          tiers: ::Array[Orb::PriceCreateParams::BulkWithProrationConfig::Tier]
-        }
-
-        type tier = { unit_amount: String, tier_lower_bound: String? }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor unit_amount: String
-
-          attr_accessor tier_lower_bound: String?
-
-          def initialize: (
-            unit_amount: String,
-            ?tier_lower_bound: String?
-          ) -> void
-
-          def to_hash: -> { unit_amount: String, tier_lower_bound: String? }
-        end
-      end
-
-      type grouped_with_prorated_minimum_config =
-        { grouping_key: String, minimum: String, unit_rate: String }
-
-      class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
-        attr_accessor grouping_key: String
-
-        attr_accessor minimum: String
-
-        attr_accessor unit_rate: String
-
-        def initialize: (
-          grouping_key: String,
-          minimum: String,
-          unit_rate: String
-        ) -> void
-
-        def to_hash: -> {
-          grouping_key: String,
-          minimum: String,
-          unit_rate: String
-        }
-      end
-
-      type grouped_with_metered_minimum_config =
-        {
-          grouping_key: String,
-          minimum_unit_amount: String,
-          pricing_key: String,
-          scaling_factors: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor],
-          scaling_key: String,
-          unit_amounts: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount]
-        }
-
-      class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
-        attr_accessor grouping_key: String
-
-        attr_accessor minimum_unit_amount: String
-
-        attr_accessor pricing_key: String
-
-        attr_accessor scaling_factors: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor]
-
-        attr_accessor scaling_key: String
-
-        attr_accessor unit_amounts: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount]
-
-        def initialize: (
-          grouping_key: String,
-          minimum_unit_amount: String,
-          pricing_key: String,
-          scaling_factors: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor],
-          scaling_key: String,
-          unit_amounts: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount]
-        ) -> void
-
-        def to_hash: -> {
-          grouping_key: String,
-          minimum_unit_amount: String,
-          pricing_key: String,
-          scaling_factors: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor],
-          scaling_key: String,
-          unit_amounts: ::Array[Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount]
-        }
-
-        type scaling_factor = { scaling_factor: String, scaling_value: String }
-
-        class ScalingFactor < Orb::Internal::Type::BaseModel
-          attr_accessor scaling_factor: String
-
-          attr_accessor scaling_value: String
-
-          def initialize: (
-            scaling_factor: String,
-            scaling_value: String
-          ) -> void
-
-          def to_hash: -> { scaling_factor: String, scaling_value: String }
+            def self?.values: -> ::Array[Orb::Models::PriceCreateParams::Body::BulkWithFilters::cadence]
+          end
         end
 
-        type unit_amount = { pricing_value: String, unit_amount: String }
-
-        class UnitAmount < Orb::Internal::Type::BaseModel
-          attr_accessor pricing_value: String
-
-          attr_accessor unit_amount: String
-
-          def initialize: (pricing_value: String, unit_amount: String) -> void
-
-          def to_hash: -> { pricing_value: String, unit_amount: String }
-        end
-      end
-
-      type grouped_with_min_max_thresholds_config =
-        {
-          grouping_key: String,
-          maximum_charge: String,
-          minimum_charge: String,
-          per_unit_rate: String
-        }
-
-      class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
-        attr_accessor grouping_key: String
-
-        attr_accessor maximum_charge: String
-
-        attr_accessor minimum_charge: String
-
-        attr_accessor per_unit_rate: String
-
-        def initialize: (
-          grouping_key: String,
-          maximum_charge: String,
-          minimum_charge: String,
-          per_unit_rate: String
-        ) -> void
-
-        def to_hash: -> {
-          grouping_key: String,
-          maximum_charge: String,
-          minimum_charge: String,
-          per_unit_rate: String
-        }
-      end
-
-      type matrix_with_display_name_config =
-        {
-          dimension: String,
-          unit_amounts: ::Array[Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount]
-        }
-
-      class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
-        attr_accessor dimension: String
-
-        attr_accessor unit_amounts: ::Array[Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount]
-
-        def initialize: (
-          dimension: String,
-          unit_amounts: ::Array[Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount]
-        ) -> void
-
-        def to_hash: -> {
-          dimension: String,
-          unit_amounts: ::Array[Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount]
-        }
-
-        type unit_amount =
-          { dimension_value: String, display_name: String, unit_amount: String }
-
-        class UnitAmount < Orb::Internal::Type::BaseModel
-          attr_accessor dimension_value: String
-
-          attr_accessor display_name: String
-
-          attr_accessor unit_amount: String
-
-          def initialize: (
-            dimension_value: String,
-            display_name: String,
-            unit_amount: String
-          ) -> void
-
-          def to_hash: -> {
-            dimension_value: String,
-            display_name: String,
-            unit_amount: String
-          }
-        end
-      end
-
-      type grouped_tiered_package_config =
-        {
-          grouping_key: String,
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier]
-        }
-
-      class GroupedTieredPackageConfig < Orb::Internal::Type::BaseModel
-        attr_accessor grouping_key: String
-
-        attr_accessor package_size: String
-
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier]
-
-        def initialize: (
-          grouping_key: String,
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          grouping_key: String,
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier]
-        }
-
-        type tier = { per_unit: String, tier_lower_bound: String }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor per_unit: String
-
-          attr_accessor tier_lower_bound: String
-
-          def initialize: (per_unit: String, tier_lower_bound: String) -> void
-
-          def to_hash: -> { per_unit: String, tier_lower_bound: String }
-        end
-      end
-
-      type max_group_tiered_package_config =
-        {
-          grouping_key: String,
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier]
-        }
-
-      class MaxGroupTieredPackageConfig < Orb::Internal::Type::BaseModel
-        attr_accessor grouping_key: String
-
-        attr_accessor package_size: String
-
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier]
-
-        def initialize: (
-          grouping_key: String,
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          grouping_key: String,
-          package_size: String,
-          tiers: ::Array[Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier]
-        }
-
-        type tier = { tier_lower_bound: String, unit_amount: String }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor tier_lower_bound: String
-
-          attr_accessor unit_amount: String
-
-          def initialize: (
-            tier_lower_bound: String,
-            unit_amount: String
-          ) -> void
-
-          def to_hash: -> { tier_lower_bound: String, unit_amount: String }
-        end
-      end
-
-      type scalable_matrix_with_unit_pricing_config =
-        {
-          first_dimension: String,
-          matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
-          unit_price: String,
-          grouping_key: String?,
-          prorate: bool?,
-          second_dimension: String?
-        }
-
-      class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
-        attr_accessor first_dimension: String
-
-        attr_accessor matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor]
-
-        attr_accessor unit_price: String
-
-        attr_accessor grouping_key: String?
-
-        attr_accessor prorate: bool?
-
-        attr_accessor second_dimension: String?
-
-        def initialize: (
-          first_dimension: String,
-          matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
-          unit_price: String,
-          ?grouping_key: String?,
-          ?prorate: bool?,
-          ?second_dimension: String?
-        ) -> void
-
-        def to_hash: -> {
-          first_dimension: String,
-          matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor],
-          unit_price: String,
-          grouping_key: String?,
-          prorate: bool?,
-          second_dimension: String?
-        }
-
-        type matrix_scaling_factor =
+        type grouped_with_min_max_thresholds =
           {
-            first_dimension_value: String,
-            scaling_factor: String,
-            second_dimension_value: String?
+            cadence: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::cadence,
+            currency: String,
+            grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+            item_id: String,
+            model_type: :grouped_with_min_max_thresholds,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
 
-        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
-          attr_accessor first_dimension_value: String
+        class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::cadence
 
-          attr_accessor scaling_factor: String
+          attr_accessor currency: String
 
-          attr_accessor second_dimension_value: String?
+          attr_accessor grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+
+          attr_accessor item_id: String
+
+          attr_accessor model_type: :grouped_with_min_max_thresholds
+
+          attr_accessor name: String
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::conversion_rate_config?
+
+          attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor license_type_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize: (
-            first_dimension_value: String,
-            scaling_factor: String,
-            ?second_dimension_value: String?
+            cadence: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::cadence,
+            currency: String,
+            grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+            item_id: String,
+            name: String,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?conversion_rate_config: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::conversion_rate_config?,
+            ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?license_type_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :grouped_with_min_max_thresholds
           ) -> void
 
           def to_hash: -> {
-            first_dimension_value: String,
-            scaling_factor: String,
-            second_dimension_value: String?
+            cadence: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::cadence,
+            currency: String,
+            grouped_with_min_max_thresholds_config: Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+            item_id: String,
+            model_type: :grouped_with_min_max_thresholds,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
+
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds::cadence]
+          end
+
+          type grouped_with_min_max_thresholds_config =
+            {
+              grouping_key: String,
+              maximum_charge: String,
+              minimum_charge: String,
+              per_unit_rate: String
+            }
+
+          class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+            attr_accessor grouping_key: String
+
+            attr_accessor maximum_charge: String
+
+            attr_accessor minimum_charge: String
+
+            attr_accessor per_unit_rate: String
+
+            def initialize: (
+              grouping_key: String,
+              maximum_charge: String,
+              minimum_charge: String,
+              per_unit_rate: String
+            ) -> void
+
+            def to_hash: -> {
+              grouping_key: String,
+              maximum_charge: String,
+              minimum_charge: String,
+              per_unit_rate: String
+            }
+          end
         end
-      end
 
-      type scalable_matrix_with_tiered_pricing_config =
-        {
-          first_dimension: String,
-          matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor],
-          tiers: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier],
-          second_dimension: String?
-        }
-
-      class ScalableMatrixWithTieredPricingConfig < Orb::Internal::Type::BaseModel
-        attr_accessor first_dimension: String
-
-        attr_accessor matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor]
-
-        attr_accessor tiers: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier]
-
-        attr_accessor second_dimension: String?
-
-        def initialize: (
-          first_dimension: String,
-          matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor],
-          tiers: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier],
-          ?second_dimension: String?
-        ) -> void
-
-        def to_hash: -> {
-          first_dimension: String,
-          matrix_scaling_factors: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor],
-          tiers: ::Array[Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier],
-          second_dimension: String?
-        }
-
-        type matrix_scaling_factor =
+        type cumulative_grouped_allocation =
           {
-            first_dimension_value: String,
-            scaling_factor: String,
-            second_dimension_value: String?
+            cadence: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::cadence,
+            cumulative_grouped_allocation_config: Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+            currency: String,
+            item_id: String,
+            model_type: :cumulative_grouped_allocation,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
 
-        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
-          attr_accessor first_dimension_value: String
+        class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::cadence
 
-          attr_accessor scaling_factor: String
+          attr_accessor cumulative_grouped_allocation_config: Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
 
-          attr_accessor second_dimension_value: String?
+          attr_accessor currency: String
+
+          attr_accessor item_id: String
+
+          attr_accessor model_type: :cumulative_grouped_allocation
+
+          attr_accessor name: String
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::conversion_rate_config?
+
+          attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor license_type_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize: (
-            first_dimension_value: String,
-            scaling_factor: String,
-            ?second_dimension_value: String?
+            cadence: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::cadence,
+            cumulative_grouped_allocation_config: Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+            currency: String,
+            item_id: String,
+            name: String,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?conversion_rate_config: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::conversion_rate_config?,
+            ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?license_type_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :cumulative_grouped_allocation
           ) -> void
 
           def to_hash: -> {
-            first_dimension_value: String,
-            scaling_factor: String,
-            second_dimension_value: String?
+            cadence: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::cadence,
+            cumulative_grouped_allocation_config: Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+            currency: String,
+            item_id: String,
+            model_type: :cumulative_grouped_allocation,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
+
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation::cadence]
+          end
+
+          type cumulative_grouped_allocation_config =
+            {
+              cumulative_allocation: String,
+              group_allocation: String,
+              grouping_key: String,
+              unit_amount: String
+            }
+
+          class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+            attr_accessor cumulative_allocation: String
+
+            attr_accessor group_allocation: String
+
+            attr_accessor grouping_key: String
+
+            attr_accessor unit_amount: String
+
+            def initialize: (
+              cumulative_allocation: String,
+              group_allocation: String,
+              grouping_key: String,
+              unit_amount: String
+            ) -> void
+
+            def to_hash: -> {
+              cumulative_allocation: String,
+              group_allocation: String,
+              grouping_key: String,
+              unit_amount: String
+            }
+          end
         end
 
-        type tier = { tier_lower_bound: String, unit_amount: String }
-
-        class Tier < Orb::Internal::Type::BaseModel
-          attr_accessor tier_lower_bound: String
-
-          attr_accessor unit_amount: String
-
-          def initialize: (
-            tier_lower_bound: String,
-            unit_amount: String
-          ) -> void
-
-          def to_hash: -> { tier_lower_bound: String, unit_amount: String }
-        end
-      end
-
-      type cumulative_grouped_bulk_config =
-        {
-          dimension_values: ::Array[Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue],
-          group: String
-        }
-
-      class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
-        attr_accessor dimension_values: ::Array[Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue]
-
-        attr_accessor group: String
-
-        def initialize: (
-          dimension_values: ::Array[Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue],
-          group: String
-        ) -> void
-
-        def to_hash: -> {
-          dimension_values: ::Array[Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue],
-          group: String
-        }
-
-        type dimension_value =
+        type percent =
           {
-            grouping_key: String,
-            tier_lower_bound: String,
-            unit_amount: String
+            cadence: Orb::Models::PriceCreateParams::Body::Percent::cadence,
+            currency: String,
+            item_id: String,
+            model_type: :percent,
+            name: String,
+            percent_config: Orb::PriceCreateParams::Body::Percent::PercentConfig,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::Percent::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
 
-        class DimensionValue < Orb::Internal::Type::BaseModel
-          attr_accessor grouping_key: String
+        class Percent < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PriceCreateParams::Body::Percent::cadence
 
-          attr_accessor tier_lower_bound: String
+          attr_accessor currency: String
 
-          attr_accessor unit_amount: String
+          attr_accessor item_id: String
+
+          attr_accessor model_type: :percent
+
+          attr_accessor name: String
+
+          attr_accessor percent_config: Orb::PriceCreateParams::Body::Percent::PercentConfig
+
+          attr_accessor billable_metric_id: String?
+
+          attr_accessor billed_in_advance: bool?
+
+          attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor conversion_rate: Float?
+
+          attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::Body::Percent::conversion_rate_config?
+
+          attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+          attr_accessor external_price_id: String?
+
+          attr_accessor fixed_price_quantity: Float?
+
+          attr_accessor invoice_grouping_key: String?
+
+          attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+          attr_accessor license_type_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String?]?
 
           def initialize: (
-            grouping_key: String,
-            tier_lower_bound: String,
-            unit_amount: String
+            cadence: Orb::Models::PriceCreateParams::Body::Percent::cadence,
+            currency: String,
+            item_id: String,
+            name: String,
+            percent_config: Orb::PriceCreateParams::Body::Percent::PercentConfig,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?conversion_rate_config: Orb::Models::PriceCreateParams::Body::Percent::conversion_rate_config?,
+            ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?license_type_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :percent
           ) -> void
 
           def to_hash: -> {
-            grouping_key: String,
-            tier_lower_bound: String,
-            unit_amount: String
+            cadence: Orb::Models::PriceCreateParams::Body::Percent::cadence,
+            currency: String,
+            item_id: String,
+            model_type: :percent,
+            name: String,
+            percent_config: Orb::PriceCreateParams::Body::Percent::PercentConfig,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::Percent::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
           }
+
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
+
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PriceCreateParams::Body::Percent::cadence]
+          end
+
+          type percent_config = { percent: Float }
+
+          class PercentConfig < Orb::Internal::Type::BaseModel
+            attr_accessor percent: Float
+
+            def initialize: (percent: Float) -> void
+
+            def to_hash: -> { percent: Float }
+          end
         end
-      end
 
-      type cumulative_grouped_allocation_config =
-        {
-          cumulative_allocation: String,
-          group_allocation: String,
-          grouping_key: String,
-          unit_amount: String
-        }
+        type event_output =
+          {
+            cadence: Orb::Models::PriceCreateParams::Body::EventOutput::cadence,
+            currency: String,
+            event_output_config: Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig,
+            item_id: String,
+            model_type: :event_output,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::EventOutput::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
+          }
 
-      class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
-        attr_accessor cumulative_allocation: String
+        class EventOutput < Orb::Internal::Type::BaseModel
+          attr_accessor cadence: Orb::Models::PriceCreateParams::Body::EventOutput::cadence
 
-        attr_accessor group_allocation: String
+          attr_accessor currency: String
 
-        attr_accessor grouping_key: String
+          attr_accessor event_output_config: Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig
 
-        attr_accessor unit_amount: String
+          attr_accessor item_id: String
 
-        def initialize: (
-          cumulative_allocation: String,
-          group_allocation: String,
-          grouping_key: String,
-          unit_amount: String
-        ) -> void
+          attr_accessor model_type: :event_output
 
-        def to_hash: -> {
-          cumulative_allocation: String,
-          group_allocation: String,
-          grouping_key: String,
-          unit_amount: String
-        }
-      end
+          attr_accessor name: String
 
-      type minimum_composite_config = { minimum_amount: String, prorated: bool }
+          attr_accessor billable_metric_id: String?
 
-      class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
-        attr_accessor minimum_amount: String
+          attr_accessor billed_in_advance: bool?
 
-        attr_reader prorated: bool?
+          attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
-        def prorated=: (bool) -> bool
+          attr_accessor conversion_rate: Float?
 
-        def initialize: (minimum_amount: String, ?prorated: bool) -> void
+          attr_accessor conversion_rate_config: Orb::Models::PriceCreateParams::Body::EventOutput::conversion_rate_config?
 
-        def to_hash: -> { minimum_amount: String, prorated: bool }
-      end
+          attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
 
-      type percent_config = { percent: Float }
+          attr_accessor external_price_id: String?
 
-      class PercentConfig < Orb::Internal::Type::BaseModel
-        attr_accessor percent: Float
+          attr_accessor fixed_price_quantity: Float?
 
-        def initialize: (percent: Float) -> void
+          attr_accessor invoice_grouping_key: String?
 
-        def to_hash: -> { percent: Float }
-      end
+          attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
 
-      type event_output_config =
-        {
-          unit_rating_key: String,
-          default_unit_rate: String?,
-          grouping_key: String?
-        }
+          attr_accessor license_type_id: String?
 
-      class EventOutputConfig < Orb::Internal::Type::BaseModel
-        attr_accessor unit_rating_key: String
+          attr_accessor metadata: ::Hash[Symbol, String?]?
 
-        attr_accessor default_unit_rate: String?
+          def initialize: (
+            cadence: Orb::Models::PriceCreateParams::Body::EventOutput::cadence,
+            currency: String,
+            event_output_config: Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig,
+            item_id: String,
+            name: String,
+            ?billable_metric_id: String?,
+            ?billed_in_advance: bool?,
+            ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?conversion_rate: Float?,
+            ?conversion_rate_config: Orb::Models::PriceCreateParams::Body::EventOutput::conversion_rate_config?,
+            ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            ?external_price_id: String?,
+            ?fixed_price_quantity: Float?,
+            ?invoice_grouping_key: String?,
+            ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            ?license_type_id: String?,
+            ?metadata: ::Hash[Symbol, String?]?,
+            ?model_type: :event_output
+          ) -> void
 
-        attr_accessor grouping_key: String?
+          def to_hash: -> {
+            cadence: Orb::Models::PriceCreateParams::Body::EventOutput::cadence,
+            currency: String,
+            event_output_config: Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig,
+            item_id: String,
+            model_type: :event_output,
+            name: String,
+            billable_metric_id: String?,
+            billed_in_advance: bool?,
+            billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            conversion_rate: Float?,
+            conversion_rate_config: Orb::Models::PriceCreateParams::Body::EventOutput::conversion_rate_config?,
+            dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+            external_price_id: String?,
+            fixed_price_quantity: Float?,
+            invoice_grouping_key: String?,
+            invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+            license_type_id: String?,
+            metadata: ::Hash[Symbol, String?]?
+          }
 
-        def initialize: (
-          unit_rating_key: String,
-          ?default_unit_rate: String?,
-          ?grouping_key: String?
-        ) -> void
+          type cadence =
+            :annual | :semi_annual | :monthly | :quarterly | :one_time | :custom
 
-        def to_hash: -> {
-          unit_rating_key: String,
-          default_unit_rate: String?,
-          grouping_key: String?
-        }
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL: :annual
+            SEMI_ANNUAL: :semi_annual
+            MONTHLY: :monthly
+            QUARTERLY: :quarterly
+            ONE_TIME: :one_time
+            CUSTOM: :custom
+
+            def self?.values: -> ::Array[Orb::Models::PriceCreateParams::Body::EventOutput::cadence]
+          end
+
+          type event_output_config =
+            {
+              unit_rating_key: String,
+              default_unit_rate: String?,
+              grouping_key: String?
+            }
+
+          class EventOutputConfig < Orb::Internal::Type::BaseModel
+            attr_accessor unit_rating_key: String
+
+            attr_accessor default_unit_rate: String?
+
+            attr_accessor grouping_key: String?
+
+            def initialize: (
+              unit_rating_key: String,
+              ?default_unit_rate: String?,
+              ?grouping_key: String?
+            ) -> void
+
+            def to_hash: -> {
+              unit_rating_key: String,
+              default_unit_rate: String?,
+              grouping_key: String?
+            }
+          end
+        end
+
+        def self?.variants: -> ::Array[Orb::Models::PriceCreateParams::body]
       end
     end
   end

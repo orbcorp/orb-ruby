@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_update_params =
       {
+        subscription_id: String,
         auto_collection: bool?,
         default_invoice_memo: String?,
         invoicing_threshold: String?,
@@ -14,6 +15,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor subscription_id: String
+
       attr_accessor auto_collection: bool?
 
       attr_accessor default_invoice_memo: String?
@@ -25,6 +28,7 @@ module Orb
       attr_accessor net_terms: Integer?
 
       def initialize: (
+        subscription_id: String,
         ?auto_collection: bool?,
         ?default_invoice_memo: String?,
         ?invoicing_threshold: String?,
@@ -34,6 +38,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         auto_collection: bool?,
         default_invoice_memo: String?,
         invoicing_threshold: String?,

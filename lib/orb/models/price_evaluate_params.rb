@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute price_id
+      #
+      #   @return [String]
+      required :price_id, String
+
       # @!attribute timeframe_end
       #   The exclusive upper bound for event timestamps
       #
@@ -56,9 +61,11 @@ module Orb
                Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown],
                nil?: true
 
-      # @!method initialize(timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, metric_parameter_overrides: nil, request_options: {})
+      # @!method initialize(price_id:, timeframe_end:, timeframe_start:, customer_id: nil, external_customer_id: nil, filter: nil, grouping_keys: nil, metric_parameter_overrides: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceEvaluateParams} for more details.
+      #
+      #   @param price_id [String]
       #
       #   @param timeframe_end [Time] The exclusive upper bound for event timestamps
       #

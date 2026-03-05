@@ -1,21 +1,25 @@
 module Orb
   module Models
     type alert_update_params =
-      { thresholds: ::Array[Orb::Threshold] }
+      { alert_configuration_id: String, thresholds: ::Array[Orb::Threshold] }
       & Orb::Internal::Type::request_parameters
 
     class AlertUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor alert_configuration_id: String
+
       attr_accessor thresholds: ::Array[Orb::Threshold]
 
       def initialize: (
+        alert_configuration_id: String,
         thresholds: ::Array[Orb::Threshold],
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
+        alert_configuration_id: String,
         thresholds: ::Array[Orb::Threshold],
         request_options: Orb::RequestOptions
       }

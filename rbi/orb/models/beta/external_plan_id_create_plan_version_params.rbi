@@ -15,6 +15,9 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :external_plan_id
+
         # New version number.
         sig { returns(Integer) }
         attr_accessor :version
@@ -97,6 +100,7 @@ module Orb
 
         sig do
           params(
+            external_plan_id: String,
             version: Integer,
             add_adjustments:
               T.nilable(
@@ -139,6 +143,7 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          external_plan_id:,
           # New version number.
           version:,
           # Additional adjustments to be added to the plan.
@@ -162,6 +167,7 @@ module Orb
         sig do
           override.returns(
             {
+              external_plan_id: String,
               version: Integer,
               add_adjustments:
                 T.nilable(

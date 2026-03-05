@@ -2,6 +2,7 @@ module Orb
   module Models
     type alert_create_for_subscription_params =
       {
+        subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
         metric_id: String?
@@ -12,6 +13,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor subscription_id: String
+
       attr_accessor thresholds: ::Array[Orb::Threshold]
 
       attr_accessor type: Orb::Models::AlertCreateForSubscriptionParams::type_
@@ -19,6 +22,7 @@ module Orb
       attr_accessor metric_id: String?
 
       def initialize: (
+        subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
         ?metric_id: String?,
@@ -26,6 +30,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
         metric_id: String?,

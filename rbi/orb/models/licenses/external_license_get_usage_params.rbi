@@ -15,6 +15,9 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :external_license_id
+
         # The license type ID to filter licenses by.
         sig { returns(String) }
         attr_accessor :license_type_id
@@ -51,6 +54,7 @@ module Orb
 
         sig do
           params(
+            external_license_id: String,
             license_type_id: String,
             subscription_id: String,
             cursor: T.nilable(String),
@@ -62,6 +66,7 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          external_license_id:,
           # The license type ID to filter licenses by.
           license_type_id:,
           # The subscription ID to get license usage for.
@@ -86,6 +91,7 @@ module Orb
         sig do
           override.returns(
             {
+              external_license_id: String,
               license_type_id: String,
               subscription_id: String,
               cursor: T.nilable(String),

@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_change_id
+      #
+      #   @return [String]
+      required :subscription_change_id, String
+
       # @!attribute description
       #   Description to apply to the balance transaction representing this credit.
       #
@@ -47,9 +52,11 @@ module Orb
       #   @return [String, nil]
       optional :previously_collected_amount, String, nil?: true
 
-      # @!method initialize(description: nil, mark_as_paid: nil, payment_external_id: nil, payment_notes: nil, payment_received_date: nil, previously_collected_amount: nil, request_options: {})
+      # @!method initialize(subscription_change_id:, description: nil, mark_as_paid: nil, payment_external_id: nil, payment_notes: nil, payment_received_date: nil, previously_collected_amount: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionChangeApplyParams} for more details.
+      #
+      #   @param subscription_change_id [String]
       #
       #   @param description [String, nil] Description to apply to the balance transaction representing this credit.
       #

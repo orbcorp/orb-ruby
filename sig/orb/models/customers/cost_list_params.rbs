@@ -3,6 +3,7 @@ module Orb
     module Customers
       type cost_list_params =
         {
+          customer_id: String,
           currency: String?,
           timeframe_end: Time?,
           timeframe_start: Time?,
@@ -14,6 +15,8 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        attr_accessor customer_id: String
+
         attr_accessor currency: String?
 
         attr_accessor timeframe_end: Time?
@@ -23,6 +26,7 @@ module Orb
         attr_accessor view_mode: Orb::Models::Customers::CostListParams::view_mode?
 
         def initialize: (
+          customer_id: String,
           ?currency: String?,
           ?timeframe_end: Time?,
           ?timeframe_start: Time?,
@@ -31,6 +35,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          customer_id: String,
           currency: String?,
           timeframe_end: Time?,
           timeframe_start: Time?,

@@ -3,6 +3,7 @@ module Orb
     module Licenses
       type usage_get_usage_params =
         {
+          license_id: String,
           cursor: String?,
           end_date: Date?,
           group_by: ::Array[String]?,
@@ -14,6 +15,8 @@ module Orb
       class UsageGetUsageParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
+
+        attr_accessor license_id: String
 
         attr_accessor cursor: String?
 
@@ -28,6 +31,7 @@ module Orb
         attr_accessor start_date: Date?
 
         def initialize: (
+          license_id: String,
           ?cursor: String?,
           ?end_date: Date?,
           ?group_by: ::Array[String]?,
@@ -37,6 +41,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          license_id: String,
           cursor: String?,
           end_date: Date?,
           group_by: ::Array[String]?,

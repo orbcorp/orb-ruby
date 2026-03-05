@@ -9,6 +9,9 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::EventUpdateParams, Orb::Internal::AnyHash) }
 
+      sig { returns(String) }
+      attr_accessor :event_id
+
       # A name to meaningfully identify the action or event type.
       sig { returns(String) }
       attr_accessor :event_name
@@ -35,6 +38,7 @@ module Orb
 
       sig do
         params(
+          event_id: String,
           event_name: String,
           properties: T::Hash[Symbol, T.anything],
           timestamp: Time,
@@ -44,6 +48,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        event_id:,
         # A name to meaningfully identify the action or event type.
         event_name:,
         # A dictionary of custom properties. Values in this dictionary must be numeric,
@@ -65,6 +70,7 @@ module Orb
       sig do
         override.returns(
           {
+            event_id: String,
             event_name: String,
             properties: T::Hash[Symbol, T.anything],
             timestamp: Time,

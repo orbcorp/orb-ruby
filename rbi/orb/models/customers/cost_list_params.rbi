@@ -12,6 +12,9 @@ module Orb
             T.any(Orb::Customers::CostListParams, Orb::Internal::AnyHash)
           end
 
+        sig { returns(String) }
+        attr_accessor :customer_id
+
         # The currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
         attr_accessor :currency
@@ -35,6 +38,7 @@ module Orb
 
         sig do
           params(
+            customer_id: String,
             currency: T.nilable(String),
             timeframe_end: T.nilable(Time),
             timeframe_start: T.nilable(Time),
@@ -44,6 +48,7 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          customer_id:,
           # The currency or custom pricing unit to use.
           currency: nil,
           # Costs returned are exclusive of `timeframe_end`.
@@ -62,6 +67,7 @@ module Orb
         sig do
           override.returns(
             {
+              customer_id: String,
               currency: T.nilable(String),
               timeframe_end: T.nilable(Time),
               timeframe_start: T.nilable(Time),

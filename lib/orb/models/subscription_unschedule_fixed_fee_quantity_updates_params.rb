@@ -7,13 +7,20 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute price_id
       #   Price for which the updates should be cleared. Must be a fixed fee.
       #
       #   @return [String]
       required :price_id, String
 
-      # @!method initialize(price_id:, request_options: {})
+      # @!method initialize(subscription_id:, price_id:, request_options: {})
+      #   @param subscription_id [String]
+      #
       #   @param price_id [String] Price for which the updates should be cleared. Must be a fixed fee.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]

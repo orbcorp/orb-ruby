@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute customer_id
+      #
+      #   @return [String]
+      required :customer_id, String
+
       # @!attribute accounting_sync_configuration
       #
       #   @return [Orb::Models::NewAccountingSyncConfiguration, nil]
@@ -281,9 +286,11 @@ module Orb
       #   @return [Orb::Models::CustomerTaxID, nil]
       optional :tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
-      # @!method initialize(accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @!method initialize(customer_id:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateParams} for more details.
+      #
+      #   @param customer_id [String]
       #
       #   @param accounting_sync_configuration [Orb::Models::NewAccountingSyncConfiguration, nil]
       #

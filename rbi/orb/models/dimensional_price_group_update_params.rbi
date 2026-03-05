@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::DimensionalPriceGroupUpdateParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :dimensional_price_group_id
+
       # An optional user-defined ID for this dimensional price group resource, used
       # throughout the system as an alias for this dimensional price group. Use this
       # field to identify a dimensional price group by an existing identifier in your
@@ -26,12 +29,14 @@ module Orb
 
       sig do
         params(
+          dimensional_price_group_id: String,
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        dimensional_price_group_id:,
         # An optional user-defined ID for this dimensional price group resource, used
         # throughout the system as an alias for this dimensional price group. Use this
         # field to identify a dimensional price group by an existing identifier in your
@@ -48,6 +53,7 @@ module Orb
       sig do
         override.returns(
           {
+            dimensional_price_group_id: String,
             external_dimensional_price_group_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             request_options: Orb::RequestOptions

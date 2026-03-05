@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute price_id
+      #
+      #   @return [String]
+      required :price_id, String
+
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
       #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -15,9 +20,11 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!method initialize(metadata: nil, request_options: {})
+      # @!method initialize(price_id:, metadata: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceUpdateParams} for more details.
+      #
+      #   @param price_id [String]
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #

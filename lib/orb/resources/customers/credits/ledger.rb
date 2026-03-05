@@ -137,9 +137,6 @@ module Orb
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Orb::Models::Customers::Credits::LedgerCreateEntryParams} for more details.
-          #
           # This endpoint allows you to create a new ledger entry for a specified customer's
           # balance. This can be used to increment balance, deduct credits, and change the
           # expiry date of existing credits.
@@ -258,36 +255,10 @@ module Orb
           # that was originally decremented from, and `amount` indicates how many credits to
           # return to the customer, up to the block's initial balance.
           #
-          # @overload create_entry(customer_id, amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          # @overload create_entry(customer_id, body:, request_options: {})
           #
           # @param customer_id [String]
-          #
-          # @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
-          #
-          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::EntryType]
-          #
-          # @param target_expiry_date [Date] A future date (specified in YYYY-MM-DD format) used for expiration change, denot
-          #
-          # @param block_id [String] The ID of the block to reverse a decrement from.
-          #
-          # @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
-          #
-          # @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
-          #
-          # @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
-          #
-          # @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
-          #
-          # @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
-          #
-          # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
-          #
-          # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-          #
-          # @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
-          #
-          # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
-          #
+          # @param body [Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void, Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Amendment]
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Orb::Models::Customers::Credits::IncrementLedgerEntry, Orb::Models::Customers::Credits::DecrementLedgerEntry, Orb::Models::Customers::Credits::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::VoidLedgerEntry, Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::AmendmentLedgerEntry]
@@ -298,16 +269,12 @@ module Orb
             @client.request(
               method: :post,
               path: ["customers/%1$s/credits/ledger_entry", customer_id],
-              body: parsed,
+              body: parsed[:body],
               model: Orb::Models::Customers::Credits::LedgerCreateEntryResponse,
               options: options
             )
           end
 
-          # Some parameter documentations has been truncated, see
-          # {Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams} for more
-          # details.
-          #
           # This endpoint allows you to create a new ledger entry for a specified customer's
           # balance. This can be used to increment balance, deduct credits, and change the
           # expiry date of existing credits.
@@ -426,36 +393,10 @@ module Orb
           # that was originally decremented from, and `amount` indicates how many credits to
           # return to the customer, up to the block's initial balance.
           #
-          # @overload create_entry_by_external_id(external_customer_id, amount:, entry_type:, target_expiry_date:, block_id:, currency: nil, description: nil, effective_date: nil, expiry_date: nil, filters: nil, invoice_settings: nil, metadata: nil, per_unit_cost_basis: nil, void_reason: nil, request_options: {})
+          # @overload create_entry_by_external_id(external_customer_id, body:, request_options: {})
           #
           # @param external_customer_id [String]
-          #
-          # @param amount [Float] The number of credits to effect. Note that this is required for increment, decre
-          #
-          # @param entry_type [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::EntryType]
-          #
-          # @param target_expiry_date [Date] A future date (specified in YYYY-MM-DD format) used for expiration change, denot
-          #
-          # @param block_id [String] The ID of the block to reverse a decrement from.
-          #
-          # @param currency [String, nil] The currency or custom pricing unit to use for this ledger entry. If this is a r
-          #
-          # @param description [String, nil] Optional metadata that can be specified when adding ledger results via the API.
-          #
-          # @param effective_date [Time, nil] An ISO 8601 format date that denotes when this credit balance should become avai
-          #
-          # @param expiry_date [Time, nil] An ISO 8601 format date that identifies the origination credit block to expire
-          #
-          # @param filters [Array<Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter>, nil] Optional filter to specify which items this credit block applies to. If not spec
-          #
-          # @param invoice_settings [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings, nil] Passing `invoice_settings` automatically generates an invoice for the newly adde
-          #
-          # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
-          #
-          # @param per_unit_cost_basis [String, nil] Can only be specified when entry_type=increment. How much, in the customer's cur
-          #
-          # @param void_reason [Symbol, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::VoidReason, nil] Can only be specified when `entry_type=void`. The reason for the void.
-          #
+          # @param body [Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Increment, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Decrement, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::ExpirationChange, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Void, Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::Body::Amendment]
           # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
           #
           # @return [Orb::Models::Customers::Credits::IncrementLedgerEntry, Orb::Models::Customers::Credits::DecrementLedgerEntry, Orb::Models::Customers::Credits::ExpirationChangeLedgerEntry, Orb::Models::Customers::Credits::CreditBlockExpiryLedgerEntry, Orb::Models::Customers::Credits::VoidLedgerEntry, Orb::Models::Customers::Credits::VoidInitiatedLedgerEntry, Orb::Models::Customers::Credits::AmendmentLedgerEntry]
@@ -466,7 +407,7 @@ module Orb
             @client.request(
               method: :post,
               path: ["customers/external_customer_id/%1$s/credits/ledger_entry", external_customer_id],
-              body: parsed,
+              body: parsed[:body],
               model: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDResponse,
               options: options
             )

@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute external_license_id
+      #
+      #   @return [String]
+      required :external_license_id, String
+
       # @!attribute license_type_id
       #   The ID of the license type to fetch the license for.
       #
@@ -19,7 +24,9 @@ module Orb
       #   @return [String]
       required :subscription_id, String
 
-      # @!method initialize(license_type_id:, subscription_id:, request_options: {})
+      # @!method initialize(external_license_id:, license_type_id:, subscription_id:, request_options: {})
+      #   @param external_license_id [String]
+      #
       #   @param license_type_id [String] The ID of the license type to fetch the license for.
       #
       #   @param subscription_id [String] The ID of the subscription to fetch the license for.

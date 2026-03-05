@@ -1,14 +1,20 @@
 module Orb
   module Models
-    type plan_fetch_params = {  } & Orb::Internal::Type::request_parameters
+    type plan_fetch_params =
+      { plan_id: String } & Orb::Internal::Type::request_parameters
 
     class PlanFetchParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Orb::request_opts) -> void
+      attr_accessor plan_id: String
 
-      def to_hash: -> { request_options: Orb::RequestOptions }
+      def initialize: (
+        plan_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> { plan_id: String, request_options: Orb::RequestOptions }
     end
   end
 end

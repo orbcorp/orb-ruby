@@ -2,6 +2,7 @@ module Orb
   module Models
     type beta_create_plan_version_params =
       {
+        plan_id: String,
         version: Integer,
         add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
         add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,
@@ -16,6 +17,8 @@ module Orb
     class BetaCreatePlanVersionParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor plan_id: String
 
       attr_accessor version: Integer
 
@@ -34,6 +37,7 @@ module Orb
       attr_accessor set_as_default: bool?
 
       def initialize: (
+        plan_id: String,
         version: Integer,
         ?add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
         ?add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,
@@ -46,6 +50,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        plan_id: String,
         version: Integer,
         add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
         add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,

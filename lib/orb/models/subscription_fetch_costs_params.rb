@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute currency
       #   The currency or custom pricing unit to use.
       #
@@ -34,9 +39,11 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionFetchCostsParams::ViewMode, nil]
       optional :view_mode, enum: -> { Orb::SubscriptionFetchCostsParams::ViewMode }, nil?: true
 
-      # @!method initialize(currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+      # @!method initialize(subscription_id:, currency: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionFetchCostsParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param currency [String, nil] The currency or custom pricing unit to use.
       #

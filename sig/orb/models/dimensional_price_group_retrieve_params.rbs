@@ -1,15 +1,24 @@
 module Orb
   module Models
     type dimensional_price_group_retrieve_params =
-      {  } & Orb::Internal::Type::request_parameters
+      { dimensional_price_group_id: String }
+      & Orb::Internal::Type::request_parameters
 
     class DimensionalPriceGroupRetrieveParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Orb::request_opts) -> void
+      attr_accessor dimensional_price_group_id: String
 
-      def to_hash: -> { request_options: Orb::RequestOptions }
+      def initialize: (
+        dimensional_price_group_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        dimensional_price_group_id: String,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

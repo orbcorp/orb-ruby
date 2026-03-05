@@ -6,12 +6,14 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
   def test_create_required_params
     response =
       @orb.prices.create(
-        cadence: :annual,
-        currency: "currency",
-        item_id: "item_id",
-        model_type: :unit,
-        name: "Annual fee",
-        unit_config: {unit_amount: "unit_amount"}
+        body: {
+          cadence: :annual,
+          currency: "currency",
+          item_id: "item_id",
+          model_type: :unit,
+          name: "Annual fee",
+          unit_config: {unit_amount: "unit_amount"}
+        }
       )
 
     assert_pattern do

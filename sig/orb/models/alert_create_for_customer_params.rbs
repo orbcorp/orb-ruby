@@ -2,6 +2,7 @@ module Orb
   module Models
     type alert_create_for_customer_params =
       {
+        customer_id: String,
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
         thresholds: ::Array[Orb::Threshold]?
@@ -12,6 +13,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor customer_id: String
+
       attr_accessor currency: String
 
       attr_accessor type: Orb::Models::AlertCreateForCustomerParams::type_
@@ -19,6 +22,7 @@ module Orb
       attr_accessor thresholds: ::Array[Orb::Threshold]?
 
       def initialize: (
+        customer_id: String,
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
         ?thresholds: ::Array[Orb::Threshold]?,
@@ -26,6 +30,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        customer_id: String,
         currency: String,
         type: Orb::Models::AlertCreateForCustomerParams::type_,
         thresholds: ::Array[Orb::Threshold]?,

@@ -14,8 +14,14 @@ module Orb
           #   @return [String]
           required :customer_id, String
 
-          # @!method initialize(customer_id:, request_options: {})
+          # @!attribute top_up_id
+          #
+          #   @return [String]
+          required :top_up_id, String
+
+          # @!method initialize(customer_id:, top_up_id:, request_options: {})
           #   @param customer_id [String]
+          #   @param top_up_id [String]
           #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
         end
       end

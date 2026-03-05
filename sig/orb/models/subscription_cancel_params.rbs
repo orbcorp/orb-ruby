@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_cancel_params =
       {
+        subscription_id: String,
         cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
         allow_invoice_credit_or_void: bool?,
         cancellation_date: Time?
@@ -12,6 +13,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor subscription_id: String
+
       attr_accessor cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option
 
       attr_accessor allow_invoice_credit_or_void: bool?
@@ -19,6 +22,7 @@ module Orb
       attr_accessor cancellation_date: Time?
 
       def initialize: (
+        subscription_id: String,
         cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
         ?allow_invoice_credit_or_void: bool?,
         ?cancellation_date: Time?,
@@ -26,6 +30,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         cancel_option: Orb::Models::SubscriptionCancelParams::cancel_option,
         allow_invoice_credit_or_void: bool?,
         cancellation_date: Time?,

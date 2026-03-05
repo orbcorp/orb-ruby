@@ -1,24 +1,32 @@
 module Orb
   module Models
     type plan_update_params =
-      { external_plan_id: String?, metadata: ::Hash[Symbol, String?]? }
+      {
+        plan_id: String,
+        external_plan_id: String?,
+        metadata: ::Hash[Symbol, String?]?
+      }
       & Orb::Internal::Type::request_parameters
 
     class PlanUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor plan_id: String
+
       attr_accessor external_plan_id: String?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       def initialize: (
+        plan_id: String,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
+        plan_id: String,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         request_options: Orb::RequestOptions

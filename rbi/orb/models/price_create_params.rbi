@@ -9,653 +9,88 @@ module Orb
       OrHash =
         T.type_alias { T.any(Orb::PriceCreateParams, Orb::Internal::AnyHash) }
 
-      # The cadence to bill for this price on.
-      sig { returns(Orb::PriceCreateParams::Cadence::OrSymbol) }
-      attr_accessor :cadence
-
-      # An ISO 4217 currency string for which this price is billed in.
-      sig { returns(String) }
-      attr_accessor :currency
-
-      # The id of the item the price will be associated with.
-      sig { returns(String) }
-      attr_accessor :item_id
-
-      # The pricing model type
-      sig { returns(Orb::PriceCreateParams::ModelType::OrSymbol) }
-      attr_accessor :model_type
-
-      # The name of the price.
-      sig { returns(String) }
-      attr_accessor :name
-
-      # Configuration for unit pricing
-      sig { returns(Orb::UnitConfig) }
-      attr_reader :unit_config
-
-      sig { params(unit_config: Orb::UnitConfig::OrHash).void }
-      attr_writer :unit_config
-
-      # The id of the billable metric for the price. Only needed if the price is
-      # usage-based.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :billable_metric_id
-
-      # If the Price represents a fixed cost, the price will be billed in-advance if
-      # this is true, and in-arrears if this is false.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :billed_in_advance
-
-      # For custom cadence: specifies the duration of the billing period in days or
-      # months.
-      sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
-      attr_reader :billing_cycle_configuration
-
-      sig do
-        params(
-          billing_cycle_configuration:
-            T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
-        ).void
-      end
-      attr_writer :billing_cycle_configuration
-
-      # The per unit conversion rate of the price currency to the invoicing currency.
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :conversion_rate
-
-      # The configuration for the rate of the price currency to the invoicing currency.
+      # New floating price request body params.
       sig do
         returns(
-          T.nilable(
-            T.any(
-              Orb::UnitConversionRateConfig,
-              Orb::TieredConversionRateConfig
-            )
+          T.any(
+            Orb::NewFloatingUnitPrice,
+            Orb::NewFloatingTieredPrice,
+            Orb::NewFloatingBulkPrice,
+            Orb::PriceCreateParams::Body::BulkWithFilters,
+            Orb::NewFloatingPackagePrice,
+            Orb::NewFloatingMatrixPrice,
+            Orb::NewFloatingThresholdTotalAmountPrice,
+            Orb::NewFloatingTieredPackagePrice,
+            Orb::NewFloatingTieredWithMinimumPrice,
+            Orb::NewFloatingGroupedTieredPrice,
+            Orb::NewFloatingTieredPackageWithMinimumPrice,
+            Orb::NewFloatingPackageWithAllocationPrice,
+            Orb::NewFloatingUnitWithPercentPrice,
+            Orb::NewFloatingMatrixWithAllocationPrice,
+            Orb::NewFloatingTieredWithProrationPrice,
+            Orb::NewFloatingUnitWithProrationPrice,
+            Orb::NewFloatingGroupedAllocationPrice,
+            Orb::NewFloatingBulkWithProrationPrice,
+            Orb::NewFloatingGroupedWithProratedMinimumPrice,
+            Orb::NewFloatingGroupedWithMeteredMinimumPrice,
+            Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds,
+            Orb::NewFloatingMatrixWithDisplayNamePrice,
+            Orb::NewFloatingGroupedTieredPackagePrice,
+            Orb::NewFloatingMaxGroupTieredPackagePrice,
+            Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
+            Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
+            Orb::NewFloatingCumulativeGroupedBulkPrice,
+            Orb::PriceCreateParams::Body::CumulativeGroupedAllocation,
+            Orb::NewFloatingMinimumCompositePrice,
+            Orb::PriceCreateParams::Body::Percent,
+            Orb::PriceCreateParams::Body::EventOutput
           )
         )
       end
-      attr_accessor :conversion_rate_config
-
-      # For dimensional price: specifies a price group and dimension values
-      sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
-      attr_reader :dimensional_price_configuration
+      attr_accessor :body
 
       sig do
         params(
-          dimensional_price_configuration:
-            T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
-        ).void
-      end
-      attr_writer :dimensional_price_configuration
-
-      # An alias for the price.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :external_price_id
-
-      # If the Price represents a fixed cost, this represents the quantity of units
-      # applied.
-      sig { returns(T.nilable(Float)) }
-      attr_accessor :fixed_price_quantity
-
-      # The property used to group this price on an invoice
-      sig { returns(T.nilable(String)) }
-      attr_accessor :invoice_grouping_key
-
-      # Within each billing cycle, specifies the cadence at which invoices are produced.
-      # If unspecified, a single invoice is produced per billing cycle.
-      sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
-      attr_reader :invoicing_cycle_configuration
-
-      sig do
-        params(
-          invoicing_cycle_configuration:
-            T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
-        ).void
-      end
-      attr_writer :invoicing_cycle_configuration
-
-      # The ID of the license type to associate with this price.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :license_type_id
-
-      # User-specified key/value pairs for the resource. Individual keys can be removed
-      # by setting the value to `null`, and the entire metadata mapping can be cleared
-      # by setting `metadata` to `null`.
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
-      attr_accessor :metadata
-
-      # Configuration for tiered pricing
-      sig { returns(Orb::TieredConfig) }
-      attr_reader :tiered_config
-
-      sig { params(tiered_config: Orb::TieredConfig::OrHash).void }
-      attr_writer :tiered_config
-
-      # Configuration for bulk pricing
-      sig { returns(Orb::BulkConfig) }
-      attr_reader :bulk_config
-
-      sig { params(bulk_config: Orb::BulkConfig::OrHash).void }
-      attr_writer :bulk_config
-
-      # Configuration for bulk_with_filters pricing
-      sig { returns(Orb::PriceCreateParams::BulkWithFiltersConfig) }
-      attr_reader :bulk_with_filters_config
-
-      sig do
-        params(
-          bulk_with_filters_config:
-            Orb::PriceCreateParams::BulkWithFiltersConfig::OrHash
-        ).void
-      end
-      attr_writer :bulk_with_filters_config
-
-      # Configuration for package pricing
-      sig { returns(Orb::PackageConfig) }
-      attr_reader :package_config
-
-      sig { params(package_config: Orb::PackageConfig::OrHash).void }
-      attr_writer :package_config
-
-      # Configuration for matrix pricing
-      sig { returns(Orb::MatrixConfig) }
-      attr_reader :matrix_config
-
-      sig { params(matrix_config: Orb::MatrixConfig::OrHash).void }
-      attr_writer :matrix_config
-
-      # Configuration for threshold_total_amount pricing
-      sig { returns(Orb::PriceCreateParams::ThresholdTotalAmountConfig) }
-      attr_reader :threshold_total_amount_config
-
-      sig do
-        params(
-          threshold_total_amount_config:
-            Orb::PriceCreateParams::ThresholdTotalAmountConfig::OrHash
-        ).void
-      end
-      attr_writer :threshold_total_amount_config
-
-      # Configuration for tiered_package pricing
-      sig { returns(Orb::PriceCreateParams::TieredPackageConfig) }
-      attr_reader :tiered_package_config
-
-      sig do
-        params(
-          tiered_package_config:
-            Orb::PriceCreateParams::TieredPackageConfig::OrHash
-        ).void
-      end
-      attr_writer :tiered_package_config
-
-      # Configuration for tiered_with_minimum pricing
-      sig { returns(Orb::PriceCreateParams::TieredWithMinimumConfig) }
-      attr_reader :tiered_with_minimum_config
-
-      sig do
-        params(
-          tiered_with_minimum_config:
-            Orb::PriceCreateParams::TieredWithMinimumConfig::OrHash
-        ).void
-      end
-      attr_writer :tiered_with_minimum_config
-
-      # Configuration for grouped_tiered pricing
-      sig { returns(Orb::PriceCreateParams::GroupedTieredConfig) }
-      attr_reader :grouped_tiered_config
-
-      sig do
-        params(
-          grouped_tiered_config:
-            Orb::PriceCreateParams::GroupedTieredConfig::OrHash
-        ).void
-      end
-      attr_writer :grouped_tiered_config
-
-      # Configuration for tiered_package_with_minimum pricing
-      sig { returns(Orb::PriceCreateParams::TieredPackageWithMinimumConfig) }
-      attr_reader :tiered_package_with_minimum_config
-
-      sig do
-        params(
-          tiered_package_with_minimum_config:
-            Orb::PriceCreateParams::TieredPackageWithMinimumConfig::OrHash
-        ).void
-      end
-      attr_writer :tiered_package_with_minimum_config
-
-      # Configuration for package_with_allocation pricing
-      sig { returns(Orb::PriceCreateParams::PackageWithAllocationConfig) }
-      attr_reader :package_with_allocation_config
-
-      sig do
-        params(
-          package_with_allocation_config:
-            Orb::PriceCreateParams::PackageWithAllocationConfig::OrHash
-        ).void
-      end
-      attr_writer :package_with_allocation_config
-
-      # Configuration for unit_with_percent pricing
-      sig { returns(Orb::PriceCreateParams::UnitWithPercentConfig) }
-      attr_reader :unit_with_percent_config
-
-      sig do
-        params(
-          unit_with_percent_config:
-            Orb::PriceCreateParams::UnitWithPercentConfig::OrHash
-        ).void
-      end
-      attr_writer :unit_with_percent_config
-
-      # Configuration for matrix_with_allocation pricing
-      sig { returns(Orb::MatrixWithAllocationConfig) }
-      attr_reader :matrix_with_allocation_config
-
-      sig do
-        params(
-          matrix_with_allocation_config: Orb::MatrixWithAllocationConfig::OrHash
-        ).void
-      end
-      attr_writer :matrix_with_allocation_config
-
-      # Configuration for tiered_with_proration pricing
-      sig { returns(Orb::PriceCreateParams::TieredWithProrationConfig) }
-      attr_reader :tiered_with_proration_config
-
-      sig do
-        params(
-          tiered_with_proration_config:
-            Orb::PriceCreateParams::TieredWithProrationConfig::OrHash
-        ).void
-      end
-      attr_writer :tiered_with_proration_config
-
-      # Configuration for unit_with_proration pricing
-      sig { returns(Orb::PriceCreateParams::UnitWithProrationConfig) }
-      attr_reader :unit_with_proration_config
-
-      sig do
-        params(
-          unit_with_proration_config:
-            Orb::PriceCreateParams::UnitWithProrationConfig::OrHash
-        ).void
-      end
-      attr_writer :unit_with_proration_config
-
-      # Configuration for grouped_allocation pricing
-      sig { returns(Orb::PriceCreateParams::GroupedAllocationConfig) }
-      attr_reader :grouped_allocation_config
-
-      sig do
-        params(
-          grouped_allocation_config:
-            Orb::PriceCreateParams::GroupedAllocationConfig::OrHash
-        ).void
-      end
-      attr_writer :grouped_allocation_config
-
-      # Configuration for bulk_with_proration pricing
-      sig { returns(Orb::PriceCreateParams::BulkWithProrationConfig) }
-      attr_reader :bulk_with_proration_config
-
-      sig do
-        params(
-          bulk_with_proration_config:
-            Orb::PriceCreateParams::BulkWithProrationConfig::OrHash
-        ).void
-      end
-      attr_writer :bulk_with_proration_config
-
-      # Configuration for grouped_with_prorated_minimum pricing
-      sig { returns(Orb::PriceCreateParams::GroupedWithProratedMinimumConfig) }
-      attr_reader :grouped_with_prorated_minimum_config
-
-      sig do
-        params(
-          grouped_with_prorated_minimum_config:
-            Orb::PriceCreateParams::GroupedWithProratedMinimumConfig::OrHash
-        ).void
-      end
-      attr_writer :grouped_with_prorated_minimum_config
-
-      # Configuration for grouped_with_metered_minimum pricing
-      sig { returns(Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig) }
-      attr_reader :grouped_with_metered_minimum_config
-
-      sig do
-        params(
-          grouped_with_metered_minimum_config:
-            Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::OrHash
-        ).void
-      end
-      attr_writer :grouped_with_metered_minimum_config
-
-      # Configuration for grouped_with_min_max_thresholds pricing
-      sig { returns(Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig) }
-      attr_reader :grouped_with_min_max_thresholds_config
-
-      sig do
-        params(
-          grouped_with_min_max_thresholds_config:
-            Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig::OrHash
-        ).void
-      end
-      attr_writer :grouped_with_min_max_thresholds_config
-
-      # Configuration for matrix_with_display_name pricing
-      sig { returns(Orb::PriceCreateParams::MatrixWithDisplayNameConfig) }
-      attr_reader :matrix_with_display_name_config
-
-      sig do
-        params(
-          matrix_with_display_name_config:
-            Orb::PriceCreateParams::MatrixWithDisplayNameConfig::OrHash
-        ).void
-      end
-      attr_writer :matrix_with_display_name_config
-
-      # Configuration for grouped_tiered_package pricing
-      sig { returns(Orb::PriceCreateParams::GroupedTieredPackageConfig) }
-      attr_reader :grouped_tiered_package_config
-
-      sig do
-        params(
-          grouped_tiered_package_config:
-            Orb::PriceCreateParams::GroupedTieredPackageConfig::OrHash
-        ).void
-      end
-      attr_writer :grouped_tiered_package_config
-
-      # Configuration for max_group_tiered_package pricing
-      sig { returns(Orb::PriceCreateParams::MaxGroupTieredPackageConfig) }
-      attr_reader :max_group_tiered_package_config
-
-      sig do
-        params(
-          max_group_tiered_package_config:
-            Orb::PriceCreateParams::MaxGroupTieredPackageConfig::OrHash
-        ).void
-      end
-      attr_writer :max_group_tiered_package_config
-
-      # Configuration for scalable_matrix_with_unit_pricing pricing
-      sig do
-        returns(Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig)
-      end
-      attr_reader :scalable_matrix_with_unit_pricing_config
-
-      sig do
-        params(
-          scalable_matrix_with_unit_pricing_config:
-            Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::OrHash
-        ).void
-      end
-      attr_writer :scalable_matrix_with_unit_pricing_config
-
-      # Configuration for scalable_matrix_with_tiered_pricing pricing
-      sig do
-        returns(Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig)
-      end
-      attr_reader :scalable_matrix_with_tiered_pricing_config
-
-      sig do
-        params(
-          scalable_matrix_with_tiered_pricing_config:
-            Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::OrHash
-        ).void
-      end
-      attr_writer :scalable_matrix_with_tiered_pricing_config
-
-      # Configuration for cumulative_grouped_bulk pricing
-      sig { returns(Orb::PriceCreateParams::CumulativeGroupedBulkConfig) }
-      attr_reader :cumulative_grouped_bulk_config
-
-      sig do
-        params(
-          cumulative_grouped_bulk_config:
-            Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash
-        ).void
-      end
-      attr_writer :cumulative_grouped_bulk_config
-
-      # Configuration for cumulative_grouped_allocation pricing
-      sig { returns(Orb::PriceCreateParams::CumulativeGroupedAllocationConfig) }
-      attr_reader :cumulative_grouped_allocation_config
-
-      sig do
-        params(
-          cumulative_grouped_allocation_config:
-            Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash
-        ).void
-      end
-      attr_writer :cumulative_grouped_allocation_config
-
-      # Configuration for minimum_composite pricing
-      sig { returns(Orb::PriceCreateParams::MinimumCompositeConfig) }
-      attr_reader :minimum_composite_config
-
-      sig do
-        params(
-          minimum_composite_config:
-            Orb::PriceCreateParams::MinimumCompositeConfig::OrHash
-        ).void
-      end
-      attr_writer :minimum_composite_config
-
-      # Configuration for percent pricing
-      sig { returns(Orb::PriceCreateParams::PercentConfig) }
-      attr_reader :percent_config
-
-      sig do
-        params(
-          percent_config: Orb::PriceCreateParams::PercentConfig::OrHash
-        ).void
-      end
-      attr_writer :percent_config
-
-      # Configuration for event_output pricing
-      sig { returns(Orb::PriceCreateParams::EventOutputConfig) }
-      attr_reader :event_output_config
-
-      sig do
-        params(
-          event_output_config: Orb::PriceCreateParams::EventOutputConfig::OrHash
-        ).void
-      end
-      attr_writer :event_output_config
-
-      sig do
-        params(
-          cadence: Orb::PriceCreateParams::Cadence::OrSymbol,
-          currency: String,
-          item_id: String,
-          model_type: Orb::PriceCreateParams::ModelType::OrSymbol,
-          name: String,
-          unit_config: Orb::UnitConfig::OrHash,
-          tiered_config: Orb::TieredConfig::OrHash,
-          bulk_config: Orb::BulkConfig::OrHash,
-          bulk_with_filters_config:
-            Orb::PriceCreateParams::BulkWithFiltersConfig::OrHash,
-          package_config: Orb::PackageConfig::OrHash,
-          matrix_config: Orb::MatrixConfig::OrHash,
-          threshold_total_amount_config:
-            Orb::PriceCreateParams::ThresholdTotalAmountConfig::OrHash,
-          tiered_package_config:
-            Orb::PriceCreateParams::TieredPackageConfig::OrHash,
-          tiered_with_minimum_config:
-            Orb::PriceCreateParams::TieredWithMinimumConfig::OrHash,
-          grouped_tiered_config:
-            Orb::PriceCreateParams::GroupedTieredConfig::OrHash,
-          tiered_package_with_minimum_config:
-            Orb::PriceCreateParams::TieredPackageWithMinimumConfig::OrHash,
-          package_with_allocation_config:
-            Orb::PriceCreateParams::PackageWithAllocationConfig::OrHash,
-          unit_with_percent_config:
-            Orb::PriceCreateParams::UnitWithPercentConfig::OrHash,
-          matrix_with_allocation_config:
-            Orb::MatrixWithAllocationConfig::OrHash,
-          tiered_with_proration_config:
-            Orb::PriceCreateParams::TieredWithProrationConfig::OrHash,
-          unit_with_proration_config:
-            Orb::PriceCreateParams::UnitWithProrationConfig::OrHash,
-          grouped_allocation_config:
-            Orb::PriceCreateParams::GroupedAllocationConfig::OrHash,
-          bulk_with_proration_config:
-            Orb::PriceCreateParams::BulkWithProrationConfig::OrHash,
-          grouped_with_prorated_minimum_config:
-            Orb::PriceCreateParams::GroupedWithProratedMinimumConfig::OrHash,
-          grouped_with_metered_minimum_config:
-            Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::OrHash,
-          grouped_with_min_max_thresholds_config:
-            Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig::OrHash,
-          matrix_with_display_name_config:
-            Orb::PriceCreateParams::MatrixWithDisplayNameConfig::OrHash,
-          grouped_tiered_package_config:
-            Orb::PriceCreateParams::GroupedTieredPackageConfig::OrHash,
-          max_group_tiered_package_config:
-            Orb::PriceCreateParams::MaxGroupTieredPackageConfig::OrHash,
-          scalable_matrix_with_unit_pricing_config:
-            Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::OrHash,
-          scalable_matrix_with_tiered_pricing_config:
-            Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::OrHash,
-          cumulative_grouped_bulk_config:
-            Orb::PriceCreateParams::CumulativeGroupedBulkConfig::OrHash,
-          cumulative_grouped_allocation_config:
-            Orb::PriceCreateParams::CumulativeGroupedAllocationConfig::OrHash,
-          minimum_composite_config:
-            Orb::PriceCreateParams::MinimumCompositeConfig::OrHash,
-          percent_config: Orb::PriceCreateParams::PercentConfig::OrHash,
-          event_output_config:
-            Orb::PriceCreateParams::EventOutputConfig::OrHash,
-          billable_metric_id: T.nilable(String),
-          billed_in_advance: T.nilable(T::Boolean),
-          billing_cycle_configuration:
-            T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
-          conversion_rate: T.nilable(Float),
-          conversion_rate_config:
-            T.nilable(
-              T.any(
-                Orb::UnitConversionRateConfig::OrHash,
-                Orb::TieredConversionRateConfig::OrHash
-              )
+          body:
+            T.any(
+              Orb::NewFloatingUnitPrice::OrHash,
+              Orb::NewFloatingTieredPrice::OrHash,
+              Orb::NewFloatingBulkPrice::OrHash,
+              Orb::PriceCreateParams::Body::BulkWithFilters::OrHash,
+              Orb::NewFloatingPackagePrice::OrHash,
+              Orb::NewFloatingMatrixPrice::OrHash,
+              Orb::NewFloatingThresholdTotalAmountPrice::OrHash,
+              Orb::NewFloatingTieredPackagePrice::OrHash,
+              Orb::NewFloatingTieredWithMinimumPrice::OrHash,
+              Orb::NewFloatingGroupedTieredPrice::OrHash,
+              Orb::NewFloatingTieredPackageWithMinimumPrice::OrHash,
+              Orb::NewFloatingPackageWithAllocationPrice::OrHash,
+              Orb::NewFloatingUnitWithPercentPrice::OrHash,
+              Orb::NewFloatingMatrixWithAllocationPrice::OrHash,
+              Orb::NewFloatingTieredWithProrationPrice::OrHash,
+              Orb::NewFloatingUnitWithProrationPrice::OrHash,
+              Orb::NewFloatingGroupedAllocationPrice::OrHash,
+              Orb::NewFloatingBulkWithProrationPrice::OrHash,
+              Orb::NewFloatingGroupedWithProratedMinimumPrice::OrHash,
+              Orb::NewFloatingGroupedWithMeteredMinimumPrice::OrHash,
+              Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::OrHash,
+              Orb::NewFloatingMatrixWithDisplayNamePrice::OrHash,
+              Orb::NewFloatingGroupedTieredPackagePrice::OrHash,
+              Orb::NewFloatingMaxGroupTieredPackagePrice::OrHash,
+              Orb::NewFloatingScalableMatrixWithUnitPricingPrice::OrHash,
+              Orb::NewFloatingScalableMatrixWithTieredPricingPrice::OrHash,
+              Orb::NewFloatingCumulativeGroupedBulkPrice::OrHash,
+              Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::OrHash,
+              Orb::NewFloatingMinimumCompositePrice::OrHash,
+              Orb::PriceCreateParams::Body::Percent::OrHash,
+              Orb::PriceCreateParams::Body::EventOutput::OrHash
             ),
-          dimensional_price_configuration:
-            T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
-          external_price_id: T.nilable(String),
-          fixed_price_quantity: T.nilable(Float),
-          invoice_grouping_key: T.nilable(String),
-          invoicing_cycle_configuration:
-            T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
-          license_type_id: T.nilable(String),
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
-        # The cadence to bill for this price on.
-        cadence:,
-        # An ISO 4217 currency string for which this price is billed in.
-        currency:,
-        # The id of the item the price will be associated with.
-        item_id:,
-        # The pricing model type
-        model_type:,
-        # The name of the price.
-        name:,
-        # Configuration for unit pricing
-        unit_config:,
-        # Configuration for tiered pricing
-        tiered_config:,
-        # Configuration for bulk pricing
-        bulk_config:,
-        # Configuration for bulk_with_filters pricing
-        bulk_with_filters_config:,
-        # Configuration for package pricing
-        package_config:,
-        # Configuration for matrix pricing
-        matrix_config:,
-        # Configuration for threshold_total_amount pricing
-        threshold_total_amount_config:,
-        # Configuration for tiered_package pricing
-        tiered_package_config:,
-        # Configuration for tiered_with_minimum pricing
-        tiered_with_minimum_config:,
-        # Configuration for grouped_tiered pricing
-        grouped_tiered_config:,
-        # Configuration for tiered_package_with_minimum pricing
-        tiered_package_with_minimum_config:,
-        # Configuration for package_with_allocation pricing
-        package_with_allocation_config:,
-        # Configuration for unit_with_percent pricing
-        unit_with_percent_config:,
-        # Configuration for matrix_with_allocation pricing
-        matrix_with_allocation_config:,
-        # Configuration for tiered_with_proration pricing
-        tiered_with_proration_config:,
-        # Configuration for unit_with_proration pricing
-        unit_with_proration_config:,
-        # Configuration for grouped_allocation pricing
-        grouped_allocation_config:,
-        # Configuration for bulk_with_proration pricing
-        bulk_with_proration_config:,
-        # Configuration for grouped_with_prorated_minimum pricing
-        grouped_with_prorated_minimum_config:,
-        # Configuration for grouped_with_metered_minimum pricing
-        grouped_with_metered_minimum_config:,
-        # Configuration for grouped_with_min_max_thresholds pricing
-        grouped_with_min_max_thresholds_config:,
-        # Configuration for matrix_with_display_name pricing
-        matrix_with_display_name_config:,
-        # Configuration for grouped_tiered_package pricing
-        grouped_tiered_package_config:,
-        # Configuration for max_group_tiered_package pricing
-        max_group_tiered_package_config:,
-        # Configuration for scalable_matrix_with_unit_pricing pricing
-        scalable_matrix_with_unit_pricing_config:,
-        # Configuration for scalable_matrix_with_tiered_pricing pricing
-        scalable_matrix_with_tiered_pricing_config:,
-        # Configuration for cumulative_grouped_bulk pricing
-        cumulative_grouped_bulk_config:,
-        # Configuration for cumulative_grouped_allocation pricing
-        cumulative_grouped_allocation_config:,
-        # Configuration for minimum_composite pricing
-        minimum_composite_config:,
-        # Configuration for percent pricing
-        percent_config:,
-        # Configuration for event_output pricing
-        event_output_config:,
-        # The id of the billable metric for the price. Only needed if the price is
-        # usage-based.
-        billable_metric_id: nil,
-        # If the Price represents a fixed cost, the price will be billed in-advance if
-        # this is true, and in-arrears if this is false.
-        billed_in_advance: nil,
-        # For custom cadence: specifies the duration of the billing period in days or
-        # months.
-        billing_cycle_configuration: nil,
-        # The per unit conversion rate of the price currency to the invoicing currency.
-        conversion_rate: nil,
-        # The configuration for the rate of the price currency to the invoicing currency.
-        conversion_rate_config: nil,
-        # For dimensional price: specifies a price group and dimension values
-        dimensional_price_configuration: nil,
-        # An alias for the price.
-        external_price_id: nil,
-        # If the Price represents a fixed cost, this represents the quantity of units
-        # applied.
-        fixed_price_quantity: nil,
-        # The property used to group this price on an invoice
-        invoice_grouping_key: nil,
-        # Within each billing cycle, specifies the cadence at which invoices are produced.
-        # If unspecified, a single invoice is produced per billing cycle.
-        invoicing_cycle_configuration: nil,
-        # The ID of the license type to associate with this price.
-        license_type_id: nil,
-        # User-specified key/value pairs for the resource. Individual keys can be removed
-        # by setting the value to `null`, and the entire metadata mapping can be cleared
-        # by setting `metadata` to `null`.
-        metadata: nil,
+        # New floating price request body params.
+        body:,
         request_options: {}
       )
       end
@@ -663,84 +98,40 @@ module Orb
       sig do
         override.returns(
           {
-            cadence: Orb::PriceCreateParams::Cadence::OrSymbol,
-            currency: String,
-            item_id: String,
-            model_type: Orb::PriceCreateParams::ModelType::OrSymbol,
-            name: String,
-            unit_config: Orb::UnitConfig,
-            billable_metric_id: T.nilable(String),
-            billed_in_advance: T.nilable(T::Boolean),
-            billing_cycle_configuration:
-              T.nilable(Orb::NewBillingCycleConfiguration),
-            conversion_rate: T.nilable(Float),
-            conversion_rate_config:
-              T.nilable(
-                T.any(
-                  Orb::UnitConversionRateConfig,
-                  Orb::TieredConversionRateConfig
-                )
+            body:
+              T.any(
+                Orb::NewFloatingUnitPrice,
+                Orb::NewFloatingTieredPrice,
+                Orb::NewFloatingBulkPrice,
+                Orb::PriceCreateParams::Body::BulkWithFilters,
+                Orb::NewFloatingPackagePrice,
+                Orb::NewFloatingMatrixPrice,
+                Orb::NewFloatingThresholdTotalAmountPrice,
+                Orb::NewFloatingTieredPackagePrice,
+                Orb::NewFloatingTieredWithMinimumPrice,
+                Orb::NewFloatingGroupedTieredPrice,
+                Orb::NewFloatingTieredPackageWithMinimumPrice,
+                Orb::NewFloatingPackageWithAllocationPrice,
+                Orb::NewFloatingUnitWithPercentPrice,
+                Orb::NewFloatingMatrixWithAllocationPrice,
+                Orb::NewFloatingTieredWithProrationPrice,
+                Orb::NewFloatingUnitWithProrationPrice,
+                Orb::NewFloatingGroupedAllocationPrice,
+                Orb::NewFloatingBulkWithProrationPrice,
+                Orb::NewFloatingGroupedWithProratedMinimumPrice,
+                Orb::NewFloatingGroupedWithMeteredMinimumPrice,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds,
+                Orb::NewFloatingMatrixWithDisplayNamePrice,
+                Orb::NewFloatingGroupedTieredPackagePrice,
+                Orb::NewFloatingMaxGroupTieredPackagePrice,
+                Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
+                Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
+                Orb::NewFloatingCumulativeGroupedBulkPrice,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation,
+                Orb::NewFloatingMinimumCompositePrice,
+                Orb::PriceCreateParams::Body::Percent,
+                Orb::PriceCreateParams::Body::EventOutput
               ),
-            dimensional_price_configuration:
-              T.nilable(Orb::NewDimensionalPriceConfiguration),
-            external_price_id: T.nilable(String),
-            fixed_price_quantity: T.nilable(Float),
-            invoice_grouping_key: T.nilable(String),
-            invoicing_cycle_configuration:
-              T.nilable(Orb::NewBillingCycleConfiguration),
-            license_type_id: T.nilable(String),
-            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
-            tiered_config: Orb::TieredConfig,
-            bulk_config: Orb::BulkConfig,
-            bulk_with_filters_config:
-              Orb::PriceCreateParams::BulkWithFiltersConfig,
-            package_config: Orb::PackageConfig,
-            matrix_config: Orb::MatrixConfig,
-            threshold_total_amount_config:
-              Orb::PriceCreateParams::ThresholdTotalAmountConfig,
-            tiered_package_config: Orb::PriceCreateParams::TieredPackageConfig,
-            tiered_with_minimum_config:
-              Orb::PriceCreateParams::TieredWithMinimumConfig,
-            grouped_tiered_config: Orb::PriceCreateParams::GroupedTieredConfig,
-            tiered_package_with_minimum_config:
-              Orb::PriceCreateParams::TieredPackageWithMinimumConfig,
-            package_with_allocation_config:
-              Orb::PriceCreateParams::PackageWithAllocationConfig,
-            unit_with_percent_config:
-              Orb::PriceCreateParams::UnitWithPercentConfig,
-            matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
-            tiered_with_proration_config:
-              Orb::PriceCreateParams::TieredWithProrationConfig,
-            unit_with_proration_config:
-              Orb::PriceCreateParams::UnitWithProrationConfig,
-            grouped_allocation_config:
-              Orb::PriceCreateParams::GroupedAllocationConfig,
-            bulk_with_proration_config:
-              Orb::PriceCreateParams::BulkWithProrationConfig,
-            grouped_with_prorated_minimum_config:
-              Orb::PriceCreateParams::GroupedWithProratedMinimumConfig,
-            grouped_with_metered_minimum_config:
-              Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig,
-            grouped_with_min_max_thresholds_config:
-              Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig,
-            matrix_with_display_name_config:
-              Orb::PriceCreateParams::MatrixWithDisplayNameConfig,
-            grouped_tiered_package_config:
-              Orb::PriceCreateParams::GroupedTieredPackageConfig,
-            max_group_tiered_package_config:
-              Orb::PriceCreateParams::MaxGroupTieredPackageConfig,
-            scalable_matrix_with_unit_pricing_config:
-              Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
-            scalable_matrix_with_tiered_pricing_config:
-              Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
-            cumulative_grouped_bulk_config:
-              Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
-            cumulative_grouped_allocation_config:
-              Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-            minimum_composite_config:
-              Orb::PriceCreateParams::MinimumCompositeConfig,
-            percent_config: Orb::PriceCreateParams::PercentConfig,
-            event_output_config: Orb::PriceCreateParams::EventOutputConfig,
             request_options: Orb::RequestOptions
           }
         )
@@ -748,2152 +139,1949 @@ module Orb
       def to_hash
       end
 
-      # The cadence to bill for this price on.
-      module Cadence
-        extend Orb::Internal::Type::Enum
+      # New floating price request body params.
+      module Body
+        extend Orb::Internal::Type::Union
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Orb::PriceCreateParams::Cadence) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ANNUAL = T.let(:annual, Orb::PriceCreateParams::Cadence::TaggedSymbol)
-        SEMI_ANNUAL =
-          T.let(:semi_annual, Orb::PriceCreateParams::Cadence::TaggedSymbol)
-        MONTHLY = T.let(:monthly, Orb::PriceCreateParams::Cadence::TaggedSymbol)
-        QUARTERLY =
-          T.let(:quarterly, Orb::PriceCreateParams::Cadence::TaggedSymbol)
-        ONE_TIME =
-          T.let(:one_time, Orb::PriceCreateParams::Cadence::TaggedSymbol)
-        CUSTOM = T.let(:custom, Orb::PriceCreateParams::Cadence::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Orb::PriceCreateParams::Cadence::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      # The pricing model type
-      module ModelType
-        extend Orb::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Orb::PriceCreateParams::ModelType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        EVENT_OUTPUT =
-          T.let(:event_output, Orb::PriceCreateParams::ModelType::TaggedSymbol)
-
-        sig do
-          override.returns(
-            T::Array[Orb::PriceCreateParams::ModelType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
-      class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
-        OrHash =
+        Variants =
           T.type_alias do
             T.any(
-              Orb::PriceCreateParams::BulkWithFiltersConfig,
-              Orb::Internal::AnyHash
+              Orb::NewFloatingUnitPrice,
+              Orb::NewFloatingTieredPrice,
+              Orb::NewFloatingBulkPrice,
+              Orb::PriceCreateParams::Body::BulkWithFilters,
+              Orb::NewFloatingPackagePrice,
+              Orb::NewFloatingMatrixPrice,
+              Orb::NewFloatingThresholdTotalAmountPrice,
+              Orb::NewFloatingTieredPackagePrice,
+              Orb::NewFloatingTieredWithMinimumPrice,
+              Orb::NewFloatingGroupedTieredPrice,
+              Orb::NewFloatingTieredPackageWithMinimumPrice,
+              Orb::NewFloatingPackageWithAllocationPrice,
+              Orb::NewFloatingUnitWithPercentPrice,
+              Orb::NewFloatingMatrixWithAllocationPrice,
+              Orb::NewFloatingTieredWithProrationPrice,
+              Orb::NewFloatingUnitWithProrationPrice,
+              Orb::NewFloatingGroupedAllocationPrice,
+              Orb::NewFloatingBulkWithProrationPrice,
+              Orb::NewFloatingGroupedWithProratedMinimumPrice,
+              Orb::NewFloatingGroupedWithMeteredMinimumPrice,
+              Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds,
+              Orb::NewFloatingMatrixWithDisplayNamePrice,
+              Orb::NewFloatingGroupedTieredPackagePrice,
+              Orb::NewFloatingMaxGroupTieredPackagePrice,
+              Orb::NewFloatingScalableMatrixWithUnitPricingPrice,
+              Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
+              Orb::NewFloatingCumulativeGroupedBulkPrice,
+              Orb::PriceCreateParams::Body::CumulativeGroupedAllocation,
+              Orb::NewFloatingMinimumCompositePrice,
+              Orb::PriceCreateParams::Body::Percent,
+              Orb::PriceCreateParams::Body::EventOutput
             )
           end
 
-        # Property filters to apply (all must match)
-        sig do
-          returns(
-            T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter]
-          )
-        end
-        attr_accessor :filters
-
-        # Bulk tiers for rating based on total usage volume
-        sig do
-          returns(T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier])
-        end
-        attr_accessor :tiers
-
-        # Configuration for bulk_with_filters pricing
-        sig do
-          params(
-            filters:
-              T::Array[
-                Orb::PriceCreateParams::BulkWithFiltersConfig::Filter::OrHash
-              ],
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::BulkWithFiltersConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Property filters to apply (all must match)
-          filters:,
-          # Bulk tiers for rating based on total usage volume
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              filters:
-                T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Filter],
-              tiers:
-                T::Array[Orb::PriceCreateParams::BulkWithFiltersConfig::Tier]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Filter < Orb::Internal::Type::BaseModel
+        class BulkWithFilters < Orb::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Orb::PriceCreateParams::BulkWithFiltersConfig::Filter,
+                Orb::PriceCreateParams::Body::BulkWithFilters,
                 Orb::Internal::AnyHash
               )
             end
 
-          # Event property key to filter on
-          sig { returns(String) }
-          attr_accessor :property_key
-
-          # Event property value to match
-          sig { returns(String) }
-          attr_accessor :property_value
-
-          # Configuration for a single property filter
+          # Configuration for bulk_with_filters pricing
           sig do
-            params(property_key: String, property_value: String).returns(
-              T.attached_class
+            returns(
+              Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig
             )
           end
-          def self.new(
-            # Event property key to filter on
-            property_key:,
-            # Event property value to match
-            property_value:
-          )
-          end
+          attr_reader :bulk_with_filters_config
 
           sig do
-            override.returns({ property_key: String, property_value: String })
+            params(
+              bulk_with_filters_config:
+                Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::OrHash
+            ).void
           end
-          def to_hash
+          attr_writer :bulk_with_filters_config
+
+          # The cadence to bill for this price on.
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::OrSymbol
+            )
           end
-        end
+          attr_accessor :cadence
 
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::BulkWithFiltersConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # Amount per unit
+          # An ISO 4217 currency string for which this price is billed in.
           sig { returns(String) }
-          attr_accessor :unit_amount
+          attr_accessor :currency
 
-          # The lower bound for this tier
+          # The id of the item the price will be associated with.
+          sig { returns(String) }
+          attr_accessor :item_id
+
+          # The pricing model type
+          sig { returns(Symbol) }
+          attr_accessor :model_type
+
+          # The name of the price.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The id of the billable metric for the price. Only needed if the price is
+          # usage-based.
           sig { returns(T.nilable(String)) }
-          attr_accessor :tier_lower_bound
+          attr_accessor :billable_metric_id
 
-          # Configuration for a single bulk pricing tier
+          # If the Price represents a fixed cost, the price will be billed in-advance if
+          # this is true, and in-arrears if this is false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :billed_in_advance
+
+          # For custom cadence: specifies the duration of the billing period in days or
+          # months.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :billing_cycle_configuration
+
           sig do
             params(
-              unit_amount: String,
-              tier_lower_bound: T.nilable(String)
-            ).returns(T.attached_class)
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
           end
-          def self.new(
-            # Amount per unit
-            unit_amount:,
-            # The lower bound for this tier
-            tier_lower_bound: nil
-          )
-          end
+          attr_writer :billing_cycle_configuration
 
+          # The per unit conversion rate of the price currency to the invoicing currency.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :conversion_rate
+
+          # The configuration for the rate of the price currency to the invoicing currency.
           sig do
-            override.returns(
-              { unit_amount: String, tier_lower_bound: T.nilable(String) }
-            )
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class ThresholdTotalAmountConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::ThresholdTotalAmountConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # When the quantity consumed passes a provided threshold, the configured total
-        # will be charged
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable
-            ]
-          )
-        end
-        attr_accessor :consumption_table
-
-        # If true, the unit price will be prorated to the billing period
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_accessor :prorate
-
-        # Configuration for threshold_total_amount pricing
-        sig do
-          params(
-            consumption_table:
-              T::Array[
-                Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable::OrHash
-              ],
-            prorate: T.nilable(T::Boolean)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # When the quantity consumed passes a provided threshold, the configured total
-          # will be charged
-          consumption_table:,
-          # If true, the unit price will be prorated to the billing period
-          prorate: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              consumption_table:
-                T::Array[
-                  Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable
-                ],
-              prorate: T.nilable(T::Boolean)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class ConsumptionTable < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::ThresholdTotalAmountConfig::ConsumptionTable,
-                Orb::Internal::AnyHash
+            returns(
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig,
+                  Orb::TieredConversionRateConfig
+                )
               )
-            end
-
-          sig { returns(String) }
-          attr_accessor :threshold
-
-          # Total amount for this threshold
-          sig { returns(String) }
-          attr_accessor :total_amount
-
-          # Configuration for a single threshold
-          sig do
-            params(threshold: String, total_amount: String).returns(
-              T.attached_class
             )
           end
-          def self.new(
-            threshold:,
-            # Total amount for this threshold
-            total_amount:
-          )
-          end
+          attr_accessor :conversion_rate_config
 
-          sig { override.returns({ threshold: String, total_amount: String }) }
-          def to_hash
-          end
-        end
-      end
+          # For dimensional price: specifies a price group and dimension values
+          sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+          attr_reader :dimensional_price_configuration
 
-      class TieredPackageConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::TieredPackageConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :package_size
-
-        # Apply tiered pricing after rounding up the quantity to the package size. Tiers
-        # are defined using exclusive lower bounds. The tier bounds are defined based on
-        # the total quantity rather than the number of packages, so they must be multiples
-        # of the package size.
-        sig do
-          returns(T::Array[Orb::PriceCreateParams::TieredPackageConfig::Tier])
-        end
-        attr_accessor :tiers
-
-        # Configuration for tiered_package pricing
-        sig do
-          params(
-            package_size: String,
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::TieredPackageConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          package_size:,
-          # Apply tiered pricing after rounding up the quantity to the package size. Tiers
-          # are defined using exclusive lower bounds. The tier bounds are defined based on
-          # the total quantity rather than the number of packages, so they must be multiples
-          # of the package size.
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              package_size: String,
-              tiers: T::Array[Orb::PriceCreateParams::TieredPackageConfig::Tier]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::TieredPackageConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # Price per package
-          sig { returns(String) }
-          attr_accessor :per_unit
-
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Configuration for a single tier with business logic
-          sig do
-            params(per_unit: String, tier_lower_bound: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(
-            # Price per package
-            per_unit:,
-            tier_lower_bound:
-          )
-          end
-
-          sig do
-            override.returns({ per_unit: String, tier_lower_bound: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class TieredWithMinimumConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::TieredWithMinimumConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
-        # defined using exclusive lower bounds.
-        sig do
-          returns(
-            T::Array[Orb::PriceCreateParams::TieredWithMinimumConfig::Tier]
-          )
-        end
-        attr_accessor :tiers
-
-        # If true, tiers with an accrued amount of 0 will not be included in the rating.
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :hide_zero_amount_tiers
-
-        sig { params(hide_zero_amount_tiers: T::Boolean).void }
-        attr_writer :hide_zero_amount_tiers
-
-        # If true, the unit price will be prorated to the billing period
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :prorate
-
-        sig { params(prorate: T::Boolean).void }
-        attr_writer :prorate
-
-        # Configuration for tiered_with_minimum pricing
-        sig do
-          params(
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::TieredWithMinimumConfig::Tier::OrHash
-              ],
-            hide_zero_amount_tiers: T::Boolean,
-            prorate: T::Boolean
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Tiered pricing with a minimum amount dependent on the volume tier. Tiers are
-          # defined using exclusive lower bounds.
-          tiers:,
-          # If true, tiers with an accrued amount of 0 will not be included in the rating.
-          hide_zero_amount_tiers: nil,
-          # If true, the unit price will be prorated to the billing period
-          prorate: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              tiers:
-                T::Array[Orb::PriceCreateParams::TieredWithMinimumConfig::Tier],
-              hide_zero_amount_tiers: T::Boolean,
-              prorate: T::Boolean
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::TieredWithMinimumConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :minimum_amount
-
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Per unit amount
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a single tier
           sig do
             params(
-              minimum_amount: String,
-              tier_lower_bound: String,
-              unit_amount: String
-            ).returns(T.attached_class)
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+            ).void
           end
-          def self.new(
-            minimum_amount:,
-            tier_lower_bound:,
-            # Per unit amount
-            unit_amount:
-          )
-          end
+          attr_writer :dimensional_price_configuration
 
-          sig do
-            override.returns(
-              {
-                minimum_amount: String,
-                tier_lower_bound: String,
-                unit_amount: String
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class GroupedTieredConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::GroupedTieredConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # The billable metric property used to group before tiering
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        # Apply tiered pricing to each segment generated after grouping with the provided
-        # key
-        sig do
-          returns(T::Array[Orb::PriceCreateParams::GroupedTieredConfig::Tier])
-        end
-        attr_accessor :tiers
-
-        # Configuration for grouped_tiered pricing
-        sig do
-          params(
-            grouping_key: String,
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::GroupedTieredConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The billable metric property used to group before tiering
-          grouping_key:,
-          # Apply tiered pricing to each segment generated after grouping with the provided
-          # key
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              grouping_key: String,
-              tiers: T::Array[Orb::PriceCreateParams::GroupedTieredConfig::Tier]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::GroupedTieredConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Per unit amount
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a single tier
-          sig do
-            params(tier_lower_bound: String, unit_amount: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(
-            tier_lower_bound:,
-            # Per unit amount
-            unit_amount:
-          )
-          end
-
-          sig do
-            override.returns({ tier_lower_bound: String, unit_amount: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class TieredPackageWithMinimumConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::TieredPackageWithMinimumConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        sig { returns(Float) }
-        attr_accessor :package_size
-
-        # Apply tiered pricing after rounding up the quantity to the package size. Tiers
-        # are defined using exclusive lower bounds.
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier
-            ]
-          )
-        end
-        attr_accessor :tiers
-
-        # Configuration for tiered_package_with_minimum pricing
-        sig do
-          params(
-            package_size: Float,
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          package_size:,
-          # Apply tiered pricing after rounding up the quantity to the package size. Tiers
-          # are defined using exclusive lower bounds.
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              package_size: Float,
-              tiers:
-                T::Array[
-                  Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::TieredPackageWithMinimumConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :minimum_amount
-
-          sig { returns(String) }
-          attr_accessor :per_unit
-
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Configuration for a single tier
-          sig do
-            params(
-              minimum_amount: String,
-              per_unit: String,
-              tier_lower_bound: String
-            ).returns(T.attached_class)
-          end
-          def self.new(minimum_amount:, per_unit:, tier_lower_bound:)
-          end
-
-          sig do
-            override.returns(
-              {
-                minimum_amount: String,
-                per_unit: String,
-                tier_lower_bound: String
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class PackageWithAllocationConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::PackageWithAllocationConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        sig { returns(String) }
-        attr_accessor :allocation
-
-        sig { returns(String) }
-        attr_accessor :package_amount
-
-        sig { returns(String) }
-        attr_accessor :package_size
-
-        # Configuration for package_with_allocation pricing
-        sig do
-          params(
-            allocation: String,
-            package_amount: String,
-            package_size: String
-          ).returns(T.attached_class)
-        end
-        def self.new(allocation:, package_amount:, package_size:)
-        end
-
-        sig do
-          override.returns(
-            { allocation: String, package_amount: String, package_size: String }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class UnitWithPercentConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::UnitWithPercentConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # What percent, out of 100, of the calculated total to charge
-        sig { returns(String) }
-        attr_accessor :percent
-
-        # Rate per unit of usage
-        sig { returns(String) }
-        attr_accessor :unit_amount
-
-        # Configuration for unit_with_percent pricing
-        sig do
-          params(percent: String, unit_amount: String).returns(T.attached_class)
-        end
-        def self.new(
-          # What percent, out of 100, of the calculated total to charge
-          percent:,
-          # Rate per unit of usage
-          unit_amount:
-        )
-        end
-
-        sig { override.returns({ percent: String, unit_amount: String }) }
-        def to_hash
-        end
-      end
-
-      class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::TieredWithProrationConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Tiers for rating based on total usage quantities into the specified tier with
-        # proration
-        sig do
-          returns(
-            T::Array[Orb::PriceCreateParams::TieredWithProrationConfig::Tier]
-          )
-        end
-        attr_accessor :tiers
-
-        # Configuration for tiered_with_proration pricing
-        sig do
-          params(
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::TieredWithProrationConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Tiers for rating based on total usage quantities into the specified tier with
-          # proration
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              tiers:
-                T::Array[
-                  Orb::PriceCreateParams::TieredWithProrationConfig::Tier
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::TieredWithProrationConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # Inclusive tier starting value
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Amount per unit
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a single tiered with proration tier
-          sig do
-            params(tier_lower_bound: String, unit_amount: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(
-            # Inclusive tier starting value
-            tier_lower_bound:,
-            # Amount per unit
-            unit_amount:
-          )
-          end
-
-          sig do
-            override.returns({ tier_lower_bound: String, unit_amount: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class UnitWithProrationConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::UnitWithProrationConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Rate per unit of usage
-        sig { returns(String) }
-        attr_accessor :unit_amount
-
-        # Configuration for unit_with_proration pricing
-        sig { params(unit_amount: String).returns(T.attached_class) }
-        def self.new(
-          # Rate per unit of usage
-          unit_amount:
-        )
-        end
-
-        sig { override.returns({ unit_amount: String }) }
-        def to_hash
-        end
-      end
-
-      class GroupedAllocationConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::GroupedAllocationConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Usage allocation per group
-        sig { returns(String) }
-        attr_accessor :allocation
-
-        # How to determine the groups that should each be allocated some quantity
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        # Unit rate for post-allocation
-        sig { returns(String) }
-        attr_accessor :overage_unit_rate
-
-        # Configuration for grouped_allocation pricing
-        sig do
-          params(
-            allocation: String,
-            grouping_key: String,
-            overage_unit_rate: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Usage allocation per group
-          allocation:,
-          # How to determine the groups that should each be allocated some quantity
-          grouping_key:,
-          # Unit rate for post-allocation
-          overage_unit_rate:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              allocation: String,
-              grouping_key: String,
-              overage_unit_rate: String
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class BulkWithProrationConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::BulkWithProrationConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Bulk tiers for rating based on total usage volume
-        sig do
-          returns(
-            T::Array[Orb::PriceCreateParams::BulkWithProrationConfig::Tier]
-          )
-        end
-        attr_accessor :tiers
-
-        # Configuration for bulk_with_proration pricing
-        sig do
-          params(
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::BulkWithProrationConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Bulk tiers for rating based on total usage volume
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              tiers:
-                T::Array[Orb::PriceCreateParams::BulkWithProrationConfig::Tier]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::BulkWithProrationConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # Cost per unit
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # The lower bound for this tier
+          # An alias for the price.
           sig { returns(T.nilable(String)) }
-          attr_accessor :tier_lower_bound
+          attr_accessor :external_price_id
 
-          # Configuration for a single bulk pricing tier with proration
-          sig do
-            params(
-              unit_amount: String,
-              tier_lower_bound: T.nilable(String)
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # Cost per unit
-            unit_amount:,
-            # The lower bound for this tier
-            tier_lower_bound: nil
-          )
-          end
+          # If the Price represents a fixed cost, this represents the quantity of units
+          # applied.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :fixed_price_quantity
 
-          sig do
-            override.returns(
-              { unit_amount: String, tier_lower_bound: T.nilable(String) }
-            )
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class GroupedWithProratedMinimumConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::GroupedWithProratedMinimumConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # How to determine the groups that should each have a minimum
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        # The minimum amount to charge per group
-        sig { returns(String) }
-        attr_accessor :minimum
-
-        # The amount to charge per unit
-        sig { returns(String) }
-        attr_accessor :unit_rate
-
-        # Configuration for grouped_with_prorated_minimum pricing
-        sig do
-          params(
-            grouping_key: String,
-            minimum: String,
-            unit_rate: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # How to determine the groups that should each have a minimum
-          grouping_key:,
-          # The minimum amount to charge per group
-          minimum:,
-          # The amount to charge per unit
-          unit_rate:
-        )
-        end
-
-        sig do
-          override.returns(
-            { grouping_key: String, minimum: String, unit_rate: String }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class GroupedWithMeteredMinimumConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Used to partition the usage into groups. The minimum amount is applied to each
-        # group.
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        # The minimum amount to charge per group per unit
-        sig { returns(String) }
-        attr_accessor :minimum_unit_amount
-
-        # Used to determine the unit rate
-        sig { returns(String) }
-        attr_accessor :pricing_key
-
-        # Scale the unit rates by the scaling factor.
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor
-            ]
-          )
-        end
-        attr_accessor :scaling_factors
-
-        # Used to determine the unit rate scaling factor
-        sig { returns(String) }
-        attr_accessor :scaling_key
-
-        # Apply per unit pricing to each pricing value. The minimum amount is applied any
-        # unmatched usage.
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount
-            ]
-          )
-        end
-        attr_accessor :unit_amounts
-
-        # Configuration for grouped_with_metered_minimum pricing
-        sig do
-          params(
-            grouping_key: String,
-            minimum_unit_amount: String,
-            pricing_key: String,
-            scaling_factors:
-              T::Array[
-                Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor::OrHash
-              ],
-            scaling_key: String,
-            unit_amounts:
-              T::Array[
-                Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Used to partition the usage into groups. The minimum amount is applied to each
-          # group.
-          grouping_key:,
-          # The minimum amount to charge per group per unit
-          minimum_unit_amount:,
-          # Used to determine the unit rate
-          pricing_key:,
-          # Scale the unit rates by the scaling factor.
-          scaling_factors:,
-          # Used to determine the unit rate scaling factor
-          scaling_key:,
-          # Apply per unit pricing to each pricing value. The minimum amount is applied any
-          # unmatched usage.
-          unit_amounts:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              grouping_key: String,
-              minimum_unit_amount: String,
-              pricing_key: String,
-              scaling_factors:
-                T::Array[
-                  Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor
-                ],
-              scaling_key: String,
-              unit_amounts:
-                T::Array[
-                  Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class ScalingFactor < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::ScalingFactor,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :scaling_factor
-
-          sig { returns(String) }
-          attr_accessor :scaling_value
-
-          # Configuration for a scaling factor
-          sig do
-            params(scaling_factor: String, scaling_value: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(scaling_factor:, scaling_value:)
-          end
-
-          sig do
-            override.returns({ scaling_factor: String, scaling_value: String })
-          end
-          def to_hash
-          end
-        end
-
-        class UnitAmount < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::GroupedWithMeteredMinimumConfig::UnitAmount,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :pricing_value
-
-          # Per unit amount
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a unit amount
-          sig do
-            params(pricing_value: String, unit_amount: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(
-            pricing_value:,
-            # Per unit amount
-            unit_amount:
-          )
-          end
-
-          sig do
-            override.returns({ pricing_value: String, unit_amount: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::GroupedWithMinMaxThresholdsConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # The event property used to group before applying thresholds
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        # The maximum amount to charge each group
-        sig { returns(String) }
-        attr_accessor :maximum_charge
-
-        # The minimum amount to charge each group, regardless of usage
-        sig { returns(String) }
-        attr_accessor :minimum_charge
-
-        # The base price charged per group
-        sig { returns(String) }
-        attr_accessor :per_unit_rate
-
-        # Configuration for grouped_with_min_max_thresholds pricing
-        sig do
-          params(
-            grouping_key: String,
-            maximum_charge: String,
-            minimum_charge: String,
-            per_unit_rate: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The event property used to group before applying thresholds
-          grouping_key:,
-          # The maximum amount to charge each group
-          maximum_charge:,
-          # The minimum amount to charge each group, regardless of usage
-          minimum_charge:,
-          # The base price charged per group
-          per_unit_rate:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              grouping_key: String,
-              maximum_charge: String,
-              minimum_charge: String,
-              per_unit_rate: String
-            }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class MatrixWithDisplayNameConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::MatrixWithDisplayNameConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Used to determine the unit rate
-        sig { returns(String) }
-        attr_accessor :dimension
-
-        # Apply per unit pricing to each dimension value
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount
-            ]
-          )
-        end
-        attr_accessor :unit_amounts
-
-        # Configuration for matrix_with_display_name pricing
-        sig do
-          params(
-            dimension: String,
-            unit_amounts:
-              T::Array[
-                Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Used to determine the unit rate
-          dimension:,
-          # Apply per unit pricing to each dimension value
-          unit_amounts:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              dimension: String,
-              unit_amounts:
-                T::Array[
-                  Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class UnitAmount < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::MatrixWithDisplayNameConfig::UnitAmount,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # The dimension value
-          sig { returns(String) }
-          attr_accessor :dimension_value
-
-          # Display name for this dimension value
-          sig { returns(String) }
-          attr_accessor :display_name
-
-          # Per unit amount
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a unit amount item
-          sig do
-            params(
-              dimension_value: String,
-              display_name: String,
-              unit_amount: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The dimension value
-            dimension_value:,
-            # Display name for this dimension value
-            display_name:,
-            # Per unit amount
-            unit_amount:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                dimension_value: String,
-                display_name: String,
-                unit_amount: String
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class GroupedTieredPackageConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::GroupedTieredPackageConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # The event property used to group before tiering
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        sig { returns(String) }
-        attr_accessor :package_size
-
-        # Apply tiered pricing after rounding up the quantity to the package size. Tiers
-        # are defined using exclusive lower bounds.
-        sig do
-          returns(
-            T::Array[Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier]
-          )
-        end
-        attr_accessor :tiers
-
-        # Configuration for grouped_tiered_package pricing
-        sig do
-          params(
-            grouping_key: String,
-            package_size: String,
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The event property used to group before tiering
-          grouping_key:,
-          package_size:,
-          # Apply tiered pricing after rounding up the quantity to the package size. Tiers
-          # are defined using exclusive lower bounds.
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              grouping_key: String,
-              package_size: String,
-              tiers:
-                T::Array[
-                  Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::GroupedTieredPackageConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          # Per package
-          sig { returns(String) }
-          attr_accessor :per_unit
-
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Configuration for a single tier
-          sig do
-            params(per_unit: String, tier_lower_bound: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(
-            # Per package
-            per_unit:,
-            tier_lower_bound:
-          )
-          end
-
-          sig do
-            override.returns({ per_unit: String, tier_lower_bound: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class MaxGroupTieredPackageConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::MaxGroupTieredPackageConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # The event property used to group before tiering the group with the highest value
-        sig { returns(String) }
-        attr_accessor :grouping_key
-
-        sig { returns(String) }
-        attr_accessor :package_size
-
-        # Apply tiered pricing to the largest group after grouping with the provided key.
-        sig do
-          returns(
-            T::Array[Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier]
-          )
-        end
-        attr_accessor :tiers
-
-        # Configuration for max_group_tiered_package pricing
-        sig do
-          params(
-            grouping_key: String,
-            package_size: String,
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier::OrHash
-              ]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The event property used to group before tiering the group with the highest value
-          grouping_key:,
-          package_size:,
-          # Apply tiered pricing to the largest group after grouping with the provided key.
-          tiers:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              grouping_key: String,
-              package_size: String,
-              tiers:
-                T::Array[
-                  Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::MaxGroupTieredPackageConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          # Per unit amount
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a single tier
-          sig do
-            params(tier_lower_bound: String, unit_amount: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(
-            tier_lower_bound:,
-            # Per unit amount
-            unit_amount:
-          )
-          end
-
-          sig do
-            override.returns({ tier_lower_bound: String, unit_amount: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class ScalableMatrixWithUnitPricingConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Used to determine the unit rate
-        sig { returns(String) }
-        attr_accessor :first_dimension
-
-        # Apply a scaling factor to each dimension
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
-            ]
-          )
-        end
-        attr_accessor :matrix_scaling_factors
-
-        # The final unit price to rate against the output of the matrix
-        sig { returns(String) }
-        attr_accessor :unit_price
-
-        # The property used to group this price
-        sig { returns(T.nilable(String)) }
-        attr_accessor :grouping_key
-
-        # If true, the unit price will be prorated to the billing period
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_accessor :prorate
-
-        # Used to determine the unit rate (optional)
-        sig { returns(T.nilable(String)) }
-        attr_accessor :second_dimension
-
-        # Configuration for scalable_matrix_with_unit_pricing pricing
-        sig do
-          params(
-            first_dimension: String,
-            matrix_scaling_factors:
-              T::Array[
-                Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor::OrHash
-              ],
-            unit_price: String,
-            grouping_key: T.nilable(String),
-            prorate: T.nilable(T::Boolean),
-            second_dimension: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Used to determine the unit rate
-          first_dimension:,
-          # Apply a scaling factor to each dimension
-          matrix_scaling_factors:,
-          # The final unit price to rate against the output of the matrix
-          unit_price:,
-          # The property used to group this price
-          grouping_key: nil,
-          # If true, the unit price will be prorated to the billing period
-          prorate: nil,
-          # Used to determine the unit rate (optional)
-          second_dimension: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              first_dimension: String,
-              matrix_scaling_factors:
-                T::Array[
-                  Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor
-                ],
-              unit_price: String,
-              grouping_key: T.nilable(String),
-              prorate: T.nilable(T::Boolean),
-              second_dimension: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::ScalableMatrixWithUnitPricingConfig::MatrixScalingFactor,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :first_dimension_value
-
-          sig { returns(String) }
-          attr_accessor :scaling_factor
-
+          # The property used to group this price on an invoice
           sig { returns(T.nilable(String)) }
-          attr_accessor :second_dimension_value
+          attr_accessor :invoice_grouping_key
 
-          # Configuration for a single matrix scaling factor
+          # Within each billing cycle, specifies the cadence at which invoices are produced.
+          # If unspecified, a single invoice is produced per billing cycle.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :invoicing_cycle_configuration
+
           sig do
             params(
-              first_dimension_value: String,
-              scaling_factor: String,
-              second_dimension_value: T.nilable(String)
-            ).returns(T.attached_class)
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
           end
-          def self.new(
-            first_dimension_value:,
-            scaling_factor:,
-            second_dimension_value: nil
-          )
-          end
+          attr_writer :invoicing_cycle_configuration
 
-          sig do
-            override.returns(
-              {
-                first_dimension_value: String,
-                scaling_factor: String,
-                second_dimension_value: T.nilable(String)
-              }
-            )
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class ScalableMatrixWithTieredPricingConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Used for the scalable matrix first dimension
-        sig { returns(String) }
-        attr_accessor :first_dimension
-
-        # Apply a scaling factor to each dimension
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor
-            ]
-          )
-        end
-        attr_accessor :matrix_scaling_factors
-
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier
-            ]
-          )
-        end
-        attr_accessor :tiers
-
-        # Used for the scalable matrix second dimension (optional)
-        sig { returns(T.nilable(String)) }
-        attr_accessor :second_dimension
-
-        # Configuration for scalable_matrix_with_tiered_pricing pricing
-        sig do
-          params(
-            first_dimension: String,
-            matrix_scaling_factors:
-              T::Array[
-                Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor::OrHash
-              ],
-            tiers:
-              T::Array[
-                Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier::OrHash
-              ],
-            second_dimension: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Used for the scalable matrix first dimension
-          first_dimension:,
-          # Apply a scaling factor to each dimension
-          matrix_scaling_factors:,
-          tiers:,
-          # Used for the scalable matrix second dimension (optional)
-          second_dimension: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              first_dimension: String,
-              matrix_scaling_factors:
-                T::Array[
-                  Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor
-                ],
-              tiers:
-                T::Array[
-                  Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier
-                ],
-              second_dimension: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
-
-        class MatrixScalingFactor < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::MatrixScalingFactor,
-                Orb::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :first_dimension_value
-
-          sig { returns(String) }
-          attr_accessor :scaling_factor
-
+          # The ID of the license type to associate with this price.
           sig { returns(T.nilable(String)) }
-          attr_accessor :second_dimension_value
+          attr_accessor :license_type_id
 
-          # Configuration for a single matrix scaling factor
+          # User-specified key/value pairs for the resource. Individual keys can be removed
+          # by setting the value to `null`, and the entire metadata mapping can be cleared
+          # by setting `metadata` to `null`.
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+          attr_accessor :metadata
+
           sig do
             params(
-              first_dimension_value: String,
-              scaling_factor: String,
-              second_dimension_value: T.nilable(String)
+              bulk_with_filters_config:
+                Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::OrHash,
+              cadence:
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::OrSymbol,
+              currency: String,
+              item_id: String,
+              name: String,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig::OrHash,
+                    Orb::TieredConversionRateConfig::OrHash
+                  )
+                ),
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              license_type_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              model_type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
-            first_dimension_value:,
-            scaling_factor:,
-            second_dimension_value: nil
+            # Configuration for bulk_with_filters pricing
+            bulk_with_filters_config:,
+            # The cadence to bill for this price on.
+            cadence:,
+            # An ISO 4217 currency string for which this price is billed in.
+            currency:,
+            # The id of the item the price will be associated with.
+            item_id:,
+            # The name of the price.
+            name:,
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            billable_metric_id: nil,
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            billed_in_advance: nil,
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            billing_cycle_configuration: nil,
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            conversion_rate: nil,
+            # The configuration for the rate of the price currency to the invoicing currency.
+            conversion_rate_config: nil,
+            # For dimensional price: specifies a price group and dimension values
+            dimensional_price_configuration: nil,
+            # An alias for the price.
+            external_price_id: nil,
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            fixed_price_quantity: nil,
+            # The property used to group this price on an invoice
+            invoice_grouping_key: nil,
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            invoicing_cycle_configuration: nil,
+            # The ID of the license type to associate with this price.
+            license_type_id: nil,
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            metadata: nil,
+            # The pricing model type
+            model_type: :bulk_with_filters
           )
           end
 
           sig do
             override.returns(
               {
-                first_dimension_value: String,
-                scaling_factor: String,
-                second_dimension_value: T.nilable(String)
+                bulk_with_filters_config:
+                  Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig,
+                cadence:
+                  Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::OrSymbol,
+                currency: String,
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig,
+                      Orb::TieredConversionRateConfig
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                license_type_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
               }
             )
           end
           def to_hash
           end
-        end
 
-        class Tier < Orb::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                Orb::PriceCreateParams::ScalableMatrixWithTieredPricingConfig::Tier,
-                Orb::Internal::AnyHash
-              )
-            end
+          class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
 
-          sig { returns(String) }
-          attr_accessor :tier_lower_bound
-
-          sig { returns(String) }
-          attr_accessor :unit_amount
-
-          # Configuration for a single tier entry with business logic
-          sig do
-            params(tier_lower_bound: String, unit_amount: String).returns(
-              T.attached_class
-            )
-          end
-          def self.new(tier_lower_bound:, unit_amount:)
-          end
-
-          sig do
-            override.returns({ tier_lower_bound: String, unit_amount: String })
-          end
-          def to_hash
-          end
-        end
-      end
-
-      class CumulativeGroupedBulkConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::CumulativeGroupedBulkConfig,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        # Each tier lower bound must have the same group of values.
-        sig do
-          returns(
-            T::Array[
-              Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue
-            ]
-          )
-        end
-        attr_accessor :dimension_values
-
-        sig { returns(String) }
-        attr_accessor :group
-
-        # Configuration for cumulative_grouped_bulk pricing
-        sig do
-          params(
-            dimension_values:
-              T::Array[
-                Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue::OrHash
-              ],
-            group: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # Each tier lower bound must have the same group of values.
-          dimension_values:,
-          group:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              dimension_values:
+            # Property filters to apply (all must match)
+            sig do
+              returns(
                 T::Array[
-                  Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue
-                ],
-              group: String
-            }
-          )
-        end
-        def to_hash
+                  Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
+            # Bulk tiers for rating based on total usage volume
+            sig do
+              returns(
+                T::Array[
+                  Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier
+                ]
+              )
+            end
+            attr_accessor :tiers
+
+            # Configuration for bulk_with_filters pricing
+            sig do
+              params(
+                filters:
+                  T::Array[
+                    Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter::OrHash
+                  ],
+                tiers:
+                  T::Array[
+                    Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier::OrHash
+                  ]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Property filters to apply (all must match)
+              filters:,
+              # Bulk tiers for rating based on total usage volume
+              tiers:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  filters:
+                    T::Array[
+                      Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter
+                    ],
+                  tiers:
+                    T::Array[
+                      Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Event property key to filter on
+              sig { returns(String) }
+              attr_accessor :property_key
+
+              # Event property value to match
+              sig { returns(String) }
+              attr_accessor :property_value
+
+              # Configuration for a single property filter
+              sig do
+                params(property_key: String, property_value: String).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # Event property key to filter on
+                property_key:,
+                # Event property value to match
+                property_value:
+              )
+              end
+
+              sig do
+                override.returns(
+                  { property_key: String, property_value: String }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class Tier < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::PriceCreateParams::Body::BulkWithFilters::BulkWithFiltersConfig::Tier,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Amount per unit
+              sig { returns(String) }
+              attr_accessor :unit_amount
+
+              # The lower bound for this tier
+              sig { returns(T.nilable(String)) }
+              attr_accessor :tier_lower_bound
+
+              # Configuration for a single bulk pricing tier
+              sig do
+                params(
+                  unit_amount: String,
+                  tier_lower_bound: T.nilable(String)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Amount per unit
+                unit_amount:,
+                # The lower bound for this tier
+                tier_lower_bound: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  { unit_amount: String, tier_lower_bound: T.nilable(String) }
+                )
+              end
+              def to_hash
+              end
+            end
+          end
+
+          # The cadence to bill for this price on.
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::PriceCreateParams::Body::BulkWithFilters::Cadence
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ANNUAL =
+              T.let(
+                :annual,
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :semi_annual,
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+              )
+            MONTHLY =
+              T.let(
+                :monthly,
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+              )
+            QUARTERLY =
+              T.let(
+                :quarterly,
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+              )
+            ONE_TIME =
+              T.let(
+                :one_time,
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :custom,
+                Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::PriceCreateParams::Body::BulkWithFilters::Cadence::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
 
-        class DimensionValue < Orb::Internal::Type::BaseModel
+        class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                Orb::PriceCreateParams::CumulativeGroupedBulkConfig::DimensionValue,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds,
                 Orb::Internal::AnyHash
               )
             end
 
-          # Grouping key value
-          sig { returns(String) }
-          attr_accessor :grouping_key
+          # The cadence to bill for this price on.
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::OrSymbol
+            )
+          end
+          attr_accessor :cadence
 
-          # Tier lower bound
+          # An ISO 4217 currency string for which this price is billed in.
           sig { returns(String) }
-          attr_accessor :tier_lower_bound
+          attr_accessor :currency
 
-          # Unit amount for this combination
-          sig { returns(String) }
-          attr_accessor :unit_amount
+          # Configuration for grouped_with_min_max_thresholds pricing
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+            )
+          end
+          attr_reader :grouped_with_min_max_thresholds_config
 
-          # Configuration for a dimension value entry
           sig do
             params(
-              grouping_key: String,
-              tier_lower_bound: String,
-              unit_amount: String
+              grouped_with_min_max_thresholds_config:
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash
+            ).void
+          end
+          attr_writer :grouped_with_min_max_thresholds_config
+
+          # The id of the item the price will be associated with.
+          sig { returns(String) }
+          attr_accessor :item_id
+
+          # The pricing model type
+          sig { returns(Symbol) }
+          attr_accessor :model_type
+
+          # The name of the price.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The id of the billable metric for the price. Only needed if the price is
+          # usage-based.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :billable_metric_id
+
+          # If the Price represents a fixed cost, the price will be billed in-advance if
+          # this is true, and in-arrears if this is false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :billed_in_advance
+
+          # For custom cadence: specifies the duration of the billing period in days or
+          # months.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :billing_cycle_configuration
+
+          sig do
+            params(
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :billing_cycle_configuration
+
+          # The per unit conversion rate of the price currency to the invoicing currency.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :conversion_rate
+
+          # The configuration for the rate of the price currency to the invoicing currency.
+          sig do
+            returns(
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig,
+                  Orb::TieredConversionRateConfig
+                )
+              )
+            )
+          end
+          attr_accessor :conversion_rate_config
+
+          # For dimensional price: specifies a price group and dimension values
+          sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+          attr_reader :dimensional_price_configuration
+
+          sig do
+            params(
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :dimensional_price_configuration
+
+          # An alias for the price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :external_price_id
+
+          # If the Price represents a fixed cost, this represents the quantity of units
+          # applied.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :fixed_price_quantity
+
+          # The property used to group this price on an invoice
+          sig { returns(T.nilable(String)) }
+          attr_accessor :invoice_grouping_key
+
+          # Within each billing cycle, specifies the cadence at which invoices are produced.
+          # If unspecified, a single invoice is produced per billing cycle.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :invoicing_cycle_configuration
+
+          sig do
+            params(
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :invoicing_cycle_configuration
+
+          # The ID of the license type to associate with this price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :license_type_id
+
+          # User-specified key/value pairs for the resource. Individual keys can be removed
+          # by setting the value to `null`, and the entire metadata mapping can be cleared
+          # by setting `metadata` to `null`.
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+          attr_accessor :metadata
+
+          sig do
+            params(
+              cadence:
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+              currency: String,
+              grouped_with_min_max_thresholds_config:
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
+              item_id: String,
+              name: String,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig::OrHash,
+                    Orb::TieredConversionRateConfig::OrHash
+                  )
+                ),
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              license_type_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              model_type: Symbol
             ).returns(T.attached_class)
           end
           def self.new(
-            # Grouping key value
-            grouping_key:,
-            # Tier lower bound
-            tier_lower_bound:,
-            # Unit amount for this combination
-            unit_amount:
+            # The cadence to bill for this price on.
+            cadence:,
+            # An ISO 4217 currency string for which this price is billed in.
+            currency:,
+            # Configuration for grouped_with_min_max_thresholds pricing
+            grouped_with_min_max_thresholds_config:,
+            # The id of the item the price will be associated with.
+            item_id:,
+            # The name of the price.
+            name:,
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            billable_metric_id: nil,
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            billed_in_advance: nil,
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            billing_cycle_configuration: nil,
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            conversion_rate: nil,
+            # The configuration for the rate of the price currency to the invoicing currency.
+            conversion_rate_config: nil,
+            # For dimensional price: specifies a price group and dimension values
+            dimensional_price_configuration: nil,
+            # An alias for the price.
+            external_price_id: nil,
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            fixed_price_quantity: nil,
+            # The property used to group this price on an invoice
+            invoice_grouping_key: nil,
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            invoicing_cycle_configuration: nil,
+            # The ID of the license type to associate with this price.
+            license_type_id: nil,
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            metadata: nil,
+            # The pricing model type
+            model_type: :grouped_with_min_max_thresholds
           )
           end
 
           sig do
             override.returns(
               {
+                cadence:
+                  Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+                currency: String,
+                grouped_with_min_max_thresholds_config:
+                  Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig,
+                      Orb::TieredConversionRateConfig
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                license_type_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The cadence to bill for this price on.
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ANNUAL =
+              T.let(
+                :annual,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :semi_annual,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              )
+            MONTHLY =
+              T.let(
+                :monthly,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              )
+            QUARTERLY =
+              T.let(
+                :quarterly,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              )
+            ONE_TIME =
+              T.let(
+                :one_time,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :custom,
+                Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class GroupedWithMinMaxThresholdsConfig < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The event property used to group before applying thresholds
+            sig { returns(String) }
+            attr_accessor :grouping_key
+
+            # The maximum amount to charge each group
+            sig { returns(String) }
+            attr_accessor :maximum_charge
+
+            # The minimum amount to charge each group, regardless of usage
+            sig { returns(String) }
+            attr_accessor :minimum_charge
+
+            # The base price charged per group
+            sig { returns(String) }
+            attr_accessor :per_unit_rate
+
+            # Configuration for grouped_with_min_max_thresholds pricing
+            sig do
+              params(
                 grouping_key: String,
-                tier_lower_bound: String,
-                unit_amount: String
+                maximum_charge: String,
+                minimum_charge: String,
+                per_unit_rate: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The event property used to group before applying thresholds
+              grouping_key:,
+              # The maximum amount to charge each group
+              maximum_charge:,
+              # The minimum amount to charge each group, regardless of usage
+              minimum_charge:,
+              # The base price charged per group
+              per_unit_rate:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  grouping_key: String,
+                  maximum_charge: String,
+                  minimum_charge: String,
+                  per_unit_rate: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+        end
+
+        class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The cadence to bill for this price on.
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::OrSymbol
+            )
+          end
+          attr_accessor :cadence
+
+          # Configuration for cumulative_grouped_allocation pricing
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
+            )
+          end
+          attr_reader :cumulative_grouped_allocation_config
+
+          sig do
+            params(
+              cumulative_grouped_allocation_config:
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash
+            ).void
+          end
+          attr_writer :cumulative_grouped_allocation_config
+
+          # An ISO 4217 currency string for which this price is billed in.
+          sig { returns(String) }
+          attr_accessor :currency
+
+          # The id of the item the price will be associated with.
+          sig { returns(String) }
+          attr_accessor :item_id
+
+          # The pricing model type
+          sig { returns(Symbol) }
+          attr_accessor :model_type
+
+          # The name of the price.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The id of the billable metric for the price. Only needed if the price is
+          # usage-based.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :billable_metric_id
+
+          # If the Price represents a fixed cost, the price will be billed in-advance if
+          # this is true, and in-arrears if this is false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :billed_in_advance
+
+          # For custom cadence: specifies the duration of the billing period in days or
+          # months.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :billing_cycle_configuration
+
+          sig do
+            params(
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :billing_cycle_configuration
+
+          # The per unit conversion rate of the price currency to the invoicing currency.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :conversion_rate
+
+          # The configuration for the rate of the price currency to the invoicing currency.
+          sig do
+            returns(
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig,
+                  Orb::TieredConversionRateConfig
+                )
+              )
+            )
+          end
+          attr_accessor :conversion_rate_config
+
+          # For dimensional price: specifies a price group and dimension values
+          sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+          attr_reader :dimensional_price_configuration
+
+          sig do
+            params(
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :dimensional_price_configuration
+
+          # An alias for the price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :external_price_id
+
+          # If the Price represents a fixed cost, this represents the quantity of units
+          # applied.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :fixed_price_quantity
+
+          # The property used to group this price on an invoice
+          sig { returns(T.nilable(String)) }
+          attr_accessor :invoice_grouping_key
+
+          # Within each billing cycle, specifies the cadence at which invoices are produced.
+          # If unspecified, a single invoice is produced per billing cycle.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :invoicing_cycle_configuration
+
+          sig do
+            params(
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :invoicing_cycle_configuration
+
+          # The ID of the license type to associate with this price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :license_type_id
+
+          # User-specified key/value pairs for the resource. Individual keys can be removed
+          # by setting the value to `null`, and the entire metadata mapping can be cleared
+          # by setting `metadata` to `null`.
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+          attr_accessor :metadata
+
+          sig do
+            params(
+              cadence:
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::OrSymbol,
+              cumulative_grouped_allocation_config:
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash,
+              currency: String,
+              item_id: String,
+              name: String,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig::OrHash,
+                    Orb::TieredConversionRateConfig::OrHash
+                  )
+                ),
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              license_type_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              model_type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The cadence to bill for this price on.
+            cadence:,
+            # Configuration for cumulative_grouped_allocation pricing
+            cumulative_grouped_allocation_config:,
+            # An ISO 4217 currency string for which this price is billed in.
+            currency:,
+            # The id of the item the price will be associated with.
+            item_id:,
+            # The name of the price.
+            name:,
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            billable_metric_id: nil,
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            billed_in_advance: nil,
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            billing_cycle_configuration: nil,
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            conversion_rate: nil,
+            # The configuration for the rate of the price currency to the invoicing currency.
+            conversion_rate_config: nil,
+            # For dimensional price: specifies a price group and dimension values
+            dimensional_price_configuration: nil,
+            # An alias for the price.
+            external_price_id: nil,
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            fixed_price_quantity: nil,
+            # The property used to group this price on an invoice
+            invoice_grouping_key: nil,
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            invoicing_cycle_configuration: nil,
+            # The ID of the license type to associate with this price.
+            license_type_id: nil,
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            metadata: nil,
+            # The pricing model type
+            model_type: :cumulative_grouped_allocation
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                cadence:
+                  Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::OrSymbol,
+                cumulative_grouped_allocation_config:
+                  Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                currency: String,
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig,
+                      Orb::TieredConversionRateConfig
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                license_type_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
               }
             )
           end
           def to_hash
           end
-        end
-      end
 
-      class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::CumulativeGroupedAllocationConfig,
-              Orb::Internal::AnyHash
+          # The cadence to bill for this price on.
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ANNUAL =
+              T.let(
+                :annual,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :semi_annual,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              )
+            MONTHLY =
+              T.let(
+                :monthly,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              )
+            QUARTERLY =
+              T.let(
+                :quarterly,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              )
+            ONE_TIME =
+              T.let(
+                :one_time,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :custom,
+                Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class CumulativeGroupedAllocationConfig < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The overall allocation across all groups
+            sig { returns(String) }
+            attr_accessor :cumulative_allocation
+
+            # The allocation per individual group
+            sig { returns(String) }
+            attr_accessor :group_allocation
+
+            # The event property used to group usage before applying allocations
+            sig { returns(String) }
+            attr_accessor :grouping_key
+
+            # The amount to charge for each unit outside of the allocation
+            sig { returns(String) }
+            attr_accessor :unit_amount
+
+            # Configuration for cumulative_grouped_allocation pricing
+            sig do
+              params(
+                cumulative_allocation: String,
+                group_allocation: String,
+                grouping_key: String,
+                unit_amount: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The overall allocation across all groups
+              cumulative_allocation:,
+              # The allocation per individual group
+              group_allocation:,
+              # The event property used to group usage before applying allocations
+              grouping_key:,
+              # The amount to charge for each unit outside of the allocation
+              unit_amount:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cumulative_allocation: String,
+                  group_allocation: String,
+                  grouping_key: String,
+                  unit_amount: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+        end
+
+        class Percent < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::Body::Percent,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The cadence to bill for this price on.
+          sig do
+            returns(Orb::PriceCreateParams::Body::Percent::Cadence::OrSymbol)
+          end
+          attr_accessor :cadence
+
+          # An ISO 4217 currency string for which this price is billed in.
+          sig { returns(String) }
+          attr_accessor :currency
+
+          # The id of the item the price will be associated with.
+          sig { returns(String) }
+          attr_accessor :item_id
+
+          # The pricing model type
+          sig { returns(Symbol) }
+          attr_accessor :model_type
+
+          # The name of the price.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # Configuration for percent pricing
+          sig { returns(Orb::PriceCreateParams::Body::Percent::PercentConfig) }
+          attr_reader :percent_config
+
+          sig do
+            params(
+              percent_config:
+                Orb::PriceCreateParams::Body::Percent::PercentConfig::OrHash
+            ).void
+          end
+          attr_writer :percent_config
+
+          # The id of the billable metric for the price. Only needed if the price is
+          # usage-based.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :billable_metric_id
+
+          # If the Price represents a fixed cost, the price will be billed in-advance if
+          # this is true, and in-arrears if this is false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :billed_in_advance
+
+          # For custom cadence: specifies the duration of the billing period in days or
+          # months.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :billing_cycle_configuration
+
+          sig do
+            params(
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :billing_cycle_configuration
+
+          # The per unit conversion rate of the price currency to the invoicing currency.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :conversion_rate
+
+          # The configuration for the rate of the price currency to the invoicing currency.
+          sig do
+            returns(
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig,
+                  Orb::TieredConversionRateConfig
+                )
+              )
             )
           end
+          attr_accessor :conversion_rate_config
 
-        # The overall allocation across all groups
-        sig { returns(String) }
-        attr_accessor :cumulative_allocation
+          # For dimensional price: specifies a price group and dimension values
+          sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+          attr_reader :dimensional_price_configuration
 
-        # The allocation per individual group
-        sig { returns(String) }
-        attr_accessor :group_allocation
+          sig do
+            params(
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :dimensional_price_configuration
 
-        # The event property used to group usage before applying allocations
-        sig { returns(String) }
-        attr_accessor :grouping_key
+          # An alias for the price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :external_price_id
 
-        # The amount to charge for each unit outside of the allocation
-        sig { returns(String) }
-        attr_accessor :unit_amount
+          # If the Price represents a fixed cost, this represents the quantity of units
+          # applied.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :fixed_price_quantity
 
-        # Configuration for cumulative_grouped_allocation pricing
-        sig do
-          params(
-            cumulative_allocation: String,
-            group_allocation: String,
-            grouping_key: String,
-            unit_amount: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The overall allocation across all groups
-          cumulative_allocation:,
-          # The allocation per individual group
-          group_allocation:,
-          # The event property used to group usage before applying allocations
-          grouping_key:,
-          # The amount to charge for each unit outside of the allocation
-          unit_amount:
-        )
-        end
+          # The property used to group this price on an invoice
+          sig { returns(T.nilable(String)) }
+          attr_accessor :invoice_grouping_key
 
-        sig do
-          override.returns(
-            {
-              cumulative_allocation: String,
-              group_allocation: String,
-              grouping_key: String,
-              unit_amount: String
-            }
+          # Within each billing cycle, specifies the cadence at which invoices are produced.
+          # If unspecified, a single invoice is produced per billing cycle.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :invoicing_cycle_configuration
+
+          sig do
+            params(
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :invoicing_cycle_configuration
+
+          # The ID of the license type to associate with this price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :license_type_id
+
+          # User-specified key/value pairs for the resource. Individual keys can be removed
+          # by setting the value to `null`, and the entire metadata mapping can be cleared
+          # by setting `metadata` to `null`.
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+          attr_accessor :metadata
+
+          sig do
+            params(
+              cadence: Orb::PriceCreateParams::Body::Percent::Cadence::OrSymbol,
+              currency: String,
+              item_id: String,
+              name: String,
+              percent_config:
+                Orb::PriceCreateParams::Body::Percent::PercentConfig::OrHash,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig::OrHash,
+                    Orb::TieredConversionRateConfig::OrHash
+                  )
+                ),
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              license_type_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              model_type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The cadence to bill for this price on.
+            cadence:,
+            # An ISO 4217 currency string for which this price is billed in.
+            currency:,
+            # The id of the item the price will be associated with.
+            item_id:,
+            # The name of the price.
+            name:,
+            # Configuration for percent pricing
+            percent_config:,
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            billable_metric_id: nil,
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            billed_in_advance: nil,
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            billing_cycle_configuration: nil,
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            conversion_rate: nil,
+            # The configuration for the rate of the price currency to the invoicing currency.
+            conversion_rate_config: nil,
+            # For dimensional price: specifies a price group and dimension values
+            dimensional_price_configuration: nil,
+            # An alias for the price.
+            external_price_id: nil,
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            fixed_price_quantity: nil,
+            # The property used to group this price on an invoice
+            invoice_grouping_key: nil,
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            invoicing_cycle_configuration: nil,
+            # The ID of the license type to associate with this price.
+            license_type_id: nil,
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            metadata: nil,
+            # The pricing model type
+            model_type: :percent
           )
-        end
-        def to_hash
-        end
-      end
+          end
 
-      class MinimumCompositeConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::MinimumCompositeConfig,
-              Orb::Internal::AnyHash
+          sig do
+            override.returns(
+              {
+                cadence:
+                  Orb::PriceCreateParams::Body::Percent::Cadence::OrSymbol,
+                currency: String,
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                percent_config:
+                  Orb::PriceCreateParams::Body::Percent::PercentConfig,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig,
+                      Orb::TieredConversionRateConfig
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                license_type_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+              }
             )
           end
-
-        # The minimum amount to apply
-        sig { returns(String) }
-        attr_accessor :minimum_amount
-
-        # If true, subtotals from this price are prorated based on the service period
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :prorated
-
-        sig { params(prorated: T::Boolean).void }
-        attr_writer :prorated
-
-        # Configuration for minimum_composite pricing
-        sig do
-          params(minimum_amount: String, prorated: T::Boolean).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # The minimum amount to apply
-          minimum_amount:,
-          # If true, subtotals from this price are prorated based on the service period
-          prorated: nil
-        )
-        end
-
-        sig do
-          override.returns({ minimum_amount: String, prorated: T::Boolean })
-        end
-        def to_hash
-        end
-      end
-
-      class PercentConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Orb::PriceCreateParams::PercentConfig, Orb::Internal::AnyHash)
+          def to_hash
           end
 
-        # What percent of the component subtotals to charge
-        sig { returns(Float) }
-        attr_accessor :percent
+          # The cadence to bill for this price on.
+          module Cadence
+            extend Orb::Internal::Type::Enum
 
-        # Configuration for percent pricing
-        sig { params(percent: Float).returns(T.attached_class) }
-        def self.new(
-          # What percent of the component subtotals to charge
-          percent:
-        )
+            TaggedSymbol =
+              T.type_alias do
+                T.all(Symbol, Orb::PriceCreateParams::Body::Percent::Cadence)
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ANNUAL =
+              T.let(
+                :annual,
+                Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :semi_annual,
+                Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+              )
+            MONTHLY =
+              T.let(
+                :monthly,
+                Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+              )
+            QUARTERLY =
+              T.let(
+                :quarterly,
+                Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+              )
+            ONE_TIME =
+              T.let(
+                :one_time,
+                Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :custom,
+                Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::PriceCreateParams::Body::Percent::Cadence::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class PercentConfig < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceCreateParams::Body::Percent::PercentConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # What percent of the component subtotals to charge
+            sig { returns(Float) }
+            attr_accessor :percent
+
+            # Configuration for percent pricing
+            sig { params(percent: Float).returns(T.attached_class) }
+            def self.new(
+              # What percent of the component subtotals to charge
+              percent:
+            )
+            end
+
+            sig { override.returns({ percent: Float }) }
+            def to_hash
+            end
+          end
         end
 
-        sig { override.returns({ percent: Float }) }
-        def to_hash
-        end
-      end
+        class EventOutput < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::PriceCreateParams::Body::EventOutput,
+                Orb::Internal::AnyHash
+              )
+            end
 
-      class EventOutputConfig < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::PriceCreateParams::EventOutputConfig,
-              Orb::Internal::AnyHash
+          # The cadence to bill for this price on.
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::EventOutput::Cadence::OrSymbol
             )
           end
+          attr_accessor :cadence
 
-        # The key in the event data to extract the unit rate from.
-        sig { returns(String) }
-        attr_accessor :unit_rating_key
+          # An ISO 4217 currency string for which this price is billed in.
+          sig { returns(String) }
+          attr_accessor :currency
 
-        # If provided, this amount will be used as the unit rate when an event does not
-        # have a value for the `unit_rating_key`. If not provided, events missing a unit
-        # rate will be ignored.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :default_unit_rate
+          # Configuration for event_output pricing
+          sig do
+            returns(
+              Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig
+            )
+          end
+          attr_reader :event_output_config
 
-        # An optional key in the event data to group by (e.g., event ID). All events will
-        # also be grouped by their unit rate.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :grouping_key
+          sig do
+            params(
+              event_output_config:
+                Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig::OrHash
+            ).void
+          end
+          attr_writer :event_output_config
 
-        # Configuration for event_output pricing
-        sig do
-          params(
-            unit_rating_key: String,
-            default_unit_rate: T.nilable(String),
-            grouping_key: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The key in the event data to extract the unit rate from.
-          unit_rating_key:,
-          # If provided, this amount will be used as the unit rate when an event does not
-          # have a value for the `unit_rating_key`. If not provided, events missing a unit
-          # rate will be ignored.
-          default_unit_rate: nil,
-          # An optional key in the event data to group by (e.g., event ID). All events will
-          # also be grouped by their unit rate.
-          grouping_key: nil
-        )
-        end
+          # The id of the item the price will be associated with.
+          sig { returns(String) }
+          attr_accessor :item_id
 
-        sig do
-          override.returns(
-            {
-              unit_rating_key: String,
-              default_unit_rate: T.nilable(String),
-              grouping_key: T.nilable(String)
-            }
+          # The pricing model type
+          sig { returns(Symbol) }
+          attr_accessor :model_type
+
+          # The name of the price.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The id of the billable metric for the price. Only needed if the price is
+          # usage-based.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :billable_metric_id
+
+          # If the Price represents a fixed cost, the price will be billed in-advance if
+          # this is true, and in-arrears if this is false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_accessor :billed_in_advance
+
+          # For custom cadence: specifies the duration of the billing period in days or
+          # months.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :billing_cycle_configuration
+
+          sig do
+            params(
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :billing_cycle_configuration
+
+          # The per unit conversion rate of the price currency to the invoicing currency.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :conversion_rate
+
+          # The configuration for the rate of the price currency to the invoicing currency.
+          sig do
+            returns(
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig,
+                  Orb::TieredConversionRateConfig
+                )
+              )
+            )
+          end
+          attr_accessor :conversion_rate_config
+
+          # For dimensional price: specifies a price group and dimension values
+          sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+          attr_reader :dimensional_price_configuration
+
+          sig do
+            params(
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :dimensional_price_configuration
+
+          # An alias for the price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :external_price_id
+
+          # If the Price represents a fixed cost, this represents the quantity of units
+          # applied.
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :fixed_price_quantity
+
+          # The property used to group this price on an invoice
+          sig { returns(T.nilable(String)) }
+          attr_accessor :invoice_grouping_key
+
+          # Within each billing cycle, specifies the cadence at which invoices are produced.
+          # If unspecified, a single invoice is produced per billing cycle.
+          sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+          attr_reader :invoicing_cycle_configuration
+
+          sig do
+            params(
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+            ).void
+          end
+          attr_writer :invoicing_cycle_configuration
+
+          # The ID of the license type to associate with this price.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :license_type_id
+
+          # User-specified key/value pairs for the resource. Individual keys can be removed
+          # by setting the value to `null`, and the entire metadata mapping can be cleared
+          # by setting `metadata` to `null`.
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+          attr_accessor :metadata
+
+          sig do
+            params(
+              cadence:
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::OrSymbol,
+              currency: String,
+              event_output_config:
+                Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig::OrHash,
+              item_id: String,
+              name: String,
+              billable_metric_id: T.nilable(String),
+              billed_in_advance: T.nilable(T::Boolean),
+              billing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig::OrHash,
+                    Orb::TieredConversionRateConfig::OrHash
+                  )
+                ),
+              dimensional_price_configuration:
+                T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+              license_type_id: T.nilable(String),
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              model_type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The cadence to bill for this price on.
+            cadence:,
+            # An ISO 4217 currency string for which this price is billed in.
+            currency:,
+            # Configuration for event_output pricing
+            event_output_config:,
+            # The id of the item the price will be associated with.
+            item_id:,
+            # The name of the price.
+            name:,
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            billable_metric_id: nil,
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            billed_in_advance: nil,
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            billing_cycle_configuration: nil,
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            conversion_rate: nil,
+            # The configuration for the rate of the price currency to the invoicing currency.
+            conversion_rate_config: nil,
+            # For dimensional price: specifies a price group and dimension values
+            dimensional_price_configuration: nil,
+            # An alias for the price.
+            external_price_id: nil,
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            fixed_price_quantity: nil,
+            # The property used to group this price on an invoice
+            invoice_grouping_key: nil,
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            invoicing_cycle_configuration: nil,
+            # The ID of the license type to associate with this price.
+            license_type_id: nil,
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            metadata: nil,
+            # The pricing model type
+            model_type: :event_output
           )
+          end
+
+          sig do
+            override.returns(
+              {
+                cadence:
+                  Orb::PriceCreateParams::Body::EventOutput::Cadence::OrSymbol,
+                currency: String,
+                event_output_config:
+                  Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig,
+                item_id: String,
+                model_type: Symbol,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig,
+                      Orb::TieredConversionRateConfig
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration),
+                license_type_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The cadence to bill for this price on.
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::PriceCreateParams::Body::EventOutput::Cadence
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ANNUAL =
+              T.let(
+                :annual,
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :semi_annual,
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+              )
+            MONTHLY =
+              T.let(
+                :monthly,
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+              )
+            QUARTERLY =
+              T.let(
+                :quarterly,
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+              )
+            ONE_TIME =
+              T.let(
+                :one_time,
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :custom,
+                Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::PriceCreateParams::Body::EventOutput::Cadence::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          class EventOutputConfig < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::PriceCreateParams::Body::EventOutput::EventOutputConfig,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The key in the event data to extract the unit rate from.
+            sig { returns(String) }
+            attr_accessor :unit_rating_key
+
+            # If provided, this amount will be used as the unit rate when an event does not
+            # have a value for the `unit_rating_key`. If not provided, events missing a unit
+            # rate will be ignored.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :default_unit_rate
+
+            # An optional key in the event data to group by (e.g., event ID). All events will
+            # also be grouped by their unit rate.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :grouping_key
+
+            # Configuration for event_output pricing
+            sig do
+              params(
+                unit_rating_key: String,
+                default_unit_rate: T.nilable(String),
+                grouping_key: T.nilable(String)
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The key in the event data to extract the unit rate from.
+              unit_rating_key:,
+              # If provided, this amount will be used as the unit rate when an event does not
+              # have a value for the `unit_rating_key`. If not provided, events missing a unit
+              # rate will be ignored.
+              default_unit_rate: nil,
+              # An optional key in the event data to group by (e.g., event ID). All events will
+              # also be grouped by their unit rate.
+              grouping_key: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  unit_rating_key: String,
+                  default_unit_rate: T.nilable(String),
+                  grouping_key: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
+          end
         end
-        def to_hash
+
+        sig do
+          override.returns(T::Array[Orb::PriceCreateParams::Body::Variants])
+        end
+        def self.variants
         end
       end
     end

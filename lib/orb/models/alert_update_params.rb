@@ -7,13 +7,20 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute alert_configuration_id
+      #
+      #   @return [String]
+      required :alert_configuration_id, String
+
       # @!attribute thresholds
       #   The thresholds that define the values at which the alert will be triggered.
       #
       #   @return [Array<Orb::Models::Threshold>]
       required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }
 
-      # @!method initialize(thresholds:, request_options: {})
+      # @!method initialize(alert_configuration_id:, thresholds:, request_options: {})
+      #   @param alert_configuration_id [String]
+      #
       #   @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]

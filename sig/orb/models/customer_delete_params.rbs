@@ -1,14 +1,23 @@
 module Orb
   module Models
-    type customer_delete_params = {  } & Orb::Internal::Type::request_parameters
+    type customer_delete_params =
+      { customer_id: String } & Orb::Internal::Type::request_parameters
 
     class CustomerDeleteParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: Orb::request_opts) -> void
+      attr_accessor customer_id: String
 
-      def to_hash: -> { request_options: Orb::RequestOptions }
+      def initialize: (
+        customer_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        customer_id: String,
+        request_options: Orb::RequestOptions
+      }
     end
   end
 end

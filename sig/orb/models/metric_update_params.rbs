@@ -1,21 +1,25 @@
 module Orb
   module Models
     type metric_update_params =
-      { metadata: ::Hash[Symbol, String?]? }
+      { metric_id: String, metadata: ::Hash[Symbol, String?]? }
       & Orb::Internal::Type::request_parameters
 
     class MetricUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor metric_id: String
+
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       def initialize: (
+        metric_id: String,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
+        metric_id: String,
         metadata: ::Hash[Symbol, String?]?,
         request_options: Orb::RequestOptions
       }

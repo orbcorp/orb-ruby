@@ -9,6 +9,11 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
+          # @!attribute customer_id
+          #
+          #   @return [String]
+          required :customer_id, String
+
           # @!attribute amount
           #   The amount to increment when the threshold is reached.
           #
@@ -63,9 +68,11 @@ module Orb
                    enum: -> { Orb::Customers::Credits::TopUpCreateParams::ExpiresAfterUnit },
                    nil?: true
 
-          # @!method initialize(amount:, currency:, invoice_settings:, per_unit_cost_basis:, threshold:, active_from: nil, expires_after: nil, expires_after_unit: nil, request_options: {})
+          # @!method initialize(customer_id:, amount:, currency:, invoice_settings:, per_unit_cost_basis:, threshold:, active_from: nil, expires_after: nil, expires_after_unit: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Customers::Credits::TopUpCreateParams} for more details.
+          #
+          #   @param customer_id [String]
           #
           #   @param amount [String] The amount to increment when the threshold is reached.
           #
