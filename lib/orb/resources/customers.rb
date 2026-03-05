@@ -147,9 +147,10 @@ module Orb
       #
       # This endpoint can be used to update the `payment_provider`,
       # `payment_provider_id`, `name`, `email`, `email_delivery`, `tax_id`,
-      # `auto_collection`, `metadata`, `shipping_address`, `billing_address`, and
-      # `additional_emails` of an existing customer. Other fields on a customer are
-      # currently immutable.
+      # `auto_collection`, `metadata`, `shipping_address`, `billing_address`,
+      # `additional_emails`, and `currency` of an existing customer. `currency` can only
+      # be set if it has not already been set on the customer. Other fields on a
+      # customer are currently immutable.
       #
       # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
@@ -165,7 +166,7 @@ module Orb
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
       #
-      # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
+      # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. This c
       #
       # @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #
@@ -406,7 +407,7 @@ module Orb
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
       #
-      # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
+      # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. This c
       #
       # @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #
