@@ -48,8 +48,10 @@ module Orb
       optional :billing_address, -> { Orb::AddressInput }, nil?: true
 
       # @!attribute currency
-      #   An ISO 4217 currency string used for the customer's invoices and balance. If not
-      #   set at creation time, will be set at subscription creation time.
+      #   An ISO 4217 currency string used for the customer's invoices and balance. This
+      #   can only be set if the customer does not already have a currency configured. If
+      #   not set at creation or update time, it will be set at subscription creation
+      #   time.
       #
       #   @return [String, nil]
       optional :currency, String, nil?: true
@@ -302,7 +304,7 @@ module Orb
       #
       #   @param billing_address [Orb::Models::AddressInput, nil]
       #
-      #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
+      #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. This c
       #
       #   @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #

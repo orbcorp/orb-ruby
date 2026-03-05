@@ -50,8 +50,10 @@ module Orb
       sig { params(billing_address: T.nilable(Orb::AddressInput::OrHash)).void }
       attr_writer :billing_address
 
-      # An ISO 4217 currency string used for the customer's invoices and balance. If not
-      # set at creation time, will be set at subscription creation time.
+      # An ISO 4217 currency string used for the customer's invoices and balance. This
+      # can only be set if the customer does not already have a currency configured. If
+      # not set at creation or update time, it will be set at subscription creation
+      # time.
       sig { returns(T.nilable(String)) }
       attr_accessor :currency
 
@@ -375,8 +377,10 @@ module Orb
         # will be inherited from the account-level setting.
         auto_issuance: nil,
         billing_address: nil,
-        # An ISO 4217 currency string used for the customer's invoices and balance. If not
-        # set at creation time, will be set at subscription creation time.
+        # An ISO 4217 currency string used for the customer's invoices and balance. This
+        # can only be set if the customer does not already have a currency configured. If
+        # not set at creation or update time, it will be set at subscription creation
+        # time.
         currency: nil,
         # A valid customer email, to be used for invoicing and notifications.
         email: nil,
