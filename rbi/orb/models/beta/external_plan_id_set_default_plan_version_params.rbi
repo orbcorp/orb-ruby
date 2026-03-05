@@ -15,17 +15,22 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :external_plan_id
+
         # Plan version to set as the default.
         sig { returns(Integer) }
         attr_accessor :version
 
         sig do
           params(
+            external_plan_id: String,
             version: Integer,
             request_options: Orb::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
+          external_plan_id:,
           # Plan version to set as the default.
           version:,
           request_options: {}
@@ -34,7 +39,11 @@ module Orb
 
         sig do
           override.returns(
-            { version: Integer, request_options: Orb::RequestOptions }
+            {
+              external_plan_id: String,
+              version: Integer,
+              request_options: Orb::RequestOptions
+            }
           )
         end
         def to_hash

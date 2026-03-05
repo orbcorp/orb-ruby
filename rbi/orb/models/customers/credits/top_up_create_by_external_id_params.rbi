@@ -16,6 +16,9 @@ module Orb
               )
             end
 
+          sig { returns(String) }
+          attr_accessor :external_customer_id
+
           # The amount to increment when the threshold is reached.
           sig { returns(String) }
           attr_accessor :amount
@@ -72,6 +75,7 @@ module Orb
 
           sig do
             params(
+              external_customer_id: String,
               amount: String,
               currency: String,
               invoice_settings:
@@ -88,6 +92,7 @@ module Orb
             ).returns(T.attached_class)
           end
           def self.new(
+            external_customer_id:,
             # The amount to increment when the threshold is reached.
             amount:,
             # The currency or custom pricing unit to use for this top-up. If this is a
@@ -115,6 +120,7 @@ module Orb
           sig do
             override.returns(
               {
+                external_customer_id: String,
                 amount: String,
                 currency: String,
                 invoice_settings:

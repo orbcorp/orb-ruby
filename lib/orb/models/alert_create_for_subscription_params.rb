@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute thresholds
       #   The thresholds that define the values at which the alert will be triggered.
       #
@@ -25,7 +30,9 @@ module Orb
       #   @return [String, nil]
       optional :metric_id, String, nil?: true
 
-      # @!method initialize(thresholds:, type:, metric_id: nil, request_options: {})
+      # @!method initialize(subscription_id:, thresholds:, type:, metric_id: nil, request_options: {})
+      #   @param subscription_id [String]
+      #
       #   @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
       #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.

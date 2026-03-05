@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute change_option
       #
       #   @return [Symbol, Orb::Models::SubscriptionRedeemCouponParams::ChangeOption]
@@ -39,9 +44,11 @@ module Orb
       #   @return [String, nil]
       optional :coupon_redemption_code, String, nil?: true
 
-      # @!method initialize(change_option:, allow_invoice_credit_or_void: nil, change_date: nil, coupon_id: nil, coupon_redemption_code: nil, request_options: {})
+      # @!method initialize(subscription_id:, change_option:, allow_invoice_credit_or_void: nil, change_date: nil, coupon_id: nil, coupon_redemption_code: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionRedeemCouponParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param change_option [Symbol, Orb::Models::SubscriptionRedeemCouponParams::ChangeOption]
       #

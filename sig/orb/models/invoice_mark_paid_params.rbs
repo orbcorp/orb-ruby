@@ -1,12 +1,19 @@
 module Orb
   module Models
     type invoice_mark_paid_params =
-      { payment_received_date: Date, external_id: String?, notes: String? }
+      {
+        invoice_id: String,
+        payment_received_date: Date,
+        external_id: String?,
+        notes: String?
+      }
       & Orb::Internal::Type::request_parameters
 
     class InvoiceMarkPaidParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor invoice_id: String
 
       attr_accessor payment_received_date: Date
 
@@ -15,6 +22,7 @@ module Orb
       attr_accessor notes: String?
 
       def initialize: (
+        invoice_id: String,
         payment_received_date: Date,
         ?external_id: String?,
         ?notes: String?,
@@ -22,6 +30,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        invoice_id: String,
         payment_received_date: Date,
         external_id: String?,
         notes: String?,

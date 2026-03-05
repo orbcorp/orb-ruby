@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute auto_collection
       #   Determines whether issued invoices for this subscription will automatically be
       #   charged with the saved payment method on the due date. This property defaults to
@@ -47,9 +52,11 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!method initialize(auto_collection: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @!method initialize(subscription_id:, auto_collection: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionUpdateParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
       #

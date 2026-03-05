@@ -14,6 +14,9 @@ module Orb
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       sig do
         returns(
           Orb::SubscriptionSchedulePlanChangeParams::ChangeOption::OrSymbol
@@ -208,6 +211,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           change_option:
             Orb::SubscriptionSchedulePlanChangeParams::ChangeOption::OrSymbol,
           add_adjustments:
@@ -273,6 +277,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         change_option:,
         # Additional adjustments to be added to the subscription. (Only available for
         # accounts that have migrated off of legacy subscription overrides)
@@ -362,6 +367,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             change_option:
               Orb::SubscriptionSchedulePlanChangeParams::ChangeOption::OrSymbol,
             add_adjustments:

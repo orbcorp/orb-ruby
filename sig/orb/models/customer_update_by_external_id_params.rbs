@@ -2,6 +2,7 @@ module Orb
   module Models
     type customer_update_by_external_id_params =
       {
+        id: String,
         accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
@@ -27,6 +28,8 @@ module Orb
     class CustomerUpdateByExternalIDParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor id: String
 
       attr_accessor accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?
 
@@ -67,6 +70,7 @@ module Orb
       attr_accessor tax_id: Orb::CustomerTaxID?
 
       def initialize: (
+        id: String,
         ?accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
@@ -90,6 +94,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        id: String,
         accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,

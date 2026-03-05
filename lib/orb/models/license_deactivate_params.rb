@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute license_id
+      #
+      #   @return [String]
+      required :license_id, String
+
       # @!attribute end_date
       #   The date to deactivate the license. If not provided, defaults to end of day
       #   today in the customer's timezone.
@@ -14,9 +19,11 @@ module Orb
       #   @return [Date, nil]
       optional :end_date, Date, nil?: true
 
-      # @!method initialize(end_date: nil, request_options: {})
+      # @!method initialize(license_id:, end_date: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::LicenseDeactivateParams} for more details.
+      #
+      #   @param license_id [String]
       #
       #   @param end_date [Date, nil] The date to deactivate the license. If not provided, defaults to end of day toda
       #

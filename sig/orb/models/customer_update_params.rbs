@@ -2,6 +2,7 @@ module Orb
   module Models
     type customer_update_params =
       {
+        customer_id: String,
         accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,
@@ -27,6 +28,8 @@ module Orb
     class CustomerUpdateParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor customer_id: String
 
       attr_accessor accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?
 
@@ -67,6 +70,7 @@ module Orb
       attr_accessor tax_id: Orb::CustomerTaxID?
 
       def initialize: (
+        customer_id: String,
         ?accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         ?additional_emails: ::Array[String]?,
         ?auto_collection: bool?,
@@ -90,6 +94,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        customer_id: String,
         accounting_sync_configuration: Orb::NewAccountingSyncConfiguration?,
         additional_emails: ::Array[String]?,
         auto_collection: bool?,

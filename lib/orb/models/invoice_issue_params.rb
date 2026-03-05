@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute invoice_id
+      #
+      #   @return [String]
+      required :invoice_id, String
+
       # @!attribute synchronous
       #   If true, the invoice will be issued synchronously. If false, the invoice will be
       #   issued asynchronously. The synchronous option is only available for invoices
@@ -17,9 +22,11 @@ module Orb
       #   @return [Boolean, nil]
       optional :synchronous, Orb::Internal::Type::Boolean
 
-      # @!method initialize(synchronous: nil, request_options: {})
+      # @!method initialize(invoice_id:, synchronous: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceIssueParams} for more details.
+      #
+      #   @param invoice_id [String]
       #
       #   @param synchronous [Boolean] If true, the invoice will be issued synchronously. If false, the invoice will be
       #

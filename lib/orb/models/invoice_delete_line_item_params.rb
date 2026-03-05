@@ -12,8 +12,14 @@ module Orb
       #   @return [String]
       required :invoice_id, String
 
-      # @!method initialize(invoice_id:, request_options: {})
+      # @!attribute line_item_id
+      #
+      #   @return [String]
+      required :line_item_id, String
+
+      # @!method initialize(invoice_id:, line_item_id:, request_options: {})
       #   @param invoice_id [String]
+      #   @param line_item_id [String]
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

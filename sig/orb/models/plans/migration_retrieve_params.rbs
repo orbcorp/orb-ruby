@@ -2,7 +2,8 @@ module Orb
   module Models
     module Plans
       type migration_retrieve_params =
-        { plan_id: String } & Orb::Internal::Type::request_parameters
+        { plan_id: String, migration_id: String }
+        & Orb::Internal::Type::request_parameters
 
       class MigrationRetrieveParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
@@ -10,13 +11,17 @@ module Orb
 
         attr_accessor plan_id: String
 
+        attr_accessor migration_id: String
+
         def initialize: (
           plan_id: String,
+          migration_id: String,
           ?request_options: Orb::request_opts
         ) -> void
 
         def to_hash: -> {
           plan_id: String,
+          migration_id: String,
           request_options: Orb::RequestOptions
         }
       end

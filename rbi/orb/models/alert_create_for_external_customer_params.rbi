@@ -14,6 +14,9 @@ module Orb
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :external_customer_id
+
       # The case sensitive currency or custom pricing unit to use for this alert.
       sig { returns(String) }
       attr_accessor :currency
@@ -28,6 +31,7 @@ module Orb
 
       sig do
         params(
+          external_customer_id: String,
           currency: String,
           type: Orb::AlertCreateForExternalCustomerParams::Type::OrSymbol,
           thresholds: T.nilable(T::Array[Orb::Threshold::OrHash]),
@@ -35,6 +39,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        external_customer_id:,
         # The case sensitive currency or custom pricing unit to use for this alert.
         currency:,
         # The type of alert to create. This must be a valid alert type.
@@ -48,6 +53,7 @@ module Orb
       sig do
         override.returns(
           {
+            external_customer_id: String,
             currency: String,
             type: Orb::AlertCreateForExternalCustomerParams::Type::OrSymbol,
             thresholds: T.nilable(T::Array[Orb::Threshold]),

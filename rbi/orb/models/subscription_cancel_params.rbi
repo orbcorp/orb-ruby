@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionCancelParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_id
+
       # Determines the timing of subscription cancellation
       sig { returns(Orb::SubscriptionCancelParams::CancelOption::OrSymbol) }
       attr_accessor :cancel_option
@@ -28,6 +31,7 @@ module Orb
 
       sig do
         params(
+          subscription_id: String,
           cancel_option: Orb::SubscriptionCancelParams::CancelOption::OrSymbol,
           allow_invoice_credit_or_void: T.nilable(T::Boolean),
           cancellation_date: T.nilable(Time),
@@ -35,6 +39,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_id:,
         # Determines the timing of subscription cancellation
         cancel_option:,
         # If false, this request will fail if it would void an issued invoice or create a
@@ -51,6 +56,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_id: String,
             cancel_option:
               Orb::SubscriptionCancelParams::CancelOption::OrSymbol,
             allow_invoice_credit_or_void: T.nilable(T::Boolean),

@@ -7,7 +7,13 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute credit_note_id
+      #
+      #   @return [String]
+      required :credit_note_id, String
+
+      # @!method initialize(credit_note_id:, request_options: {})
+      #   @param credit_note_id [String]
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

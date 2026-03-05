@@ -15,6 +15,9 @@ module Orb
             )
           end
 
+        sig { returns(String) }
+        attr_accessor :external_customer_id
+
         # The ledger currency or custom pricing unit to use.
         sig { returns(T.nilable(String)) }
         attr_accessor :currency
@@ -53,6 +56,7 @@ module Orb
 
         sig do
           params(
+            external_customer_id: String,
             currency: T.nilable(String),
             cursor: T.nilable(String),
             effective_date_gt: T.nilable(Time),
@@ -65,6 +69,7 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          external_customer_id:,
           # The ledger currency or custom pricing unit to use.
           currency: nil,
           # Cursor for pagination. This can be populated by the `next_cursor` value returned
@@ -86,6 +91,7 @@ module Orb
         sig do
           override.returns(
             {
+              external_customer_id: String,
               currency: T.nilable(String),
               cursor: T.nilable(String),
               effective_date_gt: T.nilable(Time),

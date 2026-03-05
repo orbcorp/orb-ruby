@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute subscription_id
+      #
+      #   @return [String]
+      required :subscription_id, String
+
       # @!attribute billable_metric_id
       #   When specified in conjunction with `group_by`, this parameter filters usage to a
       #   single billable metric. Note that both `group_by` and `billable_metric_id` must
@@ -68,9 +73,11 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionFetchUsageParams::ViewMode, nil]
       optional :view_mode, enum: -> { Orb::SubscriptionFetchUsageParams::ViewMode }, nil?: true
 
-      # @!method initialize(billable_metric_id: nil, first_dimension_key: nil, first_dimension_value: nil, granularity: nil, group_by: nil, second_dimension_key: nil, second_dimension_value: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
+      # @!method initialize(subscription_id:, billable_metric_id: nil, first_dimension_key: nil, first_dimension_value: nil, granularity: nil, group_by: nil, second_dimension_key: nil, second_dimension_value: nil, timeframe_end: nil, timeframe_start: nil, view_mode: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionFetchUsageParams} for more details.
+      #
+      #   @param subscription_id [String]
       #
       #   @param billable_metric_id [String, nil] When specified in conjunction with `group_by`, this parameter filters usage to a
       #

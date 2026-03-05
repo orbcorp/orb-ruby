@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::InvoiceMarkPaidParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :invoice_id
+
       # A date string to specify the date of the payment.
       sig { returns(Date) }
       attr_accessor :payment_received_date
@@ -25,6 +28,7 @@ module Orb
 
       sig do
         params(
+          invoice_id: String,
           payment_received_date: Date,
           external_id: T.nilable(String),
           notes: T.nilable(String),
@@ -32,6 +36,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        invoice_id:,
         # A date string to specify the date of the payment.
         payment_received_date:,
         # An optional external ID to associate with the payment.
@@ -45,6 +50,7 @@ module Orb
       sig do
         override.returns(
           {
+            invoice_id: String,
             payment_received_date: Date,
             external_id: T.nilable(String),
             notes: T.nilable(String),

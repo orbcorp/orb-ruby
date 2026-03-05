@@ -152,12 +152,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
 
   def test_create_entry_required_params
     response =
-      @orb.customers.credits.ledger.create_entry(
-        "customer_id",
-        amount: 0,
-        block_id: "block_id",
-        entry_type: :void
-      )
+      @orb.customers.credits.ledger.create_entry("customer_id", body: {amount: 0, entry_type: :increment})
 
     assert_pattern do
       response => Orb::Models::Customers::Credits::LedgerCreateEntryResponse
@@ -300,9 +295,7 @@ class Orb::Test::Resources::Customers::Credits::LedgerTest < Orb::Test::Resource
     response =
       @orb.customers.credits.ledger.create_entry_by_external_id(
         "external_customer_id",
-        amount: 0,
-        block_id: "block_id",
-        entry_type: :void
+        body: {amount: 0, entry_type: :increment}
       )
 
     assert_pattern do

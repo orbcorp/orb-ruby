@@ -20,37 +20,13 @@ module Orb
 
           def create_entry: (
             String customer_id,
-            amount: Float,
-            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
-            target_expiry_date: Date,
-            block_id: String,
-            ?currency: String?,
-            ?description: String?,
-            ?effective_date: Time?,
-            ?expiry_date: Time?,
-            ?filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
-            ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
-            ?metadata: ::Hash[Symbol, String?]?,
-            ?per_unit_cost_basis: String?,
-            ?void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
+            body: Orb::Models::Customers::Credits::LedgerCreateEntryParams::body,
             ?request_options: Orb::request_opts
           ) -> Orb::Models::Customers::Credits::ledger_create_entry_response
 
           def create_entry_by_external_id: (
             String external_customer_id,
-            amount: Float,
-            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::entry_type,
-            target_expiry_date: Date,
-            block_id: String,
-            ?currency: String?,
-            ?description: String?,
-            ?effective_date: Time?,
-            ?expiry_date: Time?,
-            ?filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::Filter]?,
-            ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryByExternalIDParams::InvoiceSettings?,
-            ?metadata: ::Hash[Symbol, String?]?,
-            ?per_unit_cost_basis: String?,
-            ?void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::void_reason?,
+            body: Orb::Models::Customers::Credits::LedgerCreateEntryByExternalIDParams::body,
             ?request_options: Orb::request_opts
           ) -> Orb::Models::Customers::Credits::ledger_create_entry_by_external_id_response
 

@@ -3,6 +3,7 @@ module Orb
     module Beta
       type external_plan_id_create_plan_version_params =
         {
+          external_plan_id: String,
           version: Integer,
           add_adjustments: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment]?,
           add_prices: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice]?,
@@ -17,6 +18,8 @@ module Orb
       class ExternalPlanIDCreatePlanVersionParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
+
+        attr_accessor external_plan_id: String
 
         attr_accessor version: Integer
 
@@ -35,6 +38,7 @@ module Orb
         attr_accessor set_as_default: bool?
 
         def initialize: (
+          external_plan_id: String,
           version: Integer,
           ?add_adjustments: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment]?,
           ?add_prices: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice]?,
@@ -47,6 +51,7 @@ module Orb
         ) -> void
 
         def to_hash: -> {
+          external_plan_id: String,
           version: Integer,
           add_adjustments: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment]?,
           add_prices: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice]?,

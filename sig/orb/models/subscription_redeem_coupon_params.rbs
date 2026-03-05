@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_redeem_coupon_params =
       {
+        subscription_id: String,
         change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
         allow_invoice_credit_or_void: bool?,
         change_date: Time?,
@@ -14,6 +15,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor subscription_id: String
+
       attr_accessor change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option
 
       attr_accessor allow_invoice_credit_or_void: bool?
@@ -25,6 +28,7 @@ module Orb
       attr_accessor coupon_redemption_code: String?
 
       def initialize: (
+        subscription_id: String,
         change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
         ?allow_invoice_credit_or_void: bool?,
         ?change_date: Time?,
@@ -34,6 +38,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         change_option: Orb::Models::SubscriptionRedeemCouponParams::change_option,
         allow_invoice_credit_or_void: bool?,
         change_date: Time?,

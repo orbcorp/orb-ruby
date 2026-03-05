@@ -11,6 +11,9 @@ module Orb
           T.any(Orb::SubscriptionChangeApplyParams, Orb::Internal::AnyHash)
         end
 
+      sig { returns(String) }
+      attr_accessor :subscription_change_id
+
       # Description to apply to the balance transaction representing this credit.
       sig { returns(T.nilable(String)) }
       attr_accessor :description
@@ -41,6 +44,7 @@ module Orb
 
       sig do
         params(
+          subscription_change_id: String,
           description: T.nilable(String),
           mark_as_paid: T.nilable(T::Boolean),
           payment_external_id: T.nilable(String),
@@ -51,6 +55,7 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        subscription_change_id:,
         # Description to apply to the balance transaction representing this credit.
         description: nil,
         # Mark all pending invoices that are payable as paid. If amount is also provided,
@@ -74,6 +79,7 @@ module Orb
       sig do
         override.returns(
           {
+            subscription_change_id: String,
             description: T.nilable(String),
             mark_as_paid: T.nilable(T::Boolean),
             payment_external_id: T.nilable(String),

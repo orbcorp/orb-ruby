@@ -7,6 +7,11 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute item_id
+      #
+      #   @return [String]
+      required :item_id, String
+
       # @!attribute external_connections
       #
       #   @return [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
@@ -27,9 +32,11 @@ module Orb
       #   @return [String, nil]
       optional :name, String, nil?: true
 
-      # @!method initialize(external_connections: nil, metadata: nil, name: nil, request_options: {})
+      # @!method initialize(item_id:, external_connections: nil, metadata: nil, name: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::ItemUpdateParams} for more details.
+      #
+      #   @param item_id [String]
       #
       #   @param external_connections [Array<Orb::Models::ItemUpdateParams::ExternalConnection>, nil]
       #

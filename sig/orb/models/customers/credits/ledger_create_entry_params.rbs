@@ -4,19 +4,8 @@ module Orb
       module Credits
         type ledger_create_entry_params =
           {
-            amount: Float,
-            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
-            currency: String?,
-            description: String?,
-            effective_date: Time?,
-            expiry_date: Time?,
-            filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
-            invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
-            metadata: ::Hash[Symbol, String?]?,
-            per_unit_cost_basis: String?,
-            target_expiry_date: Date,
-            block_id: String,
-            void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?
+            customer_id: String,
+            body: Orb::Models::Customers::Credits::LedgerCreateEntryParams::body
           }
           & Orb::Internal::Type::request_parameters
 
@@ -24,204 +13,403 @@ module Orb
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
 
-          attr_accessor amount: Float
+          attr_accessor customer_id: String
 
-          attr_accessor entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type
-
-          attr_accessor currency: String?
-
-          attr_accessor description: String?
-
-          attr_accessor effective_date: Time?
-
-          attr_accessor expiry_date: Time?
-
-          attr_accessor filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?
-
-          attr_accessor invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?
-
-          attr_accessor metadata: ::Hash[Symbol, String?]?
-
-          attr_accessor per_unit_cost_basis: String?
-
-          attr_accessor target_expiry_date: Date
-
-          attr_accessor block_id: String
-
-          attr_accessor void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?
+          attr_accessor body: Orb::Models::Customers::Credits::LedgerCreateEntryParams::body
 
           def initialize: (
-            amount: Float,
-            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
-            target_expiry_date: Date,
-            block_id: String,
-            ?currency: String?,
-            ?description: String?,
-            ?effective_date: Time?,
-            ?expiry_date: Time?,
-            ?filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
-            ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
-            ?metadata: ::Hash[Symbol, String?]?,
-            ?per_unit_cost_basis: String?,
-            ?void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
+            customer_id: String,
+            body: Orb::Models::Customers::Credits::LedgerCreateEntryParams::body,
             ?request_options: Orb::request_opts
           ) -> void
 
           def to_hash: -> {
-            amount: Float,
-            entry_type: Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type,
-            currency: String?,
-            description: String?,
-            effective_date: Time?,
-            expiry_date: Time?,
-            filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Filter]?,
-            invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings?,
-            metadata: ::Hash[Symbol, String?]?,
-            per_unit_cost_basis: String?,
-            target_expiry_date: Date,
-            block_id: String,
-            void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason?,
+            customer_id: String,
+            body: Orb::Models::Customers::Credits::LedgerCreateEntryParams::body,
             request_options: Orb::RequestOptions
           }
 
-          type entry_type = :amendment
+          type body =
+            Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment
+            | Orb::Customers::Credits::LedgerCreateEntryParams::Body::Decrement
+            | Orb::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange
+            | Orb::Customers::Credits::LedgerCreateEntryParams::Body::Void
+            | Orb::Customers::Credits::LedgerCreateEntryParams::Body::Amendment
 
-          module EntryType
-            extend Orb::Internal::Type::Enum
+          module Body
+            extend Orb::Internal::Type::Union
 
-            AMENDMENT: :amendment
+            type increment =
+              {
+                amount: Float,
+                entry_type: :increment,
+                currency: String?,
+                description: String?,
+                effective_date: Time?,
+                expiry_date: Time?,
+                filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter]?,
+                invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings?,
+                metadata: ::Hash[Symbol, String?]?,
+                per_unit_cost_basis: String?
+              }
 
-            def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::entry_type]
-          end
+            class Increment < Orb::Internal::Type::BaseModel
+              attr_accessor amount: Float
 
-          type filter =
-            {
-              field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field,
-              operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator,
-              values: ::Array[String]
-            }
+              attr_accessor entry_type: :increment
 
-          class Filter < Orb::Internal::Type::BaseModel
-            attr_accessor field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field
+              attr_accessor currency: String?
 
-            attr_accessor operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator
+              attr_accessor description: String?
 
-            attr_accessor values: ::Array[String]
+              attr_accessor effective_date: Time?
 
-            def initialize: (
-              field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field,
-              operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator,
-              values: ::Array[String]
-            ) -> void
+              attr_accessor expiry_date: Time?
 
-            def to_hash: -> {
-              field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field,
-              operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator,
-              values: ::Array[String]
-            }
+              attr_accessor filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter]?
 
-            type field = :item_id
+              attr_accessor invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings?
 
-            module Field
-              extend Orb::Internal::Type::Enum
+              attr_accessor metadata: ::Hash[Symbol, String?]?
 
-              ITEM_ID: :item_id
+              attr_accessor per_unit_cost_basis: String?
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::field]
+              def initialize: (
+                amount: Float,
+                ?currency: String?,
+                ?description: String?,
+                ?effective_date: Time?,
+                ?expiry_date: Time?,
+                ?filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter]?,
+                ?invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?per_unit_cost_basis: String?,
+                ?entry_type: :increment
+              ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                entry_type: :increment,
+                currency: String?,
+                description: String?,
+                effective_date: Time?,
+                expiry_date: Time?,
+                filters: ::Array[Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter]?,
+                invoice_settings: Orb::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings?,
+                metadata: ::Hash[Symbol, String?]?,
+                per_unit_cost_basis: String?
+              }
+
+              type filter =
+                {
+                  field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::field,
+                  operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::operator,
+                  values: ::Array[String]
+                }
+
+              class Filter < Orb::Internal::Type::BaseModel
+                attr_accessor field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::field
+
+                attr_accessor operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::operator
+
+                attr_accessor values: ::Array[String]
+
+                def initialize: (
+                  field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::field,
+                  operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::operator,
+                  values: ::Array[String]
+                ) -> void
+
+                def to_hash: -> {
+                  field: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::field,
+                  operator: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::operator,
+                  values: ::Array[String]
+                }
+
+                type field = :item_id
+
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  ITEM_ID: :item_id
+
+                  def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::field]
+                end
+
+                type operator = :includes | :excludes
+
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES: :includes
+                  EXCLUDES: :excludes
+
+                  def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::Filter::operator]
+                end
+              end
+
+              type invoice_settings =
+                {
+                  auto_collection: bool,
+                  custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::custom_due_date?,
+                  invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::invoice_date?,
+                  item_id: String?,
+                  mark_as_paid: bool,
+                  memo: String?,
+                  net_terms: Integer?,
+                  require_successful_payment: bool
+                }
+
+              class InvoiceSettings < Orb::Internal::Type::BaseModel
+                attr_accessor auto_collection: bool
+
+                attr_accessor custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::custom_due_date?
+
+                attr_accessor invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::invoice_date?
+
+                attr_accessor item_id: String?
+
+                attr_reader mark_as_paid: bool?
+
+                def mark_as_paid=: (bool) -> bool
+
+                attr_accessor memo: String?
+
+                attr_accessor net_terms: Integer?
+
+                attr_reader require_successful_payment: bool?
+
+                def require_successful_payment=: (bool) -> bool
+
+                def initialize: (
+                  auto_collection: bool,
+                  ?custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::custom_due_date?,
+                  ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::invoice_date?,
+                  ?item_id: String?,
+                  ?mark_as_paid: bool,
+                  ?memo: String?,
+                  ?net_terms: Integer?,
+                  ?require_successful_payment: bool
+                ) -> void
+
+                def to_hash: -> {
+                  auto_collection: bool,
+                  custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::custom_due_date?,
+                  invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::invoice_date?,
+                  item_id: String?,
+                  mark_as_paid: bool,
+                  memo: String?,
+                  net_terms: Integer?,
+                  require_successful_payment: bool
+                }
+
+                type custom_due_date = Date | Time
+
+                module CustomDueDate
+                  extend Orb::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::custom_due_date]
+                end
+
+                type invoice_date = Date | Time
+
+                module InvoiceDate
+                  extend Orb::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Increment::InvoiceSettings::invoice_date]
+                end
+              end
             end
 
-            type operator = :includes | :excludes
+            type decrement =
+              {
+                amount: Float,
+                entry_type: :decrement,
+                currency: String?,
+                description: String?,
+                metadata: ::Hash[Symbol, String?]?
+              }
 
-            module Operator
-              extend Orb::Internal::Type::Enum
+            class Decrement < Orb::Internal::Type::BaseModel
+              attr_accessor amount: Float
 
-              INCLUDES: :includes
-              EXCLUDES: :excludes
+              attr_accessor entry_type: :decrement
 
-              def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Filter::operator]
-            end
-          end
+              attr_accessor currency: String?
 
-          type invoice_settings =
-            {
-              auto_collection: bool,
-              custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
-              invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
-              item_id: String?,
-              mark_as_paid: bool,
-              memo: String?,
-              net_terms: Integer?,
-              require_successful_payment: bool
-            }
+              attr_accessor description: String?
 
-          class InvoiceSettings < Orb::Internal::Type::BaseModel
-            attr_accessor auto_collection: bool
+              attr_accessor metadata: ::Hash[Symbol, String?]?
 
-            attr_accessor custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?
+              def initialize: (
+                amount: Float,
+                ?currency: String?,
+                ?description: String?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?entry_type: :decrement
+              ) -> void
 
-            attr_accessor invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?
-
-            attr_accessor item_id: String?
-
-            attr_reader mark_as_paid: bool?
-
-            def mark_as_paid=: (bool) -> bool
-
-            attr_accessor memo: String?
-
-            attr_accessor net_terms: Integer?
-
-            attr_reader require_successful_payment: bool?
-
-            def require_successful_payment=: (bool) -> bool
-
-            def initialize: (
-              auto_collection: bool,
-              ?custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
-              ?invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
-              ?item_id: String?,
-              ?mark_as_paid: bool,
-              ?memo: String?,
-              ?net_terms: Integer?,
-              ?require_successful_payment: bool
-            ) -> void
-
-            def to_hash: -> {
-              auto_collection: bool,
-              custom_due_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date?,
-              invoice_date: Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date?,
-              item_id: String?,
-              mark_as_paid: bool,
-              memo: String?,
-              net_terms: Integer?,
-              require_successful_payment: bool
-            }
-
-            type custom_due_date = Date | Time
-
-            module CustomDueDate
-              extend Orb::Internal::Type::Union
-
-              def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::custom_due_date]
+              def to_hash: -> {
+                amount: Float,
+                entry_type: :decrement,
+                currency: String?,
+                description: String?,
+                metadata: ::Hash[Symbol, String?]?
+              }
             end
 
-            type invoice_date = Date | Time
+            type expiration_change =
+              {
+                entry_type: :expiration_change,
+                target_expiry_date: Date,
+                amount: Float?,
+                block_id: String?,
+                currency: String?,
+                description: String?,
+                expiry_date: Time?,
+                metadata: ::Hash[Symbol, String?]?
+              }
 
-            module InvoiceDate
-              extend Orb::Internal::Type::Union
+            class ExpirationChange < Orb::Internal::Type::BaseModel
+              attr_accessor entry_type: :expiration_change
 
-              def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::InvoiceSettings::invoice_date]
+              attr_accessor target_expiry_date: Date
+
+              attr_accessor amount: Float?
+
+              attr_accessor block_id: String?
+
+              attr_accessor currency: String?
+
+              attr_accessor description: String?
+
+              attr_accessor expiry_date: Time?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              def initialize: (
+                target_expiry_date: Date,
+                ?amount: Float?,
+                ?block_id: String?,
+                ?currency: String?,
+                ?description: String?,
+                ?expiry_date: Time?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?entry_type: :expiration_change
+              ) -> void
+
+              def to_hash: -> {
+                entry_type: :expiration_change,
+                target_expiry_date: Date,
+                amount: Float?,
+                block_id: String?,
+                currency: String?,
+                description: String?,
+                expiry_date: Time?,
+                metadata: ::Hash[Symbol, String?]?
+              }
             end
-          end
 
-          type void_reason = :refund
+            type void_ =
+              {
+                amount: Float,
+                block_id: String,
+                entry_type: :void,
+                currency: String?,
+                description: String?,
+                metadata: ::Hash[Symbol, String?]?,
+                void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::void_reason?
+              }
 
-          module VoidReason
-            extend Orb::Internal::Type::Enum
+            class Void < Orb::Internal::Type::BaseModel
+              attr_accessor amount: Float
 
-            REFUND: :refund
+              attr_accessor block_id: String
 
-            def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::void_reason]
+              attr_accessor entry_type: :void
+
+              attr_accessor currency: String?
+
+              attr_accessor description: String?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              attr_accessor void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::void_reason?
+
+              def initialize: (
+                amount: Float,
+                block_id: String,
+                ?currency: String?,
+                ?description: String?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::void_reason?,
+                ?entry_type: :void
+              ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                block_id: String,
+                entry_type: :void,
+                currency: String?,
+                description: String?,
+                metadata: ::Hash[Symbol, String?]?,
+                void_reason: Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::void_reason?
+              }
+
+              type void_reason = :refund
+
+              module VoidReason
+                extend Orb::Internal::Type::Enum
+
+                REFUND: :refund
+
+                def self?.values: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::Void::void_reason]
+              end
+            end
+
+            type amendment =
+              {
+                amount: Float,
+                block_id: String,
+                entry_type: :amendment,
+                currency: String?,
+                description: String?,
+                metadata: ::Hash[Symbol, String?]?
+              }
+
+            class Amendment < Orb::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor block_id: String
+
+              attr_accessor entry_type: :amendment
+
+              attr_accessor currency: String?
+
+              attr_accessor description: String?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              def initialize: (
+                amount: Float,
+                block_id: String,
+                ?currency: String?,
+                ?description: String?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?entry_type: :amendment
+              ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                block_id: String,
+                entry_type: :amendment,
+                currency: String?,
+                description: String?,
+                metadata: ::Hash[Symbol, String?]?
+              }
+            end
+
+            def self?.variants: -> ::Array[Orb::Models::Customers::Credits::LedgerCreateEntryParams::body]
           end
         end
       end

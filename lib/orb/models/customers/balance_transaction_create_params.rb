@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute customer_id
+        #
+        #   @return [String]
+        required :customer_id, String
+
         # @!attribute amount
         #
         #   @return [String]
@@ -24,7 +29,9 @@ module Orb
         #   @return [String, nil]
         optional :description, String, nil?: true
 
-        # @!method initialize(amount:, type:, description: nil, request_options: {})
+        # @!method initialize(customer_id:, amount:, type:, description: nil, request_options: {})
+        #   @param customer_id [String]
+        #
         #   @param amount [String]
         #
         #   @param type [Symbol, Orb::Models::Customers::BalanceTransactionCreateParams::Type]

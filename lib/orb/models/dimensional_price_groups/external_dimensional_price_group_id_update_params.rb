@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute path_external_dimensional_price_group_id
+        #
+        #   @return [String]
+        required :path_external_dimensional_price_group_id, String
+
         # @!attribute body_external_dimensional_price_group_id
         #   An optional user-defined ID for this dimensional price group resource, used
         #   throughout the system as an alias for this dimensional price group. Use this
@@ -28,10 +33,12 @@ module Orb
         #   @return [Hash{Symbol=>String, nil}, nil]
         optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-        # @!method initialize(body_external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
+        # @!method initialize(path_external_dimensional_price_group_id:, body_external_dimensional_price_group_id: nil, metadata: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::DimensionalPriceGroups::ExternalDimensionalPriceGroupIDUpdateParams}
         #   for more details.
+        #
+        #   @param path_external_dimensional_price_group_id [String]
         #
         #   @param body_external_dimensional_price_group_id [String, nil] An optional user-defined ID for this dimensional price group resource, used thro
         #

@@ -8,6 +8,11 @@ module Orb
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
+        # @!attribute coupon_id
+        #
+        #   @return [String]
+        required :coupon_id, String
+
         # @!attribute cursor
         #   Cursor for pagination. This can be populated by the `next_cursor` value returned
         #   from the initial request.
@@ -21,9 +26,11 @@ module Orb
         #   @return [Integer, nil]
         optional :limit, Integer
 
-        # @!method initialize(cursor: nil, limit: nil, request_options: {})
+        # @!method initialize(coupon_id:, cursor: nil, limit: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Coupons::SubscriptionListParams} for more details.
+        #
+        #   @param coupon_id [String]
         #
         #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
         #

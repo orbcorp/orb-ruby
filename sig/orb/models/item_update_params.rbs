@@ -2,6 +2,7 @@ module Orb
   module Models
     type item_update_params =
       {
+        item_id: String,
         external_connections: ::Array[Orb::ItemUpdateParams::ExternalConnection]?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?
@@ -12,6 +13,8 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      attr_accessor item_id: String
+
       attr_accessor external_connections: ::Array[Orb::ItemUpdateParams::ExternalConnection]?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
@@ -19,6 +22,7 @@ module Orb
       attr_accessor name: String?
 
       def initialize: (
+        item_id: String,
         ?external_connections: ::Array[Orb::ItemUpdateParams::ExternalConnection]?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
@@ -26,6 +30,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        item_id: String,
         external_connections: ::Array[Orb::ItemUpdateParams::ExternalConnection]?,
         metadata: ::Hash[Symbol, String?]?,
         name: String?,

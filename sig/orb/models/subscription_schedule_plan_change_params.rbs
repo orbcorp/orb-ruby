@@ -2,6 +2,7 @@ module Orb
   module Models
     type subscription_schedule_plan_change_params =
       {
+        subscription_id: String,
         change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
         add_adjustments: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
         add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
@@ -34,6 +35,8 @@ module Orb
     class SubscriptionSchedulePlanChangeParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
+
+      attr_accessor subscription_id: String
 
       attr_accessor change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option
 
@@ -88,6 +91,7 @@ module Orb
       attr_accessor usage_customer_ids: ::Array[String]?
 
       def initialize: (
+        subscription_id: String,
         change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
         ?add_adjustments: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
         ?add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
@@ -118,6 +122,7 @@ module Orb
       ) -> void
 
       def to_hash: -> {
+        subscription_id: String,
         change_option: Orb::Models::SubscriptionSchedulePlanChangeParams::change_option,
         add_adjustments: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddAdjustment]?,
         add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,

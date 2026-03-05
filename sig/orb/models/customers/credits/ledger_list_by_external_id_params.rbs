@@ -4,6 +4,7 @@ module Orb
       module Credits
         type ledger_list_by_external_id_params =
           {
+            external_customer_id: String,
             created_at_gt: Time?,
             created_at_gte: Time?,
             created_at_lt: Time?,
@@ -20,6 +21,8 @@ module Orb
         class LedgerListByExternalIDParams < Orb::Internal::Type::BaseModel
           extend Orb::Internal::Type::RequestParameters::Converter
           include Orb::Internal::Type::RequestParameters
+
+          attr_accessor external_customer_id: String
 
           attr_accessor created_at_gt: Time?
 
@@ -44,6 +47,7 @@ module Orb
           attr_accessor minimum_amount: String?
 
           def initialize: (
+            external_customer_id: String,
             ?created_at_gt: Time?,
             ?created_at_gte: Time?,
             ?created_at_lt: Time?,
@@ -58,6 +62,7 @@ module Orb
           ) -> void
 
           def to_hash: -> {
+            external_customer_id: String,
             created_at_gt: Time?,
             created_at_gte: Time?,
             created_at_lt: Time?,

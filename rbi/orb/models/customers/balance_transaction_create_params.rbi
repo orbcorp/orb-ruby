@@ -16,6 +16,9 @@ module Orb
           end
 
         sig { returns(String) }
+        attr_accessor :customer_id
+
+        sig { returns(String) }
         attr_accessor :amount
 
         sig do
@@ -31,6 +34,7 @@ module Orb
 
         sig do
           params(
+            customer_id: String,
             amount: String,
             type:
               Orb::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
@@ -39,6 +43,7 @@ module Orb
           ).returns(T.attached_class)
         end
         def self.new(
+          customer_id:,
           amount:,
           type:,
           # An optional description that can be specified around this entry.
@@ -50,6 +55,7 @@ module Orb
         sig do
           override.returns(
             {
+              customer_id: String,
               amount: String,
               type:
                 Orb::Customers::BalanceTransactionCreateParams::Type::OrSymbol,
