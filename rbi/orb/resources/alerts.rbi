@@ -153,7 +153,9 @@ module Orb
           subscription_id: String,
           thresholds: T::Array[Orb::Threshold::OrHash],
           type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
+          grouping_keys: T.nilable(T::Array[String]),
           metric_id: T.nilable(String),
+          pricing_unit_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Alert)
       end
@@ -163,8 +165,14 @@ module Orb
         thresholds:,
         # The type of alert to create. This must be a valid alert type.
         type:,
+        # The property keys to group cost alerts by. Only applicable for cost_exceeded
+        # alerts.
+        grouping_keys: nil,
         # The metric to track usage for.
         metric_id: nil,
+        # The pricing unit to use for grouped cost alerts. Required when grouping_keys is
+        # set.
+        pricing_unit_id: nil,
         request_options: {}
       )
       end

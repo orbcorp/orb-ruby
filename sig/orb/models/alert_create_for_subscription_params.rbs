@@ -5,7 +5,9 @@ module Orb
         subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
-        metric_id: String?
+        grouping_keys: ::Array[String]?,
+        metric_id: String?,
+        pricing_unit_id: String?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -19,13 +21,19 @@ module Orb
 
       attr_accessor type: Orb::Models::AlertCreateForSubscriptionParams::type_
 
+      attr_accessor grouping_keys: ::Array[String]?
+
       attr_accessor metric_id: String?
+
+      attr_accessor pricing_unit_id: String?
 
       def initialize: (
         subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        ?grouping_keys: ::Array[String]?,
         ?metric_id: String?,
+        ?pricing_unit_id: String?,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -33,7 +41,9 @@ module Orb
         subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        grouping_keys: ::Array[String]?,
         metric_id: String?,
+        pricing_unit_id: String?,
         request_options: Orb::RequestOptions
       }
 

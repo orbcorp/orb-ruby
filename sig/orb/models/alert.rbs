@@ -13,6 +13,7 @@ module Orb
         thresholds: ::Array[Orb::Threshold]?,
         type: Orb::Models::Alert::type_,
         balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
+        grouping_keys: ::Array[String]?,
         license_type: Orb::Alert::LicenseType?
       }
 
@@ -39,6 +40,8 @@ module Orb
 
       attr_accessor balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?
 
+      attr_accessor grouping_keys: ::Array[String]?
+
       attr_accessor license_type: Orb::Alert::LicenseType?
 
       def initialize: (
@@ -53,6 +56,7 @@ module Orb
         thresholds: ::Array[Orb::Threshold]?,
         type: Orb::Models::Alert::type_,
         ?balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
+        ?grouping_keys: ::Array[String]?,
         ?license_type: Orb::Alert::LicenseType?
       ) -> void
 
@@ -68,6 +72,7 @@ module Orb
         thresholds: ::Array[Orb::Threshold]?,
         type: Orb::Models::Alert::type_,
         balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
+        grouping_keys: ::Array[String]?,
         license_type: Orb::Alert::LicenseType?
       }
 
