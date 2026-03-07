@@ -45,7 +45,9 @@ module Orb
         String subscription_id,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        ?grouping_keys: ::Array[String]?,
         ?metric_id: String?,
+        ?pricing_unit_id: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 

@@ -74,13 +74,20 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus] },
                nil?: true
 
+      # @!attribute grouping_keys
+      #   The property keys to group cost alerts by. Only present for cost alerts with
+      #   grouping enabled.
+      #
+      #   @return [Array<String>, nil]
+      optional :grouping_keys, Orb::Internal::Type::ArrayOf[String], nil?: true
+
       # @!attribute license_type
       #   Minified license type for alert serialization.
       #
       #   @return [Orb::Models::Alert::LicenseType, nil]
       optional :license_type, -> { Orb::Alert::LicenseType }, nil?: true
 
-      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil, license_type: nil)
+      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil, grouping_keys: nil, license_type: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Alert} for
       #   more details.
       #
@@ -111,6 +118,8 @@ module Orb
       #   @param type [Symbol, Orb::Models::Alert::Type] The type of alert. This must be a valid alert type.
       #
       #   @param balance_alert_status [Array<Orb::Models::Alert::BalanceAlertStatus>, nil] The current status of the alert. This field is only present for credit balance a
+      #
+      #   @param grouping_keys [Array<String>, nil] The property keys to group cost alerts by. Only present for cost alerts with gro
       #
       #   @param license_type [Orb::Models::Alert::LicenseType, nil] Minified license type for alert serialization.
 
