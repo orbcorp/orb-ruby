@@ -65,6 +65,11 @@ module Orb
       sig { returns(T.nilable(T::Array[Orb::Alert::BalanceAlertStatus])) }
       attr_accessor :balance_alert_status
 
+      # The property keys to group cost alerts by. Only present for cost alerts with
+      # grouping enabled.
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :grouping_keys
+
       # Minified license type for alert serialization.
       sig { returns(T.nilable(Orb::Alert::LicenseType)) }
       attr_reader :license_type
@@ -93,6 +98,7 @@ module Orb
           type: Orb::Alert::Type::OrSymbol,
           balance_alert_status:
             T.nilable(T::Array[Orb::Alert::BalanceAlertStatus::OrHash]),
+          grouping_keys: T.nilable(T::Array[String]),
           license_type: T.nilable(Orb::Alert::LicenseType::OrHash)
         ).returns(T.attached_class)
       end
@@ -121,6 +127,9 @@ module Orb
         # The current status of the alert. This field is only present for credit balance
         # alerts.
         balance_alert_status: nil,
+        # The property keys to group cost alerts by. Only present for cost alerts with
+        # grouping enabled.
+        grouping_keys: nil,
         # Minified license type for alert serialization.
         license_type: nil
       )
@@ -141,6 +150,7 @@ module Orb
             type: Orb::Alert::Type::TaggedSymbol,
             balance_alert_status:
               T.nilable(T::Array[Orb::Alert::BalanceAlertStatus]),
+            grouping_keys: T.nilable(T::Array[String]),
             license_type: T.nilable(Orb::Alert::LicenseType)
           }
         )

@@ -23,6 +23,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -48,6 +49,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -82,6 +84,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -108,6 +111,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -138,6 +142,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -164,6 +169,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -189,6 +195,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
@@ -214,6 +221,7 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
         thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
         type: Orb::Alert::Type,
         balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
         license_type: Orb::Alert::LicenseType | nil
       }
     end
