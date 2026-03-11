@@ -18,6 +18,9 @@ module Orb
     # @return [String]
     attr_reader :api_key
 
+    # @return [String, nil]
+    attr_reader :webhook_secret
+
     # @return [Orb::Resources::TopLevel]
     attr_reader :top_level
 
@@ -160,6 +163,8 @@ module Orb
     #
     # @param api_key [String, nil] Defaults to `ENV["ORB_API_KEY"]`
     #
+    # @param webhook_secret [String, nil] Defaults to `ENV["ORB_WEBHOOK_SECRET"]`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["ORB_BASE_URL"]`
     #
@@ -174,6 +179,7 @@ module Orb
     # @param idempotency_header [String]
     def initialize(
       api_key: ENV["ORB_API_KEY"],
+      webhook_secret: ENV["ORB_WEBHOOK_SECRET"],
       base_url: ENV["ORB_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -188,6 +194,7 @@ module Orb
       end
 
       @api_key = api_key.to_s
+      @webhook_secret = webhook_secret&.to_s
 
       super(
         base_url: base_url,
