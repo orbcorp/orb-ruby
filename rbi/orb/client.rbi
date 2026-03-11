@@ -13,6 +13,9 @@ module Orb
     sig { returns(String) }
     attr_reader :api_key
 
+    sig { returns(T.nilable(String)) }
+    attr_reader :webhook_secret
+
     sig { returns(Orb::Resources::TopLevel) }
     attr_reader :top_level
 
@@ -151,6 +154,7 @@ module Orb
     sig do
       params(
         api_key: T.nilable(String),
+        webhook_secret: T.nilable(String),
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
@@ -162,6 +166,8 @@ module Orb
     def self.new(
       # Defaults to `ENV["ORB_API_KEY"]`
       api_key: ENV["ORB_API_KEY"],
+      # Defaults to `ENV["ORB_WEBHOOK_SECRET"]`
+      webhook_secret: ENV["ORB_WEBHOOK_SECRET"],
       # Override the default base URL for the API, e.g.,
       # `"https://api.example.com/v2/"`. Defaults to `ENV["ORB_BASE_URL"]`
       base_url: ENV["ORB_BASE_URL"],
