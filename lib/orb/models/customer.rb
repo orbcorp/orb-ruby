@@ -407,6 +407,7 @@ module Orb
         STRIPE_CHARGE = :stripe_charge
         STRIPE_INVOICE = :stripe_invoice
         NETSUITE = :netsuite
+        NETSUITE_AMPERSAND = :netsuite_ampersand
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -451,6 +452,7 @@ module Orb
 
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite
+            NETSUITE_AMPERSAND = :netsuite_ampersand
 
             # @!method self.values
             #   @return [Array<Symbol>]

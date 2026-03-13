@@ -779,6 +779,11 @@ module Orb
             :netsuite,
             Orb::CustomerCreateParams::PaymentProvider::TaggedSymbol
           )
+        NETSUITE_AMPERSAND =
+          T.let(
+            :netsuite_ampersand,
+            Orb::CustomerCreateParams::PaymentProvider::TaggedSymbol
+          )
 
         sig do
           override.returns(
