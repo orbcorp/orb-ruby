@@ -159,7 +159,12 @@ module Orb
       end
 
       type payment_provider =
-        :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
+        :quickbooks
+        | :"bill.com"
+        | :stripe_charge
+        | :stripe_invoice
+        | :netsuite
+        | :netsuite_ampersand
 
       module PaymentProvider
         extend Orb::Internal::Type::Enum
@@ -169,6 +174,7 @@ module Orb
         STRIPE_CHARGE: :stripe_charge
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
+        NETSUITE_AMPERSAND: :netsuite_ampersand
 
         def self?.values: -> ::Array[Orb::Models::Customer::payment_provider]
       end
@@ -215,13 +221,14 @@ module Orb
             provider_type: Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type
           }
 
-          type provider_type = :quickbooks | :netsuite
+          type provider_type = :quickbooks | :netsuite | :netsuite_ampersand
 
           module ProviderType
             extend Orb::Internal::Type::Enum
 
             QUICKBOOKS: :quickbooks
             NETSUITE: :netsuite
+            NETSUITE_AMPERSAND: :netsuite_ampersand
 
             def self?.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
           end

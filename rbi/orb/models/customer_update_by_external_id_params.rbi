@@ -808,6 +808,11 @@ module Orb
             :netsuite,
             Orb::CustomerUpdateByExternalIDParams::PaymentProvider::TaggedSymbol
           )
+        NETSUITE_AMPERSAND =
+          T.let(
+            :netsuite_ampersand,
+            Orb::CustomerUpdateByExternalIDParams::PaymentProvider::TaggedSymbol
+          )
 
         sig do
           override.returns(
