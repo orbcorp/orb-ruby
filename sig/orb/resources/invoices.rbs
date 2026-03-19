@@ -111,6 +111,7 @@ module Orb
 
       def pay: (
         String invoice_id,
+        shared_payment_token_id: String,
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
 
