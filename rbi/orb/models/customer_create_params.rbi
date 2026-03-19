@@ -668,6 +668,12 @@ module Orb
           end
           attr_accessor :provider_type
 
+          # The ID of a shared payment token granted by an agent to use as the default
+          # payment instrument for this customer. When set, auto-collection will use this
+          # token instead of the customer's default payment method.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :default_shared_payment_token
+
           # List of Stripe payment method types to exclude for this customer. Excluded
           # payment methods will not be available for the customer to select during payment,
           # and will not be used for auto-collection. If a customer's default payment method
@@ -683,12 +689,17 @@ module Orb
             params(
               provider_type:
                 Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::OrSymbol,
+              default_shared_payment_token: T.nilable(String),
               excluded_payment_method_types: T::Array[String]
             ).returns(T.attached_class)
           end
           def self.new(
             # The payment provider to configure.
             provider_type:,
+            # The ID of a shared payment token granted by an agent to use as the default
+            # payment instrument for this customer. When set, auto-collection will use this
+            # token instead of the customer's default payment method.
+            default_shared_payment_token: nil,
             # List of Stripe payment method types to exclude for this customer. Excluded
             # payment methods will not be available for the customer to select during payment,
             # and will not be used for auto-collection. If a customer's default payment method
@@ -703,6 +714,7 @@ module Orb
               {
                 provider_type:
                   Orb::CustomerCreateParams::PaymentConfiguration::PaymentProvider::ProviderType::OrSymbol,
+                default_shared_payment_token: T.nilable(String),
                 excluded_payment_method_types: T::Array[String]
               }
             )

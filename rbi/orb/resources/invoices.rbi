@@ -377,15 +377,23 @@ module Orb
       )
       end
 
-      # This endpoint collects payment for an invoice using the customer's default
-      # payment method. This action can only be taken on invoices with status "issued".
+      # This endpoint collects payment for an invoice. By default, it uses the
+      # customer's default payment method. Optionally, a shared payment token (SPT) can
+      # be provided to pay using agent-granted credentials instead. This action can only
+      # be taken on invoices with status "issued".
       sig do
         params(
           invoice_id: String,
+          shared_payment_token_id: String,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Invoice)
       end
-      def pay(invoice_id, request_options: {})
+      def pay(
+        invoice_id,
+        # The ID of a shared payment token granted by an agent to use for this payment.
+        shared_payment_token_id:,
+        request_options: {}
+      )
       end
 
       # This endpoint allows an invoice's status to be set to the `void` status. This
