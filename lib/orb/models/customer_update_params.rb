@@ -356,6 +356,14 @@ module Orb
           required :provider_type,
                    enum: -> { Orb::CustomerUpdateParams::PaymentConfiguration::PaymentProvider::ProviderType }
 
+          # @!attribute default_shared_payment_token
+          #   The ID of a shared payment token granted by an agent to use as the default
+          #   payment instrument for this customer. When set, auto-collection will use this
+          #   token instead of the customer's default payment method.
+          #
+          #   @return [String, nil]
+          optional :default_shared_payment_token, String, nil?: true
+
           # @!attribute excluded_payment_method_types
           #   List of Stripe payment method types to exclude for this customer. Excluded
           #   payment methods will not be available for the customer to select during payment,
@@ -366,12 +374,14 @@ module Orb
           #   @return [Array<String>, nil]
           optional :excluded_payment_method_types, Orb::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(provider_type:, excluded_payment_method_types: nil)
+          # @!method initialize(provider_type:, default_shared_payment_token: nil, excluded_payment_method_types: nil)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::CustomerUpdateParams::PaymentConfiguration::PaymentProvider} for
           #   more details.
           #
           #   @param provider_type [Symbol, Orb::Models::CustomerUpdateParams::PaymentConfiguration::PaymentProvider::ProviderType] The payment provider to configure.
+          #
+          #   @param default_shared_payment_token [String, nil] The ID of a shared payment token granted by an agent to use as the default payme
           #
           #   @param excluded_payment_method_types [Array<String>] List of Stripe payment method types to exclude for this customer. Excluded payme
 

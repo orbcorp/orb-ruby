@@ -140,11 +140,14 @@ module Orb
         type payment_provider =
           {
             provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type,
+            default_shared_payment_token: String?,
             excluded_payment_method_types: ::Array[String]
           }
 
         class PaymentProvider < Orb::Internal::Type::BaseModel
           attr_accessor provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type
+
+          attr_accessor default_shared_payment_token: String?
 
           attr_reader excluded_payment_method_types: ::Array[String]?
 
@@ -154,11 +157,13 @@ module Orb
 
           def initialize: (
             provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type,
+            ?default_shared_payment_token: String?,
             ?excluded_payment_method_types: ::Array[String]
           ) -> void
 
           def to_hash: -> {
             provider_type: Orb::Models::CustomerUpdateByExternalIDParams::PaymentConfiguration::PaymentProvider::provider_type,
+            default_shared_payment_token: String?,
             excluded_payment_method_types: ::Array[String]
           }
 

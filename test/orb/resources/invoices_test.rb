@@ -510,8 +510,8 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
     end
   end
 
-  def test_pay
-    response = @orb.invoices.pay("invoice_id")
+  def test_pay_required_params
+    response = @orb.invoices.pay("invoice_id", shared_payment_token_id: "shared_payment_token_id")
 
     assert_pattern do
       response => Orb::Invoice
