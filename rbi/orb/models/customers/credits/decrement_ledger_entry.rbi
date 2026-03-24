@@ -74,6 +74,8 @@ module Orb
           sig { returns(Float) }
           attr_accessor :starting_balance
 
+          # This field is deprecated and will always be null. Decrements are not associated
+          # with individual events.
           sig { returns(T.nilable(String)) }
           attr_accessor :event_id
 
@@ -123,6 +125,8 @@ module Orb
             # `null`.
             metadata:,
             starting_balance:,
+            # This field is deprecated and will always be null. Decrements are not associated
+            # with individual events.
             event_id: nil,
             invoice_id: nil,
             price_id: nil
