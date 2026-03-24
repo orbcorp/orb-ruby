@@ -75,6 +75,10 @@ module Orb
           required :starting_balance, Float
 
           # @!attribute event_id
+          #   @deprecated
+          #
+          #   This field is deprecated and will always be null. Decrements are not associated
+          #   with individual events.
           #
           #   @return [String, nil]
           optional :event_id, String, nil?: true
@@ -119,7 +123,7 @@ module Orb
           #
           #   @param starting_balance [Float]
           #
-          #   @param event_id [String, nil]
+          #   @param event_id [String, nil] This field is deprecated and will always be null. Decrements are not associated
           #
           #   @param invoice_id [String, nil]
           #
