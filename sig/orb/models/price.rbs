@@ -52,6 +52,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -98,6 +99,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -143,6 +146,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -175,6 +179,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -319,6 +324,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -365,6 +371,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -410,6 +418,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -442,6 +451,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -587,6 +597,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -634,6 +645,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -678,6 +691,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -710,6 +724,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -854,6 +869,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -901,6 +917,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -945,6 +963,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -977,6 +996,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -1172,6 +1192,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -1218,6 +1239,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -1263,6 +1286,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -1295,6 +1319,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -1439,6 +1464,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_config: Orb::MatrixConfig,
@@ -1485,6 +1511,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -1530,6 +1558,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_config: Orb::MatrixConfig,
@@ -1562,6 +1591,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_config: Orb::MatrixConfig,
@@ -1706,6 +1736,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -1752,6 +1783,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -1797,6 +1830,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -1829,6 +1863,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2007,6 +2042,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2053,6 +2089,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -2098,6 +2136,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2130,6 +2169,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2308,6 +2348,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2354,6 +2395,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -2399,6 +2442,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2431,6 +2475,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2634,6 +2679,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_tiered_config: Orb::Price::GroupedTiered::GroupedTieredConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2681,6 +2727,8 @@ module Orb
 
         attr_accessor grouped_tiered_config: Orb::Price::GroupedTiered::GroupedTieredConfig
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -2725,6 +2773,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_tiered_config: Orb::Price::GroupedTiered::GroupedTieredConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2757,6 +2806,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_tiered_config: Orb::Price::GroupedTiered::GroupedTieredConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2937,6 +2987,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -2983,6 +3034,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -3028,6 +3081,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3060,6 +3114,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3253,6 +3308,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3299,6 +3355,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -3344,6 +3402,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3376,6 +3435,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3543,6 +3603,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3589,6 +3650,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -3634,6 +3697,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3666,6 +3730,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -3822,6 +3887,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
@@ -3868,6 +3934,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -3913,6 +3981,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
@@ -3945,6 +4014,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_with_allocation_config: Orb::MatrixWithAllocationConfig,
@@ -4089,6 +4159,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4135,6 +4206,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -4180,6 +4253,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4212,6 +4286,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4388,6 +4463,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4434,6 +4510,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -4479,6 +4557,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4511,6 +4590,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4666,6 +4746,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_allocation_config: Orb::Price::GroupedAllocation::GroupedAllocationConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4713,6 +4794,8 @@ module Orb
 
         attr_accessor grouped_allocation_config: Orb::Price::GroupedAllocation::GroupedAllocationConfig
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -4757,6 +4840,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_allocation_config: Orb::Price::GroupedAllocation::GroupedAllocationConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4789,6 +4873,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_allocation_config: Orb::Price::GroupedAllocation::GroupedAllocationConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -4960,6 +5045,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5007,6 +5093,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -5051,6 +5139,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5083,6 +5172,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5259,6 +5349,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_prorated_minimum_config: Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5306,6 +5397,8 @@ module Orb
 
         attr_accessor grouped_with_prorated_minimum_config: Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -5350,6 +5443,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_prorated_minimum_config: Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5382,6 +5476,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_prorated_minimum_config: Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5549,6 +5644,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_metered_minimum_config: Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5596,6 +5692,8 @@ module Orb
 
         attr_accessor grouped_with_metered_minimum_config: Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -5640,6 +5738,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_metered_minimum_config: Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5672,6 +5771,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_metered_minimum_config: Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5886,6 +5986,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_min_max_thresholds_config: Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -5933,6 +6034,8 @@ module Orb
 
         attr_accessor grouped_with_min_max_thresholds_config: Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -5977,6 +6080,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_min_max_thresholds_config: Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -6009,6 +6113,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_with_min_max_thresholds_config: Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -6184,6 +6289,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_with_display_name_config: Orb::Price::MatrixWithDisplayName::MatrixWithDisplayNameConfig,
@@ -6230,6 +6336,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -6275,6 +6383,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_with_display_name_config: Orb::Price::MatrixWithDisplayName::MatrixWithDisplayNameConfig,
@@ -6307,6 +6416,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           matrix_with_display_name_config: Orb::Price::MatrixWithDisplayName::MatrixWithDisplayNameConfig,
@@ -6501,6 +6611,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_tiered_package_config: Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -6548,6 +6659,8 @@ module Orb
 
         attr_accessor grouped_tiered_package_config: Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -6592,6 +6705,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_tiered_package_config: Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -6624,6 +6738,7 @@ module Orb
           external_price_id: String?,
           fixed_price_quantity: Float?,
           grouped_tiered_package_config: Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -6806,6 +6921,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           max_group_tiered_package_config: Orb::Price::MaxGroupTieredPackage::MaxGroupTieredPackageConfig,
@@ -6852,6 +6968,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -6897,6 +7015,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           max_group_tiered_package_config: Orb::Price::MaxGroupTieredPackage::MaxGroupTieredPackageConfig,
@@ -6929,6 +7048,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           max_group_tiered_package_config: Orb::Price::MaxGroupTieredPackage::MaxGroupTieredPackageConfig,
@@ -7115,6 +7235,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7161,6 +7282,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -7206,6 +7329,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7238,6 +7362,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7451,6 +7576,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7497,6 +7623,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -7542,6 +7670,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7574,6 +7703,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7793,6 +7923,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7840,6 +7971,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -7884,6 +8017,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -7916,6 +8050,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8109,6 +8244,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8156,6 +8292,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -8200,6 +8338,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8232,6 +8371,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8407,6 +8547,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8453,6 +8594,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -8498,6 +8641,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8530,6 +8674,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8689,6 +8834,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8735,6 +8881,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -8780,6 +8928,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8812,6 +8961,7 @@ module Orb
           discount: Orb::Models::discount?,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -8967,6 +9117,7 @@ module Orb
           event_output_config: Orb::Price::EventOutput::EventOutputConfig,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -9014,6 +9165,8 @@ module Orb
 
         attr_accessor fixed_price_quantity: Float?
 
+        attr_accessor invoice_grouping_key: String?
+
         attr_accessor invoicing_cycle_configuration: Orb::BillingCycleConfiguration?
 
         attr_accessor item: Orb::ItemSlim
@@ -9058,6 +9211,7 @@ module Orb
           event_output_config: Orb::Price::EventOutput::EventOutputConfig,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
@@ -9090,6 +9244,7 @@ module Orb
           event_output_config: Orb::Price::EventOutput::EventOutputConfig,
           external_price_id: String?,
           fixed_price_quantity: Float?,
+          invoice_grouping_key: String?,
           invoicing_cycle_configuration: Orb::BillingCycleConfiguration?,
           item: Orb::ItemSlim,
           maximum: Orb::Maximum?,
