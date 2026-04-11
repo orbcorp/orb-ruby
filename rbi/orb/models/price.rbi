@@ -121,6 +121,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -247,6 +250,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -281,6 +285,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -331,6 +336,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -674,6 +680,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -800,6 +809,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -834,6 +844,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -884,6 +895,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -1242,6 +1254,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -1362,6 +1377,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -1397,6 +1413,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -1446,6 +1463,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -1810,6 +1828,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -1934,6 +1955,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -1970,6 +1992,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -2025,6 +2048,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -2560,6 +2584,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -2686,6 +2713,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -2720,6 +2748,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -2770,6 +2799,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -3125,6 +3155,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -3251,6 +3284,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -3285,6 +3319,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -3335,6 +3370,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -3698,6 +3734,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -3839,6 +3878,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -3875,6 +3915,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -3932,6 +3973,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -4440,6 +4482,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -4574,6 +4619,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -4610,6 +4656,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -4665,6 +4712,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -5152,6 +5200,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -5286,6 +5337,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -5322,6 +5374,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -5377,6 +5430,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -5913,6 +5967,9 @@ module Orb
         end
         attr_writer :grouped_tiered_config
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -6037,6 +6094,7 @@ module Orb
             fixed_price_quantity: T.nilable(Float),
             grouped_tiered_config:
               Orb::Price::GroupedTiered::GroupedTieredConfig::OrHash,
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -6073,6 +6131,7 @@ module Orb
           fixed_price_quantity:,
           # Configuration for grouped_tiered pricing
           grouped_tiered_config:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -6128,6 +6187,7 @@ module Orb
               fixed_price_quantity: T.nilable(Float),
               grouped_tiered_config:
                 Orb::Price::GroupedTiered::GroupedTieredConfig,
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -6619,6 +6679,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -6764,6 +6827,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -6803,6 +6867,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -6861,6 +6926,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -7383,6 +7449,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -7526,6 +7595,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -7562,6 +7632,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -7619,6 +7690,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -8079,6 +8151,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -8213,6 +8288,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -8249,6 +8325,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -8304,6 +8381,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -8740,6 +8818,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -8879,6 +8960,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -8915,6 +8997,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -8972,6 +9055,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -9391,6 +9475,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -9530,6 +9617,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -9566,6 +9654,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -9623,6 +9712,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -10131,6 +10221,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -10265,6 +10358,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -10301,6 +10395,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -10356,6 +10451,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -10804,6 +10900,9 @@ module Orb
         end
         attr_writer :grouped_allocation_config
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -10928,6 +11027,7 @@ module Orb
             fixed_price_quantity: T.nilable(Float),
             grouped_allocation_config:
               Orb::Price::GroupedAllocation::GroupedAllocationConfig::OrHash,
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -10964,6 +11064,7 @@ module Orb
           fixed_price_quantity:,
           # Configuration for grouped_allocation pricing
           grouped_allocation_config:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -11019,6 +11120,7 @@ module Orb
               fixed_price_quantity: T.nilable(Float),
               grouped_allocation_config:
                 Orb::Price::GroupedAllocation::GroupedAllocationConfig,
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -11491,6 +11593,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -11615,6 +11720,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -11651,6 +11757,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -11706,6 +11813,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -12228,6 +12336,9 @@ module Orb
         end
         attr_writer :grouped_with_prorated_minimum_config
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -12363,6 +12474,7 @@ module Orb
             fixed_price_quantity: T.nilable(Float),
             grouped_with_prorated_minimum_config:
               Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig::OrHash,
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -12402,6 +12514,7 @@ module Orb
           fixed_price_quantity:,
           # Configuration for grouped_with_prorated_minimum pricing
           grouped_with_prorated_minimum_config:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -12460,6 +12573,7 @@ module Orb
               fixed_price_quantity: T.nilable(Float),
               grouped_with_prorated_minimum_config:
                 Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig,
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -12950,6 +13064,9 @@ module Orb
         end
         attr_writer :grouped_with_metered_minimum_config
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -13083,6 +13200,7 @@ module Orb
             fixed_price_quantity: T.nilable(Float),
             grouped_with_metered_minimum_config:
               Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig::OrHash,
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -13122,6 +13240,7 @@ module Orb
           fixed_price_quantity:,
           # Configuration for grouped_with_metered_minimum pricing
           grouped_with_metered_minimum_config:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -13180,6 +13299,7 @@ module Orb
               fixed_price_quantity: T.nilable(Float),
               grouped_with_metered_minimum_config:
                 Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig,
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -13800,6 +13920,9 @@ module Orb
         end
         attr_writer :grouped_with_min_max_thresholds_config
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -13935,6 +14058,7 @@ module Orb
             fixed_price_quantity: T.nilable(Float),
             grouped_with_min_max_thresholds_config:
               Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -13974,6 +14098,7 @@ module Orb
           fixed_price_quantity:,
           # Configuration for grouped_with_min_max_thresholds pricing
           grouped_with_min_max_thresholds_config:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -14032,6 +14157,7 @@ module Orb
               fixed_price_quantity: T.nilable(Float),
               grouped_with_min_max_thresholds_config:
                 Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -14517,6 +14643,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -14660,6 +14789,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -14696,6 +14826,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -14753,6 +14884,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -15295,6 +15427,9 @@ module Orb
         end
         attr_writer :grouped_tiered_package_config
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -15424,6 +15559,7 @@ module Orb
             fixed_price_quantity: T.nilable(Float),
             grouped_tiered_package_config:
               Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig::OrHash,
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -15460,6 +15596,7 @@ module Orb
           fixed_price_quantity:,
           # Configuration for grouped_tiered_package pricing
           grouped_tiered_package_config:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -15517,6 +15654,7 @@ module Orb
               fixed_price_quantity: T.nilable(Float),
               grouped_tiered_package_config:
                 Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig,
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -16037,6 +16175,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -16180,6 +16321,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -16216,6 +16358,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -16273,6 +16416,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -16804,6 +16948,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -16954,6 +17101,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -16993,6 +17141,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -17051,6 +17200,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -17626,6 +17776,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -17776,6 +17929,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -17815,6 +17969,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -17873,6 +18028,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -18485,6 +18641,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -18614,6 +18773,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -18650,6 +18810,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -18707,6 +18868,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -19258,6 +19420,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -19393,6 +19558,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -19432,6 +19598,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -19490,6 +19657,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -19971,6 +20139,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -20105,6 +20276,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -20141,6 +20313,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -20196,6 +20369,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -20634,6 +20808,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -20764,6 +20941,7 @@ module Orb
               ),
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -20798,6 +20976,7 @@ module Orb
           discount:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -20848,6 +21027,7 @@ module Orb
               discount: T.nilable(Orb::Discount::Variants),
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
@@ -21244,6 +21424,9 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :fixed_price_quantity
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
         sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
         attr_reader :invoicing_cycle_configuration
 
@@ -21366,6 +21549,7 @@ module Orb
               Orb::Price::EventOutput::EventOutputConfig::OrHash,
             external_price_id: T.nilable(String),
             fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
             invoicing_cycle_configuration:
               T.nilable(Orb::BillingCycleConfiguration::OrHash),
             item: Orb::ItemSlim::OrHash,
@@ -21402,6 +21586,7 @@ module Orb
           event_output_config:,
           external_price_id:,
           fixed_price_quantity:,
+          invoice_grouping_key:,
           invoicing_cycle_configuration:,
           # A minimal representation of an Item containing only the essential identifying
           # information.
@@ -21455,6 +21640,7 @@ module Orb
               event_output_config: Orb::Price::EventOutput::EventOutputConfig,
               external_price_id: T.nilable(String),
               fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
               invoicing_cycle_configuration:
                 T.nilable(Orb::BillingCycleConfiguration),
               item: Orb::ItemSlim,
