@@ -153,6 +153,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -245,7 +250,7 @@ module Orb
         #   @return [Orb::Models::Price::Unit::LicenseType, nil]
         optional :license_type, -> { Orb::Price::Unit::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Unit}
         #   for more details.
         #
@@ -276,6 +281,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -512,6 +519,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -604,7 +616,7 @@ module Orb
         #   @return [Orb::Models::Price::Tiered::LicenseType, nil]
         optional :license_type, -> { Orb::Price::Tiered::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Tiered} for more details.
         #
@@ -635,6 +647,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -877,6 +891,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -963,7 +982,7 @@ module Orb
         #   @return [Orb::Models::Price::Bulk::LicenseType, nil]
         optional :license_type, -> { Orb::Price::Bulk::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk)
         #   Some parameter documentations has been truncated, see {Orb::Models::Price::Bulk}
         #   for more details.
         #
@@ -996,6 +1015,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -1238,6 +1259,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -1324,7 +1350,7 @@ module Orb
         #   @return [Orb::Models::Price::BulkWithFilters::LicenseType, nil]
         optional :license_type, -> { Orb::Price::BulkWithFilters::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_filters_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk_with_filters)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_filters_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk_with_filters)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithFilters} for more details.
         #
@@ -1357,6 +1383,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -1657,6 +1685,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -1749,7 +1782,7 @@ module Orb
         #   @return [Orb::Models::Price::Package::LicenseType, nil]
         optional :license_type, -> { Orb::Price::Package::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Package} for more details.
         #
@@ -1780,6 +1813,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -2016,6 +2051,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -2108,7 +2148,7 @@ module Orb
         #   @return [Orb::Models::Price::Matrix::LicenseType, nil]
         optional :license_type, -> { Orb::Price::Matrix::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, matrix_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Matrix} for more details.
         #
@@ -2139,6 +2179,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -2377,6 +2419,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -2470,7 +2517,7 @@ module Orb
         #   @return [Orb::Models::Price::ThresholdTotalAmount::LicenseType, nil]
         optional :license_type, -> { Orb::Price::ThresholdTotalAmount::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :threshold_total_amount)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, threshold_total_amount_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :threshold_total_amount)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ThresholdTotalAmount} for more details.
         #
@@ -2501,6 +2548,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -2787,6 +2836,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -2879,7 +2933,7 @@ module Orb
         #   @return [Orb::Models::Price::TieredPackage::LicenseType, nil]
         optional :license_type, -> { Orb::Price::TieredPackage::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackage} for more details.
         #
@@ -2910,6 +2964,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -3195,6 +3251,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -3287,7 +3348,7 @@ module Orb
         #   @return [Orb::Models::Price::TieredWithMinimum::LicenseType, nil]
         optional :license_type, -> { Orb::Price::TieredWithMinimum::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_minimum_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithMinimum} for more details.
         #
@@ -3318,6 +3379,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -3625,6 +3688,11 @@ module Orb
         #   @return [Orb::Models::Price::GroupedTiered::GroupedTieredConfig]
         required :grouped_tiered_config, -> { Orb::Price::GroupedTiered::GroupedTieredConfig }
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -3711,7 +3779,7 @@ module Orb
         #   @return [Orb::Models::Price::GroupedTiered::LicenseType, nil]
         optional :license_type, -> { Orb::Price::GroupedTiered::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_tiered)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_config:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_tiered)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTiered} for more details.
         #
@@ -3744,6 +3812,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil]
         #
         #   @param grouped_tiered_config [Orb::Models::Price::GroupedTiered::GroupedTieredConfig] Configuration for grouped_tiered pricing
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -4028,6 +4098,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -4121,7 +4196,7 @@ module Orb
         #   @return [Orb::Models::Price::TieredPackageWithMinimum::LicenseType, nil]
         optional :license_type, -> { Orb::Price::TieredPackageWithMinimum::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_package_with_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_package_with_minimum_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_package_with_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredPackageWithMinimum} for more details.
         #
@@ -4152,6 +4227,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -4441,6 +4518,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -4534,7 +4616,7 @@ module Orb
         #   @return [Orb::Models::Price::PackageWithAllocation::LicenseType, nil]
         optional :license_type, -> { Orb::Price::PackageWithAllocation::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :package_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, package_with_allocation_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :package_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::PackageWithAllocation} for more details.
         #
@@ -4565,6 +4647,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -4828,6 +4912,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -4920,7 +5009,7 @@ module Orb
         #   @return [Orb::Models::Price::UnitWithPercent::LicenseType, nil]
         optional :license_type, -> { Orb::Price::UnitWithPercent::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit_with_percent)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_percent_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit_with_percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithPercent} for more details.
         #
@@ -4951,6 +5040,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -5211,6 +5302,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -5303,7 +5399,7 @@ module Orb
         #   @return [Orb::Models::Price::MatrixWithAllocation::LicenseType, nil]
         optional :license_type, -> { Orb::Price::MatrixWithAllocation::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, matrix_with_allocation_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithAllocation} for more details.
         #
@@ -5334,6 +5430,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -5572,6 +5670,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -5664,7 +5767,7 @@ module Orb
         #   @return [Orb::Models::Price::TieredWithProration::LicenseType, nil]
         optional :license_type, -> { Orb::Price::TieredWithProration::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, tiered_with_proration_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :tiered_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::TieredWithProration} for more details.
         #
@@ -5695,6 +5798,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -5974,6 +6079,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -6066,7 +6176,7 @@ module Orb
         #   @return [Orb::Models::Price::UnitWithProration::LicenseType, nil]
         optional :license_type, -> { Orb::Price::UnitWithProration::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, unit_with_proration_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :unit_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::UnitWithProration} for more details.
         #
@@ -6097,6 +6207,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -6355,6 +6467,11 @@ module Orb
         #   @return [Orb::Models::Price::GroupedAllocation::GroupedAllocationConfig]
         required :grouped_allocation_config, -> { Orb::Price::GroupedAllocation::GroupedAllocationConfig }
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -6441,7 +6558,7 @@ module Orb
         #   @return [Orb::Models::Price::GroupedAllocation::LicenseType, nil]
         optional :license_type, -> { Orb::Price::GroupedAllocation::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_allocation_config:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedAllocation} for more details.
         #
@@ -6474,6 +6591,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil]
         #
         #   @param grouped_allocation_config [Orb::Models::Price::GroupedAllocation::GroupedAllocationConfig] Configuration for grouped_allocation pricing
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -6746,6 +6865,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -6832,7 +6956,7 @@ module Orb
         #   @return [Orb::Models::Price::BulkWithProration::LicenseType, nil]
         optional :license_type, -> { Orb::Price::BulkWithProration::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk_with_proration)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, bulk_with_proration_config:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :bulk_with_proration)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::BulkWithProration} for more details.
         #
@@ -6865,6 +6989,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -7146,6 +7272,11 @@ module Orb
         required :grouped_with_prorated_minimum_config,
                  -> { Orb::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig }
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -7232,7 +7363,7 @@ module Orb
         #   @return [Orb::Models::Price::GroupedWithProratedMinimum::LicenseType, nil]
         optional :license_type, -> { Orb::Price::GroupedWithProratedMinimum::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_prorated_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_prorated_minimum_config:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_prorated_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithProratedMinimum} for more details.
         #
@@ -7265,6 +7396,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil]
         #
         #   @param grouped_with_prorated_minimum_config [Orb::Models::Price::GroupedWithProratedMinimum::GroupedWithProratedMinimumConfig] Configuration for grouped_with_prorated_minimum pricing
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -7540,6 +7673,11 @@ module Orb
         required :grouped_with_metered_minimum_config,
                  -> { Orb::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig }
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -7626,7 +7764,7 @@ module Orb
         #   @return [Orb::Models::Price::GroupedWithMeteredMinimum::LicenseType, nil]
         optional :license_type, -> { Orb::Price::GroupedWithMeteredMinimum::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_metered_minimum)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_metered_minimum_config:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_metered_minimum)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMeteredMinimum} for more details.
         #
@@ -7659,6 +7797,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil]
         #
         #   @param grouped_with_metered_minimum_config [Orb::Models::Price::GroupedWithMeteredMinimum::GroupedWithMeteredMinimumConfig] Configuration for grouped_with_metered_minimum pricing
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -8004,6 +8144,11 @@ module Orb
         required :grouped_with_min_max_thresholds_config,
                  -> { Orb::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig }
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -8090,7 +8235,7 @@ module Orb
         #   @return [Orb::Models::Price::GroupedWithMinMaxThresholds::LicenseType, nil]
         optional :license_type, -> { Orb::Price::GroupedWithMinMaxThresholds::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_min_max_thresholds)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_with_min_max_thresholds_config:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_with_min_max_thresholds)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedWithMinMaxThresholds} for more details.
         #
@@ -8123,6 +8268,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil]
         #
         #   @param grouped_with_min_max_thresholds_config [Orb::Models::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig] Configuration for grouped_with_min_max_thresholds pricing
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -8397,6 +8544,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -8490,7 +8642,7 @@ module Orb
         #   @return [Orb::Models::Price::MatrixWithDisplayName::LicenseType, nil]
         optional :license_type, -> { Orb::Price::MatrixWithDisplayName::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_display_name)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, matrix_with_display_name_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_display_name)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MatrixWithDisplayName} for more details.
         #
@@ -8521,6 +8673,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -8818,6 +8972,11 @@ module Orb
         required :grouped_tiered_package_config,
                  -> { Orb::Price::GroupedTieredPackage::GroupedTieredPackageConfig }
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -8904,7 +9063,7 @@ module Orb
         #   @return [Orb::Models::Price::GroupedTieredPackage::LicenseType, nil]
         optional :license_type, -> { Orb::Price::GroupedTieredPackage::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, grouped_tiered_package_config:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :grouped_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::GroupedTieredPackage} for more details.
         #
@@ -8937,6 +9096,8 @@ module Orb
         #   @param fixed_price_quantity [Float, nil]
         #
         #   @param grouped_tiered_package_config [Orb::Models::Price::GroupedTieredPackage::GroupedTieredPackageConfig] Configuration for grouped_tiered_package pricing
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -9228,6 +9389,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -9321,7 +9487,7 @@ module Orb
         #   @return [Orb::Models::Price::MaxGroupTieredPackage::LicenseType, nil]
         optional :license_type, -> { Orb::Price::MaxGroupTieredPackage::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :max_group_tiered_package)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, max_group_tiered_package_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :max_group_tiered_package)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MaxGroupTieredPackage} for more details.
         #
@@ -9352,6 +9518,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -9646,6 +9814,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -9739,7 +9912,7 @@ module Orb
         #   @return [Orb::Models::Price::ScalableMatrixWithUnitPricing::LicenseType, nil]
         optional :license_type, -> { Orb::Price::ScalableMatrixWithUnitPricing::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :scalable_matrix_with_unit_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_unit_pricing_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :scalable_matrix_with_unit_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithUnitPricing} for more details.
         #
@@ -9770,6 +9943,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -10090,6 +10265,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -10183,7 +10363,7 @@ module Orb
         #   @return [Orb::Models::Price::ScalableMatrixWithTieredPricing::LicenseType, nil]
         optional :license_type, -> { Orb::Price::ScalableMatrixWithTieredPricing::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :scalable_matrix_with_tiered_pricing)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, scalable_matrix_with_tiered_pricing_config:, dimensional_price_configuration: nil, license_type: nil, model_type: :scalable_matrix_with_tiered_pricing)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::ScalableMatrixWithTieredPricing} for more details.
         #
@@ -10214,6 +10394,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -10542,6 +10724,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -10628,7 +10815,7 @@ module Orb
         #   @return [Orb::Models::Price::CumulativeGroupedBulk::LicenseType, nil]
         optional :license_type, -> { Orb::Price::CumulativeGroupedBulk::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :cumulative_grouped_bulk)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_bulk_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :cumulative_grouped_bulk)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedBulk} for more details.
         #
@@ -10661,6 +10848,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -10957,6 +11146,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -11043,7 +11237,7 @@ module Orb
         #   @return [Orb::Models::Price::CumulativeGroupedAllocation::LicenseType, nil]
         optional :license_type, -> { Orb::Price::CumulativeGroupedAllocation::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_allocation_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :cumulative_grouped_allocation)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, cumulative_grouped_allocation_config:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :cumulative_grouped_allocation)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::CumulativeGroupedAllocation} for more details.
         #
@@ -11076,6 +11270,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -11350,6 +11546,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -11442,7 +11643,7 @@ module Orb
         #   @return [Orb::Models::Price::MinimumComposite::LicenseType, nil]
         optional :license_type, -> { Orb::Price::MinimumComposite::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_composite_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :minimum_composite)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, minimum_composite_config:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :minimum_composite)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::MinimumComposite} for more details.
         #
@@ -11473,6 +11674,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -11731,6 +11934,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -11823,7 +12031,7 @@ module Orb
         #   @return [Orb::Models::Price::Percent::LicenseType, nil]
         optional :license_type, -> { Orb::Price::Percent::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, percent_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :percent)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, percent_config:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :percent)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::Percent} for more details.
         #
@@ -11854,6 +12062,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
@@ -12114,6 +12324,11 @@ module Orb
         #   @return [Float, nil]
         required :fixed_price_quantity, Float, nil?: true
 
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
         # @!attribute invoicing_cycle_configuration
         #
         #   @return [Orb::Models::BillingCycleConfiguration, nil]
@@ -12200,7 +12415,7 @@ module Orb
         #   @return [Orb::Models::Price::EventOutput::LicenseType, nil]
         optional :license_type, -> { Orb::Price::EventOutput::LicenseType }, nil?: true
 
-        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, event_output_config:, external_price_id:, fixed_price_quantity:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :event_output)
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, event_output_config:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :event_output)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Price::EventOutput} for more details.
         #
@@ -12233,6 +12448,8 @@ module Orb
         #   @param external_price_id [String, nil]
         #
         #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
         #
         #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
         #
