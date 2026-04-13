@@ -1,5 +1,48 @@
 # Changelog
 
+## 1.14.0 (2026-04-13)
+
+Full Changelog: [v1.13.0...v1.14.0](https://github.com/orbcorp/orb-ruby/compare/v1.13.0...v1.14.0)
+
+### Features
+
+* **api:** api update ([65c2d82](https://github.com/orbcorp/orb-ruby/commit/65c2d8287a22ee020e6d3b131458a1c708144f6a))
+* **api:** api update ([2f89bbe](https://github.com/orbcorp/orb-ruby/commit/2f89bbe429e30a3deb6a4f8d89db7913aeda60fb))
+* **api:** api update ([d185f3d](https://github.com/orbcorp/orb-ruby/commit/d185f3dde0afc117b2a5df5608fc7aeedbec6f49))
+* **api:** api update ([029ba18](https://github.com/orbcorp/orb-ruby/commit/029ba18854d6ef34ee3a8b30d8b54d4b28be2a77))
+* **api:** api update ([27b02b6](https://github.com/orbcorp/orb-ruby/commit/27b02b67cdeb02fd1083a30f8b450be96ac4d0fb))
+* **api:** api update ([337be04](https://github.com/orbcorp/orb-ruby/commit/337be04c7a4f8abe058b0ca27becf8124badc168))
+* **api:** api update ([751628a](https://github.com/orbcorp/orb-ruby/commit/751628a1843a653fdd0a8e718ed431d8ce518c24))
+* **api:** api update ([eb40fda](https://github.com/orbcorp/orb-ruby/commit/eb40fdad4ce17f70dc2f315c000f0bd8c0118055))
+* **api:** api update ([a865cea](https://github.com/orbcorp/orb-ruby/commit/a865cea3435365ca97c336a991cdf2c632604b24))
+* **client:** add webhook support ([f434716](https://github.com/orbcorp/orb-ruby/commit/f434716cc961eae629f626c95be963e89b712c90))
+
+
+### Bug Fixes
+
+* align path encoding with RFC 3986 section 3.3 ([21d02ec](https://github.com/orbcorp/orb-ruby/commit/21d02eccd03e5cd37b5a20b0718fa6dbd1803302))
+* **client:** add types for path params, and update structure of unions nested in params ([8a52368](https://github.com/orbcorp/orb-ruby/commit/8a523686305ffbee12c8f2643a37d3cab4edb5d5))
+* **internal:** correct multipart form field name encoding ([efb1b4a](https://github.com/orbcorp/orb-ruby/commit/efb1b4ab5d45ab2c965a41bab4b99fa5370679d0))
+* multipart encoding for file arrays ([aff6ad8](https://github.com/orbcorp/orb-ruby/commit/aff6ad82926b24962cc913c73a5663ee8776a271))
+* variable name typo ([6ed82a7](https://github.com/orbcorp/orb-ruby/commit/6ed82a7f6b83f9da113a37be4cb6c84665b1deeb))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([a2caac3](https://github.com/orbcorp/orb-ruby/commit/a2caac38daaabff98fb29618628dee0558afd973))
+* **ci:** skip uploading artifacts on stainless-internal branches ([21805c5](https://github.com/orbcorp/orb-ruby/commit/21805c52bfa86ecf544fdc3c5828003638d5938d))
+* **ci:** support opting out of skipping builds on metadata-only commits ([37edebe](https://github.com/orbcorp/orb-ruby/commit/37edebe2c123b23eb923ae53f18e732d3369a9d5))
+* **internal:** tweak CI branches ([6692611](https://github.com/orbcorp/orb-ruby/commit/6692611801c9e7402ec21d5e7eb07f46d0b61951))
+* **internal:** update gitignore ([7ad9ec0](https://github.com/orbcorp/orb-ruby/commit/7ad9ec089de88e0adfd67f94e1f5d073f75e90be))
+* **test:** do not count install time for mock server timeout ([b7ef3b3](https://github.com/orbcorp/orb-ruby/commit/b7ef3b3c4e1054a2a5db603476b57c9d3a64b860))
+* **tests:** bump steady to v0.19.4 ([e63158f](https://github.com/orbcorp/orb-ruby/commit/e63158f62d06ab361c7c2dfc544298decb85f1ca))
+* **tests:** bump steady to v0.19.5 ([d82e274](https://github.com/orbcorp/orb-ruby/commit/d82e2748e8ee154e43745d7b1bfe5bf2a3827284))
+* **tests:** bump steady to v0.19.6 ([aad19ff](https://github.com/orbcorp/orb-ruby/commit/aad19ff345ca22d148ca36ccb7f7850c8f1d14f0))
+* **tests:** bump steady to v0.19.7 ([3c90c75](https://github.com/orbcorp/orb-ruby/commit/3c90c7514ee8f9f38e405e8ca38599d73bb354a3))
+* **tests:** bump steady to v0.20.1 ([7da3249](https://github.com/orbcorp/orb-ruby/commit/7da32497ce4e9cde8f282082e05abb1d23a86b51))
+* **tests:** bump steady to v0.20.2 ([34a56cf](https://github.com/orbcorp/orb-ruby/commit/34a56cfdd242cb2c2fba7ccc3e93f7c11c166010))
+* **tests:** update mock server to steady ([2e5e97f](https://github.com/orbcorp/orb-ruby/commit/2e5e97f7a3cf18ad23ecef601edde222bfc62bbd))
+
 ## 1.13.0 (2026-03-03)
 
 Full Changelog: [v1.12.0...v1.13.0](https://github.com/orbcorp/orb-ruby/compare/v1.12.0...v1.13.0)
