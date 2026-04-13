@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Orb::Test::Resources::LicenseTypesTest < Orb::Test::ResourceTest
   def test_create_required_params
-    response = @orb.license_types.create(grouping_key: "grouping_key", name: "name")
+    response = @orb.license_types.create(grouping_key: "x", name: "x")
 
     assert_pattern do
       response => Orb::Models::LicenseTypeCreateResponse
