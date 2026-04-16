@@ -31,6 +31,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :default_invoice_memo
 
+      # An optional user-defined description of the plan.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :description
+
       sig { returns(T.nilable(String)) }
       attr_accessor :external_plan_id
 
@@ -67,6 +71,7 @@ module Orb
           adjustments:
             T.nilable(T::Array[Orb::PlanCreateParams::Adjustment::OrHash]),
           default_invoice_memo: T.nilable(String),
+          description: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
@@ -89,6 +94,8 @@ module Orb
         adjustments: nil,
         # Free-form text which is available on the invoice PDF and the Orb invoice portal.
         default_invoice_memo: nil,
+        # An optional user-defined description of the plan.
+        description: nil,
         external_plan_id: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -116,6 +123,7 @@ module Orb
             prices: T::Array[Orb::PlanCreateParams::Price],
             adjustments: T.nilable(T::Array[Orb::PlanCreateParams::Adjustment]),
             default_invoice_memo: T.nilable(String),
+            description: T.nilable(String),
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             net_terms: T.nilable(Integer),

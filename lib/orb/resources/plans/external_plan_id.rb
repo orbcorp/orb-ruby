@@ -11,14 +11,16 @@ module Orb
         # Some parameter documentations has been truncated, see
         # {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.
         #
-        # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-        # existing plan.
+        # This endpoint can be used to update the `external_plan_id`, `description`, and
+        # `metadata` of an existing plan.
         #
         # Other fields on a plan are currently immutable.
         #
-        # @overload update(other_external_plan_id, external_plan_id: nil, metadata: nil, request_options: {})
+        # @overload update(other_external_plan_id, description: nil, external_plan_id: nil, metadata: nil, request_options: {})
         #
         # @param other_external_plan_id [String]
+        #
+        # @param description [String, nil] An optional user-defined description of the plan.
         #
         # @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
         #

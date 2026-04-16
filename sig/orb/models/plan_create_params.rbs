@@ -7,6 +7,7 @@ module Orb
         prices: ::Array[Orb::PlanCreateParams::Price],
         adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         default_invoice_memo: String?,
+        description: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?,
@@ -29,6 +30,8 @@ module Orb
 
       attr_accessor default_invoice_memo: String?
 
+      attr_accessor description: String?
+
       attr_accessor external_plan_id: String?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
@@ -49,6 +52,7 @@ module Orb
         prices: ::Array[Orb::PlanCreateParams::Price],
         ?adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         ?default_invoice_memo: String?,
+        ?description: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
@@ -63,6 +67,7 @@ module Orb
         prices: ::Array[Orb::PlanCreateParams::Price],
         adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         default_invoice_memo: String?,
+        description: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         net_terms: Integer?,
