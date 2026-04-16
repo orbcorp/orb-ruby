@@ -47,6 +47,12 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :license_type_id
 
+      # User-specified key/value pairs for the resource. Individual keys can be removed
+      # by setting the value to `null`, and the entire metadata mapping can be cleared
+      # by setting `metadata` to `null`.
+      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+      attr_accessor :metadata
+
       # The (per-unit) cost basis of each created block. If non-zero, a customer will be
       # invoiced according to the quantity and per unit cost basis specified for the
       # allocation each cadence.
@@ -66,6 +72,7 @@ module Orb
           filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter::OrHash]),
           item_id: T.nilable(String),
           license_type_id: T.nilable(String),
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           per_unit_cost_basis: String
         ).returns(T.attached_class)
       end
@@ -90,6 +97,10 @@ module Orb
         item_id: nil,
         # The license type ID to associate the price with license allocation.
         license_type_id: nil,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
+        metadata: nil,
         # The (per-unit) cost basis of each created block. If non-zero, a customer will be
         # invoiced according to the quantity and per unit cost basis specified for the
         # allocation each cadence.
@@ -108,6 +119,7 @@ module Orb
             filters: T.nilable(T::Array[Orb::NewAllocationPrice::Filter]),
             item_id: T.nilable(String),
             license_type_id: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             per_unit_cost_basis: String
           }
         )

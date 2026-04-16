@@ -4,6 +4,7 @@ module Orb
       class ExternalPlanID
         def update: (
           String other_external_plan_id,
+          ?description: String?,
           ?external_plan_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
           ?request_options: Orb::request_opts

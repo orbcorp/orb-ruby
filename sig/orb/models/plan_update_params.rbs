@@ -3,6 +3,7 @@ module Orb
     type plan_update_params =
       {
         plan_id: String,
+        description: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?
       }
@@ -14,12 +15,15 @@ module Orb
 
       attr_accessor plan_id: String
 
+      attr_accessor description: String?
+
       attr_accessor external_plan_id: String?
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
       def initialize: (
         plan_id: String,
+        ?description: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
@@ -27,6 +31,7 @@ module Orb
 
       def to_hash: -> {
         plan_id: String,
+        description: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
         request_options: Orb::RequestOptions

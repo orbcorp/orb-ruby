@@ -55,6 +55,14 @@ module Orb
       #   @return [String, nil]
       optional :license_type_id, String, nil?: true
 
+      # @!attribute metadata
+      #   User-specified key/value pairs for the resource. Individual keys can be removed
+      #   by setting the value to `null`, and the entire metadata mapping can be cleared
+      #   by setting `metadata` to `null`.
+      #
+      #   @return [Hash{Symbol=>String, nil}, nil]
+      optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
       # @!attribute per_unit_cost_basis
       #   The (per-unit) cost basis of each created block. If non-zero, a customer will be
       #   invoiced according to the quantity and per unit cost basis specified for the
@@ -63,7 +71,7 @@ module Orb
       #   @return [String, nil]
       optional :per_unit_cost_basis, String
 
-      # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil, filters: nil, item_id: nil, license_type_id: nil, per_unit_cost_basis: nil)
+      # @!method initialize(amount:, cadence:, currency:, custom_expiration: nil, expires_at_end_of_cadence: nil, filters: nil, item_id: nil, license_type_id: nil, metadata: nil, per_unit_cost_basis: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::NewAllocationPrice} for more details.
       #
@@ -82,6 +90,8 @@ module Orb
       #   @param item_id [String, nil] The item ID that line items representing charges for this allocation will be ass
       #
       #   @param license_type_id [String, nil] The license type ID to associate the price with license allocation.
+      #
+      #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       #   @param per_unit_cost_basis [String] The (per-unit) cost basis of each created block. If non-zero, a customer will be
 
