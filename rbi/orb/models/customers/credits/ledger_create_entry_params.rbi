@@ -653,9 +653,9 @@ module Orb
               sig { returns(Symbol) }
               attr_accessor :entry_type
 
-              # A future date (specified in YYYY-MM-DD format) used for expiration change,
-              # denoting when credits transferred (as part of a partial block expiration) should
-              # expire.
+              # A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+              # when credits transferred (as part of a partial block expiration) should expire.
+              # This date must be on or after the effective date of the credit block.
               sig { returns(Date) }
               attr_accessor :target_expiry_date
 
@@ -703,9 +703,9 @@ module Orb
                 ).returns(T.attached_class)
               end
               def self.new(
-                # A future date (specified in YYYY-MM-DD format) used for expiration change,
-                # denoting when credits transferred (as part of a partial block expiration) should
-                # expire.
+                # A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+                # when credits transferred (as part of a partial block expiration) should expire.
+                # This date must be on or after the effective date of the credit block.
                 target_expiry_date:,
                 # The number of credits to effect. Note that this is required for increment,
                 # decrement, void, or undo operations.
