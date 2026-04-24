@@ -108,6 +108,10 @@ module Orb
       # values for each draft invoice, which may not always be up-to-date since Orb
       # regularly refreshes invoices asynchronously.
       #
+      # If you don't need line item details, minimums, maximums, or discounts, prefer
+      # the [list invoices summary](/api-reference/invoice/list-invoices-summary)
+      # endpoint for better performance.
+      #
       # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #
       # @param amount [String, nil]
