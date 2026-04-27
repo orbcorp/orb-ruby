@@ -278,6 +278,7 @@ module Orb
                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                 Orb::NewFloatingCumulativeGroupedBulkPrice,
                 Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedAllocation,
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance,
                 Orb::NewFloatingMinimumCompositePrice,
                 Orb::SubscriptionPriceIntervalsParams::Add::Price::Percent,
                 Orb::SubscriptionPriceIntervalsParams::Add::Price::EventOutput
@@ -359,6 +360,7 @@ module Orb
                   Orb::NewFloatingScalableMatrixWithTieredPricingPrice::OrHash,
                   Orb::NewFloatingCumulativeGroupedBulkPrice::OrHash,
                   Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedAllocation::OrHash,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::OrHash,
                   Orb::NewFloatingMinimumCompositePrice::OrHash,
                   Orb::SubscriptionPriceIntervalsParams::Add::Price::Percent::OrHash,
                   Orb::SubscriptionPriceIntervalsParams::Add::Price::EventOutput::OrHash
@@ -476,6 +478,7 @@ module Orb
                     Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                     Orb::NewFloatingCumulativeGroupedBulkPrice,
                     Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedAllocation,
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance,
                     Orb::NewFloatingMinimumCompositePrice,
                     Orb::SubscriptionPriceIntervalsParams::Add::Price::Percent,
                     Orb::SubscriptionPriceIntervalsParams::Add::Price::EventOutput
@@ -737,6 +740,7 @@ module Orb
                 Orb::NewFloatingScalableMatrixWithTieredPricingPrice,
                 Orb::NewFloatingCumulativeGroupedBulkPrice,
                 Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedAllocation,
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance,
                 Orb::NewFloatingMinimumCompositePrice,
                 Orb::SubscriptionPriceIntervalsParams::Add::Price::Percent,
                 Orb::SubscriptionPriceIntervalsParams::Add::Price::EventOutput
@@ -1941,6 +1945,449 @@ module Orb
                 )
               end
               def to_hash
+              end
+            end
+          end
+
+          class DailyCreditAllowance < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The cadence to bill for this price on.
+            sig do
+              returns(
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::OrSymbol
+              )
+            end
+            attr_accessor :cadence
+
+            # An ISO 4217 currency string for which this price is billed in.
+            sig { returns(String) }
+            attr_accessor :currency
+
+            # Configuration for daily_credit_allowance pricing
+            sig do
+              returns(
+                Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
+              )
+            end
+            attr_reader :daily_credit_allowance_config
+
+            sig do
+              params(
+                daily_credit_allowance_config:
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash
+              ).void
+            end
+            attr_writer :daily_credit_allowance_config
+
+            # The id of the item the price will be associated with.
+            sig { returns(String) }
+            attr_accessor :item_id
+
+            # The pricing model type
+            sig { returns(Symbol) }
+            attr_accessor :model_type
+
+            # The name of the price.
+            sig { returns(String) }
+            attr_accessor :name
+
+            # The id of the billable metric for the price. Only needed if the price is
+            # usage-based.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :billable_metric_id
+
+            # If the Price represents a fixed cost, the price will be billed in-advance if
+            # this is true, and in-arrears if this is false.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_accessor :billed_in_advance
+
+            # For custom cadence: specifies the duration of the billing period in days or
+            # months.
+            sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+            attr_reader :billing_cycle_configuration
+
+            sig do
+              params(
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :billing_cycle_configuration
+
+            # The per unit conversion rate of the price currency to the invoicing currency.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :conversion_rate
+
+            # The configuration for the rate of the price currency to the invoicing currency.
+            sig do
+              returns(
+                T.nilable(
+                  T.any(
+                    Orb::UnitConversionRateConfig,
+                    Orb::TieredConversionRateConfig
+                  )
+                )
+              )
+            end
+            attr_accessor :conversion_rate_config
+
+            # For dimensional price: specifies a price group and dimension values
+            sig { returns(T.nilable(Orb::NewDimensionalPriceConfiguration)) }
+            attr_reader :dimensional_price_configuration
+
+            sig do
+              params(
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :dimensional_price_configuration
+
+            # An alias for the price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :external_price_id
+
+            # If the Price represents a fixed cost, this represents the quantity of units
+            # applied.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :fixed_price_quantity
+
+            # The property used to group this price on an invoice
+            sig { returns(T.nilable(String)) }
+            attr_accessor :invoice_grouping_key
+
+            # Within each billing cycle, specifies the cadence at which invoices are produced.
+            # If unspecified, a single invoice is produced per billing cycle.
+            sig { returns(T.nilable(Orb::NewBillingCycleConfiguration)) }
+            attr_reader :invoicing_cycle_configuration
+
+            sig do
+              params(
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash)
+              ).void
+            end
+            attr_writer :invoicing_cycle_configuration
+
+            # The ID of the license type to associate with this price.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :license_type_id
+
+            # User-specified key/value pairs for the resource. Individual keys can be removed
+            # by setting the value to `null`, and the entire metadata mapping can be cleared
+            # by setting `metadata` to `null`.
+            sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
+            attr_accessor :metadata
+
+            sig do
+              params(
+                cadence:
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::OrSymbol,
+                currency: String,
+                daily_credit_allowance_config:
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash,
+                item_id: String,
+                name: String,
+                billable_metric_id: T.nilable(String),
+                billed_in_advance: T.nilable(T::Boolean),
+                billing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                conversion_rate: T.nilable(Float),
+                conversion_rate_config:
+                  T.nilable(
+                    T.any(
+                      Orb::UnitConversionRateConfig::OrHash,
+                      Orb::TieredConversionRateConfig::OrHash
+                    )
+                  ),
+                dimensional_price_configuration:
+                  T.nilable(Orb::NewDimensionalPriceConfiguration::OrHash),
+                external_price_id: T.nilable(String),
+                fixed_price_quantity: T.nilable(Float),
+                invoice_grouping_key: T.nilable(String),
+                invoicing_cycle_configuration:
+                  T.nilable(Orb::NewBillingCycleConfiguration::OrHash),
+                license_type_id: T.nilable(String),
+                metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+                model_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The cadence to bill for this price on.
+              cadence:,
+              # An ISO 4217 currency string for which this price is billed in.
+              currency:,
+              # Configuration for daily_credit_allowance pricing
+              daily_credit_allowance_config:,
+              # The id of the item the price will be associated with.
+              item_id:,
+              # The name of the price.
+              name:,
+              # The id of the billable metric for the price. Only needed if the price is
+              # usage-based.
+              billable_metric_id: nil,
+              # If the Price represents a fixed cost, the price will be billed in-advance if
+              # this is true, and in-arrears if this is false.
+              billed_in_advance: nil,
+              # For custom cadence: specifies the duration of the billing period in days or
+              # months.
+              billing_cycle_configuration: nil,
+              # The per unit conversion rate of the price currency to the invoicing currency.
+              conversion_rate: nil,
+              # The configuration for the rate of the price currency to the invoicing currency.
+              conversion_rate_config: nil,
+              # For dimensional price: specifies a price group and dimension values
+              dimensional_price_configuration: nil,
+              # An alias for the price.
+              external_price_id: nil,
+              # If the Price represents a fixed cost, this represents the quantity of units
+              # applied.
+              fixed_price_quantity: nil,
+              # The property used to group this price on an invoice
+              invoice_grouping_key: nil,
+              # Within each billing cycle, specifies the cadence at which invoices are produced.
+              # If unspecified, a single invoice is produced per billing cycle.
+              invoicing_cycle_configuration: nil,
+              # The ID of the license type to associate with this price.
+              license_type_id: nil,
+              # User-specified key/value pairs for the resource. Individual keys can be removed
+              # by setting the value to `null`, and the entire metadata mapping can be cleared
+              # by setting `metadata` to `null`.
+              metadata: nil,
+              # The pricing model type
+              model_type: :daily_credit_allowance
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  cadence:
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::OrSymbol,
+                  currency: String,
+                  daily_credit_allowance_config:
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+                  item_id: String,
+                  model_type: Symbol,
+                  name: String,
+                  billable_metric_id: T.nilable(String),
+                  billed_in_advance: T.nilable(T::Boolean),
+                  billing_cycle_configuration:
+                    T.nilable(Orb::NewBillingCycleConfiguration),
+                  conversion_rate: T.nilable(Float),
+                  conversion_rate_config:
+                    T.nilable(
+                      T.any(
+                        Orb::UnitConversionRateConfig,
+                        Orb::TieredConversionRateConfig
+                      )
+                    ),
+                  dimensional_price_configuration:
+                    T.nilable(Orb::NewDimensionalPriceConfiguration),
+                  external_price_id: T.nilable(String),
+                  fixed_price_quantity: T.nilable(Float),
+                  invoice_grouping_key: T.nilable(String),
+                  invoicing_cycle_configuration:
+                    T.nilable(Orb::NewBillingCycleConfiguration),
+                  license_type_id: T.nilable(String),
+                  metadata: T.nilable(T::Hash[Symbol, T.nilable(String)])
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The cadence to bill for this price on.
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANNUAL =
+                T.let(
+                  :annual,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :semi_annual,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              MONTHLY =
+                T.let(
+                  :monthly,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              QUARTERLY =
+                T.let(
+                  :quarterly,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              ONE_TIME =
+                T.let(
+                  :one_time,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class DailyCreditAllowanceConfig < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Credits granted per day. Lose-it-or-use-it; does not roll over.
+              sig { returns(String) }
+              attr_accessor :daily_allowance
+
+              # Default per-unit credit rate for any usage not bucketed into a specified
+              # matrix_value
+              sig { returns(String) }
+              attr_accessor :default_unit_amount
+
+              # One or two event property values to evaluate matrix groups by
+              sig { returns(T::Array[T.nilable(String)]) }
+              attr_accessor :dimensions
+
+              # Event property whose value identifies the day bucket the event belongs to (e.g.
+              # 'event_day' set to an ISO date string in the customer's timezone). The allowance
+              # resets per distinct value of this property.
+              sig { returns(String) }
+              attr_accessor :event_day_property
+
+              # Per-dimension credit rates
+              sig do
+                returns(
+                  T::Array[
+                    Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
+                  ]
+                )
+              end
+              attr_accessor :matrix_values
+
+              # Configuration for daily_credit_allowance pricing
+              sig do
+                params(
+                  daily_allowance: String,
+                  default_unit_amount: String,
+                  dimensions: T::Array[T.nilable(String)],
+                  event_day_property: String,
+                  matrix_values:
+                    T::Array[
+                      Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Credits granted per day. Lose-it-or-use-it; does not roll over.
+                daily_allowance:,
+                # Default per-unit credit rate for any usage not bucketed into a specified
+                # matrix_value
+                default_unit_amount:,
+                # One or two event property values to evaluate matrix groups by
+                dimensions:,
+                # Event property whose value identifies the day bucket the event belongs to (e.g.
+                # 'event_day' set to an ISO date string in the customer's timezone). The allowance
+                # resets per distinct value of this property.
+                event_day_property:,
+                # Per-dimension credit rates
+                matrix_values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    daily_allowance: String,
+                    default_unit_amount: String,
+                    dimensions: T::Array[T.nilable(String)],
+                    event_day_property: String,
+                    matrix_values:
+                      T::Array[
+                        Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class MatrixValue < Orb::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue,
+                      Orb::Internal::AnyHash
+                    )
+                  end
+
+                # One or two matrix keys to filter usage to this value by. For example, ["model"]
+                # could be used to apply a different credit rate to each AI model.
+                sig { returns(T::Array[T.nilable(String)]) }
+                attr_accessor :dimension_values
+
+                # Credits charged per unit of usage matching the specified dimension_values
+                sig { returns(String) }
+                attr_accessor :unit_amount
+
+                # Per-dimension credit price for the daily credit allowance model.
+                sig do
+                  params(
+                    dimension_values: T::Array[T.nilable(String)],
+                    unit_amount: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # One or two matrix keys to filter usage to this value by. For example, ["model"]
+                  # could be used to apply a different credit rate to each AI model.
+                  dimension_values:,
+                  # Credits charged per unit of usage matching the specified dimension_values
+                  unit_amount:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      dimension_values: T::Array[T.nilable(String)],
+                      unit_amount: String
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end

@@ -73,6 +73,8 @@ module Orb
 
       variant :cumulative_grouped_allocation, -> { Orb::Price::CumulativeGroupedAllocation }
 
+      variant :daily_credit_allowance, -> { Orb::Price::DailyCreditAllowance }
+
       variant :minimum_composite, -> { Orb::Price::MinimumComposite }
 
       variant :percent, -> { Orb::Price::Percent }
@@ -11470,6 +11472,456 @@ module Orb
         end
       end
 
+      class DailyCreditAllowance < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute billable_metric
+        #
+        #   @return [Orb::Models::BillableMetricTiny, nil]
+        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
+
+        # @!attribute billing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration]
+        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::DailyCreditAllowance::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::DailyCreditAllowance::BillingMode }
+
+        # @!attribute cadence
+        #
+        #   @return [Symbol, Orb::Models::Price::DailyCreditAllowance::Cadence]
+        required :cadence, enum: -> { Orb::Price::DailyCreditAllowance::Cadence }
+
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter>, nil]
+        required :composite_price_filters,
+                 -> { Orb::Internal::Type::ArrayOf[Orb::Price::DailyCreditAllowance::CompositePriceFilter] },
+                 nil?: true
+
+        # @!attribute conversion_rate
+        #
+        #   @return [Float, nil]
+        required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::DailyCreditAllowance::ConversionRateConfig },
+                 nil?: true
+
+        # @!attribute created_at
+        #
+        #   @return [Time]
+        required :created_at, Time
+
+        # @!attribute credit_allocation
+        #
+        #   @return [Orb::Models::Allocation, nil]
+        required :credit_allocation, -> { Orb::Allocation }, nil?: true
+
+        # @!attribute currency
+        #
+        #   @return [String]
+        required :currency, String
+
+        # @!attribute daily_credit_allowance_config
+        #   Configuration for daily_credit_allowance pricing
+        #
+        #   @return [Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig]
+        required :daily_credit_allowance_config,
+                 -> { Orb::Price::DailyCreditAllowance::DailyCreditAllowanceConfig }
+
+        # @!attribute discount
+        #   @deprecated
+        #
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        required :discount, union: -> { Orb::Discount }, nil?: true
+
+        # @!attribute external_price_id
+        #
+        #   @return [String, nil]
+        required :external_price_id, String, nil?: true
+
+        # @!attribute fixed_price_quantity
+        #
+        #   @return [Float, nil]
+        required :fixed_price_quantity, Float, nil?: true
+
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
+        # @!attribute invoicing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration, nil]
+        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
+
+        # @!attribute item
+        #   A minimal representation of an Item containing only the essential identifying
+        #   information.
+        #
+        #   @return [Orb::Models::ItemSlim]
+        required :item, -> { Orb::ItemSlim }
+
+        # @!attribute maximum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Maximum, nil]
+        required :maximum, -> { Orb::Maximum }, nil?: true
+
+        # @!attribute maximum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :maximum_amount, String, nil?: true
+
+        # @!attribute metadata
+        #   User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :metadata, Orb::Internal::Type::HashOf[String]
+
+        # @!attribute minimum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Minimum, nil]
+        required :minimum, -> { Orb::Minimum }, nil?: true
+
+        # @!attribute minimum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :minimum_amount, String, nil?: true
+
+        # @!attribute model_type
+        #   The pricing model type
+        #
+        #   @return [Symbol, :daily_credit_allowance]
+        required :model_type, const: :daily_credit_allowance
+
+        # @!attribute name
+        #
+        #   @return [String]
+        required :name, String
+
+        # @!attribute plan_phase_order
+        #
+        #   @return [Integer, nil]
+        required :plan_phase_order, Integer, nil?: true
+
+        # @!attribute price_type
+        #
+        #   @return [Symbol, Orb::Models::Price::DailyCreditAllowance::PriceType]
+        required :price_type, enum: -> { Orb::Price::DailyCreditAllowance::PriceType }
+
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
+        # @!attribute dimensional_price_configuration
+        #
+        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
+        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
+
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::DailyCreditAllowance::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::DailyCreditAllowance::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, daily_credit_allowance_config:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :daily_credit_allowance)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::DailyCreditAllowance} for more details.
+        #
+        #   @param id [String]
+        #
+        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
+        #
+        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::DailyCreditAllowance::BillingMode]
+        #
+        #   @param cadence [Symbol, Orb::Models::Price::DailyCreditAllowance::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter>, nil]
+        #
+        #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        #
+        #   @param created_at [Time]
+        #
+        #   @param credit_allocation [Orb::Models::Allocation, nil]
+        #
+        #   @param currency [String]
+        #
+        #   @param daily_credit_allowance_config [Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig] Configuration for daily_credit_allowance pricing
+        #
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
+        #   @param external_price_id [String, nil]
+        #
+        #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
+        #
+        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
+        #
+        #   @param item [Orb::Models::ItemSlim] A minimal representation of an Item containing only the essential identifying in
+        #
+        #   @param maximum [Orb::Models::Maximum, nil]
+        #
+        #   @param maximum_amount [String, nil]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #
+        #   @param minimum [Orb::Models::Minimum, nil]
+        #
+        #   @param minimum_amount [String, nil]
+        #
+        #   @param name [String]
+        #
+        #   @param plan_phase_order [Integer, nil]
+        #
+        #   @param price_type [Symbol, Orb::Models::Price::DailyCreditAllowance::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
+        #
+        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::DailyCreditAllowance::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
+        #
+        #   @param model_type [Symbol, :daily_credit_allowance] The pricing model type
+
+        # @see Orb::Models::Price::DailyCreditAllowance#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::DailyCreditAllowance#cadence
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          ONE_TIME = :one_time
+          MONTHLY = :monthly
+          QUARTERLY = :quarterly
+          SEMI_ANNUAL = :semi_annual
+          ANNUAL = :annual
+          CUSTOM = :custom
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::DailyCreditAllowance::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::DailyCreditAllowance::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::DailyCreditAllowance::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # @see Orb::Models::Price::DailyCreditAllowance#daily_credit_allowance_config
+        class DailyCreditAllowanceConfig < Orb::Internal::Type::BaseModel
+          # @!attribute daily_allowance
+          #   Credits granted per day. Lose-it-or-use-it; does not roll over.
+          #
+          #   @return [String]
+          required :daily_allowance, String
+
+          # @!attribute default_unit_amount
+          #   Default per-unit credit rate for any usage not bucketed into a specified
+          #   matrix_value
+          #
+          #   @return [String]
+          required :default_unit_amount, String
+
+          # @!attribute dimensions
+          #   One or two event property values to evaluate matrix groups by
+          #
+          #   @return [Array<String, nil>]
+          required :dimensions, Orb::Internal::Type::ArrayOf[String, nil?: true]
+
+          # @!attribute event_day_property
+          #   Event property whose value identifies the day bucket the event belongs to (e.g.
+          #   'event_day' set to an ISO date string in the customer's timezone). The allowance
+          #   resets per distinct value of this property.
+          #
+          #   @return [String]
+          required :event_day_property, String
+
+          # @!attribute matrix_values
+          #   Per-dimension credit rates
+          #
+          #   @return [Array<Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue>]
+          required :matrix_values,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue] }
+
+          # @!method initialize(daily_allowance:, default_unit_amount:, dimensions:, event_day_property:, matrix_values:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig} for more
+          #   details.
+          #
+          #   Configuration for daily_credit_allowance pricing
+          #
+          #   @param daily_allowance [String] Credits granted per day. Lose-it-or-use-it; does not roll over.
+          #
+          #   @param default_unit_amount [String] Default per-unit credit rate for any usage not bucketed into a specified
+          #   matrix\_
+          #
+          #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
+          #
+          #   @param event_day_property [String] Event property whose value identifies the day bucket the event belongs to (e.g.
+          #
+          #   @param matrix_values [Array<Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue>] Per-dimension credit rates
+
+          class MatrixValue < Orb::Internal::Type::BaseModel
+            # @!attribute dimension_values
+            #   One or two matrix keys to filter usage to this value by. For example, ["model"]
+            #   could be used to apply a different credit rate to each AI model.
+            #
+            #   @return [Array<String, nil>]
+            required :dimension_values, Orb::Internal::Type::ArrayOf[String, nil?: true]
+
+            # @!attribute unit_amount
+            #   Credits charged per unit of usage matching the specified dimension_values
+            #
+            #   @return [String]
+            required :unit_amount, String
+
+            # @!method initialize(dimension_values:, unit_amount:)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue}
+            #   for more details.
+            #
+            #   Per-dimension credit price for the daily credit allowance model.
+            #
+            #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this value by. For example, ["model"]
+            #
+            #   @param unit_amount [String] Credits charged per unit of usage matching the specified dimension_values
+          end
+        end
+
+        # @see Orb::Models::Price::DailyCreditAllowance#price_type
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          USAGE_PRICE = :usage_price
+          FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::DailyCreditAllowance#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::DailyCreditAllowance::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
+        end
+      end
+
       class MinimumComposite < Orb::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -12647,7 +13099,7 @@ module Orb
       end
 
       # @!method self.variants
-      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::BulkWithFilters, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::CumulativeGroupedAllocation, Orb::Models::Price::MinimumComposite, Orb::Models::Price::Percent, Orb::Models::Price::EventOutput)]
+      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::BulkWithFilters, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::CumulativeGroupedAllocation, Orb::Models::Price::DailyCreditAllowance, Orb::Models::Price::MinimumComposite, Orb::Models::Price::Percent, Orb::Models::Price::EventOutput)]
     end
   end
 end
