@@ -194,7 +194,7 @@ module Orb
       # per metric that is a part of the subscription. Alerts are triggered based on
       # usage or cost conditions met during the current billing cycle.
       #
-      # @overload create_for_subscription(subscription_id, thresholds:, type:, grouping_keys: nil, metric_id: nil, pricing_unit_id: nil, request_options: {})
+      # @overload create_for_subscription(subscription_id, thresholds:, type:, grouping_keys: nil, metric_id: nil, price_filters: nil, pricing_unit_id: nil, threshold_overrides: nil, request_options: {})
       #
       # @param subscription_id [String]
       #
@@ -206,7 +206,11 @@ module Orb
       #
       # @param metric_id [String, nil] The metric to track usage for.
       #
+      # @param price_filters [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil] Filters to scope which prices are included in grouped cost alert evaluation. Sup
+      #
       # @param pricing_unit_id [String, nil] The pricing unit to use for grouped cost alerts. Required when grouping_keys is
+      #
+      # @param threshold_overrides [Array<Orb::Models::AlertCreateForSubscriptionParams::ThresholdOverride>, nil] Per-group threshold overrides. Each override maps a specific combination of grou
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

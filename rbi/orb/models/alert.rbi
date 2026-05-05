@@ -79,6 +79,16 @@ module Orb
       end
       attr_writer :license_type
 
+      # Filters scoping which prices are included in grouped cost alert evaluation.
+      sig { returns(T.nilable(T::Array[Orb::Alert::PriceFilter])) }
+      attr_accessor :price_filters
+
+      # Per-group threshold overrides. Each override maps a specific combination of
+      # grouping_keys values to a replacement threshold list. Only present for grouped
+      # cost alerts that have at least one override.
+      sig { returns(T.nilable(T::Array[Orb::Alert::ThresholdOverride])) }
+      attr_accessor :threshold_overrides
+
       # [Alerts within Orb](/product-catalog/configuring-alerts) monitor spending,
       # usage, or credit balance and trigger webhooks when a threshold is exceeded.
       #
@@ -99,7 +109,10 @@ module Orb
           balance_alert_status:
             T.nilable(T::Array[Orb::Alert::BalanceAlertStatus::OrHash]),
           grouping_keys: T.nilable(T::Array[String]),
-          license_type: T.nilable(Orb::Alert::LicenseType::OrHash)
+          license_type: T.nilable(Orb::Alert::LicenseType::OrHash),
+          price_filters: T.nilable(T::Array[Orb::Alert::PriceFilter::OrHash]),
+          threshold_overrides:
+            T.nilable(T::Array[Orb::Alert::ThresholdOverride::OrHash])
         ).returns(T.attached_class)
       end
       def self.new(
@@ -131,7 +144,13 @@ module Orb
         # grouping enabled.
         grouping_keys: nil,
         # Minified license type for alert serialization.
-        license_type: nil
+        license_type: nil,
+        # Filters scoping which prices are included in grouped cost alert evaluation.
+        price_filters: nil,
+        # Per-group threshold overrides. Each override maps a specific combination of
+        # grouping_keys values to a replacement threshold list. Only present for grouped
+        # cost alerts that have at least one override.
+        threshold_overrides: nil
       )
       end
 
@@ -151,7 +170,10 @@ module Orb
             balance_alert_status:
               T.nilable(T::Array[Orb::Alert::BalanceAlertStatus]),
             grouping_keys: T.nilable(T::Array[String]),
-            license_type: T.nilable(Orb::Alert::LicenseType)
+            license_type: T.nilable(Orb::Alert::LicenseType),
+            price_filters: T.nilable(T::Array[Orb::Alert::PriceFilter]),
+            threshold_overrides:
+              T.nilable(T::Array[Orb::Alert::ThresholdOverride])
           }
         )
       end
@@ -304,6 +326,153 @@ module Orb
         end
 
         sig { override.returns({ id: String }) }
+        def to_hash
+        end
+      end
+
+      class PriceFilter < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Alert::PriceFilter, Orb::Internal::AnyHash)
+          end
+
+        # The property of the price to filter on.
+        sig { returns(Orb::Alert::PriceFilter::Field::TaggedSymbol) }
+        attr_accessor :field
+
+        # Should prices that match the filter be included or excluded.
+        sig { returns(Orb::Alert::PriceFilter::Operator::TaggedSymbol) }
+        attr_accessor :operator
+
+        # The IDs or values that match this filter.
+        sig { returns(T::Array[String]) }
+        attr_accessor :values
+
+        sig do
+          params(
+            field: Orb::Alert::PriceFilter::Field::OrSymbol,
+            operator: Orb::Alert::PriceFilter::Operator::OrSymbol,
+            values: T::Array[String]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The property of the price to filter on.
+          field:,
+          # Should prices that match the filter be included or excluded.
+          operator:,
+          # The IDs or values that match this filter.
+          values:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              field: Orb::Alert::PriceFilter::Field::TaggedSymbol,
+              operator: Orb::Alert::PriceFilter::Operator::TaggedSymbol,
+              values: T::Array[String]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The property of the price to filter on.
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Alert::PriceFilter::Field) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          PRICE_ID =
+            T.let(:price_id, Orb::Alert::PriceFilter::Field::TaggedSymbol)
+          ITEM_ID =
+            T.let(:item_id, Orb::Alert::PriceFilter::Field::TaggedSymbol)
+          PRICE_TYPE =
+            T.let(:price_type, Orb::Alert::PriceFilter::Field::TaggedSymbol)
+          CURRENCY =
+            T.let(:currency, Orb::Alert::PriceFilter::Field::TaggedSymbol)
+          PRICING_UNIT_ID =
+            T.let(
+              :pricing_unit_id,
+              Orb::Alert::PriceFilter::Field::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Alert::PriceFilter::Field::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Should prices that match the filter be included or excluded.
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Orb::Alert::PriceFilter::Operator) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INCLUDES =
+            T.let(:includes, Orb::Alert::PriceFilter::Operator::TaggedSymbol)
+          EXCLUDES =
+            T.let(:excludes, Orb::Alert::PriceFilter::Operator::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Alert::PriceFilter::Operator::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+      end
+
+      class ThresholdOverride < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Alert::ThresholdOverride, Orb::Internal::AnyHash)
+          end
+
+        # The values of the grouping keys that identify this group. The list length
+        # matches the alert's grouping_keys.
+        sig { returns(T::Array[String]) }
+        attr_accessor :group_values
+
+        # The thresholds applied to this group. An empty list means the group is silenced.
+        sig { returns(T::Array[Orb::Threshold]) }
+        attr_accessor :thresholds
+
+        # A per-group threshold override on a grouped cost alert.
+        #
+        # An empty `thresholds` list means the group is silenced (never fires). A
+        # non-empty list fully replaces the default thresholds for that group.
+        sig do
+          params(
+            group_values: T::Array[String],
+            thresholds: T::Array[Orb::Threshold::OrHash]
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The values of the grouping keys that identify this group. The list length
+          # matches the alert's grouping_keys.
+          group_values:,
+          # The thresholds applied to this group. An empty list means the group is silenced.
+          thresholds:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              group_values: T::Array[String],
+              thresholds: T::Array[Orb::Threshold]
+            }
+          )
+        end
         def to_hash
         end
       end
