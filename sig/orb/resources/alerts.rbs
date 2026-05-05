@@ -47,7 +47,9 @@ module Orb
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
         ?grouping_keys: ::Array[String]?,
         ?metric_id: String?,
+        ?price_filters: ::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]?,
         ?pricing_unit_id: String?,
+        ?threshold_overrides: ::Array[Orb::AlertCreateForSubscriptionParams::ThresholdOverride]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 

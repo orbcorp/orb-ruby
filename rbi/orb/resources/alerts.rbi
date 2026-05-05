@@ -155,7 +155,19 @@ module Orb
           type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
           grouping_keys: T.nilable(T::Array[String]),
           metric_id: T.nilable(String),
+          price_filters:
+            T.nilable(
+              T::Array[
+                Orb::AlertCreateForSubscriptionParams::PriceFilter::OrHash
+              ]
+            ),
           pricing_unit_id: T.nilable(String),
+          threshold_overrides:
+            T.nilable(
+              T::Array[
+                Orb::AlertCreateForSubscriptionParams::ThresholdOverride::OrHash
+              ]
+            ),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Alert)
       end
@@ -170,9 +182,19 @@ module Orb
         grouping_keys: nil,
         # The metric to track usage for.
         metric_id: nil,
+        # Filters to scope which prices are included in grouped cost alert evaluation.
+        # Supports filtering by price_id, item_id, or price_type with includes/excludes
+        # operators. Only applicable when grouping_keys is set.
+        price_filters: nil,
         # The pricing unit to use for grouped cost alerts. Required when grouping_keys is
         # set.
         pricing_unit_id: nil,
+        # Per-group threshold overrides. Each override maps a specific combination of
+        # grouping_keys values to a list of thresholds that fully replaces the default
+        # thresholds for that group. An empty thresholds list silences the group. Groups
+        # without an override use the default thresholds. Only applicable when
+        # grouping_keys is set.
+        threshold_overrides: nil,
         request_options: {}
       )
       end

@@ -14,7 +14,9 @@ module Orb
         type: Orb::Models::Alert::type_,
         balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
         grouping_keys: ::Array[String]?,
-        license_type: Orb::Alert::LicenseType?
+        license_type: Orb::Alert::LicenseType?,
+        price_filters: ::Array[Orb::Alert::PriceFilter]?,
+        threshold_overrides: ::Array[Orb::Alert::ThresholdOverride]?
       }
 
     class Alert < Orb::Internal::Type::BaseModel
@@ -44,6 +46,10 @@ module Orb
 
       attr_accessor license_type: Orb::Alert::LicenseType?
 
+      attr_accessor price_filters: ::Array[Orb::Alert::PriceFilter]?
+
+      attr_accessor threshold_overrides: ::Array[Orb::Alert::ThresholdOverride]?
+
       def initialize: (
         id: String,
         created_at: Time,
@@ -57,7 +63,9 @@ module Orb
         type: Orb::Models::Alert::type_,
         ?balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
         ?grouping_keys: ::Array[String]?,
-        ?license_type: Orb::Alert::LicenseType?
+        ?license_type: Orb::Alert::LicenseType?,
+        ?price_filters: ::Array[Orb::Alert::PriceFilter]?,
+        ?threshold_overrides: ::Array[Orb::Alert::ThresholdOverride]?
       ) -> void
 
       def to_hash: -> {
@@ -73,7 +81,9 @@ module Orb
         type: Orb::Models::Alert::type_,
         balance_alert_status: ::Array[Orb::Alert::BalanceAlertStatus]?,
         grouping_keys: ::Array[String]?,
-        license_type: Orb::Alert::LicenseType?
+        license_type: Orb::Alert::LicenseType?,
+        price_filters: ::Array[Orb::Alert::PriceFilter]?,
+        threshold_overrides: ::Array[Orb::Alert::ThresholdOverride]?
       }
 
       type metric = { id: String }
@@ -159,6 +169,78 @@ module Orb
         def initialize: (id: String) -> void
 
         def to_hash: -> { id: String }
+      end
+
+      type price_filter =
+        {
+          field: Orb::Models::Alert::PriceFilter::field,
+          operator: Orb::Models::Alert::PriceFilter::operator,
+          values: ::Array[String]
+        }
+
+      class PriceFilter < Orb::Internal::Type::BaseModel
+        attr_accessor field: Orb::Models::Alert::PriceFilter::field
+
+        attr_accessor operator: Orb::Models::Alert::PriceFilter::operator
+
+        attr_accessor values: ::Array[String]
+
+        def initialize: (
+          field: Orb::Models::Alert::PriceFilter::field,
+          operator: Orb::Models::Alert::PriceFilter::operator,
+          values: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          field: Orb::Models::Alert::PriceFilter::field,
+          operator: Orb::Models::Alert::PriceFilter::operator,
+          values: ::Array[String]
+        }
+
+        type field =
+          :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          PRICE_ID: :price_id
+          ITEM_ID: :item_id
+          PRICE_TYPE: :price_type
+          CURRENCY: :currency
+          PRICING_UNIT_ID: :pricing_unit_id
+
+          def self?.values: -> ::Array[Orb::Models::Alert::PriceFilter::field]
+        end
+
+        type operator = :includes | :excludes
+
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          INCLUDES: :includes
+          EXCLUDES: :excludes
+
+          def self?.values: -> ::Array[Orb::Models::Alert::PriceFilter::operator]
+        end
+      end
+
+      type threshold_override =
+        { group_values: ::Array[String], thresholds: ::Array[Orb::Threshold] }
+
+      class ThresholdOverride < Orb::Internal::Type::BaseModel
+        attr_accessor group_values: ::Array[String]
+
+        attr_accessor thresholds: ::Array[Orb::Threshold]
+
+        def initialize: (
+          group_values: ::Array[String],
+          thresholds: ::Array[Orb::Threshold]
+        ) -> void
+
+        def to_hash: -> {
+          group_values: ::Array[String],
+          thresholds: ::Array[Orb::Threshold]
+        }
       end
     end
   end

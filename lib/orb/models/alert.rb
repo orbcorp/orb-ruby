@@ -87,7 +87,23 @@ module Orb
       #   @return [Orb::Models::Alert::LicenseType, nil]
       optional :license_type, -> { Orb::Alert::LicenseType }, nil?: true
 
-      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil, grouping_keys: nil, license_type: nil)
+      # @!attribute price_filters
+      #   Filters scoping which prices are included in grouped cost alert evaluation.
+      #
+      #   @return [Array<Orb::Models::Alert::PriceFilter>, nil]
+      optional :price_filters, -> { Orb::Internal::Type::ArrayOf[Orb::Alert::PriceFilter] }, nil?: true
+
+      # @!attribute threshold_overrides
+      #   Per-group threshold overrides. Each override maps a specific combination of
+      #   grouping_keys values to a replacement threshold list. Only present for grouped
+      #   cost alerts that have at least one override.
+      #
+      #   @return [Array<Orb::Models::Alert::ThresholdOverride>, nil]
+      optional :threshold_overrides,
+               -> { Orb::Internal::Type::ArrayOf[Orb::Alert::ThresholdOverride] },
+               nil?: true
+
+      # @!method initialize(id:, created_at:, currency:, customer:, enabled:, metric:, plan:, subscription:, thresholds:, type:, balance_alert_status: nil, grouping_keys: nil, license_type: nil, price_filters: nil, threshold_overrides: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Alert} for
       #   more details.
       #
@@ -122,6 +138,10 @@ module Orb
       #   @param grouping_keys [Array<String>, nil] The property keys to group cost alerts by. Only present for cost alerts with gro
       #
       #   @param license_type [Orb::Models::Alert::LicenseType, nil] Minified license type for alert serialization.
+      #
+      #   @param price_filters [Array<Orb::Models::Alert::PriceFilter>, nil] Filters scoping which prices are included in grouped cost alert evaluation.
+      #
+      #   @param threshold_overrides [Array<Orb::Models::Alert::ThresholdOverride>, nil] Per-group threshold overrides. Each override maps a specific combination of grou
 
       # @see Orb::Models::Alert#metric
       class Metric < Orb::Internal::Type::BaseModel
@@ -225,6 +245,90 @@ module Orb
         #   Minified license type for alert serialization.
         #
         #   @param id [String]
+      end
+
+      class PriceFilter < Orb::Internal::Type::BaseModel
+        # @!attribute field
+        #   The property of the price to filter on.
+        #
+        #   @return [Symbol, Orb::Models::Alert::PriceFilter::Field]
+        required :field, enum: -> { Orb::Alert::PriceFilter::Field }
+
+        # @!attribute operator
+        #   Should prices that match the filter be included or excluded.
+        #
+        #   @return [Symbol, Orb::Models::Alert::PriceFilter::Operator]
+        required :operator, enum: -> { Orb::Alert::PriceFilter::Operator }
+
+        # @!attribute values
+        #   The IDs or values that match this filter.
+        #
+        #   @return [Array<String>]
+        required :values, Orb::Internal::Type::ArrayOf[String]
+
+        # @!method initialize(field:, operator:, values:)
+        #   @param field [Symbol, Orb::Models::Alert::PriceFilter::Field] The property of the price to filter on.
+        #
+        #   @param operator [Symbol, Orb::Models::Alert::PriceFilter::Operator] Should prices that match the filter be included or excluded.
+        #
+        #   @param values [Array<String>] The IDs or values that match this filter.
+
+        # The property of the price to filter on.
+        #
+        # @see Orb::Models::Alert::PriceFilter#field
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          PRICE_ID = :price_id
+          ITEM_ID = :item_id
+          PRICE_TYPE = :price_type
+          CURRENCY = :currency
+          PRICING_UNIT_ID = :pricing_unit_id
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Should prices that match the filter be included or excluded.
+        #
+        # @see Orb::Models::Alert::PriceFilter#operator
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          INCLUDES = :includes
+          EXCLUDES = :excludes
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+      end
+
+      class ThresholdOverride < Orb::Internal::Type::BaseModel
+        # @!attribute group_values
+        #   The values of the grouping keys that identify this group. The list length
+        #   matches the alert's grouping_keys.
+        #
+        #   @return [Array<String>]
+        required :group_values, Orb::Internal::Type::ArrayOf[String]
+
+        # @!attribute thresholds
+        #   The thresholds applied to this group. An empty list means the group is silenced.
+        #
+        #   @return [Array<Orb::Models::Threshold>]
+        required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }
+
+        # @!method initialize(group_values:, thresholds:)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Alert::ThresholdOverride} for more details.
+        #
+        #   A per-group threshold override on a grouped cost alert.
+        #
+        #   An empty `thresholds` list means the group is silenced (never fires). A
+        #   non-empty list fully replaces the default thresholds for that group.
+        #
+        #   @param group_values [Array<String>] The values of the grouping keys that identify this group. The list length matche
+        #
+        #   @param thresholds [Array<Orb::Models::Threshold>] The thresholds applied to this group. An empty list means the group is silenced.
       end
     end
   end
