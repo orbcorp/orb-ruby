@@ -12,9 +12,12 @@ module Orb
             )
           end
 
+        # Unique identifier for this plan version change.
         sig { returns(String) }
         attr_accessor :id
 
+        # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
+        # when scheduled to be at the end of the current billing period.
         sig do
           returns(
             T.nilable(
@@ -24,9 +27,12 @@ module Orb
         end
         attr_accessor :effective_time
 
+        # The ID of the plan being migrated.
         sig { returns(String) }
         attr_accessor :plan_id
 
+        # Current status of the migration: 'not_started', 'in_progress', 'completed',
+        # 'action_needed', or 'canceled'.
         sig do
           returns(
             Orb::Models::Plans::MigrationListResponse::Status::TaggedSymbol
@@ -49,7 +55,18 @@ module Orb
             status: Orb::Models::Plans::MigrationListResponse::Status::OrSymbol
           ).returns(T.attached_class)
         end
-        def self.new(id:, effective_time:, plan_id:, status:)
+        def self.new(
+          # Unique identifier for this plan version change.
+          id:,
+          # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
+          # when scheduled to be at the end of the current billing period.
+          effective_time:,
+          # The ID of the plan being migrated.
+          plan_id:,
+          # Current status of the migration: 'not_started', 'in_progress', 'completed',
+          # 'action_needed', or 'canceled'.
+          status:
+        )
         end
 
         sig do
@@ -69,6 +86,8 @@ module Orb
         def to_hash
         end
 
+        # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
+        # when scheduled to be at the end of the current billing period.
         module EffectiveTime
           extend Orb::Internal::Type::Union
 
@@ -107,6 +126,8 @@ module Orb
             )
         end
 
+        # Current status of the migration: 'not_started', 'in_progress', 'completed',
+        # 'action_needed', or 'canceled'.
         module Status
           extend Orb::Internal::Type::Enum
 
