@@ -47,6 +47,7 @@ module Orb
             Orb::Price::CumulativeGroupedBulk,
             Orb::Price::CumulativeGroupedAllocation,
             Orb::Price::DailyCreditAllowance,
+            Orb::Price::MeteredAllowance,
             Orb::Price::MinimumComposite,
             Orb::Price::Percent,
             Orb::Price::EventOutput
@@ -20809,6 +20810,732 @@ module Orb
             T.type_alias do
               T.any(
                 Orb::Price::DailyCreditAllowance::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
+      end
+
+      class MeteredAllowance < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Price::MeteredAllowance, Orb::Internal::AnyHash)
+          end
+
+        sig { returns(String) }
+        attr_accessor :id
+
+        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
+        attr_reader :billable_metric
+
+        sig do
+          params(
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
+          ).void
+        end
+        attr_writer :billable_metric
+
+        sig { returns(Orb::BillingCycleConfiguration) }
+        attr_reader :billing_cycle_configuration
+
+        sig do
+          params(
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
+          ).void
+        end
+        attr_writer :billing_cycle_configuration
+
+        sig { returns(Orb::Price::MeteredAllowance::BillingMode::TaggedSymbol) }
+        attr_accessor :billing_mode
+
+        sig { returns(Orb::Price::MeteredAllowance::Cadence::TaggedSymbol) }
+        attr_accessor :cadence
+
+        sig do
+          returns(
+            T.nilable(
+              T::Array[Orb::Price::MeteredAllowance::CompositePriceFilter]
+            )
+          )
+        end
+        attr_accessor :composite_price_filters
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :conversion_rate
+
+        sig do
+          returns(
+            T.nilable(
+              Orb::Price::MeteredAllowance::ConversionRateConfig::Variants
+            )
+          )
+        end
+        attr_accessor :conversion_rate_config
+
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        sig { returns(T.nilable(Orb::Allocation)) }
+        attr_reader :credit_allocation
+
+        sig do
+          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
+        end
+        attr_writer :credit_allocation
+
+        sig { returns(String) }
+        attr_accessor :currency
+
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
+        attr_accessor :discount
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :fixed_price_quantity
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
+        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
+        attr_reader :invoicing_cycle_configuration
+
+        sig do
+          params(
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :invoicing_cycle_configuration
+
+        # A minimal representation of an Item containing only the essential identifying
+        # information.
+        sig { returns(Orb::ItemSlim) }
+        attr_reader :item
+
+        sig { params(item: Orb::ItemSlim::OrHash).void }
+        attr_writer :item
+
+        sig { returns(T.nilable(Orb::Maximum)) }
+        attr_reader :maximum
+
+        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
+        attr_writer :maximum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :maximum_amount
+
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
+        # Configuration for metered_allowance pricing
+        sig { returns(Orb::Price::MeteredAllowance::MeteredAllowanceConfig) }
+        attr_reader :metered_allowance_config
+
+        sig do
+          params(
+            metered_allowance_config:
+              Orb::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash
+          ).void
+        end
+        attr_writer :metered_allowance_config
+
+        sig { returns(T.nilable(Orb::Minimum)) }
+        attr_reader :minimum
+
+        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
+        attr_writer :minimum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :minimum_amount
+
+        # The pricing model type
+        sig { returns(Symbol) }
+        attr_accessor :model_type
+
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig { returns(Orb::Price::MeteredAllowance::PriceType::TaggedSymbol) }
+        attr_accessor :price_type
+
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
+        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
+        attr_reader :dimensional_price_configuration
+
+        sig do
+          params(
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :dimensional_price_configuration
+
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig { returns(T.nilable(Orb::Price::MeteredAllowance::LicenseType)) }
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(Orb::Price::MeteredAllowance::LicenseType::OrHash)
+          ).void
+        end
+        attr_writer :license_type
+
+        sig do
+          params(
+            id: String,
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode: Orb::Price::MeteredAllowance::BillingMode::OrSymbol,
+            cadence: Orb::Price::MeteredAllowance::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(
+                T::Array[
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::OrHash
+                ]
+              ),
+            conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
+            created_at: Time,
+            credit_allocation: T.nilable(Orb::Allocation::OrHash),
+            currency: String,
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash
+                )
+              ),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash),
+            item: Orb::ItemSlim::OrHash,
+            maximum: T.nilable(Orb::Maximum::OrHash),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            metered_allowance_config:
+              Orb::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash,
+            minimum: T.nilable(Orb::Minimum::OrHash),
+            minimum_amount: T.nilable(String),
+            name: String,
+            plan_phase_order: T.nilable(Integer),
+            price_type: Orb::Price::MeteredAllowance::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(Orb::Price::MeteredAllowance::LicenseType::OrHash),
+            model_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          id:,
+          billable_metric:,
+          billing_cycle_configuration:,
+          billing_mode:,
+          cadence:,
+          composite_price_filters:,
+          conversion_rate:,
+          conversion_rate_config:,
+          created_at:,
+          credit_allocation:,
+          currency:,
+          discount:,
+          external_price_id:,
+          fixed_price_quantity:,
+          invoice_grouping_key:,
+          invoicing_cycle_configuration:,
+          # A minimal representation of an Item containing only the essential identifying
+          # information.
+          item:,
+          maximum:,
+          maximum_amount:,
+          # User specified key-value pairs for the resource. If not present, this defaults
+          # to an empty dictionary. Individual keys can be removed by setting the value to
+          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+          # `null`.
+          metadata:,
+          # Configuration for metered_allowance pricing
+          metered_allowance_config:,
+          minimum:,
+          minimum_amount:,
+          name:,
+          plan_phase_order:,
+          price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
+          dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
+          # The pricing model type
+          model_type: :metered_allowance
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::BillableMetricTiny),
+              billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::MeteredAllowance::BillingMode::TaggedSymbol,
+              cadence: Orb::Price::MeteredAllowance::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(
+                  T::Array[Orb::Price::MeteredAllowance::CompositePriceFilter]
+                ),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(
+                  Orb::Price::MeteredAllowance::ConversionRateConfig::Variants
+                ),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Allocation),
+              currency: String,
+              discount: T.nilable(Orb::Discount::Variants),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::BillingCycleConfiguration),
+              item: Orb::ItemSlim,
+              maximum: T.nilable(Orb::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              metered_allowance_config:
+                Orb::Price::MeteredAllowance::MeteredAllowanceConfig,
+              minimum: T.nilable(Orb::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type: Orb::Price::MeteredAllowance::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
+              dimensional_price_configuration:
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type: T.nilable(Orb::Price::MeteredAllowance::LicenseType)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MeteredAllowance::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::MeteredAllowance::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::MeteredAllowance::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::MeteredAllowance::BillingMode::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MeteredAllowance::Cadence)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::MeteredAllowance::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(:monthly, Orb::Price::MeteredAllowance::Cadence::TaggedSymbol)
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::MeteredAllowance::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::MeteredAllowance::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(:annual, Orb::Price::MeteredAllowance::Cadence::TaggedSymbol)
+          CUSTOM =
+            T.let(:custom, Orb::Price::MeteredAllowance::Cadence::TaggedSymbol)
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::MeteredAllowance::Cadence::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MeteredAllowance::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::MeteredAllowance::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::MeteredAllowance::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::MeteredAllowance::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class MeteredAllowanceConfig < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MeteredAllowance::MeteredAllowanceConfig,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The grouping_key value whose summed quantity represents the allowance for this
+          # period (e.g. 'storage_snapshot' emitting 3 × avg storage). Capped at consumption
+          # — credit can never exceed actual usage.
+          sig { returns(String) }
+          attr_accessor :allowance_grouping_value
+
+          # The grouping_key value whose summed quantity represents consumption (e.g.
+          # 'download'). Charged at unit_amount.
+          sig { returns(String) }
+          attr_accessor :consumption_grouping_value
+
+          # Event property used to partition the metric into consumption and allowance
+          # quantities (e.g. 'event_name'). The metric is queried with this key and the two
+          # values below select which partition is which.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # Per-unit price applied to gross consumption and to the allowance credit.
+          sig { returns(String) }
+          attr_accessor :unit_amount
+
+          # Sub-line label for the credit row (e.g. 'Up to 3x free egress').
+          sig { returns(T.nilable(String)) }
+          attr_reader :allowance_display_name
+
+          sig { params(allowance_display_name: String).void }
+          attr_writer :allowance_display_name
+
+          # Sub-line label for the gross consumption row (e.g. 'bytes gotten').
+          sig { returns(T.nilable(String)) }
+          attr_reader :consumption_display_name
+
+          sig { params(consumption_display_name: String).void }
+          attr_writer :consumption_display_name
+
+          # Configuration for metered_allowance pricing
+          sig do
+            params(
+              allowance_grouping_value: String,
+              consumption_grouping_value: String,
+              grouping_key: String,
+              unit_amount: String,
+              allowance_display_name: String,
+              consumption_display_name: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The grouping_key value whose summed quantity represents the allowance for this
+            # period (e.g. 'storage_snapshot' emitting 3 × avg storage). Capped at consumption
+            # — credit can never exceed actual usage.
+            allowance_grouping_value:,
+            # The grouping_key value whose summed quantity represents consumption (e.g.
+            # 'download'). Charged at unit_amount.
+            consumption_grouping_value:,
+            # Event property used to partition the metric into consumption and allowance
+            # quantities (e.g. 'event_name'). The metric is queried with this key and the two
+            # values below select which partition is which.
+            grouping_key:,
+            # Per-unit price applied to gross consumption and to the allowance credit.
+            unit_amount:,
+            # Sub-line label for the credit row (e.g. 'Up to 3x free egress').
+            allowance_display_name: nil,
+            # Sub-line label for the gross consumption row (e.g. 'bytes gotten').
+            consumption_display_name: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
+            )
+          end
+          def to_hash
+          end
+        end
+
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::MeteredAllowance::PriceType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::MeteredAllowance::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::MeteredAllowance::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::MeteredAllowance::PriceType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[Orb::Price::MeteredAllowance::PriceType::TaggedSymbol]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::MeteredAllowance::LicenseType,
                 Orb::Internal::AnyHash
               )
             end
