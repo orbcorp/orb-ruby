@@ -306,6 +306,8 @@ module Orb
               Orb::Internal::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
             end
 
+          headers.delete("content-type") if body.nil?
+
           url = Orb::Internal::Util.join_parsed_uri(@base_url_components, {**req, path: path, query: query})
           headers, encoded = Orb::Internal::Util.encode_content(headers, body)
           {
