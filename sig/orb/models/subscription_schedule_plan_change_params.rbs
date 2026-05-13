@@ -306,6 +306,7 @@ module Orb
           | Orb::NewSubscriptionCumulativeGroupedBulkPrice
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance
+          | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance
           | Orb::NewSubscriptionMinimumCompositePrice
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent
           | Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput
@@ -1163,6 +1164,180 @@ module Orb
             end
           end
 
+          type metered_allowance =
+            {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::cadence,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              model_type: :metered_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class MeteredAllowance < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig
+
+            attr_accessor model_type: :metered_allowance
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::cadence,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :metered_allowance
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::cadence,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              model_type: :metered_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::cadence]
+            end
+
+            type metered_allowance_config =
+              {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
+
+            class MeteredAllowanceConfig < Orb::Internal::Type::BaseModel
+              attr_accessor allowance_grouping_value: String
+
+              attr_accessor consumption_grouping_value: String
+
+              attr_accessor grouping_key: String
+
+              attr_accessor unit_amount: String
+
+              attr_reader allowance_display_name: String?
+
+              def allowance_display_name=: (String) -> String
+
+              attr_reader consumption_display_name: String?
+
+              def consumption_display_name=: (String) -> String
+
+              def initialize: (
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                ?allowance_display_name: String,
+                ?consumption_display_name: String
+              ) -> void
+
+              def to_hash: -> {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
+            end
+          end
+
           type percent =
             {
               cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent::cadence,
@@ -1624,6 +1799,7 @@ module Orb
           | Orb::NewSubscriptionCumulativeGroupedBulkPrice
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance
+          | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance
           | Orb::NewSubscriptionMinimumCompositePrice
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent
           | Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput
@@ -2478,6 +2654,180 @@ module Orb
                   unit_amount: String
                 }
               end
+            end
+          end
+
+          type metered_allowance =
+            {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::cadence,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              model_type: :metered_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class MeteredAllowance < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig
+
+            attr_accessor model_type: :metered_allowance
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::cadence,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :metered_allowance
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::cadence,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              model_type: :metered_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::cadence]
+            end
+
+            type metered_allowance_config =
+              {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
+
+            class MeteredAllowanceConfig < Orb::Internal::Type::BaseModel
+              attr_accessor allowance_grouping_value: String
+
+              attr_accessor consumption_grouping_value: String
+
+              attr_accessor grouping_key: String
+
+              attr_accessor unit_amount: String
+
+              attr_reader allowance_display_name: String?
+
+              def allowance_display_name=: (String) -> String
+
+              attr_reader consumption_display_name: String?
+
+              def consumption_display_name=: (String) -> String
+
+              def initialize: (
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                ?allowance_display_name: String,
+                ?consumption_display_name: String
+              ) -> void
+
+              def to_hash: -> {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
             end
           end
 
