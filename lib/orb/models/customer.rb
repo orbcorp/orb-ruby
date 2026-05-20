@@ -452,7 +452,6 @@ module Orb
 
             QUICKBOOKS = :quickbooks
             NETSUITE = :netsuite
-            NETSUITE_AMPERSAND = :netsuite_ampersand
 
             # @!method self.values
             #   @return [Array<Symbol>]

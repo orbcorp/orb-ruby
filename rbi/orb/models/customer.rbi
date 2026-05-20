@@ -761,11 +761,6 @@ module Orb
                 :netsuite,
                 Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol
               )
-            NETSUITE_AMPERSAND =
-              T.let(
-                :netsuite_ampersand,
-                Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol
-              )
 
             sig do
               override.returns(
