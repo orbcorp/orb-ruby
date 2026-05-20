@@ -56,9 +56,8 @@ module Orb
       )
       end
 
-      # This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-      # metric identifier. It returns information about the metrics including its name,
-      # description, and item.
+      # This endpoint is used to list [metrics](/core-concepts#metric). It returns
+      # information about the metrics including its name, description, and item.
       sig do
         params(
           created_at_gt: T.nilable(Time),
@@ -84,8 +83,9 @@ module Orb
       )
       end
 
-      # This endpoint is used to list [metrics](/core-concepts#metric). It returns
-      # information about the metrics including its name, description, and item.
+      # This endpoint is used to fetch [metric](/core-concepts#metric) details given a
+      # metric identifier. It returns information about the metrics including its name,
+      # description, and item.
       sig do
         params(
           metric_id: String,

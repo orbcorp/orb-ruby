@@ -73,9 +73,8 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::MetricListParams} for more details.
       #
-      # This endpoint is used to fetch [metric](/core-concepts##metric) details given a
-      # metric identifier. It returns information about the metrics including its name,
-      # description, and item.
+      # This endpoint is used to list [metrics](/core-concepts#metric). It returns
+      # information about the metrics including its name, description, and item.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
       #
@@ -114,8 +113,9 @@ module Orb
         )
       end
 
-      # This endpoint is used to list [metrics](/core-concepts#metric). It returns
-      # information about the metrics including its name, description, and item.
+      # This endpoint is used to fetch [metric](/core-concepts#metric) details given a
+      # metric identifier. It returns information about the metrics including its name,
+      # description, and item.
       #
       # @overload fetch(metric_id, request_options: {})
       #
