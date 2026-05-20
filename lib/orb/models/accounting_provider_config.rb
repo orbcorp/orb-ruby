@@ -10,12 +10,23 @@ module Orb
 
       # @!attribute provider_type
       #
-      #   @return [String]
-      required :provider_type, String
+      #   @return [Symbol, Orb::Models::AccountingProviderConfig::ProviderType]
+      required :provider_type, enum: -> { Orb::AccountingProviderConfig::ProviderType }
 
       # @!method initialize(external_provider_id:, provider_type:)
       #   @param external_provider_id [String]
-      #   @param provider_type [String]
+      #   @param provider_type [Symbol, Orb::Models::AccountingProviderConfig::ProviderType]
+
+      # @see Orb::Models::AccountingProviderConfig#provider_type
+      module ProviderType
+        extend Orb::Internal::Type::Enum
+
+        QUICKBOOKS = :quickbooks
+        NETSUITE = :netsuite
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
     end
   end
 end
