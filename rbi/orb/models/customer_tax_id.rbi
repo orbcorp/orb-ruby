@@ -72,11 +72,13 @@ module Orb
       # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
       # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
       # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
       # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
       # | France                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
       # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
       # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+      # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
       # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
       # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -88,6 +90,7 @@ module Orb
       # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
       # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
       # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
       # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
       # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
       # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -118,6 +121,7 @@ module Orb
       # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
       # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
       # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+      # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
       # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -139,6 +143,7 @@ module Orb
       # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
       # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
       # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
       # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
       # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -220,9 +225,9 @@ module Orb
         CO = T.let(:CO, Orb::CustomerTaxID::Country::TaggedSymbol)
         CR = T.let(:CR, Orb::CustomerTaxID::Country::TaggedSymbol)
         CV = T.let(:CV, Orb::CustomerTaxID::Country::TaggedSymbol)
-        DE = T.let(:DE, Orb::CustomerTaxID::Country::TaggedSymbol)
         CY = T.let(:CY, Orb::CustomerTaxID::Country::TaggedSymbol)
         CZ = T.let(:CZ, Orb::CustomerTaxID::Country::TaggedSymbol)
+        DE = T.let(:DE, Orb::CustomerTaxID::Country::TaggedSymbol)
         DK = T.let(:DK, Orb::CustomerTaxID::Country::TaggedSymbol)
         DO = T.let(:DO, Orb::CustomerTaxID::Country::TaggedSymbol)
         EC = T.let(:EC, Orb::CustomerTaxID::Country::TaggedSymbol)
@@ -232,9 +237,11 @@ module Orb
         ET = T.let(:ET, Orb::CustomerTaxID::Country::TaggedSymbol)
         EU = T.let(:EU, Orb::CustomerTaxID::Country::TaggedSymbol)
         FI = T.let(:FI, Orb::CustomerTaxID::Country::TaggedSymbol)
+        FO = T.let(:FO, Orb::CustomerTaxID::Country::TaggedSymbol)
         FR = T.let(:FR, Orb::CustomerTaxID::Country::TaggedSymbol)
         GB = T.let(:GB, Orb::CustomerTaxID::Country::TaggedSymbol)
         GE = T.let(:GE, Orb::CustomerTaxID::Country::TaggedSymbol)
+        GI = T.let(:GI, Orb::CustomerTaxID::Country::TaggedSymbol)
         GN = T.let(:GN, Orb::CustomerTaxID::Country::TaggedSymbol)
         GR = T.let(:GR, Orb::CustomerTaxID::Country::TaggedSymbol)
         HK = T.let(:HK, Orb::CustomerTaxID::Country::TaggedSymbol)
@@ -254,6 +261,7 @@ module Orb
         KZ = T.let(:KZ, Orb::CustomerTaxID::Country::TaggedSymbol)
         LA = T.let(:LA, Orb::CustomerTaxID::Country::TaggedSymbol)
         LI = T.let(:LI, Orb::CustomerTaxID::Country::TaggedSymbol)
+        LK = T.let(:LK, Orb::CustomerTaxID::Country::TaggedSymbol)
         LT = T.let(:LT, Orb::CustomerTaxID::Country::TaggedSymbol)
         LU = T.let(:LU, Orb::CustomerTaxID::Country::TaggedSymbol)
         LV = T.let(:LV, Orb::CustomerTaxID::Country::TaggedSymbol)
@@ -275,6 +283,7 @@ module Orb
         PH = T.let(:PH, Orb::CustomerTaxID::Country::TaggedSymbol)
         PL = T.let(:PL, Orb::CustomerTaxID::Country::TaggedSymbol)
         PT = T.let(:PT, Orb::CustomerTaxID::Country::TaggedSymbol)
+        PY = T.let(:PY, Orb::CustomerTaxID::Country::TaggedSymbol)
         RO = T.let(:RO, Orb::CustomerTaxID::Country::TaggedSymbol)
         RS = T.let(:RS, Orb::CustomerTaxID::Country::TaggedSymbol)
         RU = T.let(:RU, Orb::CustomerTaxID::Country::TaggedSymbol)
@@ -360,8 +369,10 @@ module Orb
         ES_CIF = T.let(:es_cif, Orb::CustomerTaxID::Type::TaggedSymbol)
         ET_TIN = T.let(:et_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
         EU_OSS_VAT = T.let(:eu_oss_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
+        FO_VAT = T.let(:fo_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         GB_VAT = T.let(:gb_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         GE_VAT = T.let(:ge_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
+        GI_TIN = T.let(:gi_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
         GN_NIF = T.let(:gn_nif, Orb::CustomerTaxID::Type::TaggedSymbol)
         HK_BR = T.let(:hk_br, Orb::CustomerTaxID::Type::TaggedSymbol)
         HR_OIB = T.let(:hr_oib, Orb::CustomerTaxID::Type::TaggedSymbol)
@@ -370,6 +381,7 @@ module Orb
         IL_VAT = T.let(:il_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         IN_GST = T.let(:in_gst, Orb::CustomerTaxID::Type::TaggedSymbol)
         IS_VAT = T.let(:is_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
+        IT_CF = T.let(:it_cf, Orb::CustomerTaxID::Type::TaggedSymbol)
         JP_CN = T.let(:jp_cn, Orb::CustomerTaxID::Type::TaggedSymbol)
         JP_RN = T.let(:jp_rn, Orb::CustomerTaxID::Type::TaggedSymbol)
         JP_TRN = T.let(:jp_trn, Orb::CustomerTaxID::Type::TaggedSymbol)
@@ -381,6 +393,7 @@ module Orb
         LA_TIN = T.let(:la_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
         LI_UID = T.let(:li_uid, Orb::CustomerTaxID::Type::TaggedSymbol)
         LI_VAT = T.let(:li_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
+        LK_VAT = T.let(:lk_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         MA_VAT = T.let(:ma_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         MD_VAT = T.let(:md_vat, Orb::CustomerTaxID::Type::TaggedSymbol)
         ME_PIB = T.let(:me_pib, Orb::CustomerTaxID::Type::TaggedSymbol)
@@ -399,6 +412,7 @@ module Orb
         PE_RUC = T.let(:pe_ruc, Orb::CustomerTaxID::Type::TaggedSymbol)
         PH_TIN = T.let(:ph_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
         PL_NIP = T.let(:pl_nip, Orb::CustomerTaxID::Type::TaggedSymbol)
+        PY_RUC = T.let(:py_ruc, Orb::CustomerTaxID::Type::TaggedSymbol)
         RO_TIN = T.let(:ro_tin, Orb::CustomerTaxID::Type::TaggedSymbol)
         RS_PIB = T.let(:rs_pib, Orb::CustomerTaxID::Type::TaggedSymbol)
         RU_INN = T.let(:ru_inn, Orb::CustomerTaxID::Type::TaggedSymbol)
