@@ -76,11 +76,13 @@ module Orb
       #   | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
       #   | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
       #   | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      #   | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
       #   | Finland                | `eu_vat`     | European VAT Number                                                                                     |
       #   | France                 | `eu_vat`     | European VAT Number                                                                                     |
       #   | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
       #   | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
       #   | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
       #   | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
       #   | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
       #   | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -92,6 +94,7 @@ module Orb
       #   | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
       #   | Israel                 | `il_vat`     | Israel VAT                                                                                              |
       #   | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
       #   | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
       #   | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
       #   | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -122,6 +125,7 @@ module Orb
       #   | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
       #   | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
       #   | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+      #   | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
       #   | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       #   | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       #   | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -143,6 +147,7 @@ module Orb
       #   | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
       #   | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
       #   | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+      #   | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
       #   | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
       #   | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
       #   | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -204,9 +209,9 @@ module Orb
         CO = :CO
         CR = :CR
         CV = :CV
-        DE = :DE
         CY = :CY
         CZ = :CZ
+        DE = :DE
         DK = :DK
         DO = :DO
         EC = :EC
@@ -216,9 +221,11 @@ module Orb
         ET = :ET
         EU = :EU
         FI = :FI
+        FO = :FO
         FR = :FR
         GB = :GB
         GE = :GE
+        GI = :GI
         GN = :GN
         GR = :GR
         HK = :HK
@@ -238,6 +245,7 @@ module Orb
         KZ = :KZ
         LA = :LA
         LI = :LI
+        LK = :LK
         LT = :LT
         LU = :LU
         LV = :LV
@@ -259,6 +267,7 @@ module Orb
         PH = :PH
         PL = :PL
         PT = :PT
+        PY = :PY
         RO = :RO
         RS = :RS
         RU = :RU
@@ -339,8 +348,10 @@ module Orb
         ES_CIF = :es_cif
         ET_TIN = :et_tin
         EU_OSS_VAT = :eu_oss_vat
+        FO_VAT = :fo_vat
         GB_VAT = :gb_vat
         GE_VAT = :ge_vat
+        GI_TIN = :gi_tin
         GN_NIF = :gn_nif
         HK_BR = :hk_br
         HR_OIB = :hr_oib
@@ -349,6 +360,7 @@ module Orb
         IL_VAT = :il_vat
         IN_GST = :in_gst
         IS_VAT = :is_vat
+        IT_CF = :it_cf
         JP_CN = :jp_cn
         JP_RN = :jp_rn
         JP_TRN = :jp_trn
@@ -360,6 +372,7 @@ module Orb
         LA_TIN = :la_tin
         LI_UID = :li_uid
         LI_VAT = :li_vat
+        LK_VAT = :lk_vat
         MA_VAT = :ma_vat
         MD_VAT = :md_vat
         ME_PIB = :me_pib
@@ -378,6 +391,7 @@ module Orb
         PE_RUC = :pe_ruc
         PH_TIN = :ph_tin
         PL_NIP = :pl_nip
+        PY_RUC = :py_ruc
         RO_TIN = :ro_tin
         RS_PIB = :rs_pib
         RU_INN = :ru_inn
