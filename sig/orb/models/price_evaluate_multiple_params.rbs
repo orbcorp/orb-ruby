@@ -104,6 +104,7 @@ module Orb
           | Orb::NewFloatingPackageWithAllocationPrice
           | Orb::NewFloatingUnitWithPercentPrice
           | Orb::NewFloatingMatrixWithAllocationPrice
+          | Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts
           | Orb::NewFloatingTieredWithProrationPrice
           | Orb::NewFloatingUnitWithProrationPrice
           | Orb::NewFloatingGroupedAllocationPrice
@@ -302,6 +303,234 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::BulkWithFilters::cadence]
+            end
+          end
+
+          type matrix_with_threshold_discounts =
+            {
+              cadence: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_threshold_discounts_config: Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              model_type: :matrix_with_threshold_discounts,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+          class MatrixWithThresholdDiscounts < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::cadence
+
+            attr_accessor currency: String
+
+            attr_accessor item_id: String
+
+            attr_accessor matrix_with_threshold_discounts_config: Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
+
+            attr_accessor model_type: :matrix_with_threshold_discounts
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::conversion_rate_config?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            def initialize: (
+              cadence: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_threshold_discounts_config: Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :matrix_with_threshold_discounts
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_threshold_discounts_config: Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              model_type: :matrix_with_threshold_discounts,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::cadence]
+            end
+
+            type matrix_with_threshold_discounts_config =
+              {
+                default_unit_amount: String,
+                first_dimension: String,
+                matrix_values: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                second_dimension: String?,
+                threshold_discount_groups: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              }
+
+            class MatrixWithThresholdDiscountsConfig < Orb::Internal::Type::BaseModel
+              attr_accessor default_unit_amount: String
+
+              attr_accessor first_dimension: String
+
+              attr_accessor matrix_values: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue]
+
+              attr_accessor second_dimension: String?
+
+              attr_reader threshold_discount_groups: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]?
+
+              def threshold_discount_groups=: (
+                ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              ) -> ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+
+              def initialize: (
+                default_unit_amount: String,
+                first_dimension: String,
+                matrix_values: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                ?second_dimension: String?,
+                ?threshold_discount_groups: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              ) -> void
+
+              def to_hash: -> {
+                default_unit_amount: String,
+                first_dimension: String,
+                matrix_values: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                second_dimension: String?,
+                threshold_discount_groups: ::Array[Orb::PriceEvaluateMultipleParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              }
+
+              type matrix_value =
+                {
+                  first_dimension_value: String,
+                  unit_amount: String,
+                  second_dimension_value: String?
+                }
+
+              class MatrixValue < Orb::Internal::Type::BaseModel
+                attr_accessor first_dimension_value: String
+
+                attr_accessor unit_amount: String
+
+                attr_accessor second_dimension_value: String?
+
+                def initialize: (
+                  first_dimension_value: String,
+                  unit_amount: String,
+                  ?second_dimension_value: String?
+                ) -> void
+
+                def to_hash: -> {
+                  first_dimension_value: String,
+                  unit_amount: String,
+                  second_dimension_value: String?
+                }
+              end
+
+              type threshold_discount_group =
+                {
+                  above_threshold_discount_percentage: String,
+                  below_threshold_discount_percentage: String,
+                  cell_coordinates: String,
+                  threshold_amount: String,
+                  description: String?
+                }
+
+              class ThresholdDiscountGroup < Orb::Internal::Type::BaseModel
+                attr_accessor above_threshold_discount_percentage: String
+
+                attr_accessor below_threshold_discount_percentage: String
+
+                attr_accessor cell_coordinates: String
+
+                attr_accessor threshold_amount: String
+
+                attr_accessor description: String?
+
+                def initialize: (
+                  above_threshold_discount_percentage: String,
+                  below_threshold_discount_percentage: String,
+                  cell_coordinates: String,
+                  threshold_amount: String,
+                  ?description: String?
+                ) -> void
+
+                def to_hash: -> {
+                  above_threshold_discount_percentage: String,
+                  below_threshold_discount_percentage: String,
+                  cell_coordinates: String,
+                  threshold_amount: String,
+                  description: String?
+                }
+              end
             end
           end
 

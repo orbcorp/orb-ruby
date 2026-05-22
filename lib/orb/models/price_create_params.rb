@@ -10,11 +10,11 @@ module Orb
       # @!attribute body
       #   New floating price request body params.
       #
-      #   @return [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::PriceCreateParams::Body::DailyCreditAllowance, Orb::Models::PriceCreateParams::Body::MeteredAllowance, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput]
+      #   @return [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::PriceCreateParams::Body::DailyCreditAllowance, Orb::Models::PriceCreateParams::Body::MeteredAllowance, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput]
       required :body, union: -> { Orb::PriceCreateParams::Body }
 
       # @!method initialize(body:, request_options: {})
-      #   @param body [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::PriceCreateParams::Body::DailyCreditAllowance, Orb::Models::PriceCreateParams::Body::MeteredAllowance, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput] New floating price request body params.
+      #   @param body [Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::PriceCreateParams::Body::DailyCreditAllowance, Orb::Models::PriceCreateParams::Body::MeteredAllowance, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput] New floating price request body params.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
@@ -51,6 +51,9 @@ module Orb
         variant :unit_with_percent, -> { Orb::NewFloatingUnitWithPercentPrice }
 
         variant :matrix_with_allocation, -> { Orb::NewFloatingMatrixWithAllocationPrice }
+
+        variant :matrix_with_threshold_discounts,
+                -> { Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts }
 
         variant :tiered_with_proration, -> { Orb::NewFloatingTieredWithProrationPrice }
 
@@ -330,6 +333,311 @@ module Orb
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+        end
+
+        class MatrixWithThresholdDiscounts < Orb::Internal::Type::BaseModel
+          # @!attribute cadence
+          #   The cadence to bill for this price on.
+          #
+          #   @return [Symbol, Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::Cadence]
+          required :cadence, enum: -> { Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::Cadence }
+
+          # @!attribute currency
+          #   An ISO 4217 currency string for which this price is billed in.
+          #
+          #   @return [String]
+          required :currency, String
+
+          # @!attribute item_id
+          #   The id of the item the price will be associated with.
+          #
+          #   @return [String]
+          required :item_id, String
+
+          # @!attribute matrix_with_threshold_discounts_config
+          #   Configuration for matrix_with_threshold_discounts pricing
+          #
+          #   @return [Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig]
+          required :matrix_with_threshold_discounts_config,
+                   -> { Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig }
+
+          # @!attribute model_type
+          #   The pricing model type
+          #
+          #   @return [Symbol, :matrix_with_threshold_discounts]
+          required :model_type, const: :matrix_with_threshold_discounts
+
+          # @!attribute name
+          #   The name of the price.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!attribute billable_metric_id
+          #   The id of the billable metric for the price. Only needed if the price is
+          #   usage-based.
+          #
+          #   @return [String, nil]
+          optional :billable_metric_id, String, nil?: true
+
+          # @!attribute billed_in_advance
+          #   If the Price represents a fixed cost, the price will be billed in-advance if
+          #   this is true, and in-arrears if this is false.
+          #
+          #   @return [Boolean, nil]
+          optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+          # @!attribute billing_cycle_configuration
+          #   For custom cadence: specifies the duration of the billing period in days or
+          #   months.
+          #
+          #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+          optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+          # @!attribute conversion_rate
+          #   The per unit conversion rate of the price currency to the invoicing currency.
+          #
+          #   @return [Float, nil]
+          optional :conversion_rate, Float, nil?: true
+
+          # @!attribute conversion_rate_config
+          #   The configuration for the rate of the price currency to the invoicing currency.
+          #
+          #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+          optional :conversion_rate_config,
+                   union: -> {
+                     Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::ConversionRateConfig
+                   },
+                   nil?: true
+
+          # @!attribute dimensional_price_configuration
+          #   For dimensional price: specifies a price group and dimension values
+          #
+          #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+          optional :dimensional_price_configuration, -> { Orb::NewDimensionalPriceConfiguration }, nil?: true
+
+          # @!attribute external_price_id
+          #   An alias for the price.
+          #
+          #   @return [String, nil]
+          optional :external_price_id, String, nil?: true
+
+          # @!attribute fixed_price_quantity
+          #   If the Price represents a fixed cost, this represents the quantity of units
+          #   applied.
+          #
+          #   @return [Float, nil]
+          optional :fixed_price_quantity, Float, nil?: true
+
+          # @!attribute invoice_grouping_key
+          #   The property used to group this price on an invoice
+          #
+          #   @return [String, nil]
+          optional :invoice_grouping_key, String, nil?: true
+
+          # @!attribute invoicing_cycle_configuration
+          #   Within each billing cycle, specifies the cadence at which invoices are produced.
+          #   If unspecified, a single invoice is produced per billing cycle.
+          #
+          #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+          optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+          # @!attribute license_type_id
+          #   The ID of the license type to associate with this price.
+          #
+          #   @return [String, nil]
+          optional :license_type_id, String, nil?: true
+
+          # @!attribute metadata
+          #   User-specified key/value pairs for the resource. Individual keys can be removed
+          #   by setting the value to `null`, and the entire metadata mapping can be cleared
+          #   by setting `metadata` to `null`.
+          #
+          #   @return [Hash{Symbol=>String, nil}, nil]
+          optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+          # @!method initialize(cadence:, currency:, item_id:, matrix_with_threshold_discounts_config:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, model_type: :matrix_with_threshold_discounts)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts} for more
+          #   details.
+          #
+          #   @param cadence [Symbol, Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::Cadence] The cadence to bill for this price on.
+          #
+          #   @param currency [String] An ISO 4217 currency string for which this price is billed in.
+          #
+          #   @param item_id [String] The id of the item the price will be associated with.
+          #
+          #   @param matrix_with_threshold_discounts_config [Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig] Configuration for matrix_with_threshold_discounts pricing
+          #
+          #   @param name [String] The name of the price.
+          #
+          #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+          #
+          #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+          #
+          #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+          #
+          #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+          #
+          #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+          #
+          #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+          #
+          #   @param external_price_id [String, nil] An alias for the price.
+          #
+          #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+          #
+          #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+          #
+          #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+          #
+          #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+          #
+          #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+          #
+          #   @param model_type [Symbol, :matrix_with_threshold_discounts] The pricing model type
+
+          # The cadence to bill for this price on.
+          #
+          # @see Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts#cadence
+          module Cadence
+            extend Orb::Internal::Type::Enum
+
+            ANNUAL = :annual
+            SEMI_ANNUAL = :semi_annual
+            MONTHLY = :monthly
+            QUARTERLY = :quarterly
+            ONE_TIME = :one_time
+            CUSTOM = :custom
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts#matrix_with_threshold_discounts_config
+          class MatrixWithThresholdDiscountsConfig < Orb::Internal::Type::BaseModel
+            # @!attribute default_unit_amount
+            #   Unit price used for usage that does not match any defined matrix cell.
+            #
+            #   @return [String]
+            required :default_unit_amount, String
+
+            # @!attribute first_dimension
+            #   First matrix dimension key.
+            #
+            #   @return [String]
+            required :first_dimension, String
+
+            # @!attribute matrix_values
+            #   Per-cell unit prices.
+            #
+            #   @return [Array<Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue>]
+            required :matrix_values,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
+                       ]
+                     end
+
+            # @!attribute second_dimension
+            #   Optional second matrix dimension key.
+            #
+            #   @return [String, nil]
+            optional :second_dimension, String, nil?: true
+
+            # @!attribute threshold_discount_groups
+            #
+            #   @return [Array<Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup>, nil]
+            optional :threshold_discount_groups,
+                     -> do
+                       Orb::Internal::Type::ArrayOf[
+                         Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
+                       ]
+                     end
+
+            # @!method initialize(default_unit_amount:, first_dimension:, matrix_values:, second_dimension: nil, threshold_discount_groups: nil)
+            #   Configuration for matrix_with_threshold_discounts pricing
+            #
+            #   @param default_unit_amount [String] Unit price used for usage that does not match any defined matrix cell.
+            #
+            #   @param first_dimension [String] First matrix dimension key.
+            #
+            #   @param matrix_values [Array<Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue>] Per-cell unit prices.
+            #
+            #   @param second_dimension [String, nil] Optional second matrix dimension key.
+            #
+            #   @param threshold_discount_groups [Array<Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup>]
+
+            class MatrixValue < Orb::Internal::Type::BaseModel
+              # @!attribute first_dimension_value
+              #
+              #   @return [String]
+              required :first_dimension_value, String
+
+              # @!attribute unit_amount
+              #
+              #   @return [String]
+              required :unit_amount, String
+
+              # @!attribute second_dimension_value
+              #
+              #   @return [String, nil]
+              optional :second_dimension_value, String, nil?: true
+
+              # @!method initialize(first_dimension_value:, unit_amount:, second_dimension_value: nil)
+              #   @param first_dimension_value [String]
+              #   @param unit_amount [String]
+              #   @param second_dimension_value [String, nil]
+            end
+
+            class ThresholdDiscountGroup < Orb::Internal::Type::BaseModel
+              # @!attribute above_threshold_discount_percentage
+              #   Discount rate applied to spend above the threshold.
+              #
+              #   @return [String]
+              required :above_threshold_discount_percentage, String
+
+              # @!attribute below_threshold_discount_percentage
+              #   Discount rate applied to spend at or below the threshold. Set to 0 for no
+              #   baseline discount.
+              #
+              #   @return [String]
+              required :below_threshold_discount_percentage, String
+
+              # @!attribute cell_coordinates
+              #   Semicolon-separated list of matrix cell coordinates targeted by this group. Each
+              #   coordinate is `first,second` when the matrix has two dimensions, or just `first`
+              #   for a single-dimension matrix. Example: `blue,circle;green,triangle`.
+              #
+              #   @return [String]
+              required :cell_coordinates, String
+
+              # @!attribute threshold_amount
+              #
+              #   @return [String]
+              required :threshold_amount, String
+
+              # @!attribute description
+              #
+              #   @return [String, nil]
+              optional :description, String, nil?: true
+
+              # @!method initialize(above_threshold_discount_percentage:, below_threshold_discount_percentage:, cell_coordinates:, threshold_amount:, description: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup}
+              #   for more details.
+              #
+              #   @param above_threshold_discount_percentage [String] Discount rate applied to spend above the threshold.
+              #
+              #   @param below_threshold_discount_percentage [String] Discount rate applied to spend at or below the threshold. Set to 0 for no baseli
+              #
+              #   @param cell_coordinates [String] Semicolon-separated list of matrix cell coordinates targeted by this group. Each
+              #
+              #   @param threshold_amount [String]
+              #
+              #   @param description [String, nil]
+            end
           end
         end
 
@@ -1671,7 +1979,7 @@ module Orb
         end
 
         # @!method self.variants
-        #   @return [Array(Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::PriceCreateParams::Body::DailyCreditAllowance, Orb::Models::PriceCreateParams::Body::MeteredAllowance, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput)]
+        #   @return [Array(Orb::Models::NewFloatingUnitPrice, Orb::Models::NewFloatingTieredPrice, Orb::Models::NewFloatingBulkPrice, Orb::Models::PriceCreateParams::Body::BulkWithFilters, Orb::Models::NewFloatingPackagePrice, Orb::Models::NewFloatingMatrixPrice, Orb::Models::NewFloatingThresholdTotalAmountPrice, Orb::Models::NewFloatingTieredPackagePrice, Orb::Models::NewFloatingTieredWithMinimumPrice, Orb::Models::NewFloatingGroupedTieredPrice, Orb::Models::NewFloatingTieredPackageWithMinimumPrice, Orb::Models::NewFloatingPackageWithAllocationPrice, Orb::Models::NewFloatingUnitWithPercentPrice, Orb::Models::NewFloatingMatrixWithAllocationPrice, Orb::Models::PriceCreateParams::Body::MatrixWithThresholdDiscounts, Orb::Models::NewFloatingTieredWithProrationPrice, Orb::Models::NewFloatingUnitWithProrationPrice, Orb::Models::NewFloatingGroupedAllocationPrice, Orb::Models::NewFloatingBulkWithProrationPrice, Orb::Models::NewFloatingGroupedWithProratedMinimumPrice, Orb::Models::NewFloatingGroupedWithMeteredMinimumPrice, Orb::Models::PriceCreateParams::Body::GroupedWithMinMaxThresholds, Orb::Models::NewFloatingMatrixWithDisplayNamePrice, Orb::Models::NewFloatingGroupedTieredPackagePrice, Orb::Models::NewFloatingMaxGroupTieredPackagePrice, Orb::Models::NewFloatingScalableMatrixWithUnitPricingPrice, Orb::Models::NewFloatingScalableMatrixWithTieredPricingPrice, Orb::Models::NewFloatingCumulativeGroupedBulkPrice, Orb::Models::PriceCreateParams::Body::CumulativeGroupedAllocation, Orb::Models::PriceCreateParams::Body::DailyCreditAllowance, Orb::Models::PriceCreateParams::Body::MeteredAllowance, Orb::Models::NewFloatingMinimumCompositePrice, Orb::Models::PriceCreateParams::Body::Percent, Orb::Models::PriceCreateParams::Body::EventOutput)]
       end
     end
   end

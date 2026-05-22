@@ -36,6 +36,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::PackageWithAllocation
       in Orb::Price::UnitWithPercent
       in Orb::Price::MatrixWithAllocation
+      in Orb::Price::MatrixWithThresholdDiscounts
       in Orb::Price::TieredWithProration
       in Orb::Price::UnitWithProration
       in Orb::Price::GroupedAllocation
@@ -507,6 +508,38 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
         license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
+      }
+      in {
+        model_type: :matrix_with_threshold_discounts,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::MatrixWithThresholdDiscounts::BillingMode,
+        cadence: Orb::Price::MatrixWithThresholdDiscounts::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoice_grouping_key: String | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        matrix_with_threshold_discounts_config: Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::MatrixWithThresholdDiscounts::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithThresholdDiscounts::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -1143,6 +1176,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::PackageWithAllocation
       in Orb::Price::UnitWithPercent
       in Orb::Price::MatrixWithAllocation
+      in Orb::Price::MatrixWithThresholdDiscounts
       in Orb::Price::TieredWithProration
       in Orb::Price::UnitWithProration
       in Orb::Price::GroupedAllocation
@@ -1614,6 +1648,38 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
         license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
+      }
+      in {
+        model_type: :matrix_with_threshold_discounts,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::MatrixWithThresholdDiscounts::BillingMode,
+        cadence: Orb::Price::MatrixWithThresholdDiscounts::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoice_grouping_key: String | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        matrix_with_threshold_discounts_config: Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::MatrixWithThresholdDiscounts::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithThresholdDiscounts::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -2257,6 +2323,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::PackageWithAllocation
       in Orb::Price::UnitWithPercent
       in Orb::Price::MatrixWithAllocation
+      in Orb::Price::MatrixWithThresholdDiscounts
       in Orb::Price::TieredWithProration
       in Orb::Price::UnitWithProration
       in Orb::Price::GroupedAllocation
@@ -2728,6 +2795,38 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
         license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
+      }
+      in {
+        model_type: :matrix_with_threshold_discounts,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::MatrixWithThresholdDiscounts::BillingMode,
+        cadence: Orb::Price::MatrixWithThresholdDiscounts::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoice_grouping_key: String | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        matrix_with_threshold_discounts_config: Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::MatrixWithThresholdDiscounts::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithThresholdDiscounts::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
@@ -3419,6 +3518,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
       in Orb::Price::PackageWithAllocation
       in Orb::Price::UnitWithPercent
       in Orb::Price::MatrixWithAllocation
+      in Orb::Price::MatrixWithThresholdDiscounts
       in Orb::Price::TieredWithProration
       in Orb::Price::UnitWithProration
       in Orb::Price::GroupedAllocation
@@ -3890,6 +3990,38 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
         replaces_price_id: String | nil,
         dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
         license_type: Orb::Price::MatrixWithAllocation::LicenseType | nil
+      }
+      in {
+        model_type: :matrix_with_threshold_discounts,
+        id: String,
+        billable_metric: Orb::BillableMetricTiny | nil,
+        billing_cycle_configuration: Orb::BillingCycleConfiguration,
+        billing_mode: Orb::Price::MatrixWithThresholdDiscounts::BillingMode,
+        cadence: Orb::Price::MatrixWithThresholdDiscounts::Cadence,
+        composite_price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter]) | nil,
+        conversion_rate: Float | nil,
+        conversion_rate_config: Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig | nil,
+        created_at: Time,
+        credit_allocation: Orb::Allocation | nil,
+        currency: String,
+        discount: Orb::Discount | nil,
+        external_price_id: String | nil,
+        fixed_price_quantity: Float | nil,
+        invoice_grouping_key: String | nil,
+        invoicing_cycle_configuration: Orb::BillingCycleConfiguration | nil,
+        item: Orb::ItemSlim,
+        matrix_with_threshold_discounts_config: Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        name: String,
+        plan_phase_order: Integer | nil,
+        price_type: Orb::Price::MatrixWithThresholdDiscounts::PriceType,
+        replaces_price_id: String | nil,
+        dimensional_price_configuration: Orb::DimensionalPriceConfiguration | nil,
+        license_type: Orb::Price::MatrixWithThresholdDiscounts::LicenseType | nil
       }
       in {
         model_type: :tiered_with_proration,
