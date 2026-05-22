@@ -177,6 +177,7 @@ module Orb
                 Orb::Price::PackageWithAllocation::OrHash,
                 Orb::Price::UnitWithPercent::OrHash,
                 Orb::Price::MatrixWithAllocation::OrHash,
+                Orb::Price::MatrixWithThresholdDiscounts::OrHash,
                 Orb::Price::TieredWithProration::OrHash,
                 Orb::Price::UnitWithProration::OrHash,
                 Orb::Price::GroupedAllocation::OrHash,

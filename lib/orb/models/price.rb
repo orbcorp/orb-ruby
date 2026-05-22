@@ -45,6 +45,8 @@ module Orb
 
       variant :matrix_with_allocation, -> { Orb::Price::MatrixWithAllocation }
 
+      variant :matrix_with_threshold_discounts, -> { Orb::Price::MatrixWithThresholdDiscounts }
+
       variant :tiered_with_proration, -> { Orb::Price::TieredWithProration }
 
       variant :unit_with_proration, -> { Orb::Price::UnitWithProration }
@@ -5585,6 +5587,495 @@ module Orb
           # @!method initialize(id:, grouping_key:, name:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Price::MatrixWithAllocation::LicenseType} for more details.
+          #
+          #   The LicenseType resource represents a type of license that can be assigned to
+          #   users. License types are used during billing by grouping metrics on the
+          #   configured grouping key.
+          #
+          #   @param id [String] The Orb-assigned unique identifier for the license type.
+          #
+          #   @param grouping_key [String] The key used for grouping licenses of this type. This is typically a user identi
+          #
+          #   @param name [String] The name of the license type.
+        end
+      end
+
+      class MatrixWithThresholdDiscounts < Orb::Internal::Type::BaseModel
+        # @!attribute id
+        #
+        #   @return [String]
+        required :id, String
+
+        # @!attribute billable_metric
+        #
+        #   @return [Orb::Models::BillableMetricTiny, nil]
+        required :billable_metric, -> { Orb::BillableMetricTiny }, nil?: true
+
+        # @!attribute billing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration]
+        required :billing_cycle_configuration, -> { Orb::BillingCycleConfiguration }
+
+        # @!attribute billing_mode
+        #
+        #   @return [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::BillingMode]
+        required :billing_mode, enum: -> { Orb::Price::MatrixWithThresholdDiscounts::BillingMode }
+
+        # @!attribute cadence
+        #
+        #   @return [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::Cadence]
+        required :cadence, enum: -> { Orb::Price::MatrixWithThresholdDiscounts::Cadence }
+
+        # @!attribute composite_price_filters
+        #
+        #   @return [Array<Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter>, nil]
+        required :composite_price_filters,
+                 -> {
+                   Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter]
+                 },
+                 nil?: true
+
+        # @!attribute conversion_rate
+        #
+        #   @return [Float, nil]
+        required :conversion_rate, Float, nil?: true
+
+        # @!attribute conversion_rate_config
+        #
+        #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        required :conversion_rate_config,
+                 union: -> { Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig },
+                 nil?: true
+
+        # @!attribute created_at
+        #
+        #   @return [Time]
+        required :created_at, Time
+
+        # @!attribute credit_allocation
+        #
+        #   @return [Orb::Models::Allocation, nil]
+        required :credit_allocation, -> { Orb::Allocation }, nil?: true
+
+        # @!attribute currency
+        #
+        #   @return [String]
+        required :currency, String
+
+        # @!attribute discount
+        #   @deprecated
+        #
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        required :discount, union: -> { Orb::Discount }, nil?: true
+
+        # @!attribute external_price_id
+        #
+        #   @return [String, nil]
+        required :external_price_id, String, nil?: true
+
+        # @!attribute fixed_price_quantity
+        #
+        #   @return [Float, nil]
+        required :fixed_price_quantity, Float, nil?: true
+
+        # @!attribute invoice_grouping_key
+        #
+        #   @return [String, nil]
+        required :invoice_grouping_key, String, nil?: true
+
+        # @!attribute invoicing_cycle_configuration
+        #
+        #   @return [Orb::Models::BillingCycleConfiguration, nil]
+        required :invoicing_cycle_configuration, -> { Orb::BillingCycleConfiguration }, nil?: true
+
+        # @!attribute item
+        #   A minimal representation of an Item containing only the essential identifying
+        #   information.
+        #
+        #   @return [Orb::Models::ItemSlim]
+        required :item, -> { Orb::ItemSlim }
+
+        # @!attribute matrix_with_threshold_discounts_config
+        #   Configuration for matrix_with_threshold_discounts pricing
+        #
+        #   @return [Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig]
+        required :matrix_with_threshold_discounts_config,
+                 -> { Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig }
+
+        # @!attribute maximum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Maximum, nil]
+        required :maximum, -> { Orb::Maximum }, nil?: true
+
+        # @!attribute maximum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :maximum_amount, String, nil?: true
+
+        # @!attribute metadata
+        #   User specified key-value pairs for the resource. If not present, this defaults
+        #   to an empty dictionary. Individual keys can be removed by setting the value to
+        #   `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        #   `null`.
+        #
+        #   @return [Hash{Symbol=>String}]
+        required :metadata, Orb::Internal::Type::HashOf[String]
+
+        # @!attribute minimum
+        #   @deprecated
+        #
+        #   @return [Orb::Models::Minimum, nil]
+        required :minimum, -> { Orb::Minimum }, nil?: true
+
+        # @!attribute minimum_amount
+        #   @deprecated
+        #
+        #   @return [String, nil]
+        required :minimum_amount, String, nil?: true
+
+        # @!attribute model_type
+        #   The pricing model type
+        #
+        #   @return [Symbol, :matrix_with_threshold_discounts]
+        required :model_type, const: :matrix_with_threshold_discounts
+
+        # @!attribute name
+        #
+        #   @return [String]
+        required :name, String
+
+        # @!attribute plan_phase_order
+        #
+        #   @return [Integer, nil]
+        required :plan_phase_order, Integer, nil?: true
+
+        # @!attribute price_type
+        #
+        #   @return [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::PriceType]
+        required :price_type, enum: -> { Orb::Price::MatrixWithThresholdDiscounts::PriceType }
+
+        # @!attribute replaces_price_id
+        #   The price id this price replaces. This price will take the place of the replaced
+        #   price in plan version migrations.
+        #
+        #   @return [String, nil]
+        required :replaces_price_id, String, nil?: true
+
+        # @!attribute dimensional_price_configuration
+        #
+        #   @return [Orb::Models::DimensionalPriceConfiguration, nil]
+        optional :dimensional_price_configuration, -> { Orb::DimensionalPriceConfiguration }, nil?: true
+
+        # @!attribute license_type
+        #   The LicenseType resource represents a type of license that can be assigned to
+        #   users. License types are used during billing by grouping metrics on the
+        #   configured grouping key.
+        #
+        #   @return [Orb::Models::Price::MatrixWithThresholdDiscounts::LicenseType, nil]
+        optional :license_type, -> { Orb::Price::MatrixWithThresholdDiscounts::LicenseType }, nil?: true
+
+        # @!method initialize(id:, billable_metric:, billing_cycle_configuration:, billing_mode:, cadence:, composite_price_filters:, conversion_rate:, conversion_rate_config:, created_at:, credit_allocation:, currency:, discount:, external_price_id:, fixed_price_quantity:, invoice_grouping_key:, invoicing_cycle_configuration:, item:, matrix_with_threshold_discounts_config:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, plan_phase_order:, price_type:, replaces_price_id:, dimensional_price_configuration: nil, license_type: nil, model_type: :matrix_with_threshold_discounts)
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Price::MatrixWithThresholdDiscounts} for more details.
+        #
+        #   @param id [String]
+        #
+        #   @param billable_metric [Orb::Models::BillableMetricTiny, nil]
+        #
+        #   @param billing_cycle_configuration [Orb::Models::BillingCycleConfiguration]
+        #
+        #   @param billing_mode [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::BillingMode]
+        #
+        #   @param cadence [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::Cadence]
+        #
+        #   @param composite_price_filters [Array<Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter>, nil]
+        #
+        #   @param conversion_rate [Float, nil]
+        #
+        #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+        #
+        #   @param created_at [Time]
+        #
+        #   @param credit_allocation [Orb::Models::Allocation, nil]
+        #
+        #   @param currency [String]
+        #
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #
+        #   @param external_price_id [String, nil]
+        #
+        #   @param fixed_price_quantity [Float, nil]
+        #
+        #   @param invoice_grouping_key [String, nil]
+        #
+        #   @param invoicing_cycle_configuration [Orb::Models::BillingCycleConfiguration, nil]
+        #
+        #   @param item [Orb::Models::ItemSlim] A minimal representation of an Item containing only the essential identifying in
+        #
+        #   @param matrix_with_threshold_discounts_config [Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig] Configuration for matrix_with_threshold_discounts pricing
+        #
+        #   @param maximum [Orb::Models::Maximum, nil]
+        #
+        #   @param maximum_amount [String, nil]
+        #
+        #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
+        #
+        #   @param minimum [Orb::Models::Minimum, nil]
+        #
+        #   @param minimum_amount [String, nil]
+        #
+        #   @param name [String]
+        #
+        #   @param plan_phase_order [Integer, nil]
+        #
+        #   @param price_type [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::PriceType]
+        #
+        #   @param replaces_price_id [String, nil] The price id this price replaces. This price will take the place of the replaced
+        #
+        #   @param dimensional_price_configuration [Orb::Models::DimensionalPriceConfiguration, nil]
+        #
+        #   @param license_type [Orb::Models::Price::MatrixWithThresholdDiscounts::LicenseType, nil] The LicenseType resource represents a type of license that can be assigned to us
+        #
+        #   @param model_type [Symbol, :matrix_with_threshold_discounts] The pricing model type
+
+        # @see Orb::Models::Price::MatrixWithThresholdDiscounts#billing_mode
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          IN_ADVANCE = :in_advance
+          IN_ARREAR = :in_arrear
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::MatrixWithThresholdDiscounts#cadence
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          ONE_TIME = :one_time
+          MONTHLY = :monthly
+          QUARTERLY = :quarterly
+          SEMI_ANNUAL = :semi_annual
+          ANNUAL = :annual
+          CUSTOM = :custom
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          # @!attribute field
+          #   The property of the price to filter on.
+          #
+          #   @return [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter::Field]
+          required :field, enum: -> { Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter::Field }
+
+          # @!attribute operator
+          #   Should prices that match the filter be included or excluded.
+          #
+          #   @return [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter::Operator]
+          required :operator, enum: -> { Orb::Price::MatrixWithThresholdDiscounts::CompositePriceFilter::Operator }
+
+          # @!attribute values
+          #   The IDs or values that match this filter.
+          #
+          #   @return [Array<String>]
+          required :values, Orb::Internal::Type::ArrayOf[String]
+
+          # @!method initialize(field:, operator:, values:)
+          #   @param field [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter::Field] The property of the price to filter on.
+          #
+          #   @param operator [Symbol, Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter::Operator] Should prices that match the filter be included or excluded.
+          #
+          #   @param values [Array<String>] The IDs or values that match this filter.
+
+          # The property of the price to filter on.
+          #
+          # @see Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter#field
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID = :price_id
+            ITEM_ID = :item_id
+            PRICE_TYPE = :price_type
+            CURRENCY = :currency
+            PRICING_UNIT_ID = :pricing_unit_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Should prices that match the filter be included or excluded.
+          #
+          # @see Orb::Models::Price::MatrixWithThresholdDiscounts::CompositePriceFilter#operator
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES = :includes
+            EXCLUDES = :excludes
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # @see Orb::Models::Price::MatrixWithThresholdDiscounts#matrix_with_threshold_discounts_config
+        class MatrixWithThresholdDiscountsConfig < Orb::Internal::Type::BaseModel
+          # @!attribute default_unit_amount
+          #   Unit price used for usage that does not match any defined matrix cell.
+          #
+          #   @return [String]
+          required :default_unit_amount, String
+
+          # @!attribute first_dimension
+          #   First matrix dimension key.
+          #
+          #   @return [String]
+          required :first_dimension, String
+
+          # @!attribute matrix_values
+          #   Per-cell unit prices.
+          #
+          #   @return [Array<Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue>]
+          required :matrix_values,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue] }
+
+          # @!attribute second_dimension
+          #   Optional second matrix dimension key.
+          #
+          #   @return [String, nil]
+          optional :second_dimension, String, nil?: true
+
+          # @!attribute threshold_discount_groups
+          #
+          #   @return [Array<Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup>, nil]
+          optional :threshold_discount_groups,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup] }
+
+          # @!method initialize(default_unit_amount:, first_dimension:, matrix_values:, second_dimension: nil, threshold_discount_groups: nil)
+          #   Configuration for matrix_with_threshold_discounts pricing
+          #
+          #   @param default_unit_amount [String] Unit price used for usage that does not match any defined matrix cell.
+          #
+          #   @param first_dimension [String] First matrix dimension key.
+          #
+          #   @param matrix_values [Array<Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue>] Per-cell unit prices.
+          #
+          #   @param second_dimension [String, nil] Optional second matrix dimension key.
+          #
+          #   @param threshold_discount_groups [Array<Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup>]
+
+          class MatrixValue < Orb::Internal::Type::BaseModel
+            # @!attribute first_dimension_value
+            #
+            #   @return [String]
+            required :first_dimension_value, String
+
+            # @!attribute unit_amount
+            #
+            #   @return [String]
+            required :unit_amount, String
+
+            # @!attribute second_dimension_value
+            #
+            #   @return [String, nil]
+            optional :second_dimension_value, String, nil?: true
+
+            # @!method initialize(first_dimension_value:, unit_amount:, second_dimension_value: nil)
+            #   @param first_dimension_value [String]
+            #   @param unit_amount [String]
+            #   @param second_dimension_value [String, nil]
+          end
+
+          class ThresholdDiscountGroup < Orb::Internal::Type::BaseModel
+            # @!attribute above_threshold_discount_percentage
+            #   Discount rate applied to spend above the threshold.
+            #
+            #   @return [String]
+            required :above_threshold_discount_percentage, String
+
+            # @!attribute below_threshold_discount_percentage
+            #   Discount rate applied to spend at or below the threshold. Set to 0 for no
+            #   baseline discount.
+            #
+            #   @return [String]
+            required :below_threshold_discount_percentage, String
+
+            # @!attribute cell_coordinates
+            #   Semicolon-separated list of matrix cell coordinates targeted by this group. Each
+            #   coordinate is `first,second` when the matrix has two dimensions, or just `first`
+            #   for a single-dimension matrix. Example: `blue,circle;green,triangle`.
+            #
+            #   @return [String]
+            required :cell_coordinates, String
+
+            # @!attribute threshold_amount
+            #
+            #   @return [String]
+            required :threshold_amount, String
+
+            # @!attribute description
+            #
+            #   @return [String, nil]
+            optional :description, String, nil?: true
+
+            # @!method initialize(above_threshold_discount_percentage:, below_threshold_discount_percentage:, cell_coordinates:, threshold_amount:, description: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup}
+            #   for more details.
+            #
+            #   @param above_threshold_discount_percentage [String] Discount rate applied to spend above the threshold.
+            #
+            #   @param below_threshold_discount_percentage [String] Discount rate applied to spend at or below the threshold. Set to 0 for no baseli
+            #
+            #   @param cell_coordinates [String] Semicolon-separated list of matrix cell coordinates targeted by this group. Each
+            #
+            #   @param threshold_amount [String]
+            #
+            #   @param description [String, nil]
+          end
+        end
+
+        # @see Orb::Models::Price::MatrixWithThresholdDiscounts#price_type
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          USAGE_PRICE = :usage_price
+          FIXED_PRICE = :fixed_price
+          COMPOSITE_PRICE = :composite_price
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see Orb::Models::Price::MatrixWithThresholdDiscounts#license_type
+        class LicenseType < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The Orb-assigned unique identifier for the license type.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute grouping_key
+          #   The key used for grouping licenses of this type. This is typically a user
+          #   identifier field.
+          #
+          #   @return [String]
+          required :grouping_key, String
+
+          # @!attribute name
+          #   The name of the license type.
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!method initialize(id:, grouping_key:, name:)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Price::MatrixWithThresholdDiscounts::LicenseType} for more
+          #   details.
           #
           #   The LicenseType resource represents a type of license that can be assigned to
           #   users. License types are used during billing by grouping metrics on the
@@ -13531,7 +14022,7 @@ module Orb
       end
 
       # @!method self.variants
-      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::BulkWithFilters, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::CumulativeGroupedAllocation, Orb::Models::Price::DailyCreditAllowance, Orb::Models::Price::MeteredAllowance, Orb::Models::Price::MinimumComposite, Orb::Models::Price::Percent, Orb::Models::Price::EventOutput)]
+      #   @return [Array(Orb::Models::Price::Unit, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::BulkWithFilters, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::GroupedTiered, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::MatrixWithThresholdDiscounts, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::CumulativeGroupedAllocation, Orb::Models::Price::DailyCreditAllowance, Orb::Models::Price::MeteredAllowance, Orb::Models::Price::MinimumComposite, Orb::Models::Price::Percent, Orb::Models::Price::EventOutput)]
     end
   end
 end
