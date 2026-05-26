@@ -401,6 +401,11 @@ module Orb
       # for multiple customers, use the customer_id[] or external_customer_id[] query
       # parameters.
       #
+      # Subscriptions can be filtered by status using the status query parameter (one of
+      # `active`, `ended`, or `upcoming`). To filter for multiple statuses in a single
+      # request, use the status[] query parameter, e.g.
+      # `status[]=active&status[]=ended`.
+      #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
       #
       # @param created_at_gt [Time, nil]
