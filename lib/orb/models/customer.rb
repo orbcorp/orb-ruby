@@ -111,6 +111,10 @@ module Orb
       required :payment_provider_id, String, nil?: true
 
       # @!attribute portal_url
+      #   Deprecated. Returns the URL of the most recent non-expired portal link, or null.
+      #   When the account has opted into customer portal sessions, this field always
+      #   returns null. Use POST /v1/customers/{id}/portal_sessions to mint short-lived
+      #   portal session URLs.
       #
       #   @return [String, nil]
       required :portal_url, String, nil?: true
@@ -364,7 +368,7 @@ module Orb
       #
       #   @param payment_provider_id [String, nil] The ID of this customer in an external payments solution, such as Stripe. This i
       #
-      #   @param portal_url [String, nil]
+      #   @param portal_url [String, nil] Deprecated. Returns the URL of the most recent non-expired portal link, or null.
       #
       #   @param shipping_address [Orb::Models::Address, nil]
       #

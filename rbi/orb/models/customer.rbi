@@ -83,6 +83,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :payment_provider_id
 
+      # Deprecated. Returns the URL of the most recent non-expired portal link, or null.
+      # When the account has opted into customer portal sessions, this field always
+      # returns null. Use POST /v1/customers/{id}/portal_sessions to mint short-lived
+      # portal session URLs.
       sig { returns(T.nilable(String)) }
       attr_accessor :portal_url
 
@@ -383,6 +387,10 @@ module Orb
         # The ID of this customer in an external payments solution, such as Stripe. This
         # is used for creating charges or invoices in the external system via Orb.
         payment_provider_id:,
+        # Deprecated. Returns the URL of the most recent non-expired portal link, or null.
+        # When the account has opted into customer portal sessions, this field always
+        # returns null. Use POST /v1/customers/{id}/portal_sessions to mint short-lived
+        # portal session URLs.
         portal_url:,
         shipping_address:,
         # Tax IDs are commonly required to be displayed on customer invoices, which are
