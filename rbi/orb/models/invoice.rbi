@@ -224,8 +224,8 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :eligible_to_issue_at
 
-      # A URL for the customer-facing invoice portal. This URL expires 30 days after the
-      # invoice's due date, or 60 days after being re-generated through the UI.
+      # A URL for the customer-facing invoice portal. This URL expires 60 days after the
+      # link is generated, or 30 days after the invoice's due date — whichever is later.
       sig { returns(T.nilable(String)) }
       attr_accessor :hosted_invoice_url
 
@@ -591,8 +591,8 @@ module Orb
         # will be eligible to be issued, otherwise it will be `null`. If `auto-issue` is
         # true, the invoice will automatically begin issuing at this time.
         eligible_to_issue_at:,
-        # A URL for the customer-facing invoice portal. This URL expires 30 days after the
-        # invoice's due date, or 60 days after being re-generated through the UI.
+        # A URL for the customer-facing invoice portal. This URL expires 60 days after the
+        # link is generated, or 30 days after the invoice's due date — whichever is later.
         hosted_invoice_url:,
         # The scheduled date of the invoice
         invoice_date:,
