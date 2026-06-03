@@ -227,8 +227,8 @@ module Orb
       required :eligible_to_issue_at, Time, nil?: true
 
       # @!attribute hosted_invoice_url
-      #   A URL for the customer-facing invoice portal. This URL expires 30 days after the
-      #   invoice's due date, or 60 days after being re-generated through the UI.
+      #   A URL for the customer-facing invoice portal. This URL expires 60 days after the
+      #   link is generated, or 30 days after the invoice's due date — whichever is later.
       #
       #   @return [String, nil]
       required :hosted_invoice_url, String, nil?: true
@@ -396,7 +396,7 @@ module Orb
       #
       #   @param eligible_to_issue_at [Time, nil] If the invoice has a status of `draft`, this will be the time that the invoice w
       #
-      #   @param hosted_invoice_url [String, nil] A URL for the customer-facing invoice portal. This URL expires 30 days after the
+      #   @param hosted_invoice_url [String, nil] A URL for the customer-facing invoice portal. This URL expires 60 days after the
       #
       #   @param invoice_date [Time] The scheduled date of the invoice
       #

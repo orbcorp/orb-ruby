@@ -17,7 +17,8 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :backfill_id
 
-      # Flag to enable additional debug information in the endpoint response
+      # Pending Deprecation: Flag to enable additional debug information in the endpoint
+      # response
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :debug
 
@@ -37,7 +38,8 @@ module Orb
         # If this ingestion request is part of a backfill, this parameter ties the
         # ingested events to the backfill
         backfill_id: nil,
-        # Flag to enable additional debug information in the endpoint response
+        # Pending Deprecation: Flag to enable additional debug information in the endpoint
+        # response
         debug: nil,
         request_options: {}
       )
