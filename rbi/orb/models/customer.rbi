@@ -654,11 +654,6 @@ module Orb
           T.let(:stripe_invoice, Orb::Customer::PaymentProvider::TaggedSymbol)
         NETSUITE =
           T.let(:netsuite, Orb::Customer::PaymentProvider::TaggedSymbol)
-        NETSUITE_AMPERSAND =
-          T.let(
-            :netsuite_ampersand,
-            Orb::Customer::PaymentProvider::TaggedSymbol
-          )
 
         sig do
           override.returns(

@@ -180,12 +180,7 @@ module Orb
       end
 
       type payment_provider =
-        :quickbooks
-        | :"bill.com"
-        | :stripe_charge
-        | :stripe_invoice
-        | :netsuite
-        | :netsuite_ampersand
+        :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
 
       module PaymentProvider
         extend Orb::Internal::Type::Enum
@@ -195,7 +190,6 @@ module Orb
         STRIPE_CHARGE: :stripe_charge
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
-        NETSUITE_AMPERSAND: :netsuite_ampersand
 
         def self?.values: -> ::Array[Orb::Models::CustomerCreateParams::payment_provider]
       end
