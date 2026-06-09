@@ -56,6 +56,13 @@ module Orb
       #   @return [String, nil]
       optional :currency, String, nil?: true
 
+      # @!attribute default_payment_method_id
+      #   The Orb ID of the payment method to set as this customer's default. Pass `null`
+      #   to clear the customer's default payment method.
+      #
+      #   @return [String, nil]
+      optional :default_payment_method_id, String, nil?: true
+
       # @!attribute email
       #   A valid customer email, to be used for invoicing and notifications.
       #
@@ -299,7 +306,7 @@ module Orb
       #   @return [Orb::Models::CustomerTaxID, nil]
       optional :tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
-      # @!method initialize(id:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @!method initialize(id:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerUpdateByExternalIDParams} for more details.
       #
@@ -316,6 +323,8 @@ module Orb
       #   @param billing_address [Orb::Models::AddressInput, nil]
       #
       #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. This c
+      #
+      #   @param default_payment_method_id [String, nil] The Orb ID of the payment method to set as this customer's default. Pass `null`
       #
       #   @param email [String, nil] A valid customer email, to be used for invoicing and notifications.
       #
@@ -425,6 +434,7 @@ module Orb
         STRIPE_CHARGE = :stripe_charge
         STRIPE_INVOICE = :stripe_invoice
         NETSUITE = :netsuite
+        ADYEN = :adyen
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -57,6 +57,11 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :currency
 
+      # The Orb ID of the payment method to set as this customer's default. Pass `null`
+      # to clear the customer's default payment method.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :default_payment_method_id
+
       # A valid customer email, to be used for invoicing and notifications.
       sig { returns(T.nilable(String)) }
       attr_accessor :email
@@ -324,6 +329,7 @@ module Orb
           auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
+          default_payment_method_id: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
@@ -375,6 +381,9 @@ module Orb
         # not set at creation or update time, it will be set at subscription creation
         # time.
         currency: nil,
+        # The Orb ID of the payment method to set as this customer's default. Pass `null`
+        # to clear the customer's default payment method.
+        default_payment_method_id: nil,
         # A valid customer email, to be used for invoicing and notifications.
         email: nil,
         email_delivery: nil,
@@ -575,6 +584,7 @@ module Orb
             auto_issuance: T.nilable(T::Boolean),
             billing_address: T.nilable(Orb::AddressInput),
             currency: T.nilable(String),
+            default_payment_method_id: T.nilable(String),
             email: T.nilable(String),
             email_delivery: T.nilable(T::Boolean),
             external_customer_id: T.nilable(String),
@@ -809,6 +819,11 @@ module Orb
         NETSUITE =
           T.let(
             :netsuite,
+            Orb::CustomerUpdateParams::PaymentProvider::TaggedSymbol
+          )
+        ADYEN =
+          T.let(
+            :adyen,
             Orb::CustomerUpdateParams::PaymentProvider::TaggedSymbol
           )
 

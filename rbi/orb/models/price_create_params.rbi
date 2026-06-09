@@ -3076,19 +3076,60 @@ module Orb
                 )
               end
 
-            # What percent of the component subtotals to charge
+            # Fraction of the component subtotals to charge (0 < percent <= 1).
             sig { returns(Float) }
             attr_accessor :percent
 
+            # Maximum amount to charge. If unset, the fee has no upper bound.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :maximum_amount
+
+            # Minimum amount to charge. If unset, the fee is bounded below by 0.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :minimum_amount
+
+            # If true, the minimum_amount is prorated based on the service period. The
+            # maximum_amount is an absolute cap (never prorated), and the percent applied to
+            # upstream subtotals is never prorated either.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :prorated
+
+            sig { params(prorated: T::Boolean).void }
+            attr_writer :prorated
+
             # Configuration for percent pricing
-            sig { params(percent: Float).returns(T.attached_class) }
+            sig do
+              params(
+                percent: Float,
+                maximum_amount: T.nilable(String),
+                minimum_amount: T.nilable(String),
+                prorated: T::Boolean
+              ).returns(T.attached_class)
+            end
             def self.new(
-              # What percent of the component subtotals to charge
-              percent:
+              # Fraction of the component subtotals to charge (0 < percent <= 1).
+              percent:,
+              # Maximum amount to charge. If unset, the fee has no upper bound.
+              maximum_amount: nil,
+              # Minimum amount to charge. If unset, the fee is bounded below by 0.
+              minimum_amount: nil,
+              # If true, the minimum_amount is prorated based on the service period. The
+              # maximum_amount is an absolute cap (never prorated), and the percent applied to
+              # upstream subtotals is never prorated either.
+              prorated: nil
             )
             end
 
-            sig { override.returns({ percent: Float }) }
+            sig do
+              override.returns(
+                {
+                  percent: Float,
+                  maximum_amount: T.nilable(String),
+                  minimum_amount: T.nilable(String),
+                  prorated: T::Boolean
+                }
+              )
+            end
             def to_hash
             end
           end

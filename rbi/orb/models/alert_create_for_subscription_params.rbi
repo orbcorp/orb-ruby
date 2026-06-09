@@ -22,6 +22,11 @@ module Orb
       sig { returns(Orb::AlertCreateForSubscriptionParams::Type::OrSymbol) }
       attr_accessor :type
 
+      # The case sensitive currency or custom pricing unit to use for grouped cost
+      # alerts. Required when grouping_keys is set.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :currency
+
       # The property keys to group cost alerts by. Only applicable for cost_exceeded
       # alerts.
       sig { returns(T.nilable(T::Array[String])) }
@@ -43,11 +48,6 @@ module Orb
       end
       attr_accessor :price_filters
 
-      # The pricing unit to use for grouped cost alerts. Required when grouping_keys is
-      # set.
-      sig { returns(T.nilable(String)) }
-      attr_accessor :pricing_unit_id
-
       # Per-group threshold overrides. Each override maps a specific combination of
       # grouping_keys values to a list of thresholds that fully replaces the default
       # thresholds for that group. An empty thresholds list silences the group. Groups
@@ -67,6 +67,7 @@ module Orb
           subscription_id: String,
           thresholds: T::Array[Orb::Threshold::OrHash],
           type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
+          currency: T.nilable(String),
           grouping_keys: T.nilable(T::Array[String]),
           metric_id: T.nilable(String),
           price_filters:
@@ -75,7 +76,6 @@ module Orb
                 Orb::AlertCreateForSubscriptionParams::PriceFilter::OrHash
               ]
             ),
-          pricing_unit_id: T.nilable(String),
           threshold_overrides:
             T.nilable(
               T::Array[
@@ -91,6 +91,9 @@ module Orb
         thresholds:,
         # The type of alert to create. This must be a valid alert type.
         type:,
+        # The case sensitive currency or custom pricing unit to use for grouped cost
+        # alerts. Required when grouping_keys is set.
+        currency: nil,
         # The property keys to group cost alerts by. Only applicable for cost_exceeded
         # alerts.
         grouping_keys: nil,
@@ -100,9 +103,6 @@ module Orb
         # Supports filtering by price_id, item_id, or price_type with includes/excludes
         # operators. Only applicable when grouping_keys is set.
         price_filters: nil,
-        # The pricing unit to use for grouped cost alerts. Required when grouping_keys is
-        # set.
-        pricing_unit_id: nil,
         # Per-group threshold overrides. Each override maps a specific combination of
         # grouping_keys values to a list of thresholds that fully replaces the default
         # thresholds for that group. An empty thresholds list silences the group. Groups
@@ -119,13 +119,13 @@ module Orb
             subscription_id: String,
             thresholds: T::Array[Orb::Threshold],
             type: Orb::AlertCreateForSubscriptionParams::Type::OrSymbol,
+            currency: T.nilable(String),
             grouping_keys: T.nilable(T::Array[String]),
             metric_id: T.nilable(String),
             price_filters:
               T.nilable(
                 T::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]
               ),
-            pricing_unit_id: T.nilable(String),
             threshold_overrides:
               T.nilable(
                 T::Array[

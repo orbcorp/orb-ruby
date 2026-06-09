@@ -801,6 +801,11 @@ module Orb
             :netsuite,
             Orb::CustomerCreateParams::PaymentProvider::TaggedSymbol
           )
+        ADYEN =
+          T.let(
+            :adyen,
+            Orb::CustomerCreateParams::PaymentProvider::TaggedSymbol
+          )
 
         sig do
           override.returns(

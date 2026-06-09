@@ -574,12 +574,13 @@ module Orb
           succeeded: bool
         }
 
-        type payment_provider = :stripe
+        type payment_provider = :stripe | :adyen
 
         module PaymentProvider
           extend Orb::Internal::Type::Enum
 
           STRIPE: :stripe
+          ADYEN: :adyen
 
           def self?.values: -> ::Array[Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::payment_provider]
         end
