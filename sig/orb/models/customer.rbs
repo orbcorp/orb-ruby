@@ -25,6 +25,7 @@ module Orb
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         automatic_tax_enabled: bool?,
+        default_payment_method: Orb::Customer::DefaultPaymentMethod?,
         payment_configuration: Orb::Customer::PaymentConfiguration?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
       }
@@ -76,6 +77,8 @@ module Orb
 
       attr_accessor automatic_tax_enabled: bool?
 
+      attr_accessor default_payment_method: Orb::Customer::DefaultPaymentMethod?
+
       attr_accessor payment_configuration: Orb::Customer::PaymentConfiguration?
 
       attr_accessor reporting_configuration: Orb::Customer::ReportingConfiguration?
@@ -104,6 +107,7 @@ module Orb
         timezone: String,
         ?accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         ?automatic_tax_enabled: bool?,
+        ?default_payment_method: Orb::Customer::DefaultPaymentMethod?,
         ?payment_configuration: Orb::Customer::PaymentConfiguration?,
         ?reporting_configuration: Orb::Customer::ReportingConfiguration?
       ) -> void
@@ -132,6 +136,7 @@ module Orb
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         automatic_tax_enabled: bool?,
+        default_payment_method: Orb::Customer::DefaultPaymentMethod?,
         payment_configuration: Orb::Customer::PaymentConfiguration?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
       }
@@ -159,7 +164,12 @@ module Orb
       end
 
       type payment_provider =
-        :quickbooks | :"bill.com" | :stripe_charge | :stripe_invoice | :netsuite
+        :quickbooks
+        | :"bill.com"
+        | :stripe_charge
+        | :stripe_invoice
+        | :netsuite
+        | :adyen
 
       module PaymentProvider
         extend Orb::Internal::Type::Enum
@@ -169,6 +179,7 @@ module Orb
         STRIPE_CHARGE: :stripe_charge
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
+        ADYEN: :adyen
 
         def self?.values: -> ::Array[Orb::Models::Customer::payment_provider]
       end
@@ -225,6 +236,68 @@ module Orb
 
             def self?.values: -> ::Array[Orb::Models::Customer::AccountingSyncConfiguration::AccountingProvider::provider_type]
           end
+        end
+      end
+
+      type default_payment_method =
+        {
+          id: String,
+          created_at: Time,
+          customer_id: String,
+          default: bool,
+          external_payment_method_id: String,
+          payment_method_type: Orb::Models::Customer::DefaultPaymentMethod::payment_method_type,
+          provider_type: String?
+        }
+
+      class DefaultPaymentMethod < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor customer_id: String
+
+        attr_accessor default: bool
+
+        attr_accessor external_payment_method_id: String
+
+        attr_accessor payment_method_type: Orb::Models::Customer::DefaultPaymentMethod::payment_method_type
+
+        attr_accessor provider_type: String?
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          customer_id: String,
+          default: bool,
+          external_payment_method_id: String,
+          payment_method_type: Orb::Models::Customer::DefaultPaymentMethod::payment_method_type,
+          provider_type: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          customer_id: String,
+          default: bool,
+          external_payment_method_id: String,
+          payment_method_type: Orb::Models::Customer::DefaultPaymentMethod::payment_method_type,
+          provider_type: String?
+        }
+
+        type payment_method_type =
+          :card | :us_bank_account | :link | :amazon_pay | :crypto
+
+        module PaymentMethodType
+          extend Orb::Internal::Type::Enum
+
+          CARD: :card
+          US_BANK_ACCOUNT: :us_bank_account
+          LINK: :link
+          AMAZON_PAY: :amazon_pay
+          CRYPTO: :crypto
+
+          def self?.values: -> ::Array[Orb::Models::Customer::DefaultPaymentMethod::payment_method_type]
         end
       end
 

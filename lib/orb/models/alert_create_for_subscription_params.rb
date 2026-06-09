@@ -24,6 +24,13 @@ module Orb
       #   @return [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type]
       required :type, enum: -> { Orb::AlertCreateForSubscriptionParams::Type }
 
+      # @!attribute currency
+      #   The case sensitive currency or custom pricing unit to use for grouped cost
+      #   alerts. Required when grouping_keys is set.
+      #
+      #   @return [String, nil]
+      optional :currency, String, nil?: true
+
       # @!attribute grouping_keys
       #   The property keys to group cost alerts by. Only applicable for cost_exceeded
       #   alerts.
@@ -47,13 +54,6 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::AlertCreateForSubscriptionParams::PriceFilter] },
                nil?: true
 
-      # @!attribute pricing_unit_id
-      #   The pricing unit to use for grouped cost alerts. Required when grouping_keys is
-      #   set.
-      #
-      #   @return [String, nil]
-      optional :pricing_unit_id, String, nil?: true
-
       # @!attribute threshold_overrides
       #   Per-group threshold overrides. Each override maps a specific combination of
       #   grouping_keys values to a list of thresholds that fully replaces the default
@@ -66,7 +66,7 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::AlertCreateForSubscriptionParams::ThresholdOverride] },
                nil?: true
 
-      # @!method initialize(subscription_id:, thresholds:, type:, grouping_keys: nil, metric_id: nil, price_filters: nil, pricing_unit_id: nil, threshold_overrides: nil, request_options: {})
+      # @!method initialize(subscription_id:, thresholds:, type:, currency: nil, grouping_keys: nil, metric_id: nil, price_filters: nil, threshold_overrides: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::AlertCreateForSubscriptionParams} for more details.
       #
@@ -76,13 +76,13 @@ module Orb
       #
       #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #
+      #   @param currency [String, nil] The case sensitive currency or custom pricing unit to use for grouped cost alert
+      #
       #   @param grouping_keys [Array<String>, nil] The property keys to group cost alerts by. Only applicable for cost_exceeded ale
       #
       #   @param metric_id [String, nil] The metric to track usage for.
       #
       #   @param price_filters [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil] Filters to scope which prices are included in grouped cost alert evaluation. Sup
-      #
-      #   @param pricing_unit_id [String, nil] The pricing unit to use for grouped cost alerts. Required when grouping_keys is
       #
       #   @param threshold_overrides [Array<Orb::Models::AlertCreateForSubscriptionParams::ThresholdOverride>, nil] Per-group threshold overrides. Each override maps a specific combination of grou
       #

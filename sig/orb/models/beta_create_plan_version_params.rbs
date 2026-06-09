@@ -1712,14 +1712,38 @@ module Orb
               def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent::cadence]
             end
 
-            type percent_config = { percent: Float }
+            type percent_config =
+              {
+                percent: Float,
+                maximum_amount: String?,
+                minimum_amount: String?,
+                prorated: bool
+              }
 
             class PercentConfig < Orb::Internal::Type::BaseModel
               attr_accessor percent: Float
 
-              def initialize: (percent: Float) -> void
+              attr_accessor maximum_amount: String?
 
-              def to_hash: -> { percent: Float }
+              attr_accessor minimum_amount: String?
+
+              attr_reader prorated: bool?
+
+              def prorated=: (bool) -> bool
+
+              def initialize: (
+                percent: Float,
+                ?maximum_amount: String?,
+                ?minimum_amount: String?,
+                ?prorated: bool
+              ) -> void
+
+              def to_hash: -> {
+                percent: Float,
+                maximum_amount: String?,
+                minimum_amount: String?,
+                prorated: bool
+              }
             end
           end
 
@@ -3570,14 +3594,38 @@ module Orb
               def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence]
             end
 
-            type percent_config = { percent: Float }
+            type percent_config =
+              {
+                percent: Float,
+                maximum_amount: String?,
+                minimum_amount: String?,
+                prorated: bool
+              }
 
             class PercentConfig < Orb::Internal::Type::BaseModel
               attr_accessor percent: Float
 
-              def initialize: (percent: Float) -> void
+              attr_accessor maximum_amount: String?
 
-              def to_hash: -> { percent: Float }
+              attr_accessor minimum_amount: String?
+
+              attr_reader prorated: bool?
+
+              def prorated=: (bool) -> bool
+
+              def initialize: (
+                percent: Float,
+                ?maximum_amount: String?,
+                ?minimum_amount: String?,
+                ?prorated: bool
+              ) -> void
+
+              def to_hash: -> {
+                percent: Float,
+                maximum_amount: String?,
+                minimum_amount: String?,
+                prorated: bool
+              }
             end
           end
 

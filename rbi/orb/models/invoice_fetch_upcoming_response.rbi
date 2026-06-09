@@ -1602,6 +1602,11 @@ module Orb
               :stripe,
               Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol
             )
+          ADYEN =
+            T.let(
+              :adyen,
+              Orb::Models::InvoiceFetchUpcomingResponse::PaymentAttempt::PaymentProvider::TaggedSymbol
+            )
 
           sig do
             override.returns(

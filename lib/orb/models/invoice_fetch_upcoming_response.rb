@@ -998,6 +998,7 @@ module Orb
           extend Orb::Internal::Type::Enum
 
           STRIPE = :stripe
+          ADYEN = :adyen
 
           # @!method self.values
           #   @return [Array<Symbol>]

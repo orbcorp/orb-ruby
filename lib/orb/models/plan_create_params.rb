@@ -2465,15 +2465,45 @@ module Orb
             # @see Orb::Models::PlanCreateParams::Price::Price::Percent#percent_config
             class PercentConfig < Orb::Internal::Type::BaseModel
               # @!attribute percent
-              #   What percent of the component subtotals to charge
+              #   Fraction of the component subtotals to charge (0 < percent <= 1).
               #
               #   @return [Float]
               required :percent, Float
 
-              # @!method initialize(percent:)
+              # @!attribute maximum_amount
+              #   Maximum amount to charge. If unset, the fee has no upper bound.
+              #
+              #   @return [String, nil]
+              optional :maximum_amount, String, nil?: true
+
+              # @!attribute minimum_amount
+              #   Minimum amount to charge. If unset, the fee is bounded below by 0.
+              #
+              #   @return [String, nil]
+              optional :minimum_amount, String, nil?: true
+
+              # @!attribute prorated
+              #   If true, the minimum_amount is prorated based on the service period. The
+              #   maximum_amount is an absolute cap (never prorated), and the percent applied to
+              #   upstream subtotals is never prorated either.
+              #
+              #   @return [Boolean, nil]
+              optional :prorated, Orb::Internal::Type::Boolean
+
+              # @!method initialize(percent:, maximum_amount: nil, minimum_amount: nil, prorated: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::PlanCreateParams::Price::Price::Percent::PercentConfig} for more
+              #   details.
+              #
               #   Configuration for percent pricing
               #
-              #   @param percent [Float] What percent of the component subtotals to charge
+              #   @param percent [Float] Fraction of the component subtotals to charge (0 < percent <= 1).
+              #
+              #   @param maximum_amount [String, nil] Maximum amount to charge. If unset, the fee has no upper bound.
+              #
+              #   @param minimum_amount [String, nil] Minimum amount to charge. If unset, the fee is bounded below by 0.
+              #
+              #   @param prorated [Boolean] If true, the minimum_amount is prorated based on the service period. The maximum
             end
           end
 
