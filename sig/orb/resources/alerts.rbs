@@ -9,6 +9,8 @@ module Orb
       def update: (
         String alert_configuration_id,
         thresholds: ::Array[Orb::Threshold],
+        ?price_filters: ::Array[Orb::AlertUpdateParams::PriceFilter]?,
+        ?threshold_overrides: ::Array[Orb::AlertUpdateParams::ThresholdOverride]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 
