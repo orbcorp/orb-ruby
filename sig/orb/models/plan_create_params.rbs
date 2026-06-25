@@ -1912,9 +1912,178 @@ module Orb
           | Orb::NewAmountDiscount
           | Orb::NewMinimum
           | Orb::NewMaximum
+          | Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount
 
         module Adjustment
           extend Orb::Internal::Type::Union
+
+          type tiered_percentage_discount =
+            {
+              adjustment_type: :tiered_percentage_discount,
+              tiers: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              applies_to_item_ids: ::Array[String]?,
+              applies_to_price_ids: ::Array[String]?,
+              currency: String?,
+              filters: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              is_invoice_level: bool,
+              price_type: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::price_type?
+            }
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            attr_accessor adjustment_type: :tiered_percentage_discount
+
+            attr_accessor tiers: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Tier]
+
+            attr_accessor applies_to_all: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::applies_to_all?
+
+            attr_accessor applies_to_item_ids: ::Array[String]?
+
+            attr_accessor applies_to_price_ids: ::Array[String]?
+
+            attr_accessor currency: String?
+
+            attr_accessor filters: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter]?
+
+            attr_reader is_invoice_level: bool?
+
+            def is_invoice_level=: (bool) -> bool
+
+            attr_accessor price_type: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::price_type?
+
+            def initialize: (
+              tiers: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Tier],
+              ?applies_to_all: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              ?applies_to_item_ids: ::Array[String]?,
+              ?applies_to_price_ids: ::Array[String]?,
+              ?currency: String?,
+              ?filters: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              ?is_invoice_level: bool,
+              ?price_type: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::price_type?,
+              ?adjustment_type: :tiered_percentage_discount
+            ) -> void
+
+            def to_hash: -> {
+              adjustment_type: :tiered_percentage_discount,
+              tiers: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              applies_to_item_ids: ::Array[String]?,
+              applies_to_price_ids: ::Array[String]?,
+              currency: String?,
+              filters: ::Array[Orb::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              is_invoice_level: bool,
+              price_type: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::price_type?
+            }
+
+            type tier =
+              { lower_bound: Float, percentage: Float, upper_bound: Float? }
+
+            class Tier < Orb::Internal::Type::BaseModel
+              attr_accessor lower_bound: Float
+
+              attr_accessor percentage: Float
+
+              attr_accessor upper_bound: Float?
+
+              def initialize: (
+                lower_bound: Float,
+                percentage: Float,
+                ?upper_bound: Float?
+              ) -> void
+
+              def to_hash: -> {
+                lower_bound: Float,
+                percentage: Float,
+                upper_bound: Float?
+              }
+            end
+
+            type applies_to_all = true
+
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TRUE: true
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::applies_to_all]
+            end
+
+            type filter =
+              {
+                field: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::Filter::operator]
+              end
+            end
+
+            type price_type =
+              :usage
+              | :fixed_in_advance
+              | :fixed_in_arrears
+              | :fixed
+              | :in_arrears
+
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              USAGE: :usage
+              FIXED_IN_ADVANCE: :fixed_in_advance
+              FIXED_IN_ARREARS: :fixed_in_arrears
+              FIXED: :fixed
+              IN_ARREARS: :in_arrears
+
+              def self?.values: -> ::Array[Orb::Models::PlanCreateParams::Adjustment::Adjustment::TieredPercentageDiscount::price_type]
+            end
+          end
 
           def self?.variants: -> ::Array[Orb::Models::PlanCreateParams::Adjustment::adjustment]
         end

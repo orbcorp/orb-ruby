@@ -102,7 +102,7 @@ module Orb
       #   The discount intervals for this subscription sorted by the start_date. This
       #   field is deprecated in favor of `adjustment_intervals`.
       #
-      #   @return [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval>]
+      #   @return [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval, Orb::Models::Subscription::DiscountInterval::TieredPercentage>]
       required :discount_intervals,
                -> { Orb::Internal::Type::ArrayOf[union: Orb::Subscription::DiscountInterval] }
 
@@ -253,7 +253,7 @@ module Orb
       #
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscriptions' invoices. Note that if this i
       #
-      #   @param discount_intervals [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval>] The discount intervals for this subscription sorted by the start_date. This fiel
+      #   @param discount_intervals [Array<Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval, Orb::Models::Subscription::DiscountInterval::TieredPercentage>] The discount intervals for this subscription sorted by the start_date. This fiel
       #
       #   @param end_date [Time, nil] The date Orb stops billing for this subscription.
       #
@@ -296,8 +296,161 @@ module Orb
 
         variant :usage, -> { Orb::UsageDiscountInterval }
 
+        variant :tiered_percentage, -> { Orb::Subscription::DiscountInterval::TieredPercentage }
+
+        class TieredPercentage < Orb::Internal::Type::BaseModel
+          # @!attribute applies_to_price_interval_ids
+          #   The price interval ids that this discount interval applies to.
+          #
+          #   @return [Array<String>]
+          required :applies_to_price_interval_ids, Orb::Internal::Type::ArrayOf[String]
+
+          # @!attribute discount_type
+          #
+          #   @return [Symbol, :tiered_percentage]
+          required :discount_type, const: :tiered_percentage
+
+          # @!attribute end_date
+          #   The end date of the discount interval.
+          #
+          #   @return [Time, nil]
+          required :end_date, Time, nil?: true
+
+          # @!attribute filters
+          #   The filters that determine which prices this discount interval applies to.
+          #
+          #   @return [Array<Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter>]
+          required :filters,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Subscription::DiscountInterval::TieredPercentage::Filter] }
+
+          # @!attribute start_date
+          #   The start date of the discount interval.
+          #
+          #   @return [Time]
+          required :start_date, Time
+
+          # @!attribute tiers
+          #   Only available if discount_type is `tiered_percentage`. The ordered, contiguous
+          #   bands of cumulative eligible spend, each discounted at its own percentage.
+          #
+          #   @return [Array<Orb::Models::Subscription::DiscountInterval::TieredPercentage::Tier>]
+          required :tiers,
+                   -> { Orb::Internal::Type::ArrayOf[Orb::Subscription::DiscountInterval::TieredPercentage::Tier] }
+
+          # @!method initialize(applies_to_price_interval_ids:, end_date:, filters:, start_date:, tiers:, discount_type: :tiered_percentage)
+          #   Some parameter documentations has been truncated, see
+          #   {Orb::Models::Subscription::DiscountInterval::TieredPercentage} for more
+          #   details.
+          #
+          #   @param applies_to_price_interval_ids [Array<String>] The price interval ids that this discount interval applies to.
+          #
+          #   @param end_date [Time, nil] The end date of the discount interval.
+          #
+          #   @param filters [Array<Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter>] The filters that determine which prices this discount interval applies to.
+          #
+          #   @param start_date [Time] The start date of the discount interval.
+          #
+          #   @param tiers [Array<Orb::Models::Subscription::DiscountInterval::TieredPercentage::Tier>] Only available if discount_type is `tiered_percentage`. The ordered, contiguous
+          #
+          #   @param discount_type [Symbol, :tiered_percentage]
+
+          class Filter < Orb::Internal::Type::BaseModel
+            # @!attribute field
+            #   The property of the price to filter on.
+            #
+            #   @return [Symbol, Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter::Field]
+            required :field, enum: -> { Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field }
+
+            # @!attribute operator
+            #   Should prices that match the filter be included or excluded.
+            #
+            #   @return [Symbol, Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter::Operator]
+            required :operator, enum: -> { Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator }
+
+            # @!attribute values
+            #   The IDs or values that match this filter.
+            #
+            #   @return [Array<String>]
+            required :values, Orb::Internal::Type::ArrayOf[String]
+
+            # @!method initialize(field:, operator:, values:)
+            #   @param field [Symbol, Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter::Field] The property of the price to filter on.
+            #
+            #   @param operator [Symbol, Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter::Operator] Should prices that match the filter be included or excluded.
+            #
+            #   @param values [Array<String>] The IDs or values that match this filter.
+
+            # The property of the price to filter on.
+            #
+            # @see Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter#field
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID = :price_id
+              ITEM_ID = :item_id
+              PRICE_TYPE = :price_type
+              CURRENCY = :currency
+              PRICING_UNIT_ID = :pricing_unit_id
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Should prices that match the filter be included or excluded.
+            #
+            # @see Orb::Models::Subscription::DiscountInterval::TieredPercentage::Filter#operator
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES = :includes
+              EXCLUDES = :excludes
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          class Tier < Orb::Internal::Type::BaseModel
+            # @!attribute lower_bound
+            #   Exclusive lower bound of cumulative spend for this tier.
+            #
+            #   @return [Float]
+            required :lower_bound, Float
+
+            # @!attribute percentage
+            #   The percentage (between 0 and 1) discounted from spend that falls within this
+            #   tier.
+            #
+            #   @return [Float]
+            required :percentage, Float
+
+            # @!attribute upper_bound
+            #   Inclusive upper bound of cumulative spend for this tier; null for the final
+            #   open-ended tier.
+            #
+            #   @return [Float, nil]
+            optional :upper_bound, Float, nil?: true
+
+            # @!method initialize(lower_bound:, percentage:, upper_bound: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::Subscription::DiscountInterval::TieredPercentage::Tier} for more
+            #   details.
+            #
+            #   One band of a tiered percentage discount. Bounds are denominated in the
+            #   discount's currency. `lower_bound` is the exclusive start of the band and
+            #   `upper_bound` is the inclusive end; `upper_bound` is null only for the
+            #   open-ended final tier.
+            #
+            #   @param lower_bound [Float] Exclusive lower bound of cumulative spend for this tier.
+            #
+            #   @param percentage [Float] The percentage (between 0 and 1) discounted from spend that falls within this ti
+            #
+            #   @param upper_bound [Float, nil] Inclusive upper bound of cumulative spend for this tier; null for the final open
+          end
+        end
+
         # @!method self.variants
-        #   @return [Array(Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval)]
+        #   @return [Array(Orb::Models::AmountDiscountInterval, Orb::Models::PercentageDiscountInterval, Orb::Models::UsageDiscountInterval, Orb::Models::Subscription::DiscountInterval::TieredPercentage)]
       end
 
       # @see Orb::Models::Subscription#status

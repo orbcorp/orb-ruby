@@ -25,7 +25,7 @@ module Orb
       #
       # @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
-      # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] An optional discount to attach to the invoice.
+      # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil] An optional discount to attach to the invoice.
       #
       # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
       #

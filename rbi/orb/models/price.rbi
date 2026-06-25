@@ -248,7 +248,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -807,7 +808,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -1375,7 +1377,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -1953,7 +1956,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -2711,7 +2715,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -3282,7 +3287,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -3876,7 +3882,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -4617,7 +4624,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -5335,7 +5343,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -6090,7 +6099,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -6825,7 +6835,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -7593,7 +7604,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -8286,7 +8298,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -8958,7 +8971,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -9637,7 +9651,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -10520,7 +10535,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -11261,7 +11277,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -11928,7 +11945,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -12623,7 +12641,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -13375,7 +13394,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -14101,7 +14121,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -14959,7 +14980,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -15692,7 +15714,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -16460,7 +16483,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -17224,7 +17248,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -18004,7 +18029,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -18832,7 +18858,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -19676,7 +19703,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -20461,7 +20489,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -21190,7 +21219,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -21971,7 +22001,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -22697,7 +22728,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -23362,7 +23394,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             external_price_id: T.nilable(String),
@@ -24009,7 +24042,8 @@ module Orb
                   Orb::PercentageDiscount::OrHash,
                   Orb::TrialDiscount::OrHash,
                   Orb::UsageDiscount::OrHash,
-                  Orb::AmountDiscount::OrHash
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
                 )
               ),
             event_output_config:

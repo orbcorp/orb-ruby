@@ -146,7 +146,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -282,7 +282,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -512,7 +512,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -648,7 +648,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -884,7 +884,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -1016,7 +1016,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -1252,7 +1252,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -1384,7 +1384,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -1678,7 +1678,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -1814,7 +1814,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -2044,7 +2044,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -2180,7 +2180,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -2412,7 +2412,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -2549,7 +2549,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -2829,7 +2829,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -2965,7 +2965,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -3244,7 +3244,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -3380,7 +3380,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -3675,7 +3675,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -3811,7 +3811,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -4091,7 +4091,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -4228,7 +4228,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -4511,7 +4511,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -4648,7 +4648,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -4905,7 +4905,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -5041,7 +5041,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -5295,7 +5295,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -5431,7 +5431,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -5665,7 +5665,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -5802,7 +5802,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -6152,7 +6152,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -6288,7 +6288,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -6561,7 +6561,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -6697,7 +6697,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -6943,7 +6943,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -7079,7 +7079,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -7347,7 +7347,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -7479,7 +7479,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -7747,7 +7747,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -7884,7 +7884,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -8148,7 +8148,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -8285,7 +8285,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -8619,7 +8619,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -8756,7 +8756,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -9026,7 +9026,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -9163,7 +9163,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -9447,7 +9447,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -9584,7 +9584,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -9871,7 +9871,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -10008,7 +10008,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -10296,7 +10296,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -10433,7 +10433,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -10747,7 +10747,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -10884,7 +10884,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -11206,7 +11206,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -11338,7 +11338,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -11628,7 +11628,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -11760,7 +11760,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -12035,7 +12035,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -12167,7 +12167,7 @@ module Orb
         #
         #   @param daily_credit_allowance_config [Orb::Models::Price::DailyCreditAllowance::DailyCreditAllowanceConfig] Configuration for daily_credit_allowance pricing
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -12478,7 +12478,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -12614,7 +12614,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -12908,7 +12908,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -13044,7 +13044,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -13296,7 +13296,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute external_price_id
@@ -13432,7 +13432,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param external_price_id [String, nil]
         #
@@ -13709,7 +13709,7 @@ module Orb
         # @!attribute discount
         #   @deprecated
         #
-        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @return [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         required :discount, union: -> { Orb::Discount }, nil?: true
 
         # @!attribute event_output_config
@@ -13845,7 +13845,7 @@ module Orb
         #
         #   @param currency [String]
         #
-        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil]
+        #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
         #
         #   @param event_output_config [Orb::Models::Price::EventOutput::EventOutputConfig] Configuration for event_output pricing
         #
