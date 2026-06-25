@@ -23,6 +23,12 @@ module Orb
         params(
           alert_configuration_id: String,
           thresholds: T::Array[Orb::Threshold::OrHash],
+          price_filters:
+            T.nilable(T::Array[Orb::AlertUpdateParams::PriceFilter::OrHash]),
+          threshold_overrides:
+            T.nilable(
+              T::Array[Orb::AlertUpdateParams::ThresholdOverride::OrHash]
+            ),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Alert)
       end
@@ -30,6 +36,13 @@ module Orb
         alert_configuration_id,
         # The thresholds that define the values at which the alert will be triggered.
         thresholds:,
+        # Replaces the price filters on a grouped cost alert; an empty list clears them.
+        # Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+        price_filters: nil,
+        # Replaces the per-group threshold overrides on a grouped cost alert; an empty
+        # list clears them. Only applicable to cost alerts with grouping_keys. Omit to
+        # leave unchanged.
+        threshold_overrides: nil,
         request_options: {}
       )
       end
