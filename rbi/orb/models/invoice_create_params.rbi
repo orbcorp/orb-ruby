@@ -41,7 +41,8 @@ module Orb
               Orb::PercentageDiscount,
               Orb::TrialDiscount,
               Orb::UsageDiscount,
-              Orb::AmountDiscount
+              Orb::AmountDiscount,
+              Orb::Discount::TieredPercentage
             )
           )
         )
@@ -99,7 +100,8 @@ module Orb
                 Orb::PercentageDiscount::OrHash,
                 Orb::TrialDiscount::OrHash,
                 Orb::UsageDiscount::OrHash,
-                Orb::AmountDiscount::OrHash
+                Orb::AmountDiscount::OrHash,
+                Orb::Discount::TieredPercentage::OrHash
               )
             ),
           due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
@@ -169,7 +171,8 @@ module Orb
                   Orb::PercentageDiscount,
                   Orb::TrialDiscount,
                   Orb::UsageDiscount,
-                  Orb::AmountDiscount
+                  Orb::AmountDiscount,
+                  Orb::Discount::TieredPercentage
                 )
               ),
             due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),

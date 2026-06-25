@@ -545,11 +545,149 @@ module Orb
             Orb::MonetaryUsageDiscountAdjustment
             | Orb::MonetaryAmountDiscountAdjustment
             | Orb::MonetaryPercentageDiscountAdjustment
+            | Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount
             | Orb::MonetaryMinimumAdjustment
             | Orb::MonetaryMaximumAdjustment
 
           module Adjustment
             extend Orb::Internal::Type::Union
+
+            type tiered_percentage_discount =
+              {
+                id: String,
+                adjustment_type: :tiered_percentage_discount,
+                amount: String,
+                applies_to_price_ids: ::Array[String],
+                filters: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter],
+                is_invoice_level: bool,
+                reason: String?,
+                replaces_adjustment_id: String?,
+                tiers: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Tier]
+              }
+
+            class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor adjustment_type: :tiered_percentage_discount
+
+              attr_accessor amount: String
+
+              attr_accessor applies_to_price_ids: ::Array[String]
+
+              attr_accessor filters: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter]
+
+              attr_accessor is_invoice_level: bool
+
+              attr_accessor reason: String?
+
+              attr_accessor replaces_adjustment_id: String?
+
+              attr_accessor tiers: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Tier]
+
+              def initialize: (
+                id: String,
+                amount: String,
+                applies_to_price_ids: ::Array[String],
+                filters: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter],
+                is_invoice_level: bool,
+                reason: String?,
+                replaces_adjustment_id: String?,
+                tiers: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Tier],
+                ?adjustment_type: :tiered_percentage_discount
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                adjustment_type: :tiered_percentage_discount,
+                amount: String,
+                applies_to_price_ids: ::Array[String],
+                filters: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter],
+                is_invoice_level: bool,
+                reason: String?,
+                replaces_adjustment_id: String?,
+                tiers: ::Array[Orb::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Tier]
+              }
+
+              type filter =
+                {
+                  field: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::field,
+                  operator: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator,
+                  values: ::Array[String]
+                }
+
+              class Filter < Orb::Internal::Type::BaseModel
+                attr_accessor field: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::field
+
+                attr_accessor operator: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator
+
+                attr_accessor values: ::Array[String]
+
+                def initialize: (
+                  field: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::field,
+                  operator: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator,
+                  values: ::Array[String]
+                ) -> void
+
+                def to_hash: -> {
+                  field: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::field,
+                  operator: Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator,
+                  values: ::Array[String]
+                }
+
+                type field =
+                  :price_id
+                  | :item_id
+                  | :price_type
+                  | :currency
+                  | :pricing_unit_id
+
+                module Field
+                  extend Orb::Internal::Type::Enum
+
+                  PRICE_ID: :price_id
+                  ITEM_ID: :item_id
+                  PRICE_TYPE: :price_type
+                  CURRENCY: :currency
+                  PRICING_UNIT_ID: :pricing_unit_id
+
+                  def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::field]
+                end
+
+                type operator = :includes | :excludes
+
+                module Operator
+                  extend Orb::Internal::Type::Enum
+
+                  INCLUDES: :includes
+                  EXCLUDES: :excludes
+
+                  def self?.values: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator]
+                end
+              end
+
+              type tier =
+                { lower_bound: Float, percentage: Float, upper_bound: Float? }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor lower_bound: Float
+
+                attr_accessor percentage: Float
+
+                attr_accessor upper_bound: Float?
+
+                def initialize: (
+                  lower_bound: Float,
+                  percentage: Float,
+                  ?upper_bound: Float?
+                ) -> void
+
+                def to_hash: -> {
+                  lower_bound: Float,
+                  percentage: Float,
+                  upper_bound: Float?
+                }
+              end
+            end
 
             def self?.variants: -> ::Array[Orb::Models::ChangedSubscriptionResources::CreatedInvoice::LineItem::adjustment]
           end

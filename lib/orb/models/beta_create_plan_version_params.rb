@@ -97,7 +97,7 @@ module Orb
         # @!attribute adjustment
         #   The definition of a new adjustment to create and add to the plan.
         #
-        #   @return [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum]
+        #   @return [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount]
         required :adjustment, union: -> { Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment }
 
         # @!attribute plan_phase_order
@@ -107,7 +107,7 @@ module Orb
         optional :plan_phase_order, Integer, nil?: true
 
         # @!method initialize(adjustment:, plan_phase_order: nil)
-        #   @param adjustment [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum] The definition of a new adjustment to create and add to the plan.
+        #   @param adjustment [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount] The definition of a new adjustment to create and add to the plan.
         #
         #   @param plan_phase_order [Integer, nil] The phase to add this adjustment to.
 
@@ -129,8 +129,215 @@ module Orb
 
           variant :maximum, -> { Orb::NewMaximum }
 
+          variant :tiered_percentage_discount,
+                  -> { Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount }
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            # @!attribute adjustment_type
+            #
+            #   @return [Symbol, :tiered_percentage_discount]
+            required :adjustment_type, const: :tiered_percentage_discount
+
+            # @!attribute tiers
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier>]
+            required :tiers,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier] }
+
+            # @!attribute applies_to_all
+            #   If set, the adjustment will apply to every price on the subscription.
+            #
+            #   @return [Boolean, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll, nil]
+            optional :applies_to_all,
+                     enum: -> {
+                       Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
+                     },
+                     nil?: true
+
+            # @!attribute applies_to_item_ids
+            #   The set of item IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+            # @!attribute applies_to_price_ids
+            #   The set of price IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+            # @!attribute currency
+            #   If set, only prices in the specified currency will have the adjustment applied.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute filters
+            #   A list of filters that determine which prices this adjustment will apply to.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter>, nil]
+            optional :filters,
+                     -> {
+                       Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]
+                     },
+                     nil?: true
+
+            # @!attribute is_invoice_level
+            #   When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
+            #
+            #   @return [Boolean, nil]
+            optional :is_invoice_level, Orb::Internal::Type::Boolean
+
+            # @!attribute price_type
+            #   If set, only prices of the specified type will have the adjustment applied.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType, nil]
+            optional :price_type,
+                     enum: -> {
+                       Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType
+                     },
+                     nil?: true
+
+            # @!method initialize(tiers:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :tiered_percentage_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount}
+            #   for more details.
+            #
+            #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier>]
+            #
+            #   @param applies_to_all [Boolean, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+            #
+            #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+            #
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+            #
+            #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+            #
+            #   @param filters [Array<Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #
+            #   @param price_type [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+            #
+            #   @param adjustment_type [Symbol, :tiered_percentage_discount]
+
+            class Tier < Orb::Internal::Type::BaseModel
+              # @!attribute lower_bound
+              #   Exclusive lower bound of cumulative spend for this tier.
+              #
+              #   @return [Float]
+              required :lower_bound, Float
+
+              # @!attribute percentage
+              #   The percentage (0-1) discounted from spend in this tier.
+              #
+              #   @return [Float]
+              required :percentage, Float
+
+              # @!attribute upper_bound
+              #   Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+              #
+              #   @return [Float, nil]
+              optional :upper_bound, Float, nil?: true
+
+              # @!method initialize(lower_bound:, percentage:, upper_bound: nil)
+              #   @param lower_bound [Float] Exclusive lower bound of cumulative spend for this tier.
+              #
+              #   @param percentage [Float] The percentage (0-1) discounted from spend in this tier.
+              #
+              #   @param upper_bound [Float, nil] Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount#applies_to_all
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TRUE = true
+
+              # @!method self.values
+              #   @return [Array<Boolean>]
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field]
+              required :field,
+                       enum: -> { Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount#price_type
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              USAGE = :usage
+              FIXED_IN_ADVANCE = :fixed_in_advance
+              FIXED_IN_ARREARS = :fixed_in_arrears
+              FIXED = :fixed
+              IN_ARREARS = :in_arrears
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum)]
+          #   @return [Array(Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum, Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount)]
         end
       end
 
@@ -2831,7 +3038,7 @@ module Orb
         # @!attribute adjustment
         #   The definition of a new adjustment to create and add to the plan.
         #
-        #   @return [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum]
+        #   @return [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount]
         required :adjustment, union: -> { Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment }
 
         # @!attribute replaces_adjustment_id
@@ -2847,7 +3054,7 @@ module Orb
         optional :plan_phase_order, Integer, nil?: true
 
         # @!method initialize(adjustment:, replaces_adjustment_id:, plan_phase_order: nil)
-        #   @param adjustment [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum] The definition of a new adjustment to create and add to the plan.
+        #   @param adjustment [Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount] The definition of a new adjustment to create and add to the plan.
         #
         #   @param replaces_adjustment_id [String] The id of the adjustment on the plan to replace in the plan.
         #
@@ -2871,8 +3078,215 @@ module Orb
 
           variant :maximum, -> { Orb::NewMaximum }
 
+          variant :tiered_percentage_discount,
+                  -> { Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount }
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            # @!attribute adjustment_type
+            #
+            #   @return [Symbol, :tiered_percentage_discount]
+            required :adjustment_type, const: :tiered_percentage_discount
+
+            # @!attribute tiers
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier>]
+            required :tiers,
+                     -> { Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier] }
+
+            # @!attribute applies_to_all
+            #   If set, the adjustment will apply to every price on the subscription.
+            #
+            #   @return [Boolean, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll, nil]
+            optional :applies_to_all,
+                     enum: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
+                     },
+                     nil?: true
+
+            # @!attribute applies_to_item_ids
+            #   The set of item IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_item_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+            # @!attribute applies_to_price_ids
+            #   The set of price IDs to which this adjustment applies.
+            #
+            #   @return [Array<String>, nil]
+            optional :applies_to_price_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+            # @!attribute currency
+            #   If set, only prices in the specified currency will have the adjustment applied.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute filters
+            #   A list of filters that determine which prices this adjustment will apply to.
+            #
+            #   @return [Array<Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter>, nil]
+            optional :filters,
+                     -> {
+                       Orb::Internal::Type::ArrayOf[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]
+                     },
+                     nil?: true
+
+            # @!attribute is_invoice_level
+            #   When false, this adjustment will be applied to a single price. Otherwise, it
+            #   will be applied at the invoice level, possibly to multiple prices.
+            #
+            #   @return [Boolean, nil]
+            optional :is_invoice_level, Orb::Internal::Type::Boolean
+
+            # @!attribute price_type
+            #   If set, only prices of the specified type will have the adjustment applied.
+            #
+            #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType, nil]
+            optional :price_type,
+                     enum: -> {
+                       Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType
+                     },
+                     nil?: true
+
+            # @!method initialize(tiers:, applies_to_all: nil, applies_to_item_ids: nil, applies_to_price_ids: nil, currency: nil, filters: nil, is_invoice_level: nil, price_type: nil, adjustment_type: :tiered_percentage_discount)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount}
+            #   for more details.
+            #
+            #   @param tiers [Array<Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier>]
+            #
+            #   @param applies_to_all [Boolean, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll, nil] If set, the adjustment will apply to every price on the subscription.
+            #
+            #   @param applies_to_item_ids [Array<String>, nil] The set of item IDs to which this adjustment applies.
+            #
+            #   @param applies_to_price_ids [Array<String>, nil] The set of price IDs to which this adjustment applies.
+            #
+            #   @param currency [String, nil] If set, only prices in the specified currency will have the adjustment applied.
+            #
+            #   @param filters [Array<Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter>, nil] A list of filters that determine which prices this adjustment will apply to.
+            #
+            #   @param is_invoice_level [Boolean] When false, this adjustment will be applied to a single price. Otherwise, it wil
+            #
+            #   @param price_type [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType, nil] If set, only prices of the specified type will have the adjustment applied.
+            #
+            #   @param adjustment_type [Symbol, :tiered_percentage_discount]
+
+            class Tier < Orb::Internal::Type::BaseModel
+              # @!attribute lower_bound
+              #   Exclusive lower bound of cumulative spend for this tier.
+              #
+              #   @return [Float]
+              required :lower_bound, Float
+
+              # @!attribute percentage
+              #   The percentage (0-1) discounted from spend in this tier.
+              #
+              #   @return [Float]
+              required :percentage, Float
+
+              # @!attribute upper_bound
+              #   Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+              #
+              #   @return [Float, nil]
+              optional :upper_bound, Float, nil?: true
+
+              # @!method initialize(lower_bound:, percentage:, upper_bound: nil)
+              #   @param lower_bound [Float] Exclusive lower bound of cumulative spend for this tier.
+              #
+              #   @param percentage [Float] The percentage (0-1) discounted from spend in this tier.
+              #
+              #   @param upper_bound [Float, nil] Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount#applies_to_all
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TRUE = true
+
+              # @!method self.values
+              #   @return [Array<Boolean>]
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              # @!attribute field
+              #   The property of the price to filter on.
+              #
+              #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field]
+              required :field,
+                       enum: -> { Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field }
+
+              # @!attribute operator
+              #   Should prices that match the filter be included or excluded.
+              #
+              #   @return [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator]
+              required :operator,
+                       enum: -> { Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator }
+
+              # @!attribute values
+              #   The IDs or values that match this filter.
+              #
+              #   @return [Array<String>]
+              required :values, Orb::Internal::Type::ArrayOf[String]
+
+              # @!method initialize(field:, operator:, values:)
+              #   @param field [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field] The property of the price to filter on.
+              #
+              #   @param operator [Symbol, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator] Should prices that match the filter be included or excluded.
+              #
+              #   @param values [Array<String>] The IDs or values that match this filter.
+
+              # The property of the price to filter on.
+              #
+              # @see Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter#field
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID = :price_id
+                ITEM_ID = :item_id
+                PRICE_TYPE = :price_type
+                CURRENCY = :currency
+                PRICING_UNIT_ID = :pricing_unit_id
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Should prices that match the filter be included or excluded.
+              #
+              # @see Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter#operator
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES = :includes
+                EXCLUDES = :excludes
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            #
+            # @see Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount#price_type
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              USAGE = :usage
+              FIXED_IN_ADVANCE = :fixed_in_advance
+              FIXED_IN_ARREARS = :fixed_in_arrears
+              FIXED = :fixed
+              IN_ARREARS = :in_arrears
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum)]
+          #   @return [Array(Orb::Models::NewPercentageDiscount, Orb::Models::NewUsageDiscount, Orb::Models::NewAmountDiscount, Orb::Models::NewMinimum, Orb::Models::NewMaximum, Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount)]
         end
       end
 

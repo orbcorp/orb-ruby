@@ -182,7 +182,8 @@ module Orb
               Orb::NewUsageDiscount,
               Orb::NewAmountDiscount,
               Orb::NewMinimum,
-              Orb::NewMaximum
+              Orb::NewMaximum,
+              Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
             )
           )
         end
@@ -200,7 +201,8 @@ module Orb
                 Orb::NewUsageDiscount::OrHash,
                 Orb::NewAmountDiscount::OrHash,
                 Orb::NewMinimum::OrHash,
-                Orb::NewMaximum::OrHash
+                Orb::NewMaximum::OrHash,
+                Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::OrHash
               ),
             plan_phase_order: T.nilable(Integer)
           ).returns(T.attached_class)
@@ -222,7 +224,8 @@ module Orb
                   Orb::NewUsageDiscount,
                   Orb::NewAmountDiscount,
                   Orb::NewMinimum,
-                  Orb::NewMaximum
+                  Orb::NewMaximum,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
                 ),
               plan_phase_order: T.nilable(Integer)
             }
@@ -242,9 +245,443 @@ module Orb
                 Orb::NewUsageDiscount,
                 Orb::NewAmountDiscount,
                 Orb::NewMinimum,
-                Orb::NewMaximum
+                Orb::NewMaximum,
+                Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
               )
             end
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :adjustment_type
+
+            sig do
+              returns(
+                T::Array[
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                ]
+              )
+            end
+            attr_accessor :tiers
+
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
+
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            # will be applied at the invoice level, possibly to multiple prices.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :is_invoice_level
+
+            sig { params(is_invoice_level: T::Boolean).void }
+            attr_writer :is_invoice_level
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
+            sig do
+              params(
+                tiers:
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier::OrHash
+                  ],
+                applies_to_all:
+                  T.nilable(
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
+                applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::OrHash
+                    ]
+                  ),
+                is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                  ),
+                adjustment_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              tiers:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
+              is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
+              adjustment_type: :tiered_percentage_discount
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  adjustment_type: Symbol,
+                  tiers:
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                    ],
+                  applies_to_all:
+                    T.nilable(
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
+                  applies_to_price_ids: T.nilable(T::Array[String]),
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Tier < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Exclusive lower bound of cumulative spend for this tier.
+              sig { returns(Float) }
+              attr_accessor :lower_bound
+
+              # The percentage (0-1) discounted from spend in this tier.
+              sig { returns(Float) }
+              attr_accessor :percentage
+
+              # Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+              sig { returns(T.nilable(Float)) }
+              attr_accessor :upper_bound
+
+              sig do
+                params(
+                  lower_bound: Float,
+                  percentage: Float,
+                  upper_bound: T.nilable(Float)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Exclusive lower bound of cumulative spend for this tier.
+                lower_bound:,
+                # The percentage (0-1) discounted from spend in this tier.
+                percentage:,
+                # Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+                upper_bound: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    lower_bound: Float,
+                    percentage: Float,
+                    upper_bound: T.nilable(Float)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
 
           sig do
             override.returns(
@@ -4870,7 +5307,8 @@ module Orb
               Orb::NewUsageDiscount,
               Orb::NewAmountDiscount,
               Orb::NewMinimum,
-              Orb::NewMaximum
+              Orb::NewMaximum,
+              Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
             )
           )
         end
@@ -4892,7 +5330,8 @@ module Orb
                 Orb::NewUsageDiscount::OrHash,
                 Orb::NewAmountDiscount::OrHash,
                 Orb::NewMinimum::OrHash,
-                Orb::NewMaximum::OrHash
+                Orb::NewMaximum::OrHash,
+                Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::OrHash
               ),
             replaces_adjustment_id: String,
             plan_phase_order: T.nilable(Integer)
@@ -4917,7 +5356,8 @@ module Orb
                   Orb::NewUsageDiscount,
                   Orb::NewAmountDiscount,
                   Orb::NewMinimum,
-                  Orb::NewMaximum
+                  Orb::NewMaximum,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
                 ),
               replaces_adjustment_id: String,
               plan_phase_order: T.nilable(Integer)
@@ -4938,9 +5378,443 @@ module Orb
                 Orb::NewUsageDiscount,
                 Orb::NewAmountDiscount,
                 Orb::NewMinimum,
-                Orb::NewMaximum
+                Orb::NewMaximum,
+                Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
               )
             end
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Symbol) }
+            attr_accessor :adjustment_type
+
+            sig do
+              returns(
+                T::Array[
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                ]
+              )
+            end
+            attr_accessor :tiers
+
+            # If set, the adjustment will apply to every price on the subscription.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                )
+              )
+            end
+            attr_accessor :applies_to_all
+
+            # The set of item IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_item_ids
+
+            # The set of price IDs to which this adjustment applies.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applies_to_price_ids
+
+            # If set, only prices in the specified currency will have the adjustment applied.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :currency
+
+            # A list of filters that determine which prices this adjustment will apply to.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                  ]
+                )
+              )
+            end
+            attr_accessor :filters
+
+            # When false, this adjustment will be applied to a single price. Otherwise, it
+            # will be applied at the invoice level, possibly to multiple prices.
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :is_invoice_level
+
+            sig { params(is_invoice_level: T::Boolean).void }
+            attr_writer :is_invoice_level
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            sig do
+              returns(
+                T.nilable(
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :price_type
+
+            sig do
+              params(
+                tiers:
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier::OrHash
+                  ],
+                applies_to_all:
+                  T.nilable(
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                  ),
+                applies_to_item_ids: T.nilable(T::Array[String]),
+                applies_to_price_ids: T.nilable(T::Array[String]),
+                currency: T.nilable(String),
+                filters:
+                  T.nilable(
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::OrHash
+                    ]
+                  ),
+                is_invoice_level: T::Boolean,
+                price_type:
+                  T.nilable(
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                  ),
+                adjustment_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              tiers:,
+              # If set, the adjustment will apply to every price on the subscription.
+              applies_to_all: nil,
+              # The set of item IDs to which this adjustment applies.
+              applies_to_item_ids: nil,
+              # The set of price IDs to which this adjustment applies.
+              applies_to_price_ids: nil,
+              # If set, only prices in the specified currency will have the adjustment applied.
+              currency: nil,
+              # A list of filters that determine which prices this adjustment will apply to.
+              filters: nil,
+              # When false, this adjustment will be applied to a single price. Otherwise, it
+              # will be applied at the invoice level, possibly to multiple prices.
+              is_invoice_level: nil,
+              # If set, only prices of the specified type will have the adjustment applied.
+              price_type: nil,
+              adjustment_type: :tiered_percentage_discount
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  adjustment_type: Symbol,
+                  tiers:
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                    ],
+                  applies_to_all:
+                    T.nilable(
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                    ),
+                  applies_to_item_ids: T.nilable(T::Array[String]),
+                  applies_to_price_ids: T.nilable(T::Array[String]),
+                  currency: T.nilable(String),
+                  filters:
+                    T.nilable(
+                      T::Array[
+                        Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                      ]
+                    ),
+                  is_invoice_level: T::Boolean,
+                  price_type:
+                    T.nilable(
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                    )
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Tier < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Exclusive lower bound of cumulative spend for this tier.
+              sig { returns(Float) }
+              attr_accessor :lower_bound
+
+              # The percentage (0-1) discounted from spend in this tier.
+              sig { returns(Float) }
+              attr_accessor :percentage
+
+              # Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+              sig { returns(T.nilable(Float)) }
+              attr_accessor :upper_bound
+
+              sig do
+                params(
+                  lower_bound: Float,
+                  percentage: Float,
+                  upper_bound: T.nilable(Float)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Exclusive lower bound of cumulative spend for this tier.
+                lower_bound:,
+                # The percentage (0-1) discounted from spend in this tier.
+                percentage:,
+                # Inclusive upper bound of cumulative spend; null for the final open-ended tier.
+                upper_bound: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    lower_bound: Float,
+                    percentage: Float,
+                    upper_bound: T.nilable(Float)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            # If set, the adjustment will apply to every price on the subscription.
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TaggedBoolean =
+                T.type_alias do
+                  T.all(
+                    T::Boolean,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
+                  )
+                end
+              OrBoolean = T.type_alias { T::Boolean }
+
+              TRUE =
+                T.let(
+                  true,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                    operator:
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # If set, only prices of the specified type will have the adjustment applied.
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :usage,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ADVANCE =
+                T.let(
+                  :fixed_in_advance,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED_IN_ARREARS =
+                T.let(
+                  :fixed_in_arrears,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              FIXED =
+                T.let(
+                  :fixed,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+              IN_ARREARS =
+                T.let(
+                  :in_arrears,
+                  Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
 
           sig do
             override.returns(
