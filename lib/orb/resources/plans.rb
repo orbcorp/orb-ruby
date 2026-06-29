@@ -100,7 +100,7 @@ module Orb
       # This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
       # an account in a list format. The list of plans is ordered starting from the most
       # recently created plan. The response also includes
-      # [`pagination_metadata`](/api-reference/pagination), which lets the caller
+      # [`pagination_metadata`](/api-reference/pagination) which lets the caller
       # retrieve the next page of results if they exist.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, status: nil, request_options: {})
