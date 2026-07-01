@@ -6,6 +6,7 @@ module Orb
         ?add_prices: ::Array[Orb::SubscriptionCreateParams::AddPrice]?,
         ?align_billing_with_subscription_start_date: bool,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?aws_region: String?,
         ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         ?coupon_redemption_code: String?,
@@ -41,6 +42,7 @@ module Orb
       def update: (
         String subscription_id,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?default_invoice_memo: String?,
         ?invoicing_threshold: String?,
         ?metadata: ::Hash[Symbol, String?]?,
@@ -139,6 +141,7 @@ module Orb
         ?add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
         ?align_billing_with_plan_change_date: bool?,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
         ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         ?change_date: Time?,

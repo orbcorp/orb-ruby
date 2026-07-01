@@ -24,6 +24,13 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
+      # Determines whether invoices for this subscription will be automatically issued.
+      # This resolves the effective setting for the subscription: a subscription-level
+      # override if set, otherwise the customer-level setting, otherwise the
+      # account-level default.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :auto_issuance
+
       sig { returns(Orb::BillingCycleAnchorConfiguration) }
       attr_reader :billing_cycle_anchor_configuration
 
@@ -201,6 +208,7 @@ module Orb
           active_plan_phase_order: T.nilable(Integer),
           adjustment_intervals: T::Array[Orb::AdjustmentInterval::OrHash],
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           billing_cycle_anchor_configuration:
             Orb::BillingCycleAnchorConfiguration::OrHash,
           billing_cycle_day: Integer,
@@ -249,6 +257,11 @@ module Orb
         # charged with the saved payment method on the due date. This property defaults to
         # the plan's behavior. If null, defaults to the customer's setting.
         auto_collection:,
+        # Determines whether invoices for this subscription will be automatically issued.
+        # This resolves the effective setting for the subscription: a subscription-level
+        # override if set, otherwise the customer-level setting, otherwise the
+        # account-level default.
+        auto_issuance:,
         billing_cycle_anchor_configuration:,
         # The day of the month on which the billing cycle is anchored. If the maximum
         # number of days in a month is greater than this value, the last day of the month
@@ -335,6 +348,7 @@ module Orb
             active_plan_phase_order: T.nilable(Integer),
             adjustment_intervals: T::Array[Orb::AdjustmentInterval],
             auto_collection: T.nilable(T::Boolean),
+            auto_issuance: T.nilable(T::Boolean),
             billing_cycle_anchor_configuration:
               Orb::BillingCycleAnchorConfiguration,
             billing_cycle_day: Integer,

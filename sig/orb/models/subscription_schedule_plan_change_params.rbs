@@ -8,6 +8,7 @@ module Orb
         add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
         align_billing_with_plan_change_date: bool?,
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         change_date: Time?,
@@ -47,6 +48,8 @@ module Orb
       attr_accessor align_billing_with_plan_change_date: bool?
 
       attr_accessor auto_collection: bool?
+
+      attr_accessor auto_issuance: bool?
 
       attr_accessor billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?
 
@@ -97,6 +100,7 @@ module Orb
         ?add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
         ?align_billing_with_plan_change_date: bool?,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
         ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         ?change_date: Time?,
@@ -128,6 +132,7 @@ module Orb
         add_prices: ::Array[Orb::SubscriptionSchedulePlanChangeParams::AddPrice]?,
         align_billing_with_plan_change_date: bool?,
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_cycle_alignment: Orb::Models::SubscriptionSchedulePlanChangeParams::billing_cycle_alignment?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         change_date: Time?,

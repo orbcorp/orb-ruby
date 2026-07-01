@@ -267,7 +267,7 @@ module Orb
       #
       # By default, Orb limits the number of subscriptions per customer to 100.
       #
-      # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, auto_issuance: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #
       # @param add_adjustments [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil] Additional adjustments to be added to the subscription. (Only available for acco
       #
@@ -276,6 +276,8 @@ module Orb
       # @param align_billing_with_subscription_start_date [Boolean]
       #
       # @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #
+      # @param auto_issuance [Boolean, nil] Used to determine if invoices for this subscription will be automatically issued
       #
       # @param aws_region [String, nil]
       #
@@ -358,11 +360,13 @@ module Orb
       # `auto_collection`, `invoicing_threshold`, and `default_invoice_memo` properties
       # on a subscription.
       #
-      # @overload update(subscription_id, auto_collection: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @overload update(subscription_id, auto_collection: nil, auto_issuance: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
       #
       # @param subscription_id [String]
       #
       # @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #
+      # @param auto_issuance [Boolean, nil] Used to determine if invoices for this subscription will be automatically issued
       #
       # @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
       #
@@ -1223,7 +1227,7 @@ module Orb
       # behavior, see
       # [Modifying subscriptions](/product-catalog/modifying-subscriptions#prorations-for-in-advance-fees).
       #
-      # @overload schedule_plan_change(subscription_id, change_option:, add_adjustments: nil, add_prices: nil, align_billing_with_plan_change_date: nil, auto_collection: nil, billing_cycle_alignment: nil, billing_cycle_anchor_configuration: nil, change_date: nil, coupon_redemption_code: nil, credits_overage_rate: nil, default_invoice_memo: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      # @overload schedule_plan_change(subscription_id, change_option:, add_adjustments: nil, add_prices: nil, align_billing_with_plan_change_date: nil, auto_collection: nil, auto_issuance: nil, billing_cycle_alignment: nil, billing_cycle_anchor_configuration: nil, change_date: nil, coupon_redemption_code: nil, credits_overage_rate: nil, default_invoice_memo: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #
       # @param subscription_id [String]
       #
@@ -1236,6 +1240,8 @@ module Orb
       # @param align_billing_with_plan_change_date [Boolean, nil] [DEPRECATED] Use billing_cycle_alignment instead. Reset billing periods to be al
       #
       # @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #
+      # @param auto_issuance [Boolean, nil] Used to determine if invoices for this subscription will be automatically issued
       #
       # @param billing_cycle_alignment [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment, nil] Reset billing periods to be aligned with the plan change's effective date or sta
       #

@@ -41,6 +41,13 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
+      # Used to determine if invoices for this subscription will be automatically
+      # issued. If true, invoices will be automatically issued. If false, invoices will
+      # require manual approval. If `null` is specified, this defaults to the behavior
+      # configured for this customer.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :auto_issuance
+
       sig { returns(T.nilable(String)) }
       attr_accessor :aws_region
 
@@ -216,6 +223,7 @@ module Orb
             ),
           align_billing_with_subscription_start_date: T::Boolean,
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           aws_region: T.nilable(String),
           billing_cycle_anchor_configuration:
             T.nilable(Orb::BillingCycleAnchorConfiguration::OrHash),
@@ -276,6 +284,11 @@ module Orb
         # charged with the saved payment method on the due date. If not specified, this
         # defaults to the behavior configured for this customer.
         auto_collection: nil,
+        # Used to determine if invoices for this subscription will be automatically
+        # issued. If true, invoices will be automatically issued. If false, invoices will
+        # require manual approval. If `null` is specified, this defaults to the behavior
+        # configured for this customer.
+        auto_issuance: nil,
         aws_region: nil,
         billing_cycle_anchor_configuration: nil,
         # Redemption code to be used for this subscription. If the coupon cannot be found
@@ -366,6 +379,7 @@ module Orb
               T.nilable(T::Array[Orb::SubscriptionCreateParams::AddPrice]),
             align_billing_with_subscription_start_date: T::Boolean,
             auto_collection: T.nilable(T::Boolean),
+            auto_issuance: T.nilable(T::Boolean),
             aws_region: T.nilable(String),
             billing_cycle_anchor_configuration:
               T.nilable(Orb::BillingCycleAnchorConfiguration),

@@ -6,6 +6,7 @@ module Orb
         active_plan_phase_order: Integer?,
         adjustment_intervals: ::Array[Orb::AdjustmentInterval],
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
@@ -40,6 +41,8 @@ module Orb
       attr_accessor adjustment_intervals: ::Array[Orb::AdjustmentInterval]
 
       attr_accessor auto_collection: bool?
+
+      attr_accessor auto_issuance: bool?
 
       attr_accessor billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration
 
@@ -94,6 +97,7 @@ module Orb
         active_plan_phase_order: Integer?,
         adjustment_intervals: ::Array[Orb::AdjustmentInterval],
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,
@@ -125,6 +129,7 @@ module Orb
         active_plan_phase_order: Integer?,
         adjustment_intervals: ::Array[Orb::AdjustmentInterval],
         auto_collection: bool?,
+        auto_issuance: bool?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,

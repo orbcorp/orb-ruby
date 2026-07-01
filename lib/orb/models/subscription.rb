@@ -31,6 +31,15 @@ module Orb
       #   @return [Boolean, nil]
       required :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute auto_issuance
+      #   Determines whether invoices for this subscription will be automatically issued.
+      #   This resolves the effective setting for the subscription: a subscription-level
+      #   override if set, otherwise the customer-level setting, otherwise the
+      #   account-level default.
+      #
+      #   @return [Boolean, nil]
+      required :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute billing_cycle_anchor_configuration
       #
       #   @return [Orb::Models::BillingCycleAnchorConfiguration]
@@ -207,7 +216,7 @@ module Orb
       #   @return [Orb::Models::SubscriptionTrialInfo]
       required :trial_info, -> { Orb::SubscriptionTrialInfo }
 
-      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, name:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:)
+      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, auto_issuance:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, name:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::Subscription} for more details.
       #
@@ -238,6 +247,8 @@ module Orb
       #   @param adjustment_intervals [Array<Orb::Models::AdjustmentInterval>] The adjustment intervals for this subscription sorted by the start_date of the a
       #
       #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #
+      #   @param auto_issuance [Boolean, nil] Determines whether invoices for this subscription will be automatically issued.
       #
       #   @param billing_cycle_anchor_configuration [Orb::Models::BillingCycleAnchorConfiguration]
       #
