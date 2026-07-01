@@ -23,6 +23,7 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
         active_plan_phase_order: Integer | nil,
         adjustment_intervals: ^(Orb::Internal::Type::ArrayOf[Orb::AdjustmentInterval]),
         auto_collection: Orb::Internal::Type::Boolean | nil,
+        auto_issuance: Orb::Internal::Type::Boolean | nil,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
         created_at: Time,

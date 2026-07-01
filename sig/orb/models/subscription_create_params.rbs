@@ -6,6 +6,7 @@ module Orb
         add_prices: ::Array[Orb::SubscriptionCreateParams::AddPrice]?,
         align_billing_with_subscription_start_date: bool,
         auto_collection: bool?,
+        auto_issuance: bool?,
         aws_region: String?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         coupon_redemption_code: String?,
@@ -51,6 +52,8 @@ module Orb
       def align_billing_with_subscription_start_date=: (bool) -> bool
 
       attr_accessor auto_collection: bool?
+
+      attr_accessor auto_issuance: bool?
 
       attr_accessor aws_region: String?
 
@@ -115,6 +118,7 @@ module Orb
         ?add_prices: ::Array[Orb::SubscriptionCreateParams::AddPrice]?,
         ?align_billing_with_subscription_start_date: bool,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?aws_region: String?,
         ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         ?coupon_redemption_code: String?,
@@ -152,6 +156,7 @@ module Orb
         add_prices: ::Array[Orb::SubscriptionCreateParams::AddPrice]?,
         align_billing_with_subscription_start_date: bool,
         auto_collection: bool?,
+        auto_issuance: bool?,
         aws_region: String?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
         coupon_redemption_code: String?,

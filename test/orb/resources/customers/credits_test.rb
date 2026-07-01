@@ -21,13 +21,15 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
       row => {
         id: String,
         balance: Float,
+        credit_block_source: Orb::Models::Customers::CreditListResponse::CreditBlockSource,
         effective_date: Time | nil,
         expiry_date: Time | nil,
         filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CreditListResponse::Filter]),
         maximum_initial_balance: Float | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
-        status: Orb::Models::Customers::CreditListResponse::Status
+        status: Orb::Models::Customers::CreditListResponse::Status,
+        credit_allocation: Orb::Models::Customers::CreditListResponse::CreditAllocation | nil
       }
     end
   end
@@ -50,13 +52,15 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
       row => {
         id: String,
         balance: Float,
+        credit_block_source: Orb::Models::Customers::CreditListByExternalIDResponse::CreditBlockSource,
         effective_date: Time | nil,
         expiry_date: Time | nil,
         filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::Customers::CreditListByExternalIDResponse::Filter]),
         maximum_initial_balance: Float | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
-        status: Orb::Models::Customers::CreditListByExternalIDResponse::Status
+        status: Orb::Models::Customers::CreditListByExternalIDResponse::Status,
+        credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation | nil
       }
     end
   end

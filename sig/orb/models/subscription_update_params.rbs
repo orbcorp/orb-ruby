@@ -4,6 +4,7 @@ module Orb
       {
         subscription_id: String,
         auto_collection: bool?,
+        auto_issuance: bool?,
         default_invoice_memo: String?,
         invoicing_threshold: String?,
         metadata: ::Hash[Symbol, String?]?,
@@ -19,6 +20,8 @@ module Orb
 
       attr_accessor auto_collection: bool?
 
+      attr_accessor auto_issuance: bool?
+
       attr_accessor default_invoice_memo: String?
 
       attr_accessor invoicing_threshold: String?
@@ -30,6 +33,7 @@ module Orb
       def initialize: (
         subscription_id: String,
         ?auto_collection: bool?,
+        ?auto_issuance: bool?,
         ?default_invoice_memo: String?,
         ?invoicing_threshold: String?,
         ?metadata: ::Hash[Symbol, String?]?,
@@ -40,6 +44,7 @@ module Orb
       def to_hash: -> {
         subscription_id: String,
         auto_collection: bool?,
+        auto_issuance: bool?,
         default_invoice_memo: String?,
         invoicing_threshold: String?,
         metadata: ::Hash[Symbol, String?]?,

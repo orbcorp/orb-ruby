@@ -38,6 +38,15 @@ module Orb
       #   @return [Boolean, nil]
       optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute auto_issuance
+      #   Used to determine if invoices for this subscription will be automatically
+      #   issued. If true, invoices will be automatically issued. If false, invoices will
+      #   require manual approval. If `null` is specified, this defaults to the behavior
+      #   configured for this customer.
+      #
+      #   @return [Boolean, nil]
+      optional :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute aws_region
       #   @deprecated
       #
@@ -248,7 +257,7 @@ module Orb
       #   @return [Array<String>, nil]
       optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!method initialize(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      # @!method initialize(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, auto_issuance: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionCreateParams} for more details.
       #
@@ -259,6 +268,8 @@ module Orb
       #   @param align_billing_with_subscription_start_date [Boolean]
       #
       #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #
+      #   @param auto_issuance [Boolean, nil] Used to determine if invoices for this subscription will be automatically issued
       #
       #   @param aws_region [String, nil]
       #

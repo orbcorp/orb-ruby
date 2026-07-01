@@ -275,6 +275,7 @@ module Orb
             ),
           align_billing_with_subscription_start_date: T::Boolean,
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           aws_region: T.nilable(String),
           billing_cycle_anchor_configuration:
             T.nilable(Orb::BillingCycleAnchorConfiguration::OrHash),
@@ -335,6 +336,11 @@ module Orb
         # charged with the saved payment method on the due date. If not specified, this
         # defaults to the behavior configured for this customer.
         auto_collection: nil,
+        # Used to determine if invoices for this subscription will be automatically
+        # issued. If true, invoices will be automatically issued. If false, invoices will
+        # require manual approval. If `null` is specified, this defaults to the behavior
+        # configured for this customer.
+        auto_issuance: nil,
         aws_region: nil,
         billing_cycle_anchor_configuration: nil,
         # Redemption code to be used for this subscription. If the coupon cannot be found
@@ -423,6 +429,7 @@ module Orb
         params(
           subscription_id: String,
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           default_invoice_memo: T.nilable(String),
           invoicing_threshold: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -436,6 +443,11 @@ module Orb
         # charged with the saved payment method on the due date. This property defaults to
         # the plan's behavior.
         auto_collection: nil,
+        # Used to determine if invoices for this subscription will be automatically
+        # issued. If true, invoices will be automatically issued. If false, invoices will
+        # require manual approval. If `null` is specified, this defaults to the behavior
+        # configured for this customer.
+        auto_issuance: nil,
         # Determines the default memo on this subscription's invoices. Note that if this
         # is not provided, it is determined by the plan configuration.
         default_invoice_memo: nil,
@@ -1255,6 +1267,7 @@ module Orb
             ),
           align_billing_with_plan_change_date: T.nilable(T::Boolean),
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           billing_cycle_alignment:
             T.nilable(
               Orb::SubscriptionSchedulePlanChangeParams::BillingCycleAlignment::OrSymbol
@@ -1319,6 +1332,11 @@ module Orb
         # charged with the saved payment method on the due date. If not specified, this
         # defaults to the behavior configured for this customer.
         auto_collection: nil,
+        # Used to determine if invoices for this subscription will be automatically
+        # issued. If true, invoices will be automatically issued. If false, invoices will
+        # require manual approval. If `null` is specified, this defaults to the behavior
+        # configured for this customer.
+        auto_issuance: nil,
         # Reset billing periods to be aligned with the plan change's effective date or
         # start of the month. Defaults to `unchanged` which keeps subscription's existing
         # billing cycle alignment.

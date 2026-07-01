@@ -20,6 +20,13 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
+      # Used to determine if invoices for this subscription will be automatically
+      # issued. If true, invoices will be automatically issued. If false, invoices will
+      # require manual approval. If `null` is specified, this defaults to the behavior
+      # configured for this customer.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :auto_issuance
+
       # Determines the default memo on this subscription's invoices. Note that if this
       # is not provided, it is determined by the plan configuration.
       sig { returns(T.nilable(String)) }
@@ -48,6 +55,7 @@ module Orb
         params(
           subscription_id: String,
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           default_invoice_memo: T.nilable(String),
           invoicing_threshold: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -61,6 +69,11 @@ module Orb
         # charged with the saved payment method on the due date. This property defaults to
         # the plan's behavior.
         auto_collection: nil,
+        # Used to determine if invoices for this subscription will be automatically
+        # issued. If true, invoices will be automatically issued. If false, invoices will
+        # require manual approval. If `null` is specified, this defaults to the behavior
+        # configured for this customer.
+        auto_issuance: nil,
         # Determines the default memo on this subscription's invoices. Note that if this
         # is not provided, it is determined by the plan configuration.
         default_invoice_memo: nil,
@@ -86,6 +99,7 @@ module Orb
           {
             subscription_id: String,
             auto_collection: T.nilable(T::Boolean),
+            auto_issuance: T.nilable(T::Boolean),
             default_invoice_memo: T.nilable(String),
             invoicing_threshold: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

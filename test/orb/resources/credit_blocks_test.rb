@@ -14,13 +14,15 @@ class Orb::Test::Resources::CreditBlocksTest < Orb::Test::ResourceTest
       response => {
         id: String,
         balance: Float,
+        credit_block_source: Orb::Models::CreditBlockRetrieveResponse::CreditBlockSource,
         effective_date: Time | nil,
         expiry_date: Time | nil,
         filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::CreditBlockRetrieveResponse::Filter]),
         maximum_initial_balance: Float | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
-        status: Orb::Models::CreditBlockRetrieveResponse::Status
+        status: Orb::Models::CreditBlockRetrieveResponse::Status,
+        credit_allocation: Orb::Models::CreditBlockRetrieveResponse::CreditAllocation | nil
       }
     end
   end
