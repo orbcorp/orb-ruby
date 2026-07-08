@@ -119,7 +119,7 @@ module Orb
             billed_in_advance: bool?,
             billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
             conversion_rate: Float?,
-            conversion_rate_config: Orb::Models::PlanCreateParams::Price::LicenseAllocationPrice::conversion_rate_config?,
+            conversion_rate_config: Orb::Models::conversion_rate_config?,
             currency: String?,
             dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
             external_price_id: String?,
@@ -152,7 +152,7 @@ module Orb
 
           attr_accessor conversion_rate: Float?
 
-          attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::LicenseAllocationPrice::conversion_rate_config?
+          attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
           attr_accessor currency: String?
 
@@ -183,7 +183,7 @@ module Orb
             ?billed_in_advance: bool?,
             ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
             ?conversion_rate: Float?,
-            ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::LicenseAllocationPrice::conversion_rate_config?,
+            ?conversion_rate_config: Orb::Models::conversion_rate_config?,
             ?currency: String?,
             ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
             ?external_price_id: String?,
@@ -206,7 +206,7 @@ module Orb
             billed_in_advance: bool?,
             billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
             conversion_rate: Float?,
-            conversion_rate_config: Orb::Models::PlanCreateParams::Price::LicenseAllocationPrice::conversion_rate_config?,
+            conversion_rate_config: Orb::Models::conversion_rate_config?,
             currency: String?,
             dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
             external_price_id: String?,
@@ -318,7 +318,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::BulkWithFilters::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -349,7 +349,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::BulkWithFilters::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -378,7 +378,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::BulkWithFilters::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -401,7 +401,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::BulkWithFilters::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -501,7 +501,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -532,7 +532,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MatrixWithThresholdDiscounts::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -561,7 +561,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -584,7 +584,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -734,7 +734,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -765,7 +765,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -794,7 +794,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -817,7 +817,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::TieredWithProration::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -897,7 +897,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -928,7 +928,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -957,7 +957,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -980,7 +980,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1057,7 +1057,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::CumulativeGroupedAllocation::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1088,7 +1088,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::CumulativeGroupedAllocation::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -1117,7 +1117,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::CumulativeGroupedAllocation::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -1140,7 +1140,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::CumulativeGroupedAllocation::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1217,7 +1217,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::DailyCreditAllowance::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1248,7 +1248,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::DailyCreditAllowance::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -1277,7 +1277,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::DailyCreditAllowance::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -1300,7 +1300,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::DailyCreditAllowance::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1401,7 +1401,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MeteredAllowance::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1432,7 +1432,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MeteredAllowance::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -1461,7 +1461,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MeteredAllowance::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -1484,7 +1484,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::MeteredAllowance::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1575,7 +1575,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::Percent::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1606,7 +1606,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::Percent::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -1635,7 +1635,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::Percent::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -1658,7 +1658,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::Percent::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1737,7 +1737,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::EventOutput::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,
@@ -1768,7 +1768,7 @@ module Orb
 
             attr_accessor conversion_rate: Float?
 
-            attr_accessor conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::EventOutput::conversion_rate_config?
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
             attr_accessor currency: String?
 
@@ -1797,7 +1797,7 @@ module Orb
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               ?conversion_rate: Float?,
-              ?conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::EventOutput::conversion_rate_config?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
               ?currency: String?,
               ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               ?external_price_id: String?,
@@ -1820,7 +1820,7 @@ module Orb
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
               conversion_rate: Float?,
-              conversion_rate_config: Orb::Models::PlanCreateParams::Price::Price::EventOutput::conversion_rate_config?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
               currency: String?,
               dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
               external_price_id: String?,

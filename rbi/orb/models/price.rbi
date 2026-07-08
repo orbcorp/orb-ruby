@@ -96,9 +96,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants))
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -333,7 +331,7 @@ module Orb
                 T.nilable(T::Array[Orb::Price::Unit::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Unit::ConversionRateConfig::Variants),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -656,9 +654,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants))
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -893,7 +889,7 @@ module Orb
                 T.nilable(T::Array[Orb::Price::Tiered::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Tiered::ConversionRateConfig::Variants),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1231,9 +1227,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants))
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -1462,7 +1456,7 @@ module Orb
                 T.nilable(T::Array[Orb::Price::Bulk::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Bulk::ConversionRateConfig::Variants),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -1802,13 +1796,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::BulkWithFilters::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -2046,9 +2034,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::BulkWithFilters::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -2561,11 +2547,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(Orb::Price::Package::ConversionRateConfig::Variants)
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -2800,7 +2782,7 @@ module Orb
                 T.nilable(T::Array[Orb::Price::Package::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Package::ConversionRateConfig::Variants),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3135,9 +3117,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants))
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -3372,7 +3352,7 @@ module Orb
                 T.nilable(T::Array[Orb::Price::Matrix::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Matrix::ConversionRateConfig::Variants),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -3711,13 +3691,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -3974,9 +3948,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::ThresholdTotalAmount::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -4462,11 +4434,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(Orb::Price::TieredPackage::ConversionRateConfig::Variants)
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -4714,9 +4682,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::TieredPackage::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5179,13 +5145,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -5433,9 +5393,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::TieredWithMinimum::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -5937,11 +5895,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(Orb::Price::GroupedTiered::ConversionRateConfig::Variants)
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -6189,9 +6143,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::GroupedTiered::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -6660,13 +6612,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -6931,9 +6877,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::TieredPackageWithMinimum::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -7431,13 +7375,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -7696,9 +7634,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::PackageWithAllocation::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -8134,13 +8070,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -8388,9 +8318,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::UnitWithPercent::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -8802,13 +8730,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -9063,9 +8985,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::MatrixWithAllocation::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -9471,13 +9391,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -9747,9 +9661,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -10366,13 +10278,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::TieredWithProration::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -10627,9 +10533,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::TieredWithProration::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -11113,13 +11017,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::UnitWithProration::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -11367,9 +11265,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::UnitWithProration::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -11781,13 +11677,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -12035,9 +11925,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::GroupedAllocation::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -12487,13 +12375,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::BulkWithProration::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -12731,9 +12613,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::BulkWithProration::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -13215,13 +13095,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -13490,9 +13364,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -13944,13 +13816,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -14217,9 +14083,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -14801,13 +14665,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -15076,9 +14934,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -15541,13 +15397,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -15806,9 +15656,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::MatrixWithDisplayName::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -16312,13 +16160,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -16575,9 +16417,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::GroupedTieredPackage::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -17075,13 +16915,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -17340,9 +17174,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::MaxGroupTieredPackage::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -17849,13 +17681,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -18125,9 +17951,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -18678,13 +18502,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -18954,9 +18772,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -19528,13 +19344,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -19793,9 +19603,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::CumulativeGroupedBulk::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               cumulative_grouped_bulk_config:
@@ -20308,13 +20116,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::CumulativeGroupedAllocation::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -20583,9 +20385,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::CumulativeGroupedAllocation::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               cumulative_grouped_allocation_config:
@@ -21046,13 +20846,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::DailyCreditAllowance::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -21309,9 +21103,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::DailyCreditAllowance::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -21837,13 +21629,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::MeteredAllowance::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -22091,9 +21877,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::MeteredAllowance::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -22564,13 +22348,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(
-              Orb::Price::MinimumComposite::ConversionRateConfig::Variants
-            )
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -22818,9 +22596,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::MinimumComposite::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -23236,11 +23012,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(Orb::Price::Percent::ConversionRateConfig::Variants)
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -23479,7 +23251,7 @@ module Orb
                 T.nilable(T::Array[Orb::Price::Percent::CompositePriceFilter]),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(Orb::Price::Percent::ConversionRateConfig::Variants),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,
@@ -23882,11 +23654,7 @@ module Orb
         sig { returns(T.nilable(Float)) }
         attr_accessor :conversion_rate
 
-        sig do
-          returns(
-            T.nilable(Orb::Price::EventOutput::ConversionRateConfig::Variants)
-          )
-        end
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
         attr_accessor :conversion_rate_config
 
         sig { returns(Time) }
@@ -24131,9 +23899,7 @@ module Orb
                 ),
               conversion_rate: T.nilable(Float),
               conversion_rate_config:
-                T.nilable(
-                  Orb::Price::EventOutput::ConversionRateConfig::Variants
-                ),
+                T.nilable(Orb::ConversionRateConfig::Variants),
               created_at: Time,
               credit_allocation: T.nilable(Orb::Allocation),
               currency: String,

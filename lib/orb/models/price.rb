@@ -126,7 +126,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Unit::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -492,7 +492,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Tiered::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -864,7 +864,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Bulk::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -1230,9 +1230,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::BulkWithFilters::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -1658,7 +1656,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Package::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -2024,7 +2022,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Matrix::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -2390,9 +2388,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::ThresholdTotalAmount::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -2807,9 +2803,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackage::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -3222,9 +3216,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithMinimum::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -3653,9 +3645,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTiered::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -4069,9 +4059,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredPackageWithMinimum::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -4489,9 +4477,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::PackageWithAllocation::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -4883,9 +4869,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithPercent::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -5273,9 +5257,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithAllocation::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -5643,9 +5625,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithThresholdDiscounts::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -6130,9 +6110,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::TieredWithProration::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -6539,9 +6517,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::UnitWithProration::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -6921,9 +6897,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedAllocation::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -7325,9 +7299,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::BulkWithProration::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -7725,9 +7697,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithProratedMinimum::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -8126,9 +8096,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMeteredMinimum::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -8597,9 +8565,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedWithMinMaxThresholds::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -9004,9 +8970,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::MatrixWithDisplayName::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -9425,9 +9389,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::GroupedTieredPackage::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -9849,9 +9811,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::MaxGroupTieredPackage::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -10274,9 +10234,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithUnitPricing::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -10725,9 +10683,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::ScalableMatrixWithTieredPricing::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -11177,9 +11133,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::CumulativeGroupedBulk::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -11599,9 +11553,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::CumulativeGroupedAllocation::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -12006,9 +11958,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::DailyCreditAllowance::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -12456,9 +12406,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::MeteredAllowance::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -12886,9 +12834,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> { Orb::Price::MinimumComposite::ConversionRateConfig },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -13276,7 +13222,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config, union: -> { Orb::Price::Percent::ConversionRateConfig }, nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #
@@ -13685,11 +13631,7 @@ module Orb
         # @!attribute conversion_rate_config
         #
         #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-        required :conversion_rate_config,
-                 union: -> {
-                   Orb::Price::EventOutput::ConversionRateConfig
-                 },
-                 nil?: true
+        required :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
         # @!attribute created_at
         #

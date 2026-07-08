@@ -6,38 +6,24 @@ module Orb
       # @api private
       #
       # @example
-      #   # `discount` is a `Orb::Discount`
-      #   case discount
-      #   when Orb::PercentageDiscount
-      #     puts(discount.discount_type)
-      #   when Orb::TrialDiscount
-      #     puts(discount.applies_to_price_ids)
-      #   when Orb::UsageDiscount
-      #     puts(discount.usage_discount)
+      #   # `conversion_rate_config` is a `Orb::ConversionRateConfig`
+      #   case conversion_rate_config
+      #   when Orb::UnitConversionRateConfig
+      #     puts(conversion_rate_config.conversion_rate_type)
+      #   when Orb::TieredConversionRateConfig
+      #     puts(conversion_rate_config.tiered_config)
       #   else
-      #     puts(discount)
+      #     puts(conversion_rate_config)
       #   end
       #
       # @example
-      #   case discount
-      #   in {
-      #     discount_type: :percentage,
-      #     percentage_discount: percentage_discount,
-      #     applies_to_price_ids: applies_to_price_ids,
-      #     filters: filters
-      #   }
-      #     puts(percentage_discount)
-      #   in {discount_type: :trial, applies_to_price_ids: applies_to_price_ids, filters: filters, reason: reason}
-      #     puts(applies_to_price_ids)
-      #   in {
-      #     discount_type: :usage,
-      #     usage_discount: usage_discount,
-      #     applies_to_price_ids: applies_to_price_ids,
-      #     filters: filters
-      #   }
-      #     puts(usage_discount)
+      #   case conversion_rate_config
+      #   in {conversion_rate_type: :unit, unit_config: unit_config}
+      #     puts(unit_config)
+      #   in {conversion_rate_type: :tiered, tiered_config: tiered_config}
+      #     puts(tiered_config)
       #   else
-      #     puts(discount)
+      #     puts(conversion_rate_config)
       #   end
       module Union
         include Orb::Internal::Type::Converter

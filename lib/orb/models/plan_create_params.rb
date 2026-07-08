@@ -220,9 +220,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> { Orb::PlanCreateParams::Price::LicenseAllocationPrice::ConversionRateConfig },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute currency
           #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -529,9 +527,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> { Orb::PlanCreateParams::Price::Price::BulkWithFilters::ConversionRateConfig },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -786,11 +782,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PlanCreateParams::Price::Price::MatrixWithThresholdDiscounts::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -1105,11 +1097,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PlanCreateParams::Price::Price::TieredWithProration::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -1340,11 +1328,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PlanCreateParams::Price::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -1572,11 +1556,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PlanCreateParams::Price::Price::CumulativeGroupedAllocation::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -1804,11 +1784,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PlanCreateParams::Price::Price::DailyCreditAllowance::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -2079,11 +2055,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PlanCreateParams::Price::Price::MeteredAllowance::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -2335,9 +2307,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> { Orb::PlanCreateParams::Price::Price::Percent::ConversionRateConfig },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
@@ -2569,9 +2539,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> { Orb::PlanCreateParams::Price::Price::EventOutput::ConversionRateConfig },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute currency
             #   An ISO 4217 currency string, or custom pricing unit identifier, in which this

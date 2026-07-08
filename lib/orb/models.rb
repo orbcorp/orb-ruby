@@ -97,6 +97,8 @@ module Orb
 
   ChangedSubscriptionResources = Orb::Models::ChangedSubscriptionResources
 
+  ConversionRateConfig = Orb::Models::ConversionRateConfig
+
   ConversionRateTier = Orb::Models::ConversionRateTier
 
   ConversionRateTieredConfig = Orb::Models::ConversionRateTieredConfig

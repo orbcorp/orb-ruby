@@ -12,7 +12,7 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         conversion_rate: Float?,
-        conversion_rate_config: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::conversion_rate_config?,
+        conversion_rate_config: Orb::Models::conversion_rate_config?,
         dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,
@@ -43,7 +43,7 @@ module Orb
 
       attr_accessor conversion_rate: Float?
 
-      attr_accessor conversion_rate_config: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::conversion_rate_config?
+      attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
 
       attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
 
@@ -70,7 +70,7 @@ module Orb
         ?billed_in_advance: bool?,
         ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         ?conversion_rate: Float?,
-        ?conversion_rate_config: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::conversion_rate_config?,
+        ?conversion_rate_config: Orb::Models::conversion_rate_config?,
         ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         ?external_price_id: String?,
         ?fixed_price_quantity: Float?,
@@ -91,7 +91,7 @@ module Orb
         billed_in_advance: bool?,
         billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
         conversion_rate: Float?,
-        conversion_rate_config: Orb::Models::NewFloatingCumulativeGroupedBulkPrice::conversion_rate_config?,
+        conversion_rate_config: Orb::Models::conversion_rate_config?,
         dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
         external_price_id: String?,
         fixed_price_quantity: Float?,

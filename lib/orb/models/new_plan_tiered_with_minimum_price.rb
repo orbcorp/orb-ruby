@@ -64,9 +64,7 @@ module Orb
       #   The configuration for the rate of the price currency to the invoicing currency.
       #
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-      optional :conversion_rate_config,
-               union: -> { Orb::NewPlanTieredWithMinimumPrice::ConversionRateConfig },
-               nil?: true
+      optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
       # @!attribute currency
       #   An ISO 4217 currency string, or custom pricing unit identifier, in which this

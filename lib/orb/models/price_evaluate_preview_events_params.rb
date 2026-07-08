@@ -326,11 +326,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::BulkWithFilters::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -585,11 +581,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::MatrixWithThresholdDiscounts::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -895,11 +887,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::GroupedWithMinMaxThresholds::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -1118,11 +1106,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::CumulativeGroupedAllocation::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -1341,11 +1325,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::DailyCreditAllowance::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -1611,11 +1591,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::MeteredAllowance::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -1859,11 +1835,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::Percent::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values
@@ -2088,11 +2060,7 @@ module Orb
             #   The configuration for the rate of the price currency to the invoicing currency.
             #
             #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-            optional :conversion_rate_config,
-                     union: -> {
-                       Orb::PriceEvaluatePreviewEventsParams::PriceEvaluation::Price::EventOutput::ConversionRateConfig
-                     },
-                     nil?: true
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
             # @!attribute dimensional_price_configuration
             #   For dimensional price: specifies a price group and dimension values

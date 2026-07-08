@@ -70,9 +70,7 @@ module Orb
       #   The configuration for the rate of the price currency to the invoicing currency.
       #
       #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-      optional :conversion_rate_config,
-               union: -> { Orb::NewFloatingMatrixPrice::ConversionRateConfig },
-               nil?: true
+      optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
       # @!attribute dimensional_price_configuration
       #   For dimensional price: specifies a price group and dimension values

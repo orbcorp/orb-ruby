@@ -162,9 +162,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> { Orb::PriceCreateParams::Body::BulkWithFilters::ConversionRateConfig },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -405,11 +403,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> {
-                     Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::ConversionRateConfig
-                   },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -710,11 +704,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> {
-                     Orb::PriceCreateParams::Body::GroupedWithMinMaxThresholds::ConversionRateConfig
-                   },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -928,11 +918,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> {
-                     Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::ConversionRateConfig
-                   },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -1146,9 +1132,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> { Orb::PriceCreateParams::Body::DailyCreditAllowance::ConversionRateConfig },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -1404,9 +1388,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> { Orb::PriceCreateParams::Body::MeteredAllowance::ConversionRateConfig },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -1643,9 +1625,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> { Orb::PriceCreateParams::Body::Percent::ConversionRateConfig },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
@@ -1862,9 +1842,7 @@ module Orb
           #   The configuration for the rate of the price currency to the invoicing currency.
           #
           #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
-          optional :conversion_rate_config,
-                   union: -> { Orb::PriceCreateParams::Body::EventOutput::ConversionRateConfig },
-                   nil?: true
+          optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
 
           # @!attribute dimensional_price_configuration
           #   For dimensional price: specifies a price group and dimension values
