@@ -22,7 +22,7 @@ module Orb
         #
         # @param end_date [Date, nil] End date for the usage period (YYYY-MM-DD). Defaults to end of current billing p
         #
-        # @param group_by [Array<String>, nil] How to group the results. Valid values: 'license', 'day'. Can be combined (e.g.,
+        # @param group_by [String, nil] How to group the results. Valid values: 'license', 'day'. Can be combined (e.g.,
         #
         # @param limit [Integer] Maximum number of rows in the response data (default 20, max 100).
         #
@@ -60,7 +60,7 @@ module Orb
         #
         # @param end_date [Date, nil] End date for the usage period (YYYY-MM-DD). Defaults to end of current billing p
         #
-        # @param group_by [Array<String>, nil] How to group the results. Valid values: 'license', 'day'. Can be combined (e.g.,
+        # @param group_by [String, nil] How to group the results. Valid values: 'license', 'day'. Can be combined (e.g.,
         #
         # @param limit [Integer] Maximum number of rows in the response data (default 20, max 100).
         #
