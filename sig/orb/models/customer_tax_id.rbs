@@ -58,9 +58,9 @@ module Orb
         | :CO
         | :CR
         | :CV
-        | :DE
         | :CY
         | :CZ
+        | :DE
         | :DK
         | :DO
         | :EC
@@ -70,9 +70,11 @@ module Orb
         | :ET
         | :EU
         | :FI
+        | :FO
         | :FR
         | :GB
         | :GE
+        | :GI
         | :GN
         | :GR
         | :HK
@@ -92,6 +94,7 @@ module Orb
         | :KZ
         | :LA
         | :LI
+        | :LK
         | :LT
         | :LU
         | :LV
@@ -113,6 +116,7 @@ module Orb
         | :PH
         | :PL
         | :PT
+        | :PY
         | :RO
         | :RS
         | :RU
@@ -174,9 +178,9 @@ module Orb
         CO: :CO
         CR: :CR
         CV: :CV
-        DE: :DE
         CY: :CY
         CZ: :CZ
+        DE: :DE
         DK: :DK
         DO: :DO
         EC: :EC
@@ -186,9 +190,11 @@ module Orb
         ET: :ET
         EU: :EU
         FI: :FI
+        FO: :FO
         FR: :FR
         GB: :GB
         GE: :GE
+        GI: :GI
         GN: :GN
         GR: :GR
         HK: :HK
@@ -208,6 +214,7 @@ module Orb
         KZ: :KZ
         LA: :LA
         LI: :LI
+        LK: :LK
         LT: :LT
         LU: :LU
         LV: :LV
@@ -229,6 +236,7 @@ module Orb
         PH: :PH
         PL: :PL
         PT: :PT
+        PY: :PY
         RO: :RO
         RS: :RS
         RU: :RU
@@ -305,8 +313,10 @@ module Orb
         | :es_cif
         | :et_tin
         | :eu_oss_vat
+        | :fo_vat
         | :gb_vat
         | :ge_vat
+        | :gi_tin
         | :gn_nif
         | :hk_br
         | :hr_oib
@@ -315,6 +325,7 @@ module Orb
         | :il_vat
         | :in_gst
         | :is_vat
+        | :it_cf
         | :jp_cn
         | :jp_rn
         | :jp_trn
@@ -326,6 +337,7 @@ module Orb
         | :la_tin
         | :li_uid
         | :li_vat
+        | :lk_vat
         | :ma_vat
         | :md_vat
         | :me_pib
@@ -344,6 +356,7 @@ module Orb
         | :pe_ruc
         | :ph_tin
         | :pl_nip
+        | :py_ruc
         | :ro_tin
         | :rs_pib
         | :ru_inn
@@ -420,8 +433,10 @@ module Orb
         ES_CIF: :es_cif
         ET_TIN: :et_tin
         EU_OSS_VAT: :eu_oss_vat
+        FO_VAT: :fo_vat
         GB_VAT: :gb_vat
         GE_VAT: :ge_vat
+        GI_TIN: :gi_tin
         GN_NIF: :gn_nif
         HK_BR: :hk_br
         HR_OIB: :hr_oib
@@ -430,6 +445,7 @@ module Orb
         IL_VAT: :il_vat
         IN_GST: :in_gst
         IS_VAT: :is_vat
+        IT_CF: :it_cf
         JP_CN: :jp_cn
         JP_RN: :jp_rn
         JP_TRN: :jp_trn
@@ -441,6 +457,7 @@ module Orb
         LA_TIN: :la_tin
         LI_UID: :li_uid
         LI_VAT: :li_vat
+        LK_VAT: :lk_vat
         MA_VAT: :ma_vat
         MD_VAT: :md_vat
         ME_PIB: :me_pib
@@ -459,6 +476,7 @@ module Orb
         PE_RUC: :pe_ruc
         PH_TIN: :ph_tin
         PL_NIP: :pl_nip
+        PY_RUC: :py_ruc
         RO_TIN: :ro_tin
         RS_PIB: :rs_pib
         RU_INN: :ru_inn

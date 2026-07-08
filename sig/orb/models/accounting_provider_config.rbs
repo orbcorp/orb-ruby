@@ -1,19 +1,36 @@
 module Orb
   module Models
     type accounting_provider_config =
-      { external_provider_id: String, provider_type: String }
+      {
+        external_provider_id: String,
+        provider_type: Orb::Models::AccountingProviderConfig::provider_type
+      }
 
     class AccountingProviderConfig < Orb::Internal::Type::BaseModel
       attr_accessor external_provider_id: String
 
-      attr_accessor provider_type: String
+      attr_accessor provider_type: Orb::Models::AccountingProviderConfig::provider_type
 
       def initialize: (
         external_provider_id: String,
-        provider_type: String
+        provider_type: Orb::Models::AccountingProviderConfig::provider_type
       ) -> void
 
-      def to_hash: -> { external_provider_id: String, provider_type: String }
+      def to_hash: -> {
+        external_provider_id: String,
+        provider_type: Orb::Models::AccountingProviderConfig::provider_type
+      }
+
+      type provider_type = :quickbooks | :netsuite
+
+      module ProviderType
+        extend Orb::Internal::Type::Enum
+
+        QUICKBOOKS: :quickbooks
+        NETSUITE: :netsuite
+
+        def self?.values: -> ::Array[Orb::Models::AccountingProviderConfig::provider_type]
+      end
     end
   end
 end

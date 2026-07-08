@@ -25,19 +25,23 @@ module Orb
         {
           id: String,
           balance: Float,
+          credit_block_source: Orb::Models::CreditBlockListInvoicesResponse::Block::credit_block_source,
           effective_date: Time?,
           expiry_date: Time?,
           filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter],
           maximum_initial_balance: Float?,
           metadata: ::Hash[Symbol, String],
           per_unit_cost_basis: String?,
-          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status,
+          credit_allocation: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation?
         }
 
       class Block < Orb::Internal::Type::BaseModel
         attr_accessor id: String
 
         attr_accessor balance: Float
+
+        attr_accessor credit_block_source: Orb::Models::CreditBlockListInvoicesResponse::Block::credit_block_source
 
         attr_accessor effective_date: Time?
 
@@ -53,29 +57,47 @@ module Orb
 
         attr_accessor status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
 
+        attr_accessor credit_allocation: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation?
+
         def initialize: (
           id: String,
           balance: Float,
+          credit_block_source: Orb::Models::CreditBlockListInvoicesResponse::Block::credit_block_source,
           effective_date: Time?,
           expiry_date: Time?,
           filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter],
           maximum_initial_balance: Float?,
           metadata: ::Hash[Symbol, String],
           per_unit_cost_basis: String?,
-          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status,
+          ?credit_allocation: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation?
         ) -> void
 
         def to_hash: -> {
           id: String,
           balance: Float,
+          credit_block_source: Orb::Models::CreditBlockListInvoicesResponse::Block::credit_block_source,
           effective_date: Time?,
           expiry_date: Time?,
           filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::Filter],
           maximum_initial_balance: Float?,
           metadata: ::Hash[Symbol, String],
           per_unit_cost_basis: String?,
-          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status
+          status: Orb::Models::CreditBlockListInvoicesResponse::Block::status,
+          credit_allocation: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation?
         }
+
+        type credit_block_source = :allocation | :top_up | :manual
+
+        module CreditBlockSource
+          extend Orb::Internal::Type::Enum
+
+          ALLOCATION: :allocation
+          TOP_UP: :top_up
+          MANUAL: :manual
+
+          def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::credit_block_source]
+        end
 
         type filter =
           {
@@ -139,6 +161,105 @@ module Orb
           PENDING_PAYMENT: :pending_payment
 
           def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::status]
+        end
+
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::CustomExpiration?,
+            item_id: String,
+            filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter],
+            license_type_id: String?
+          }
+
+        class CreditAllocation < Orb::Internal::Type::BaseModel
+          attr_accessor allows_rollover: bool
+
+          attr_accessor currency: String
+
+          attr_accessor custom_expiration: Orb::CustomExpiration?
+
+          attr_accessor item_id: String
+
+          attr_reader filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter]?
+
+          def filters=: (
+            ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter]
+          ) -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter]
+
+          attr_accessor license_type_id: String?
+
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::CustomExpiration?,
+            item_id: String,
+            ?filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter],
+            ?license_type_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::CustomExpiration?,
+            item_id: String,
+            filters: ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter],
+            license_type_id: String?
+          }
+
+          type filter =
+            {
+              field: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::field,
+              operator: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::field
+
+            attr_accessor operator: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::field,
+              operator: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::field,
+              operator: Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::CreditBlockListInvoicesResponse::Block::CreditAllocation::Filter::operator]
+            end
+          end
         end
       end
 

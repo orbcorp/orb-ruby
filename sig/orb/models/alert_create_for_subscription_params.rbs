@@ -5,9 +5,11 @@ module Orb
         subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        currency: String?,
         grouping_keys: ::Array[String]?,
         metric_id: String?,
-        pricing_unit_id: String?
+        price_filters: ::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]?,
+        threshold_overrides: ::Array[Orb::AlertCreateForSubscriptionParams::ThresholdOverride]?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -21,19 +23,25 @@ module Orb
 
       attr_accessor type: Orb::Models::AlertCreateForSubscriptionParams::type_
 
+      attr_accessor currency: String?
+
       attr_accessor grouping_keys: ::Array[String]?
 
       attr_accessor metric_id: String?
 
-      attr_accessor pricing_unit_id: String?
+      attr_accessor price_filters: ::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]?
+
+      attr_accessor threshold_overrides: ::Array[Orb::AlertCreateForSubscriptionParams::ThresholdOverride]?
 
       def initialize: (
         subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        ?currency: String?,
         ?grouping_keys: ::Array[String]?,
         ?metric_id: String?,
-        ?pricing_unit_id: String?,
+        ?price_filters: ::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]?,
+        ?threshold_overrides: ::Array[Orb::AlertCreateForSubscriptionParams::ThresholdOverride]?,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -41,9 +49,11 @@ module Orb
         subscription_id: String,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        currency: String?,
         grouping_keys: ::Array[String]?,
         metric_id: String?,
-        pricing_unit_id: String?,
+        price_filters: ::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]?,
+        threshold_overrides: ::Array[Orb::AlertCreateForSubscriptionParams::ThresholdOverride]?,
         request_options: Orb::RequestOptions
       }
 
@@ -56,6 +66,78 @@ module Orb
         COST_EXCEEDED: :cost_exceeded
 
         def self?.values: -> ::Array[Orb::Models::AlertCreateForSubscriptionParams::type_]
+      end
+
+      type price_filter =
+        {
+          field: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::field,
+          operator: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::operator,
+          values: ::Array[String]
+        }
+
+      class PriceFilter < Orb::Internal::Type::BaseModel
+        attr_accessor field: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::field
+
+        attr_accessor operator: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::operator
+
+        attr_accessor values: ::Array[String]
+
+        def initialize: (
+          field: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::field,
+          operator: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::operator,
+          values: ::Array[String]
+        ) -> void
+
+        def to_hash: -> {
+          field: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::field,
+          operator: Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::operator,
+          values: ::Array[String]
+        }
+
+        type field =
+          :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+        module Field
+          extend Orb::Internal::Type::Enum
+
+          PRICE_ID: :price_id
+          ITEM_ID: :item_id
+          PRICE_TYPE: :price_type
+          CURRENCY: :currency
+          PRICING_UNIT_ID: :pricing_unit_id
+
+          def self?.values: -> ::Array[Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::field]
+        end
+
+        type operator = :includes | :excludes
+
+        module Operator
+          extend Orb::Internal::Type::Enum
+
+          INCLUDES: :includes
+          EXCLUDES: :excludes
+
+          def self?.values: -> ::Array[Orb::Models::AlertCreateForSubscriptionParams::PriceFilter::operator]
+        end
+      end
+
+      type threshold_override =
+        { group_values: ::Array[String], thresholds: ::Array[Orb::Threshold] }
+
+      class ThresholdOverride < Orb::Internal::Type::BaseModel
+        attr_accessor group_values: ::Array[String]
+
+        attr_accessor thresholds: ::Array[Orb::Threshold]
+
+        def initialize: (
+          group_values: ::Array[String],
+          thresholds: ::Array[Orb::Threshold]
+        ) -> void
+
+        def to_hash: -> {
+          group_values: ::Array[String],
+          thresholds: ::Array[Orb::Threshold]
+        }
       end
     end
   end

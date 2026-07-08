@@ -9,6 +9,7 @@ module Orb
         auto_issuance: bool?,
         billing_address: Orb::AddressInput?,
         currency: String?,
+        default_payment_method_id: String?,
         email: String?,
         email_delivery: bool?,
         external_customer_id: String?,
@@ -42,6 +43,8 @@ module Orb
       attr_accessor billing_address: Orb::AddressInput?
 
       attr_accessor currency: String?
+
+      attr_accessor default_payment_method_id: String?
 
       attr_accessor email: String?
 
@@ -77,6 +80,7 @@ module Orb
         ?auto_issuance: bool?,
         ?billing_address: Orb::AddressInput?,
         ?currency: String?,
+        ?default_payment_method_id: String?,
         ?email: String?,
         ?email_delivery: bool?,
         ?external_customer_id: String?,
@@ -101,6 +105,7 @@ module Orb
         auto_issuance: bool?,
         billing_address: Orb::AddressInput?,
         currency: String?,
+        default_payment_method_id: String?,
         email: String?,
         email_delivery: bool?,
         external_customer_id: String?,
@@ -185,7 +190,7 @@ module Orb
         | :stripe_charge
         | :stripe_invoice
         | :netsuite
-        | :netsuite_ampersand
+        | :adyen
 
       module PaymentProvider
         extend Orb::Internal::Type::Enum
@@ -195,7 +200,7 @@ module Orb
         STRIPE_CHARGE: :stripe_charge
         STRIPE_INVOICE: :stripe_invoice
         NETSUITE: :netsuite
-        NETSUITE_AMPERSAND: :netsuite_ampersand
+        ADYEN: :adyen
 
         def self?.values: -> ::Array[Orb::Models::CustomerUpdateByExternalIDParams::payment_provider]
       end

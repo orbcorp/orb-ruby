@@ -22,7 +22,8 @@ module Orb
                 Orb::PercentageDiscount::OrHash,
                 Orb::TrialDiscount::OrHash,
                 Orb::UsageDiscount::OrHash,
-                Orb::AmountDiscount::OrHash
+                Orb::AmountDiscount::OrHash,
+                Orb::Discount::TieredPercentage::OrHash
               )
             ),
           due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
@@ -136,6 +137,10 @@ module Orb
       # When fetching any `draft` invoices, this returns the last-computed invoice
       # values for each draft invoice, which may not always be up-to-date since Orb
       # regularly refreshes invoices asynchronously.
+      #
+      # If you don't need line item details, minimums, maximums, or discounts, prefer
+      # the [list invoices summary](/api-reference/invoice/list-invoices-summary)
+      # endpoint for better performance.
       sig do
         params(
           amount: T.nilable(String),

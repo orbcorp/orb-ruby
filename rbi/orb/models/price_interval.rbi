@@ -103,6 +103,7 @@ module Orb
               Orb::Price::PackageWithAllocation::OrHash,
               Orb::Price::UnitWithPercent::OrHash,
               Orb::Price::MatrixWithAllocation::OrHash,
+              Orb::Price::MatrixWithThresholdDiscounts::OrHash,
               Orb::Price::TieredWithProration::OrHash,
               Orb::Price::UnitWithProration::OrHash,
               Orb::Price::GroupedAllocation::OrHash,
@@ -117,6 +118,8 @@ module Orb
               Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
               Orb::Price::CumulativeGroupedBulk::OrHash,
               Orb::Price::CumulativeGroupedAllocation::OrHash,
+              Orb::Price::DailyCreditAllowance::OrHash,
+              Orb::Price::MeteredAllowance::OrHash,
               Orb::Price::MinimumComposite::OrHash,
               Orb::Price::Percent::OrHash,
               Orb::Price::EventOutput::OrHash

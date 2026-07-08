@@ -253,6 +253,7 @@ module Orb
           | Orb::NewFloatingPackageWithAllocationPrice
           | Orb::NewFloatingUnitWithPercentPrice
           | Orb::NewFloatingMatrixWithAllocationPrice
+          | Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts
           | Orb::NewFloatingTieredWithProrationPrice
           | Orb::NewFloatingUnitWithProrationPrice
           | Orb::NewFloatingGroupedAllocationPrice
@@ -267,6 +268,8 @@ module Orb
           | Orb::NewFloatingScalableMatrixWithTieredPricingPrice
           | Orb::NewFloatingCumulativeGroupedBulkPrice
           | Orb::SubscriptionPriceIntervalsParams::Add::Price::CumulativeGroupedAllocation
+          | Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance
+          | Orb::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance
           | Orb::NewFloatingMinimumCompositePrice
           | Orb::SubscriptionPriceIntervalsParams::Add::Price::Percent
           | Orb::SubscriptionPriceIntervalsParams::Add::Price::EventOutput
@@ -449,6 +452,234 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::BulkWithFilters::cadence]
+            end
+          end
+
+          type matrix_with_threshold_discounts =
+            {
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_threshold_discounts_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              model_type: :matrix_with_threshold_discounts,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+          class MatrixWithThresholdDiscounts < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::cadence
+
+            attr_accessor currency: String
+
+            attr_accessor item_id: String
+
+            attr_accessor matrix_with_threshold_discounts_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
+
+            attr_accessor model_type: :matrix_with_threshold_discounts
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::conversion_rate_config?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_threshold_discounts_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :matrix_with_threshold_discounts
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::cadence,
+              currency: String,
+              item_id: String,
+              matrix_with_threshold_discounts_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              model_type: :matrix_with_threshold_discounts,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::cadence]
+            end
+
+            type matrix_with_threshold_discounts_config =
+              {
+                default_unit_amount: String,
+                first_dimension: String,
+                matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                second_dimension: String?,
+                threshold_discount_groups: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              }
+
+            class MatrixWithThresholdDiscountsConfig < Orb::Internal::Type::BaseModel
+              attr_accessor default_unit_amount: String
+
+              attr_accessor first_dimension: String
+
+              attr_accessor matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue]
+
+              attr_accessor second_dimension: String?
+
+              attr_reader threshold_discount_groups: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]?
+
+              def threshold_discount_groups=: (
+                ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              ) -> ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+
+              def initialize: (
+                default_unit_amount: String,
+                first_dimension: String,
+                matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                ?second_dimension: String?,
+                ?threshold_discount_groups: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              ) -> void
+
+              def to_hash: -> {
+                default_unit_amount: String,
+                first_dimension: String,
+                matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                second_dimension: String?,
+                threshold_discount_groups: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              }
+
+              type matrix_value =
+                {
+                  first_dimension_value: String,
+                  unit_amount: String,
+                  second_dimension_value: String?
+                }
+
+              class MatrixValue < Orb::Internal::Type::BaseModel
+                attr_accessor first_dimension_value: String
+
+                attr_accessor unit_amount: String
+
+                attr_accessor second_dimension_value: String?
+
+                def initialize: (
+                  first_dimension_value: String,
+                  unit_amount: String,
+                  ?second_dimension_value: String?
+                ) -> void
+
+                def to_hash: -> {
+                  first_dimension_value: String,
+                  unit_amount: String,
+                  second_dimension_value: String?
+                }
+              end
+
+              type threshold_discount_group =
+                {
+                  above_threshold_discount_percentage: String,
+                  below_threshold_discount_percentage: String,
+                  cell_coordinates: String,
+                  threshold_amount: String,
+                  description: String?
+                }
+
+              class ThresholdDiscountGroup < Orb::Internal::Type::BaseModel
+                attr_accessor above_threshold_discount_percentage: String
+
+                attr_accessor below_threshold_discount_percentage: String
+
+                attr_accessor cell_coordinates: String
+
+                attr_accessor threshold_amount: String
+
+                attr_accessor description: String?
+
+                def initialize: (
+                  above_threshold_discount_percentage: String,
+                  below_threshold_discount_percentage: String,
+                  cell_coordinates: String,
+                  threshold_amount: String,
+                  ?description: String?
+                ) -> void
+
+                def to_hash: -> {
+                  above_threshold_discount_percentage: String,
+                  below_threshold_discount_percentage: String,
+                  cell_coordinates: String,
+                  threshold_amount: String,
+                  description: String?
+                }
+              end
             end
           end
 
@@ -762,6 +993,354 @@ module Orb
             end
           end
 
+          type daily_credit_allowance =
+            {
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::cadence,
+              currency: String,
+              daily_credit_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              item_id: String,
+              model_type: :daily_credit_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+          class DailyCreditAllowance < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::cadence
+
+            attr_accessor currency: String
+
+            attr_accessor daily_credit_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :daily_credit_allowance
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::conversion_rate_config?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::cadence,
+              currency: String,
+              daily_credit_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::conversion_rate_config?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :daily_credit_allowance
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::cadence,
+              currency: String,
+              daily_credit_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              item_id: String,
+              model_type: :daily_credit_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::cadence]
+            end
+
+            type daily_credit_allowance_config =
+              {
+                daily_allowance: String,
+                default_unit_amount: String,
+                dimensions: ::Array[String?],
+                event_day_property: String,
+                matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+              }
+
+            class DailyCreditAllowanceConfig < Orb::Internal::Type::BaseModel
+              attr_accessor daily_allowance: String
+
+              attr_accessor default_unit_amount: String
+
+              attr_accessor dimensions: ::Array[String?]
+
+              attr_accessor event_day_property: String
+
+              attr_accessor matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+
+              def initialize: (
+                daily_allowance: String,
+                default_unit_amount: String,
+                dimensions: ::Array[String?],
+                event_day_property: String,
+                matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+              ) -> void
+
+              def to_hash: -> {
+                daily_allowance: String,
+                default_unit_amount: String,
+                dimensions: ::Array[String?],
+                event_day_property: String,
+                matrix_values: ::Array[Orb::SubscriptionPriceIntervalsParams::Add::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+              }
+
+              type matrix_value =
+                { dimension_values: ::Array[String?], unit_amount: String }
+
+              class MatrixValue < Orb::Internal::Type::BaseModel
+                attr_accessor dimension_values: ::Array[String?]
+
+                attr_accessor unit_amount: String
+
+                def initialize: (
+                  dimension_values: ::Array[String?],
+                  unit_amount: String
+                ) -> void
+
+                def to_hash: -> {
+                  dimension_values: ::Array[String?],
+                  unit_amount: String
+                }
+              end
+            end
+          end
+
+          type metered_allowance =
+            {
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::cadence,
+              currency: String,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::MeteredAllowanceConfig,
+              model_type: :metered_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+          class MeteredAllowance < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::cadence
+
+            attr_accessor currency: String
+
+            attr_accessor item_id: String
+
+            attr_accessor metered_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::MeteredAllowanceConfig
+
+            attr_accessor model_type: :metered_allowance
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::conversion_rate_config?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            def initialize: (
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::cadence,
+              currency: String,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::MeteredAllowanceConfig,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::conversion_rate_config?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?model_type: :metered_allowance
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::cadence,
+              currency: String,
+              item_id: String,
+              metered_allowance_config: Orb::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::MeteredAllowanceConfig,
+              model_type: :metered_allowance,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::conversion_rate_config?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::MeteredAllowance::cadence]
+            end
+
+            type metered_allowance_config =
+              {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
+
+            class MeteredAllowanceConfig < Orb::Internal::Type::BaseModel
+              attr_accessor allowance_grouping_value: String
+
+              attr_accessor consumption_grouping_value: String
+
+              attr_accessor grouping_key: String
+
+              attr_accessor unit_amount: String
+
+              attr_reader allowance_display_name: String?
+
+              def allowance_display_name=: (String) -> String
+
+              attr_reader consumption_display_name: String?
+
+              def consumption_display_name=: (String) -> String
+
+              def initialize: (
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                ?allowance_display_name: String,
+                ?consumption_display_name: String
+              ) -> void
+
+              def to_hash: -> {
+                allowance_grouping_value: String,
+                consumption_grouping_value: String,
+                grouping_key: String,
+                unit_amount: String,
+                allowance_display_name: String,
+                consumption_display_name: String
+              }
+            end
+          end
+
           type percent =
             {
               cadence: Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Percent::cadence,
@@ -884,14 +1463,38 @@ module Orb
               def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::Add::Price::Percent::cadence]
             end
 
-            type percent_config = { percent: Float }
+            type percent_config =
+              {
+                percent: Float,
+                maximum_amount: String?,
+                minimum_amount: String?,
+                prorated: bool
+              }
 
             class PercentConfig < Orb::Internal::Type::BaseModel
               attr_accessor percent: Float
 
-              def initialize: (percent: Float) -> void
+              attr_accessor maximum_amount: String?
 
-              def to_hash: -> { percent: Float }
+              attr_accessor minimum_amount: String?
+
+              attr_reader prorated: bool?
+
+              def prorated=: (bool) -> bool
+
+              def initialize: (
+                percent: Float,
+                ?maximum_amount: String?,
+                ?minimum_amount: String?,
+                ?prorated: bool
+              ) -> void
+
+              def to_hash: -> {
+                percent: Float,
+                maximum_amount: String?,
+                minimum_amount: String?,
+                prorated: bool
+              }
             end
           end
 
@@ -1094,9 +1697,178 @@ module Orb
           | Orb::NewAmountDiscount
           | Orb::NewMinimum
           | Orb::NewMaximum
+          | Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount
 
         module Adjustment
           extend Orb::Internal::Type::Union
+
+          type tiered_percentage_discount =
+            {
+              adjustment_type: :tiered_percentage_discount,
+              tiers: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              applies_to_item_ids: ::Array[String]?,
+              applies_to_price_ids: ::Array[String]?,
+              currency: String?,
+              filters: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              is_invoice_level: bool,
+              price_type: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+            }
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            attr_accessor adjustment_type: :tiered_percentage_discount
+
+            attr_accessor tiers: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier]
+
+            attr_accessor applies_to_all: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?
+
+            attr_accessor applies_to_item_ids: ::Array[String]?
+
+            attr_accessor applies_to_price_ids: ::Array[String]?
+
+            attr_accessor currency: String?
+
+            attr_accessor filters: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?
+
+            attr_reader is_invoice_level: bool?
+
+            def is_invoice_level=: (bool) -> bool
+
+            attr_accessor price_type: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+
+            def initialize: (
+              tiers: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              ?applies_to_all: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              ?applies_to_item_ids: ::Array[String]?,
+              ?applies_to_price_ids: ::Array[String]?,
+              ?currency: String?,
+              ?filters: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              ?is_invoice_level: bool,
+              ?price_type: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?,
+              ?adjustment_type: :tiered_percentage_discount
+            ) -> void
+
+            def to_hash: -> {
+              adjustment_type: :tiered_percentage_discount,
+              tiers: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              applies_to_item_ids: ::Array[String]?,
+              applies_to_price_ids: ::Array[String]?,
+              currency: String?,
+              filters: ::Array[Orb::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              is_invoice_level: bool,
+              price_type: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+            }
+
+            type tier =
+              { lower_bound: Float, percentage: Float, upper_bound: Float? }
+
+            class Tier < Orb::Internal::Type::BaseModel
+              attr_accessor lower_bound: Float
+
+              attr_accessor percentage: Float
+
+              attr_accessor upper_bound: Float?
+
+              def initialize: (
+                lower_bound: Float,
+                percentage: Float,
+                ?upper_bound: Float?
+              ) -> void
+
+              def to_hash: -> {
+                lower_bound: Float,
+                percentage: Float,
+                upper_bound: Float?
+              }
+            end
+
+            type applies_to_all = true
+
+            module AppliesToAll
+              extend Orb::Internal::Type::Enum
+
+              TRUE: true
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all]
+            end
+
+            type filter =
+              {
+                field: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field
+
+              attr_accessor operator: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator]
+              end
+            end
+
+            type price_type =
+              :usage
+              | :fixed_in_advance
+              | :fixed_in_arrears
+              | :fixed
+              | :in_arrears
+
+            module PriceType
+              extend Orb::Internal::Type::Enum
+
+              USAGE: :usage
+              FIXED_IN_ADVANCE: :fixed_in_advance
+              FIXED_IN_ARREARS: :fixed_in_arrears
+              FIXED: :fixed
+              IN_ARREARS: :in_arrears
+
+              def self?.values: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type]
+            end
+          end
 
           def self?.variants: -> ::Array[Orb::Models::SubscriptionPriceIntervalsParams::AddAdjustment::adjustment]
         end

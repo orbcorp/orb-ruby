@@ -13,6 +13,12 @@ module Orb
         #   @return [String]
         required :other_external_plan_id, String
 
+        # @!attribute description
+        #   An optional user-defined description of the plan.
+        #
+        #   @return [String, nil]
+        optional :description, String, nil?: true
+
         # @!attribute external_plan_id
         #   An optional user-defined ID for this plan resource, used throughout the system
         #   as an alias for this Plan. Use this field to identify a plan by an existing
@@ -29,11 +35,13 @@ module Orb
         #   @return [Hash{Symbol=>String, nil}, nil]
         optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-        # @!method initialize(other_external_plan_id:, external_plan_id: nil, metadata: nil, request_options: {})
+        # @!method initialize(other_external_plan_id:, description: nil, external_plan_id: nil, metadata: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.
         #
         #   @param other_external_plan_id [String]
+        #
+        #   @param description [String, nil] An optional user-defined description of the plan.
         #
         #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
         #

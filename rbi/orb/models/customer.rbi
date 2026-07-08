@@ -83,6 +83,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :payment_provider_id
 
+      # Deprecated. Returns the URL of the most recent non-expired portal link, or null.
+      # When the account has opted into customer portal sessions, this field always
+      # returns null. Use POST /v1/customers/{id}/portal_sessions to mint short-lived
+      # portal session URLs.
       sig { returns(T.nilable(String)) }
       attr_accessor :portal_url
 
@@ -149,11 +153,13 @@ module Orb
       # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
       # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
       # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
       # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
       # | France                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
       # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
       # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+      # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
       # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
       # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -165,6 +171,7 @@ module Orb
       # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
       # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
       # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
       # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
       # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
       # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -195,6 +202,7 @@ module Orb
       # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
       # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
       # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+      # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
       # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -216,6 +224,7 @@ module Orb
       # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
       # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
       # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
       # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
       # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -264,6 +273,22 @@ module Orb
       # nullable for backwards compatibility but will always return a boolean value.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :automatic_tax_enabled
+
+      # A payment method represents a customer's stored payment instrument held with an
+      # external payment provider (such as Adyen or Stripe).
+      #
+      # The serialization is intentionally minimal for now; provider-pulled details
+      # (e.g. card display metadata) will be added over time.
+      sig { returns(T.nilable(Orb::Customer::DefaultPaymentMethod)) }
+      attr_reader :default_payment_method
+
+      sig do
+        params(
+          default_payment_method:
+            T.nilable(Orb::Customer::DefaultPaymentMethod::OrHash)
+        ).void
+      end
+      attr_writer :default_payment_method
 
       # Payment configuration for the customer, applicable when using Orb Invoicing with
       # a supported payment provider such as Stripe.
@@ -333,6 +358,8 @@ module Orb
           accounting_sync_configuration:
             T.nilable(Orb::Customer::AccountingSyncConfiguration::OrHash),
           automatic_tax_enabled: T.nilable(T::Boolean),
+          default_payment_method:
+            T.nilable(Orb::Customer::DefaultPaymentMethod::OrHash),
           payment_configuration:
             T.nilable(Orb::Customer::PaymentConfiguration::OrHash),
           reporting_configuration:
@@ -378,6 +405,10 @@ module Orb
         # The ID of this customer in an external payments solution, such as Stripe. This
         # is used for creating charges or invoices in the external system via Orb.
         payment_provider_id:,
+        # Deprecated. Returns the URL of the most recent non-expired portal link, or null.
+        # When the account has opted into customer portal sessions, this field always
+        # returns null. Use POST /v1/customers/{id}/portal_sessions to mint short-lived
+        # portal session URLs.
         portal_url:,
         shipping_address:,
         # Tax IDs are commonly required to be displayed on customer invoices, which are
@@ -437,11 +468,13 @@ module Orb
         # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
         # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
         # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+        # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
         # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
         # | France                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
         # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
         # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+        # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
         # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
         # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -453,6 +486,7 @@ module Orb
         # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
         # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
         # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
         # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
         # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
         # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -483,6 +517,7 @@ module Orb
         # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
         # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
         # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+        # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
         # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
         # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
         # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -504,6 +539,7 @@ module Orb
         # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
         # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
         # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
         # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
         # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -534,6 +570,12 @@ module Orb
         # Whether automatic tax calculation is enabled for this customer. This field is
         # nullable for backwards compatibility but will always return a boolean value.
         automatic_tax_enabled: nil,
+        # A payment method represents a customer's stored payment instrument held with an
+        # external payment provider (such as Adyen or Stripe).
+        #
+        # The serialization is intentionally minimal for now; provider-pulled details
+        # (e.g. card display metadata) will be added over time.
+        default_payment_method: nil,
         # Payment configuration for the customer, applicable when using Orb Invoicing with
         # a supported payment provider such as Stripe.
         payment_configuration: nil,
@@ -569,6 +611,8 @@ module Orb
             accounting_sync_configuration:
               T.nilable(Orb::Customer::AccountingSyncConfiguration),
             automatic_tax_enabled: T.nilable(T::Boolean),
+            default_payment_method:
+              T.nilable(Orb::Customer::DefaultPaymentMethod),
             payment_configuration:
               T.nilable(Orb::Customer::PaymentConfiguration),
             reporting_configuration:
@@ -636,11 +680,7 @@ module Orb
           T.let(:stripe_invoice, Orb::Customer::PaymentProvider::TaggedSymbol)
         NETSUITE =
           T.let(:netsuite, Orb::Customer::PaymentProvider::TaggedSymbol)
-        NETSUITE_AMPERSAND =
-          T.let(
-            :netsuite_ampersand,
-            Orb::Customer::PaymentProvider::TaggedSymbol
-          )
+        ADYEN = T.let(:adyen, Orb::Customer::PaymentProvider::TaggedSymbol)
 
         sig do
           override.returns(
@@ -761,11 +801,6 @@ module Orb
                 :netsuite,
                 Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol
               )
-            NETSUITE_AMPERSAND =
-              T.let(
-                :netsuite_ampersand,
-                Orb::Customer::AccountingSyncConfiguration::AccountingProvider::ProviderType::TaggedSymbol
-              )
 
             sig do
               override.returns(
@@ -776,6 +811,151 @@ module Orb
             end
             def self.values
             end
+          end
+        end
+      end
+
+      class DefaultPaymentMethod < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(Orb::Customer::DefaultPaymentMethod, Orb::Internal::AnyHash)
+          end
+
+        # The Orb-assigned unique identifier for the payment method.
+        sig { returns(String) }
+        attr_accessor :id
+
+        # The time at which the payment method was created.
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        # The ID of the Orb customer this payment method is attached to.
+        sig { returns(String) }
+        attr_accessor :customer_id
+
+        # Whether this is the customer's default payment method.
+        sig { returns(T::Boolean) }
+        attr_accessor :default
+
+        # The identifier of this payment method in the external payment provider.
+        sig { returns(String) }
+        attr_accessor :external_payment_method_id
+
+        # The type of the underlying payment instrument, e.g. `card` or `us_bank_account`.
+        sig do
+          returns(
+            Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+          )
+        end
+        attr_accessor :payment_method_type
+
+        # The external payment provider this method belongs to, derived from the linked
+        # payment gateway connection (e.g. `adyen` or `stripe`). Null if the connection
+        # has been removed.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :provider_type
+
+        # A payment method represents a customer's stored payment instrument held with an
+        # external payment provider (such as Adyen or Stripe).
+        #
+        # The serialization is intentionally minimal for now; provider-pulled details
+        # (e.g. card display metadata) will be added over time.
+        sig do
+          params(
+            id: String,
+            created_at: Time,
+            customer_id: String,
+            default: T::Boolean,
+            external_payment_method_id: String,
+            payment_method_type:
+              Orb::Customer::DefaultPaymentMethod::PaymentMethodType::OrSymbol,
+            provider_type: T.nilable(String)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The Orb-assigned unique identifier for the payment method.
+          id:,
+          # The time at which the payment method was created.
+          created_at:,
+          # The ID of the Orb customer this payment method is attached to.
+          customer_id:,
+          # Whether this is the customer's default payment method.
+          default:,
+          # The identifier of this payment method in the external payment provider.
+          external_payment_method_id:,
+          # The type of the underlying payment instrument, e.g. `card` or `us_bank_account`.
+          payment_method_type:,
+          # The external payment provider this method belongs to, derived from the linked
+          # payment gateway connection (e.g. `adyen` or `stripe`). Null if the connection
+          # has been removed.
+          provider_type:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              created_at: Time,
+              customer_id: String,
+              default: T::Boolean,
+              external_payment_method_id: String,
+              payment_method_type:
+                Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol,
+              provider_type: T.nilable(String)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # The type of the underlying payment instrument, e.g. `card` or `us_bank_account`.
+        module PaymentMethodType
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Orb::Customer::DefaultPaymentMethod::PaymentMethodType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          CARD =
+            T.let(
+              :card,
+              Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+            )
+          US_BANK_ACCOUNT =
+            T.let(
+              :us_bank_account,
+              Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+            )
+          LINK =
+            T.let(
+              :link,
+              Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+            )
+          AMAZON_PAY =
+            T.let(
+              :amazon_pay,
+              Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+            )
+          CRYPTO =
+            T.let(
+              :crypto,
+              Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Customer::DefaultPaymentMethod::PaymentMethodType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
           end
         end
       end

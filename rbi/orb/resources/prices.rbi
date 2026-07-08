@@ -54,6 +54,7 @@ module Orb
               Orb::NewFloatingPackageWithAllocationPrice::OrHash,
               Orb::NewFloatingUnitWithPercentPrice::OrHash,
               Orb::NewFloatingMatrixWithAllocationPrice::OrHash,
+              Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::OrHash,
               Orb::NewFloatingTieredWithProrationPrice::OrHash,
               Orb::NewFloatingUnitWithProrationPrice::OrHash,
               Orb::NewFloatingGroupedAllocationPrice::OrHash,
@@ -68,6 +69,8 @@ module Orb
               Orb::NewFloatingScalableMatrixWithTieredPricingPrice::OrHash,
               Orb::NewFloatingCumulativeGroupedBulkPrice::OrHash,
               Orb::PriceCreateParams::Body::CumulativeGroupedAllocation::OrHash,
+              Orb::PriceCreateParams::Body::DailyCreditAllowance::OrHash,
+              Orb::PriceCreateParams::Body::MeteredAllowance::OrHash,
               Orb::NewFloatingMinimumCompositePrice::OrHash,
               Orb::PriceCreateParams::Body::Percent::OrHash,
               Orb::PriceCreateParams::Body::EventOutput::OrHash

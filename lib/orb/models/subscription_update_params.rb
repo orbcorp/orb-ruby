@@ -20,6 +20,15 @@ module Orb
       #   @return [Boolean, nil]
       optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute auto_issuance
+      #   Used to determine if invoices for this subscription will be automatically
+      #   issued. If true, invoices will be automatically issued. If false, invoices will
+      #   require manual approval. If `null` is specified, this defaults to the behavior
+      #   configured for this customer.
+      #
+      #   @return [Boolean, nil]
+      optional :auto_issuance, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute default_invoice_memo
       #   Determines the default memo on this subscription's invoices. Note that if this
       #   is not provided, it is determined by the plan configuration.
@@ -52,13 +61,15 @@ module Orb
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
 
-      # @!method initialize(subscription_id:, auto_collection: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
+      # @!method initialize(subscription_id:, auto_collection: nil, auto_issuance: nil, default_invoice_memo: nil, invoicing_threshold: nil, metadata: nil, net_terms: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionUpdateParams} for more details.
       #
       #   @param subscription_id [String]
       #
       #   @param auto_collection [Boolean, nil] Determines whether issued invoices for this subscription will automatically be c
+      #
+      #   @param auto_issuance [Boolean, nil] Used to determine if invoices for this subscription will be automatically issued
       #
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
       #

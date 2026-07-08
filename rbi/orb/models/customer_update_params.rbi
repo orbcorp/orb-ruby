@@ -57,6 +57,11 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :currency
 
+      # The Orb ID of the payment method to set as this customer's default. Pass `null`
+      # to clear the customer's default payment method.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :default_payment_method_id
+
       # A valid customer email, to be used for invoicing and notifications.
       sig { returns(T.nilable(String)) }
       attr_accessor :email
@@ -215,11 +220,13 @@ module Orb
       # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
       # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
       # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
       # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
       # | France                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
       # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
       # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+      # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
       # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
       # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -231,6 +238,7 @@ module Orb
       # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
       # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
       # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
       # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
       # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
       # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -261,6 +269,7 @@ module Orb
       # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
       # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
       # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+      # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
       # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -282,6 +291,7 @@ module Orb
       # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
       # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
       # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
       # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
       # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -319,6 +329,7 @@ module Orb
           auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
           currency: T.nilable(String),
+          default_payment_method_id: T.nilable(String),
           email: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
@@ -370,6 +381,9 @@ module Orb
         # not set at creation or update time, it will be set at subscription creation
         # time.
         currency: nil,
+        # The Orb ID of the payment method to set as this customer's default. Pass `null`
+        # to clear the customer's default payment method.
+        default_payment_method_id: nil,
         # A valid customer email, to be used for invoicing and notifications.
         email: nil,
         email_delivery: nil,
@@ -461,11 +475,13 @@ module Orb
         # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
         # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
         # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+        # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
         # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
         # | France                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
         # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
         # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+        # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
         # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
         # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -477,6 +493,7 @@ module Orb
         # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
         # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
         # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
         # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
         # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
         # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -507,6 +524,7 @@ module Orb
         # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
         # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
         # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+        # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
         # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
         # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
         # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -528,6 +546,7 @@ module Orb
         # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
         # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
         # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
         # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
         # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -565,6 +584,7 @@ module Orb
             auto_issuance: T.nilable(T::Boolean),
             billing_address: T.nilable(Orb::AddressInput),
             currency: T.nilable(String),
+            default_payment_method_id: T.nilable(String),
             email: T.nilable(String),
             email_delivery: T.nilable(T::Boolean),
             external_customer_id: T.nilable(String),
@@ -801,9 +821,9 @@ module Orb
             :netsuite,
             Orb::CustomerUpdateParams::PaymentProvider::TaggedSymbol
           )
-        NETSUITE_AMPERSAND =
+        ADYEN =
           T.let(
-            :netsuite_ampersand,
+            :adyen,
             Orb::CustomerUpdateParams::PaymentProvider::TaggedSymbol
           )
 

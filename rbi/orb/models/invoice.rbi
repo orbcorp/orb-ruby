@@ -103,11 +103,13 @@ module Orb
       # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
       # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
       # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
       # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
       # | France                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
       # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
       # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+      # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
       # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
       # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -119,6 +121,7 @@ module Orb
       # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
       # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
       # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
       # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
       # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
       # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -149,6 +152,7 @@ module Orb
       # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
       # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
       # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+      # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
       # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -170,6 +174,7 @@ module Orb
       # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
       # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
       # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
       # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
       # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -219,8 +224,8 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :eligible_to_issue_at
 
-      # A URL for the customer-facing invoice portal. This URL expires 30 days after the
-      # invoice's due date, or 60 days after being re-generated through the UI.
+      # A URL for the customer-facing invoice portal. This URL expires 60 days after the
+      # link is generated, or 30 days after the invoice's due date — whichever is later.
       sig { returns(T.nilable(String)) }
       attr_accessor :hosted_invoice_url
 
@@ -374,7 +379,8 @@ module Orb
               T.any(
                 Orb::PercentageDiscount::OrHash,
                 Orb::AmountDiscount::OrHash,
-                Orb::TrialDiscount::OrHash
+                Orb::TrialDiscount::OrHash,
+                Orb::InvoiceLevelDiscount::TieredPercentage::OrHash
               )
             ],
           due_date: T.nilable(Time),
@@ -480,11 +486,13 @@ module Orb
         # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
         # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
         # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+        # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
         # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
         # | France                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
         # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
         # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+        # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
         # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
         # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -496,6 +504,7 @@ module Orb
         # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
         # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
         # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
         # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
         # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
         # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -526,6 +535,7 @@ module Orb
         # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
         # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
         # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+        # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
         # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
         # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
         # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -547,6 +557,7 @@ module Orb
         # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
         # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
         # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
         # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
         # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -581,8 +592,8 @@ module Orb
         # will be eligible to be issued, otherwise it will be `null`. If `auto-issue` is
         # true, the invoice will automatically begin issuing at this time.
         eligible_to_issue_at:,
-        # A URL for the customer-facing invoice portal. This URL expires 30 days after the
-        # invoice's due date, or 60 days after being re-generated through the UI.
+        # A URL for the customer-facing invoice portal. This URL expires 60 days after the
+        # link is generated, or 30 days after the invoice's due date — whichever is later.
         hosted_invoice_url:,
         # The scheduled date of the invoice
         invoice_date:,
@@ -1176,6 +1187,7 @@ module Orb
                   Orb::MonetaryUsageDiscountAdjustment::OrHash,
                   Orb::MonetaryAmountDiscountAdjustment::OrHash,
                   Orb::MonetaryPercentageDiscountAdjustment::OrHash,
+                  Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::OrHash,
                   Orb::MonetaryMinimumAdjustment::OrHash,
                   Orb::MonetaryMaximumAdjustment::OrHash
                 )
@@ -1203,6 +1215,7 @@ module Orb
                 Orb::Price::PackageWithAllocation::OrHash,
                 Orb::Price::UnitWithPercent::OrHash,
                 Orb::Price::MatrixWithAllocation::OrHash,
+                Orb::Price::MatrixWithThresholdDiscounts::OrHash,
                 Orb::Price::TieredWithProration::OrHash,
                 Orb::Price::UnitWithProration::OrHash,
                 Orb::Price::GroupedAllocation::OrHash,
@@ -1217,6 +1230,8 @@ module Orb
                 Orb::Price::ScalableMatrixWithTieredPricing::OrHash,
                 Orb::Price::CumulativeGroupedBulk::OrHash,
                 Orb::Price::CumulativeGroupedAllocation::OrHash,
+                Orb::Price::DailyCreditAllowance::OrHash,
+                Orb::Price::MeteredAllowance::OrHash,
                 Orb::Price::MinimumComposite::OrHash,
                 Orb::Price::Percent::OrHash,
                 Orb::Price::EventOutput::OrHash
@@ -1328,10 +1343,345 @@ module Orb
                 Orb::MonetaryUsageDiscountAdjustment,
                 Orb::MonetaryAmountDiscountAdjustment,
                 Orb::MonetaryPercentageDiscountAdjustment,
+                Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount,
                 Orb::MonetaryMinimumAdjustment,
                 Orb::MonetaryMaximumAdjustment
               )
             end
+
+          class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig { returns(Symbol) }
+            attr_accessor :adjustment_type
+
+            # The value applied by an adjustment.
+            sig { returns(String) }
+            attr_accessor :amount
+
+            # The price IDs that this adjustment applies to.
+            sig { returns(T::Array[String]) }
+            attr_accessor :applies_to_price_ids
+
+            # The filters that determine which prices to apply this adjustment to.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter
+                ]
+              )
+            end
+            attr_accessor :filters
+
+            # True for adjustments that apply to an entire invoice, false for adjustments that
+            # apply to only one price.
+            sig { returns(T::Boolean) }
+            attr_accessor :is_invoice_level
+
+            # The reason for the adjustment.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :reason
+
+            # The adjustment id this adjustment replaces. This adjustment will take the place
+            # of the replaced adjustment in plan version migrations.
+            sig { returns(T.nilable(String)) }
+            attr_accessor :replaces_adjustment_id
+
+            # The ordered, contiguous bands of cumulative eligible spend, each discounted at
+            # its own percentage (progressive fill-a-tier), applied to the prices this
+            # adjustment covers in a given billing period.
+            sig do
+              returns(
+                T::Array[
+                  Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Tier
+                ]
+              )
+            end
+            attr_accessor :tiers
+
+            sig do
+              params(
+                id: String,
+                amount: String,
+                applies_to_price_ids: T::Array[String],
+                filters:
+                  T::Array[
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::OrHash
+                  ],
+                is_invoice_level: T::Boolean,
+                reason: T.nilable(String),
+                replaces_adjustment_id: T.nilable(String),
+                tiers:
+                  T::Array[
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Tier::OrHash
+                  ],
+                adjustment_type: Symbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              id:,
+              # The value applied by an adjustment.
+              amount:,
+              # The price IDs that this adjustment applies to.
+              applies_to_price_ids:,
+              # The filters that determine which prices to apply this adjustment to.
+              filters:,
+              # True for adjustments that apply to an entire invoice, false for adjustments that
+              # apply to only one price.
+              is_invoice_level:,
+              # The reason for the adjustment.
+              reason:,
+              # The adjustment id this adjustment replaces. This adjustment will take the place
+              # of the replaced adjustment in plan version migrations.
+              replaces_adjustment_id:,
+              # The ordered, contiguous bands of cumulative eligible spend, each discounted at
+              # its own percentage (progressive fill-a-tier), applied to the prices this
+              # adjustment covers in a given billing period.
+              tiers:,
+              adjustment_type: :tiered_percentage_discount
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  id: String,
+                  adjustment_type: Symbol,
+                  amount: String,
+                  applies_to_price_ids: T::Array[String],
+                  filters:
+                    T::Array[
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter
+                    ],
+                  is_invoice_level: T::Boolean,
+                  reason: T.nilable(String),
+                  replaces_adjustment_id: T.nilable(String),
+                  tiers:
+                    T::Array[
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Tier
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Filter < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # The property of the price to filter on.
+              sig do
+                returns(
+                  Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                )
+              end
+              attr_accessor :field
+
+              # Should prices that match the filter be included or excluded.
+              sig do
+                returns(
+                  Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                )
+              end
+              attr_accessor :operator
+
+              # The IDs or values that match this filter.
+              sig { returns(T::Array[String]) }
+              attr_accessor :values
+
+              sig do
+                params(
+                  field:
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                  operator:
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                  values: T::Array[String]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The property of the price to filter on.
+                field:,
+                # Should prices that match the filter be included or excluded.
+                operator:,
+                # The IDs or values that match this filter.
+                values:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    field:
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol,
+                    operator:
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol,
+                    values: T::Array[String]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              # The property of the price to filter on.
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                PRICE_ID =
+                  T.let(
+                    :price_id,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                ITEM_ID =
+                  T.let(
+                    :item_id,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICE_TYPE =
+                  T.let(
+                    :price_type,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                CURRENCY =
+                  T.let(
+                    :currency,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+                PRICING_UNIT_ID =
+                  T.let(
+                    :pricing_unit_id,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Should prices that match the filter be included or excluded.
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                INCLUDES =
+                  T.let(
+                    :includes,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+                EXCLUDES =
+                  T.let(
+                    :excludes,
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class Tier < Orb::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    Orb::Invoice::LineItem::Adjustment::TieredPercentageDiscount::Tier,
+                    Orb::Internal::AnyHash
+                  )
+                end
+
+              # Exclusive lower bound of cumulative spend for this tier.
+              sig { returns(Float) }
+              attr_accessor :lower_bound
+
+              # The percentage (between 0 and 1) discounted from spend that falls within this
+              # tier.
+              sig { returns(Float) }
+              attr_accessor :percentage
+
+              # Inclusive upper bound of cumulative spend for this tier; null for the final
+              # open-ended tier.
+              sig { returns(T.nilable(Float)) }
+              attr_accessor :upper_bound
+
+              # One band of a tiered percentage discount. Bounds are denominated in the
+              # discount's currency. `lower_bound` is the exclusive start of the band and
+              # `upper_bound` is the inclusive end; `upper_bound` is null only for the
+              # open-ended final tier.
+              sig do
+                params(
+                  lower_bound: Float,
+                  percentage: Float,
+                  upper_bound: T.nilable(Float)
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Exclusive lower bound of cumulative spend for this tier.
+                lower_bound:,
+                # The percentage (between 0 and 1) discounted from spend that falls within this
+                # tier.
+                percentage:,
+                # Inclusive upper bound of cumulative spend for this tier; null for the final
+                # open-ended tier.
+                upper_bound: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    lower_bound: Float,
+                    percentage: Float,
+                    upper_bound: T.nilable(Float)
+                  }
+                )
+              end
+              def to_hash
+              end
+            end
+          end
 
           sig do
             override.returns(
@@ -1470,6 +1820,11 @@ module Orb
           STRIPE =
             T.let(
               :stripe,
+              Orb::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol
+            )
+          ADYEN =
+            T.let(
+              :adyen,
               Orb::Invoice::PaymentAttempt::PaymentProvider::TaggedSymbol
             )
 

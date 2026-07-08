@@ -9,6 +9,8 @@ module Orb
       def update: (
         String alert_configuration_id,
         thresholds: ::Array[Orb::Threshold],
+        ?price_filters: ::Array[Orb::AlertUpdateParams::PriceFilter]?,
+        ?threshold_overrides: ::Array[Orb::AlertUpdateParams::ThresholdOverride]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 
@@ -45,9 +47,11 @@ module Orb
         String subscription_id,
         thresholds: ::Array[Orb::Threshold],
         type: Orb::Models::AlertCreateForSubscriptionParams::type_,
+        ?currency: String?,
         ?grouping_keys: ::Array[String]?,
         ?metric_id: String?,
-        ?pricing_unit_id: String?,
+        ?price_filters: ::Array[Orb::AlertCreateForSubscriptionParams::PriceFilter]?,
+        ?threshold_overrides: ::Array[Orb::AlertCreateForSubscriptionParams::ThresholdOverride]?,
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 

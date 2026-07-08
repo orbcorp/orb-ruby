@@ -258,8 +258,8 @@ module Orb
       # billed for in the corresponding billing period.
       #
       # In general, Orb does not expect events with future dated timestamps. In cases
-      # where the timestamp is at least 24 hours ahead of the current time, the event
-      # will not be accepted as a valid event, and will throw validation errors.
+      # where the timestamp is 5 minutes ahead of the current time, the event will not
+      # be accepted as a valid event, and will throw validation errors.
       #
       # ## Event validation
       #
@@ -274,9 +274,9 @@ module Orb
       # - If the `external_customer_id` is specified, the customer in Orb does not need
       #   to exist. Events will be attributed to any future customers with the
       #   `external_customer_id` on subscription creation.
-      # - `timestamp` must conform to ISO 8601 and represent a timestamp at most 1 hour
-      #   in the future. This timestamp should be sent in UTC timezone (no timezone
-      #   offset).
+      # - `timestamp` must conform to ISO 8601 and represent a timestamp at most 5
+      #   minutes in the future. This timestamp should be sent in UTC timezone (no
+      #   timezone offset).
       #
       # ## Idempotency and retry semantics
       #
@@ -313,34 +313,7 @@ module Orb
       # request payload size, but please give us a heads up if you’re changing either of
       # these factors by an order of magnitude from initial setup.
       #
-      # ## Testing in debug mode
-      #
-      # The ingestion API supports a debug mode, which returns additional verbose output
-      # to indicate which event idempotency keys were newly ingested or duplicates from
-      # previous requests. To enable this mode, mark `debug=true` as a query parameter.
-      #
-      # If `debug=true` is not specified, the response will only contain
-      # `validation_failed`. Orb will still honor the idempotency guarantees set
-      # [here](/events-and-metrics/event-ingestion#event-volume-and-concurrency) in all
-      # cases.
-      #
-      # We strongly recommend that you only use debug mode as part of testing your
-      # initial Orb integration. Once you're ready to switch to production, disable
-      # debug mode to take advantage of improved performance and maximal throughput.
-      #
-      # #### Example: ingestion response with `debug=true`
-      #
-      # ```json
-      # {
-      #   "debug": {
-      #     "duplicate": [],
-      #     "ingested": ["B7E83HDMfJPAunXW", "SJs5DQJ3TnwSqEZE", "8SivfDsNKwCeAXim"]
-      #   },
-      #   "validation_failed": []
-      # }
-      # ```
-      #
-      # #### Example: ingestion response with `debug=false`
+      # #### Example: ingestion response
       #
       # ```json
       # {
@@ -361,8 +334,8 @@ module Orb
         # Query param: If this ingestion request is part of a backfill, this parameter
         # ties the ingested events to the backfill
         backfill_id: nil,
-        # Query param: Flag to enable additional debug information in the endpoint
-        # response
+        # Query param: Pending Deprecation: Flag to enable additional debug information in
+        # the endpoint response
         debug: nil,
         request_options: {}
       )

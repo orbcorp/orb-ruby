@@ -122,11 +122,13 @@ module Orb
       # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
       # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
       # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+      # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
       # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
       # | France                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
       # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
       # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+      # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
       # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
       # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -138,6 +140,7 @@ module Orb
       # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
       # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
       # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
       # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
       # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
       # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -168,6 +171,7 @@ module Orb
       # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
       # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
       # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+      # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
       # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
       # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
       # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -189,6 +193,7 @@ module Orb
       # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
       # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
       # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+      # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
       # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
       # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
       # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -229,8 +234,8 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :eligible_to_issue_at
 
-      # A URL for the customer-facing invoice portal. This URL expires 30 days after the
-      # invoice's due date, or 60 days after being re-generated through the UI.
+      # A URL for the customer-facing invoice portal. This URL expires 60 days after the
+      # link is generated, or 30 days after the invoice's due date — whichever is later.
       sig { returns(T.nilable(String)) }
       attr_accessor :hosted_invoice_url
 
@@ -465,11 +470,13 @@ module Orb
         # | Estonia                | `eu_vat`     | European VAT Number                                                                                     |
         # | Ethiopia               | `et_tin`     | Ethiopia Tax Identification Number                                                                      |
         # | European Union         | `eu_oss_vat` | European One Stop Shop VAT Number for non-Union scheme                                                  |
+        # | Faroe Islands          | `fo_vat`     | Faroe Islands VAT Number                                                                                |
         # | Finland                | `eu_vat`     | European VAT Number                                                                                     |
         # | France                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Georgia                | `ge_vat`     | Georgian VAT                                                                                            |
         # | Germany                | `de_stn`     | German Tax Number (Steuernummer)                                                                        |
         # | Germany                | `eu_vat`     | European VAT Number                                                                                     |
+        # | Gibraltar              | `gi_tin`     | Gibraltar Tax Identification Number                                                                     |
         # | Greece                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Guinea                 | `gn_nif`     | Guinea Tax Identification Number (Número de Identificação Fiscal)                                       |
         # | Hong Kong              | `hk_br`      | Hong Kong BR Number                                                                                     |
@@ -481,6 +488,7 @@ module Orb
         # | Ireland                | `eu_vat`     | European VAT Number                                                                                     |
         # | Israel                 | `il_vat`     | Israel VAT                                                                                              |
         # | Italy                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Italy                  | `it_cf`      | Italian Codice Fiscale Number                                                                           |
         # | Japan                  | `jp_cn`      | Japanese Corporate Number (_Hōjin Bangō_)                                                               |
         # | Japan                  | `jp_rn`      | Japanese Registered Foreign Businesses' Registration Number (_Tōroku Kokugai Jigyōsha no Tōroku Bangō_) |
         # | Japan                  | `jp_trn`     | Japanese Tax Registration Number (_Tōroku Bangō_)                                                       |
@@ -511,6 +519,7 @@ module Orb
         # | Norway                 | `no_vat`     | Norwegian VAT Number                                                                                    |
         # | Norway                 | `no_voec`    | Norwegian VAT on e-commerce Number                                                                      |
         # | Oman                   | `om_vat`     | Omani VAT Number                                                                                        |
+        # | Paraguay               | `py_ruc`     | Paraguayan RUC Number                                                                                   |
         # | Peru                   | `pe_ruc`     | Peruvian RUC Number                                                                                     |
         # | Philippines            | `ph_tin`     | Philippines Tax Identification Number                                                                   |
         # | Poland                 | `eu_vat`     | European VAT Number                                                                                     |
@@ -532,6 +541,7 @@ module Orb
         # | South Korea            | `kr_brn`     | Korean BRN                                                                                              |
         # | Spain                  | `es_cif`     | Spanish NIF Number (previously Spanish CIF Number)                                                      |
         # | Spain                  | `eu_vat`     | European VAT Number                                                                                     |
+        # | Sri Lanka              | `lk_vat`     | Sri Lanka VAT Number                                                                                    |
         # | Suriname               | `sr_fin`     | Suriname FIN Number                                                                                     |
         # | Sweden                 | `eu_vat`     | European VAT Number                                                                                     |
         # | Switzerland            | `ch_uid`     | Switzerland UID Number                                                                                  |
@@ -561,8 +571,8 @@ module Orb
         # will be eligible to be issued, otherwise it will be `null`. If `auto-issue` is
         # true, the invoice will automatically begin issuing at this time.
         eligible_to_issue_at:,
-        # A URL for the customer-facing invoice portal. This URL expires 30 days after the
-        # invoice's due date, or 60 days after being re-generated through the UI.
+        # A URL for the customer-facing invoice portal. This URL expires 60 days after the
+        # link is generated, or 30 days after the invoice's due date — whichever is later.
         hosted_invoice_url:,
         # The scheduled date of the invoice
         invoice_date:,
@@ -1199,6 +1209,11 @@ module Orb
           STRIPE =
             T.let(
               :stripe,
+              Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt::PaymentProvider::TaggedSymbol
+            )
+          ADYEN =
+            T.let(
+              :adyen,
               Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt::PaymentProvider::TaggedSymbol
             )
 

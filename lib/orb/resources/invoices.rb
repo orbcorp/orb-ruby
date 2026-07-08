@@ -25,7 +25,7 @@ module Orb
       #
       # @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
-      # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, nil] An optional discount to attach to the invoice.
+      # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil] An optional discount to attach to the invoice.
       #
       # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
       #
@@ -107,6 +107,10 @@ module Orb
       # When fetching any `draft` invoices, this returns the last-computed invoice
       # values for each draft invoice, which may not always be up-to-date since Orb
       # regularly refreshes invoices asynchronously.
+      #
+      # If you don't need line item details, minimums, maximums, or discounts, prefer
+      # the [list invoices summary](/api-reference/invoice/list-invoices-summary)
+      # endpoint for better performance.
       #
       # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #

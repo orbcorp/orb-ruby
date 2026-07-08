@@ -6,11 +6,14 @@ module Orb
       # @see Orb::Resources::Plans::Migrations#retrieve
       class MigrationRetrieveResponse < Orb::Internal::Type::BaseModel
         # @!attribute id
+        #   Unique identifier for this plan version change.
         #
         #   @return [String]
         required :id, String
 
         # @!attribute effective_time
+        #   When the migration takes effect. Can be a specific date/time, or 'end_of_term'
+        #   when scheduled to be at the end of the current billing period.
         #
         #   @return [Date, Time, Symbol, Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime, nil]
         required :effective_time,
@@ -18,21 +21,33 @@ module Orb
                  nil?: true
 
         # @!attribute plan_id
+        #   The ID of the plan being migrated.
         #
         #   @return [String]
         required :plan_id, String
 
         # @!attribute status
+        #   Current status of the migration: 'not_started', 'in_progress', 'completed',
+        #   'action_needed', or 'canceled'.
         #
         #   @return [Symbol, Orb::Models::Plans::MigrationRetrieveResponse::Status]
         required :status, enum: -> { Orb::Models::Plans::MigrationRetrieveResponse::Status }
 
         # @!method initialize(id:, effective_time:, plan_id:, status:)
-        #   @param id [String]
-        #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime, nil]
-        #   @param plan_id [String]
-        #   @param status [Symbol, Orb::Models::Plans::MigrationRetrieveResponse::Status]
+        #   Some parameter documentations has been truncated, see
+        #   {Orb::Models::Plans::MigrationRetrieveResponse} for more details.
+        #
+        #   @param id [String] Unique identifier for this plan version change.
+        #
+        #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, or 'end_of_term' w
+        #
+        #   @param plan_id [String] The ID of the plan being migrated.
+        #
+        #   @param status [Symbol, Orb::Models::Plans::MigrationRetrieveResponse::Status] Current status of the migration: 'not_started', 'in_progress', 'completed', 'act
 
+        # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
+        # when scheduled to be at the end of the current billing period.
+        #
         # @see Orb::Models::Plans::MigrationRetrieveResponse#effective_time
         module EffectiveTime
           extend Orb::Internal::Type::Union
@@ -57,6 +72,9 @@ module Orb
           # @!endgroup
         end
 
+        # Current status of the migration: 'not_started', 'in_progress', 'completed',
+        # 'action_needed', or 'canceled'.
+        #
         # @see Orb::Models::Plans::MigrationRetrieveResponse#status
         module Status
           extend Orb::Internal::Type::Enum

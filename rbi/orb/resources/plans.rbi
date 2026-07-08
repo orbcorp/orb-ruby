@@ -30,6 +30,7 @@ module Orb
           adjustments:
             T.nilable(T::Array[Orb::PlanCreateParams::Adjustment::OrHash]),
           default_invoice_memo: T.nilable(String),
+          description: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           net_terms: T.nilable(Integer),
@@ -52,6 +53,8 @@ module Orb
         adjustments: nil,
         # Free-form text which is available on the invoice PDF and the Orb invoice portal.
         default_invoice_memo: nil,
+        # An optional user-defined description of the plan.
+        description: nil,
         external_plan_id: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -71,13 +74,14 @@ module Orb
       )
       end
 
-      # This endpoint can be used to update the `external_plan_id`, and `metadata` of an
-      # existing plan.
+      # This endpoint can be used to update the `external_plan_id`, `description`, and
+      # `metadata` of an existing plan.
       #
       # Other fields on a plan are currently immutable.
       sig do
         params(
           plan_id: String,
+          description: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           request_options: Orb::RequestOptions::OrHash
@@ -85,6 +89,8 @@ module Orb
       end
       def update(
         plan_id,
+        # An optional user-defined description of the plan.
+        description: nil,
         # An optional user-defined ID for this plan resource, used throughout the system
         # as an alias for this Plan. Use this field to identify a plan by an existing
         # identifier in your system.
@@ -100,7 +106,7 @@ module Orb
       # This endpoint returns a list of all [plans](/core-concepts#plan-and-price) for
       # an account in a list format. The list of plans is ordered starting from the most
       # recently created plan. The response also includes
-      # [`pagination_metadata`](/api-reference/pagination), which lets the caller
+      # [`pagination_metadata`](/api-reference/pagination) which lets the caller
       # retrieve the next page of results if they exist.
       sig do
         params(

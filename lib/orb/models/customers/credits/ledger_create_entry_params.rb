@@ -388,9 +388,9 @@ module Orb
               required :entry_type, const: :expiration_change
 
               # @!attribute target_expiry_date
-              #   A future date (specified in YYYY-MM-DD format) used for expiration change,
-              #   denoting when credits transferred (as part of a partial block expiration) should
-              #   expire.
+              #   A date (specified in YYYY-MM-DD format) used for expiration change, denoting
+              #   when credits transferred (as part of a partial block expiration) should expire.
+              #   This date must be on or after the effective date of the credit block.
               #
               #   @return [Date]
               required :target_expiry_date, Date
@@ -443,7 +443,7 @@ module Orb
               #   {Orb::Models::Customers::Credits::LedgerCreateEntryParams::Body::ExpirationChange}
               #   for more details.
               #
-              #   @param target_expiry_date [Date] A future date (specified in YYYY-MM-DD format) used for expiration change, denot
+              #   @param target_expiry_date [Date] A date (specified in YYYY-MM-DD format) used for expiration change, denoting whe
               #
               #   @param amount [Float, nil] The number of credits to effect. Note that this is required for increment, decre
               #

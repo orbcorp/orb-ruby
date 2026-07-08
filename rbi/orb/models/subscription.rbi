@@ -24,6 +24,13 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
+      # Determines whether invoices for this subscription will be automatically issued.
+      # This resolves the effective setting for the subscription: a subscription-level
+      # override if set, otherwise the customer-level setting, otherwise the
+      # account-level default.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_accessor :auto_issuance
+
       sig { returns(Orb::BillingCycleAnchorConfiguration) }
       attr_reader :billing_cycle_anchor_configuration
 
@@ -201,6 +208,7 @@ module Orb
           active_plan_phase_order: T.nilable(Integer),
           adjustment_intervals: T::Array[Orb::AdjustmentInterval::OrHash],
           auto_collection: T.nilable(T::Boolean),
+          auto_issuance: T.nilable(T::Boolean),
           billing_cycle_anchor_configuration:
             Orb::BillingCycleAnchorConfiguration::OrHash,
           billing_cycle_day: Integer,
@@ -214,7 +222,8 @@ module Orb
               T.any(
                 Orb::AmountDiscountInterval::OrHash,
                 Orb::PercentageDiscountInterval::OrHash,
-                Orb::UsageDiscountInterval::OrHash
+                Orb::UsageDiscountInterval::OrHash,
+                Orb::Subscription::DiscountInterval::TieredPercentage::OrHash
               )
             ],
           end_date: T.nilable(Time),
@@ -248,6 +257,11 @@ module Orb
         # charged with the saved payment method on the due date. This property defaults to
         # the plan's behavior. If null, defaults to the customer's setting.
         auto_collection:,
+        # Determines whether invoices for this subscription will be automatically issued.
+        # This resolves the effective setting for the subscription: a subscription-level
+        # override if set, otherwise the customer-level setting, otherwise the
+        # account-level default.
+        auto_issuance:,
         billing_cycle_anchor_configuration:,
         # The day of the month on which the billing cycle is anchored. If the maximum
         # number of days in a month is greater than this value, the last day of the month
@@ -334,6 +348,7 @@ module Orb
             active_plan_phase_order: T.nilable(Integer),
             adjustment_intervals: T::Array[Orb::AdjustmentInterval],
             auto_collection: T.nilable(T::Boolean),
+            auto_issuance: T.nilable(T::Boolean),
             billing_cycle_anchor_configuration:
               Orb::BillingCycleAnchorConfiguration,
             billing_cycle_day: Integer,
@@ -375,9 +390,316 @@ module Orb
             T.any(
               Orb::AmountDiscountInterval,
               Orb::PercentageDiscountInterval,
-              Orb::UsageDiscountInterval
+              Orb::UsageDiscountInterval,
+              Orb::Subscription::DiscountInterval::TieredPercentage
             )
           end
+
+        class TieredPercentage < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Subscription::DiscountInterval::TieredPercentage,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The price interval ids that this discount interval applies to.
+          sig { returns(T::Array[String]) }
+          attr_accessor :applies_to_price_interval_ids
+
+          sig { returns(Symbol) }
+          attr_accessor :discount_type
+
+          # The end date of the discount interval.
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :end_date
+
+          # The filters that determine which prices this discount interval applies to.
+          sig do
+            returns(
+              T::Array[
+                Orb::Subscription::DiscountInterval::TieredPercentage::Filter
+              ]
+            )
+          end
+          attr_accessor :filters
+
+          # The start date of the discount interval.
+          sig { returns(Time) }
+          attr_accessor :start_date
+
+          # Only available if discount_type is `tiered_percentage`. The ordered, contiguous
+          # bands of cumulative eligible spend, each discounted at its own percentage.
+          sig do
+            returns(
+              T::Array[
+                Orb::Subscription::DiscountInterval::TieredPercentage::Tier
+              ]
+            )
+          end
+          attr_accessor :tiers
+
+          sig do
+            params(
+              applies_to_price_interval_ids: T::Array[String],
+              end_date: T.nilable(Time),
+              filters:
+                T::Array[
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::OrHash
+                ],
+              start_date: Time,
+              tiers:
+                T::Array[
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Tier::OrHash
+                ],
+              discount_type: Symbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The price interval ids that this discount interval applies to.
+            applies_to_price_interval_ids:,
+            # The end date of the discount interval.
+            end_date:,
+            # The filters that determine which prices this discount interval applies to.
+            filters:,
+            # The start date of the discount interval.
+            start_date:,
+            # Only available if discount_type is `tiered_percentage`. The ordered, contiguous
+            # bands of cumulative eligible spend, each discounted at its own percentage.
+            tiers:,
+            discount_type: :tiered_percentage
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                applies_to_price_interval_ids: T::Array[String],
+                discount_type: Symbol,
+                end_date: T.nilable(Time),
+                filters:
+                  T::Array[
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter
+                  ],
+                start_date: Time,
+                tiers:
+                  T::Array[
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Tier
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Filter < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The property of the price to filter on.
+            sig do
+              returns(
+                Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+              )
+            end
+            attr_accessor :field
+
+            # Should prices that match the filter be included or excluded.
+            sig do
+              returns(
+                Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator::TaggedSymbol
+              )
+            end
+            attr_accessor :operator
+
+            # The IDs or values that match this filter.
+            sig { returns(T::Array[String]) }
+            attr_accessor :values
+
+            sig do
+              params(
+                field:
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::OrSymbol,
+                operator:
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator::OrSymbol,
+                values: T::Array[String]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The property of the price to filter on.
+              field:,
+              # Should prices that match the filter be included or excluded.
+              operator:,
+              # The IDs or values that match this filter.
+              values:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  field:
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol,
+                  operator:
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator::TaggedSymbol,
+                  values: T::Array[String]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The property of the price to filter on.
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              PRICE_ID =
+                T.let(
+                  :price_id,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+                )
+              ITEM_ID =
+                T.let(
+                  :item_id,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+                )
+              PRICE_TYPE =
+                T.let(
+                  :price_type,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+                )
+              CURRENCY =
+                T.let(
+                  :currency,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+                )
+              PRICING_UNIT_ID =
+                T.let(
+                  :pricing_unit_id,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Field::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Should prices that match the filter be included or excluded.
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              INCLUDES =
+                T.let(
+                  :includes,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator::TaggedSymbol
+                )
+              EXCLUDES =
+                T.let(
+                  :excludes,
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Subscription::DiscountInterval::TieredPercentage::Filter::Operator::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class Tier < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Subscription::DiscountInterval::TieredPercentage::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # Exclusive lower bound of cumulative spend for this tier.
+            sig { returns(Float) }
+            attr_accessor :lower_bound
+
+            # The percentage (between 0 and 1) discounted from spend that falls within this
+            # tier.
+            sig { returns(Float) }
+            attr_accessor :percentage
+
+            # Inclusive upper bound of cumulative spend for this tier; null for the final
+            # open-ended tier.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :upper_bound
+
+            # One band of a tiered percentage discount. Bounds are denominated in the
+            # discount's currency. `lower_bound` is the exclusive start of the band and
+            # `upper_bound` is the inclusive end; `upper_bound` is null only for the
+            # open-ended final tier.
+            sig do
+              params(
+                lower_bound: Float,
+                percentage: Float,
+                upper_bound: T.nilable(Float)
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Exclusive lower bound of cumulative spend for this tier.
+              lower_bound:,
+              # The percentage (between 0 and 1) discounted from spend that falls within this
+              # tier.
+              percentage:,
+              # Inclusive upper bound of cumulative spend for this tier; null for the final
+              # open-ended tier.
+              upper_bound: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  lower_bound: Float,
+                  percentage: Float,
+                  upper_bound: T.nilable(Float)
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+        end
 
         sig do
           override.returns(

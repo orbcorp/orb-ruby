@@ -20,7 +20,10 @@ module Orb
       optional :backfill_id, String, nil?: true
 
       # @!attribute debug
-      #   Flag to enable additional debug information in the endpoint response
+      #   @deprecated
+      #
+      #   Pending Deprecation: Flag to enable additional debug information in the endpoint
+      #   response
       #
       #   @return [Boolean, nil]
       optional :debug, Orb::Internal::Type::Boolean
@@ -33,7 +36,7 @@ module Orb
       #
       #   @param backfill_id [String, nil] If this ingestion request is part of a backfill, this parameter ties the ingeste
       #
-      #   @param debug [Boolean] Flag to enable additional debug information in the endpoint response
+      #   @param debug [Boolean] Pending Deprecation: Flag to enable additional debug information in the endpoint
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

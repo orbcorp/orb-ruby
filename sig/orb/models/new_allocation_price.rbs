@@ -10,6 +10,7 @@ module Orb
         filters: ::Array[Orb::NewAllocationPrice::Filter]?,
         item_id: String?,
         license_type_id: String?,
+        metadata: ::Hash[Symbol, String?]?,
         per_unit_cost_basis: String
       }
 
@@ -30,6 +31,8 @@ module Orb
 
       attr_accessor license_type_id: String?
 
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
       attr_reader per_unit_cost_basis: String?
 
       def per_unit_cost_basis=: (String) -> String
@@ -43,6 +46,7 @@ module Orb
         ?filters: ::Array[Orb::NewAllocationPrice::Filter]?,
         ?item_id: String?,
         ?license_type_id: String?,
+        ?metadata: ::Hash[Symbol, String?]?,
         ?per_unit_cost_basis: String
       ) -> void
 
@@ -55,6 +59,7 @@ module Orb
         filters: ::Array[Orb::NewAllocationPrice::Filter]?,
         item_id: String?,
         license_type_id: String?,
+        metadata: ::Hash[Symbol, String?]?,
         per_unit_cost_basis: String
       }
 

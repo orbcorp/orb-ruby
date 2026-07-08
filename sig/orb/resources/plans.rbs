@@ -11,6 +11,7 @@ module Orb
         prices: ::Array[Orb::PlanCreateParams::Price],
         ?adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
         ?default_invoice_memo: String?,
+        ?description: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?net_terms: Integer?,
@@ -21,6 +22,7 @@ module Orb
 
       def update: (
         String plan_id,
+        ?description: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?request_options: Orb::request_opts
