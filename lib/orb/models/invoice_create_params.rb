@@ -15,8 +15,9 @@ module Orb
       required :currency, String
 
       # @!attribute invoice_date
-      #   Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
-      #   set to the current time in the customer's timezone.
+      #   An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be
+      #   in the past. If a date is set without a time, `invoice_date` is set to midnight
+      #   on the chosen date in the customer's timezone.
       #
       #   @return [Time]
       required :invoice_date, Time
@@ -100,7 +101,7 @@ module Orb
       #
       #   @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
-      #   @param invoice_date [Time] Optional invoice date to set. Must be in the past, if not set, `invoice_date` is
+      #   @param invoice_date [Time] An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be i
       #
       #   @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       #
