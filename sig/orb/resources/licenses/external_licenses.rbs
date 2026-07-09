@@ -8,7 +8,7 @@ module Orb
           subscription_id: String,
           ?cursor: String?,
           ?end_date: Date?,
-          ?group_by: ::Array[String]?,
+          ?group_by: String?,
           ?limit: Integer,
           ?start_date: Date?,
           ?request_options: Orb::request_opts

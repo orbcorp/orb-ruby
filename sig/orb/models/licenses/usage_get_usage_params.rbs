@@ -6,7 +6,7 @@ module Orb
           license_id: String,
           cursor: String?,
           end_date: Date?,
-          group_by: ::Array[String]?,
+          group_by: String?,
           limit: Integer,
           start_date: Date?
         }
@@ -22,7 +22,7 @@ module Orb
 
         attr_accessor end_date: Date?
 
-        attr_accessor group_by: ::Array[String]?
+        attr_accessor group_by: String?
 
         attr_reader limit: Integer?
 
@@ -34,7 +34,7 @@ module Orb
           license_id: String,
           ?cursor: String?,
           ?end_date: Date?,
-          ?group_by: ::Array[String]?,
+          ?group_by: String?,
           ?limit: Integer,
           ?start_date: Date?,
           ?request_options: Orb::request_opts
@@ -44,7 +44,7 @@ module Orb
           license_id: String,
           cursor: String?,
           end_date: Date?,
-          group_by: ::Array[String]?,
+          group_by: String?,
           limit: Integer,
           start_date: Date?,
           request_options: Orb::RequestOptions
