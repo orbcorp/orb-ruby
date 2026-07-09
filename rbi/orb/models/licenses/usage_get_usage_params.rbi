@@ -26,7 +26,7 @@ module Orb
 
         # How to group the results. Valid values: 'license', 'day'. Can be combined (e.g.,
         # 'license,day').
-        sig { returns(T.nilable(T::Array[String])) }
+        sig { returns(T.nilable(String)) }
         attr_accessor :group_by
 
         # Maximum number of rows in the response data (default 20, max 100).
@@ -46,7 +46,7 @@ module Orb
             license_id: String,
             cursor: T.nilable(String),
             end_date: T.nilable(Date),
-            group_by: T.nilable(T::Array[String]),
+            group_by: T.nilable(String),
             limit: Integer,
             start_date: T.nilable(Date),
             request_options: Orb::RequestOptions::OrHash
@@ -77,7 +77,7 @@ module Orb
               license_id: String,
               cursor: T.nilable(String),
               end_date: T.nilable(Date),
-              group_by: T.nilable(T::Array[String]),
+              group_by: T.nilable(String),
               limit: Integer,
               start_date: T.nilable(Date),
               request_options: Orb::RequestOptions
