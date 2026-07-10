@@ -36,5 +36,12 @@ jobs:
 
       - name: Publish to RubyGems.org (trusted publishing)
         # Wraps the OIDC credential exchange + `rake release`; supersedes
-        # bin/publish-gem's token-based flow.
+        # bin/publish-gem's token-based flow. Its own await step globs
+        # pkg/*.gem, but the generated Rakefile builds the gem at the repo
+        # root, so we await ourselves below.
         uses: rubygems/release-gem@v1
+        with:
+          await-release: "false"
+
+      - name: Await release on RubyGems.org
+        run: gem exec rubygems-await ./orb-billing-*.gem
