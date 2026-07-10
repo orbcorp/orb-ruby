@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.15.0](https://github.com/orbcorp/orb-ruby/compare/v1.14.0...v1.15.0) (2026-07-10)
+
+
+### Features
+
+* **api:** update SDK to the current API surface ([76b0a4c](https://github.com/orbcorp/orb-ruby/commit/76b0a4cae87319dc6bed426faf248048a1b12209))
+
+
+### Chores
+
+* **internal:** remove unsupported release-please extra-file ([adb7182](https://github.com/orbcorp/orb-ruby/commit/adb7182e0c2d661afa1de1df07dca11286a133a2))
+
 ## 1.14.0 (2026-04-13)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/orbcorp/orb-ruby/compare/v1.13.0...v1.14.0)
