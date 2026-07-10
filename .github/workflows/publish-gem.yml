@@ -28,6 +28,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: false
+          # release-gem's attestation signing shells out to `gem exec`, which the
+          # RubyGems bundled with this Ruby predates.
+          rubygems: latest
       - run: |-
           bundle install
 
