@@ -23,6 +23,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         item: Orb::Item,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
+        sql: String,
         status: Orb::BillableMetric::Status,
         parameter_definitions: ^(Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]]) | nil
       }
@@ -43,6 +44,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         item: Orb::Item,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
+        sql: String,
         status: Orb::BillableMetric::Status,
         parameter_definitions: ^(Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]]) | nil
       }
@@ -70,6 +72,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         item: Orb::Item,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
+        sql: String,
         status: Orb::BillableMetric::Status,
         parameter_definitions: ^(Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]]) | nil
       }
@@ -90,6 +93,7 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
         item: Orb::Item,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         name: String,
+        sql: String,
         status: Orb::BillableMetric::Status,
         parameter_definitions: ^(Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]]) | nil
       }

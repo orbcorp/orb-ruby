@@ -31,6 +31,11 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
+      # The SQL definition of the metric. For metrics defined via configuration rather
+      # than SQL, this is a derived SQL representation.
+      sig { returns(String) }
+      attr_accessor :sql
+
       sig { returns(Orb::BillableMetric::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -47,6 +52,7 @@ module Orb
           item: Orb::Item::OrHash,
           metadata: T::Hash[Symbol, String],
           name: String,
+          sql: String,
           status: Orb::BillableMetric::Status::OrSymbol,
           parameter_definitions:
             T.nilable(T::Array[T::Hash[Symbol, T.anything]])
@@ -65,6 +71,9 @@ module Orb
         # `null`.
         metadata:,
         name:,
+        # The SQL definition of the metric. For metrics defined via configuration rather
+        # than SQL, this is a derived SQL representation.
+        sql:,
         status:,
         parameter_definitions: nil
       )
@@ -78,6 +87,7 @@ module Orb
             item: Orb::Item,
             metadata: T::Hash[Symbol, String],
             name: String,
+            sql: String,
             status: Orb::BillableMetric::Status::TaggedSymbol,
             parameter_definitions:
               T.nilable(T::Array[T::Hash[Symbol, T.anything]])

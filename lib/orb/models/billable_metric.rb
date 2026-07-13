@@ -36,6 +36,13 @@ module Orb
       #   @return [String]
       required :name, String
 
+      # @!attribute sql
+      #   The SQL definition of the metric. For metrics defined via configuration rather
+      #   than SQL, this is a derived SQL representation.
+      #
+      #   @return [String]
+      required :sql, String
+
       # @!attribute status
       #
       #   @return [Symbol, Orb::Models::BillableMetric::Status]
@@ -48,7 +55,7 @@ module Orb
                Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]],
                nil?: true
 
-      # @!method initialize(id:, description:, item:, metadata:, name:, status:, parameter_definitions: nil)
+      # @!method initialize(id:, description:, item:, metadata:, name:, sql:, status:, parameter_definitions: nil)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::BillableMetric} for more details.
       #
@@ -65,6 +72,8 @@ module Orb
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
       #
       #   @param name [String]
+      #
+      #   @param sql [String] The SQL definition of the metric. For metrics defined via configuration rather t
       #
       #   @param status [Symbol, Orb::Models::BillableMetric::Status]
       #
