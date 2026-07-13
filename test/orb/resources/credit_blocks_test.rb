@@ -22,7 +22,8 @@ class Orb::Test::Resources::CreditBlocksTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
         status: Orb::Models::CreditBlockRetrieveResponse::Status,
-        credit_allocation: Orb::Models::CreditBlockRetrieveResponse::CreditAllocation | nil
+        credit_allocation: Orb::Models::CreditBlockRetrieveResponse::CreditAllocation | nil,
+        credit_commitment: Orb::Models::CreditBlockRetrieveResponse::CreditCommitment | nil
       }
     end
   end

@@ -29,7 +29,8 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
         status: Orb::Models::Customers::CreditListResponse::Status,
-        credit_allocation: Orb::Models::Customers::CreditListResponse::CreditAllocation | nil
+        credit_allocation: Orb::Models::Customers::CreditListResponse::CreditAllocation | nil,
+        credit_commitment: Orb::Models::Customers::CreditListResponse::CreditCommitment | nil
       }
     end
   end
@@ -60,7 +61,8 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
         metadata: ^(Orb::Internal::Type::HashOf[String]),
         per_unit_cost_basis: String | nil,
         status: Orb::Models::Customers::CreditListByExternalIDResponse::Status,
-        credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation | nil
+        credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation | nil,
+        credit_commitment: Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment | nil
       }
     end
   end

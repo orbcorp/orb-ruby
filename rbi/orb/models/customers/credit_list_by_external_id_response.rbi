@@ -19,7 +19,8 @@ module Orb
         attr_accessor :balance
 
         # How this credit block was created: `allocation` (a subscription's recurring
-        # credit allocation), `top_up` (an automatic balance-threshold top-up), or
+        # credit allocation), `top_up` (an automatic balance-threshold top-up),
+        # `commitment` (a subscription commitment true-up rolled forward as credit), or
         # `manual` (a manual credit ledger increment, including credits voided or expired
         # off another block).
         sig do
@@ -85,6 +86,27 @@ module Orb
         end
         attr_writer :credit_allocation
 
+        # The subscription commitment whose true-up rolled forward into this credit block.
+        # Present only when `credit_block_source` is `commitment`.
+        sig do
+          returns(
+            T.nilable(
+              Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment
+            )
+          )
+        end
+        attr_reader :credit_commitment
+
+        sig do
+          params(
+            credit_commitment:
+              T.nilable(
+                Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment::OrHash
+              )
+          ).void
+        end
+        attr_writer :credit_commitment
+
         sig do
           params(
             id: String,
@@ -105,6 +127,10 @@ module Orb
             credit_allocation:
               T.nilable(
                 Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation::OrHash
+              ),
+            credit_commitment:
+              T.nilable(
+                Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment::OrHash
               )
           ).returns(T.attached_class)
         end
@@ -112,7 +138,8 @@ module Orb
           id:,
           balance:,
           # How this credit block was created: `allocation` (a subscription's recurring
-          # credit allocation), `top_up` (an automatic balance-threshold top-up), or
+          # credit allocation), `top_up` (an automatic balance-threshold top-up),
+          # `commitment` (a subscription commitment true-up rolled forward as credit), or
           # `manual` (a manual credit ledger increment, including credits voided or expired
           # off another block).
           credit_block_source:,
@@ -129,7 +156,10 @@ module Orb
           status:,
           # The credit allocation that funded a block. Extends the allocation resource
           # serialized on prices with the catalog-item attribution of the funding price.
-          credit_allocation: nil
+          credit_allocation: nil,
+          # The subscription commitment whose true-up rolled forward into this credit block.
+          # Present only when `credit_block_source` is `commitment`.
+          credit_commitment: nil
         )
         end
 
@@ -154,6 +184,10 @@ module Orb
               credit_allocation:
                 T.nilable(
                   Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation
+                ),
+              credit_commitment:
+                T.nilable(
+                  Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment
                 )
             }
           )
@@ -162,7 +196,8 @@ module Orb
         end
 
         # How this credit block was created: `allocation` (a subscription's recurring
-        # credit allocation), `top_up` (an automatic balance-threshold top-up), or
+        # credit allocation), `top_up` (an automatic balance-threshold top-up),
+        # `commitment` (a subscription commitment true-up rolled forward as credit), or
         # `manual` (a manual credit ledger increment, including credits voided or expired
         # off another block).
         module CreditBlockSource
@@ -185,6 +220,11 @@ module Orb
           TOP_UP =
             T.let(
               :top_up,
+              Orb::Models::Customers::CreditListByExternalIDResponse::CreditBlockSource::TaggedSymbol
+            )
+          COMMITMENT =
+            T.let(
+              :commitment,
               Orb::Models::Customers::CreditListByExternalIDResponse::CreditBlockSource::TaggedSymbol
             )
           MANUAL =
@@ -612,6 +652,45 @@ module Orb
               def self.values
               end
             end
+          end
+        end
+
+        class CreditCommitment < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The ID of the subscription commitment this block was rolled forward from.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The subscription the commitment belongs to.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :subscription_id
+
+          # The subscription commitment whose true-up rolled forward into this credit block.
+          # Present only when `credit_block_source` is `commitment`.
+          sig do
+            params(id: String, subscription_id: T.nilable(String)).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The ID of the subscription commitment this block was rolled forward from.
+            id:,
+            # The subscription the commitment belongs to.
+            subscription_id: nil
+          )
+          end
+
+          sig do
+            override.returns({ id: String, subscription_id: T.nilable(String) })
+          end
+          def to_hash
           end
         end
       end

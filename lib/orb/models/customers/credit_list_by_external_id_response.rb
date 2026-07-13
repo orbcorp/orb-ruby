@@ -17,7 +17,8 @@ module Orb
 
         # @!attribute credit_block_source
         #   How this credit block was created: `allocation` (a subscription's recurring
-        #   credit allocation), `top_up` (an automatic balance-threshold top-up), or
+        #   credit allocation), `top_up` (an automatic balance-threshold top-up),
+        #   `commitment` (a subscription commitment true-up rolled forward as credit), or
         #   `manual` (a manual credit ledger increment, including credits voided or expired
         #   off another block).
         #
@@ -74,7 +75,16 @@ module Orb
                  -> { Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation },
                  nil?: true
 
-        # @!method initialize(id:, balance:, credit_block_source:, effective_date:, expiry_date:, filters:, maximum_initial_balance:, metadata:, per_unit_cost_basis:, status:, credit_allocation: nil)
+        # @!attribute credit_commitment
+        #   The subscription commitment whose true-up rolled forward into this credit block.
+        #   Present only when `credit_block_source` is `commitment`.
+        #
+        #   @return [Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment, nil]
+        optional :credit_commitment,
+                 -> { Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment },
+                 nil?: true
+
+        # @!method initialize(id:, balance:, credit_block_source:, effective_date:, expiry_date:, filters:, maximum_initial_balance:, metadata:, per_unit_cost_basis:, status:, credit_allocation: nil, credit_commitment: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Customers::CreditListByExternalIDResponse} for more details.
         #
@@ -99,9 +109,12 @@ module Orb
         #   @param status [Symbol, Orb::Models::Customers::CreditListByExternalIDResponse::Status]
         #
         #   @param credit_allocation [Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation, nil] The credit allocation that funded a block. Extends the allocation resource
+        #
+        #   @param credit_commitment [Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment, nil] The subscription commitment whose true-up rolled forward into this credit block.
 
         # How this credit block was created: `allocation` (a subscription's recurring
-        # credit allocation), `top_up` (an automatic balance-threshold top-up), or
+        # credit allocation), `top_up` (an automatic balance-threshold top-up),
+        # `commitment` (a subscription commitment true-up rolled forward as credit), or
         # `manual` (a manual credit ledger increment, including credits voided or expired
         # off another block).
         #
@@ -111,6 +124,7 @@ module Orb
 
           ALLOCATION = :allocation
           TOP_UP = :top_up
+          COMMITMENT = :commitment
           MANUAL = :manual
 
           # @!method self.values
@@ -294,6 +308,29 @@ module Orb
               #   @return [Array<Symbol>]
             end
           end
+        end
+
+        # @see Orb::Models::Customers::CreditListByExternalIDResponse#credit_commitment
+        class CreditCommitment < Orb::Internal::Type::BaseModel
+          # @!attribute id
+          #   The ID of the subscription commitment this block was rolled forward from.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute subscription_id
+          #   The subscription the commitment belongs to.
+          #
+          #   @return [String, nil]
+          optional :subscription_id, String, nil?: true
+
+          # @!method initialize(id:, subscription_id: nil)
+          #   The subscription commitment whose true-up rolled forward into this credit block.
+          #   Present only when `credit_block_source` is `commitment`.
+          #
+          #   @param id [String] The ID of the subscription commitment this block was rolled forward from.
+          #
+          #   @param subscription_id [String, nil] The subscription the commitment belongs to.
         end
       end
     end

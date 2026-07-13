@@ -13,7 +13,8 @@ module Orb
           metadata: ::Hash[Symbol, String],
           per_unit_cost_basis: String?,
           status: Orb::Models::Customers::CreditListByExternalIDResponse::status,
-          credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?
+          credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?,
+          credit_commitment: Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment?
         }
 
       class CreditListByExternalIDResponse < Orb::Internal::Type::BaseModel
@@ -39,6 +40,8 @@ module Orb
 
         attr_accessor credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?
 
+        attr_accessor credit_commitment: Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment?
+
         def initialize: (
           id: String,
           balance: Float,
@@ -50,7 +53,8 @@ module Orb
           metadata: ::Hash[Symbol, String],
           per_unit_cost_basis: String?,
           status: Orb::Models::Customers::CreditListByExternalIDResponse::status,
-          ?credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?
+          ?credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?,
+          ?credit_commitment: Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment?
         ) -> void
 
         def to_hash: -> {
@@ -64,16 +68,18 @@ module Orb
           metadata: ::Hash[Symbol, String],
           per_unit_cost_basis: String?,
           status: Orb::Models::Customers::CreditListByExternalIDResponse::status,
-          credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?
+          credit_allocation: Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation?,
+          credit_commitment: Orb::Models::Customers::CreditListByExternalIDResponse::CreditCommitment?
         }
 
-        type credit_block_source = :allocation | :top_up | :manual
+        type credit_block_source = :allocation | :top_up | :commitment | :manual
 
         module CreditBlockSource
           extend Orb::Internal::Type::Enum
 
           ALLOCATION: :allocation
           TOP_UP: :top_up
+          COMMITMENT: :commitment
           MANUAL: :manual
 
           def self?.values: -> ::Array[Orb::Models::Customers::CreditListByExternalIDResponse::credit_block_source]
@@ -235,6 +241,18 @@ module Orb
               def self?.values: -> ::Array[Orb::Models::Customers::CreditListByExternalIDResponse::CreditAllocation::Filter::operator]
             end
           end
+        end
+
+        type credit_commitment = { id: String, subscription_id: String? }
+
+        class CreditCommitment < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor subscription_id: String?
+
+          def initialize: (id: String, ?subscription_id: String?) -> void
+
+          def to_hash: -> { id: String, subscription_id: String? }
         end
       end
     end
