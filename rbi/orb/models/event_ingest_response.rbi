@@ -15,8 +15,6 @@ module Orb
       end
       attr_accessor :validation_failed
 
-      # Optional debug information (only present when debug=true is passed to the
-      # endpoint). Contains ingested and duplicate event idempotency keys.
       sig { returns(T.nilable(Orb::Models::EventIngestResponse::Debug)) }
       attr_reader :debug
 
@@ -40,8 +38,6 @@ module Orb
         # Contains all failing validation events. In the case of a 200, this array will
         # always be empty. This field will always be present.
         validation_failed:,
-        # Optional debug information (only present when debug=true is passed to the
-        # endpoint). Contains ingested and duplicate event idempotency keys.
         debug: nil
       )
       end
@@ -115,8 +111,6 @@ module Orb
         sig { returns(T::Array[String]) }
         attr_accessor :ingested
 
-        # Optional debug information (only present when debug=true is passed to the
-        # endpoint). Contains ingested and duplicate event idempotency keys.
         sig do
           params(
             duplicate: T::Array[String],

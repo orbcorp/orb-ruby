@@ -13,8 +13,7 @@ module Orb
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed] }
 
       # @!attribute debug
-      #   Optional debug information (only present when debug=true is passed to the
-      #   endpoint). Contains ingested and duplicate event idempotency keys.
+      #   @deprecated
       #
       #   @return [Orb::Models::EventIngestResponse::Debug, nil]
       optional :debug, -> { Orb::Models::EventIngestResponse::Debug }, nil?: true
@@ -25,7 +24,7 @@ module Orb
       #
       #   @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>] Contains all failing validation events. In the case of a 200, this array will al
       #
-      #   @param debug [Orb::Models::EventIngestResponse::Debug, nil] Optional debug information (only present when debug=true is passed to the endpoi
+      #   @param debug [Orb::Models::EventIngestResponse::Debug, nil]
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
         # @!attribute idempotency_key
@@ -50,6 +49,8 @@ module Orb
         #   @param validation_errors [Array<String>] An array of strings corresponding to validation failures for this idempotency_ke
       end
 
+      # @deprecated
+      #
       # @see Orb::Models::EventIngestResponse#debug
       class Debug < Orb::Internal::Type::BaseModel
         # @!attribute duplicate
@@ -63,9 +64,6 @@ module Orb
         required :ingested, Orb::Internal::Type::ArrayOf[String]
 
         # @!method initialize(duplicate:, ingested:)
-        #   Optional debug information (only present when debug=true is passed to the
-        #   endpoint). Contains ingested and duplicate event idempotency keys.
-        #
         #   @param duplicate [Array<String>]
         #   @param ingested [Array<String>]
       end
