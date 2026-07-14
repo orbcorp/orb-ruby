@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.16.0](https://github.com/orbcorp/orb-ruby/compare/v1.15.0...v1.16.0) (2026-07-14)
+
+
+### Features
+
+* **api:** add `commitment` credit block source and `credit_commitment` field ([e094d85](https://github.com/orbcorp/orb-ruby/commit/e094d856b497ebc13b962e45e504b3596198c156))
+* **api:** api update ([9c391e2](https://github.com/orbcorp/orb-ruby/commit/9c391e2ae05b0e0579b7807b63d08d0d4da9f37b))
+
 ## [1.15.0](https://github.com/orbcorp/orb-ruby/compare/v1.14.0...v1.15.0) (2026-07-10)
 
 
