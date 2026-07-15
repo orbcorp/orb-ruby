@@ -336,13 +336,11 @@ module Orb
       # }
       # ```
       #
-      # @overload ingest(events:, backfill_id: nil, debug: nil, request_options: {})
+      # @overload ingest(events:, backfill_id: nil, request_options: {})
       #
       # @param events [Array<Orb::Models::EventIngestParams::Event>] Body param
       #
       # @param backfill_id [String, nil] Query param: If this ingestion request is part of a backfill, this parameter tie
-      #
-      # @param debug [Boolean] Query param: Pending Deprecation: Flag to enable additional debug information in
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -350,7 +348,7 @@ module Orb
       #
       # @see Orb::Models::EventIngestParams
       def ingest(params)
-        query_params = [:backfill_id, :debug]
+        query_params = [:backfill_id]
         parsed, options = Orb::EventIngestParams.dump_request(params)
         query = Orb::Internal::Util.encode_query_params(parsed.slice(*query_params))
         @client.request(

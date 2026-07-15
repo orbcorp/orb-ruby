@@ -56,8 +56,7 @@ class Orb::Test::Resources::EventsTest < Orb::Test::ResourceTest
 
     assert_pattern do
       response => {
-        validation_failed: ^(Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed]),
-        debug: Orb::Models::EventIngestResponse::Debug | nil
+        validation_failed: ^(Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed])
       }
     end
   end

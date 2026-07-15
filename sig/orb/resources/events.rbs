@@ -23,7 +23,6 @@ module Orb
       def ingest: (
         events: ::Array[Orb::EventIngestParams::Event],
         ?backfill_id: String?,
-        ?debug: bool,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::EventIngestResponse
 

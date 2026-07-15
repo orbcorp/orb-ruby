@@ -324,7 +324,6 @@ module Orb
         params(
           events: T::Array[Orb::EventIngestParams::Event::OrHash],
           backfill_id: T.nilable(String),
-          debug: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::EventIngestResponse)
       end
@@ -334,9 +333,6 @@ module Orb
         # Query param: If this ingestion request is part of a backfill, this parameter
         # ties the ingested events to the backfill
         backfill_id: nil,
-        # Query param: Pending Deprecation: Flag to enable additional debug information in
-        # the endpoint response
-        debug: nil,
         request_options: {}
       )
       end

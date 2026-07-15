@@ -1,11 +1,7 @@
 module Orb
   module Models
     type event_ingest_params =
-      {
-        events: ::Array[Orb::EventIngestParams::Event],
-        backfill_id: String?,
-        debug: bool
-      }
+      { events: ::Array[Orb::EventIngestParams::Event], backfill_id: String? }
       & Orb::Internal::Type::request_parameters
 
     class EventIngestParams < Orb::Internal::Type::BaseModel
@@ -16,21 +12,15 @@ module Orb
 
       attr_accessor backfill_id: String?
 
-      attr_reader debug: bool?
-
-      def debug=: (bool) -> bool
-
       def initialize: (
         events: ::Array[Orb::EventIngestParams::Event],
         ?backfill_id: String?,
-        ?debug: bool,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
         events: ::Array[Orb::EventIngestParams::Event],
         backfill_id: String?,
-        debug: bool,
         request_options: Orb::RequestOptions
       }
 

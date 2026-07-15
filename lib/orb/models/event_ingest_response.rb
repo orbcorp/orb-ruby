@@ -12,19 +12,11 @@ module Orb
       required :validation_failed,
                -> { Orb::Internal::Type::ArrayOf[Orb::Models::EventIngestResponse::ValidationFailed] }
 
-      # @!attribute debug
-      #   @deprecated
-      #
-      #   @return [Orb::Models::EventIngestResponse::Debug, nil]
-      optional :debug, -> { Orb::Models::EventIngestResponse::Debug }, nil?: true
-
-      # @!method initialize(validation_failed:, debug: nil)
+      # @!method initialize(validation_failed:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::EventIngestResponse} for more details.
       #
       #   @param validation_failed [Array<Orb::Models::EventIngestResponse::ValidationFailed>] Contains all failing validation events. In the case of a 200, this array will al
-      #
-      #   @param debug [Orb::Models::EventIngestResponse::Debug, nil]
 
       class ValidationFailed < Orb::Internal::Type::BaseModel
         # @!attribute idempotency_key
@@ -47,25 +39,6 @@ module Orb
         #   @param idempotency_key [String] The passed idempotency_key corresponding to the validation_errors
         #
         #   @param validation_errors [Array<String>] An array of strings corresponding to validation failures for this idempotency_ke
-      end
-
-      # @deprecated
-      #
-      # @see Orb::Models::EventIngestResponse#debug
-      class Debug < Orb::Internal::Type::BaseModel
-        # @!attribute duplicate
-        #
-        #   @return [Array<String>]
-        required :duplicate, Orb::Internal::Type::ArrayOf[String]
-
-        # @!attribute ingested
-        #
-        #   @return [Array<String>]
-        required :ingested, Orb::Internal::Type::ArrayOf[String]
-
-        # @!method initialize(duplicate:, ingested:)
-        #   @param duplicate [Array<String>]
-        #   @param ingested [Array<String>]
       end
     end
   end

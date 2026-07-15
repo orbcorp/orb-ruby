@@ -17,19 +17,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :backfill_id
 
-      # Pending Deprecation: Flag to enable additional debug information in the endpoint
-      # response
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :debug
-
-      sig { params(debug: T::Boolean).void }
-      attr_writer :debug
-
       sig do
         params(
           events: T::Array[Orb::EventIngestParams::Event::OrHash],
           backfill_id: T.nilable(String),
-          debug: T::Boolean,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -38,9 +29,6 @@ module Orb
         # If this ingestion request is part of a backfill, this parameter ties the
         # ingested events to the backfill
         backfill_id: nil,
-        # Pending Deprecation: Flag to enable additional debug information in the endpoint
-        # response
-        debug: nil,
         request_options: {}
       )
       end
@@ -50,7 +38,6 @@ module Orb
           {
             events: T::Array[Orb::EventIngestParams::Event],
             backfill_id: T.nilable(String),
-            debug: T::Boolean,
             request_options: Orb::RequestOptions
           }
         )

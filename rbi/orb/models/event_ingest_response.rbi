@@ -15,30 +15,16 @@ module Orb
       end
       attr_accessor :validation_failed
 
-      sig { returns(T.nilable(Orb::Models::EventIngestResponse::Debug)) }
-      attr_reader :debug
-
-      sig do
-        params(
-          debug: T.nilable(Orb::Models::EventIngestResponse::Debug::OrHash)
-        ).void
-      end
-      attr_writer :debug
-
       sig do
         params(
           validation_failed:
-            T::Array[
-              Orb::Models::EventIngestResponse::ValidationFailed::OrHash
-            ],
-          debug: T.nilable(Orb::Models::EventIngestResponse::Debug::OrHash)
+            T::Array[Orb::Models::EventIngestResponse::ValidationFailed::OrHash]
         ).returns(T.attached_class)
       end
       def self.new(
         # Contains all failing validation events. In the case of a 200, this array will
         # always be empty. This field will always be present.
-        validation_failed:,
-        debug: nil
+        validation_failed:
       )
       end
 
@@ -46,8 +32,7 @@ module Orb
         override.returns(
           {
             validation_failed:
-              T::Array[Orb::Models::EventIngestResponse::ValidationFailed],
-            debug: T.nilable(Orb::Models::EventIngestResponse::Debug)
+              T::Array[Orb::Models::EventIngestResponse::ValidationFailed]
           }
         )
       end
@@ -90,39 +75,6 @@ module Orb
         sig do
           override.returns(
             { idempotency_key: String, validation_errors: T::Array[String] }
-          )
-        end
-        def to_hash
-        end
-      end
-
-      class Debug < Orb::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Orb::Models::EventIngestResponse::Debug,
-              Orb::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T::Array[String]) }
-        attr_accessor :duplicate
-
-        sig { returns(T::Array[String]) }
-        attr_accessor :ingested
-
-        sig do
-          params(
-            duplicate: T::Array[String],
-            ingested: T::Array[String]
-          ).returns(T.attached_class)
-        end
-        def self.new(duplicate:, ingested:)
-        end
-
-        sig do
-          override.returns(
-            { duplicate: T::Array[String], ingested: T::Array[String] }
           )
         end
         def to_hash
