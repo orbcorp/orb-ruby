@@ -135,6 +135,42 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_create_portal_session
+    response = @orb.customers.create_portal_session("customer_id")
+
+    assert_pattern do
+      response => Orb::Models::CustomerCreatePortalSessionResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        customer_id: String,
+        expires_at: Time | nil,
+        url: String
+      }
+    end
+  end
+
+  def test_create_portal_session_by_external_id
+    response = @orb.customers.create_portal_session_by_external_id("external_customer_id")
+
+    assert_pattern do
+      response => Orb::Models::CustomerCreatePortalSessionByExternalIDResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        customer_id: String,
+        expires_at: Time | nil,
+        url: String
+      }
+    end
+  end
+
   def test_fetch
     response = @orb.customers.fetch("customer_id")
 

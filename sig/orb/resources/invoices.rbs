@@ -115,6 +115,16 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
 
+      def regenerate_invoice_pdf: (
+        String invoice_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Invoice
+
+      def regenerate_receipt_pdf: (
+        String invoice_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Invoice
+
       def `void`: (
         String invoice_id,
         ?request_options: Orb::request_opts

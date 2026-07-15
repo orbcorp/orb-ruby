@@ -17,6 +17,8 @@ module Orb
 
   class AlertCreateForSubscriptionParams = Orb::Models::AlertCreateForSubscriptionParams
 
+  class AlertDeleteParams = Orb::Models::AlertDeleteParams
+
   class AlertDisableParams = Orb::Models::AlertDisableParams
 
   class AlertEnableParams = Orb::Models::AlertEnableParams
@@ -98,6 +100,10 @@ module Orb
   class Customer = Orb::Models::Customer
 
   class CustomerCreateParams = Orb::Models::CustomerCreateParams
+
+  class CustomerCreatePortalSessionByExternalIDParams = Orb::Models::CustomerCreatePortalSessionByExternalIDParams
+
+  class CustomerCreatePortalSessionParams = Orb::Models::CustomerCreatePortalSessionParams
 
   class CustomerDeleteParams = Orb::Models::CustomerDeleteParams
 
@@ -186,6 +192,10 @@ module Orb
   class InvoiceMarkPaidParams = Orb::Models::InvoiceMarkPaidParams
 
   class InvoicePayParams = Orb::Models::InvoicePayParams
+
+  class InvoiceRegenerateInvoicePdfParams = Orb::Models::InvoiceRegenerateInvoicePdfParams
+
+  class InvoiceRegenerateReceiptPdfParams = Orb::Models::InvoiceRegenerateReceiptPdfParams
 
   class InvoiceTiny = Orb::Models::InvoiceTiny
 

@@ -27,6 +27,11 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::Alert]
 
+      def delete: (
+        String alert_configuration_id,
+        ?request_options: Orb::request_opts
+      ) -> nil
+
       def create_for_customer: (
         String customer_id,
         currency: String,

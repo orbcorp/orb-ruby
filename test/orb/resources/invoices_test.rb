@@ -564,6 +564,114 @@ class Orb::Test::Resources::InvoicesTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_regenerate_invoice_pdf
+    response = @orb.invoices.regenerate_invoice_pdf("invoice_id")
+
+    assert_pattern do
+      response => Orb::Invoice
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Invoice::AutoCollection,
+        billing_address: Orb::Address | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::CustomerMinified,
+        customer_balance_transactions: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::CustomerTaxID | nil,
+        discount: Orb::Internal::Type::Unknown,
+        discounts: ^(Orb::Internal::Type::ArrayOf[union: Orb::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::LineItem]),
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Address | nil,
+        status: Orb::Invoice::Status,
+        subscription: Orb::SubscriptionMinified | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::Internal::Type::Boolean
+      }
+    end
+  end
+
+  def test_regenerate_receipt_pdf
+    response = @orb.invoices.regenerate_receipt_pdf("invoice_id")
+
+    assert_pattern do
+      response => Orb::Invoice
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount_due: String,
+        auto_collection: Orb::Invoice::AutoCollection,
+        billing_address: Orb::Address | nil,
+        created_at: Time,
+        credit_notes: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::CreditNote]),
+        currency: String,
+        customer: Orb::CustomerMinified,
+        customer_balance_transactions: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::CustomerBalanceTransaction]),
+        customer_tax_id: Orb::CustomerTaxID | nil,
+        discount: Orb::Internal::Type::Unknown,
+        discounts: ^(Orb::Internal::Type::ArrayOf[union: Orb::InvoiceLevelDiscount]),
+        due_date: Time | nil,
+        eligible_to_issue_at: Time | nil,
+        hosted_invoice_url: String | nil,
+        invoice_date: Time,
+        invoice_number: String,
+        invoice_pdf: String | nil,
+        invoice_source: Orb::Invoice::InvoiceSource,
+        issue_failed_at: Time | nil,
+        issued_at: Time | nil,
+        line_items: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::LineItem]),
+        maximum: Orb::Maximum | nil,
+        maximum_amount: String | nil,
+        memo: String | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        minimum: Orb::Minimum | nil,
+        minimum_amount: String | nil,
+        paid_at: Time | nil,
+        payment_attempts: ^(Orb::Internal::Type::ArrayOf[Orb::Invoice::PaymentAttempt]),
+        payment_failed_at: Time | nil,
+        payment_started_at: Time | nil,
+        scheduled_issue_at: Time | nil,
+        shipping_address: Orb::Address | nil,
+        status: Orb::Invoice::Status,
+        subscription: Orb::SubscriptionMinified | nil,
+        subtotal: String,
+        sync_failed_at: Time | nil,
+        total: String,
+        voided_at: Time | nil,
+        will_auto_issue: Orb::Internal::Type::Boolean
+      }
+    end
+  end
+
   def test_void
     response = @orb.invoices.void("invoice_id")
 

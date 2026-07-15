@@ -1,0 +1,40 @@
+module Orb
+  module Models
+    type customer_create_portal_session_response =
+      {
+        id: String,
+        created_at: Time,
+        customer_id: String,
+        expires_at: Time?,
+        url: String
+      }
+
+    class CustomerCreatePortalSessionResponse < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor customer_id: String
+
+      attr_accessor expires_at: Time?
+
+      attr_accessor url: String
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        customer_id: String,
+        expires_at: Time?,
+        url: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        customer_id: String,
+        expires_at: Time?,
+        url: String
+      }
+    end
+  end
+end

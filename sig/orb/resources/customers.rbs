@@ -71,6 +71,20 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> nil
 
+      def create_portal_session: (
+        String customer_id,
+        ?expires_in_minutes: Integer,
+        ?invalidate_existing: bool,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::CustomerCreatePortalSessionResponse
+
+      def create_portal_session_by_external_id: (
+        String external_customer_id,
+        ?expires_in_minutes: Integer,
+        ?invalidate_existing: bool,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::CustomerCreatePortalSessionByExternalIDResponse
+
       def fetch: (
         String customer_id,
         ?request_options: Orb::request_opts

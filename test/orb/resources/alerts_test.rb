@@ -96,6 +96,14 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_delete
+    response = @orb.alerts.delete("alert_configuration_id")
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_create_for_customer_required_params
     response =
       @orb.alerts.create_for_customer("customer_id", currency: "currency", type: :credit_balance_depleted)

@@ -289,6 +289,72 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CustomerCreatePortalSessionParams} for more details.
+      #
+      # Creates a portal session for the customer, returning a short-lived URL that
+      # provides authenticated access to the customer's billing portal. The session
+      # expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+      # new session invalidates any other active portal sessions for the customer; pass
+      # `invalidate_existing=false` to allow concurrent sessions.
+      #
+      # @overload create_portal_session(customer_id, expires_in_minutes: nil, invalidate_existing: nil, request_options: {})
+      #
+      # @param customer_id [String]
+      #
+      # @param expires_in_minutes [Integer] Duration in minutes until the portal session expires. Defaults to 60. Maximum 18
+      #
+      # @param invalidate_existing [Boolean] When true (default), creating this session soft-deletes any other active portal
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::CustomerCreatePortalSessionResponse]
+      #
+      # @see Orb::Models::CustomerCreatePortalSessionParams
+      def create_portal_session(customer_id, params = {})
+        parsed, options = Orb::CustomerCreatePortalSessionParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["customers/%1$s/portal_sessions", customer_id],
+          body: parsed,
+          model: Orb::Models::CustomerCreatePortalSessionResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CustomerCreatePortalSessionByExternalIDParams} for more details.
+      #
+      # Creates a portal session for the customer, returning a short-lived URL that
+      # provides authenticated access to the customer's billing portal. The session
+      # expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+      # new session invalidates any other active portal sessions for the customer; pass
+      # `invalidate_existing=false` to allow concurrent sessions.
+      #
+      # @overload create_portal_session_by_external_id(external_customer_id, expires_in_minutes: nil, invalidate_existing: nil, request_options: {})
+      #
+      # @param external_customer_id [String]
+      #
+      # @param expires_in_minutes [Integer] Duration in minutes until the portal session expires. Defaults to 60. Maximum 18
+      #
+      # @param invalidate_existing [Boolean] When true (default), creating this session soft-deletes any other active portal
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::CustomerCreatePortalSessionByExternalIDResponse]
+      #
+      # @see Orb::Models::CustomerCreatePortalSessionByExternalIDParams
+      def create_portal_session_by_external_id(external_customer_id, params = {})
+        parsed, options = Orb::CustomerCreatePortalSessionByExternalIDParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["customers/external_customer_id/%1$s/portal_sessions", external_customer_id],
+          body: parsed,
+          model: Orb::Models::CustomerCreatePortalSessionByExternalIDResponse,
+          options: options
+        )
+      end
+
       # This endpoint is used to fetch customer details given an identifier. If the
       # `Customer` is in the process of being deleted, only the properties `id` and
       # `deleted: true` will be returned.

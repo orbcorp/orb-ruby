@@ -462,6 +462,88 @@ module Orb
         )
       end
 
+      # This endpoint triggers a regeneration of the PDF for a finalized invoice.
+      #
+      # The invoice must be finalized (`issued`, `paid`, `synced`, or `void`) and must
+      # already have an existing PDF. The original PDF is archived (not permanently
+      # deleted) to maintain an audit trail.
+      #
+      # **Important Legal Considerations:**
+      #
+      # Regenerating invoice PDFs may not be permitted in all jurisdictions. Many tax
+      # authorities require that issued invoices remain unmodified. Before using this
+      # endpoint, ensure that:
+      #
+      # - Your local tax regulations permit modification of issued billing documents
+      # - You have a legitimate business reason (e.g., fixing template errors, updating
+      #   branding)
+      # - You maintain proper records of the original PDF (archived automatically by
+      #   Orb)
+      #
+      # Recommended use cases:
+      #
+      # - Correcting template rendering issues
+      # - Applying updated company branding
+      # - Updating customer data that was incorrect at issuance
+      #
+      # @overload regenerate_invoice_pdf(invoice_id, request_options: {})
+      #
+      # @param invoice_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::Invoice]
+      #
+      # @see Orb::Models::InvoiceRegenerateInvoicePdfParams
+      def regenerate_invoice_pdf(invoice_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["invoices/%1$s/regenerate_invoice_pdf", invoice_id],
+          model: Orb::Invoice,
+          options: params[:request_options]
+        )
+      end
+
+      # This endpoint triggers a regeneration of the receipt PDF for a paid invoice.
+      #
+      # The invoice must be in `paid` status and must already have an existing receipt
+      # PDF. The original PDF is archived (not permanently deleted) to maintain an audit
+      # trail.
+      #
+      # **Important Legal Considerations:**
+      #
+      # Regenerating receipt PDFs may not be permitted in all jurisdictions. Many tax
+      # authorities require that issued receipts remain unmodified. Before using this
+      # endpoint, ensure that:
+      #
+      # - Your local tax regulations permit modification of issued billing documents
+      # - You have a legitimate business reason (e.g., fixing template errors, updating
+      #   branding)
+      # - You maintain proper records of the original PDF (archived automatically by
+      #   Orb)
+      #
+      # Recommended use cases:
+      #
+      # - Correcting template rendering issues
+      # - Applying updated company branding
+      # - Updating customer data that was incorrect at issuance
+      #
+      # @overload regenerate_receipt_pdf(invoice_id, request_options: {})
+      #
+      # @param invoice_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::Invoice]
+      #
+      # @see Orb::Models::InvoiceRegenerateReceiptPdfParams
+      def regenerate_receipt_pdf(invoice_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["invoices/%1$s/regenerate_receipt_pdf", invoice_id],
+          model: Orb::Invoice,
+          options: params[:request_options]
+        )
+      end
+
       # This endpoint allows an invoice's status to be set to the `void` status. This
       # can only be done to invoices that are in the `issued` status.
       #

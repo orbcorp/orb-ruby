@@ -639,6 +639,60 @@ module Orb
       def delete(customer_id, request_options: {})
       end
 
+      # Creates a portal session for the customer, returning a short-lived URL that
+      # provides authenticated access to the customer's billing portal. The session
+      # expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+      # new session invalidates any other active portal sessions for the customer; pass
+      # `invalidate_existing=false` to allow concurrent sessions.
+      sig do
+        params(
+          customer_id: String,
+          expires_in_minutes: Integer,
+          invalidate_existing: T::Boolean,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::CustomerCreatePortalSessionResponse)
+      end
+      def create_portal_session(
+        customer_id,
+        # Duration in minutes until the portal session expires. Defaults to 60.
+        # Maximum 180.
+        expires_in_minutes: nil,
+        # When true (default), creating this session soft-deletes any other active portal
+        # sessions for the customer. Set to false to allow concurrent sessions — useful
+        # when minting portal links for multiple authenticated end-users at once. The
+        # customer's permanent portal link (if any) is never invalidated by this.
+        invalidate_existing: nil,
+        request_options: {}
+      )
+      end
+
+      # Creates a portal session for the customer, returning a short-lived URL that
+      # provides authenticated access to the customer's billing portal. The session
+      # expires after `expires_in_minutes` (default 60, max 180). By default, creating a
+      # new session invalidates any other active portal sessions for the customer; pass
+      # `invalidate_existing=false` to allow concurrent sessions.
+      sig do
+        params(
+          external_customer_id: String,
+          expires_in_minutes: Integer,
+          invalidate_existing: T::Boolean,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::CustomerCreatePortalSessionByExternalIDResponse)
+      end
+      def create_portal_session_by_external_id(
+        external_customer_id,
+        # Duration in minutes until the portal session expires. Defaults to 60.
+        # Maximum 180.
+        expires_in_minutes: nil,
+        # When true (default), creating this session soft-deletes any other active portal
+        # sessions for the customer. Set to false to allow concurrent sessions — useful
+        # when minting portal links for multiple authenticated end-users at once. The
+        # customer's permanent portal link (if any) is never invalidated by this.
+        invalidate_existing: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint is used to fetch customer details given an identifier. If the
       # `Customer` is in the process of being deleted, only the properties `id` and
       # `deleted: true` will be returned.

@@ -1,0 +1,40 @@
+module Orb
+  module Models
+    type customer_create_portal_session_params =
+      {
+        customer_id: String,
+        expires_in_minutes: Integer,
+        invalidate_existing: bool
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class CustomerCreatePortalSessionParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor customer_id: String
+
+      attr_reader expires_in_minutes: Integer?
+
+      def expires_in_minutes=: (Integer) -> Integer
+
+      attr_reader invalidate_existing: bool?
+
+      def invalidate_existing=: (bool) -> bool
+
+      def initialize: (
+        customer_id: String,
+        ?expires_in_minutes: Integer,
+        ?invalidate_existing: bool,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        customer_id: String,
+        expires_in_minutes: Integer,
+        invalidate_existing: bool,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end
