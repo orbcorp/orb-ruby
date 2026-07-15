@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/orbcorp/orb-ruby/compare/v1.16.0...v1.17.0) (2026-07-15)
+
+
+### Features
+
+* **api:** deprecate debug mode ingestion response field ([65ab353](https://github.com/orbcorp/orb-ruby/commit/65ab353b1838ee8e6ed45ac4036601af4f80d10a))
+
 ## [1.16.0](https://github.com/orbcorp/orb-ruby/compare/v1.15.0...v1.16.0) (2026-07-14)
 
 
