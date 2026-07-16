@@ -17,7 +17,7 @@ module Orb
       #
       # @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
-      # @param invoice_date [Time] An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be i
+      # @param invoice_date [Time] An ISO 8601 date or timestamp, interpreted in the customer's timezone. If a date
       #
       # @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       #
@@ -37,7 +37,7 @@ module Orb
       #
       # @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
       #
-      # @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
+      # @param will_auto_issue [Boolean] When true, auto-issues the invoice on the invoice date. If the invoice date is t
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

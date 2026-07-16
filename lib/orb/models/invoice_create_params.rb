@@ -15,9 +15,10 @@ module Orb
       required :currency, String
 
       # @!attribute invoice_date
-      #   An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be
-      #   in the past. If a date is set without a time, `invoice_date` is set to midnight
-      #   on the chosen date in the customer's timezone.
+      #   An ISO 8601 date or timestamp, interpreted in the customer's timezone. If a date
+      #   is set without a time, `invoice_date` is set to midnight on the chosen date in
+      #   the customer's timezone. `invoice_date` cannot be more than one year in the
+      #   future.
       #
       #   @return [Time]
       required :invoice_date, Time
@@ -88,9 +89,9 @@ module Orb
       optional :net_terms, Integer, nil?: true
 
       # @!attribute will_auto_issue
-      #   When true, this invoice will be submitted for issuance upon creation. When
-      #   false, the resulting invoice will require manual review to issue. Defaulted to
-      #   false.
+      #   When true, auto-issues the invoice on the invoice date. If the invoice date is
+      #   today's date or earlier, the invoice will be issued upon creation. When false,
+      #   the resulting invoice will require manual review to issue. Defaults to false.
       #
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean
@@ -101,7 +102,7 @@ module Orb
       #
       #   @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
-      #   @param invoice_date [Time] An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be i
+      #   @param invoice_date [Time] An ISO 8601 date or timestamp, interpreted in the customer's timezone. If a date
       #
       #   @param line_items [Array<Orb::Models::InvoiceCreateParams::LineItem>]
       #
@@ -121,7 +122,7 @@ module Orb
       #
       #   @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
       #
-      #   @param will_auto_issue [Boolean] When true, this invoice will be submitted for issuance upon creation. When false
+      #   @param will_auto_issue [Boolean] When true, auto-issues the invoice on the invoice date. If the invoice date is t
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 

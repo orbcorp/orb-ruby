@@ -14,9 +14,10 @@ module Orb
       sig { returns(String) }
       attr_accessor :currency
 
-      # An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be
-      # in the past. If a date is set without a time, `invoice_date` is set to midnight
-      # on the chosen date in the customer's timezone.
+      # An ISO 8601 date or timestamp, interpreted in the customer's timezone. If a date
+      # is set without a time, `invoice_date` is set to midnight on the chosen date in
+      # the customer's timezone. `invoice_date` cannot be more than one year in the
+      # future.
       sig { returns(Time) }
       attr_accessor :invoice_date
 
@@ -79,9 +80,9 @@ module Orb
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
-      # When true, this invoice will be submitted for issuance upon creation. When
-      # false, the resulting invoice will require manual review to issue. Defaulted to
-      # false.
+      # When true, auto-issues the invoice on the invoice date. If the invoice date is
+      # today's date or earlier, the invoice will be issued upon creation. When false,
+      # the resulting invoice will require manual review to issue. Defaults to false.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :will_auto_issue
 
@@ -118,9 +119,10 @@ module Orb
         # An ISO 4217 currency string. Must be the same as the customer's currency if it
         # is set.
         currency:,
-        # An ISO 8601 date or timestamp, interpreted in the customer's timezone. Must be
-        # in the past. If a date is set without a time, `invoice_date` is set to midnight
-        # on the chosen date in the customer's timezone.
+        # An ISO 8601 date or timestamp, interpreted in the customer's timezone. If a date
+        # is set without a time, `invoice_date` is set to midnight on the chosen date in
+        # the customer's timezone. `invoice_date` cannot be more than one year in the
+        # future.
         invoice_date:,
         line_items:,
         # Determines whether this invoice will automatically attempt to charge a saved
@@ -151,9 +153,9 @@ module Orb
         # on issue, whereas a value of '30' represents that the customer has 30 days to
         # pay the invoice. Do not set this field if you want to set a custom due date.
         net_terms: nil,
-        # When true, this invoice will be submitted for issuance upon creation. When
-        # false, the resulting invoice will require manual review to issue. Defaulted to
-        # false.
+        # When true, auto-issues the invoice on the invoice date. If the invoice date is
+        # today's date or earlier, the invoice will be issued upon creation. When false,
+        # the resulting invoice will require manual review to issue. Defaults to false.
         will_auto_issue: nil,
         request_options: {}
       )
