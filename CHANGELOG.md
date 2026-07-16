@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.18.0](https://github.com/orbcorp/orb-ruby/compare/v1.17.0...v1.18.0) (2026-07-16)
+
+
+### Features
+
+* **api:** add alert deletion, customer portal session, and invoice PDF regeneration endpoints ([3b6dcd3](https://github.com/orbcorp/orb-ruby/commit/3b6dcd352f56728d8336deebd0382fb4a3c56079))
+* **api:** remove deprecated debug field from events backfill endpoints ([92d37ff](https://github.com/orbcorp/orb-ruby/commit/92d37ff1353df00a1e6e648acc67776443bbb2d1))
+* **api:** remove deprecated debug parameter and field from backfill endpoints ([92d37ff](https://github.com/orbcorp/orb-ruby/commit/92d37ff1353df00a1e6e648acc67776443bbb2d1))
+* **api:** remove deprecated debug query parameter and field from events API ([92d37ff](https://github.com/orbcorp/orb-ruby/commit/92d37ff1353df00a1e6e648acc67776443bbb2d1))
+
 ## [1.17.0](https://github.com/orbcorp/orb-ruby/compare/v1.16.0...v1.17.0) (2026-07-15)
 
 
