@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/orbcorp/orb-ruby/compare/v1.18.0...v1.19.0) (2026-07-17)
+
+
+### Features
+
+* **api:** allow future invoice dates (up to one year) for one-off invoice creation ([465d3a0](https://github.com/orbcorp/orb-ruby/commit/465d3a0ec5e43e67aa7601ff59774e0733fbebc7))
+
 ## [1.18.0](https://github.com/orbcorp/orb-ruby/compare/v1.17.0...v1.18.0) (2026-07-16)
 
 
