@@ -12,8 +12,9 @@ module Orb
         required :id, String
 
         # @!attribute effective_time
-        #   When the migration takes effect. Can be a specific date/time, or 'end_of_term'
-        #   when scheduled to be at the end of the current billing period.
+        #   When the migration takes effect. Can be a specific date/time, 'end_of_term' when
+        #   scheduled to be at the end of the current billing period, or 'end_of_invoice'
+        #   when scheduled to be at the start of the next invoice.
         #
         #   @return [Date, Time, Symbol, Orb::Models::Plans::MigrationListResponse::EffectiveTime, nil]
         required :effective_time,
@@ -39,14 +40,15 @@ module Orb
         #
         #   @param id [String] Unique identifier for this plan version change.
         #
-        #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationListResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, or 'end_of_term' w
+        #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationListResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, 'end_of_term' when
         #
         #   @param plan_id [String] The ID of the plan being migrated.
         #
         #   @param status [Symbol, Orb::Models::Plans::MigrationListResponse::Status] Current status of the migration: 'not_started', 'in_progress', 'completed', 'act
 
-        # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
-        # when scheduled to be at the end of the current billing period.
+        # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
+        # scheduled to be at the end of the current billing period, or 'end_of_invoice'
+        # when scheduled to be at the start of the next invoice.
         #
         # @see Orb::Models::Plans::MigrationListResponse#effective_time
         module EffectiveTime
@@ -58,6 +60,8 @@ module Orb
 
           variant const: -> { Orb::Models::Plans::MigrationListResponse::EffectiveTime::END_OF_TERM }
 
+          variant const: -> { Orb::Models::Plans::MigrationListResponse::EffectiveTime::END_OF_INVOICE }
+
           # @!method self.variants
           #   @return [Array(Date, Time, Symbol)]
 
@@ -68,6 +72,7 @@ module Orb
           # @!group
 
           END_OF_TERM = :end_of_term
+          END_OF_INVOICE = :end_of_invoice
 
           # @!endgroup
         end

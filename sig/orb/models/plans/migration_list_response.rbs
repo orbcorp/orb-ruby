@@ -32,7 +32,7 @@ module Orb
           status: Orb::Models::Plans::MigrationListResponse::status
         }
 
-        type effective_time = Date | Time | :end_of_term
+        type effective_time = Date | Time | :end_of_term | :end_of_invoice
 
         module EffectiveTime
           extend Orb::Internal::Type::Union
@@ -40,6 +40,7 @@ module Orb
           def self?.variants: -> ::Array[Orb::Models::Plans::MigrationListResponse::effective_time]
 
           END_OF_TERM: :end_of_term
+          END_OF_INVOICE: :end_of_invoice
         end
 
         type status =

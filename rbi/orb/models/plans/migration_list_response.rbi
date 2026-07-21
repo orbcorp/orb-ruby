@@ -16,8 +16,9 @@ module Orb
         sig { returns(String) }
         attr_accessor :id
 
-        # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
-        # when scheduled to be at the end of the current billing period.
+        # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
+        # scheduled to be at the end of the current billing period, or 'end_of_invoice'
+        # when scheduled to be at the start of the next invoice.
         sig do
           returns(
             T.nilable(
@@ -58,8 +59,9 @@ module Orb
         def self.new(
           # Unique identifier for this plan version change.
           id:,
-          # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
-          # when scheduled to be at the end of the current billing period.
+          # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
+          # scheduled to be at the end of the current billing period, or 'end_of_invoice'
+          # when scheduled to be at the start of the next invoice.
           effective_time:,
           # The ID of the plan being migrated.
           plan_id:,
@@ -86,8 +88,9 @@ module Orb
         def to_hash
         end
 
-        # When the migration takes effect. Can be a specific date/time, or 'end_of_term'
-        # when scheduled to be at the end of the current billing period.
+        # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
+        # scheduled to be at the end of the current billing period, or 'end_of_invoice'
+        # when scheduled to be at the start of the next invoice.
         module EffectiveTime
           extend Orb::Internal::Type::Union
 
@@ -122,6 +125,11 @@ module Orb
           END_OF_TERM =
             T.let(
               :end_of_term,
+              Orb::Models::Plans::MigrationListResponse::EffectiveTime::TaggedSymbol
+            )
+          END_OF_INVOICE =
+            T.let(
+              :end_of_invoice,
               Orb::Models::Plans::MigrationListResponse::EffectiveTime::TaggedSymbol
             )
         end
