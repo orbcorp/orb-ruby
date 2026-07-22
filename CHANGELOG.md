@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/orbcorp/orb-ruby/compare/v1.19.0...v1.20.0) (2026-07-22)
+
+
+### Features
+
+* **api:** support `end_of_invoice` effective time for plan version migrations ([305afc4](https://github.com/orbcorp/orb-ruby/commit/305afc4b47e9742a969991774a6f45f68a52bee2))
+
 ## [1.19.0](https://github.com/orbcorp/orb-ruby/compare/v1.18.0...v1.19.0) (2026-07-17)
 
 
