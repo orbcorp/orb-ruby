@@ -14,22 +14,20 @@ module Orb
       sig { returns(String) }
       attr_accessor :price_id
 
-      sig { returns(Integer) }
+      sig { returns(Float) }
       attr_accessor :quantity
 
       sig do
-        params(
-          effective_date: Time,
-          price_id: String,
-          quantity: Integer
-        ).returns(T.attached_class)
+        params(effective_date: Time, price_id: String, quantity: Float).returns(
+          T.attached_class
+        )
       end
       def self.new(effective_date:, price_id:, quantity:)
       end
 
       sig do
         override.returns(
-          { effective_date: Time, price_id: String, quantity: Integer }
+          { effective_date: Time, price_id: String, quantity: Float }
         )
       end
       def to_hash

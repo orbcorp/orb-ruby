@@ -226,16 +226,16 @@ module Orb
         end
 
         type fixed_fee_quantity_transition =
-          { effective_date: Time, quantity: Integer }
+          { effective_date: Time, quantity: Float }
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           attr_accessor effective_date: Time
 
-          attr_accessor quantity: Integer
+          attr_accessor quantity: Float
 
-          def initialize: (effective_date: Time, quantity: Integer) -> void
+          def initialize: (effective_date: Time, quantity: Float) -> void
 
-          def to_hash: -> { effective_date: Time, quantity: Integer }
+          def to_hash: -> { effective_date: Time, quantity: Float }
         end
 
         type price =
@@ -1951,16 +1951,16 @@ module Orb
         end
 
         type fixed_fee_quantity_transition =
-          { effective_date: Time, quantity: Integer }
+          { effective_date: Time, quantity: Float }
 
         class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
           attr_accessor effective_date: Time
 
-          attr_accessor quantity: Integer
+          attr_accessor quantity: Float
 
-          def initialize: (effective_date: Time, quantity: Integer) -> void
+          def initialize: (effective_date: Time, quantity: Float) -> void
 
-          def to_hash: -> { effective_date: Time, quantity: Integer }
+          def to_hash: -> { effective_date: Time, quantity: Float }
         end
 
         type start_date = Time | Orb::Models::billing_cycle_relative_date

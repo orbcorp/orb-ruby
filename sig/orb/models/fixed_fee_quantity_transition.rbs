@@ -1,25 +1,25 @@
 module Orb
   module Models
     type fixed_fee_quantity_transition =
-      { effective_date: Time, price_id: String, quantity: Integer }
+      { effective_date: Time, price_id: String, quantity: Float }
 
     class FixedFeeQuantityTransition < Orb::Internal::Type::BaseModel
       attr_accessor effective_date: Time
 
       attr_accessor price_id: String
 
-      attr_accessor quantity: Integer
+      attr_accessor quantity: Float
 
       def initialize: (
         effective_date: Time,
         price_id: String,
-        quantity: Integer
+        quantity: Float
       ) -> void
 
       def to_hash: -> {
         effective_date: Time,
         price_id: String,
-        quantity: Integer
+        quantity: Float
       }
     end
   end

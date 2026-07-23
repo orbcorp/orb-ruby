@@ -690,11 +690,11 @@ module Orb
           attr_accessor :effective_date
 
           # The quantity of the fixed fee quantity transition.
-          sig { returns(Integer) }
+          sig { returns(Float) }
           attr_accessor :quantity
 
           sig do
-            params(effective_date: Time, quantity: Integer).returns(
+            params(effective_date: Time, quantity: Float).returns(
               T.attached_class
             )
           end
@@ -706,7 +706,7 @@ module Orb
           )
           end
 
-          sig { override.returns({ effective_date: Time, quantity: Integer }) }
+          sig { override.returns({ effective_date: Time, quantity: Float }) }
           def to_hash
           end
         end
@@ -4912,11 +4912,11 @@ module Orb
           attr_accessor :effective_date
 
           # The quantity of the fixed fee quantity transition.
-          sig { returns(Integer) }
+          sig { returns(Float) }
           attr_accessor :quantity
 
           sig do
-            params(effective_date: Time, quantity: Integer).returns(
+            params(effective_date: Time, quantity: Float).returns(
               T.attached_class
             )
           end
@@ -4928,7 +4928,7 @@ module Orb
           )
           end
 
-          sig { override.returns({ effective_date: Time, quantity: Integer }) }
+          sig { override.returns({ effective_date: Time, quantity: Float }) }
           def to_hash
           end
         end

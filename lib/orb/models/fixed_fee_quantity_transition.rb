@@ -15,13 +15,13 @@ module Orb
 
       # @!attribute quantity
       #
-      #   @return [Integer]
-      required :quantity, Integer
+      #   @return [Float]
+      required :quantity, Float
 
       # @!method initialize(effective_date:, price_id:, quantity:)
       #   @param effective_date [Time]
       #   @param price_id [String]
-      #   @param quantity [Integer]
+      #   @param quantity [Float]
     end
   end
 end

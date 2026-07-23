@@ -334,13 +334,13 @@ module Orb
           # @!attribute quantity
           #   The quantity of the fixed fee quantity transition.
           #
-          #   @return [Integer]
-          required :quantity, Integer
+          #   @return [Float]
+          required :quantity, Float
 
           # @!method initialize(effective_date:, quantity:)
           #   @param effective_date [Time] The date that the fixed fee quantity transition should take effect.
           #
-          #   @param quantity [Integer] The quantity of the fixed fee quantity transition.
+          #   @param quantity [Float] The quantity of the fixed fee quantity transition.
         end
 
         # New floating price request body params.
@@ -2807,13 +2807,13 @@ module Orb
           # @!attribute quantity
           #   The quantity of the fixed fee quantity transition.
           #
-          #   @return [Integer]
-          required :quantity, Integer
+          #   @return [Float]
+          required :quantity, Float
 
           # @!method initialize(effective_date:, quantity:)
           #   @param effective_date [Time] The date that the fixed fee quantity transition should take effect.
           #
-          #   @param quantity [Integer] The quantity of the fixed fee quantity transition.
+          #   @param quantity [Float] The quantity of the fixed fee quantity transition.
         end
 
         # The updated start date of this price interval. If not specified, the start date
