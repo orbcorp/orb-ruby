@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.21.0](https://github.com/orbcorp/orb-ruby/compare/v1.20.0...v1.21.0) (2026-07-24)
+
+
+### Features
+
+* **api:** increase max page limit for credit ledger endpoints from 500 to 1000 ([36b7d15](https://github.com/orbcorp/orb-ruby/commit/36b7d15e5ca52c6f81b8035c8f6a117ff35f87ca))
+* **api:** support decimal quantities for fixed fee quantity transitions ([7fd286c](https://github.com/orbcorp/orb-ruby/commit/7fd286ced34bf135fbe25a420bb1fa049fd02ba6))
+
 ## [1.20.0](https://github.com/orbcorp/orb-ruby/compare/v1.19.0...v1.20.0) (2026-07-22)
 
 
