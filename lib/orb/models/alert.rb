@@ -207,6 +207,7 @@ module Orb
         CREDIT_BALANCE_RECOVERED = :credit_balance_recovered
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
+        SPEND_EXCEEDED = :spend_exceeded
         LICENSE_BALANCE_THRESHOLD_REACHED = :license_balance_threshold_reached
 
         # @!method self.values

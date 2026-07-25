@@ -22,8 +22,8 @@ module Orb
       sig { returns(Orb::AlertCreateForSubscriptionParams::Type::OrSymbol) }
       attr_accessor :type
 
-      # The case sensitive currency or custom pricing unit to use for grouped cost
-      # alerts. Required when grouping_keys is set.
+      # The case sensitive currency or custom pricing unit the alert is denominated in.
+      # Required for spend_exceeded alerts and when grouping_keys is set.
       sig { returns(T.nilable(String)) }
       attr_accessor :currency
 
@@ -36,9 +36,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :metric_id
 
-      # Filters to scope which prices are included in grouped cost alert evaluation.
-      # Supports filtering by price_id, item_id, or price_type with includes/excludes
-      # operators. Only applicable when grouping_keys is set.
+      # Filters to scope which prices are included in alert evaluation. Supports
+      # filtering by price_id, item_id, or price_type with includes/excludes operators.
+      # Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+      # grouping_keys set.
       sig do
         returns(
           T.nilable(
@@ -91,17 +92,18 @@ module Orb
         thresholds:,
         # The type of alert to create. This must be a valid alert type.
         type:,
-        # The case sensitive currency or custom pricing unit to use for grouped cost
-        # alerts. Required when grouping_keys is set.
+        # The case sensitive currency or custom pricing unit the alert is denominated in.
+        # Required for spend_exceeded alerts and when grouping_keys is set.
         currency: nil,
         # The property keys to group cost alerts by. Only applicable for cost_exceeded
         # alerts.
         grouping_keys: nil,
         # The metric to track usage for.
         metric_id: nil,
-        # Filters to scope which prices are included in grouped cost alert evaluation.
-        # Supports filtering by price_id, item_id, or price_type with includes/excludes
-        # operators. Only applicable when grouping_keys is set.
+        # Filters to scope which prices are included in alert evaluation. Supports
+        # filtering by price_id, item_id, or price_type with includes/excludes operators.
+        # Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+        # grouping_keys set.
         price_filters: nil,
         # Per-group threshold overrides. Each override maps a specific combination of
         # grouping_keys values to a list of thresholds that fully replaces the default
@@ -157,6 +159,11 @@ module Orb
         COST_EXCEEDED =
           T.let(
             :cost_exceeded,
+            Orb::AlertCreateForSubscriptionParams::Type::TaggedSymbol
+          )
+        SPEND_EXCEEDED =
+          T.let(
+            :spend_exceeded,
             Orb::AlertCreateForSubscriptionParams::Type::TaggedSymbol
           )
 

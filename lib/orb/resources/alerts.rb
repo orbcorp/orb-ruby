@@ -217,15 +217,18 @@ module Orb
       #
       # This endpoint is used to create alerts at the subscription level.
       #
-      # Subscription level alerts can be one of two types: `usage_exceeded` or
-      # `cost_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
-      # is triggered when the usage of that metric exceeds predefined thresholds during
-      # the current billing cycle. A `cost_exceeded` alert is triggered when the total
-      # amount due during the current billing cycle surpasses predefined thresholds.
-      # `cost_exceeded` alerts do not include burndown of pre-purchase credits. Each
+      # Subscription level alerts can be one of three types: `usage_exceeded`,
+      # `cost_exceeded`, or `spend_exceeded`. A `usage_exceeded` alert is scoped to a
+      # particular metric and is triggered when the usage of that metric exceeds
+      # predefined thresholds during the current billing cycle. A `cost_exceeded` alert
+      # is triggered when the total amount due during the current billing cycle
+      # surpasses predefined thresholds. `cost_exceeded` alerts do not include burndown
+      # of pre-purchase credits. A `spend_exceeded` alert is triggered when the rated
+      # spend (the pricing subtotal, before invoice-level adjustments and credits)
+      # denominated in the alert's currency exceeds predefined thresholds during the
+      # current billing cycle; `price_filters` can scope which prices contribute. Each
       # subscription can have one `cost_exceeded` alert and one `usage_exceeded` alert
-      # per metric that is a part of the subscription. Alerts are triggered based on
-      # usage or cost conditions met during the current billing cycle.
+      # per metric that is a part of the subscription.
       #
       # @overload create_for_subscription(subscription_id, thresholds:, type:, currency: nil, grouping_keys: nil, metric_id: nil, price_filters: nil, threshold_overrides: nil, request_options: {})
       #
@@ -235,13 +238,13 @@ module Orb
       #
       # @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      # @param currency [String, nil] The case sensitive currency or custom pricing unit to use for grouped cost alert
+      # @param currency [String, nil] The case sensitive currency or custom pricing unit the alert is denominated in.
       #
       # @param grouping_keys [Array<String>, nil] The property keys to group cost alerts by. Only applicable for cost_exceeded ale
       #
       # @param metric_id [String, nil] The metric to track usage for.
       #
-      # @param price_filters [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil] Filters to scope which prices are included in grouped cost alert evaluation. Sup
+      # @param price_filters [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil] Filters to scope which prices are included in alert evaluation. Supports filteri
       #
       # @param threshold_overrides [Array<Orb::Models::AlertCreateForSubscriptionParams::ThresholdOverride>, nil] Per-group threshold overrides. Each override maps a specific combination of grou
       #

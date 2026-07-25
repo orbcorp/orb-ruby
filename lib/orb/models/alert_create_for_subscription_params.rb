@@ -25,8 +25,8 @@ module Orb
       required :type, enum: -> { Orb::AlertCreateForSubscriptionParams::Type }
 
       # @!attribute currency
-      #   The case sensitive currency or custom pricing unit to use for grouped cost
-      #   alerts. Required when grouping_keys is set.
+      #   The case sensitive currency or custom pricing unit the alert is denominated in.
+      #   Required for spend_exceeded alerts and when grouping_keys is set.
       #
       #   @return [String, nil]
       optional :currency, String, nil?: true
@@ -45,9 +45,10 @@ module Orb
       optional :metric_id, String, nil?: true
 
       # @!attribute price_filters
-      #   Filters to scope which prices are included in grouped cost alert evaluation.
-      #   Supports filtering by price_id, item_id, or price_type with includes/excludes
-      #   operators. Only applicable when grouping_keys is set.
+      #   Filters to scope which prices are included in alert evaluation. Supports
+      #   filtering by price_id, item_id, or price_type with includes/excludes operators.
+      #   Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+      #   grouping_keys set.
       #
       #   @return [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil]
       optional :price_filters,
@@ -76,13 +77,13 @@ module Orb
       #
       #   @param type [Symbol, Orb::Models::AlertCreateForSubscriptionParams::Type] The type of alert to create. This must be a valid alert type.
       #
-      #   @param currency [String, nil] The case sensitive currency or custom pricing unit to use for grouped cost alert
+      #   @param currency [String, nil] The case sensitive currency or custom pricing unit the alert is denominated in.
       #
       #   @param grouping_keys [Array<String>, nil] The property keys to group cost alerts by. Only applicable for cost_exceeded ale
       #
       #   @param metric_id [String, nil] The metric to track usage for.
       #
-      #   @param price_filters [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil] Filters to scope which prices are included in grouped cost alert evaluation. Sup
+      #   @param price_filters [Array<Orb::Models::AlertCreateForSubscriptionParams::PriceFilter>, nil] Filters to scope which prices are included in alert evaluation. Supports filteri
       #
       #   @param threshold_overrides [Array<Orb::Models::AlertCreateForSubscriptionParams::ThresholdOverride>, nil] Per-group threshold overrides. Each override maps a specific combination of grou
       #
@@ -94,6 +95,7 @@ module Orb
 
         USAGE_EXCEEDED = :usage_exceeded
         COST_EXCEEDED = :cost_exceeded
+        SPEND_EXCEEDED = :spend_exceeded
 
         # @!method self.values
         #   @return [Array<Symbol>]

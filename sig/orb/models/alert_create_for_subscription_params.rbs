@@ -57,13 +57,14 @@ module Orb
         request_options: Orb::RequestOptions
       }
 
-      type type_ = :usage_exceeded | :cost_exceeded
+      type type_ = :usage_exceeded | :cost_exceeded | :spend_exceeded
 
       module Type
         extend Orb::Internal::Type::Enum
 
         USAGE_EXCEEDED: :usage_exceeded
         COST_EXCEEDED: :cost_exceeded
+        SPEND_EXCEEDED: :spend_exceeded
 
         def self?.values: -> ::Array[Orb::Models::AlertCreateForSubscriptionParams::type_]
       end

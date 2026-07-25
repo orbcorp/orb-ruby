@@ -265,6 +265,7 @@ module Orb
           T.let(:credit_balance_recovered, Orb::Alert::Type::TaggedSymbol)
         USAGE_EXCEEDED = T.let(:usage_exceeded, Orb::Alert::Type::TaggedSymbol)
         COST_EXCEEDED = T.let(:cost_exceeded, Orb::Alert::Type::TaggedSymbol)
+        SPEND_EXCEEDED = T.let(:spend_exceeded, Orb::Alert::Type::TaggedSymbol)
         LICENSE_BALANCE_THRESHOLD_REACHED =
           T.let(
             :license_balance_threshold_reached,
