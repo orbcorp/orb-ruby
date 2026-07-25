@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.22.0](https://github.com/orbcorp/orb-ruby/compare/v1.21.0...v1.22.0) (2026-07-25)
+
+
+### Features
+
+* **api:** rename "trash alert" endpoint to "delete alert" ([443fe4e](https://github.com/orbcorp/orb-ruby/commit/443fe4e7f3205805101e81963c6836ead5d5befb))
+
+
+### Bug Fixes
+
+* **api:** rename "trash alert" endpoint to "delete alert" ([443fe4e](https://github.com/orbcorp/orb-ruby/commit/443fe4e7f3205805101e81963c6836ead5d5befb))
+
 ## [1.21.0](https://github.com/orbcorp/orb-ruby/compare/v1.20.0...v1.21.0) (2026-07-24)
 
 
