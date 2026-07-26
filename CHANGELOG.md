@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/orbcorp/orb-ruby/compare/v1.22.0...v1.23.0) (2026-07-26)
+
+
+### Features
+
+* **api:** add `spend_exceeded` alert type for subscription-level alerts ([4a1374f](https://github.com/orbcorp/orb-ruby/commit/4a1374f023cc38e9d419406d91d2df5fb7a81542))
+
 ## [1.22.0](https://github.com/orbcorp/orb-ruby/compare/v1.21.0...v1.22.0) (2026-07-25)
 
 
