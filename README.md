@@ -15,7 +15,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "orb-billing", "~> 1.23.0"
+gem "orb-billing", "~> 1.24.0"
 ```
 
 <!-- x-release-please-end -->

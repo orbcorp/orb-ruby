@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.24.0](https://github.com/orbcorp/orb-ruby/compare/v1.23.0...v1.24.0) (2026-07-31)
+
+
+### Features
+
+* **api:** add endpoint to create plan-level alerts ([22a6c4c](https://github.com/orbcorp/orb-ruby/commit/22a6c4c87848a8cd2e5b7b92f75eb2610030d2a0))
+* **api:** add endpoint to create plan-level alerts and allow PUT updates for plan usage alert thresholds ([22a6c4c](https://github.com/orbcorp/orb-ruby/commit/22a6c4c87848a8cd2e5b7b92f75eb2610030d2a0))
+
 ## [1.23.0](https://github.com/orbcorp/orb-ruby/compare/v1.22.0...v1.23.0) (2026-07-26)
 
 
