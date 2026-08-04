@@ -88,7 +88,9 @@ module Orb
       optional :license_type, -> { Orb::Alert::LicenseType }, nil?: true
 
       # @!attribute price_filters
-      #   Filters scoping which prices are included in grouped cost alert evaluation.
+      #   Filters scoping which prices are included in spend and grouped cost alert
+      #   evaluation. Alerts use the price_id, item_id, and price_type fields only; the
+      #   alert's pricing unit is reported by currency.
       #
       #   @return [Array<Orb::Models::Alert::PriceFilter>, nil]
       optional :price_filters, -> { Orb::Internal::Type::ArrayOf[Orb::Alert::PriceFilter] }, nil?: true
@@ -139,7 +141,7 @@ module Orb
       #
       #   @param license_type [Orb::Models::Alert::LicenseType, nil] Minified license type for alert serialization.
       #
-      #   @param price_filters [Array<Orb::Models::Alert::PriceFilter>, nil] Filters scoping which prices are included in grouped cost alert evaluation.
+      #   @param price_filters [Array<Orb::Models::Alert::PriceFilter>, nil] Filters scoping which prices are included in spend and grouped cost alert evalua
       #
       #   @param threshold_overrides [Array<Orb::Models::Alert::ThresholdOverride>, nil] Per-group threshold overrides. Each override maps a specific combination of grou
 

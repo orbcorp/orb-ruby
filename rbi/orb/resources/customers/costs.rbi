@@ -139,6 +139,16 @@ module Orb
         # matrix dimensions. Orb will return `price_groups` with the `grouping_key` and
         # `secondary_grouping_key` based on the matrix price definition, for each
         # `grouping_value` and `secondary_grouping_value` available.
+        #
+        # ## Trials
+        #
+        # During a trial, usage prices carry a trial discount, capped at the plan's trial
+        # maximum amount (or 100% when no maximum is set), and the trial period is billed
+        # as a single invoice dated at the trial's end. In the costs response,
+        # trial-period usage appears at full list price in `subtotal`, with the trial
+        # discount reflected in `total`: `total` is \$0 as long as usage stays within the
+        # trial maximum, and usage beyond the maximum bills normally. Fixed fees are not
+        # charged during a trial.
         sig do
           params(
             customer_id: String,
@@ -284,6 +294,16 @@ module Orb
         # matrix dimensions. Orb will return `price_groups` with the `grouping_key` and
         # `secondary_grouping_key` based on the matrix price definition, for each
         # `grouping_value` and `secondary_grouping_value` available.
+        #
+        # ## Trials
+        #
+        # During a trial, usage prices carry a trial discount, capped at the plan's trial
+        # maximum amount (or 100% when no maximum is set), and the trial period is billed
+        # as a single invoice dated at the trial's end. In the costs response,
+        # trial-period usage appears at full list price in `subtotal`, with the trial
+        # discount reflected in `total`: `total` is \$0 as long as usage stays within the
+        # trial maximum, and usage beyond the maximum bills normally. Fixed fees are not
+        # charged during a trial.
         sig do
           params(
             external_customer_id: String,

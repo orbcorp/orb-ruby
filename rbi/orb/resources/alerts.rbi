@@ -18,7 +18,10 @@ module Orb
       def retrieve(alert_id, request_options: {})
       end
 
-      # This endpoint updates the thresholds of an alert.
+      # This endpoint updates the thresholds of an alert. On cost alerts it also updates
+      # `price_filters`, and on subscription-scoped grouped cost alerts
+      # `threshold_overrides`; omitting either leaves it unchanged, and an empty list
+      # clears it.
       sig do
         params(
           alert_configuration_id: String,
@@ -36,8 +39,10 @@ module Orb
         alert_configuration_id,
         # The thresholds that define the values at which the alert will be triggered.
         thresholds:,
-        # Replaces the price filters on a grouped cost alert; an empty list clears them.
-        # Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+        # Replaces the price filters on the alert; an empty list clears them. Only
+        # applicable to spend_exceeded alerts and to cost_exceeded alerts with
+        # grouping_keys set. Alerts accept the price_id, item_id, and price_type fields
+        # only. Omit to leave unchanged.
         price_filters: nil,
         # Replaces the per-group threshold overrides on a grouped cost alert; an empty
         # list clears them. Only applicable to cost alerts with grouping_keys. Omit to

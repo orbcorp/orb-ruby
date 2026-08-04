@@ -19,8 +19,10 @@ module Orb
       required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }
 
       # @!attribute price_filters
-      #   Replaces the price filters on a grouped cost alert; an empty list clears them.
-      #   Only applicable to cost alerts with grouping_keys. Omit to leave unchanged.
+      #   Replaces the price filters on the alert; an empty list clears them. Only
+      #   applicable to spend_exceeded alerts and to cost_exceeded alerts with
+      #   grouping_keys set. Alerts accept the price_id, item_id, and price_type fields
+      #   only. Omit to leave unchanged.
       #
       #   @return [Array<Orb::Models::AlertUpdateParams::PriceFilter>, nil]
       optional :price_filters,
@@ -45,7 +47,7 @@ module Orb
       #
       #   @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
-      #   @param price_filters [Array<Orb::Models::AlertUpdateParams::PriceFilter>, nil] Replaces the price filters on a grouped cost alert; an empty list clears them. O
+      #   @param price_filters [Array<Orb::Models::AlertUpdateParams::PriceFilter>, nil] Replaces the price filters on the alert; an empty list clears them. Only applica
       #
       #   @param threshold_overrides [Array<Orb::Models::AlertUpdateParams::ThresholdOverride>, nil] Replaces the per-group threshold overrides on a grouped cost alert; an empty lis
       #

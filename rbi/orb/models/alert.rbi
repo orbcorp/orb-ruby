@@ -79,7 +79,9 @@ module Orb
       end
       attr_writer :license_type
 
-      # Filters scoping which prices are included in grouped cost alert evaluation.
+      # Filters scoping which prices are included in spend and grouped cost alert
+      # evaluation. Alerts use the price_id, item_id, and price_type fields only; the
+      # alert's pricing unit is reported by currency.
       sig { returns(T.nilable(T::Array[Orb::Alert::PriceFilter])) }
       attr_accessor :price_filters
 
@@ -145,7 +147,9 @@ module Orb
         grouping_keys: nil,
         # Minified license type for alert serialization.
         license_type: nil,
-        # Filters scoping which prices are included in grouped cost alert evaluation.
+        # Filters scoping which prices are included in spend and grouped cost alert
+        # evaluation. Alerts use the price_id, item_id, and price_type fields only; the
+        # alert's pricing unit is reported by currency.
         price_filters: nil,
         # Per-group threshold overrides. Each override maps a specific combination of
         # grouping_keys values to a replacement threshold list. Only present for grouped

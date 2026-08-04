@@ -30,7 +30,10 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::AlertUpdateParams} for more details.
       #
-      # This endpoint updates the thresholds of an alert.
+      # This endpoint updates the thresholds of an alert. On cost alerts it also updates
+      # `price_filters`, and on subscription-scoped grouped cost alerts
+      # `threshold_overrides`; omitting either leaves it unchanged, and an empty list
+      # clears it.
       #
       # @overload update(alert_configuration_id, thresholds:, price_filters: nil, threshold_overrides: nil, request_options: {})
       #
@@ -38,7 +41,7 @@ module Orb
       #
       # @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
       #
-      # @param price_filters [Array<Orb::Models::AlertUpdateParams::PriceFilter>, nil] Replaces the price filters on a grouped cost alert; an empty list clears them. O
+      # @param price_filters [Array<Orb::Models::AlertUpdateParams::PriceFilter>, nil] Replaces the price filters on the alert; an empty list clears them. Only applica
       #
       # @param threshold_overrides [Array<Orb::Models::AlertUpdateParams::ThresholdOverride>, nil] Replaces the per-group threshold overrides on a grouped cost alert; an empty lis
       #

@@ -10,6 +10,13 @@ module Orb
         # Returns usage and remaining credits for a license identified by its external
         # license ID.
         #
+        # Resolves the currently active license with this external ID, i.e. the license
+        # whose active window contains the current time. An external license ID can map to
+        # multiple licenses over time, so if none is currently active (deactivated, window
+        # ended, or not yet started) this returns a 404. To fetch usage for a license
+        # regardless of active state, use the endpoint that takes Orb's internal license
+        # ID.
+        #
         # Date range defaults to the current billing period if not specified.
         #
         # @overload get_usage(external_license_id, license_type_id:, subscription_id:, cursor: nil, end_date: nil, group_by: nil, limit: nil, start_date: nil, request_options: {})
