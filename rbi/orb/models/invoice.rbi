@@ -1211,6 +1211,7 @@ module Orb
                 Orb::Price::TieredPackage::OrHash,
                 Orb::Price::TieredWithMinimum::OrHash,
                 Orb::Price::GroupedTiered::OrHash,
+                Orb::Price::GroupedTieredMatrix::OrHash,
                 Orb::Price::TieredPackageWithMinimum::OrHash,
                 Orb::Price::PackageWithAllocation::OrHash,
                 Orb::Price::UnitWithPercent::OrHash,

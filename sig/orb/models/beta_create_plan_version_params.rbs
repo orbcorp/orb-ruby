@@ -469,6 +469,7 @@ module Orb
           | Orb::NewPlanTieredPackagePrice
           | Orb::NewPlanTieredWithMinimumPrice
           | Orb::NewPlanGroupedTieredPrice
+          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix
           | Orb::NewPlanTieredPackageWithMinimumPrice
           | Orb::NewPlanPackageWithAllocationPrice
           | Orb::NewPlanUnitWithPercentPrice
@@ -677,6 +678,188 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence]
+            end
+          end
+
+          type grouped_tiered_matrix =
+            {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              item_id: String,
+              model_type: :grouped_tiered_matrix,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class GroupedTieredMatrix < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence
+
+            attr_accessor grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :grouped_tiered_matrix
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :grouped_tiered_matrix
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              item_id: String,
+              model_type: :grouped_tiered_matrix,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence]
+            end
+
+            type grouped_tiered_matrix_config =
+              {
+                default_unit_amount: String,
+                dimension: String,
+                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              }
+
+            class GroupedTieredMatrixConfig < Orb::Internal::Type::BaseModel
+              attr_accessor default_unit_amount: String
+
+              attr_accessor dimension: String
+
+              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+
+              def initialize: (
+                default_unit_amount: String,
+                dimension: String,
+                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                default_unit_amount: String,
+                dimension: String,
+                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              }
+
+              type tier =
+                {
+                  dimension_value: String,
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor dimension_value: String
+
+                attr_accessor tier_lower_bound: String
+
+                attr_accessor unit_amount: String
+
+                def initialize: (
+                  dimension_value: String,
+                  tier_lower_bound: String,
+                  unit_amount: String
+                ) -> void
+
+                def to_hash: -> {
+                  dimension_value: String,
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+              end
             end
           end
 
@@ -2520,6 +2703,7 @@ module Orb
           | Orb::NewPlanTieredPackagePrice
           | Orb::NewPlanTieredWithMinimumPrice
           | Orb::NewPlanGroupedTieredPrice
+          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix
           | Orb::NewPlanTieredPackageWithMinimumPrice
           | Orb::NewPlanPackageWithAllocationPrice
           | Orb::NewPlanUnitWithPercentPrice
@@ -2728,6 +2912,188 @@ module Orb
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence]
+            end
+          end
+
+          type grouped_tiered_matrix =
+            {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              item_id: String,
+              model_type: :grouped_tiered_matrix,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class GroupedTieredMatrix < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence
+
+            attr_accessor grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :grouped_tiered_matrix
+
+            attr_accessor name: String
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              item_id: String,
+              name: String,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :grouped_tiered_matrix
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              item_id: String,
+              model_type: :grouped_tiered_matrix,
+              name: String,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :annual
+              | :semi_annual
+              | :monthly
+              | :quarterly
+              | :one_time
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL: :annual
+              SEMI_ANNUAL: :semi_annual
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              ONE_TIME: :one_time
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence]
+            end
+
+            type grouped_tiered_matrix_config =
+              {
+                default_unit_amount: String,
+                dimension: String,
+                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              }
+
+            class GroupedTieredMatrixConfig < Orb::Internal::Type::BaseModel
+              attr_accessor default_unit_amount: String
+
+              attr_accessor dimension: String
+
+              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+
+              def initialize: (
+                default_unit_amount: String,
+                dimension: String,
+                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                default_unit_amount: String,
+                dimension: String,
+                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              }
+
+              type tier =
+                {
+                  dimension_value: String,
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+
+              class Tier < Orb::Internal::Type::BaseModel
+                attr_accessor dimension_value: String
+
+                attr_accessor tier_lower_bound: String
+
+                attr_accessor unit_amount: String
+
+                def initialize: (
+                  dimension_value: String,
+                  tier_lower_bound: String,
+                  unit_amount: String
+                ) -> void
+
+                def to_hash: -> {
+                  dimension_value: String,
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+              end
             end
           end
 

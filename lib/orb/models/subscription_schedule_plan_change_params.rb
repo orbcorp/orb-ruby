@@ -639,7 +639,7 @@ module Orb
         # @!attribute price
         #   New subscription price request body params.
         #
-        #   @return [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput, nil]
+        #   @return [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput, nil]
         optional :price, union: -> { Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price }, nil?: true
 
         # @!attribute price_id
@@ -676,7 +676,7 @@ module Orb
         #
         #   @param plan_phase_order [Integer, nil] The phase to add this price to.
         #
-        #   @param price [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput, nil] New subscription price request body params.
+        #   @param price [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput, nil] New subscription price request body params.
         #
         #   @param price_id [String, nil] The id of the price to add to the subscription.
         #
@@ -710,6 +710,9 @@ module Orb
           variant :tiered_with_minimum, -> { Orb::NewSubscriptionTieredWithMinimumPrice }
 
           variant :grouped_tiered, -> { Orb::NewSubscriptionGroupedTieredPrice }
+
+          variant :grouped_tiered_matrix,
+                  -> { Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix }
 
           variant :tiered_package_with_minimum, -> { Orb::NewSubscriptionTieredPackageWithMinimumPrice }
 
@@ -1020,6 +1023,265 @@ module Orb
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+          end
+
+          class GroupedTieredMatrix < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::Cadence]
+            required :cadence,
+                     enum: -> { Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::Cadence }
+
+            # @!attribute grouped_tiered_matrix_config
+            #   Configuration for grouped_tiered_matrix pricing
+            #
+            #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig]
+            required :grouped_tiered_matrix_config,
+                     -> { Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_tiered_matrix]
+            required :model_type, const: :grouped_tiered_matrix
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_tiered_matrix_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered_matrix)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_tiered_matrix_config [Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig] Configuration for grouped_tiered_matrix pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_tiered_matrix] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix#grouped_tiered_matrix_config
+            class GroupedTieredMatrixConfig < Orb::Internal::Type::BaseModel
+              # @!attribute default_unit_amount
+              #   Per unit rate for usage whose dimension value has no configured tiers
+              #
+              #   @return [String]
+              required :default_unit_amount, String
+
+              # @!attribute dimension
+              #   The billable metric property used to group usage before tiering
+              #
+              #   @return [String]
+              required :dimension, String
+
+              # @!attribute tiers
+              #   Graduated tiers keyed by dimension value; usage for a value is tiered only
+              #   against its own rows
+              #
+              #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(default_unit_amount:, dimension:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_tiered_matrix pricing
+              #
+              #   @param default_unit_amount [String] Per unit rate for usage whose dimension value has no configured tiers
+              #
+              #   @param dimension [String] The billable metric property used to group usage before tiering
+              #
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier>] Graduated tiers keyed by dimension value; usage for a value is tiered only again
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute dimension_value
+                #   The dimension value this tier applies to
+                #
+                #   @return [String]
+                required :dimension_value, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(dimension_value:, tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier scoped to a dimension value
+                #
+                #   @param dimension_value [String] The dimension value this tier applies to
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
             end
           end
 
@@ -3027,7 +3289,7 @@ module Orb
           end
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput)]
+          #   @return [Array(Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput)]
         end
       end
 
@@ -3388,7 +3650,7 @@ module Orb
         # @!attribute price
         #   New subscription price request body params.
         #
-        #   @return [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput, nil]
+        #   @return [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput, nil]
         optional :price,
                  union: -> {
                    Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price
@@ -3422,7 +3684,7 @@ module Orb
         #
         #   @param minimum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
         #
-        #   @param price [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput, nil] New subscription price request body params.
+        #   @param price [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput, nil] New subscription price request body params.
         #
         #   @param price_id [String, nil] The id of the price to add to the subscription.
 
@@ -3454,6 +3716,9 @@ module Orb
           variant :tiered_with_minimum, -> { Orb::NewSubscriptionTieredWithMinimumPrice }
 
           variant :grouped_tiered, -> { Orb::NewSubscriptionGroupedTieredPrice }
+
+          variant :grouped_tiered_matrix,
+                  -> { Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix }
 
           variant :tiered_package_with_minimum, -> { Orb::NewSubscriptionTieredPackageWithMinimumPrice }
 
@@ -3772,6 +4037,265 @@ module Orb
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+          end
+
+          class GroupedTieredMatrix < Orb::Internal::Type::BaseModel
+            # @!attribute cadence
+            #   The cadence to bill for this price on.
+            #
+            #   @return [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence]
+            required :cadence,
+                     enum: -> { Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence }
+
+            # @!attribute grouped_tiered_matrix_config
+            #   Configuration for grouped_tiered_matrix pricing
+            #
+            #   @return [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig]
+            required :grouped_tiered_matrix_config,
+                     -> { Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig }
+
+            # @!attribute item_id
+            #   The id of the item the price will be associated with.
+            #
+            #   @return [String]
+            required :item_id, String
+
+            # @!attribute model_type
+            #   The pricing model type
+            #
+            #   @return [Symbol, :grouped_tiered_matrix]
+            required :model_type, const: :grouped_tiered_matrix
+
+            # @!attribute name
+            #   The name of the price.
+            #
+            #   @return [String]
+            required :name, String
+
+            # @!attribute billable_metric_id
+            #   The id of the billable metric for the price. Only needed if the price is
+            #   usage-based.
+            #
+            #   @return [String, nil]
+            optional :billable_metric_id, String, nil?: true
+
+            # @!attribute billed_in_advance
+            #   If the Price represents a fixed cost, the price will be billed in-advance if
+            #   this is true, and in-arrears if this is false.
+            #
+            #   @return [Boolean, nil]
+            optional :billed_in_advance, Orb::Internal::Type::Boolean, nil?: true
+
+            # @!attribute billing_cycle_configuration
+            #   For custom cadence: specifies the duration of the billing period in days or
+            #   months.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :billing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute conversion_rate
+            #   The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @return [Float, nil]
+            optional :conversion_rate, Float, nil?: true
+
+            # @!attribute conversion_rate_config
+            #   The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @return [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil]
+            optional :conversion_rate_config, union: -> { Orb::ConversionRateConfig }, nil?: true
+
+            # @!attribute currency
+            #   An ISO 4217 currency string, or custom pricing unit identifier, in which this
+            #   price is billed.
+            #
+            #   @return [String, nil]
+            optional :currency, String, nil?: true
+
+            # @!attribute dimensional_price_configuration
+            #   For dimensional price: specifies a price group and dimension values
+            #
+            #   @return [Orb::Models::NewDimensionalPriceConfiguration, nil]
+            optional :dimensional_price_configuration,
+                     -> {
+                       Orb::NewDimensionalPriceConfiguration
+                     },
+                     nil?: true
+
+            # @!attribute external_price_id
+            #   An alias for the price.
+            #
+            #   @return [String, nil]
+            optional :external_price_id, String, nil?: true
+
+            # @!attribute fixed_price_quantity
+            #   If the Price represents a fixed cost, this represents the quantity of units
+            #   applied.
+            #
+            #   @return [Float, nil]
+            optional :fixed_price_quantity, Float, nil?: true
+
+            # @!attribute invoice_grouping_key
+            #   The property used to group this price on an invoice
+            #
+            #   @return [String, nil]
+            optional :invoice_grouping_key, String, nil?: true
+
+            # @!attribute invoicing_cycle_configuration
+            #   Within each billing cycle, specifies the cadence at which invoices are produced.
+            #   If unspecified, a single invoice is produced per billing cycle.
+            #
+            #   @return [Orb::Models::NewBillingCycleConfiguration, nil]
+            optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
+
+            # @!attribute license_type_id
+            #   The ID of the license type to associate with this price.
+            #
+            #   @return [String, nil]
+            optional :license_type_id, String, nil?: true
+
+            # @!attribute metadata
+            #   User-specified key/value pairs for the resource. Individual keys can be removed
+            #   by setting the value to `null`, and the entire metadata mapping can be cleared
+            #   by setting `metadata` to `null`.
+            #
+            #   @return [Hash{Symbol=>String, nil}, nil]
+            optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
+
+            # @!attribute reference_id
+            #   A transient ID that can be used to reference this price when adding adjustments
+            #   in the same API call.
+            #
+            #   @return [String, nil]
+            optional :reference_id, String, nil?: true
+
+            # @!method initialize(cadence:, grouped_tiered_matrix_config:, item_id:, name:, billable_metric_id: nil, billed_in_advance: nil, billing_cycle_configuration: nil, conversion_rate: nil, conversion_rate_config: nil, currency: nil, dimensional_price_configuration: nil, external_price_id: nil, fixed_price_quantity: nil, invoice_grouping_key: nil, invoicing_cycle_configuration: nil, license_type_id: nil, metadata: nil, reference_id: nil, model_type: :grouped_tiered_matrix)
+            #   Some parameter documentations has been truncated, see
+            #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix}
+            #   for more details.
+            #
+            #   @param cadence [Symbol, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence] The cadence to bill for this price on.
+            #
+            #   @param grouped_tiered_matrix_config [Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig] Configuration for grouped_tiered_matrix pricing
+            #
+            #   @param item_id [String] The id of the item the price will be associated with.
+            #
+            #   @param name [String] The name of the price.
+            #
+            #   @param billable_metric_id [String, nil] The id of the billable metric for the price. Only needed if the price is usage-b
+            #
+            #   @param billed_in_advance [Boolean, nil] If the Price represents a fixed cost, the price will be billed in-advance if thi
+            #
+            #   @param billing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] For custom cadence: specifies the duration of the billing period in days or mont
+            #
+            #   @param conversion_rate [Float, nil] The per unit conversion rate of the price currency to the invoicing currency.
+            #
+            #   @param conversion_rate_config [Orb::Models::UnitConversionRateConfig, Orb::Models::TieredConversionRateConfig, nil] The configuration for the rate of the price currency to the invoicing currency.
+            #
+            #   @param currency [String, nil] An ISO 4217 currency string, or custom pricing unit identifier, in which this pr
+            #
+            #   @param dimensional_price_configuration [Orb::Models::NewDimensionalPriceConfiguration, nil] For dimensional price: specifies a price group and dimension values
+            #
+            #   @param external_price_id [String, nil] An alias for the price.
+            #
+            #   @param fixed_price_quantity [Float, nil] If the Price represents a fixed cost, this represents the quantity of units appl
+            #
+            #   @param invoice_grouping_key [String, nil] The property used to group this price on an invoice
+            #
+            #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
+            #
+            #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+            #
+            #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+            #
+            #   @param reference_id [String, nil] A transient ID that can be used to reference this price when adding adjustments
+            #
+            #   @param model_type [Symbol, :grouped_tiered_matrix] The pricing model type
+
+            # The cadence to bill for this price on.
+            #
+            # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix#cadence
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ANNUAL = :annual
+              SEMI_ANNUAL = :semi_annual
+              MONTHLY = :monthly
+              QUARTERLY = :quarterly
+              ONE_TIME = :one_time
+              CUSTOM = :custom
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix#grouped_tiered_matrix_config
+            class GroupedTieredMatrixConfig < Orb::Internal::Type::BaseModel
+              # @!attribute default_unit_amount
+              #   Per unit rate for usage whose dimension value has no configured tiers
+              #
+              #   @return [String]
+              required :default_unit_amount, String
+
+              # @!attribute dimension
+              #   The billable metric property used to group usage before tiering
+              #
+              #   @return [String]
+              required :dimension, String
+
+              # @!attribute tiers
+              #   Graduated tiers keyed by dimension value; usage for a value is tiered only
+              #   against its own rows
+              #
+              #   @return [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier>]
+              required :tiers,
+                       -> do
+                         Orb::Internal::Type::ArrayOf[
+                           Orb::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
+                         ]
+                       end
+
+              # @!method initialize(default_unit_amount:, dimension:, tiers:)
+              #   Some parameter documentations has been truncated, see
+              #   {Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig}
+              #   for more details.
+              #
+              #   Configuration for grouped_tiered_matrix pricing
+              #
+              #   @param default_unit_amount [String] Per unit rate for usage whose dimension value has no configured tiers
+              #
+              #   @param dimension [String] The billable metric property used to group usage before tiering
+              #
+              #   @param tiers [Array<Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier>] Graduated tiers keyed by dimension value; usage for a value is tiered only again
+
+              class Tier < Orb::Internal::Type::BaseModel
+                # @!attribute dimension_value
+                #   The dimension value this tier applies to
+                #
+                #   @return [String]
+                required :dimension_value, String
+
+                # @!attribute tier_lower_bound
+                #
+                #   @return [String]
+                required :tier_lower_bound, String
+
+                # @!attribute unit_amount
+                #   Per unit amount
+                #
+                #   @return [String]
+                required :unit_amount, String
+
+                # @!method initialize(dimension_value:, tier_lower_bound:, unit_amount:)
+                #   Configuration for a single tier scoped to a dimension value
+                #
+                #   @param dimension_value [String] The dimension value this tier applies to
+                #
+                #   @param tier_lower_bound [String]
+                #
+                #   @param unit_amount [String] Per unit amount
+              end
             end
           end
 
@@ -5779,7 +6303,7 @@ module Orb
           end
 
           # @!method self.variants
-          #   @return [Array(Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput)]
+          #   @return [Array(Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput)]
         end
       end
     end

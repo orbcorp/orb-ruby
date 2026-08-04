@@ -50,6 +50,7 @@ module Orb
               Orb::NewFloatingTieredPackagePrice::OrHash,
               Orb::NewFloatingTieredWithMinimumPrice::OrHash,
               Orb::NewFloatingGroupedTieredPrice::OrHash,
+              Orb::PriceCreateParams::Body::GroupedTieredMatrix::OrHash,
               Orb::NewFloatingTieredPackageWithMinimumPrice::OrHash,
               Orb::NewFloatingPackageWithAllocationPrice::OrHash,
               Orb::NewFloatingUnitWithPercentPrice::OrHash,
