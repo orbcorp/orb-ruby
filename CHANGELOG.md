@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://github.com/orbcorp/orb-ruby/compare/v1.24.0...v1.25.0) (2026-08-05)
+
+
+### Features
+
+* **api:** add `grouped_tiered_matrix` price model for per-dimension tiered rates ([72ccb80](https://github.com/orbcorp/orb-ruby/commit/72ccb80978cf5fca44010acb27da94f8329f42f3))
+
 ## [1.24.0](https://github.com/orbcorp/orb-ruby/compare/v1.23.0...v1.24.0) (2026-07-31)
 
 
