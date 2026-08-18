@@ -112,7 +112,11 @@ module Orb
       end
       attr_writer :invoicing_cycle_configuration
 
-      # The ID of the license type to associate with this price.
+      # The ID of the license type to associate with this price. On a usage price this
+      # also marks the price as eligible to draw down from that license type's
+      # allocation; a usage price created without it is billed normally. Usage prices
+      # with a license type must use the `unit` model, and only draw down when their
+      # currency matches the allocation's.
       sig { returns(T.nilable(String)) }
       attr_accessor :license_type_id
 
@@ -198,7 +202,11 @@ module Orb
         # Within each billing cycle, specifies the cadence at which invoices are produced.
         # If unspecified, a single invoice is produced per billing cycle.
         invoicing_cycle_configuration: nil,
-        # The ID of the license type to associate with this price.
+        # The ID of the license type to associate with this price. On a usage price this
+        # also marks the price as eligible to draw down from that license type's
+        # allocation; a usage price created without it is billed normally. Usage prices
+        # with a license type must use the `unit` model, and only draw down when their
+        # currency matches the allocation's.
         license_type_id: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared

@@ -106,7 +106,11 @@ module Orb
       optional :invoicing_cycle_configuration, -> { Orb::NewBillingCycleConfiguration }, nil?: true
 
       # @!attribute license_type_id
-      #   The ID of the license type to associate with this price.
+      #   The ID of the license type to associate with this price. On a usage price this
+      #   also marks the price as eligible to draw down from that license type's
+      #   allocation; a usage price created without it is billed normally. Usage prices
+      #   with a license type must use the `unit` model, and only draw down when their
+      #   currency matches the allocation's.
       #
       #   @return [String, nil]
       optional :license_type_id, String, nil?: true
@@ -155,7 +159,7 @@ module Orb
       #
       #   @param invoicing_cycle_configuration [Orb::Models::NewBillingCycleConfiguration, nil] Within each billing cycle, specifies the cadence at which invoices are produced.
       #
-      #   @param license_type_id [String, nil] The ID of the license type to associate with this price.
+      #   @param license_type_id [String, nil] The ID of the license type to associate with this price. On a usage price this a
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
 
