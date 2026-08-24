@@ -5,7 +5,8 @@ module Orb
         allocation: String,
         default_unit_amount: String,
         dimensions: ::Array[String?],
-        matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue]
+        matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue],
+        scaling_factor: String?
       }
 
     class MatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
@@ -17,36 +18,48 @@ module Orb
 
       attr_accessor matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue]
 
+      attr_accessor scaling_factor: String?
+
       def initialize: (
         allocation: String,
         default_unit_amount: String,
         dimensions: ::Array[String?],
-        matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue]
+        matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue],
+        ?scaling_factor: String?
       ) -> void
 
       def to_hash: -> {
         allocation: String,
         default_unit_amount: String,
         dimensions: ::Array[String?],
-        matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue]
+        matrix_values: ::Array[Orb::MatrixWithAllocationConfig::MatrixValue],
+        scaling_factor: String?
       }
 
       type matrix_value =
-        { dimension_values: ::Array[String?], unit_amount: String }
+        {
+          dimension_values: ::Array[String?],
+          unit_amount: String,
+          scaling_factor: String?
+        }
 
       class MatrixValue < Orb::Internal::Type::BaseModel
         attr_accessor dimension_values: ::Array[String?]
 
         attr_accessor unit_amount: String
 
+        attr_accessor scaling_factor: String?
+
         def initialize: (
           dimension_values: ::Array[String?],
-          unit_amount: String
+          unit_amount: String,
+          ?scaling_factor: String?
         ) -> void
 
         def to_hash: -> {
           dimension_values: ::Array[String?],
-          unit_amount: String
+          unit_amount: String,
+          scaling_factor: String?
         }
       end
     end

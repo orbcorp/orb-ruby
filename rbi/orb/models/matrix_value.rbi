@@ -13,24 +13,35 @@ module Orb
       sig { returns(String) }
       attr_accessor :unit_amount
 
+      # Optional multiplier applied to rated quantity before unit_amount.
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :scaling_factor
+
       # Configuration for a single matrix value
       sig do
         params(
           dimension_values: T::Array[T.nilable(String)],
-          unit_amount: String
+          unit_amount: String,
+          scaling_factor: T.nilable(Float)
         ).returns(T.attached_class)
       end
       def self.new(
         # One or two matrix keys to filter usage to this Matrix value by
         dimension_values:,
         # Unit price for the specified dimension_values
-        unit_amount:
+        unit_amount:,
+        # Optional multiplier applied to rated quantity before unit_amount.
+        scaling_factor: nil
       )
       end
 
       sig do
         override.returns(
-          { dimension_values: T::Array[T.nilable(String)], unit_amount: String }
+          {
+            dimension_values: T::Array[T.nilable(String)],
+            unit_amount: String,
+            scaling_factor: T.nilable(Float)
+          }
         )
       end
       def to_hash

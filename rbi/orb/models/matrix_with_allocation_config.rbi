@@ -24,6 +24,11 @@ module Orb
       sig { returns(T::Array[Orb::MatrixWithAllocationConfig::MatrixValue]) }
       attr_accessor :matrix_values
 
+      # Optional multiplier applied to default-bucket quantity before
+      # default_unit_amount.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :scaling_factor
+
       # Configuration for matrix pricing with usage allocation
       sig do
         params(
@@ -31,7 +36,8 @@ module Orb
           default_unit_amount: String,
           dimensions: T::Array[T.nilable(String)],
           matrix_values:
-            T::Array[Orb::MatrixWithAllocationConfig::MatrixValue::OrHash]
+            T::Array[Orb::MatrixWithAllocationConfig::MatrixValue::OrHash],
+          scaling_factor: T.nilable(String)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -42,7 +48,10 @@ module Orb
         # One or two event property values to evaluate matrix groups by
         dimensions:,
         # Matrix values configuration
-        matrix_values:
+        matrix_values:,
+        # Optional multiplier applied to default-bucket quantity before
+        # default_unit_amount.
+        scaling_factor: nil
       )
       end
 
@@ -53,7 +62,8 @@ module Orb
             default_unit_amount: String,
             dimensions: T::Array[T.nilable(String)],
             matrix_values:
-              T::Array[Orb::MatrixWithAllocationConfig::MatrixValue]
+              T::Array[Orb::MatrixWithAllocationConfig::MatrixValue],
+            scaling_factor: T.nilable(String)
           }
         )
       end
@@ -79,11 +89,16 @@ module Orb
         sig { returns(String) }
         attr_accessor :unit_amount
 
+        # Optional multiplier applied to rated quantity before unit_amount.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :scaling_factor
+
         # Configuration for a single matrix value
         sig do
           params(
             dimension_values: T::Array[T.nilable(String)],
-            unit_amount: String
+            unit_amount: String,
+            scaling_factor: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -92,7 +107,9 @@ module Orb
           # instance tier.
           dimension_values:,
           # Unit price for the specified dimension_values
-          unit_amount:
+          unit_amount:,
+          # Optional multiplier applied to rated quantity before unit_amount.
+          scaling_factor: nil
         )
         end
 
@@ -100,7 +117,8 @@ module Orb
           override.returns(
             {
               dimension_values: T::Array[T.nilable(String)],
-              unit_amount: String
+              unit_amount: String,
+              scaling_factor: T.nilable(String)
             }
           )
         end

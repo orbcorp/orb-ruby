@@ -1,6 +1,7 @@
 module Orb
   module Models
-    type unit_config = { unit_amount: String, prorated: bool }
+    type unit_config =
+      { unit_amount: String, prorated: bool, scaling_factor: Float? }
 
     class UnitConfig < Orb::Internal::Type::BaseModel
       attr_accessor unit_amount: String
@@ -9,9 +10,19 @@ module Orb
 
       def prorated=: (bool) -> bool
 
-      def initialize: (unit_amount: String, ?prorated: bool) -> void
+      attr_accessor scaling_factor: Float?
 
-      def to_hash: -> { unit_amount: String, prorated: bool }
+      def initialize: (
+        unit_amount: String,
+        ?prorated: bool,
+        ?scaling_factor: Float?
+      ) -> void
+
+      def to_hash: -> {
+        unit_amount: String,
+        prorated: bool,
+        scaling_factor: Float?
+      }
     end
   end
 end

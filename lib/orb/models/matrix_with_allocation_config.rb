@@ -27,7 +27,19 @@ module Orb
       #   @return [Array<Orb::Models::MatrixWithAllocationConfig::MatrixValue>]
       required :matrix_values, -> { Orb::Internal::Type::ArrayOf[Orb::MatrixWithAllocationConfig::MatrixValue] }
 
-      # @!method initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:)
+      # @!attribute scaling_factor
+      #   @deprecated
+      #
+      #   Optional multiplier applied to default-bucket quantity before
+      #   default_unit_amount.
+      #
+      #   @return [String, nil]
+      optional :scaling_factor, String, nil?: true
+
+      # @!method initialize(allocation:, default_unit_amount:, dimensions:, matrix_values:, scaling_factor: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::MatrixWithAllocationConfig} for more details.
+      #
       #   Configuration for matrix pricing with usage allocation
       #
       #   @param allocation [String] Usage allocation
@@ -37,6 +49,8 @@ module Orb
       #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
       #
       #   @param matrix_values [Array<Orb::Models::MatrixWithAllocationConfig::MatrixValue>] Matrix values configuration
+      #
+      #   @param scaling_factor [String, nil] Optional multiplier applied to default-bucket quantity before default_unit_amoun
 
       class MatrixValue < Orb::Internal::Type::BaseModel
         # @!attribute dimension_values
@@ -53,7 +67,15 @@ module Orb
         #   @return [String]
         required :unit_amount, String
 
-        # @!method initialize(dimension_values:, unit_amount:)
+        # @!attribute scaling_factor
+        #   @deprecated
+        #
+        #   Optional multiplier applied to rated quantity before unit_amount.
+        #
+        #   @return [String, nil]
+        optional :scaling_factor, String, nil?: true
+
+        # @!method initialize(dimension_values:, unit_amount:, scaling_factor: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::MatrixWithAllocationConfig::MatrixValue} for more details.
         #
@@ -62,6 +84,8 @@ module Orb
         #   @param dimension_values [Array<String, nil>] One or two matrix keys to filter usage to this Matrix value by. For example, ["r
         #
         #   @param unit_amount [String] Unit price for the specified dimension_values
+        #
+        #   @param scaling_factor [String, nil] Optional multiplier applied to rated quantity before unit_amount.
       end
     end
   end

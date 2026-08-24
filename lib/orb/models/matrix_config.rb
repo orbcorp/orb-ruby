@@ -21,7 +21,19 @@ module Orb
       #   @return [Array<Orb::Models::MatrixValue>]
       required :matrix_values, -> { Orb::Internal::Type::ArrayOf[Orb::MatrixValue] }
 
-      # @!method initialize(default_unit_amount:, dimensions:, matrix_values:)
+      # @!attribute scaling_factor
+      #   @deprecated
+      #
+      #   Optional multiplier applied to default-bucket quantity before
+      #   default_unit_amount.
+      #
+      #   @return [Float, nil]
+      optional :scaling_factor, Float, nil?: true
+
+      # @!method initialize(default_unit_amount:, dimensions:, matrix_values:, scaling_factor: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::MatrixConfig} for more details.
+      #
       #   Configuration for matrix pricing
       #
       #   @param default_unit_amount [String] Default per unit rate for any usage not bucketed into a specified matrix_value
@@ -29,6 +41,8 @@ module Orb
       #   @param dimensions [Array<String, nil>] One or two event property values to evaluate matrix groups by
       #
       #   @param matrix_values [Array<Orb::Models::MatrixValue>] Matrix values configuration
+      #
+      #   @param scaling_factor [Float, nil] Optional multiplier applied to default-bucket quantity before default_unit_amoun
     end
   end
 end

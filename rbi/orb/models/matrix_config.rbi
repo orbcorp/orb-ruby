@@ -17,12 +17,18 @@ module Orb
       sig { returns(T::Array[Orb::MatrixValue]) }
       attr_accessor :matrix_values
 
+      # Optional multiplier applied to default-bucket quantity before
+      # default_unit_amount.
+      sig { returns(T.nilable(Float)) }
+      attr_accessor :scaling_factor
+
       # Configuration for matrix pricing
       sig do
         params(
           default_unit_amount: String,
           dimensions: T::Array[T.nilable(String)],
-          matrix_values: T::Array[Orb::MatrixValue::OrHash]
+          matrix_values: T::Array[Orb::MatrixValue::OrHash],
+          scaling_factor: T.nilable(Float)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -31,7 +37,10 @@ module Orb
         # One or two event property values to evaluate matrix groups by
         dimensions:,
         # Matrix values configuration
-        matrix_values:
+        matrix_values:,
+        # Optional multiplier applied to default-bucket quantity before
+        # default_unit_amount.
+        scaling_factor: nil
       )
       end
 
@@ -40,7 +49,8 @@ module Orb
           {
             default_unit_amount: String,
             dimensions: T::Array[T.nilable(String)],
-            matrix_values: T::Array[Orb::MatrixValue]
+            matrix_values: T::Array[Orb::MatrixValue],
+            scaling_factor: T.nilable(Float)
           }
         )
       end
