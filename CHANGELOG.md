@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.28.0](https://github.com/orbcorp/orb-ruby/compare/v1.27.0...v1.28.0) (2026-08-25)
+
+
+### Features
+
+* **api:** restore deprecated `scaling_factor` field on unit and matrix price configs ([31e58e0](https://github.com/orbcorp/orb-ruby/commit/31e58e08017b5b80f8cce123106b585d5f7d7f2d))
+
+
+### Bug Fixes
+
+* **api:** reject empty or missing dimension values in dimensional price configuration ([31e58e0](https://github.com/orbcorp/orb-ruby/commit/31e58e08017b5b80f8cce123106b585d5f7d7f2d))
+
 ## [1.27.0](https://github.com/orbcorp/orb-ruby/compare/v1.26.0...v1.27.0) (2026-08-19)
 
 
