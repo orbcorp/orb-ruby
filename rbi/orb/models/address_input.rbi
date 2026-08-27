@@ -5,11 +5,11 @@ module Orb
     class AddressInput < Orb::Internal::Type::BaseModel
       OrHash = T.type_alias { T.any(Orb::AddressInput, Orb::Internal::AnyHash) }
 
-      sig { returns(T.nilable(String)) }
-      attr_accessor :city
+      sig { returns(String) }
+      attr_accessor :country
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :country
+      attr_accessor :city
 
       sig { returns(T.nilable(String)) }
       attr_accessor :line1
@@ -25,8 +25,8 @@ module Orb
 
       sig do
         params(
+          country: String,
           city: T.nilable(String),
-          country: T.nilable(String),
           line1: T.nilable(String),
           line2: T.nilable(String),
           postal_code: T.nilable(String),
@@ -34,8 +34,8 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        country:,
         city: nil,
-        country: nil,
         line1: nil,
         line2: nil,
         postal_code: nil,
@@ -46,8 +46,8 @@ module Orb
       sig do
         override.returns(
           {
+            country: String,
             city: T.nilable(String),
-            country: T.nilable(String),
             line1: T.nilable(String),
             line2: T.nilable(String),
             postal_code: T.nilable(String),
