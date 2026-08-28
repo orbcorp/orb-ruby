@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.28.1](https://github.com/orbcorp/orb-ruby/compare/v1.28.0...v1.28.1) (2026-08-28)
+
+
+### Bug Fixes
+
+* **api:** require non-empty `country` in customer address input ([39ecbcc](https://github.com/orbcorp/orb-ruby/commit/39ecbcc5d8ca7f60e4aeced6c4cc744c7c4892aa))
+
 ## [1.28.0](https://github.com/orbcorp/orb-ruby/compare/v1.27.0...v1.28.0) (2026-08-25)
 
 
