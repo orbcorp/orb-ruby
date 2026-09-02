@@ -308,8 +308,8 @@ module Orb
 
       class ThresholdOverride < Orb::Internal::Type::BaseModel
         # @!attribute group_values
-        #   The values of the grouping keys that identify this group. The list length
-        #   matches the alert's grouping_keys.
+        #   The values identifying this group, ordered to match group_keys when set and the
+        #   alert's grouping_keys otherwise.
         #
         #   @return [Array<String>]
         required :group_values, Orb::Internal::Type::ArrayOf[String]
@@ -320,7 +320,14 @@ module Orb
         #   @return [Array<Orb::Models::Threshold>]
         required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }
 
-        # @!method initialize(group_values:, thresholds:)
+        # @!attribute group_keys
+        #   The subset of the alert's grouping_keys this override binds. Null when the
+        #   override targets one exact group across every grouping key.
+        #
+        #   @return [Array<String>, nil]
+        optional :group_keys, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+        # @!method initialize(group_values:, thresholds:, group_keys: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Alert::ThresholdOverride} for more details.
         #
@@ -329,9 +336,11 @@ module Orb
         #   An empty `thresholds` list means the group is silenced (never fires). A
         #   non-empty list fully replaces the default thresholds for that group.
         #
-        #   @param group_values [Array<String>] The values of the grouping keys that identify this group. The list length matche
+        #   @param group_values [Array<String>] The values identifying this group, ordered to match group_keys when set and the
         #
         #   @param thresholds [Array<Orb::Models::Threshold>] The thresholds applied to this group. An empty list means the group is silenced.
+        #
+        #   @param group_keys [Array<String>, nil] The subset of the alert's grouping_keys this override binds. Null when the overr
       end
     end
   end

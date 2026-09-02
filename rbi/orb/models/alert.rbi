@@ -442,14 +442,19 @@ module Orb
             T.any(Orb::Alert::ThresholdOverride, Orb::Internal::AnyHash)
           end
 
-        # The values of the grouping keys that identify this group. The list length
-        # matches the alert's grouping_keys.
+        # The values identifying this group, ordered to match group_keys when set and the
+        # alert's grouping_keys otherwise.
         sig { returns(T::Array[String]) }
         attr_accessor :group_values
 
         # The thresholds applied to this group. An empty list means the group is silenced.
         sig { returns(T::Array[Orb::Threshold]) }
         attr_accessor :thresholds
+
+        # The subset of the alert's grouping_keys this override binds. Null when the
+        # override targets one exact group across every grouping key.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_accessor :group_keys
 
         # A per-group threshold override on a grouped cost alert.
         #
@@ -458,15 +463,19 @@ module Orb
         sig do
           params(
             group_values: T::Array[String],
-            thresholds: T::Array[Orb::Threshold::OrHash]
+            thresholds: T::Array[Orb::Threshold::OrHash],
+            group_keys: T.nilable(T::Array[String])
           ).returns(T.attached_class)
         end
         def self.new(
-          # The values of the grouping keys that identify this group. The list length
-          # matches the alert's grouping_keys.
+          # The values identifying this group, ordered to match group_keys when set and the
+          # alert's grouping_keys otherwise.
           group_values:,
           # The thresholds applied to this group. An empty list means the group is silenced.
-          thresholds:
+          thresholds:,
+          # The subset of the alert's grouping_keys this override binds. Null when the
+          # override targets one exact group across every grouping key.
+          group_keys: nil
         )
         end
 
@@ -474,7 +483,8 @@ module Orb
           override.returns(
             {
               group_values: T::Array[String],
-              thresholds: T::Array[Orb::Threshold]
+              thresholds: T::Array[Orb::Threshold],
+              group_keys: T.nilable(T::Array[String])
             }
           )
         end

@@ -334,8 +334,8 @@ module Orb
           end
 
         # The values of the grouping keys that identify this group. The list length must
-        # match the alert's grouping_keys, and values appear in the same order as
-        # grouping_keys.
+        # match group_keys when it is set, and the alert's grouping_keys otherwise, with
+        # values in the same order as whichever applies.
         sig { returns(T::Array[String]) }
         attr_accessor :group_values
 
@@ -344,6 +344,13 @@ module Orb
         sig { returns(T::Array[Orb::Threshold]) }
         attr_accessor :thresholds
 
+        # The subset of the alert's grouping_keys that this override binds. Any grouping
+        # key not named is unconstrained, so the override applies to every group matching
+        # the named values. When omitted, group_values must cover every grouping key in
+        # order.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_accessor :group_keys
+
         # Per-group threshold override on a grouped cost alert.
         #
         # - An empty `thresholds` list silences alerts for this group (never fires).
@@ -351,17 +358,23 @@ module Orb
         sig do
           params(
             group_values: T::Array[String],
-            thresholds: T::Array[Orb::Threshold::OrHash]
+            thresholds: T::Array[Orb::Threshold::OrHash],
+            group_keys: T.nilable(T::Array[String])
           ).returns(T.attached_class)
         end
         def self.new(
           # The values of the grouping keys that identify this group. The list length must
-          # match the alert's grouping_keys, and values appear in the same order as
-          # grouping_keys.
+          # match group_keys when it is set, and the alert's grouping_keys otherwise, with
+          # values in the same order as whichever applies.
           group_values:,
           # The thresholds to apply to this group. An empty list silences alerts for this
           # group. A non-empty list fully replaces the default thresholds for this group.
-          thresholds:
+          thresholds:,
+          # The subset of the alert's grouping_keys that this override binds. Any grouping
+          # key not named is unconstrained, so the override applies to every group matching
+          # the named values. When omitted, group_values must cover every grouping key in
+          # order.
+          group_keys: nil
         )
         end
 
@@ -369,7 +382,8 @@ module Orb
           override.returns(
             {
               group_values: T::Array[String],
-              thresholds: T::Array[Orb::Threshold]
+              thresholds: T::Array[Orb::Threshold],
+              group_keys: T.nilable(T::Array[String])
             }
           )
         end

@@ -112,8 +112,8 @@ module Orb
       class ThresholdOverride < Orb::Internal::Type::BaseModel
         # @!attribute group_values
         #   The values of the grouping keys that identify this group. The list length must
-        #   match the alert's grouping_keys, and values appear in the same order as
-        #   grouping_keys.
+        #   match group_keys when it is set, and the alert's grouping_keys otherwise, with
+        #   values in the same order as whichever applies.
         #
         #   @return [Array<String>]
         required :group_values, Orb::Internal::Type::ArrayOf[String]
@@ -125,7 +125,16 @@ module Orb
         #   @return [Array<Orb::Models::Threshold>]
         required :thresholds, -> { Orb::Internal::Type::ArrayOf[Orb::Threshold] }
 
-        # @!method initialize(group_values:, thresholds:)
+        # @!attribute group_keys
+        #   The subset of the alert's grouping_keys that this override binds. Any grouping
+        #   key not named is unconstrained, so the override applies to every group matching
+        #   the named values. When omitted, group_values must cover every grouping key in
+        #   order.
+        #
+        #   @return [Array<String>, nil]
+        optional :group_keys, Orb::Internal::Type::ArrayOf[String], nil?: true
+
+        # @!method initialize(group_values:, thresholds:, group_keys: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::AlertUpdateParams::ThresholdOverride} for more details.
         #
@@ -137,6 +146,8 @@ module Orb
         #   @param group_values [Array<String>] The values of the grouping keys that identify this group. The list length must m
         #
         #   @param thresholds [Array<Orb::Models::Threshold>] The thresholds to apply to this group. An empty list silences alerts for this gr
+        #
+        #   @param group_keys [Array<String>, nil] The subset of the alert's grouping_keys that this override binds. Any grouping k
       end
     end
   end

@@ -123,21 +123,29 @@ module Orb
       end
 
       type threshold_override =
-        { group_values: ::Array[String], thresholds: ::Array[Orb::Threshold] }
+        {
+          group_values: ::Array[String],
+          thresholds: ::Array[Orb::Threshold],
+          group_keys: ::Array[String]?
+        }
 
       class ThresholdOverride < Orb::Internal::Type::BaseModel
         attr_accessor group_values: ::Array[String]
 
         attr_accessor thresholds: ::Array[Orb::Threshold]
 
+        attr_accessor group_keys: ::Array[String]?
+
         def initialize: (
           group_values: ::Array[String],
-          thresholds: ::Array[Orb::Threshold]
+          thresholds: ::Array[Orb::Threshold],
+          ?group_keys: ::Array[String]?
         ) -> void
 
         def to_hash: -> {
           group_values: ::Array[String],
-          thresholds: ::Array[Orb::Threshold]
+          thresholds: ::Array[Orb::Threshold],
+          group_keys: ::Array[String]?
         }
       end
     end
