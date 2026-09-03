@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.29.0](https://github.com/orbcorp/orb-ruby/compare/v1.28.1...v1.29.0) (2026-09-03)
+
+
+### Features
+
+* **api:** support partial grouping key targeting in alert threshold overrides ([df6a1c5](https://github.com/orbcorp/orb-ruby/commit/df6a1c56eb5008b4659900048b555e6fff7dcd30))
+
 ## [1.28.1](https://github.com/orbcorp/orb-ruby/compare/v1.28.0...v1.28.1) (2026-08-28)
 
 
