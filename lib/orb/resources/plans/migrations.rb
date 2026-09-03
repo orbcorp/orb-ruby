@@ -8,7 +8,9 @@ module Orb
       # subscription. You can see more about how to configure prices in the
       # [Price resource](/reference/price).
       class Migrations
-        # Fetch migration
+        # This endpoint returns a migration for a plan, identified by its ID. A migration
+        # moves a plan's subscriptions onto a new version of that plan; the response
+        # reports the effective time it is scheduled for and its current status.
         #
         # @overload retrieve(migration_id, plan_id:, request_options: {})
         #

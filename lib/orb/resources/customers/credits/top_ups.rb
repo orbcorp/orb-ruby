@@ -57,7 +57,13 @@ module Orb
           # Some parameter documentations has been truncated, see
           # {Orb::Models::Customers::Credits::TopUpListParams} for more details.
           #
-          # List top-ups
+          # This endpoint returns a list of a customer's active top-ups; a top-up that has
+          # been deactivated is not included. While a top-up is active, the customer's
+          # balance is increased by the top-up amount whenever it falls to the top-up's
+          # threshold.
+          #
+          # The response also includes pagination_metadata, which lets the caller retrieve
+          # the next page of results if they exist.
           #
           # @overload list(customer_id, cursor: nil, limit: nil, request_options: {})
           #
@@ -192,7 +198,13 @@ module Orb
           # Some parameter documentations has been truncated, see
           # {Orb::Models::Customers::Credits::TopUpListByExternalIDParams} for more details.
           #
-          # List top-ups by external ID
+          # This endpoint returns a list of a customer's active top-ups; a top-up that has
+          # been deactivated is not included. While a top-up is active, the customer's
+          # balance is increased by the top-up amount whenever it falls to the top-up's
+          # threshold.
+          #
+          # The response also includes pagination_metadata, which lets the caller retrieve
+          # the next page of results if they exist.
           #
           # @overload list_by_external_id(external_customer_id, cursor: nil, limit: nil, request_options: {})
           #

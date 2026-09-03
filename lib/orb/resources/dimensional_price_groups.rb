@@ -46,7 +46,10 @@ module Orb
         )
       end
 
-      # Fetch dimensional price group
+      # This endpoint returns a dimensional price group identified by its ID. A
+      # dimensional price group partitions the result of a billable metric by a set of
+      # dimensions, and the prices in the group specify which partition their usage is
+      # derived from.
       #
       # @overload retrieve(dimensional_price_group_id, request_options: {})
       #
@@ -99,7 +102,13 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::DimensionalPriceGroupListParams} for more details.
       #
-      # List dimensional price groups
+      # This endpoint returns a list of all dimensional price groups for an account. A
+      # dimensional price group partitions the result of a billable metric by a set of
+      # dimensions, and the prices in the group specify which partition their usage is
+      # derived from.
+      #
+      # The response also includes pagination_metadata, which lets the caller retrieve
+      # the next page of results if they exist.
       #
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
