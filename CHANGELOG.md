@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.31.0](https://github.com/orbcorp/orb-ruby/compare/v1.30.0...v1.31.0) (2026-09-07)
+
+
+### Features
+
+* **api:** add `tiered_matrix_with_allocation` price model ([aabee92](https://github.com/orbcorp/orb-ruby/commit/aabee92c7096f787f1b701abd31f3fe5f4bc457d))
+
 ## [1.30.0](https://github.com/orbcorp/orb-ruby/compare/v1.29.0...v1.30.0) (2026-09-04)
 
 
