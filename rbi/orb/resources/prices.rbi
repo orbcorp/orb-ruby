@@ -55,6 +55,7 @@ module Orb
               Orb::NewFloatingPackageWithAllocationPrice::OrHash,
               Orb::NewFloatingUnitWithPercentPrice::OrHash,
               Orb::NewFloatingMatrixWithAllocationPrice::OrHash,
+              Orb::PriceCreateParams::Body::TieredMatrixWithAllocation::OrHash,
               Orb::PriceCreateParams::Body::MatrixWithThresholdDiscounts::OrHash,
               Orb::NewFloatingTieredWithProrationPrice::OrHash,
               Orb::NewFloatingUnitWithProrationPrice::OrHash,

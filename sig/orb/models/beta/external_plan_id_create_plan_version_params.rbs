@@ -480,6 +480,7 @@ module Orb
             | Orb::NewPlanPackageWithAllocationPrice
             | Orb::NewPlanUnitWithPercentPrice
             | Orb::NewPlanMatrixWithAllocationPrice
+            | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation
             | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts
             | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration
             | Orb::NewPlanUnitWithProrationPrice
@@ -865,6 +866,193 @@ module Orb
 
                   def to_hash: -> {
                     dimension_value: String,
+                    tier_lower_bound: String,
+                    unit_amount: String
+                  }
+                end
+              end
+            end
+
+            type tiered_matrix_with_allocation =
+              {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
+                item_id: String,
+                model_type: :tiered_matrix_with_allocation,
+                name: String,
+                tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                license_type_id: String?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+            class TieredMatrixWithAllocation < Orb::Internal::Type::BaseModel
+              attr_accessor cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence
+
+              attr_accessor item_id: String
+
+              attr_accessor model_type: :tiered_matrix_with_allocation
+
+              attr_accessor name: String
+
+              attr_accessor tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+
+              attr_accessor billable_metric_id: String?
+
+              attr_accessor billed_in_advance: bool?
+
+              attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor conversion_rate: Float?
+
+              attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
+
+              attr_accessor currency: String?
+
+              attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+              attr_accessor external_price_id: String?
+
+              attr_accessor fixed_price_quantity: Float?
+
+              attr_accessor invoice_grouping_key: String?
+
+              attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor license_type_id: String?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              attr_accessor reference_id: String?
+
+              def initialize: (
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
+                item_id: String,
+                name: String,
+                tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                ?billable_metric_id: String?,
+                ?billed_in_advance: bool?,
+                ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?conversion_rate: Float?,
+                ?conversion_rate_config: Orb::Models::conversion_rate_config?,
+                ?currency: String?,
+                ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                ?external_price_id: String?,
+                ?fixed_price_quantity: Float?,
+                ?invoice_grouping_key: String?,
+                ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?license_type_id: String?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?reference_id: String?,
+                ?model_type: :tiered_matrix_with_allocation
+              ) -> void
+
+              def to_hash: -> {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
+                item_id: String,
+                model_type: :tiered_matrix_with_allocation,
+                name: String,
+                tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                license_type_id: String?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+              type cadence =
+                :annual
+                | :semi_annual
+                | :monthly
+                | :quarterly
+                | :one_time
+                | :custom
+
+              module Cadence
+                extend Orb::Internal::Type::Enum
+
+                ANNUAL: :annual
+                SEMI_ANNUAL: :semi_annual
+                MONTHLY: :monthly
+                QUARTERLY: :quarterly
+                ONE_TIME: :one_time
+                CUSTOM: :custom
+
+                def self?.values: -> ::Array[Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence]
+              end
+
+              type tiered_matrix_with_allocation_config =
+                {
+                  allocation: String,
+                  default_unit_amount: String,
+                  dimensions: ::Array[String],
+                  tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                }
+
+              class TieredMatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+                attr_accessor allocation: String
+
+                attr_accessor default_unit_amount: String
+
+                attr_accessor dimensions: ::Array[String]
+
+                attr_accessor tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+
+                def initialize: (
+                  allocation: String,
+                  default_unit_amount: String,
+                  dimensions: ::Array[String],
+                  tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                ) -> void
+
+                def to_hash: -> {
+                  allocation: String,
+                  default_unit_amount: String,
+                  dimensions: ::Array[String],
+                  tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                }
+
+                type tier =
+                  {
+                    dimension_values: ::Array[String],
+                    tier_lower_bound: String,
+                    unit_amount: String
+                  }
+
+                class Tier < Orb::Internal::Type::BaseModel
+                  attr_accessor dimension_values: ::Array[String]
+
+                  attr_accessor tier_lower_bound: String
+
+                  attr_accessor unit_amount: String
+
+                  def initialize: (
+                    dimension_values: ::Array[String],
+                    tier_lower_bound: String,
+                    unit_amount: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    dimension_values: ::Array[String],
                     tier_lower_bound: String,
                     unit_amount: String
                   }
@@ -2725,6 +2913,7 @@ module Orb
             | Orb::NewPlanPackageWithAllocationPrice
             | Orb::NewPlanUnitWithPercentPrice
             | Orb::NewPlanMatrixWithAllocationPrice
+            | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation
             | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts
             | Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration
             | Orb::NewPlanUnitWithProrationPrice
@@ -3110,6 +3299,193 @@ module Orb
 
                   def to_hash: -> {
                     dimension_value: String,
+                    tier_lower_bound: String,
+                    unit_amount: String
+                  }
+                end
+              end
+            end
+
+            type tiered_matrix_with_allocation =
+              {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
+                item_id: String,
+                model_type: :tiered_matrix_with_allocation,
+                name: String,
+                tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                license_type_id: String?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+            class TieredMatrixWithAllocation < Orb::Internal::Type::BaseModel
+              attr_accessor cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence
+
+              attr_accessor item_id: String
+
+              attr_accessor model_type: :tiered_matrix_with_allocation
+
+              attr_accessor name: String
+
+              attr_accessor tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+
+              attr_accessor billable_metric_id: String?
+
+              attr_accessor billed_in_advance: bool?
+
+              attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor conversion_rate: Float?
+
+              attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
+
+              attr_accessor currency: String?
+
+              attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+              attr_accessor external_price_id: String?
+
+              attr_accessor fixed_price_quantity: Float?
+
+              attr_accessor invoice_grouping_key: String?
+
+              attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+              attr_accessor license_type_id: String?
+
+              attr_accessor metadata: ::Hash[Symbol, String?]?
+
+              attr_accessor reference_id: String?
+
+              def initialize: (
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
+                item_id: String,
+                name: String,
+                tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                ?billable_metric_id: String?,
+                ?billed_in_advance: bool?,
+                ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?conversion_rate: Float?,
+                ?conversion_rate_config: Orb::Models::conversion_rate_config?,
+                ?currency: String?,
+                ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                ?external_price_id: String?,
+                ?fixed_price_quantity: Float?,
+                ?invoice_grouping_key: String?,
+                ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                ?license_type_id: String?,
+                ?metadata: ::Hash[Symbol, String?]?,
+                ?reference_id: String?,
+                ?model_type: :tiered_matrix_with_allocation
+              ) -> void
+
+              def to_hash: -> {
+                cadence: Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
+                item_id: String,
+                model_type: :tiered_matrix_with_allocation,
+                name: String,
+                tiered_matrix_with_allocation_config: Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                billable_metric_id: String?,
+                billed_in_advance: bool?,
+                billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                conversion_rate: Float?,
+                conversion_rate_config: Orb::Models::conversion_rate_config?,
+                currency: String?,
+                dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+                external_price_id: String?,
+                fixed_price_quantity: Float?,
+                invoice_grouping_key: String?,
+                invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+                license_type_id: String?,
+                metadata: ::Hash[Symbol, String?]?,
+                reference_id: String?
+              }
+
+              type cadence =
+                :annual
+                | :semi_annual
+                | :monthly
+                | :quarterly
+                | :one_time
+                | :custom
+
+              module Cadence
+                extend Orb::Internal::Type::Enum
+
+                ANNUAL: :annual
+                SEMI_ANNUAL: :semi_annual
+                MONTHLY: :monthly
+                QUARTERLY: :quarterly
+                ONE_TIME: :one_time
+                CUSTOM: :custom
+
+                def self?.values: -> ::Array[Orb::Models::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence]
+              end
+
+              type tiered_matrix_with_allocation_config =
+                {
+                  allocation: String,
+                  default_unit_amount: String,
+                  dimensions: ::Array[String],
+                  tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                }
+
+              class TieredMatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+                attr_accessor allocation: String
+
+                attr_accessor default_unit_amount: String
+
+                attr_accessor dimensions: ::Array[String]
+
+                attr_accessor tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+
+                def initialize: (
+                  allocation: String,
+                  default_unit_amount: String,
+                  dimensions: ::Array[String],
+                  tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                ) -> void
+
+                def to_hash: -> {
+                  allocation: String,
+                  default_unit_amount: String,
+                  dimensions: ::Array[String],
+                  tiers: ::Array[Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                }
+
+                type tier =
+                  {
+                    dimension_values: ::Array[String],
+                    tier_lower_bound: String,
+                    unit_amount: String
+                  }
+
+                class Tier < Orb::Internal::Type::BaseModel
+                  attr_accessor dimension_values: ::Array[String]
+
+                  attr_accessor tier_lower_bound: String
+
+                  attr_accessor unit_amount: String
+
+                  def initialize: (
+                    dimension_values: ::Array[String],
+                    tier_lower_bound: String,
+                    unit_amount: String
+                  ) -> void
+
+                  def to_hash: -> {
+                    dimension_values: ::Array[String],
                     tier_lower_bound: String,
                     unit_amount: String
                   }

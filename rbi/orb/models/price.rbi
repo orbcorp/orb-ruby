@@ -33,6 +33,7 @@ module Orb
             Orb::Price::PackageWithAllocation,
             Orb::Price::UnitWithPercent,
             Orb::Price::MatrixWithAllocation,
+            Orb::Price::TieredMatrixWithAllocation,
             Orb::Price::MatrixWithThresholdDiscounts,
             Orb::Price::TieredWithProration,
             Orb::Price::UnitWithProration,
@@ -10053,6 +10054,810 @@ module Orb
             T.type_alias do
               T.any(
                 Orb::Price::MatrixWithAllocation::LicenseType,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The Orb-assigned unique identifier for the license type.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # The key used for grouping licenses of this type. This is typically a user
+          # identifier field.
+          sig { returns(String) }
+          attr_accessor :grouping_key
+
+          # The name of the license type.
+          sig { returns(String) }
+          attr_accessor :name
+
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          sig do
+            params(id: String, grouping_key: String, name: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The Orb-assigned unique identifier for the license type.
+            id:,
+            # The key used for grouping licenses of this type. This is typically a user
+            # identifier field.
+            grouping_key:,
+            # The name of the license type.
+            name:
+          )
+          end
+
+          sig do
+            override.returns({ id: String, grouping_key: String, name: String })
+          end
+          def to_hash
+          end
+        end
+      end
+
+      class TieredMatrixWithAllocation < Orb::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Orb::Price::TieredMatrixWithAllocation,
+              Orb::Internal::AnyHash
+            )
+          end
+
+        sig { returns(String) }
+        attr_accessor :id
+
+        sig { returns(T.nilable(Orb::BillableMetricTiny)) }
+        attr_reader :billable_metric
+
+        sig do
+          params(
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash)
+          ).void
+        end
+        attr_writer :billable_metric
+
+        sig { returns(Orb::BillingCycleConfiguration) }
+        attr_reader :billing_cycle_configuration
+
+        sig do
+          params(
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash
+          ).void
+        end
+        attr_writer :billing_cycle_configuration
+
+        sig do
+          returns(
+            Orb::Price::TieredMatrixWithAllocation::BillingMode::TaggedSymbol
+          )
+        end
+        attr_accessor :billing_mode
+
+        sig do
+          returns(Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol)
+        end
+        attr_accessor :cadence
+
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter
+              ]
+            )
+          )
+        end
+        attr_accessor :composite_price_filters
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :conversion_rate
+
+        sig { returns(T.nilable(Orb::ConversionRateConfig::Variants)) }
+        attr_accessor :conversion_rate_config
+
+        sig { returns(Time) }
+        attr_accessor :created_at
+
+        sig { returns(T.nilable(Orb::Allocation)) }
+        attr_reader :credit_allocation
+
+        sig do
+          params(credit_allocation: T.nilable(Orb::Allocation::OrHash)).void
+        end
+        attr_writer :credit_allocation
+
+        sig { returns(String) }
+        attr_accessor :currency
+
+        sig { returns(T.nilable(Orb::Discount::Variants)) }
+        attr_accessor :discount
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :external_price_id
+
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :fixed_price_quantity
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :invoice_grouping_key
+
+        sig { returns(T.nilable(Orb::BillingCycleConfiguration)) }
+        attr_reader :invoicing_cycle_configuration
+
+        sig do
+          params(
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :invoicing_cycle_configuration
+
+        # A minimal representation of an Item containing only the essential identifying
+        # information.
+        sig { returns(Orb::ItemSlim) }
+        attr_reader :item
+
+        sig { params(item: Orb::ItemSlim::OrHash).void }
+        attr_writer :item
+
+        sig { returns(T.nilable(Orb::Maximum)) }
+        attr_reader :maximum
+
+        sig { params(maximum: T.nilable(Orb::Maximum::OrHash)).void }
+        attr_writer :maximum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :maximum_amount
+
+        # User specified key-value pairs for the resource. If not present, this defaults
+        # to an empty dictionary. Individual keys can be removed by setting the value to
+        # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+        # `null`.
+        sig { returns(T::Hash[Symbol, String]) }
+        attr_accessor :metadata
+
+        sig { returns(T.nilable(Orb::Minimum)) }
+        attr_reader :minimum
+
+        sig { params(minimum: T.nilable(Orb::Minimum::OrHash)).void }
+        attr_writer :minimum
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :minimum_amount
+
+        # The pricing model type
+        sig { returns(Symbol) }
+        attr_accessor :model_type
+
+        sig { returns(String) }
+        attr_accessor :name
+
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
+        sig do
+          returns(
+            Orb::Price::TieredMatrixWithAllocation::PriceType::TaggedSymbol
+          )
+        end
+        attr_accessor :price_type
+
+        # The price id this price replaces. This price will take the place of the replaced
+        # price in plan version migrations.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :replaces_price_id
+
+        # Configuration for tiered_matrix_with_allocation pricing
+        sig do
+          returns(
+            Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+          )
+        end
+        attr_reader :tiered_matrix_with_allocation_config
+
+        sig do
+          params(
+            tiered_matrix_with_allocation_config:
+              Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash
+          ).void
+        end
+        attr_writer :tiered_matrix_with_allocation_config
+
+        sig { returns(T.nilable(Orb::DimensionalPriceConfiguration)) }
+        attr_reader :dimensional_price_configuration
+
+        sig do
+          params(
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash)
+          ).void
+        end
+        attr_writer :dimensional_price_configuration
+
+        # The LicenseType resource represents a type of license that can be assigned to
+        # users. License types are used during billing by grouping metrics on the
+        # configured grouping key.
+        sig do
+          returns(
+            T.nilable(Orb::Price::TieredMatrixWithAllocation::LicenseType)
+          )
+        end
+        attr_reader :license_type
+
+        sig do
+          params(
+            license_type:
+              T.nilable(
+                Orb::Price::TieredMatrixWithAllocation::LicenseType::OrHash
+              )
+          ).void
+        end
+        attr_writer :license_type
+
+        sig do
+          params(
+            id: String,
+            billable_metric: T.nilable(Orb::BillableMetricTiny::OrHash),
+            billing_cycle_configuration: Orb::BillingCycleConfiguration::OrHash,
+            billing_mode:
+              Orb::Price::TieredMatrixWithAllocation::BillingMode::OrSymbol,
+            cadence: Orb::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
+            composite_price_filters:
+              T.nilable(
+                T::Array[
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::OrHash
+                ]
+              ),
+            conversion_rate: T.nilable(Float),
+            conversion_rate_config:
+              T.nilable(
+                T.any(
+                  Orb::UnitConversionRateConfig::OrHash,
+                  Orb::TieredConversionRateConfig::OrHash
+                )
+              ),
+            created_at: Time,
+            credit_allocation: T.nilable(Orb::Allocation::OrHash),
+            currency: String,
+            discount:
+              T.nilable(
+                T.any(
+                  Orb::PercentageDiscount::OrHash,
+                  Orb::TrialDiscount::OrHash,
+                  Orb::UsageDiscount::OrHash,
+                  Orb::AmountDiscount::OrHash,
+                  Orb::Discount::TieredPercentage::OrHash
+                )
+              ),
+            external_price_id: T.nilable(String),
+            fixed_price_quantity: T.nilable(Float),
+            invoice_grouping_key: T.nilable(String),
+            invoicing_cycle_configuration:
+              T.nilable(Orb::BillingCycleConfiguration::OrHash),
+            item: Orb::ItemSlim::OrHash,
+            maximum: T.nilable(Orb::Maximum::OrHash),
+            maximum_amount: T.nilable(String),
+            metadata: T::Hash[Symbol, String],
+            minimum: T.nilable(Orb::Minimum::OrHash),
+            minimum_amount: T.nilable(String),
+            name: String,
+            plan_phase_order: T.nilable(Integer),
+            price_type:
+              Orb::Price::TieredMatrixWithAllocation::PriceType::OrSymbol,
+            replaces_price_id: T.nilable(String),
+            tiered_matrix_with_allocation_config:
+              Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash,
+            dimensional_price_configuration:
+              T.nilable(Orb::DimensionalPriceConfiguration::OrHash),
+            license_type:
+              T.nilable(
+                Orb::Price::TieredMatrixWithAllocation::LicenseType::OrHash
+              ),
+            model_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          id:,
+          billable_metric:,
+          billing_cycle_configuration:,
+          billing_mode:,
+          cadence:,
+          composite_price_filters:,
+          conversion_rate:,
+          conversion_rate_config:,
+          created_at:,
+          credit_allocation:,
+          currency:,
+          discount:,
+          external_price_id:,
+          fixed_price_quantity:,
+          invoice_grouping_key:,
+          invoicing_cycle_configuration:,
+          # A minimal representation of an Item containing only the essential identifying
+          # information.
+          item:,
+          maximum:,
+          maximum_amount:,
+          # User specified key-value pairs for the resource. If not present, this defaults
+          # to an empty dictionary. Individual keys can be removed by setting the value to
+          # `null`, and the entire metadata mapping can be cleared by setting `metadata` to
+          # `null`.
+          metadata:,
+          minimum:,
+          minimum_amount:,
+          name:,
+          plan_phase_order:,
+          price_type:,
+          # The price id this price replaces. This price will take the place of the replaced
+          # price in plan version migrations.
+          replaces_price_id:,
+          # Configuration for tiered_matrix_with_allocation pricing
+          tiered_matrix_with_allocation_config:,
+          dimensional_price_configuration: nil,
+          # The LicenseType resource represents a type of license that can be assigned to
+          # users. License types are used during billing by grouping metrics on the
+          # configured grouping key.
+          license_type: nil,
+          # The pricing model type
+          model_type: :tiered_matrix_with_allocation
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              id: String,
+              billable_metric: T.nilable(Orb::BillableMetricTiny),
+              billing_cycle_configuration: Orb::BillingCycleConfiguration,
+              billing_mode:
+                Orb::Price::TieredMatrixWithAllocation::BillingMode::TaggedSymbol,
+              cadence:
+                Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol,
+              composite_price_filters:
+                T.nilable(
+                  T::Array[
+                    Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter
+                  ]
+                ),
+              conversion_rate: T.nilable(Float),
+              conversion_rate_config:
+                T.nilable(Orb::ConversionRateConfig::Variants),
+              created_at: Time,
+              credit_allocation: T.nilable(Orb::Allocation),
+              currency: String,
+              discount: T.nilable(Orb::Discount::Variants),
+              external_price_id: T.nilable(String),
+              fixed_price_quantity: T.nilable(Float),
+              invoice_grouping_key: T.nilable(String),
+              invoicing_cycle_configuration:
+                T.nilable(Orb::BillingCycleConfiguration),
+              item: Orb::ItemSlim,
+              maximum: T.nilable(Orb::Maximum),
+              maximum_amount: T.nilable(String),
+              metadata: T::Hash[Symbol, String],
+              minimum: T.nilable(Orb::Minimum),
+              minimum_amount: T.nilable(String),
+              model_type: Symbol,
+              name: String,
+              plan_phase_order: T.nilable(Integer),
+              price_type:
+                Orb::Price::TieredMatrixWithAllocation::PriceType::TaggedSymbol,
+              replaces_price_id: T.nilable(String),
+              tiered_matrix_with_allocation_config:
+                Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              dimensional_price_configuration:
+                T.nilable(Orb::DimensionalPriceConfiguration),
+              license_type:
+                T.nilable(Orb::Price::TieredMatrixWithAllocation::LicenseType)
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module BillingMode
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredMatrixWithAllocation::BillingMode)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          IN_ADVANCE =
+            T.let(
+              :in_advance,
+              Orb::Price::TieredMatrixWithAllocation::BillingMode::TaggedSymbol
+            )
+          IN_ARREAR =
+            T.let(
+              :in_arrear,
+              Orb::Price::TieredMatrixWithAllocation::BillingMode::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredMatrixWithAllocation::BillingMode::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredMatrixWithAllocation::Cadence)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ONE_TIME =
+            T.let(
+              :one_time,
+              Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          MONTHLY =
+            T.let(
+              :monthly,
+              Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          QUARTERLY =
+            T.let(
+              :quarterly,
+              Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :semi_annual,
+              Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          ANNUAL =
+            T.let(
+              :annual,
+              Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+            )
+          CUSTOM =
+            T.let(
+              :custom,
+              Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class CompositePriceFilter < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # The property of the price to filter on.
+          sig do
+            returns(
+              Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+            )
+          end
+          attr_accessor :field
+
+          # Should prices that match the filter be included or excluded.
+          sig do
+            returns(
+              Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+            )
+          end
+          attr_accessor :operator
+
+          # The IDs or values that match this filter.
+          sig { returns(T::Array[String]) }
+          attr_accessor :values
+
+          sig do
+            params(
+              field:
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::OrSymbol,
+              operator:
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator::OrSymbol,
+              values: T::Array[String]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The property of the price to filter on.
+            field:,
+            # Should prices that match the filter be included or excluded.
+            operator:,
+            # The IDs or values that match this filter.
+            values:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                field:
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol,
+                operator:
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol,
+                values: T::Array[String]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The property of the price to filter on.
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            PRICE_ID =
+              T.let(
+                :price_id,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            ITEM_ID =
+              T.let(
+                :item_id,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICE_TYPE =
+              T.let(
+                :price_type,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            CURRENCY =
+              T.let(
+                :currency,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+            PRICING_UNIT_ID =
+              T.let(
+                :pricing_unit_id,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Field::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Should prices that match the filter be included or excluded.
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INCLUDES =
+              T.let(
+                :includes,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+            EXCLUDES =
+              T.let(
+                :excludes,
+                Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  Orb::Price::TieredMatrixWithAllocation::CompositePriceFilter::Operator::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        module PriceType
+          extend Orb::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Orb::Price::TieredMatrixWithAllocation::PriceType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          USAGE_PRICE =
+            T.let(
+              :usage_price,
+              Orb::Price::TieredMatrixWithAllocation::PriceType::TaggedSymbol
+            )
+          FIXED_PRICE =
+            T.let(
+              :fixed_price,
+              Orb::Price::TieredMatrixWithAllocation::PriceType::TaggedSymbol
+            )
+          COMPOSITE_PRICE =
+            T.let(
+              :composite_price,
+              Orb::Price::TieredMatrixWithAllocation::PriceType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                Orb::Price::TieredMatrixWithAllocation::PriceType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class TieredMatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                Orb::Internal::AnyHash
+              )
+            end
+
+          # Usage allocation, pooled across all matrix cells
+          sig { returns(String) }
+          attr_accessor :allocation
+
+          # Per unit rate for usage whose matrix cell has no configured tiers
+          sig { returns(String) }
+          attr_accessor :default_unit_amount
+
+          # One or two event property values to evaluate matrix cells by
+          sig { returns(T::Array[String]) }
+          attr_accessor :dimensions
+
+          # Graduated tiers keyed by matrix cell; usage in a cell is tiered only against its
+          # own rows
+          sig do
+            returns(
+              T::Array[
+                Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
+              ]
+            )
+          end
+          attr_accessor :tiers
+
+          # Configuration for tiered_matrix_with_allocation pricing
+          sig do
+            params(
+              allocation: String,
+              default_unit_amount: String,
+              dimensions: T::Array[String],
+              tiers:
+                T::Array[
+                  Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier::OrHash
+                ]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Usage allocation, pooled across all matrix cells
+            allocation:,
+            # Per unit rate for usage whose matrix cell has no configured tiers
+            default_unit_amount:,
+            # One or two event property values to evaluate matrix cells by
+            dimensions:,
+            # Graduated tiers keyed by matrix cell; usage in a cell is tiered only against its
+            # own rows
+            tiers:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                allocation: String,
+                default_unit_amount: String,
+                dimensions: T::Array[String],
+                tiers:
+                  T::Array[
+                    Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class Tier < Orb::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  Orb::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier,
+                  Orb::Internal::AnyHash
+                )
+              end
+
+            # The matrix cell this tier applies to, as one or two dimension values
+            sig { returns(T::Array[String]) }
+            attr_accessor :dimension_values
+
+            # Exclusive tier starting value. The tier runs up to and including the next bound
+            # configured for the same matrix cell.
+            sig { returns(String) }
+            attr_accessor :tier_lower_bound
+
+            # Per unit amount
+            sig { returns(String) }
+            attr_accessor :unit_amount
+
+            # Configuration for a single tier scoped to one matrix cell
+            sig do
+              params(
+                dimension_values: T::Array[String],
+                tier_lower_bound: String,
+                unit_amount: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The matrix cell this tier applies to, as one or two dimension values
+              dimension_values:,
+              # Exclusive tier starting value. The tier runs up to and including the next bound
+              # configured for the same matrix cell.
+              tier_lower_bound:,
+              # Per unit amount
+              unit_amount:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  dimension_values: T::Array[String],
+                  tier_lower_bound: String,
+                  unit_amount: String
+                }
+              )
+            end
+            def to_hash
+            end
+          end
+        end
+
+        class LicenseType < Orb::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                Orb::Price::TieredMatrixWithAllocation::LicenseType,
                 Orb::Internal::AnyHash
               )
             end
