@@ -101,6 +101,7 @@ module Orb
           OVERPAYMENT_REFUND = :overpayment_refund
           EXTERNAL_PAYMENT = :external_payment
           SMALL_INVOICE_CARRYOVER = :small_invoice_carryover
+          PREPAID_COMMIT_CANCEL = :prepaid_commit_cancel
 
           # @!method self.values
           #   @return [Array<Symbol>]

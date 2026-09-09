@@ -1180,6 +1180,11 @@ module Orb
                 :small_invoice_carryover,
                 Orb::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::Action::TaggedSymbol
               )
+            PREPAID_COMMIT_CANCEL =
+              T.let(
+                :prepaid_commit_cancel,
+                Orb::ChangedSubscriptionResources::CreatedInvoice::CustomerBalanceTransaction::Action::TaggedSymbol
+              )
 
             sig do
               override.returns(

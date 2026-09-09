@@ -327,6 +327,7 @@ module Orb
           | :overpayment_refund
           | :external_payment
           | :small_invoice_carryover
+          | :prepaid_commit_cancel
 
         module Action
           extend Orb::Internal::Type::Enum
@@ -341,6 +342,7 @@ module Orb
           OVERPAYMENT_REFUND: :overpayment_refund
           EXTERNAL_PAYMENT: :external_payment
           SMALL_INVOICE_CARRYOVER: :small_invoice_carryover
+          PREPAID_COMMIT_CANCEL: :prepaid_commit_cancel
 
           def self?.values: -> ::Array[Orb::Models::InvoiceListSummaryResponse::CustomerBalanceTransaction::action]
         end
