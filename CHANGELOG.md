@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.33.0](https://github.com/orbcorp/orb-ruby/compare/v1.32.0...v1.33.0) (2026-09-12)
+
+
+### Features
+
+* **api:** remove deprecated debug parameter and response details from ingestion ([ab3504d](https://github.com/orbcorp/orb-ruby/commit/ab3504dea69e04f8e83747110b8b962b11dec833))
+
 ## [1.32.0](https://github.com/orbcorp/orb-ruby/compare/v1.31.0...v1.32.0) (2026-09-10)
 
 
