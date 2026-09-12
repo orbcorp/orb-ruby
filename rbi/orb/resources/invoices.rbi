@@ -156,6 +156,7 @@ module Orb
           due_date_gt: T.nilable(Date),
           due_date_lt: T.nilable(Date),
           external_customer_id: T.nilable(String),
+          include_zero_quantity_line_items: T.nilable(T::Boolean),
           invoice_date_gt: T.nilable(Time),
           invoice_date_gte: T.nilable(Time),
           invoice_date_lt: T.nilable(Time),
@@ -185,6 +186,10 @@ module Orb
         due_date_gt: nil,
         due_date_lt: nil,
         external_customer_id: nil,
+        # Whether to return line items with a quantity of zero. When omitted, Orb returns
+        # every line item. A line item that is grouped as part of a line item minimum is
+        # always returned; an invoice-level minimum does not exempt it.
+        include_zero_quantity_line_items: nil,
         invoice_date_gt: nil,
         invoice_date_gte: nil,
         invoice_date_lt: nil,
@@ -218,10 +223,18 @@ module Orb
       sig do
         params(
           invoice_id: String,
+          include_zero_quantity_line_items: T.nilable(T::Boolean),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Invoice)
       end
-      def fetch(invoice_id, request_options: {})
+      def fetch(
+        invoice_id,
+        # Whether to return line items with a quantity of zero. When omitted, Orb returns
+        # every line item. A line item that is grouped as part of a line item minimum is
+        # always returned; an invoice-level minimum does not exempt it.
+        include_zero_quantity_line_items: nil,
+        request_options: {}
+      )
       end
 
       # This endpoint can be used to fetch the upcoming
@@ -230,10 +243,18 @@ module Orb
       sig do
         params(
           subscription_id: String,
+          include_zero_quantity_line_items: T.nilable(T::Boolean),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::InvoiceFetchUpcomingResponse)
       end
-      def fetch_upcoming(subscription_id:, request_options: {})
+      def fetch_upcoming(
+        subscription_id:,
+        # Whether to return line items with a quantity of zero. When omitted, Orb returns
+        # every line item. A line item that is grouped as part of a line item minimum is
+        # always returned; an invoice-level minimum does not exempt it.
+        include_zero_quantity_line_items: nil,
+        request_options: {}
+      )
       end
 
       # This endpoint allows an eligible invoice to be issued manually. This is only

@@ -39,6 +39,7 @@ module Orb
         ?due_date_gt: Date?,
         ?due_date_lt: Date?,
         ?external_customer_id: String?,
+        ?include_zero_quantity_line_items: bool?,
         ?invoice_date_gt: Time?,
         ?invoice_date_gte: Time?,
         ?invoice_date_lt: Time?,
@@ -58,11 +59,13 @@ module Orb
 
       def fetch: (
         String invoice_id,
+        ?include_zero_quantity_line_items: bool?,
         ?request_options: Orb::request_opts
       ) -> Orb::Invoice
 
       def fetch_upcoming: (
         subscription_id: String,
+        ?include_zero_quantity_line_items: bool?,
         ?request_options: Orb::request_opts
       ) -> Orb::Models::InvoiceFetchUpcomingResponse
 

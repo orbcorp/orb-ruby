@@ -68,6 +68,14 @@ module Orb
       #   @return [String, nil]
       optional :external_customer_id, String, nil?: true
 
+      # @!attribute include_zero_quantity_line_items
+      #   Whether to return line items with a quantity of zero. When omitted, Orb returns
+      #   every line item. A line item that is grouped as part of a line item minimum is
+      #   always returned; an invoice-level minimum does not exempt it.
+      #
+      #   @return [Boolean, nil]
+      optional :include_zero_quantity_line_items, Orb::Internal::Type::Boolean, nil?: true
+
       # @!attribute invoice_date_gt
       #
       #   @return [Time, nil]
@@ -109,7 +117,7 @@ module Orb
       #   @return [String, nil]
       optional :subscription_id, String, nil?: true
 
-      # @!method initialize(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      # @!method initialize(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, include_zero_quantity_line_items: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceListParams} for more details.
       #
@@ -134,6 +142,8 @@ module Orb
       #   @param due_date_lt [Date, nil]
       #
       #   @param external_customer_id [String, nil]
+      #
+      #   @param include_zero_quantity_line_items [Boolean, nil] Whether to return line items with a quantity of zero. When omitted, Orb returns
       #
       #   @param invoice_date_gt [Time, nil]
       #

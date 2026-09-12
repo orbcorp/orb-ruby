@@ -243,6 +243,13 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :eligible_to_issue_at
 
+      # The number of line items omitted from `line_items` because they have zero
+      # quantity. Amounts such as `subtotal` and `total` are computed over every line
+      # item on the invoice, including the omitted ones. In rare circumstances, hidden
+      # line items may still contribute to these amounts.
+      sig { returns(Integer) }
+      attr_accessor :hidden_line_item_count
+
       # A URL for the customer-facing invoice portal. This URL expires 60 days after the
       # link is generated, or 30 days after the invoice's due date — whichever is later.
       sig { returns(T.nilable(String)) }
@@ -417,6 +424,7 @@ module Orb
             ],
           due_date: T.nilable(Time),
           eligible_to_issue_at: T.nilable(Time),
+          hidden_line_item_count: Integer,
           hosted_invoice_url: T.nilable(String),
           invoice_number: String,
           invoice_pdf: T.nilable(String),
@@ -631,6 +639,11 @@ module Orb
         # will be eligible to be issued, otherwise it will be `null`. If `auto-issue` is
         # true, the invoice will automatically begin issuing at this time.
         eligible_to_issue_at:,
+        # The number of line items omitted from `line_items` because they have zero
+        # quantity. Amounts such as `subtotal` and `total` are computed over every line
+        # item on the invoice, including the omitted ones. In rare circumstances, hidden
+        # line items may still contribute to these amounts.
+        hidden_line_item_count:,
         # A URL for the customer-facing invoice portal. This URL expires 60 days after the
         # link is generated, or 30 days after the invoice's due date — whichever is later.
         hosted_invoice_url:,
@@ -719,6 +732,7 @@ module Orb
             discounts: T::Array[Orb::InvoiceLevelDiscount::Variants],
             due_date: T.nilable(Time),
             eligible_to_issue_at: T.nilable(Time),
+            hidden_line_item_count: Integer,
             hosted_invoice_url: T.nilable(String),
             invoice_number: String,
             invoice_pdf: T.nilable(String),

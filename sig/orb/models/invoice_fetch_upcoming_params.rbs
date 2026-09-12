@@ -1,7 +1,8 @@
 module Orb
   module Models
     type invoice_fetch_upcoming_params =
-      { subscription_id: String } & Orb::Internal::Type::request_parameters
+      { subscription_id: String, include_zero_quantity_line_items: bool? }
+      & Orb::Internal::Type::request_parameters
 
     class InvoiceFetchUpcomingParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
@@ -9,13 +10,17 @@ module Orb
 
       attr_accessor subscription_id: String
 
+      attr_accessor include_zero_quantity_line_items: bool?
+
       def initialize: (
         subscription_id: String,
+        ?include_zero_quantity_line_items: bool?,
         ?request_options: Orb::request_opts
       ) -> void
 
       def to_hash: -> {
         subscription_id: String,
+        include_zero_quantity_line_items: bool?,
         request_options: Orb::RequestOptions
       }
     end

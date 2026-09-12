@@ -13,6 +13,7 @@ module Orb
         due_date_gt: Date?,
         due_date_lt: Date?,
         external_customer_id: String?,
+        include_zero_quantity_line_items: bool?,
         invoice_date_gt: Time?,
         invoice_date_gte: Time?,
         invoice_date_lt: Time?,
@@ -50,6 +51,8 @@ module Orb
 
       attr_accessor external_customer_id: String?
 
+      attr_accessor include_zero_quantity_line_items: bool?
+
       attr_accessor invoice_date_gt: Time?
 
       attr_accessor invoice_date_gte: Time?
@@ -80,6 +83,7 @@ module Orb
         ?due_date_gt: Date?,
         ?due_date_lt: Date?,
         ?external_customer_id: String?,
+        ?include_zero_quantity_line_items: bool?,
         ?invoice_date_gt: Time?,
         ?invoice_date_gte: Time?,
         ?invoice_date_lt: Time?,
@@ -103,6 +107,7 @@ module Orb
         due_date_gt: Date?,
         due_date_lt: Date?,
         external_customer_id: String?,
+        include_zero_quantity_line_items: bool?,
         invoice_date_gt: Time?,
         invoice_date_gte: Time?,
         invoice_date_lt: Time?,

@@ -241,6 +241,15 @@ module Orb
       #   @return [Time, nil]
       required :eligible_to_issue_at, Time, nil?: true
 
+      # @!attribute hidden_line_item_count
+      #   The number of line items omitted from `line_items` because they have zero
+      #   quantity. Amounts such as `subtotal` and `total` are computed over every line
+      #   item on the invoice, including the omitted ones. In rare circumstances, hidden
+      #   line items may still contribute to these amounts.
+      #
+      #   @return [Integer]
+      required :hidden_line_item_count, Integer
+
       # @!attribute hosted_invoice_url
       #   A URL for the customer-facing invoice portal. This URL expires 60 days after the
       #   link is generated, or 30 days after the invoice's due date — whichever is later.
@@ -414,7 +423,7 @@ module Orb
       #   @return [Boolean]
       required :will_auto_issue, Orb::Internal::Type::Boolean
 
-      # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, discount:, discounts:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, line_items:, maximum:, maximum_amount:, memo:, metadata:, minimum:, minimum_amount:, paid_at:, payment_attempts:, payment_failed_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, subtotal:, sync_failed_at:, target_date:, total:, voided_at:, will_auto_issue:)
+      # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, discount:, discounts:, due_date:, eligible_to_issue_at:, hidden_line_item_count:, hosted_invoice_url:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, line_items:, maximum:, maximum_amount:, memo:, metadata:, minimum:, minimum_amount:, paid_at:, payment_attempts:, payment_failed_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, subtotal:, sync_failed_at:, target_date:, total:, voided_at:, will_auto_issue:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceFetchUpcomingResponse} for more details.
       #
@@ -445,6 +454,8 @@ module Orb
       #   @param due_date [Time, nil] When the invoice payment is due. The due date is null if the invoice is not yet
       #
       #   @param eligible_to_issue_at [Time, nil] If the invoice has a status of `draft`, this will be the time that the invoice w
+      #
+      #   @param hidden_line_item_count [Integer] The number of line items omitted from `line_items` because they have zero quanti
       #
       #   @param hosted_invoice_url [String, nil] A URL for the customer-facing invoice portal. This URL expires 60 days after the
       #

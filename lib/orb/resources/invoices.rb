@@ -112,7 +112,7 @@ module Orb
       # the [list invoices summary](/api-reference/invoice/list-invoices-summary)
       # endpoint for better performance.
       #
-      # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, include_zero_quantity_line_items: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #
       # @param amount [String, nil]
       #
@@ -135,6 +135,8 @@ module Orb
       # @param due_date_lt [Date, nil]
       #
       # @param external_customer_id [String, nil]
+      #
+      # @param include_zero_quantity_line_items [Boolean, nil] Whether to return line items with a quantity of zero. When omitted, Orb returns
       #
       # @param invoice_date_gt [Time, nil]
       #
@@ -208,33 +210,48 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::InvoiceFetchParams} for more details.
+      #
       # This endpoint is used to fetch an [`Invoice`](/core-concepts#invoice) given an
       # identifier.
       #
-      # @overload fetch(invoice_id, request_options: {})
+      # @overload fetch(invoice_id, include_zero_quantity_line_items: nil, request_options: {})
       #
       # @param invoice_id [String]
+      #
+      # @param include_zero_quantity_line_items [Boolean, nil] Whether to return line items with a quantity of zero. When omitted, Orb returns
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::Invoice]
       #
       # @see Orb::Models::InvoiceFetchParams
       def fetch(invoice_id, params = {})
+        parsed, options = Orb::InvoiceFetchParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["invoices/%1$s", invoice_id],
+          query: query,
           model: Orb::Invoice,
-          options: params[:request_options]
+          options: options
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::InvoiceFetchUpcomingParams} for more details.
+      #
       # This endpoint can be used to fetch the upcoming
       # [invoice](/core-concepts#invoice) for the current billing period given a
       # subscription.
       #
-      # @overload fetch_upcoming(subscription_id:, request_options: {})
+      # @overload fetch_upcoming(subscription_id:, include_zero_quantity_line_items: nil, request_options: {})
       #
       # @param subscription_id [String]
+      #
+      # @param include_zero_quantity_line_items [Boolean, nil] Whether to return line items with a quantity of zero. When omitted, Orb returns
+      #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Orb::Models::InvoiceFetchUpcomingResponse]
