@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.34.0](https://github.com/orbcorp/orb-ruby/compare/v1.33.0...v1.34.0) (2026-09-13)
+
+
+### Features
+
+* **api:** add `include_zero_quantity_line_items` param and `hidden_line_item_count` to invoice endpoints ([69e2aaa](https://github.com/orbcorp/orb-ruby/commit/69e2aaa6d1b8227f7342735077c25cbcca72804e))
+
 ## [1.33.0](https://github.com/orbcorp/orb-ruby/compare/v1.32.0...v1.33.0) (2026-09-12)
 
 
