@@ -1,0 +1,313 @@
+module Orb
+  module Models
+    type invoice_automation_schedule_step_executed_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice,
+        properties: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::type_
+      }
+
+    class InvoiceAutomationScheduleStepExecutedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice
+
+      attr_accessor properties: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice,
+        properties: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice,
+        properties: Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::type_
+      }
+
+      type invoice =
+        {
+          id: String,
+          amount_due: String,
+          currency: String,
+          customer_id: String,
+          customer_name: String,
+          due_date: Date?,
+          external_customer_id: String?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          issued_at: Time?,
+          memo: String?,
+          payment_method_last_four_digits: String?,
+          status: String,
+          subscription_id: String?
+        }
+
+      class Invoice < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor amount_due: String
+
+        attr_accessor currency: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor customer_name: String
+
+        attr_accessor due_date: Date?
+
+        attr_accessor external_customer_id: String?
+
+        attr_accessor hosted_invoice_url: String?
+
+        attr_accessor invoice_date: Time
+
+        attr_accessor invoice_number: String
+
+        attr_accessor issued_at: Time?
+
+        attr_accessor memo: String?
+
+        attr_accessor payment_method_last_four_digits: String?
+
+        attr_accessor status: String
+
+        attr_accessor subscription_id: String?
+
+        def initialize: (
+          id: String,
+          amount_due: String,
+          currency: String,
+          customer_id: String,
+          customer_name: String,
+          due_date: Date?,
+          external_customer_id: String?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          issued_at: Time?,
+          memo: String?,
+          payment_method_last_four_digits: String?,
+          status: String,
+          subscription_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          amount_due: String,
+          currency: String,
+          customer_id: String,
+          customer_name: String,
+          due_date: Date?,
+          external_customer_id: String?,
+          hosted_invoice_url: String?,
+          invoice_date: Time,
+          invoice_number: String,
+          issued_at: Time?,
+          memo: String?,
+          payment_method_last_four_digits: String?,
+          status: String,
+          subscription_id: String?
+        }
+      end
+
+      type properties =
+        {
+          actions: ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::action],
+          automation_schedule_template_id: String?,
+          automation_schedule_template_name: String?,
+          executed_at: Time,
+          label: String,
+          scheduled_at: Time,
+          step_id: String
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor actions: ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::action]
+
+        attr_accessor automation_schedule_template_id: String?
+
+        attr_accessor automation_schedule_template_name: String?
+
+        attr_accessor executed_at: Time
+
+        attr_accessor label: String
+
+        attr_accessor scheduled_at: Time
+
+        attr_accessor step_id: String
+
+        def initialize: (
+          actions: ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::action],
+          automation_schedule_template_id: String?,
+          automation_schedule_template_name: String?,
+          executed_at: Time,
+          label: String,
+          scheduled_at: Time,
+          step_id: String
+        ) -> void
+
+        def to_hash: -> {
+          actions: ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::action],
+          automation_schedule_template_id: String?,
+          automation_schedule_template_name: String?,
+          executed_at: Time,
+          label: String,
+          scheduled_at: Time,
+          step_id: String
+        }
+
+        type action =
+          Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail
+          | Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment
+
+        module Action
+          extend Orb::Internal::Type::Union
+
+          type send_email =
+            {
+              recipient: String?,
+              sent: bool,
+              action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type
+            }
+
+          class SendEmail < Orb::Internal::Type::BaseModel
+            attr_accessor recipient: String?
+
+            attr_accessor sent: bool
+
+            attr_reader action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type?
+
+            def action_type=: (
+              Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type
+            ) -> Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type
+
+            def initialize: (
+              recipient: String?,
+              sent: bool,
+              ?action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type
+            ) -> void
+
+            def to_hash: -> {
+              recipient: String?,
+              sent: bool,
+              action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type
+            }
+
+            type action_type = :send_email
+
+            module ActionType
+              extend Orb::Internal::Type::Enum
+
+              SEND_EMAIL: :send_email
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::SendEmail::action_type]
+            end
+          end
+
+          type retry_payment =
+            {
+              amount_attempted: String?,
+              currency: String?,
+              failure_reason: String?,
+              outcome: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::outcome,
+              payment_provider: String?,
+              payment_provider_transaction_id: String?,
+              payment_transaction_record_id: String?,
+              action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type
+            }
+
+          class RetryPayment < Orb::Internal::Type::BaseModel
+            attr_accessor amount_attempted: String?
+
+            attr_accessor currency: String?
+
+            attr_accessor failure_reason: String?
+
+            attr_accessor outcome: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::outcome
+
+            attr_accessor payment_provider: String?
+
+            attr_accessor payment_provider_transaction_id: String?
+
+            attr_accessor payment_transaction_record_id: String?
+
+            attr_reader action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type?
+
+            def action_type=: (
+              Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type
+            ) -> Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type
+
+            def initialize: (
+              amount_attempted: String?,
+              currency: String?,
+              failure_reason: String?,
+              outcome: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::outcome,
+              payment_provider: String?,
+              payment_provider_transaction_id: String?,
+              payment_transaction_record_id: String?,
+              ?action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type
+            ) -> void
+
+            def to_hash: -> {
+              amount_attempted: String?,
+              currency: String?,
+              failure_reason: String?,
+              outcome: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::outcome,
+              payment_provider: String?,
+              payment_provider_transaction_id: String?,
+              payment_transaction_record_id: String?,
+              action_type: Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type
+            }
+
+            type outcome = :succeeded | :failed | :skipped
+
+            module Outcome
+              extend Orb::Internal::Type::Enum
+
+              SUCCEEDED: :succeeded
+              FAILED: :failed
+              SKIPPED: :skipped
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::outcome]
+            end
+
+            type action_type = :retry_payment
+
+            module ActionType
+              extend Orb::Internal::Type::Enum
+
+              RETRY_PAYMENT: :retry_payment
+
+              def self?.values: -> ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::Action::RetryPayment::action_type]
+            end
+          end
+
+          def self?.variants: -> ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::action]
+        end
+      end
+
+      type type_ = :"invoice.automation_schedule_step_executed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_AUTOMATION_SCHEDULE_STEP_EXECUTED: :"invoice.automation_schedule_step_executed"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,73 @@
+module Orb
+  module Models
+    type invoice_manually_marked_as_paid_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceManuallyMarkedAsPaidWebhookEvent::Properties,
+        type: Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent::type_
+      }
+
+    class InvoiceManuallyMarkedAsPaidWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoiceManuallyMarkedAsPaidWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceManuallyMarkedAsPaidWebhookEvent::Properties,
+        type: Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceManuallyMarkedAsPaidWebhookEvent::Properties,
+        type: Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent::type_
+      }
+
+      type properties =
+        { external_id: String?, notes: String?, payment_received_date: Time? }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor external_id: String?
+
+        attr_accessor notes: String?
+
+        attr_accessor payment_received_date: Time?
+
+        def initialize: (
+          external_id: String?,
+          notes: String?,
+          payment_received_date: Time?
+        ) -> void
+
+        def to_hash: -> {
+          external_id: String?,
+          notes: String?,
+          payment_received_date: Time?
+        }
+      end
+
+      type type_ = :"invoice.manually_marked_as_paid"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_MANUALLY_MARKED_AS_PAID: :"invoice.manually_marked_as_paid"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,364 @@
+module Orb
+  module Models
+    type customer_credit_ledger_incremented_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties,
+        type: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::type_
+      }
+
+    class CustomerCreditLedgerIncrementedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor customer: Orb::Customer
+
+      attr_accessor properties: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties,
+        type: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties,
+        type: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          block: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block,
+          pricing_unit: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::PricingUnit
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor block: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block
+
+        attr_accessor pricing_unit: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::PricingUnit
+
+        def initialize: (
+          block: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block,
+          pricing_unit: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::PricingUnit
+        ) -> void
+
+        def to_hash: -> {
+          block: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block,
+          pricing_unit: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::PricingUnit
+        }
+
+        type block =
+          {
+            id: String,
+            balance: String,
+            credit_block_source: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::credit_block_source,
+            effective_date: Time?,
+            expiry_date: Time?,
+            filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter],
+            maximum_initial_balance: String?,
+            metadata: ::Hash[Symbol, String],
+            per_unit_cost_basis: String?,
+            status: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::status,
+            credit_allocation: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation?,
+            credit_commitment: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditCommitment?
+          }
+
+        class Block < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor balance: String
+
+          attr_accessor credit_block_source: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::credit_block_source
+
+          attr_accessor effective_date: Time?
+
+          attr_accessor expiry_date: Time?
+
+          attr_accessor filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter]
+
+          attr_accessor maximum_initial_balance: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String]
+
+          attr_accessor per_unit_cost_basis: String?
+
+          attr_accessor status: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::status
+
+          attr_accessor credit_allocation: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation?
+
+          attr_accessor credit_commitment: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditCommitment?
+
+          def initialize: (
+            id: String,
+            balance: String,
+            credit_block_source: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::credit_block_source,
+            effective_date: Time?,
+            expiry_date: Time?,
+            filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter],
+            maximum_initial_balance: String?,
+            metadata: ::Hash[Symbol, String],
+            per_unit_cost_basis: String?,
+            status: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::status,
+            ?credit_allocation: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation?,
+            ?credit_commitment: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditCommitment?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            balance: String,
+            credit_block_source: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::credit_block_source,
+            effective_date: Time?,
+            expiry_date: Time?,
+            filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter],
+            maximum_initial_balance: String?,
+            metadata: ::Hash[Symbol, String],
+            per_unit_cost_basis: String?,
+            status: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::status,
+            credit_allocation: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation?,
+            credit_commitment: Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditCommitment?
+          }
+
+          type credit_block_source =
+            :allocation | :top_up | :commitment | :manual
+
+          module CreditBlockSource
+            extend Orb::Internal::Type::Enum
+
+            ALLOCATION: :allocation
+            TOP_UP: :top_up
+            COMMITMENT: :commitment
+            MANUAL: :manual
+
+            def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::credit_block_source]
+          end
+
+          type filter =
+            {
+              field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::field,
+              operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::field
+
+            attr_accessor operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::field,
+              operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::field,
+              operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Filter::operator]
+            end
+          end
+
+          type status = :active | :pending_payment
+
+          module Status
+            extend Orb::Internal::Type::Enum
+
+            ACTIVE: :active
+            PENDING_PAYMENT: :pending_payment
+
+            def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::status]
+          end
+
+          type credit_allocation =
+            {
+              allows_rollover: bool,
+              currency: String,
+              custom_expiration: Orb::CustomExpiration?,
+              item_id: String,
+              filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter],
+              license_type_id: String?
+            }
+
+          class CreditAllocation < Orb::Internal::Type::BaseModel
+            attr_accessor allows_rollover: bool
+
+            attr_accessor currency: String
+
+            attr_accessor custom_expiration: Orb::CustomExpiration?
+
+            attr_accessor item_id: String
+
+            attr_reader filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter]?
+
+            def filters=: (
+              ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter]
+            ) -> ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter]
+
+            attr_accessor license_type_id: String?
+
+            def initialize: (
+              allows_rollover: bool,
+              currency: String,
+              custom_expiration: Orb::CustomExpiration?,
+              item_id: String,
+              ?filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter],
+              ?license_type_id: String?
+            ) -> void
+
+            def to_hash: -> {
+              allows_rollover: bool,
+              currency: String,
+              custom_expiration: Orb::CustomExpiration?,
+              item_id: String,
+              filters: ::Array[Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter],
+              license_type_id: String?
+            }
+
+            type filter =
+              {
+                field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::field,
+                operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::operator,
+                values: ::Array[String]
+              }
+
+            class Filter < Orb::Internal::Type::BaseModel
+              attr_accessor field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::field
+
+              attr_accessor operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::operator
+
+              attr_accessor values: ::Array[String]
+
+              def initialize: (
+                field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::field,
+                operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::operator,
+                values: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                field: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::field,
+                operator: Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::operator,
+                values: ::Array[String]
+              }
+
+              type field =
+                :price_id
+                | :item_id
+                | :price_type
+                | :currency
+                | :pricing_unit_id
+
+              module Field
+                extend Orb::Internal::Type::Enum
+
+                PRICE_ID: :price_id
+                ITEM_ID: :item_id
+                PRICE_TYPE: :price_type
+                CURRENCY: :currency
+                PRICING_UNIT_ID: :pricing_unit_id
+
+                def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::field]
+              end
+
+              type operator = :includes | :excludes
+
+              module Operator
+                extend Orb::Internal::Type::Enum
+
+                INCLUDES: :includes
+                EXCLUDES: :excludes
+
+                def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation::Filter::operator]
+              end
+            end
+          end
+
+          type credit_commitment = { id: String, subscription_id: String? }
+
+          class CreditCommitment < Orb::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor subscription_id: String?
+
+            def initialize: (id: String, ?subscription_id: String?) -> void
+
+            def to_hash: -> { id: String, subscription_id: String? }
+          end
+        end
+
+        type pricing_unit =
+          { id: String, display_name: String?, name: String, symbol: String? }
+
+        class PricingUnit < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor display_name: String?
+
+          attr_accessor name: String
+
+          attr_accessor symbol: String?
+
+          def initialize: (
+            id: String,
+            display_name: String?,
+            name: String,
+            symbol: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            display_name: String?,
+            name: String,
+            symbol: String?
+          }
+        end
+      end
+
+      type type_ = :"customer.credit_ledger_incremented"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        CUSTOMER_CREDIT_LEDGER_INCREMENTED: :"customer.credit_ledger_incremented"
+
+        def self?.values: -> ::Array[Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::type_]
+      end
+    end
+  end
+end

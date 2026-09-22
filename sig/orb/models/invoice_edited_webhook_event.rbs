@@ -1,0 +1,388 @@
+module Orb
+  module Models
+    type invoice_edited_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceEditedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceEditedWebhookEvent::type_
+      }
+
+    class InvoiceEditedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoiceEditedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceEditedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceEditedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceEditedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceEditedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceEditedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          previous_attributes: Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor previous_attributes: Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes
+
+        def initialize: (
+          previous_attributes: Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes
+        ) -> void
+
+        def to_hash: -> {
+          previous_attributes: Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+        type previous_attributes =
+          {
+            amount_due: String?,
+            discounts: ::Array[Orb::Models::invoice_level_discount]?,
+            due_date: String?,
+            line_items: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem]?,
+            maximum: Orb::Maximum?,
+            metadata: ::Hash[Symbol, String]?,
+            minimum: Orb::Minimum?,
+            net_terms: Integer?,
+            subtotal: String?,
+            total: String?
+          }
+
+        class PreviousAttributes < Orb::Internal::Type::BaseModel
+          attr_accessor amount_due: String?
+
+          attr_accessor discounts: ::Array[Orb::Models::invoice_level_discount]?
+
+          attr_accessor due_date: String?
+
+          attr_accessor line_items: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem]?
+
+          attr_accessor maximum: Orb::Maximum?
+
+          attr_accessor metadata: ::Hash[Symbol, String]?
+
+          attr_accessor minimum: Orb::Minimum?
+
+          attr_accessor net_terms: Integer?
+
+          attr_accessor subtotal: String?
+
+          attr_accessor total: String?
+
+          def initialize: (
+            ?amount_due: String?,
+            ?discounts: ::Array[Orb::Models::invoice_level_discount]?,
+            ?due_date: String?,
+            ?line_items: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem]?,
+            ?maximum: Orb::Maximum?,
+            ?metadata: ::Hash[Symbol, String]?,
+            ?minimum: Orb::Minimum?,
+            ?net_terms: Integer?,
+            ?subtotal: String?,
+            ?total: String?
+          ) -> void
+
+          def to_hash: -> {
+            amount_due: String?,
+            discounts: ::Array[Orb::Models::invoice_level_discount]?,
+            due_date: String?,
+            line_items: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem]?,
+            maximum: Orb::Maximum?,
+            metadata: ::Hash[Symbol, String]?,
+            minimum: Orb::Minimum?,
+            net_terms: Integer?,
+            subtotal: String?,
+            total: String?
+          }
+
+          type line_item =
+            {
+              id: String,
+              adjusted_subtotal: String,
+              adjustments: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::adjustment],
+              amount: String,
+              credits_applied: String,
+              end_date: Time,
+              filter: String?,
+              grouping: String?,
+              name: String,
+              partially_invoiced_amount: String,
+              price: Orb::Models::price,
+              quantity: Float,
+              start_date: Time,
+              sub_line_items: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::sub_line_item],
+              subtotal: String,
+              tax_amounts: ::Array[Orb::TaxAmount],
+              usage_customer_ids: ::Array[String]?
+            }
+
+          class LineItem < Orb::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor adjusted_subtotal: String
+
+            attr_accessor adjustments: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::adjustment]
+
+            attr_accessor amount: String
+
+            attr_accessor credits_applied: String
+
+            attr_accessor end_date: Time
+
+            attr_accessor filter: String?
+
+            attr_accessor grouping: String?
+
+            attr_accessor name: String
+
+            attr_accessor partially_invoiced_amount: String
+
+            attr_accessor price: Orb::Models::price
+
+            attr_accessor quantity: Float
+
+            attr_accessor start_date: Time
+
+            attr_accessor sub_line_items: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::sub_line_item]
+
+            attr_accessor subtotal: String
+
+            attr_accessor tax_amounts: ::Array[Orb::TaxAmount]
+
+            attr_accessor usage_customer_ids: ::Array[String]?
+
+            def initialize: (
+              id: String,
+              adjusted_subtotal: String,
+              adjustments: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::adjustment],
+              amount: String,
+              credits_applied: String,
+              end_date: Time,
+              filter: String?,
+              grouping: String?,
+              name: String,
+              partially_invoiced_amount: String,
+              price: Orb::Models::price,
+              quantity: Float,
+              start_date: Time,
+              sub_line_items: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::sub_line_item],
+              subtotal: String,
+              tax_amounts: ::Array[Orb::TaxAmount],
+              usage_customer_ids: ::Array[String]?
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              adjusted_subtotal: String,
+              adjustments: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::adjustment],
+              amount: String,
+              credits_applied: String,
+              end_date: Time,
+              filter: String?,
+              grouping: String?,
+              name: String,
+              partially_invoiced_amount: String,
+              price: Orb::Models::price,
+              quantity: Float,
+              start_date: Time,
+              sub_line_items: ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::sub_line_item],
+              subtotal: String,
+              tax_amounts: ::Array[Orb::TaxAmount],
+              usage_customer_ids: ::Array[String]?
+            }
+
+            type adjustment =
+              Orb::MonetaryUsageDiscountAdjustment
+              | Orb::MonetaryAmountDiscountAdjustment
+              | Orb::MonetaryPercentageDiscountAdjustment
+              | Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount
+              | Orb::MonetaryMinimumAdjustment
+              | Orb::MonetaryMaximumAdjustment
+
+            module Adjustment
+              extend Orb::Internal::Type::Union
+
+              type tiered_percentage_discount =
+                {
+                  id: String,
+                  adjustment_type: :tiered_percentage_discount,
+                  amount: String,
+                  applies_to_price_ids: ::Array[String],
+                  filters: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter],
+                  is_invoice_level: bool,
+                  reason: String?,
+                  replaces_adjustment_id: String?,
+                  tiers: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Tier]
+                }
+
+              class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor adjustment_type: :tiered_percentage_discount
+
+                attr_accessor amount: String
+
+                attr_accessor applies_to_price_ids: ::Array[String]
+
+                attr_accessor filters: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter]
+
+                attr_accessor is_invoice_level: bool
+
+                attr_accessor reason: String?
+
+                attr_accessor replaces_adjustment_id: String?
+
+                attr_accessor tiers: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Tier]
+
+                def initialize: (
+                  id: String,
+                  amount: String,
+                  applies_to_price_ids: ::Array[String],
+                  filters: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter],
+                  is_invoice_level: bool,
+                  reason: String?,
+                  replaces_adjustment_id: String?,
+                  tiers: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Tier],
+                  ?adjustment_type: :tiered_percentage_discount
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  adjustment_type: :tiered_percentage_discount,
+                  amount: String,
+                  applies_to_price_ids: ::Array[String],
+                  filters: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter],
+                  is_invoice_level: bool,
+                  reason: String?,
+                  replaces_adjustment_id: String?,
+                  tiers: ::Array[Orb::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Tier]
+                }
+
+                type filter =
+                  {
+                    field: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::field,
+                    operator: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator,
+                    values: ::Array[String]
+                  }
+
+                class Filter < Orb::Internal::Type::BaseModel
+                  attr_accessor field: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::field
+
+                  attr_accessor operator: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator
+
+                  attr_accessor values: ::Array[String]
+
+                  def initialize: (
+                    field: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::field,
+                    operator: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator,
+                    values: ::Array[String]
+                  ) -> void
+
+                  def to_hash: -> {
+                    field: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::field,
+                    operator: Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator,
+                    values: ::Array[String]
+                  }
+
+                  type field =
+                    :price_id
+                    | :item_id
+                    | :price_type
+                    | :currency
+                    | :pricing_unit_id
+
+                  module Field
+                    extend Orb::Internal::Type::Enum
+
+                    PRICE_ID: :price_id
+                    ITEM_ID: :item_id
+                    PRICE_TYPE: :price_type
+                    CURRENCY: :currency
+                    PRICING_UNIT_ID: :pricing_unit_id
+
+                    def self?.values: -> ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::field]
+                  end
+
+                  type operator = :includes | :excludes
+
+                  module Operator
+                    extend Orb::Internal::Type::Enum
+
+                    INCLUDES: :includes
+                    EXCLUDES: :excludes
+
+                    def self?.values: -> ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::Adjustment::TieredPercentageDiscount::Filter::operator]
+                  end
+                end
+
+                type tier =
+                  { lower_bound: Float, percentage: Float, upper_bound: Float? }
+
+                class Tier < Orb::Internal::Type::BaseModel
+                  attr_accessor lower_bound: Float
+
+                  attr_accessor percentage: Float
+
+                  attr_accessor upper_bound: Float?
+
+                  def initialize: (
+                    lower_bound: Float,
+                    percentage: Float,
+                    ?upper_bound: Float?
+                  ) -> void
+
+                  def to_hash: -> {
+                    lower_bound: Float,
+                    percentage: Float,
+                    upper_bound: Float?
+                  }
+                end
+              end
+
+              def self?.variants: -> ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::adjustment]
+            end
+
+            type sub_line_item =
+              Orb::MatrixSubLineItem
+              | Orb::TierSubLineItem
+              | Orb::OtherSubLineItem
+
+            module SubLineItem
+              extend Orb::Internal::Type::Union
+
+              def self?.variants: -> ::Array[Orb::Models::InvoiceEditedWebhookEvent::Properties::PreviousAttributes::LineItem::sub_line_item]
+            end
+          end
+        end
+      end
+
+      type type_ = :"invoice.edited"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_EDITED: :"invoice.edited"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceEditedWebhookEvent::type_]
+      end
+    end
+  end
+end

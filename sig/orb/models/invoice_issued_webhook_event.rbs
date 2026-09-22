@@ -1,0 +1,60 @@
+module Orb
+  module Models
+    type invoice_issued_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceIssuedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceIssuedWebhookEvent::type_
+      }
+
+    class InvoiceIssuedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoiceIssuedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceIssuedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceIssuedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceIssuedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceIssuedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceIssuedWebhookEvent::type_
+      }
+
+      type properties = { automatically_marked_as_paid: bool }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor automatically_marked_as_paid: bool
+
+        def initialize: (automatically_marked_as_paid: bool) -> void
+
+        def to_hash: -> { automatically_marked_as_paid: bool }
+      end
+
+      type type_ = :"invoice.issued"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_ISSUED: :"invoice.issued"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceIssuedWebhookEvent::type_]
+      end
+    end
+  end
+end

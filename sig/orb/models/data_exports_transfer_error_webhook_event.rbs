@@ -1,0 +1,92 @@
+module Orb
+  module Models
+    type data_exports_transfer_error_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::DataExportsTransferErrorWebhookEvent::Properties,
+        type: Orb::Models::DataExportsTransferErrorWebhookEvent::type_
+      }
+
+    class DataExportsTransferErrorWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::DataExportsTransferErrorWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::DataExportsTransferErrorWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::DataExportsTransferErrorWebhookEvent::Properties,
+        type: Orb::Models::DataExportsTransferErrorWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::DataExportsTransferErrorWebhookEvent::Properties,
+        type: Orb::Models::DataExportsTransferErrorWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          description: String,
+          destination_name: String,
+          resources: ::Array[String],
+          rows_transferred: Integer,
+          transfer_blamed_party: String,
+          transfer_ended_at: Time,
+          transfer_started_at: Time
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor description: String
+
+        attr_accessor destination_name: String
+
+        attr_accessor resources: ::Array[String]
+
+        attr_accessor rows_transferred: Integer
+
+        attr_accessor transfer_blamed_party: String
+
+        attr_accessor transfer_ended_at: Time
+
+        attr_accessor transfer_started_at: Time
+
+        def initialize: (
+          description: String,
+          destination_name: String,
+          resources: ::Array[String],
+          rows_transferred: Integer,
+          transfer_blamed_party: String,
+          transfer_ended_at: Time,
+          transfer_started_at: Time
+        ) -> void
+
+        def to_hash: -> {
+          description: String,
+          destination_name: String,
+          resources: ::Array[String],
+          rows_transferred: Integer,
+          transfer_blamed_party: String,
+          transfer_ended_at: Time,
+          transfer_started_at: Time
+        }
+      end
+
+      type type_ = :"data_exports.transfer_error"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        DATA_EXPORTS_TRANSFER_ERROR: :"data_exports.transfer_error"
+
+        def self?.values: -> ::Array[Orb::Models::DataExportsTransferErrorWebhookEvent::type_]
+      end
+    end
+  end
+end

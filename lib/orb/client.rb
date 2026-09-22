@@ -21,6 +21,9 @@ module Orb
     # @return [String, nil]
     attr_reader :webhook_secret
 
+    # @return [Orb::Resources::Webhooks]
+    attr_reader :webhooks
+
     # @return [Orb::Resources::TopLevel]
     attr_reader :top_level
 
@@ -219,6 +222,7 @@ module Orb
         idempotency_header: idempotency_header
       )
 
+      @webhooks = Orb::Resources::Webhooks.new(client: self)
       @top_level = Orb::Resources::TopLevel.new(client: self)
       @beta = Orb::Resources::Beta.new(client: self)
       @coupons = Orb::Resources::Coupons.new(client: self)

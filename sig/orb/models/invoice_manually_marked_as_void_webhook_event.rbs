@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type invoice_manually_marked_as_void_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: top,
+        type: Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::type_
+      }
+
+    class InvoiceManuallyMarkedAsVoidWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: top
+
+      attr_accessor type: Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: top,
+        type: Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: top,
+        type: Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::type_
+      }
+
+      type type_ = :"invoice.manually_marked_as_void"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_MANUALLY_MARKED_AS_VOID: :"invoice.manually_marked_as_void"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -75,6 +75,10 @@ module Orb
 
   AmountDiscountInterval = Orb::Models::AmountDiscountInterval
 
+  BackfillReflectedWebhookEvent = Orb::Models::BackfillReflectedWebhookEvent
+
+  BackfillRevertedWebhookEvent = Orb::Models::BackfillRevertedWebhookEvent
+
   Beta = Orb::Models::Beta
 
   BetaCreatePlanVersionParams = Orb::Models::BetaCreatePlanVersionParams
@@ -84,6 +88,8 @@ module Orb
   BetaSetDefaultPlanVersionParams = Orb::Models::BetaSetDefaultPlanVersionParams
 
   BillableMetric = Orb::Models::BillableMetric
+
+  BillableMetricEditedWebhookEvent = Orb::Models::BillableMetricEditedWebhookEvent
 
   BillableMetricTiny = Orb::Models::BillableMetricTiny
 
@@ -121,6 +127,11 @@ module Orb
 
   Coupons = Orb::Models::Coupons
 
+  CreditBlockAccountingSyncFailedWebhookEvent = Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent
+
+  CreditBlockAccountingSyncSucceededWebhookEvent =
+    Orb::Models::CreditBlockAccountingSyncSucceededWebhookEvent
+
   CreditBlockDeleteParams = Orb::Models::CreditBlockDeleteParams
 
   CreditBlockListInvoicesParams = Orb::Models::CreditBlockListInvoicesParams
@@ -129,15 +140,33 @@ module Orb
 
   CreditNote = Orb::Models::CreditNote
 
+  CreditNoteAccountingSyncFailedWebhookEvent = Orb::Models::CreditNoteAccountingSyncFailedWebhookEvent
+
+  CreditNoteAccountingSyncSucceededWebhookEvent =
+    Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent
+
   CreditNoteCreateParams = Orb::Models::CreditNoteCreateParams
 
   CreditNoteFetchParams = Orb::Models::CreditNoteFetchParams
 
+  CreditNoteIssuedWebhookEvent = Orb::Models::CreditNoteIssuedWebhookEvent
+
   CreditNoteListParams = Orb::Models::CreditNoteListParams
+
+  CreditNoteMarkedAsVoidWebhookEvent = Orb::Models::CreditNoteMarkedAsVoidWebhookEvent
 
   CreditNoteTiny = Orb::Models::CreditNoteTiny
 
   Customer = Orb::Models::Customer
+
+  CustomerAccountingSyncFailedWebhookEvent = Orb::Models::CustomerAccountingSyncFailedWebhookEvent
+
+  CustomerAccountingSyncSucceededWebhookEvent = Orb::Models::CustomerAccountingSyncSucceededWebhookEvent
+
+  CustomerBalanceTransactionCreatedWebhookEvent =
+    Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent
+
+  CustomerCreatedWebhookEvent = Orb::Models::CustomerCreatedWebhookEvent
 
   CustomerCreateParams = Orb::Models::CustomerCreateParams
 
@@ -146,7 +175,17 @@ module Orb
 
   CustomerCreatePortalSessionParams = Orb::Models::CustomerCreatePortalSessionParams
 
+  CustomerCreditBalanceDepletedWebhookEvent = Orb::Models::CustomerCreditBalanceDepletedWebhookEvent
+
+  CustomerCreditBalanceDroppedWebhookEvent = Orb::Models::CustomerCreditBalanceDroppedWebhookEvent
+
+  CustomerCreditBalanceRecoveredWebhookEvent = Orb::Models::CustomerCreditBalanceRecoveredWebhookEvent
+
+  CustomerCreditLedgerIncrementedWebhookEvent = Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent
+
   CustomerDeleteParams = Orb::Models::CustomerDeleteParams
+
+  CustomerEditedWebhookEvent = Orb::Models::CustomerEditedWebhookEvent
 
   CustomerFetchByExternalIDParams = Orb::Models::CustomerFetchByExternalIDParams
 
@@ -172,6 +211,10 @@ module Orb
   CustomerUpdateParams = Orb::Models::CustomerUpdateParams
 
   CustomExpiration = Orb::Models::CustomExpiration
+
+  DataExportsTransferErrorWebhookEvent = Orb::Models::DataExportsTransferErrorWebhookEvent
+
+  DataExportsTransferSuccessWebhookEvent = Orb::Models::DataExportsTransferSuccessWebhookEvent
 
   DimensionalPriceConfiguration = Orb::Models::DimensionalPriceConfiguration
 
@@ -203,21 +246,62 @@ module Orb
 
   EventSearchParams = Orb::Models::EventSearchParams
 
+  EventUnmatchedEventWebhookEvent = Orb::Models::EventUnmatchedEventWebhookEvent
+
   EventUpdateParams = Orb::Models::EventUpdateParams
 
   FixedFeeQuantityScheduleEntry = Orb::Models::FixedFeeQuantityScheduleEntry
 
   FixedFeeQuantityTransition = Orb::Models::FixedFeeQuantityTransition
 
+  IngestionUnmatchedCustomerIDsWebhookEvent = Orb::Models::IngestionUnmatchedCustomerIDsWebhookEvent
+
   Invoice = Orb::Models::Invoice
+
+  InvoiceAccountingSyncFailedWebhookEvent = Orb::Models::InvoiceAccountingSyncFailedWebhookEvent
+
+  InvoiceAccountingSyncSucceededWebhookEvent = Orb::Models::InvoiceAccountingSyncSucceededWebhookEvent
+
+  InvoiceAutomationScheduleStepExecutedWebhookEvent =
+    Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent
+
+  InvoiceCostDataExportedWebhookEvent = Orb::Models::InvoiceCostDataExportedWebhookEvent
 
   InvoiceCreateParams = Orb::Models::InvoiceCreateParams
 
   InvoiceDeleteLineItemParams = Orb::Models::InvoiceDeleteLineItemParams
 
+  InvoiceDueDateRecalculationCanceledWebhookEvent =
+    Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent
+
+  InvoiceDueDateRecalculationCompletedWebhookEvent =
+    Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent
+
+  InvoiceDueDateRecalculationStartedWebhookEvent =
+    Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent
+
+  InvoiceDunningScheduleCreatedWebhookEvent = Orb::Models::InvoiceDunningScheduleCreatedWebhookEvent
+
+  InvoiceDunningScheduleEndedWebhookEvent = Orb::Models::InvoiceDunningScheduleEndedWebhookEvent
+
+  InvoiceDunningScheduleResetWebhookEvent = Orb::Models::InvoiceDunningScheduleResetWebhookEvent
+
+  InvoiceDunningScheduleStepExecutedWebhookEvent =
+    Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent
+
+  InvoiceEditedWebhookEvent = Orb::Models::InvoiceEditedWebhookEvent
+
   InvoiceFetchParams = Orb::Models::InvoiceFetchParams
 
   InvoiceFetchUpcomingParams = Orb::Models::InvoiceFetchUpcomingParams
+
+  InvoiceInvoiceDateElapsedWebhookEvent = Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent
+
+  InvoiceIssuedSummaryWebhookEvent = Orb::Models::InvoiceIssuedSummaryWebhookEvent
+
+  InvoiceIssuedWebhookEvent = Orb::Models::InvoiceIssuedWebhookEvent
+
+  InvoiceIssueFailedWebhookEvent = Orb::Models::InvoiceIssueFailedWebhookEvent
 
   InvoiceIssueParams = Orb::Models::InvoiceIssueParams
 
@@ -231,7 +315,17 @@ module Orb
 
   InvoiceListSummaryParams = Orb::Models::InvoiceListSummaryParams
 
+  InvoiceManuallyMarkedAsPaidWebhookEvent = Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent
+
+  InvoiceManuallyMarkedAsVoidWebhookEvent = Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent
+
   InvoiceMarkPaidParams = Orb::Models::InvoiceMarkPaidParams
+
+  InvoicePaymentFailedWebhookEvent = Orb::Models::InvoicePaymentFailedWebhookEvent
+
+  InvoicePaymentProcessingWebhookEvent = Orb::Models::InvoicePaymentProcessingWebhookEvent
+
+  InvoicePaymentSucceededWebhookEvent = Orb::Models::InvoicePaymentSucceededWebhookEvent
 
   InvoicePayParams = Orb::Models::InvoicePayParams
 
@@ -239,7 +333,13 @@ module Orb
 
   InvoiceRegenerateReceiptPdfParams = Orb::Models::InvoiceRegenerateReceiptPdfParams
 
+  InvoiceSyncFailedWebhookEvent = Orb::Models::InvoiceSyncFailedWebhookEvent
+
+  InvoiceSyncSucceededWebhookEvent = Orb::Models::InvoiceSyncSucceededWebhookEvent
+
   InvoiceTiny = Orb::Models::InvoiceTiny
+
+  InvoiceUndoMarkAsPaidWebhookEvent = Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent
 
   InvoiceUpdateParams = Orb::Models::InvoiceUpdateParams
 
@@ -290,6 +390,8 @@ module Orb
   MaximumInterval = Orb::Models::MaximumInterval
 
   MetricCreateParams = Orb::Models::MetricCreateParams
+
+  MetricEventsDroppedByWatermarkWebhookEvent = Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent
 
   MetricFetchParams = Orb::Models::MetricFetchParams
 
@@ -503,6 +605,10 @@ module Orb
 
   PaginationMetadata = Orb::Models::PaginationMetadata
 
+  PaymentMethodCreatedWebhookEvent = Orb::Models::PaymentMethodCreatedWebhookEvent
+
+  PaymentMethodDeletedWebhookEvent = Orb::Models::PaymentMethodDeletedWebhookEvent
+
   PercentageDiscount = Orb::Models::PercentageDiscount
 
   PercentageDiscountInterval = Orb::Models::PercentageDiscountInterval
@@ -512,6 +618,8 @@ module Orb
   Plan = Orb::Models::Plan
 
   PlanCreateParams = Orb::Models::PlanCreateParams
+
+  PlanDefaultVersionSetWebhookEvent = Orb::Models::PlanDefaultVersionSetWebhookEvent
 
   PlanFetchParams = Orb::Models::PlanFetchParams
 
@@ -533,11 +641,15 @@ module Orb
 
   PlanVersion = Orb::Models::PlanVersion
 
+  PlanVersionCreatedWebhookEvent = Orb::Models::PlanVersionCreatedWebhookEvent
+
   PlanVersionPhase = Orb::Models::PlanVersionPhase
 
   Price = Orb::Models::Price
 
   PriceCreateParams = Orb::Models::PriceCreateParams
+
+  PriceEditedWebhookEvent = Orb::Models::PriceEditedWebhookEvent
 
   PriceEvaluateMultipleParams = Orb::Models::PriceEvaluateMultipleParams
 
@@ -555,11 +667,31 @@ module Orb
 
   PriceUpdateParams = Orb::Models::PriceUpdateParams
 
+  ResourceEventTestWebhookEvent = Orb::Models::ResourceEventTestWebhookEvent
+
+  SalesOrderAccountingSyncFailedWebhookEvent = Orb::Models::SalesOrderAccountingSyncFailedWebhookEvent
+
+  SalesOrderAccountingSyncSucceededWebhookEvent =
+    Orb::Models::SalesOrderAccountingSyncSucceededWebhookEvent
+
   SubLineItemGrouping = Orb::Models::SubLineItemGrouping
 
   SubLineItemMatrixConfig = Orb::Models::SubLineItemMatrixConfig
 
   Subscription = Orb::Models::Subscription
+
+  SubscriptionAccountingSyncFailedWebhookEvent = Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent
+
+  SubscriptionAccountingSyncSucceededWebhookEvent =
+    Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent
+
+  SubscriptionAlertDisabledWebhookEvent = Orb::Models::SubscriptionAlertDisabledWebhookEvent
+
+  SubscriptionCancellationScheduledWebhookEvent =
+    Orb::Models::SubscriptionCancellationScheduledWebhookEvent
+
+  SubscriptionCancellationUnscheduledWebhookEvent =
+    Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent
 
   SubscriptionCancelParams = Orb::Models::SubscriptionCancelParams
 
@@ -573,7 +705,15 @@ module Orb
 
   SubscriptionChangeRetrieveParams = Orb::Models::SubscriptionChangeRetrieveParams
 
+  SubscriptionCostExceededWebhookEvent = Orb::Models::SubscriptionCostExceededWebhookEvent
+
+  SubscriptionCreatedWebhookEvent = Orb::Models::SubscriptionCreatedWebhookEvent
+
   SubscriptionCreateParams = Orb::Models::SubscriptionCreateParams
+
+  SubscriptionEditedWebhookEvent = Orb::Models::SubscriptionEditedWebhookEvent
+
+  SubscriptionEndedWebhookEvent = Orb::Models::SubscriptionEndedWebhookEvent
 
   SubscriptionFetchCostsParams = Orb::Models::SubscriptionFetchCostsParams
 
@@ -583,9 +723,32 @@ module Orb
 
   SubscriptionFetchUsageParams = Orb::Models::SubscriptionFetchUsageParams
 
+  SubscriptionFixedFeeQuantityUpdatedWebhookEvent =
+    Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent
+
+  SubscriptionGroupedCostExceededWebhookEvent = Orb::Models::SubscriptionGroupedCostExceededWebhookEvent
+
+  SubscriptionInvoicingThresholdExceededWebhookEvent =
+    Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent
+
+  SubscriptionLicenseAllocationResetWebhookEvent =
+    Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent
+
+  SubscriptionLicenseBalanceThresholdReachedWebhookEvent =
+    Orb::Models::SubscriptionLicenseBalanceThresholdReachedWebhookEvent
+
   SubscriptionListParams = Orb::Models::SubscriptionListParams
 
   SubscriptionMinified = Orb::Models::SubscriptionMinified
+
+  SubscriptionPlanChangedWebhookEvent = Orb::Models::SubscriptionPlanChangedWebhookEvent
+
+  SubscriptionPlanChangeScheduledWebhookEvent = Orb::Models::SubscriptionPlanChangeScheduledWebhookEvent
+
+  SubscriptionPlanVersionChangedWebhookEvent = Orb::Models::SubscriptionPlanVersionChangedWebhookEvent
+
+  SubscriptionPlanVersionChangeScheduledWebhookEvent =
+    Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent
 
   SubscriptionPriceIntervalsParams = Orb::Models::SubscriptionPriceIntervalsParams
 
@@ -594,6 +757,12 @@ module Orb
   SubscriptionsAPI = Orb::Models::SubscriptionsAPI
 
   SubscriptionSchedulePlanChangeParams = Orb::Models::SubscriptionSchedulePlanChangeParams
+
+  SubscriptionSpendExceededWebhookEvent = Orb::Models::SubscriptionSpendExceededWebhookEvent
+
+  SubscriptionStartedWebhookEvent = Orb::Models::SubscriptionStartedWebhookEvent
+
+  SubscriptionTrialEndedWebhookEvent = Orb::Models::SubscriptionTrialEndedWebhookEvent
 
   SubscriptionTrialInfo = Orb::Models::SubscriptionTrialInfo
 
@@ -615,6 +784,8 @@ module Orb
 
   SubscriptionUsage = Orb::Models::SubscriptionUsage
 
+  SubscriptionUsageExceededWebhookEvent = Orb::Models::SubscriptionUsageExceededWebhookEvent
+
   TaxAmount = Orb::Models::TaxAmount
 
   Threshold = Orb::Models::Threshold
@@ -629,13 +800,22 @@ module Orb
 
   TopLevelPingParams = Orb::Models::TopLevelPingParams
 
+  TransactionAccountingSyncFailedWebhookEvent = Orb::Models::TransactionAccountingSyncFailedWebhookEvent
+
+  TransactionAccountingSyncSucceededWebhookEvent =
+    Orb::Models::TransactionAccountingSyncSucceededWebhookEvent
+
   TrialDiscount = Orb::Models::TrialDiscount
 
   UnitConfig = Orb::Models::UnitConfig
 
   UnitConversionRateConfig = Orb::Models::UnitConversionRateConfig
 
+  UnwrapWebhookEvent = Orb::Models::UnwrapWebhookEvent
+
   UsageDiscount = Orb::Models::UsageDiscount
 
   UsageDiscountInterval = Orb::Models::UsageDiscountInterval
+
+  WebhookUnwrapParams = Orb::Models::WebhookUnwrapParams
 end

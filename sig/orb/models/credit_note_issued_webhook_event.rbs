@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type credit_note_issued_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        credit_note: Orb::CreditNote,
+        properties: top,
+        type: Orb::Models::CreditNoteIssuedWebhookEvent::type_
+      }
+
+    class CreditNoteIssuedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor credit_note: Orb::CreditNote
+
+      attr_accessor properties: top
+
+      attr_accessor type: Orb::Models::CreditNoteIssuedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        credit_note: Orb::CreditNote,
+        properties: top,
+        type: Orb::Models::CreditNoteIssuedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        credit_note: Orb::CreditNote,
+        properties: top,
+        type: Orb::Models::CreditNoteIssuedWebhookEvent::type_
+      }
+
+      type type_ = :"credit_note.issued"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        CREDIT_NOTE_ISSUED: :"credit_note.issued"
+
+        def self?.values: -> ::Array[Orb::Models::CreditNoteIssuedWebhookEvent::type_]
+      end
+    end
+  end
+end

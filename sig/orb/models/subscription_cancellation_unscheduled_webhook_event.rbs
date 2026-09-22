@@ -1,0 +1,60 @@
+module Orb
+  module Models
+    type subscription_cancellation_unscheduled_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionCancellationUnscheduledWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent::type_
+      }
+
+    class SubscriptionCancellationUnscheduledWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::SubscriptionCancellationUnscheduledWebhookEvent::Properties
+
+      attr_accessor subscription: Orb::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionCancellationUnscheduledWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionCancellationUnscheduledWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent::type_
+      }
+
+      type properties = { original_cancellation_date: String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor original_cancellation_date: String
+
+        def initialize: (original_cancellation_date: String) -> void
+
+        def to_hash: -> { original_cancellation_date: String }
+      end
+
+      type type_ = :"subscription.cancellation_unscheduled"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_CANCELLATION_UNSCHEDULED: :"subscription.cancellation_unscheduled"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent::type_]
+      end
+    end
+  end
+end

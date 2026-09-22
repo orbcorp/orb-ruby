@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type subscription_started_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: top,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionStartedWebhookEvent::type_
+      }
+
+    class SubscriptionStartedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: top
+
+      attr_accessor subscription: Orb::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionStartedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: top,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionStartedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: top,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionStartedWebhookEvent::type_
+      }
+
+      type type_ = :"subscription.started"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_STARTED: :"subscription.started"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionStartedWebhookEvent::type_]
+      end
+    end
+  end
+end

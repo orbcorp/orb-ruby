@@ -1,0 +1,112 @@
+module Orb
+  module Models
+    type payment_method_created_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        payment_method: Orb::PaymentMethodCreatedWebhookEvent::PaymentMethod,
+        properties: top,
+        type: Orb::Models::PaymentMethodCreatedWebhookEvent::type_
+      }
+
+    class PaymentMethodCreatedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor payment_method: Orb::PaymentMethodCreatedWebhookEvent::PaymentMethod
+
+      attr_accessor properties: top
+
+      attr_accessor type: Orb::Models::PaymentMethodCreatedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        payment_method: Orb::PaymentMethodCreatedWebhookEvent::PaymentMethod,
+        properties: top,
+        type: Orb::Models::PaymentMethodCreatedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        payment_method: Orb::PaymentMethodCreatedWebhookEvent::PaymentMethod,
+        properties: top,
+        type: Orb::Models::PaymentMethodCreatedWebhookEvent::type_
+      }
+
+      type payment_method =
+        {
+          id: String,
+          created_at: Time,
+          customer_id: String,
+          default: bool,
+          external_payment_method_id: String,
+          payment_method_type: Orb::Models::PaymentMethodCreatedWebhookEvent::PaymentMethod::payment_method_type,
+          provider_type: String?
+        }
+
+      class PaymentMethod < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor customer_id: String
+
+        attr_accessor default: bool
+
+        attr_accessor external_payment_method_id: String
+
+        attr_accessor payment_method_type: Orb::Models::PaymentMethodCreatedWebhookEvent::PaymentMethod::payment_method_type
+
+        attr_accessor provider_type: String?
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          customer_id: String,
+          default: bool,
+          external_payment_method_id: String,
+          payment_method_type: Orb::Models::PaymentMethodCreatedWebhookEvent::PaymentMethod::payment_method_type,
+          provider_type: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          customer_id: String,
+          default: bool,
+          external_payment_method_id: String,
+          payment_method_type: Orb::Models::PaymentMethodCreatedWebhookEvent::PaymentMethod::payment_method_type,
+          provider_type: String?
+        }
+
+        type payment_method_type =
+          :card | :us_bank_account | :link | :amazon_pay | :crypto
+
+        module PaymentMethodType
+          extend Orb::Internal::Type::Enum
+
+          CARD: :card
+          US_BANK_ACCOUNT: :us_bank_account
+          LINK: :link
+          AMAZON_PAY: :amazon_pay
+          CRYPTO: :crypto
+
+          def self?.values: -> ::Array[Orb::Models::PaymentMethodCreatedWebhookEvent::PaymentMethod::payment_method_type]
+        end
+      end
+
+      type type_ = :"payment_method.created"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        PAYMENT_METHOD_CREATED: :"payment_method.created"
+
+        def self?.values: -> ::Array[Orb::Models::PaymentMethodCreatedWebhookEvent::type_]
+      end
+    end
+  end
+end

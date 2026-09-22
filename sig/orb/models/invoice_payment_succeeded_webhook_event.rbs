@@ -1,0 +1,82 @@
+module Orb
+  module Models
+    type invoice_payment_succeeded_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentSucceededWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentSucceededWebhookEvent::type_
+      }
+
+    class InvoicePaymentSucceededWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoicePaymentSucceededWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoicePaymentSucceededWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentSucceededWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentSucceededWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentSucceededWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentSucceededWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          payment_provider: String?,
+          payment_provider_id: String?,
+          payment_provider_transaction_id: String?,
+          shared_payment_token_id: String?
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor payment_provider: String?
+
+        attr_accessor payment_provider_id: String?
+
+        attr_accessor payment_provider_transaction_id: String?
+
+        attr_accessor shared_payment_token_id: String?
+
+        def initialize: (
+          payment_provider: String?,
+          payment_provider_id: String?,
+          payment_provider_transaction_id: String?,
+          ?shared_payment_token_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          payment_provider: String?,
+          payment_provider_id: String?,
+          payment_provider_transaction_id: String?,
+          shared_payment_token_id: String?
+        }
+      end
+
+      type type_ = :"invoice.payment_succeeded"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_PAYMENT_SUCCEEDED: :"invoice.payment_succeeded"
+
+        def self?.values: -> ::Array[Orb::Models::InvoicePaymentSucceededWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,412 @@
+module Orb
+  module Models
+    type credit_block_accounting_sync_failed_webhook_event =
+      {
+        id: String,
+        accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
+        block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block,
+        created_at: Time,
+        properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties,
+        type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
+      }
+
+    class CreditBlockAccountingSyncFailedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord
+
+      attr_accessor block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
+        block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block,
+        created_at: Time,
+        properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties,
+        type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
+        block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block,
+        created_at: Time,
+        properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties,
+        type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
+      }
+
+      type accounting_sync_record =
+        {
+          id: String,
+          customer_id: String,
+          record_type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type,
+          block_id: String?,
+          error_details: ::Hash[Symbol, top]?,
+          invoice_id: String?,
+          provider_customer_id: String?,
+          status: String?,
+          sync_action: String?
+        }
+
+      class AccountingSyncRecord < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor record_type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type
+
+        attr_accessor block_id: String?
+
+        attr_accessor error_details: ::Hash[Symbol, top]?
+
+        attr_accessor invoice_id: String?
+
+        attr_accessor provider_customer_id: String?
+
+        attr_accessor status: String?
+
+        attr_accessor sync_action: String?
+
+        def initialize: (
+          id: String,
+          customer_id: String,
+          record_type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type,
+          ?block_id: String?,
+          ?error_details: ::Hash[Symbol, top]?,
+          ?invoice_id: String?,
+          ?provider_customer_id: String?,
+          ?status: String?,
+          ?sync_action: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          customer_id: String,
+          record_type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type,
+          block_id: String?,
+          error_details: ::Hash[Symbol, top]?,
+          invoice_id: String?,
+          provider_customer_id: String?,
+          status: String?,
+          sync_action: String?
+        }
+
+        type record_type =
+          :customer
+          | :invoice
+          | :transaction
+          | :customer_balance_transaction
+          | :credit_note
+          | :subscription
+          | :sales_order
+          | :block
+
+        module RecordType
+          extend Orb::Internal::Type::Enum
+
+          CUSTOMER: :customer
+          INVOICE: :invoice
+          TRANSACTION: :transaction
+          CUSTOMER_BALANCE_TRANSACTION: :customer_balance_transaction
+          CREDIT_NOTE: :credit_note
+          SUBSCRIPTION: :subscription
+          SALES_ORDER: :sales_order
+          BLOCK: :block
+
+          def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type]
+        end
+      end
+
+      type block =
+        {
+          id: String,
+          balance: String,
+          credit_block_source: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::credit_block_source,
+          effective_date: Time?,
+          expiry_date: Time?,
+          filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter],
+          maximum_initial_balance: String?,
+          metadata: ::Hash[Symbol, String],
+          per_unit_cost_basis: String?,
+          status: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::status,
+          credit_allocation: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation?,
+          credit_commitment: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditCommitment?
+        }
+
+      class Block < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor balance: String
+
+        attr_accessor credit_block_source: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::credit_block_source
+
+        attr_accessor effective_date: Time?
+
+        attr_accessor expiry_date: Time?
+
+        attr_accessor filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter]
+
+        attr_accessor maximum_initial_balance: String?
+
+        attr_accessor metadata: ::Hash[Symbol, String]
+
+        attr_accessor per_unit_cost_basis: String?
+
+        attr_accessor status: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::status
+
+        attr_accessor credit_allocation: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation?
+
+        attr_accessor credit_commitment: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditCommitment?
+
+        def initialize: (
+          id: String,
+          balance: String,
+          credit_block_source: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::credit_block_source,
+          effective_date: Time?,
+          expiry_date: Time?,
+          filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter],
+          maximum_initial_balance: String?,
+          metadata: ::Hash[Symbol, String],
+          per_unit_cost_basis: String?,
+          status: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::status,
+          ?credit_allocation: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation?,
+          ?credit_commitment: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditCommitment?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          balance: String,
+          credit_block_source: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::credit_block_source,
+          effective_date: Time?,
+          expiry_date: Time?,
+          filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter],
+          maximum_initial_balance: String?,
+          metadata: ::Hash[Symbol, String],
+          per_unit_cost_basis: String?,
+          status: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::status,
+          credit_allocation: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation?,
+          credit_commitment: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditCommitment?
+        }
+
+        type credit_block_source = :allocation | :top_up | :commitment | :manual
+
+        module CreditBlockSource
+          extend Orb::Internal::Type::Enum
+
+          ALLOCATION: :allocation
+          TOP_UP: :top_up
+          COMMITMENT: :commitment
+          MANUAL: :manual
+
+          def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::credit_block_source]
+        end
+
+        type filter =
+          {
+            field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::field,
+            operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::operator,
+            values: ::Array[String]
+          }
+
+        class Filter < Orb::Internal::Type::BaseModel
+          attr_accessor field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::field
+
+          attr_accessor operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::operator
+
+          attr_accessor values: ::Array[String]
+
+          def initialize: (
+            field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::field,
+            operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::operator,
+            values: ::Array[String]
+          ) -> void
+
+          def to_hash: -> {
+            field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::field,
+            operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::operator,
+            values: ::Array[String]
+          }
+
+          type field =
+            :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+          module Field
+            extend Orb::Internal::Type::Enum
+
+            PRICE_ID: :price_id
+            ITEM_ID: :item_id
+            PRICE_TYPE: :price_type
+            CURRENCY: :currency
+            PRICING_UNIT_ID: :pricing_unit_id
+
+            def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::field]
+          end
+
+          type operator = :includes | :excludes
+
+          module Operator
+            extend Orb::Internal::Type::Enum
+
+            INCLUDES: :includes
+            EXCLUDES: :excludes
+
+            def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::Filter::operator]
+          end
+        end
+
+        type status = :active | :pending_payment
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ACTIVE: :active
+          PENDING_PAYMENT: :pending_payment
+
+          def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::status]
+        end
+
+        type credit_allocation =
+          {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::CustomExpiration?,
+            item_id: String,
+            filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter],
+            license_type_id: String?
+          }
+
+        class CreditAllocation < Orb::Internal::Type::BaseModel
+          attr_accessor allows_rollover: bool
+
+          attr_accessor currency: String
+
+          attr_accessor custom_expiration: Orb::CustomExpiration?
+
+          attr_accessor item_id: String
+
+          attr_reader filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter]?
+
+          def filters=: (
+            ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter]
+          ) -> ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter]
+
+          attr_accessor license_type_id: String?
+
+          def initialize: (
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::CustomExpiration?,
+            item_id: String,
+            ?filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter],
+            ?license_type_id: String?
+          ) -> void
+
+          def to_hash: -> {
+            allows_rollover: bool,
+            currency: String,
+            custom_expiration: Orb::CustomExpiration?,
+            item_id: String,
+            filters: ::Array[Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter],
+            license_type_id: String?
+          }
+
+          type filter =
+            {
+              field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::field,
+              operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::operator,
+              values: ::Array[String]
+            }
+
+          class Filter < Orb::Internal::Type::BaseModel
+            attr_accessor field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::field
+
+            attr_accessor operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::operator
+
+            attr_accessor values: ::Array[String]
+
+            def initialize: (
+              field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::field,
+              operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::operator,
+              values: ::Array[String]
+            ) -> void
+
+            def to_hash: -> {
+              field: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::field,
+              operator: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::operator,
+              values: ::Array[String]
+            }
+
+            type field =
+              :price_id | :item_id | :price_type | :currency | :pricing_unit_id
+
+            module Field
+              extend Orb::Internal::Type::Enum
+
+              PRICE_ID: :price_id
+              ITEM_ID: :item_id
+              PRICE_TYPE: :price_type
+              CURRENCY: :currency
+              PRICING_UNIT_ID: :pricing_unit_id
+
+              def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::field]
+            end
+
+            type operator = :includes | :excludes
+
+            module Operator
+              extend Orb::Internal::Type::Enum
+
+              INCLUDES: :includes
+              EXCLUDES: :excludes
+
+              def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block::CreditAllocation::Filter::operator]
+            end
+          end
+        end
+
+        type credit_commitment = { id: String, subscription_id: String? }
+
+        class CreditCommitment < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor subscription_id: String?
+
+          def initialize: (id: String, ?subscription_id: String?) -> void
+
+          def to_hash: -> { id: String, subscription_id: String? }
+        end
+      end
+
+      type properties = { connection_type: String, failure_reason: String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor connection_type: String
+
+        attr_accessor failure_reason: String
+
+        def initialize: (
+          connection_type: String,
+          failure_reason: String
+        ) -> void
+
+        def to_hash: -> { connection_type: String, failure_reason: String }
+      end
+
+      type type_ = :"credit_block.accounting_sync_failed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        CREDIT_BLOCK_ACCOUNTING_SYNC_FAILED: :"credit_block.accounting_sync_failed"
+
+        def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_]
+      end
+    end
+  end
+end

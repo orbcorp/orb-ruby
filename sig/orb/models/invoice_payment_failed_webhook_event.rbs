@@ -1,0 +1,77 @@
+module Orb
+  module Models
+    type invoice_payment_failed_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentFailedWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentFailedWebhookEvent::type_
+      }
+
+    class InvoicePaymentFailedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoicePaymentFailedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoicePaymentFailedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentFailedWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentFailedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentFailedWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentFailedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          payment_provider: String?,
+          payment_provider_id: String?,
+          payment_provider_transaction_id: String?
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor payment_provider: String?
+
+        attr_accessor payment_provider_id: String?
+
+        attr_accessor payment_provider_transaction_id: String?
+
+        def initialize: (
+          payment_provider: String?,
+          payment_provider_id: String?,
+          payment_provider_transaction_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          payment_provider: String?,
+          payment_provider_id: String?,
+          payment_provider_transaction_id: String?
+        }
+      end
+
+      type type_ = :"invoice.payment_failed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_PAYMENT_FAILED: :"invoice.payment_failed"
+
+        def self?.values: -> ::Array[Orb::Models::InvoicePaymentFailedWebhookEvent::type_]
+      end
+    end
+  end
+end

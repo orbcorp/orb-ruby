@@ -1,0 +1,50 @@
+module Orb
+  module Models
+    type customer_created_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: top,
+        type: Orb::Models::CustomerCreatedWebhookEvent::type_
+      }
+
+    class CustomerCreatedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor customer: Orb::Customer
+
+      attr_accessor properties: top
+
+      attr_accessor type: Orb::Models::CustomerCreatedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: top,
+        type: Orb::Models::CustomerCreatedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: top,
+        type: Orb::Models::CustomerCreatedWebhookEvent::type_
+      }
+
+      type type_ = :"customer.created"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        CUSTOMER_CREATED: :"customer.created"
+
+        def self?.values: -> ::Array[Orb::Models::CustomerCreatedWebhookEvent::type_]
+      end
+    end
+  end
+end

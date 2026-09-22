@@ -1,0 +1,57 @@
+module Orb
+  module Models
+    type invoice_due_date_recalculation_canceled_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::InvoiceDueDateRecalculationCanceledWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent::type_
+      }
+
+    class InvoiceDueDateRecalculationCanceledWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::InvoiceDueDateRecalculationCanceledWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::InvoiceDueDateRecalculationCanceledWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::InvoiceDueDateRecalculationCanceledWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent::type_
+      }
+
+      type properties = { canceled_at: Time, started_at: Time }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor canceled_at: Time
+
+        attr_accessor started_at: Time
+
+        def initialize: (canceled_at: Time, started_at: Time) -> void
+
+        def to_hash: -> { canceled_at: Time, started_at: Time }
+      end
+
+      type type_ = :"invoice_due_date_recalculation.canceled"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_DUE_DATE_RECALCULATION_CANCELED: :"invoice_due_date_recalculation.canceled"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent::type_]
+      end
+    end
+  end
+end

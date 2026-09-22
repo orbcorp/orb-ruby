@@ -1,0 +1,111 @@
+module Orb
+  module Models
+    type invoice_invoice_date_elapsed_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice,
+        properties: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::type_
+      }
+
+    class InvoiceInvoiceDateElapsedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice
+
+      attr_accessor properties: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice,
+        properties: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice,
+        properties: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::type_
+      }
+
+      type invoice =
+        {
+          id: String,
+          customer: Orb::CustomerMinified,
+          invoice_number: String,
+          status: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice::status,
+          subscription: Orb::SubscriptionMinified?
+        }
+
+      class Invoice < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer: Orb::CustomerMinified
+
+        attr_accessor invoice_number: String
+
+        attr_accessor status: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice::status
+
+        attr_accessor subscription: Orb::SubscriptionMinified?
+
+        def initialize: (
+          id: String,
+          customer: Orb::CustomerMinified,
+          invoice_number: String,
+          status: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice::status,
+          subscription: Orb::SubscriptionMinified?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          customer: Orb::CustomerMinified,
+          invoice_number: String,
+          status: Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice::status,
+          subscription: Orb::SubscriptionMinified?
+        }
+
+        type status = :issued | :paid | :synced | :void | :draft
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ISSUED: :issued
+          PAID: :paid
+          SYNCED: :synced
+          VOID: :void
+          DRAFT: :draft
+
+          def self?.values: -> ::Array[Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice::status]
+        end
+      end
+
+      type properties = { invoice_date: Time }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor invoice_date: Time
+
+        def initialize: (invoice_date: Time) -> void
+
+        def to_hash: -> { invoice_date: Time }
+      end
+
+      type type_ = :"invoice.invoice_date_elapsed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_INVOICE_DATE_ELAPSED: :"invoice.invoice_date_elapsed"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::type_]
+      end
+    end
+  end
+end

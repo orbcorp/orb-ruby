@@ -1,0 +1,82 @@
+module Orb
+  module Models
+    type subscription_fixed_fee_quantity_updated_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::type_
+      }
+
+    class SubscriptionFixedFeeQuantityUpdatedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::Properties
+
+      attr_accessor subscription: Orb::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          effective_date: Time,
+          new_quantity: Float,
+          old_quantity: Float,
+          price_id: String
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor effective_date: Time
+
+        attr_accessor new_quantity: Float
+
+        attr_accessor old_quantity: Float
+
+        attr_accessor price_id: String
+
+        def initialize: (
+          effective_date: Time,
+          new_quantity: Float,
+          old_quantity: Float,
+          price_id: String
+        ) -> void
+
+        def to_hash: -> {
+          effective_date: Time,
+          new_quantity: Float,
+          old_quantity: Float,
+          price_id: String
+        }
+      end
+
+      type type_ = :"subscription.fixed_fee_quantity_updated"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_FIXED_FEE_QUANTITY_UPDATED: :"subscription.fixed_fee_quantity_updated"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent::type_]
+      end
+    end
+  end
+end

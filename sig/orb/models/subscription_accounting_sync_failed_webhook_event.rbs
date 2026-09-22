@@ -1,0 +1,147 @@
+module Orb
+  module Models
+    type subscription_accounting_sync_failed_webhook_event =
+      {
+        id: String,
+        accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
+        created_at: Time,
+        properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
+      }
+
+    class SubscriptionAccountingSyncFailedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties
+
+      attr_accessor subscription: Orb::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
+        created_at: Time,
+        properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
+        created_at: Time,
+        properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
+      }
+
+      type accounting_sync_record =
+        {
+          id: String,
+          customer_id: String,
+          record_type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type,
+          error_details: ::Hash[Symbol, top]?,
+          provider_customer_id: String?,
+          status: String?,
+          subscription_id: String?,
+          sync_action: String?
+        }
+
+      class AccountingSyncRecord < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor record_type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type
+
+        attr_accessor error_details: ::Hash[Symbol, top]?
+
+        attr_accessor provider_customer_id: String?
+
+        attr_accessor status: String?
+
+        attr_accessor subscription_id: String?
+
+        attr_accessor sync_action: String?
+
+        def initialize: (
+          id: String,
+          customer_id: String,
+          record_type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type,
+          ?error_details: ::Hash[Symbol, top]?,
+          ?provider_customer_id: String?,
+          ?status: String?,
+          ?subscription_id: String?,
+          ?sync_action: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          customer_id: String,
+          record_type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type,
+          error_details: ::Hash[Symbol, top]?,
+          provider_customer_id: String?,
+          status: String?,
+          subscription_id: String?,
+          sync_action: String?
+        }
+
+        type record_type =
+          :customer
+          | :invoice
+          | :transaction
+          | :customer_balance_transaction
+          | :credit_note
+          | :subscription
+          | :sales_order
+          | :block
+
+        module RecordType
+          extend Orb::Internal::Type::Enum
+
+          CUSTOMER: :customer
+          INVOICE: :invoice
+          TRANSACTION: :transaction
+          CUSTOMER_BALANCE_TRANSACTION: :customer_balance_transaction
+          CREDIT_NOTE: :credit_note
+          SUBSCRIPTION: :subscription
+          SALES_ORDER: :sales_order
+          BLOCK: :block
+
+          def self?.values: -> ::Array[Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type]
+        end
+      end
+
+      type properties = { connection_type: String, failure_reason: String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor connection_type: String
+
+        attr_accessor failure_reason: String
+
+        def initialize: (
+          connection_type: String,
+          failure_reason: String
+        ) -> void
+
+        def to_hash: -> { connection_type: String, failure_reason: String }
+      end
+
+      type type_ = :"subscription.accounting_sync_failed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_ACCOUNTING_SYNC_FAILED: :"subscription.accounting_sync_failed"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,57 @@
+module Orb
+  module Models
+    type resource_event_test_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::ResourceEventTestWebhookEvent::Properties,
+        type: Orb::Models::ResourceEventTestWebhookEvent::type_
+      }
+
+    class ResourceEventTestWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::ResourceEventTestWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::ResourceEventTestWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::ResourceEventTestWebhookEvent::Properties,
+        type: Orb::Models::ResourceEventTestWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::ResourceEventTestWebhookEvent::Properties,
+        type: Orb::Models::ResourceEventTestWebhookEvent::type_
+      }
+
+      type properties = { message: String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_reader message: String?
+
+        def message=: (String) -> String
+
+        def initialize: (?message: String) -> void
+
+        def to_hash: -> { message: String }
+      end
+
+      type type_ = :"resource_event.test"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        RESOURCE_EVENT_TEST: :"resource_event.test"
+
+        def self?.values: -> ::Array[Orb::Models::ResourceEventTestWebhookEvent::type_]
+      end
+    end
+  end
+end

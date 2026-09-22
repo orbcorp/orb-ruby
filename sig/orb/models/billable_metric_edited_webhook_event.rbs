@@ -1,0 +1,94 @@
+module Orb
+  module Models
+    type billable_metric_edited_webhook_event =
+      {
+        id: String,
+        billable_metric: Orb::BillableMetric,
+        created_at: Time,
+        properties: Orb::BillableMetricEditedWebhookEvent::Properties,
+        type: Orb::Models::BillableMetricEditedWebhookEvent::type_
+      }
+
+    class BillableMetricEditedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor billable_metric: Orb::BillableMetric
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::BillableMetricEditedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::BillableMetricEditedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        billable_metric: Orb::BillableMetric,
+        created_at: Time,
+        properties: Orb::BillableMetricEditedWebhookEvent::Properties,
+        type: Orb::Models::BillableMetricEditedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        billable_metric: Orb::BillableMetric,
+        created_at: Time,
+        properties: Orb::BillableMetricEditedWebhookEvent::Properties,
+        type: Orb::Models::BillableMetricEditedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          previous_attributes: Orb::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor previous_attributes: Orb::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes
+
+        def initialize: (
+          previous_attributes: Orb::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes
+        ) -> void
+
+        def to_hash: -> {
+          previous_attributes: Orb::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+        type previous_attributes =
+          {
+            description: String?,
+            metadata: ::Hash[Symbol, String]?,
+            name: String?
+          }
+
+        class PreviousAttributes < Orb::Internal::Type::BaseModel
+          attr_accessor description: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String]?
+
+          attr_accessor name: String?
+
+          def initialize: (
+            ?description: String?,
+            ?metadata: ::Hash[Symbol, String]?,
+            ?name: String?
+          ) -> void
+
+          def to_hash: -> {
+            description: String?,
+            metadata: ::Hash[Symbol, String]?,
+            name: String?
+          }
+        end
+      end
+
+      type type_ = :"billable_metric.edited"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        BILLABLE_METRIC_EDITED: :"billable_metric.edited"
+
+        def self?.values: -> ::Array[Orb::Models::BillableMetricEditedWebhookEvent::type_]
+      end
+    end
+  end
+end

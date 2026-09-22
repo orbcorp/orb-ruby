@@ -1,0 +1,180 @@
+module Orb
+  module Models
+    type subscription_license_allocation_reset_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties,
+        subscription: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription,
+        type: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::type_
+      }
+
+    class SubscriptionLicenseAllocationResetWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties
+
+      attr_accessor subscription: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties,
+        subscription: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription,
+        type: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties,
+        subscription: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription,
+        type: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          reset_allocations: ::Array[Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties::ResetAllocation],
+          timeframe_end: Time,
+          timeframe_start: Time
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor reset_allocations: ::Array[Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties::ResetAllocation]
+
+        attr_accessor timeframe_end: Time
+
+        attr_accessor timeframe_start: Time
+
+        def initialize: (
+          reset_allocations: ::Array[Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties::ResetAllocation],
+          timeframe_end: Time,
+          timeframe_start: Time
+        ) -> void
+
+        def to_hash: -> {
+          reset_allocations: ::Array[Orb::SubscriptionLicenseAllocationResetWebhookEvent::Properties::ResetAllocation],
+          timeframe_end: Time,
+          timeframe_start: Time
+        }
+
+        type reset_allocation =
+          {
+            allocation_amount: String,
+            license_type_id: String,
+            pricing_unit_id: String
+          }
+
+        class ResetAllocation < Orb::Internal::Type::BaseModel
+          attr_accessor allocation_amount: String
+
+          attr_accessor license_type_id: String
+
+          attr_accessor pricing_unit_id: String
+
+          def initialize: (
+            allocation_amount: String,
+            license_type_id: String,
+            pricing_unit_id: String
+          ) -> void
+
+          def to_hash: -> {
+            allocation_amount: String,
+            license_type_id: String,
+            pricing_unit_id: String
+          }
+        end
+      end
+
+      type subscription =
+        {
+          id: String,
+          customer: Orb::CustomerMinified,
+          end_date: Time?,
+          plan: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::Plan?,
+          start_date: Time,
+          status: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::status
+        }
+
+      class Subscription < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer: Orb::CustomerMinified
+
+        attr_accessor end_date: Time?
+
+        attr_accessor plan: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::Plan?
+
+        attr_accessor start_date: Time
+
+        attr_accessor status: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::status
+
+        def initialize: (
+          id: String,
+          customer: Orb::CustomerMinified,
+          end_date: Time?,
+          plan: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::Plan?,
+          start_date: Time,
+          status: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          customer: Orb::CustomerMinified,
+          end_date: Time?,
+          plan: Orb::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::Plan?,
+          start_date: Time,
+          status: Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::status
+        }
+
+        type plan = { id: String?, external_plan_id: String?, name: String? }
+
+        class Plan < Orb::Internal::Type::BaseModel
+          attr_accessor id: String?
+
+          attr_accessor external_plan_id: String?
+
+          attr_accessor name: String?
+
+          def initialize: (
+            id: String?,
+            external_plan_id: String?,
+            name: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String?,
+            external_plan_id: String?,
+            name: String?
+          }
+        end
+
+        type status = :active | :ended | :upcoming
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ACTIVE: :active
+          ENDED: :ended
+          UPCOMING: :upcoming
+
+          def self?.values: -> ::Array[Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Subscription::status]
+        end
+      end
+
+      type type_ = :"subscription.license_allocation_reset"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_LICENSE_ALLOCATION_RESET: :"subscription.license_allocation_reset"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::type_]
+      end
+    end
+  end
+end

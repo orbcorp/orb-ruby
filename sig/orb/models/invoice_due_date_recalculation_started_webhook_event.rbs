@@ -1,0 +1,55 @@
+module Orb
+  module Models
+    type invoice_due_date_recalculation_started_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::InvoiceDueDateRecalculationStartedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent::type_
+      }
+
+    class InvoiceDueDateRecalculationStartedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::InvoiceDueDateRecalculationStartedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::InvoiceDueDateRecalculationStartedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::InvoiceDueDateRecalculationStartedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent::type_
+      }
+
+      type properties = { started_at: Time }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor started_at: Time
+
+        def initialize: (started_at: Time) -> void
+
+        def to_hash: -> { started_at: Time }
+      end
+
+      type type_ = :"invoice_due_date_recalculation.started"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_DUE_DATE_RECALCULATION_STARTED: :"invoice_due_date_recalculation.started"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent::type_]
+      end
+    end
+  end
+end

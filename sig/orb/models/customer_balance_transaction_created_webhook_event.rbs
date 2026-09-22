@@ -1,0 +1,171 @@
+module Orb
+  module Models
+    type customer_balance_transaction_created_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties,
+        type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::type_
+      }
+
+    class CustomerBalanceTransactionCreatedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor customer: Orb::Customer
+
+      attr_accessor properties: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties,
+        type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        customer: Orb::Customer,
+        properties: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties,
+        type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          balance_transaction: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor balance_transaction: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction
+
+        def initialize: (
+          balance_transaction: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction
+        ) -> void
+
+        def to_hash: -> {
+          balance_transaction: Orb::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction
+        }
+
+        type balance_transaction =
+          {
+            id: String,
+            action: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::action,
+            amount: String,
+            created_at: Time,
+            credit_note: Orb::CreditNoteTiny?,
+            description: String?,
+            ending_balance: String,
+            invoice: Orb::InvoiceTiny?,
+            starting_balance: String,
+            type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::type_
+          }
+
+        class BalanceTransaction < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor action: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::action
+
+          attr_accessor amount: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor credit_note: Orb::CreditNoteTiny?
+
+          attr_accessor description: String?
+
+          attr_accessor ending_balance: String
+
+          attr_accessor invoice: Orb::InvoiceTiny?
+
+          attr_accessor starting_balance: String
+
+          attr_accessor type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::type_
+
+          def initialize: (
+            id: String,
+            action: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::action,
+            amount: String,
+            created_at: Time,
+            credit_note: Orb::CreditNoteTiny?,
+            description: String?,
+            ending_balance: String,
+            invoice: Orb::InvoiceTiny?,
+            starting_balance: String,
+            type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::type_
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            action: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::action,
+            amount: String,
+            created_at: Time,
+            credit_note: Orb::CreditNoteTiny?,
+            description: String?,
+            ending_balance: String,
+            invoice: Orb::InvoiceTiny?,
+            starting_balance: String,
+            type: Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::type_
+          }
+
+          type action =
+            :applied_to_invoice
+            | :manual_adjustment
+            | :prorated_refund
+            | :revert_prorated_refund
+            | :return_from_voiding
+            | :credit_note_applied
+            | :credit_note_voided
+            | :overpayment_refund
+            | :external_payment
+            | :small_invoice_carryover
+            | :prepaid_commit_cancel
+
+          module Action
+            extend Orb::Internal::Type::Enum
+
+            APPLIED_TO_INVOICE: :applied_to_invoice
+            MANUAL_ADJUSTMENT: :manual_adjustment
+            PRORATED_REFUND: :prorated_refund
+            REVERT_PRORATED_REFUND: :revert_prorated_refund
+            RETURN_FROM_VOIDING: :return_from_voiding
+            CREDIT_NOTE_APPLIED: :credit_note_applied
+            CREDIT_NOTE_VOIDED: :credit_note_voided
+            OVERPAYMENT_REFUND: :overpayment_refund
+            EXTERNAL_PAYMENT: :external_payment
+            SMALL_INVOICE_CARRYOVER: :small_invoice_carryover
+            PREPAID_COMMIT_CANCEL: :prepaid_commit_cancel
+
+            def self?.values: -> ::Array[Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::action]
+          end
+
+          type type_ = :increment | :decrement
+
+          module Type
+            extend Orb::Internal::Type::Enum
+
+            INCREMENT: :increment
+            DECREMENT: :decrement
+
+            def self?.values: -> ::Array[Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::Properties::BalanceTransaction::type_]
+          end
+        end
+      end
+
+      type type_ = :"customer.balance_transaction_created"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        CUSTOMER_BALANCE_TRANSACTION_CREATED: :"customer.balance_transaction_created"
+
+        def self?.values: -> ::Array[Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent::type_]
+      end
+    end
+  end
+end

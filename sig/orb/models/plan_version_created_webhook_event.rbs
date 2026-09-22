@@ -1,0 +1,91 @@
+module Orb
+  module Models
+    type plan_version_created_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        plan: Orb::PlanVersionCreatedWebhookEvent::Plan,
+        properties: Orb::PlanVersionCreatedWebhookEvent::Properties,
+        type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
+      }
+
+    class PlanVersionCreatedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor plan: Orb::PlanVersionCreatedWebhookEvent::Plan
+
+      attr_accessor properties: Orb::PlanVersionCreatedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        plan: Orb::PlanVersionCreatedWebhookEvent::Plan,
+        properties: Orb::PlanVersionCreatedWebhookEvent::Properties,
+        type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        plan: Orb::PlanVersionCreatedWebhookEvent::Plan,
+        properties: Orb::PlanVersionCreatedWebhookEvent::Properties,
+        type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
+      }
+
+      type plan = { id: String?, external_plan_id: String?, name: String? }
+
+      class Plan < Orb::Internal::Type::BaseModel
+        attr_accessor id: String?
+
+        attr_accessor external_plan_id: String?
+
+        attr_accessor name: String?
+
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        }
+      end
+
+      type properties =
+        { plan_version_description: String?, plan_version_number: Integer }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor plan_version_description: String?
+
+        attr_accessor plan_version_number: Integer
+
+        def initialize: (
+          plan_version_description: String?,
+          plan_version_number: Integer
+        ) -> void
+
+        def to_hash: -> {
+          plan_version_description: String?,
+          plan_version_number: Integer
+        }
+      end
+
+      type type_ = :"plan.version_created"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        PLAN_VERSION_CREATED: :"plan.version_created"
+
+        def self?.values: -> ::Array[Orb::Models::PlanVersionCreatedWebhookEvent::type_]
+      end
+    end
+  end
+end

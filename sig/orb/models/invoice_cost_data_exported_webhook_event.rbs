@@ -1,0 +1,73 @@
+module Orb
+  module Models
+    type invoice_cost_data_exported_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: String,
+        properties: Orb::InvoiceCostDataExportedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceCostDataExportedWebhookEvent::type_
+      }
+
+    class InvoiceCostDataExportedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: String
+
+      attr_accessor properties: Orb::InvoiceCostDataExportedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceCostDataExportedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: String,
+        properties: Orb::InvoiceCostDataExportedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceCostDataExportedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: String,
+        properties: Orb::InvoiceCostDataExportedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceCostDataExportedWebhookEvent::type_
+      }
+
+      type properties =
+        { exported_date: Time, :s3_bucket => String, :s3_key => String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor exported_date: Time
+
+        attr_accessor s3_bucket: String
+
+        attr_accessor s3_key: String
+
+        def initialize: (
+          exported_date: Time,
+          s3_bucket: String,
+          s3_key: String
+        ) -> void
+
+        def to_hash: -> {
+          exported_date: Time,
+          :s3_bucket => String,
+          :s3_key => String
+        }
+      end
+
+      type type_ = :"invoice.cost_data_exported"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_COST_DATA_EXPORTED: :"invoice.cost_data_exported"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceCostDataExportedWebhookEvent::type_]
+      end
+    end
+  end
+end

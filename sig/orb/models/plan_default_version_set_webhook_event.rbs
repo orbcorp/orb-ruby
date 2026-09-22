@@ -1,0 +1,94 @@
+module Orb
+  module Models
+    type plan_default_version_set_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        plan: Orb::PlanDefaultVersionSetWebhookEvent::Plan,
+        properties: Orb::PlanDefaultVersionSetWebhookEvent::Properties,
+        type: Orb::Models::PlanDefaultVersionSetWebhookEvent::type_
+      }
+
+    class PlanDefaultVersionSetWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor plan: Orb::PlanDefaultVersionSetWebhookEvent::Plan
+
+      attr_accessor properties: Orb::PlanDefaultVersionSetWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::PlanDefaultVersionSetWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        plan: Orb::PlanDefaultVersionSetWebhookEvent::Plan,
+        properties: Orb::PlanDefaultVersionSetWebhookEvent::Properties,
+        type: Orb::Models::PlanDefaultVersionSetWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        plan: Orb::PlanDefaultVersionSetWebhookEvent::Plan,
+        properties: Orb::PlanDefaultVersionSetWebhookEvent::Properties,
+        type: Orb::Models::PlanDefaultVersionSetWebhookEvent::type_
+      }
+
+      type plan = { id: String?, external_plan_id: String?, name: String? }
+
+      class Plan < Orb::Internal::Type::BaseModel
+        attr_accessor id: String?
+
+        attr_accessor external_plan_id: String?
+
+        attr_accessor name: String?
+
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        }
+      end
+
+      type properties =
+        {
+          new_default_version_number: Integer,
+          previous_default_version_number: Integer
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor new_default_version_number: Integer
+
+        attr_accessor previous_default_version_number: Integer
+
+        def initialize: (
+          new_default_version_number: Integer,
+          previous_default_version_number: Integer
+        ) -> void
+
+        def to_hash: -> {
+          new_default_version_number: Integer,
+          previous_default_version_number: Integer
+        }
+      end
+
+      type type_ = :"plan.default_version_set"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        PLAN_DEFAULT_VERSION_SET: :"plan.default_version_set"
+
+        def self?.values: -> ::Array[Orb::Models::PlanDefaultVersionSetWebhookEvent::type_]
+      end
+    end
+  end
+end

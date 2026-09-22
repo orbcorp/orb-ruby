@@ -1,0 +1,119 @@
+module Orb
+  module Models
+    type invoice_dunning_schedule_step_executed_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent::type_
+      }
+
+    class InvoiceDunningScheduleStepExecutedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties,
+        type: Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          dunning_step: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties::DunningStep
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor dunning_step: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties::DunningStep
+
+        def initialize: (
+          dunning_step: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties::DunningStep
+        ) -> void
+
+        def to_hash: -> {
+          dunning_step: Orb::InvoiceDunningScheduleStepExecutedWebhookEvent::Properties::DunningStep
+        }
+
+        type dunning_step =
+          {
+            actions: ::Array[String],
+            created_at: Time?,
+            execution_time: Time?,
+            manually_triggered_at: Time?,
+            modified_at: Time?,
+            status: String,
+            step_number: Integer?,
+            timestamp: Time?
+          }
+
+        class DunningStep < Orb::Internal::Type::BaseModel
+          attr_accessor actions: ::Array[String]
+
+          attr_accessor created_at: Time?
+
+          attr_accessor execution_time: Time?
+
+          attr_accessor manually_triggered_at: Time?
+
+          attr_accessor modified_at: Time?
+
+          attr_accessor status: String
+
+          attr_accessor step_number: Integer?
+
+          attr_accessor timestamp: Time?
+
+          def initialize: (
+            actions: ::Array[String],
+            created_at: Time?,
+            execution_time: Time?,
+            manually_triggered_at: Time?,
+            modified_at: Time?,
+            status: String,
+            step_number: Integer?,
+            timestamp: Time?
+          ) -> void
+
+          def to_hash: -> {
+            actions: ::Array[String],
+            created_at: Time?,
+            execution_time: Time?,
+            manually_triggered_at: Time?,
+            modified_at: Time?,
+            status: String,
+            step_number: Integer?,
+            timestamp: Time?
+          }
+        end
+      end
+
+      type type_ = :"invoice.dunning_schedule_step_executed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_DUNNING_SCHEDULE_STEP_EXECUTED: :"invoice.dunning_schedule_step_executed"
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent::type_]
+      end
+    end
+  end
+end

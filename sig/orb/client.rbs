@@ -12,6 +12,8 @@ module Orb
 
     attr_reader webhook_secret: String?
 
+    attr_reader webhooks: Orb::Resources::Webhooks
+
     attr_reader top_level: Orb::Resources::TopLevel
 
     attr_reader beta: Orb::Resources::Beta

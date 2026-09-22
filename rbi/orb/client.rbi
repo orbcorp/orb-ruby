@@ -16,6 +16,9 @@ module Orb
     sig { returns(T.nilable(String)) }
     attr_reader :webhook_secret
 
+    sig { returns(Orb::Resources::Webhooks) }
+    attr_reader :webhooks
+
     sig { returns(Orb::Resources::TopLevel) }
     attr_reader :top_level
 

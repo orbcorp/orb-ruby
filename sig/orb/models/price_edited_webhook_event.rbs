@@ -1,0 +1,77 @@
+module Orb
+  module Models
+    type price_edited_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        price: Orb::Models::price,
+        properties: Orb::PriceEditedWebhookEvent::Properties,
+        type: Orb::Models::PriceEditedWebhookEvent::type_
+      }
+
+    class PriceEditedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor price: Orb::Models::price
+
+      attr_accessor properties: Orb::PriceEditedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::PriceEditedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        price: Orb::Models::price,
+        properties: Orb::PriceEditedWebhookEvent::Properties,
+        type: Orb::Models::PriceEditedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        price: Orb::Models::price,
+        properties: Orb::PriceEditedWebhookEvent::Properties,
+        type: Orb::Models::PriceEditedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          previous_attributes: Orb::PriceEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor previous_attributes: Orb::PriceEditedWebhookEvent::Properties::PreviousAttributes
+
+        def initialize: (
+          previous_attributes: Orb::PriceEditedWebhookEvent::Properties::PreviousAttributes
+        ) -> void
+
+        def to_hash: -> {
+          previous_attributes: Orb::PriceEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+        type previous_attributes = { metadata: ::Hash[Symbol, String]? }
+
+        class PreviousAttributes < Orb::Internal::Type::BaseModel
+          attr_accessor metadata: ::Hash[Symbol, String]?
+
+          def initialize: (?metadata: ::Hash[Symbol, String]?) -> void
+
+          def to_hash: -> { metadata: ::Hash[Symbol, String]? }
+        end
+      end
+
+      type type_ = :"price.edited"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        PRICE_EDITED: :"price.edited"
+
+        def self?.values: -> ::Array[Orb::Models::PriceEditedWebhookEvent::type_]
+      end
+    end
+  end
+end

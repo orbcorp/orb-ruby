@@ -35,6 +35,10 @@ module Orb
 
   class AmountDiscountInterval = Orb::Models::AmountDiscountInterval
 
+  class BackfillReflectedWebhookEvent = Orb::Models::BackfillReflectedWebhookEvent
+
+  class BackfillRevertedWebhookEvent = Orb::Models::BackfillRevertedWebhookEvent
+
   module Beta = Orb::Models::Beta
 
   class BetaCreatePlanVersionParams = Orb::Models::BetaCreatePlanVersionParams
@@ -44,6 +48,8 @@ module Orb
   class BetaSetDefaultPlanVersionParams = Orb::Models::BetaSetDefaultPlanVersionParams
 
   class BillableMetric = Orb::Models::BillableMetric
+
+  class BillableMetricEditedWebhookEvent = Orb::Models::BillableMetricEditedWebhookEvent
 
   class BillableMetricTiny = Orb::Models::BillableMetricTiny
 
@@ -81,6 +87,10 @@ module Orb
 
   module Coupons = Orb::Models::Coupons
 
+  class CreditBlockAccountingSyncFailedWebhookEvent = Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent
+
+  class CreditBlockAccountingSyncSucceededWebhookEvent = Orb::Models::CreditBlockAccountingSyncSucceededWebhookEvent
+
   class CreditBlockDeleteParams = Orb::Models::CreditBlockDeleteParams
 
   class CreditBlockListInvoicesParams = Orb::Models::CreditBlockListInvoicesParams
@@ -89,15 +99,31 @@ module Orb
 
   class CreditNote = Orb::Models::CreditNote
 
+  class CreditNoteAccountingSyncFailedWebhookEvent = Orb::Models::CreditNoteAccountingSyncFailedWebhookEvent
+
+  class CreditNoteAccountingSyncSucceededWebhookEvent = Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent
+
   class CreditNoteCreateParams = Orb::Models::CreditNoteCreateParams
 
   class CreditNoteFetchParams = Orb::Models::CreditNoteFetchParams
 
+  class CreditNoteIssuedWebhookEvent = Orb::Models::CreditNoteIssuedWebhookEvent
+
   class CreditNoteListParams = Orb::Models::CreditNoteListParams
+
+  class CreditNoteMarkedAsVoidWebhookEvent = Orb::Models::CreditNoteMarkedAsVoidWebhookEvent
 
   class CreditNoteTiny = Orb::Models::CreditNoteTiny
 
   class Customer = Orb::Models::Customer
+
+  class CustomerAccountingSyncFailedWebhookEvent = Orb::Models::CustomerAccountingSyncFailedWebhookEvent
+
+  class CustomerAccountingSyncSucceededWebhookEvent = Orb::Models::CustomerAccountingSyncSucceededWebhookEvent
+
+  class CustomerBalanceTransactionCreatedWebhookEvent = Orb::Models::CustomerBalanceTransactionCreatedWebhookEvent
+
+  class CustomerCreatedWebhookEvent = Orb::Models::CustomerCreatedWebhookEvent
 
   class CustomerCreateParams = Orb::Models::CustomerCreateParams
 
@@ -105,7 +131,17 @@ module Orb
 
   class CustomerCreatePortalSessionParams = Orb::Models::CustomerCreatePortalSessionParams
 
+  class CustomerCreditBalanceDepletedWebhookEvent = Orb::Models::CustomerCreditBalanceDepletedWebhookEvent
+
+  class CustomerCreditBalanceDroppedWebhookEvent = Orb::Models::CustomerCreditBalanceDroppedWebhookEvent
+
+  class CustomerCreditBalanceRecoveredWebhookEvent = Orb::Models::CustomerCreditBalanceRecoveredWebhookEvent
+
+  class CustomerCreditLedgerIncrementedWebhookEvent = Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent
+
   class CustomerDeleteParams = Orb::Models::CustomerDeleteParams
+
+  class CustomerEditedWebhookEvent = Orb::Models::CustomerEditedWebhookEvent
 
   class CustomerFetchByExternalIDParams = Orb::Models::CustomerFetchByExternalIDParams
 
@@ -130,6 +166,10 @@ module Orb
   class CustomerUpdateParams = Orb::Models::CustomerUpdateParams
 
   class CustomExpiration = Orb::Models::CustomExpiration
+
+  class DataExportsTransferErrorWebhookEvent = Orb::Models::DataExportsTransferErrorWebhookEvent
+
+  class DataExportsTransferSuccessWebhookEvent = Orb::Models::DataExportsTransferSuccessWebhookEvent
 
   class DimensionalPriceConfiguration = Orb::Models::DimensionalPriceConfiguration
 
@@ -161,21 +201,57 @@ module Orb
 
   class EventSearchParams = Orb::Models::EventSearchParams
 
+  class EventUnmatchedEventWebhookEvent = Orb::Models::EventUnmatchedEventWebhookEvent
+
   class EventUpdateParams = Orb::Models::EventUpdateParams
 
   class FixedFeeQuantityScheduleEntry = Orb::Models::FixedFeeQuantityScheduleEntry
 
   class FixedFeeQuantityTransition = Orb::Models::FixedFeeQuantityTransition
 
+  class IngestionUnmatchedCustomerIDsWebhookEvent = Orb::Models::IngestionUnmatchedCustomerIDsWebhookEvent
+
   class Invoice = Orb::Models::Invoice
+
+  class InvoiceAccountingSyncFailedWebhookEvent = Orb::Models::InvoiceAccountingSyncFailedWebhookEvent
+
+  class InvoiceAccountingSyncSucceededWebhookEvent = Orb::Models::InvoiceAccountingSyncSucceededWebhookEvent
+
+  class InvoiceAutomationScheduleStepExecutedWebhookEvent = Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent
+
+  class InvoiceCostDataExportedWebhookEvent = Orb::Models::InvoiceCostDataExportedWebhookEvent
 
   class InvoiceCreateParams = Orb::Models::InvoiceCreateParams
 
   class InvoiceDeleteLineItemParams = Orb::Models::InvoiceDeleteLineItemParams
 
+  class InvoiceDueDateRecalculationCanceledWebhookEvent = Orb::Models::InvoiceDueDateRecalculationCanceledWebhookEvent
+
+  class InvoiceDueDateRecalculationCompletedWebhookEvent = Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent
+
+  class InvoiceDueDateRecalculationStartedWebhookEvent = Orb::Models::InvoiceDueDateRecalculationStartedWebhookEvent
+
+  class InvoiceDunningScheduleCreatedWebhookEvent = Orb::Models::InvoiceDunningScheduleCreatedWebhookEvent
+
+  class InvoiceDunningScheduleEndedWebhookEvent = Orb::Models::InvoiceDunningScheduleEndedWebhookEvent
+
+  class InvoiceDunningScheduleResetWebhookEvent = Orb::Models::InvoiceDunningScheduleResetWebhookEvent
+
+  class InvoiceDunningScheduleStepExecutedWebhookEvent = Orb::Models::InvoiceDunningScheduleStepExecutedWebhookEvent
+
+  class InvoiceEditedWebhookEvent = Orb::Models::InvoiceEditedWebhookEvent
+
   class InvoiceFetchParams = Orb::Models::InvoiceFetchParams
 
   class InvoiceFetchUpcomingParams = Orb::Models::InvoiceFetchUpcomingParams
+
+  class InvoiceInvoiceDateElapsedWebhookEvent = Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent
+
+  class InvoiceIssuedSummaryWebhookEvent = Orb::Models::InvoiceIssuedSummaryWebhookEvent
+
+  class InvoiceIssuedWebhookEvent = Orb::Models::InvoiceIssuedWebhookEvent
+
+  class InvoiceIssueFailedWebhookEvent = Orb::Models::InvoiceIssueFailedWebhookEvent
 
   class InvoiceIssueParams = Orb::Models::InvoiceIssueParams
 
@@ -189,7 +265,17 @@ module Orb
 
   class InvoiceListSummaryParams = Orb::Models::InvoiceListSummaryParams
 
+  class InvoiceManuallyMarkedAsPaidWebhookEvent = Orb::Models::InvoiceManuallyMarkedAsPaidWebhookEvent
+
+  class InvoiceManuallyMarkedAsVoidWebhookEvent = Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent
+
   class InvoiceMarkPaidParams = Orb::Models::InvoiceMarkPaidParams
+
+  class InvoicePaymentFailedWebhookEvent = Orb::Models::InvoicePaymentFailedWebhookEvent
+
+  class InvoicePaymentProcessingWebhookEvent = Orb::Models::InvoicePaymentProcessingWebhookEvent
+
+  class InvoicePaymentSucceededWebhookEvent = Orb::Models::InvoicePaymentSucceededWebhookEvent
 
   class InvoicePayParams = Orb::Models::InvoicePayParams
 
@@ -197,7 +283,13 @@ module Orb
 
   class InvoiceRegenerateReceiptPdfParams = Orb::Models::InvoiceRegenerateReceiptPdfParams
 
+  class InvoiceSyncFailedWebhookEvent = Orb::Models::InvoiceSyncFailedWebhookEvent
+
+  class InvoiceSyncSucceededWebhookEvent = Orb::Models::InvoiceSyncSucceededWebhookEvent
+
   class InvoiceTiny = Orb::Models::InvoiceTiny
+
+  class InvoiceUndoMarkAsPaidWebhookEvent = Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent
 
   class InvoiceUpdateParams = Orb::Models::InvoiceUpdateParams
 
@@ -248,6 +340,8 @@ module Orb
   class MaximumInterval = Orb::Models::MaximumInterval
 
   class MetricCreateParams = Orb::Models::MetricCreateParams
+
+  class MetricEventsDroppedByWatermarkWebhookEvent = Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent
 
   class MetricFetchParams = Orb::Models::MetricFetchParams
 
@@ -455,6 +549,10 @@ module Orb
 
   class PaginationMetadata = Orb::Models::PaginationMetadata
 
+  class PaymentMethodCreatedWebhookEvent = Orb::Models::PaymentMethodCreatedWebhookEvent
+
+  class PaymentMethodDeletedWebhookEvent = Orb::Models::PaymentMethodDeletedWebhookEvent
+
   class PercentageDiscount = Orb::Models::PercentageDiscount
 
   class PercentageDiscountInterval = Orb::Models::PercentageDiscountInterval
@@ -464,6 +562,8 @@ module Orb
   class Plan = Orb::Models::Plan
 
   class PlanCreateParams = Orb::Models::PlanCreateParams
+
+  class PlanDefaultVersionSetWebhookEvent = Orb::Models::PlanDefaultVersionSetWebhookEvent
 
   class PlanFetchParams = Orb::Models::PlanFetchParams
 
@@ -485,11 +585,15 @@ module Orb
 
   class PlanVersion = Orb::Models::PlanVersion
 
+  class PlanVersionCreatedWebhookEvent = Orb::Models::PlanVersionCreatedWebhookEvent
+
   class PlanVersionPhase = Orb::Models::PlanVersionPhase
 
   module Price = Orb::Models::Price
 
   class PriceCreateParams = Orb::Models::PriceCreateParams
+
+  class PriceEditedWebhookEvent = Orb::Models::PriceEditedWebhookEvent
 
   class PriceEvaluateMultipleParams = Orb::Models::PriceEvaluateMultipleParams
 
@@ -507,11 +611,27 @@ module Orb
 
   class PriceUpdateParams = Orb::Models::PriceUpdateParams
 
+  class ResourceEventTestWebhookEvent = Orb::Models::ResourceEventTestWebhookEvent
+
+  class SalesOrderAccountingSyncFailedWebhookEvent = Orb::Models::SalesOrderAccountingSyncFailedWebhookEvent
+
+  class SalesOrderAccountingSyncSucceededWebhookEvent = Orb::Models::SalesOrderAccountingSyncSucceededWebhookEvent
+
   class SubLineItemGrouping = Orb::Models::SubLineItemGrouping
 
   class SubLineItemMatrixConfig = Orb::Models::SubLineItemMatrixConfig
 
   class Subscription = Orb::Models::Subscription
+
+  class SubscriptionAccountingSyncFailedWebhookEvent = Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent
+
+  class SubscriptionAccountingSyncSucceededWebhookEvent = Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent
+
+  class SubscriptionAlertDisabledWebhookEvent = Orb::Models::SubscriptionAlertDisabledWebhookEvent
+
+  class SubscriptionCancellationScheduledWebhookEvent = Orb::Models::SubscriptionCancellationScheduledWebhookEvent
+
+  class SubscriptionCancellationUnscheduledWebhookEvent = Orb::Models::SubscriptionCancellationUnscheduledWebhookEvent
 
   class SubscriptionCancelParams = Orb::Models::SubscriptionCancelParams
 
@@ -525,7 +645,15 @@ module Orb
 
   class SubscriptionChangeRetrieveParams = Orb::Models::SubscriptionChangeRetrieveParams
 
+  class SubscriptionCostExceededWebhookEvent = Orb::Models::SubscriptionCostExceededWebhookEvent
+
+  class SubscriptionCreatedWebhookEvent = Orb::Models::SubscriptionCreatedWebhookEvent
+
   class SubscriptionCreateParams = Orb::Models::SubscriptionCreateParams
+
+  class SubscriptionEditedWebhookEvent = Orb::Models::SubscriptionEditedWebhookEvent
+
+  class SubscriptionEndedWebhookEvent = Orb::Models::SubscriptionEndedWebhookEvent
 
   class SubscriptionFetchCostsParams = Orb::Models::SubscriptionFetchCostsParams
 
@@ -535,9 +663,27 @@ module Orb
 
   class SubscriptionFetchUsageParams = Orb::Models::SubscriptionFetchUsageParams
 
+  class SubscriptionFixedFeeQuantityUpdatedWebhookEvent = Orb::Models::SubscriptionFixedFeeQuantityUpdatedWebhookEvent
+
+  class SubscriptionGroupedCostExceededWebhookEvent = Orb::Models::SubscriptionGroupedCostExceededWebhookEvent
+
+  class SubscriptionInvoicingThresholdExceededWebhookEvent = Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent
+
+  class SubscriptionLicenseAllocationResetWebhookEvent = Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent
+
+  class SubscriptionLicenseBalanceThresholdReachedWebhookEvent = Orb::Models::SubscriptionLicenseBalanceThresholdReachedWebhookEvent
+
   class SubscriptionListParams = Orb::Models::SubscriptionListParams
 
   class SubscriptionMinified = Orb::Models::SubscriptionMinified
+
+  class SubscriptionPlanChangedWebhookEvent = Orb::Models::SubscriptionPlanChangedWebhookEvent
+
+  class SubscriptionPlanChangeScheduledWebhookEvent = Orb::Models::SubscriptionPlanChangeScheduledWebhookEvent
+
+  class SubscriptionPlanVersionChangedWebhookEvent = Orb::Models::SubscriptionPlanVersionChangedWebhookEvent
+
+  class SubscriptionPlanVersionChangeScheduledWebhookEvent = Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent
 
   class SubscriptionPriceIntervalsParams = Orb::Models::SubscriptionPriceIntervalsParams
 
@@ -546,6 +692,12 @@ module Orb
   class SubscriptionsAPI = Orb::Models::SubscriptionsAPI
 
   class SubscriptionSchedulePlanChangeParams = Orb::Models::SubscriptionSchedulePlanChangeParams
+
+  class SubscriptionSpendExceededWebhookEvent = Orb::Models::SubscriptionSpendExceededWebhookEvent
+
+  class SubscriptionStartedWebhookEvent = Orb::Models::SubscriptionStartedWebhookEvent
+
+  class SubscriptionTrialEndedWebhookEvent = Orb::Models::SubscriptionTrialEndedWebhookEvent
 
   class SubscriptionTrialInfo = Orb::Models::SubscriptionTrialInfo
 
@@ -565,6 +717,8 @@ module Orb
 
   module SubscriptionUsage = Orb::Models::SubscriptionUsage
 
+  class SubscriptionUsageExceededWebhookEvent = Orb::Models::SubscriptionUsageExceededWebhookEvent
+
   class TaxAmount = Orb::Models::TaxAmount
 
   class Threshold = Orb::Models::Threshold
@@ -579,13 +733,21 @@ module Orb
 
   class TopLevelPingParams = Orb::Models::TopLevelPingParams
 
+  class TransactionAccountingSyncFailedWebhookEvent = Orb::Models::TransactionAccountingSyncFailedWebhookEvent
+
+  class TransactionAccountingSyncSucceededWebhookEvent = Orb::Models::TransactionAccountingSyncSucceededWebhookEvent
+
   class TrialDiscount = Orb::Models::TrialDiscount
 
   class UnitConfig = Orb::Models::UnitConfig
 
   class UnitConversionRateConfig = Orb::Models::UnitConversionRateConfig
 
+  module UnwrapWebhookEvent = Orb::Models::UnwrapWebhookEvent
+
   class UsageDiscount = Orb::Models::UsageDiscount
 
   class UsageDiscountInterval = Orb::Models::UsageDiscountInterval
+
+  class WebhookUnwrapParams = Orb::Models::WebhookUnwrapParams
 end

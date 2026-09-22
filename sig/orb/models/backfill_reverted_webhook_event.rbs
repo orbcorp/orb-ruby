@@ -1,0 +1,130 @@
+module Orb
+  module Models
+    type backfill_reverted_webhook_event =
+      {
+        id: String,
+        backfill: Orb::BackfillRevertedWebhookEvent::Backfill,
+        created_at: Time,
+        properties: top,
+        type: Orb::Models::BackfillRevertedWebhookEvent::type_
+      }
+
+    class BackfillRevertedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor backfill: Orb::BackfillRevertedWebhookEvent::Backfill
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: top
+
+      attr_accessor type: Orb::Models::BackfillRevertedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        backfill: Orb::BackfillRevertedWebhookEvent::Backfill,
+        created_at: Time,
+        properties: top,
+        type: Orb::Models::BackfillRevertedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        backfill: Orb::BackfillRevertedWebhookEvent::Backfill,
+        created_at: Time,
+        properties: top,
+        type: Orb::Models::BackfillRevertedWebhookEvent::type_
+      }
+
+      type backfill =
+        {
+          id: String,
+          close_time: Time?,
+          created_at: Time,
+          customer_id: String?,
+          events_ingested: Integer,
+          replace_existing_events: bool,
+          reverted_at: Time?,
+          status: Orb::Models::BackfillRevertedWebhookEvent::Backfill::status,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          deprecation_filter: String?
+        }
+
+      class Backfill < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor close_time: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor customer_id: String?
+
+        attr_accessor events_ingested: Integer
+
+        attr_accessor replace_existing_events: bool
+
+        attr_accessor reverted_at: Time?
+
+        attr_accessor status: Orb::Models::BackfillRevertedWebhookEvent::Backfill::status
+
+        attr_accessor timeframe_end: Time
+
+        attr_accessor timeframe_start: Time
+
+        attr_accessor deprecation_filter: String?
+
+        def initialize: (
+          id: String,
+          close_time: Time?,
+          created_at: Time,
+          customer_id: String?,
+          events_ingested: Integer,
+          replace_existing_events: bool,
+          reverted_at: Time?,
+          status: Orb::Models::BackfillRevertedWebhookEvent::Backfill::status,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          ?deprecation_filter: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          close_time: Time?,
+          created_at: Time,
+          customer_id: String?,
+          events_ingested: Integer,
+          replace_existing_events: bool,
+          reverted_at: Time?,
+          status: Orb::Models::BackfillRevertedWebhookEvent::Backfill::status,
+          timeframe_end: Time,
+          timeframe_start: Time,
+          deprecation_filter: String?
+        }
+
+        type status = :pending | :reflected | :pending_revert | :reverted
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          PENDING: :pending
+          REFLECTED: :reflected
+          PENDING_REVERT: :pending_revert
+          REVERTED: :reverted
+
+          def self?.values: -> ::Array[Orb::Models::BackfillRevertedWebhookEvent::Backfill::status]
+        end
+      end
+
+      type type_ = :"backfill.reverted"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        BACKFILL_REVERTED: :"backfill.reverted"
+
+        def self?.values: -> ::Array[Orb::Models::BackfillRevertedWebhookEvent::type_]
+      end
+    end
+  end
+end

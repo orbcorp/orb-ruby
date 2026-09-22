@@ -1,0 +1,158 @@
+module Orb
+  module Models
+    type subscription_invoicing_threshold_exceeded_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Properties,
+        subscription: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription,
+        type: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::type_
+      }
+
+    class SubscriptionInvoicingThresholdExceededWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Properties
+
+      attr_accessor subscription: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Properties,
+        subscription: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription,
+        type: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Properties,
+        subscription: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription,
+        type: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          evaluated_amount: String,
+          invoice_id: String,
+          invoicing_threshold: String,
+          threshold_invoice_created: bool
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor evaluated_amount: String
+
+        attr_accessor invoice_id: String
+
+        attr_accessor invoicing_threshold: String
+
+        attr_accessor threshold_invoice_created: bool
+
+        def initialize: (
+          evaluated_amount: String,
+          invoice_id: String,
+          invoicing_threshold: String,
+          threshold_invoice_created: bool
+        ) -> void
+
+        def to_hash: -> {
+          evaluated_amount: String,
+          invoice_id: String,
+          invoicing_threshold: String,
+          threshold_invoice_created: bool
+        }
+      end
+
+      type subscription =
+        {
+          id: String,
+          customer: Orb::CustomerMinified,
+          end_date: Time?,
+          plan: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::Plan?,
+          start_date: Time,
+          status: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::status
+        }
+
+      class Subscription < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor customer: Orb::CustomerMinified
+
+        attr_accessor end_date: Time?
+
+        attr_accessor plan: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::Plan?
+
+        attr_accessor start_date: Time
+
+        attr_accessor status: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::status
+
+        def initialize: (
+          id: String,
+          customer: Orb::CustomerMinified,
+          end_date: Time?,
+          plan: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::Plan?,
+          start_date: Time,
+          status: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::status
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          customer: Orb::CustomerMinified,
+          end_date: Time?,
+          plan: Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::Plan?,
+          start_date: Time,
+          status: Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::status
+        }
+
+        type plan = { id: String?, external_plan_id: String?, name: String? }
+
+        class Plan < Orb::Internal::Type::BaseModel
+          attr_accessor id: String?
+
+          attr_accessor external_plan_id: String?
+
+          attr_accessor name: String?
+
+          def initialize: (
+            id: String?,
+            external_plan_id: String?,
+            name: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String?,
+            external_plan_id: String?,
+            name: String?
+          }
+        end
+
+        type status = :active | :ended | :upcoming
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ACTIVE: :active
+          ENDED: :ended
+          UPCOMING: :upcoming
+
+          def self?.values: -> ::Array[Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::status]
+        end
+      end
+
+      type type_ = :"subscription.invoicing_threshold_exceeded"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_INVOICING_THRESHOLD_EXCEEDED: :"subscription.invoicing_threshold_exceeded"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::type_]
+      end
+    end
+  end
+end

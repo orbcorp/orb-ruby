@@ -1,0 +1,60 @@
+module Orb
+  module Models
+    type subscription_plan_changed_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionPlanChangedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionPlanChangedWebhookEvent::type_
+      }
+
+    class SubscriptionPlanChangedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor properties: Orb::SubscriptionPlanChangedWebhookEvent::Properties
+
+      attr_accessor subscription: Orb::Subscription
+
+      attr_accessor type: Orb::Models::SubscriptionPlanChangedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionPlanChangedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionPlanChangedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        properties: Orb::SubscriptionPlanChangedWebhookEvent::Properties,
+        subscription: Orb::Subscription,
+        type: Orb::Models::SubscriptionPlanChangedWebhookEvent::type_
+      }
+
+      type properties = { previous_plan_id: String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor previous_plan_id: String
+
+        def initialize: (previous_plan_id: String) -> void
+
+        def to_hash: -> { previous_plan_id: String }
+      end
+
+      type type_ = :"subscription.plan_changed"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        SUBSCRIPTION_PLAN_CHANGED: :"subscription.plan_changed"
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionPlanChangedWebhookEvent::type_]
+      end
+    end
+  end
+end

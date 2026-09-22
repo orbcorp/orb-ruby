@@ -1,0 +1,71 @@
+module Orb
+  module Models
+    type invoice_payment_processing_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentProcessingWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentProcessingWebhookEvent::type_
+      }
+
+    class InvoicePaymentProcessingWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor invoice: Orb::Invoice
+
+      attr_accessor properties: Orb::InvoicePaymentProcessingWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::InvoicePaymentProcessingWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentProcessingWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentProcessingWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        invoice: Orb::Invoice,
+        properties: Orb::InvoicePaymentProcessingWebhookEvent::Properties,
+        type: Orb::Models::InvoicePaymentProcessingWebhookEvent::type_
+      }
+
+      type properties =
+        { payment_provider_id: String?, payment_provider: String }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor payment_provider_id: String?
+
+        attr_reader payment_provider: String?
+
+        def payment_provider=: (String) -> String
+
+        def initialize: (
+          payment_provider_id: String?,
+          ?payment_provider: String
+        ) -> void
+
+        def to_hash: -> {
+          payment_provider_id: String?,
+          payment_provider: String
+        }
+      end
+
+      type type_ = :"invoice.payment_processing"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        INVOICE_PAYMENT_PROCESSING: :"invoice.payment_processing"
+
+        def self?.values: -> ::Array[Orb::Models::InvoicePaymentProcessingWebhookEvent::type_]
+      end
+    end
+  end
+end
