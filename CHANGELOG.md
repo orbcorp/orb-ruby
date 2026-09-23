@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.36.0](https://github.com/orbcorp/orb-ruby/compare/v1.35.0...v1.36.0) (2026-09-23)
+
+
+### Features
+
+* **api:** api update ([62c9140](https://github.com/orbcorp/orb-ruby/commit/62c914083d1b3b3f514e86a4960b42ff0ef18fa4))
+* **api:** api update ([62c9140](https://github.com/orbcorp/orb-ruby/commit/62c914083d1b3b3f514e86a4960b42ff0ef18fa4))
+* **api:** api update ([62c9140](https://github.com/orbcorp/orb-ruby/commit/62c914083d1b3b3f514e86a4960b42ff0ef18fa4))
+* **api:** api update ([14a6517](https://github.com/orbcorp/orb-ruby/commit/14a65171cecf6a8ffde8b816ab3f1b83bba2a6fa))
+* **api:** api update ([14a6517](https://github.com/orbcorp/orb-ruby/commit/14a65171cecf6a8ffde8b816ab3f1b83bba2a6fa))
+* **api:** api update ([14a6517](https://github.com/orbcorp/orb-ruby/commit/14a65171cecf6a8ffde8b816ab3f1b83bba2a6fa))
+* **api:** api update ([14a6517](https://github.com/orbcorp/orb-ruby/commit/14a65171cecf6a8ffde8b816ab3f1b83bba2a6fa))
+
+
+### Bug Fixes
+
+* **api:** correctly apply plan name when updating a draft plan ([62c9140](https://github.com/orbcorp/orb-ruby/commit/62c914083d1b3b3f514e86a4960b42ff0ef18fa4))
+
 ## [1.35.0](https://github.com/orbcorp/orb-ruby/compare/v1.34.0...v1.35.0) (2026-09-21)
 
 
