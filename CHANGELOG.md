@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.37.0](https://github.com/orbcorp/orb-ruby/compare/v1.36.0...v1.37.0) (2026-09-24)
+
+
+### Features
+
+* **api:** api update ([f4d7e05](https://github.com/orbcorp/orb-ruby/commit/f4d7e05055f6c3b537988e66223775d9acb48030))
+* **api:** api update ([f4d7e05](https://github.com/orbcorp/orb-ruby/commit/f4d7e05055f6c3b537988e66223775d9acb48030))
+* **api:** api update ([f4d7e05](https://github.com/orbcorp/orb-ruby/commit/f4d7e05055f6c3b537988e66223775d9acb48030))
+* **api:** hide internal webapp-api endpoints from public API reference ([50effc2](https://github.com/orbcorp/orb-ruby/commit/50effc2b65bf59f5d876db6dd2488cba33bb25ee))
+
+
+### Bug Fixes
+
+* **api:** allow exact one-year timeframes for subscription usage/costs endpoints ([50effc2](https://github.com/orbcorp/orb-ruby/commit/50effc2b65bf59f5d876db6dd2488cba33bb25ee))
+* **api:** fix Java SDK build error caused by empty webhook event properties marker ([50effc2](https://github.com/orbcorp/orb-ruby/commit/50effc2b65bf59f5d876db6dd2488cba33bb25ee))
+* **api:** no functional change, only schema ordering reshuffled ([50effc2](https://github.com/orbcorp/orb-ruby/commit/50effc2b65bf59f5d876db6dd2488cba33bb25ee))
+
 ## [1.36.0](https://github.com/orbcorp/orb-ruby/compare/v1.35.0...v1.36.0) (2026-09-23)
 
 
