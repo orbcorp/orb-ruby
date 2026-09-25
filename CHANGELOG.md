@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.38.0](https://github.com/orbcorp/orb-ruby/compare/v1.37.0...v1.38.0) (2026-09-25)
+
+
+### Features
+
+* **api:** api update ([4100728](https://github.com/orbcorp/orb-ruby/commit/41007280cc7549d3f578935f37d6410320d1d20a))
+* **api:** label webhook event operations by event name and category tag ([4100728](https://github.com/orbcorp/orb-ruby/commit/41007280cc7549d3f578935f37d6410320d1d20a))
+
 ## [1.37.0](https://github.com/orbcorp/orb-ruby/compare/v1.36.0...v1.37.0) (2026-09-24)
 
 
