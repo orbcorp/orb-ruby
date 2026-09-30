@@ -15,7 +15,9 @@ module Orb
 
         def list: (
           ?cursor: String?,
+          ?customer_id: String?,
           ?limit: Integer,
+          ?status: Orb::Models::Events::BackfillListParams::status?,
           ?request_options: Orb::request_opts
         ) -> Orb::Internal::Page[Orb::Models::Events::BackfillListResponse]
 

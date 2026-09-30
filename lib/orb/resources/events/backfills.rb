@@ -46,7 +46,10 @@ module Orb
         # enables filtering using
         # [computed properties](/extensibility/advanced-metrics#computed-properties). The
         # expressiveness of computed properties allows you to deprecate existing events
-        # based on both a period of time and specific property values.
+        # based on both a period of time and specific property values. When
+        # `deprecation_filter` is provided, the timeframe may extend to `now` rather than
+        # the event reporting grace boundary. Matching events that arrive later with
+        # timestamps inside the timeframe will also be deprecated.
         #
         # You may not have multiple backfills in a pending or pending_revert state with
         # overlapping timeframes.
@@ -93,11 +96,17 @@ module Orb
         # [`pagination_metadata`](/api-reference/pagination), which lets the caller
         # retrieve the next page of results if they exist.
         #
-        # @overload list(cursor: nil, limit: nil, request_options: {})
+        # Use `customer_id` and `status` to filter the results.
+        #
+        # @overload list(cursor: nil, customer_id: nil, limit: nil, status: nil, request_options: {})
         #
         # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
         #
+        # @param customer_id [String, nil]
+        #
         # @param limit [Integer] The number of items to fetch. Defaults to 20.
+        #
+        # @param status [Symbol, Orb::Models::Events::BackfillListParams::Status, nil] The status of the backfill.
         #
         # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
         #

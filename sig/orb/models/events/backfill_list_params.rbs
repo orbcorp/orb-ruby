@@ -2,7 +2,12 @@ module Orb
   module Models
     module Events
       type backfill_list_params =
-        { cursor: String?, limit: Integer }
+        {
+          cursor: String?,
+          customer_id: String?,
+          limit: Integer,
+          status: Orb::Models::Events::BackfillListParams::status?
+        }
         & Orb::Internal::Type::request_parameters
 
       class BackfillListParams < Orb::Internal::Type::BaseModel
@@ -11,21 +16,42 @@ module Orb
 
         attr_accessor cursor: String?
 
+        attr_accessor customer_id: String?
+
         attr_reader limit: Integer?
 
         def limit=: (Integer) -> Integer
 
+        attr_accessor status: Orb::Models::Events::BackfillListParams::status?
+
         def initialize: (
           ?cursor: String?,
+          ?customer_id: String?,
           ?limit: Integer,
+          ?status: Orb::Models::Events::BackfillListParams::status?,
           ?request_options: Orb::request_opts
         ) -> void
 
         def to_hash: -> {
           cursor: String?,
+          customer_id: String?,
           limit: Integer,
+          status: Orb::Models::Events::BackfillListParams::status?,
           request_options: Orb::RequestOptions
         }
+
+        type status = :pending | :reflected | :pending_revert | :reverted
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          PENDING: :pending
+          REFLECTED: :reflected
+          PENDING_REVERT: :pending_revert
+          REVERTED: :reverted
+
+          def self?.values: -> ::Array[Orb::Models::Events::BackfillListParams::status]
+        end
       end
     end
   end
