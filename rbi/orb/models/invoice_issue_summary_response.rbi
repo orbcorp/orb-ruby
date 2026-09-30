@@ -299,6 +299,15 @@ module Orb
       sig { returns(T.nilable(Time)) }
       attr_accessor :payment_failed_at
 
+      # When payment for this invoice was received. For an invoice manually marked as
+      # paid, this is the `payment_received_date` that was supplied. For an invoice paid
+      # through a payment provider, this is the settlement time reported by that
+      # provider. It is `null` for an invoice that became `paid` without a payment, such
+      # as a $0 invoice or one fully covered by credit notes. By contrast, `paid_at` is
+      # when the invoice reached the `paid` status in Orb.
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :payment_received_at
+
       # If payment was attempted on this invoice, this will be the start time of the
       # most recent attempt. This field is especially useful for delayed-notification
       # payment mechanisms (like bank transfers), where payment can take 3 days or more.
@@ -387,6 +396,7 @@ module Orb
               Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt::OrHash
             ],
           payment_failed_at: T.nilable(Time),
+          payment_received_at: T.nilable(Time),
           payment_started_at: T.nilable(Time),
           scheduled_issue_at: T.nilable(Time),
           shipping_address: T.nilable(Orb::Address::OrHash),
@@ -604,6 +614,13 @@ module Orb
         # If payment was attempted on this invoice but failed, this will be the time of
         # the most recent attempt.
         payment_failed_at:,
+        # When payment for this invoice was received. For an invoice manually marked as
+        # paid, this is the `payment_received_date` that was supplied. For an invoice paid
+        # through a payment provider, this is the settlement time reported by that
+        # provider. It is `null` for an invoice that became `paid` without a payment, such
+        # as a $0 invoice or one fully covered by credit notes. By contrast, `paid_at` is
+        # when the invoice reached the `paid` status in Orb.
+        payment_received_at:,
         # If payment was attempted on this invoice, this will be the start time of the
         # most recent attempt. This field is especially useful for delayed-notification
         # payment mechanisms (like bank transfers), where payment can take 3 days or more.
@@ -665,6 +682,7 @@ module Orb
                 Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt
               ],
             payment_failed_at: T.nilable(Time),
+            payment_received_at: T.nilable(Time),
             payment_started_at: T.nilable(Time),
             scheduled_issue_at: T.nilable(Time),
             shipping_address: T.nilable(Orb::Address),

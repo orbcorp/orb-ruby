@@ -26,6 +26,7 @@ module Orb
         paid_at: Time?,
         payment_attempts: ::Array[Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt],
         payment_failed_at: Time?,
+        payment_received_at: Time?,
         payment_started_at: Time?,
         scheduled_issue_at: Time?,
         shipping_address: Orb::Address?,
@@ -86,6 +87,8 @@ module Orb
 
       attr_accessor payment_failed_at: Time?
 
+      attr_accessor payment_received_at: Time?
+
       attr_accessor payment_started_at: Time?
 
       attr_accessor scheduled_issue_at: Time?
@@ -129,6 +132,7 @@ module Orb
         paid_at: Time?,
         payment_attempts: ::Array[Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt],
         payment_failed_at: Time?,
+        payment_received_at: Time?,
         payment_started_at: Time?,
         scheduled_issue_at: Time?,
         shipping_address: Orb::Address?,
@@ -165,6 +169,7 @@ module Orb
         paid_at: Time?,
         payment_attempts: ::Array[Orb::Models::InvoiceIssueSummaryResponse::PaymentAttempt],
         payment_failed_at: Time?,
+        payment_received_at: Time?,
         payment_started_at: Time?,
         scheduled_issue_at: Time?,
         shipping_address: Orb::Address?,

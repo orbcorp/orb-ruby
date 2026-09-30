@@ -352,6 +352,17 @@ module Orb
         #   @return [Time, nil]
         required :payment_failed_at, Time, nil?: true
 
+        # @!attribute payment_received_at
+        #   When payment for this invoice was received. For an invoice manually marked as
+        #   paid, this is the `payment_received_date` that was supplied. For an invoice paid
+        #   through a payment provider, this is the settlement time reported by that
+        #   provider. It is `null` for an invoice that became `paid` without a payment, such
+        #   as a $0 invoice or one fully covered by credit notes. By contrast, `paid_at` is
+        #   when the invoice reached the `paid` status in Orb.
+        #
+        #   @return [Time, nil]
+        required :payment_received_at, Time, nil?: true
+
         # @!attribute payment_started_at
         #   If payment was attempted on this invoice, this will be the start time of the
         #   most recent attempt. This field is especially useful for delayed-notification
@@ -410,7 +421,7 @@ module Orb
         #   @return [Boolean]
         required :will_auto_issue, Orb::Internal::Type::Boolean
 
-        # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, memo:, metadata:, paid_at:, payment_attempts:, payment_failed_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
+        # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, memo:, metadata:, paid_at:, payment_attempts:, payment_failed_at:, payment_received_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice} for more details.
         #
@@ -463,6 +474,8 @@ module Orb
         #   @param payment_attempts [Array<Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice::PaymentAttempt>] A list of payment attempts associated with the invoice
         #
         #   @param payment_failed_at [Time, nil] If payment was attempted on this invoice but failed, this will be the time of th
+        #
+        #   @param payment_received_at [Time, nil] When payment for this invoice was received. For an invoice manually marked as pa
         #
         #   @param payment_started_at [Time, nil] If payment was attempted on this invoice, this will be the start time of the mos
         #
