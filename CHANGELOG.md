@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.39.0](https://github.com/orbcorp/orb-ruby/compare/v1.38.0...v1.39.0) (2026-10-01)
+
+
+### Features
+
+* **api:** add `customer_id` and `status` filters to list backfills endpoint ([3d497bc](https://github.com/orbcorp/orb-ruby/commit/3d497bc1dde6257959f0bd502057e91b4229356e))
+* **api:** add `payment_received_at` field to invoice responses ([959a88d](https://github.com/orbcorp/orb-ruby/commit/959a88d58c0fb54a2d9c28a8c9c91f5a1a42c5a8))
+
+
+### Bug Fixes
+
+* **api:** correct webhook doc page titles and remove inapplicable auth section ([959a88d](https://github.com/orbcorp/orb-ruby/commit/959a88d58c0fb54a2d9c28a8c9c91f5a1a42c5a8))
+
 ## [1.38.0](https://github.com/orbcorp/orb-ruby/compare/v1.37.0...v1.38.0) (2026-09-25)
 
 
