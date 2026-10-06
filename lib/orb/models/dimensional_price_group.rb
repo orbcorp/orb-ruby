@@ -44,7 +44,14 @@ module Orb
       #   @return [String]
       required :name, String
 
-      # @!method initialize(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:)
+      # @!attribute price_count
+      #   The number of prices in this group. Archived prices and subscription overrides
+      #   are excluded.
+      #
+      #   @return [Integer]
+      required :price_count, Integer
+
+      # @!method initialize(id:, billable_metric_id:, dimensions:, external_dimensional_price_group_id:, metadata:, name:, price_count:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::DimensionalPriceGroup} for more details.
       #
@@ -63,6 +70,8 @@ module Orb
       #   @param metadata [Hash{Symbol=>String}] User specified key-value pairs for the resource. If not present, this defaults t
       #
       #   @param name [String] The name of the dimensional price group
+      #
+      #   @param price_count [Integer] The number of prices in this group. Archived prices and subscription overrides a
     end
   end
 end

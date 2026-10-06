@@ -107,10 +107,15 @@ module Orb
       # dimensions, and the prices in the group specify which partition their usage is
       # derived from.
       #
+      # Filter with `billable_metric_id`. Each group includes `price_count`:
+      # non-archived prices in the group. Subscription overrides are not counted.
+      #
       # The response also includes pagination_metadata, which lets the caller retrieve
       # the next page of results if they exist.
       #
-      # @overload list(cursor: nil, limit: nil, request_options: {})
+      # @overload list(billable_metric_id: nil, cursor: nil, limit: nil, request_options: {})
+      #
+      # @param billable_metric_id [String, nil] Filter to groups that use this billable metric.
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #

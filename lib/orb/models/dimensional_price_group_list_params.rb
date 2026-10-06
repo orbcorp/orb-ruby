@@ -7,6 +7,12 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute billable_metric_id
+      #   Filter to groups that use this billable metric.
+      #
+      #   @return [String, nil]
+      optional :billable_metric_id, String, nil?: true
+
       # @!attribute cursor
       #   Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
@@ -20,9 +26,11 @@ module Orb
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!method initialize(cursor: nil, limit: nil, request_options: {})
+      # @!method initialize(billable_metric_id: nil, cursor: nil, limit: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::DimensionalPriceGroupListParams} for more details.
+      #
+      #   @param billable_metric_id [String, nil] Filter to groups that use this billable metric.
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #

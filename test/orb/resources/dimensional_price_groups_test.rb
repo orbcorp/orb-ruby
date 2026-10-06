@@ -22,7 +22,8 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
         dimensions: ^(Orb::Internal::Type::ArrayOf[String]),
         external_dimensional_price_group_id: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        price_count: Integer
       }
     end
   end
@@ -41,7 +42,8 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
         dimensions: ^(Orb::Internal::Type::ArrayOf[String]),
         external_dimensional_price_group_id: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        price_count: Integer
       }
     end
   end
@@ -60,7 +62,8 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
         dimensions: ^(Orb::Internal::Type::ArrayOf[String]),
         external_dimensional_price_group_id: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        price_count: Integer
       }
     end
   end
@@ -86,7 +89,8 @@ class Orb::Test::Resources::DimensionalPriceGroupsTest < Orb::Test::ResourceTest
         dimensions: ^(Orb::Internal::Type::ArrayOf[String]),
         external_dimensional_price_group_id: String | nil,
         metadata: ^(Orb::Internal::Type::HashOf[String]),
-        name: String
+        name: String,
+        price_count: Integer
       }
     end
   end

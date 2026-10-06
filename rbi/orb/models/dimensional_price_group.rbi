@@ -36,6 +36,11 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
+      # The number of prices in this group. Archived prices and subscription overrides
+      # are excluded.
+      sig { returns(Integer) }
+      attr_accessor :price_count
+
       # A dimensional price group is used to partition the result of a billable metric
       # by a set of dimensions. Prices in a price group must specify the partition used
       # to derive their usage.
@@ -46,7 +51,8 @@ module Orb
           dimensions: T::Array[String],
           external_dimensional_price_group_id: T.nilable(String),
           metadata: T::Hash[Symbol, String],
-          name: String
+          name: String,
+          price_count: Integer
         ).returns(T.attached_class)
       end
       def self.new(
@@ -65,7 +71,10 @@ module Orb
         # `null`.
         metadata:,
         # The name of the dimensional price group
-        name:
+        name:,
+        # The number of prices in this group. Archived prices and subscription overrides
+        # are excluded.
+        price_count:
       )
       end
 
@@ -77,7 +86,8 @@ module Orb
             dimensions: T::Array[String],
             external_dimensional_price_group_id: T.nilable(String),
             metadata: T::Hash[Symbol, String],
-            name: String
+            name: String,
+            price_count: Integer
           }
         )
       end

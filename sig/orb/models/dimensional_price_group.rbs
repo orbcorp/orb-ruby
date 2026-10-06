@@ -7,7 +7,8 @@ module Orb
         dimensions: ::Array[String],
         external_dimensional_price_group_id: String?,
         metadata: ::Hash[Symbol, String],
-        name: String
+        name: String,
+        price_count: Integer
       }
 
     class DimensionalPriceGroup < Orb::Internal::Type::BaseModel
@@ -23,13 +24,16 @@ module Orb
 
       attr_accessor name: String
 
+      attr_accessor price_count: Integer
+
       def initialize: (
         id: String,
         billable_metric_id: String,
         dimensions: ::Array[String],
         external_dimensional_price_group_id: String?,
         metadata: ::Hash[Symbol, String],
-        name: String
+        name: String,
+        price_count: Integer
       ) -> void
 
       def to_hash: -> {
@@ -38,7 +42,8 @@ module Orb
         dimensions: ::Array[String],
         external_dimensional_price_group_id: String?,
         metadata: ::Hash[Symbol, String],
-        name: String
+        name: String,
+        price_count: Integer
       }
     end
   end

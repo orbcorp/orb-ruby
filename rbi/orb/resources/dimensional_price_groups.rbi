@@ -86,16 +86,22 @@ module Orb
       # dimensions, and the prices in the group specify which partition their usage is
       # derived from.
       #
+      # Filter with `billable_metric_id`. Each group includes `price_count`:
+      # non-archived prices in the group. Subscription overrides are not counted.
+      #
       # The response also includes pagination_metadata, which lets the caller retrieve
       # the next page of results if they exist.
       sig do
         params(
+          billable_metric_id: T.nilable(String),
           cursor: T.nilable(String),
           limit: Integer,
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Internal::Page[Orb::DimensionalPriceGroup])
       end
       def list(
+        # Filter to groups that use this billable metric.
+        billable_metric_id: nil,
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         cursor: nil,

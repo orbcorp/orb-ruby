@@ -11,6 +11,10 @@ module Orb
           T.any(Orb::DimensionalPriceGroupListParams, Orb::Internal::AnyHash)
         end
 
+      # Filter to groups that use this billable metric.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billable_metric_id
+
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       # from the initial request.
       sig { returns(T.nilable(String)) }
@@ -25,12 +29,15 @@ module Orb
 
       sig do
         params(
+          billable_metric_id: T.nilable(String),
           cursor: T.nilable(String),
           limit: Integer,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # Filter to groups that use this billable metric.
+        billable_metric_id: nil,
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         cursor: nil,
@@ -43,6 +50,7 @@ module Orb
       sig do
         override.returns(
           {
+            billable_metric_id: T.nilable(String),
             cursor: T.nilable(String),
             limit: Integer,
             request_options: Orb::RequestOptions
