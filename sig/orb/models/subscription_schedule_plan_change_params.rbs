@@ -653,21 +653,21 @@ module Orb
             end
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::BulkWithFilters::cadence]
@@ -781,21 +781,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedTieredMatrix::cadence]
@@ -963,21 +963,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredMatrixWithAllocation::cadence]
@@ -1150,21 +1150,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence]
@@ -1383,21 +1383,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::TieredWithProration::cadence]
@@ -1546,21 +1546,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence]
@@ -1706,21 +1706,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::CumulativeGroupedAllocation::cadence]
@@ -1866,21 +1866,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::DailyCreditAllowance::cadence]
@@ -2050,21 +2050,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::MeteredAllowance::cadence]
@@ -2224,21 +2224,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::Percent::cadence]
@@ -2386,21 +2386,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::AddPrice::Price::EventOutput::cadence]
@@ -2944,21 +2944,21 @@ module Orb
             end
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::BulkWithFilters::cadence]
@@ -3072,21 +3072,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedTieredMatrix::cadence]
@@ -3254,21 +3254,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence]
@@ -3441,21 +3441,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence]
@@ -3674,21 +3674,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::TieredWithProration::cadence]
@@ -3837,21 +3837,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence]
@@ -3997,21 +3997,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence]
@@ -4157,21 +4157,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::DailyCreditAllowance::cadence]
@@ -4341,21 +4341,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::MeteredAllowance::cadence]
@@ -4515,21 +4515,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::Percent::cadence]
@@ -4677,21 +4677,21 @@ module Orb
             }
 
             type cadence =
-              :annual
-              | :semi_annual
+              :one_time
               | :monthly
               | :quarterly
-              | :one_time
+              | :semi_annual
+              | :annual
               | :custom
 
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL: :annual
-              SEMI_ANNUAL: :semi_annual
+              ONE_TIME: :one_time
               MONTHLY: :monthly
               QUARTERLY: :quarterly
-              ONE_TIME: :one_time
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
               CUSTOM: :custom
 
               def self?.values: -> ::Array[Orb::Models::SubscriptionSchedulePlanChangeParams::ReplacePrice::Price::EventOutput::cadence]

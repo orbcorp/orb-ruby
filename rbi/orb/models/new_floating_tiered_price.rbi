@@ -253,19 +253,19 @@ module Orb
           T.type_alias { T.all(Symbol, Orb::NewFloatingTieredPrice::Cadence) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ANNUAL =
-          T.let(:annual, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
+        ONE_TIME =
+          T.let(:one_time, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
+        MONTHLY =
+          T.let(:monthly, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
+        QUARTERLY =
+          T.let(:quarterly, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
         SEMI_ANNUAL =
           T.let(
             :semi_annual,
             Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol
           )
-        MONTHLY =
-          T.let(:monthly, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
-        QUARTERLY =
-          T.let(:quarterly, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
-        ONE_TIME =
-          T.let(:one_time, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
+        ANNUAL =
+          T.let(:annual, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
         CUSTOM =
           T.let(:custom, Orb::NewFloatingTieredPrice::Cadence::TaggedSymbol)
 

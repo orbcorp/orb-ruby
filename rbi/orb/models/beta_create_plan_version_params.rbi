@@ -1215,14 +1215,9 @@ module Orb
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            ANNUAL =
+            ONE_TIME =
               T.let(
-                :annual,
-                Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
-              )
-            SEMI_ANNUAL =
-              T.let(
-                :semi_annual,
+                :one_time,
                 Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
               )
             MONTHLY =
@@ -1235,9 +1230,14 @@ module Orb
                 :quarterly,
                 Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
               )
-            ONE_TIME =
+            SEMI_ANNUAL =
               T.let(
-                :one_time,
+                :semi_annual,
+                Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+              )
+            ANNUAL =
+              T.let(
+                :annual,
                 Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
               )
             CUSTOM =
@@ -1822,14 +1822,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -1842,9 +1837,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -2153,14 +2153,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -2173,9 +2168,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -2600,14 +2600,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -2620,9 +2615,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -3059,14 +3059,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -3079,9 +3074,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -3606,14 +3606,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -3626,9 +3621,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -4027,14 +4027,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -4047,9 +4042,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -4418,14 +4418,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -4438,9 +4433,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -4809,14 +4809,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -4829,9 +4824,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -5272,14 +5272,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -5292,9 +5287,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -5695,14 +5695,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -5715,9 +5710,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -6093,14 +6093,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -6113,9 +6108,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -7352,14 +7352,9 @@ module Orb
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            ANNUAL =
+            ONE_TIME =
               T.let(
-                :annual,
-                Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
-              )
-            SEMI_ANNUAL =
-              T.let(
-                :semi_annual,
+                :one_time,
                 Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
               )
             MONTHLY =
@@ -7372,9 +7367,14 @@ module Orb
                 :quarterly,
                 Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
               )
-            ONE_TIME =
+            SEMI_ANNUAL =
               T.let(
-                :one_time,
+                :semi_annual,
+                Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+              )
+            ANNUAL =
+              T.let(
+                :annual,
                 Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
               )
             CUSTOM =
@@ -7959,14 +7959,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -7979,9 +7974,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -8290,14 +8290,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -8310,9 +8305,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -8737,14 +8737,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -8757,9 +8752,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -9196,14 +9196,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -9216,9 +9211,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -9743,14 +9743,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -9763,9 +9758,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -10164,14 +10164,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -10184,9 +10179,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -10555,14 +10555,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -10575,9 +10570,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -10946,14 +10946,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -10966,9 +10961,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -11409,14 +11409,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -11429,9 +11424,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -11832,14 +11832,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -11852,9 +11847,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                 )
               CUSTOM =
@@ -12230,14 +12230,9 @@ module Orb
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-              ANNUAL =
+              ONE_TIME =
                 T.let(
-                  :annual,
-                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
-                )
-              SEMI_ANNUAL =
-                T.let(
-                  :semi_annual,
+                  :one_time,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                 )
               MONTHLY =
@@ -12250,9 +12245,14 @@ module Orb
                   :quarterly,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                 )
-              ONE_TIME =
+              SEMI_ANNUAL =
                 T.let(
-                  :one_time,
+                  :semi_annual,
+                  Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                )
+              ANNUAL =
+                T.let(
+                  :annual,
                   Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                 )
               CUSTOM =

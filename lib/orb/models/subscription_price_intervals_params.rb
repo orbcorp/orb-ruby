@@ -668,11 +668,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -853,11 +853,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -1102,11 +1102,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -1369,11 +1369,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -1679,11 +1679,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -1902,11 +1902,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -2125,11 +2125,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -2395,11 +2395,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -2641,11 +2641,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values
@@ -2869,11 +2869,11 @@ module Orb
             module Cadence
               extend Orb::Internal::Type::Enum
 
-              ANNUAL = :annual
-              SEMI_ANNUAL = :semi_annual
+              ONE_TIME = :one_time
               MONTHLY = :monthly
               QUARTERLY = :quarterly
-              ONE_TIME = :one_time
+              SEMI_ANNUAL = :semi_annual
+              ANNUAL = :annual
               CUSTOM = :custom
 
               # @!method self.values

@@ -7,7 +7,7 @@ class Orb::Test::Resources::PricesTest < Orb::Test::ResourceTest
     response =
       @orb.prices.create(
         body: {
-          cadence: :annual,
+          cadence: :one_time,
           currency: "currency",
           item_id: "item_id",
           model_type: :unit,
