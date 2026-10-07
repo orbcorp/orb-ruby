@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.40.0](https://github.com/orbcorp/orb-ruby/compare/v1.39.0...v1.40.0) (2026-10-07)
+
+
+### Features
+
+* **api:** add billable_metric_id filter, price_count, and prices list endpoint for dimensional price groups ([3b4e02a](https://github.com/orbcorp/orb-ruby/commit/3b4e02a8ad9286a0e1496a484e5255805c9a75ea))
+
 ## [1.39.0](https://github.com/orbcorp/orb-ruby/compare/v1.38.0...v1.39.0) (2026-10-01)
 
 
