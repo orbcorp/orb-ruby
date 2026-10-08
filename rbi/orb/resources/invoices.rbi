@@ -412,14 +412,14 @@ module Orb
       sig do
         params(
           invoice_id: String,
-          shared_payment_token_id: String,
+          shared_payment_token_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Invoice)
       end
       def pay(
         invoice_id,
         # The ID of a shared payment token granted by an agent to use for this payment.
-        shared_payment_token_id:,
+        shared_payment_token_id: nil,
         request_options: {}
       )
       end

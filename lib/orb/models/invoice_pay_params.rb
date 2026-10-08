@@ -15,13 +15,13 @@ module Orb
       # @!attribute shared_payment_token_id
       #   The ID of a shared payment token granted by an agent to use for this payment.
       #
-      #   @return [String]
-      required :shared_payment_token_id, String
+      #   @return [String, nil]
+      optional :shared_payment_token_id, String, nil?: true
 
-      # @!method initialize(invoice_id:, shared_payment_token_id:, request_options: {})
+      # @!method initialize(invoice_id:, shared_payment_token_id: nil, request_options: {})
       #   @param invoice_id [String]
       #
-      #   @param shared_payment_token_id [String] The ID of a shared payment token granted by an agent to use for this payment.
+      #   @param shared_payment_token_id [String, nil] The ID of a shared payment token granted by an agent to use for this payment.
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

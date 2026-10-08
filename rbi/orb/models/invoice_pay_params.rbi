@@ -13,20 +13,20 @@ module Orb
       attr_accessor :invoice_id
 
       # The ID of a shared payment token granted by an agent to use for this payment.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :shared_payment_token_id
 
       sig do
         params(
           invoice_id: String,
-          shared_payment_token_id: String,
+          shared_payment_token_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
         invoice_id:,
         # The ID of a shared payment token granted by an agent to use for this payment.
-        shared_payment_token_id:,
+        shared_payment_token_id: nil,
         request_options: {}
       )
       end
@@ -35,7 +35,7 @@ module Orb
         override.returns(
           {
             invoice_id: String,
-            shared_payment_token_id: String,
+            shared_payment_token_id: T.nilable(String),
             request_options: Orb::RequestOptions
           }
         )
