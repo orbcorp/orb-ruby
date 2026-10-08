@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.41.0](https://github.com/orbcorp/orb-ruby/compare/v1.40.0...v1.41.0) (2026-10-08)
+
+
+### Features
+
+* **api:** add endpoint to bulk create dimensional price group prices ([a355200](https://github.com/orbcorp/orb-ruby/commit/a355200110f62d5da28f49db1d172966b5b2a892))
+
+
+### Bug Fixes
+
+* **api:** clarify grouped subscription usage returns all groups in one response, no pagination ([a355200](https://github.com/orbcorp/orb-ruby/commit/a355200110f62d5da28f49db1d172966b5b2a892))
+
 ## [1.40.0](https://github.com/orbcorp/orb-ruby/compare/v1.39.0...v1.40.0) (2026-10-07)
 
 
