@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.42.0](https://github.com/orbcorp/orb-ruby/compare/v1.41.0...v1.42.0) (2026-10-09)
+
+
+### Features
+
+* **api:** api update ([4c05828](https://github.com/orbcorp/orb-ruby/commit/4c058281f5bd398d7a89f2fab0bb8eeb8e1798c3))
+* **api:** support listing pricebook prices and filtering by product_id in GET /v1/prices ([4c05828](https://github.com/orbcorp/orb-ruby/commit/4c058281f5bd398d7a89f2fab0bb8eeb8e1798c3))
+
+
+### Bug Fixes
+
+* **api:** make shared_payment_token_id optional when paying an invoice ([4c05828](https://github.com/orbcorp/orb-ruby/commit/4c058281f5bd398d7a89f2fab0bb8eeb8e1798c3))
+
 ## [1.41.0](https://github.com/orbcorp/orb-ruby/compare/v1.40.0...v1.41.0) (2026-10-08)
 
 
