@@ -1,0 +1,23 @@
+module Orb
+  module Models
+    type webhook_endpoint_delete_params =
+      { webhook_endpoint_id: String } & Orb::Internal::Type::request_parameters
+
+    class WebhookEndpointDeleteParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor webhook_endpoint_id: String
+
+      def initialize: (
+        webhook_endpoint_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        webhook_endpoint_id: String,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end

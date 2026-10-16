@@ -32,6 +32,8 @@ module Orb
 
     attr_reader items: Orb::Resources::Items
 
+    attr_reader webhook_endpoints: Orb::Resources::WebhookEndpoints
+
     attr_reader metrics: Orb::Resources::Metrics
 
     attr_reader plans: Orb::Resources::Plans

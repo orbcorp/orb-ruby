@@ -1,0 +1,28 @@
+module Orb
+  module Models
+    type webhook_endpoint_create_params =
+      { url: String, enabled_event_types: ::Array[String]? }
+      & Orb::Internal::Type::request_parameters
+
+    class WebhookEndpointCreateParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor url: String
+
+      attr_accessor enabled_event_types: ::Array[String]?
+
+      def initialize: (
+        url: String,
+        ?enabled_event_types: ::Array[String]?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        url: String,
+        enabled_event_types: ::Array[String]?,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end

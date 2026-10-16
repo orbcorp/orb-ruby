@@ -3,6 +3,8 @@ module Orb
     class DimensionalPriceGroups
       attr_reader external_dimensional_price_group_id: Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID
 
+      attr_reader prices: Orb::Resources::DimensionalPriceGroups::Prices
+
       def create: (
         billable_metric_id: String,
         dimensions: ::Array[String],

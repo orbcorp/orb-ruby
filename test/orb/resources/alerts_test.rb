@@ -166,6 +166,34 @@ class Orb::Test::Resources::AlertsTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_create_for_plan_required_params
+    response = @orb.alerts.create_for_plan("plan_id", thresholds: [{value: 0}], type: :usage_exceeded)
+
+    assert_pattern do
+      response => Orb::Alert
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        currency: String | nil,
+        customer: Orb::CustomerMinified | nil,
+        enabled: Orb::Internal::Type::Boolean,
+        metric: Orb::Alert::Metric | nil,
+        plan: Orb::Alert::Plan | nil,
+        subscription: Orb::SubscriptionMinified | nil,
+        thresholds: ^(Orb::Internal::Type::ArrayOf[Orb::Threshold]) | nil,
+        type: Orb::Alert::Type,
+        balance_alert_status: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::BalanceAlertStatus]) | nil,
+        grouping_keys: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        license_type: Orb::Alert::LicenseType | nil,
+        price_filters: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::PriceFilter]) | nil,
+        threshold_overrides: ^(Orb::Internal::Type::ArrayOf[Orb::Alert::ThresholdOverride]) | nil
+      }
+    end
+  end
+
   def test_create_for_subscription_required_params
     response =
       @orb.alerts.create_for_subscription("subscription_id", thresholds: [{value: 0}], type: :usage_exceeded)

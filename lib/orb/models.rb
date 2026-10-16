@@ -55,6 +55,8 @@ module Orb
 
   AlertCreateForExternalCustomerParams = Orb::Models::AlertCreateForExternalCustomerParams
 
+  AlertCreateForPlanParams = Orb::Models::AlertCreateForPlanParams
+
   AlertCreateForSubscriptionParams = Orb::Models::AlertCreateForSubscriptionParams
 
   AlertDeleteParams = Orb::Models::AlertDeleteParams
@@ -816,6 +818,24 @@ module Orb
   UsageDiscount = Orb::Models::UsageDiscount
 
   UsageDiscountInterval = Orb::Models::UsageDiscountInterval
+
+  WebhookEndpoint = Orb::Models::WebhookEndpoint
+
+  WebhookEndpointCreateParams = Orb::Models::WebhookEndpointCreateParams
+
+  WebhookEndpointDeleteParams = Orb::Models::WebhookEndpointDeleteParams
+
+  WebhookEndpointDisableParams = Orb::Models::WebhookEndpointDisableParams
+
+  WebhookEndpointEnableParams = Orb::Models::WebhookEndpointEnableParams
+
+  WebhookEndpointListParams = Orb::Models::WebhookEndpointListParams
+
+  WebhookEndpointRetrieveParams = Orb::Models::WebhookEndpointRetrieveParams
+
+  WebhookEndpointUpdateParams = Orb::Models::WebhookEndpointUpdateParams
+
+  WebhookEndpointWithSecret = Orb::Models::WebhookEndpointWithSecret
 
   WebhookUnwrapParams = Orb::Models::WebhookUnwrapParams
 end

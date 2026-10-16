@@ -96,6 +96,11 @@ module Orb
     # @return [Orb::Resources::Items]
     attr_reader :items
 
+    # A webhook endpoint is an HTTPS URL that Orb sends
+    # [webhook events](/integrations-and-exports/webhooks) to.
+    # @return [Orb::Resources::WebhookEndpoints]
+    attr_reader :webhook_endpoints
+
     # The Metric resource represents a calculation of a quantity based on events.
     # Metrics are defined by the query that transforms raw usage events into
     # meaningful values for your customers.
@@ -232,6 +237,7 @@ module Orb
       @invoice_line_items = Orb::Resources::InvoiceLineItems.new(client: self)
       @invoices = Orb::Resources::Invoices.new(client: self)
       @items = Orb::Resources::Items.new(client: self)
+      @webhook_endpoints = Orb::Resources::WebhookEndpoints.new(client: self)
       @metrics = Orb::Resources::Metrics.new(client: self)
       @plans = Orb::Resources::Plans.new(client: self)
       @prices = Orb::Resources::Prices.new(client: self)

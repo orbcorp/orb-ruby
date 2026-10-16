@@ -1,0 +1,46 @@
+module Orb
+  module Resources
+    class WebhookEndpoints
+      def create: (
+        url: String,
+        ?enabled_event_types: ::Array[String]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::WebhookEndpointWithSecret
+
+      def retrieve: (
+        String webhook_endpoint_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::WebhookEndpoint
+
+      def update: (
+        String webhook_endpoint_id,
+        ?enabled_event_types: ::Array[String]?,
+        ?url: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::WebhookEndpoint
+
+      def list: (
+        ?cursor: String?,
+        ?limit: Integer,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Internal::Page[Orb::WebhookEndpoint]
+
+      def delete: (
+        String webhook_endpoint_id,
+        ?request_options: Orb::request_opts
+      ) -> nil
+
+      def disable: (
+        String webhook_endpoint_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::WebhookEndpoint
+
+      def enable: (
+        String webhook_endpoint_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::WebhookEndpoint
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

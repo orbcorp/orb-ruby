@@ -6,6 +6,9 @@ module Orb
       # @return [Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID]
       attr_reader :external_dimensional_price_group_id
 
+      # @return [Orb::Resources::DimensionalPriceGroups::Prices]
+      attr_reader :prices
+
       # Some parameter documentations has been truncated, see
       # {Orb::Models::DimensionalPriceGroupCreateParams} for more details.
       #
@@ -146,6 +149,7 @@ module Orb
         @client = client
         @external_dimensional_price_group_id =
           Orb::Resources::DimensionalPriceGroups::ExternalDimensionalPriceGroupID.new(client: client)
+        @prices = Orb::Resources::DimensionalPriceGroups::Prices.new(client: client)
       end
     end
   end

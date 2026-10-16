@@ -172,6 +172,65 @@ module Orb
       )
       end
 
+      # This endpoint is used to create alerts at the plan level. Plan level alerts are
+      # automatically propagated to all subscriptions associated with the plan. These
+      # alerts are scoped to a specific plan version; if no version is specified, the
+      # active plan version is used.
+      #
+      # Plan level alerts can be of three types: `usage_exceeded`, `cost_exceeded`, or
+      # `spend_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
+      # is triggered when the usage of that metric exceeds predefined thresholds during
+      # the current billing cycle. A `cost_exceeded` alert is triggered when the total
+      # amount due during the current billing cycle surpasses predefined thresholds.
+      # `cost_exceeded` alerts do not include burndown of pre-purchase credits. A
+      # `spend_exceeded` alert is triggered when the rated spend (the pricing subtotal,
+      # before invoice-level adjustments and credits) denominated in the alert's
+      # currency exceeds predefined thresholds during the current billing cycle;
+      # `price_filters` can scope which prices contribute. Each plan can have one
+      # `cost_exceeded` alert and one `usage_exceeded` alert per metric that is a part
+      # of the plan.
+      sig do
+        params(
+          plan_id: String,
+          thresholds: T::Array[Orb::Threshold::OrHash],
+          type: Orb::AlertCreateForPlanParams::Type::OrSymbol,
+          currency: T.nilable(String),
+          grouping_keys: T.nilable(T::Array[String]),
+          metric_id: T.nilable(String),
+          plan_version: T.nilable(Integer),
+          price_filters:
+            T.nilable(
+              T::Array[Orb::AlertCreateForPlanParams::PriceFilter::OrHash]
+            ),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Alert)
+      end
+      def create_for_plan(
+        plan_id,
+        # The thresholds that define the values at which the alert will be triggered.
+        thresholds:,
+        # The type of alert to create. This must be a valid alert type.
+        type:,
+        # The case sensitive currency or custom pricing unit the alert is denominated in.
+        # Required for spend_exceeded alerts and when grouping_keys is set.
+        currency: nil,
+        # The property keys to group cost alerts by. Only applicable for cost_exceeded
+        # alerts.
+        grouping_keys: nil,
+        # The metric to track usage for.
+        metric_id: nil,
+        # The plan version to create alerts for. If not specified, the default will be the
+        # plan's active plan version.
+        plan_version: nil,
+        # Filters to scope which prices are included in alert evaluation. Supports
+        # filtering by price_id, item_id, or price_type with includes/excludes operators.
+        # Only applicable to spend_exceeded alerts and to cost_exceeded alerts with
+        # grouping_keys set.
+        price_filters: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint is used to create alerts at the subscription level.
       #
       # Subscription level alerts can be one of three types: `usage_exceeded`,

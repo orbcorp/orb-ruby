@@ -1,0 +1,123 @@
+module Orb
+  module Models
+    module DimensionalPriceGroups
+      type price_create_params =
+        {
+          dimensional_price_group_id: String,
+          cadence: Orb::Models::DimensionalPriceGroups::PriceCreateParams::cadence,
+          currency: String,
+          item_id: String,
+          model_type: Orb::Models::DimensionalPriceGroups::PriceCreateParams::model_type,
+          prices: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Price],
+          tiers: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Tier]?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class PriceCreateParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor dimensional_price_group_id: String
+
+        attr_accessor cadence: Orb::Models::DimensionalPriceGroups::PriceCreateParams::cadence
+
+        attr_accessor currency: String
+
+        attr_accessor item_id: String
+
+        attr_accessor model_type: Orb::Models::DimensionalPriceGroups::PriceCreateParams::model_type
+
+        attr_accessor prices: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Price]
+
+        attr_accessor tiers: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Tier]?
+
+        def initialize: (
+          dimensional_price_group_id: String,
+          cadence: Orb::Models::DimensionalPriceGroups::PriceCreateParams::cadence,
+          currency: String,
+          item_id: String,
+          model_type: Orb::Models::DimensionalPriceGroups::PriceCreateParams::model_type,
+          prices: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Price],
+          ?tiers: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Tier]?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          dimensional_price_group_id: String,
+          cadence: Orb::Models::DimensionalPriceGroups::PriceCreateParams::cadence,
+          currency: String,
+          item_id: String,
+          model_type: Orb::Models::DimensionalPriceGroups::PriceCreateParams::model_type,
+          prices: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Price],
+          tiers: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Tier]?,
+          request_options: Orb::RequestOptions
+        }
+
+        type cadence =
+          :one_time | :monthly | :quarterly | :semi_annual | :annual
+
+        module Cadence
+          extend Orb::Internal::Type::Enum
+
+          ONE_TIME: :one_time
+          MONTHLY: :monthly
+          QUARTERLY: :quarterly
+          SEMI_ANNUAL: :semi_annual
+          ANNUAL: :annual
+
+          def self?.values: -> ::Array[Orb::Models::DimensionalPriceGroups::PriceCreateParams::cadence]
+        end
+
+        type model_type = :unit | :tiered
+
+        module ModelType
+          extend Orb::Internal::Type::Enum
+
+          UNIT: :unit
+          TIERED: :tiered
+
+          def self?.values: -> ::Array[Orb::Models::DimensionalPriceGroups::PriceCreateParams::model_type]
+        end
+
+        type price =
+          {
+            amounts: ::Array[Float],
+            dimension_values: ::Array[String],
+            name: String?
+          }
+
+        class Price < Orb::Internal::Type::BaseModel
+          attr_accessor amounts: ::Array[Float]
+
+          attr_accessor dimension_values: ::Array[String]
+
+          attr_accessor name: String?
+
+          def initialize: (
+            amounts: ::Array[Float],
+            dimension_values: ::Array[String],
+            ?name: String?
+          ) -> void
+
+          def to_hash: -> {
+            amounts: ::Array[Float],
+            dimension_values: ::Array[String],
+            name: String?
+          }
+        end
+
+        type tier = { first_unit: Float, last_unit: Float? }
+
+        class Tier < Orb::Internal::Type::BaseModel
+          attr_accessor first_unit: Float
+
+          attr_accessor last_unit: Float?
+
+          def initialize: (first_unit: Float, ?last_unit: Float?) -> void
+
+          def to_hash: -> { first_unit: Float, last_unit: Float? }
+        end
+      end
+    end
+  end
+end

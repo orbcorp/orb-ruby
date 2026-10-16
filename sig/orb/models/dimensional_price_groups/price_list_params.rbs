@@ -1,0 +1,61 @@
+module Orb
+  module Models
+    module DimensionalPriceGroups
+      type price_list_params =
+        {
+          dimensional_price_group_id: String,
+          cursor: String?,
+          limit: Integer,
+          status: Orb::Models::DimensionalPriceGroups::PriceListParams::status
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class PriceListParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor dimensional_price_group_id: String
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader status: Orb::Models::DimensionalPriceGroups::PriceListParams::status?
+
+        def status=: (
+          Orb::Models::DimensionalPriceGroups::PriceListParams::status
+        ) -> Orb::Models::DimensionalPriceGroups::PriceListParams::status
+
+        def initialize: (
+          dimensional_price_group_id: String,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?status: Orb::Models::DimensionalPriceGroups::PriceListParams::status,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          dimensional_price_group_id: String,
+          cursor: String?,
+          limit: Integer,
+          status: Orb::Models::DimensionalPriceGroups::PriceListParams::status,
+          request_options: Orb::RequestOptions
+        }
+
+        type status = :active | :archived | :all
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ACTIVE: :active
+          ARCHIVED: :archived
+          ALL: :all
+
+          def self?.values: -> ::Array[Orb::Models::DimensionalPriceGroups::PriceListParams::status]
+        end
+      end
+    end
+  end
+end

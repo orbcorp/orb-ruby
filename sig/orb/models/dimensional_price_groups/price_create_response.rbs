@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    module DimensionalPriceGroups
+      type price_create_response = { data: ::Array[Orb::Models::price] }
+
+      class PriceCreateResponse < Orb::Internal::Type::BaseModel
+        attr_accessor data: ::Array[Orb::Models::price]
+
+        def initialize: (data: ::Array[Orb::Models::price]) -> void
+
+        def to_hash: -> { data: ::Array[Orb::Models::price] }
+      end
+    end
+  end
+end

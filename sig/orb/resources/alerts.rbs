@@ -48,6 +48,18 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Alert
 
+      def create_for_plan: (
+        String plan_id,
+        thresholds: ::Array[Orb::Threshold],
+        type: Orb::Models::AlertCreateForPlanParams::type_,
+        ?currency: String?,
+        ?grouping_keys: ::Array[String]?,
+        ?metric_id: String?,
+        ?plan_version: Integer?,
+        ?price_filters: ::Array[Orb::AlertCreateForPlanParams::PriceFilter]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Alert
+
       def create_for_subscription: (
         String subscription_id,
         thresholds: ::Array[Orb::Threshold],

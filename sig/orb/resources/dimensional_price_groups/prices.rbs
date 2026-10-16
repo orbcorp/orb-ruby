@@ -1,0 +1,28 @@
+module Orb
+  module Resources
+    class DimensionalPriceGroups
+      class Prices
+        def create: (
+          String dimensional_price_group_id,
+          cadence: Orb::Models::DimensionalPriceGroups::PriceCreateParams::cadence,
+          currency: String,
+          item_id: String,
+          model_type: Orb::Models::DimensionalPriceGroups::PriceCreateParams::model_type,
+          prices: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Price],
+          ?tiers: ::Array[Orb::DimensionalPriceGroups::PriceCreateParams::Tier]?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::DimensionalPriceGroups::PriceCreateResponse
+
+        def list: (
+          String dimensional_price_group_id,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?status: Orb::Models::DimensionalPriceGroups::PriceListParams::status,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Internal::Page[Orb::Models::price]
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

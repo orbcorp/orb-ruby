@@ -216,6 +216,61 @@ module Orb
       end
 
       # Some parameter documentations has been truncated, see
+      # {Orb::Models::AlertCreateForPlanParams} for more details.
+      #
+      # This endpoint is used to create alerts at the plan level. Plan level alerts are
+      # automatically propagated to all subscriptions associated with the plan. These
+      # alerts are scoped to a specific plan version; if no version is specified, the
+      # active plan version is used.
+      #
+      # Plan level alerts can be of three types: `usage_exceeded`, `cost_exceeded`, or
+      # `spend_exceeded`. A `usage_exceeded` alert is scoped to a particular metric and
+      # is triggered when the usage of that metric exceeds predefined thresholds during
+      # the current billing cycle. A `cost_exceeded` alert is triggered when the total
+      # amount due during the current billing cycle surpasses predefined thresholds.
+      # `cost_exceeded` alerts do not include burndown of pre-purchase credits. A
+      # `spend_exceeded` alert is triggered when the rated spend (the pricing subtotal,
+      # before invoice-level adjustments and credits) denominated in the alert's
+      # currency exceeds predefined thresholds during the current billing cycle;
+      # `price_filters` can scope which prices contribute. Each plan can have one
+      # `cost_exceeded` alert and one `usage_exceeded` alert per metric that is a part
+      # of the plan.
+      #
+      # @overload create_for_plan(plan_id, thresholds:, type:, currency: nil, grouping_keys: nil, metric_id: nil, plan_version: nil, price_filters: nil, request_options: {})
+      #
+      # @param plan_id [String]
+      #
+      # @param thresholds [Array<Orb::Models::Threshold>] The thresholds that define the values at which the alert will be triggered.
+      #
+      # @param type [Symbol, Orb::Models::AlertCreateForPlanParams::Type] The type of alert to create. This must be a valid alert type.
+      #
+      # @param currency [String, nil] The case sensitive currency or custom pricing unit the alert is denominated in.
+      #
+      # @param grouping_keys [Array<String>, nil] The property keys to group cost alerts by. Only applicable for cost_exceeded ale
+      #
+      # @param metric_id [String, nil] The metric to track usage for.
+      #
+      # @param plan_version [Integer, nil] The plan version to create alerts for. If not specified, the default will be the
+      #
+      # @param price_filters [Array<Orb::Models::AlertCreateForPlanParams::PriceFilter>, nil] Filters to scope which prices are included in alert evaluation. Supports filteri
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::Alert]
+      #
+      # @see Orb::Models::AlertCreateForPlanParams
+      def create_for_plan(plan_id, params)
+        parsed, options = Orb::AlertCreateForPlanParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["alerts/plan_id/%1$s", plan_id],
+          body: parsed,
+          model: Orb::Alert,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Orb::Models::AlertCreateForSubscriptionParams} for more details.
       #
       # This endpoint is used to create alerts at the subscription level.
