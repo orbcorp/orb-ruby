@@ -4,7 +4,8 @@ module Orb
       {
         amount: String,
         tax_rate_description: String,
-        tax_rate_percentage: String?
+        tax_rate_percentage: String?,
+        tax_reason: Orb::Models::TaxAmount::tax_reason?
       }
 
     class TaxAmount < Orb::Internal::Type::BaseModel
@@ -14,17 +15,44 @@ module Orb
 
       attr_accessor tax_rate_percentage: String?
 
+      attr_accessor tax_reason: Orb::Models::TaxAmount::tax_reason?
+
       def initialize: (
         amount: String,
         tax_rate_description: String,
-        tax_rate_percentage: String?
+        tax_rate_percentage: String?,
+        ?tax_reason: Orb::Models::TaxAmount::tax_reason?
       ) -> void
 
       def to_hash: -> {
         amount: String,
         tax_rate_description: String,
-        tax_rate_percentage: String?
+        tax_rate_percentage: String?,
+        tax_reason: Orb::Models::TaxAmount::tax_reason?
       }
+
+      type tax_reason =
+        :taxed
+        | :reverse_charge
+        | :customer_exempt
+        | :product_exempt
+        | :not_registered
+        | :zero_rated
+        | :not_taxed_other
+
+      module TaxReason
+        extend Orb::Internal::Type::Enum
+
+        TAXED: :taxed
+        REVERSE_CHARGE: :reverse_charge
+        CUSTOMER_EXEMPT: :customer_exempt
+        PRODUCT_EXEMPT: :product_exempt
+        NOT_REGISTERED: :not_registered
+        ZERO_RATED: :zero_rated
+        NOT_TAXED_OTHER: :not_taxed_other
+
+        def self?.values: -> ::Array[Orb::Models::TaxAmount::tax_reason]
+      end
     end
   end
 end
