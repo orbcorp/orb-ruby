@@ -50,7 +50,9 @@ module Orb
       | Orb::MetricEventsDroppedByWatermarkWebhookEvent
       | Orb::PaymentMethodCreatedWebhookEvent
       | Orb::PaymentMethodDeletedWebhookEvent
+      | Orb::PlanCreatedWebhookEvent
       | Orb::PlanDefaultVersionSetWebhookEvent
+      | Orb::PlanEditedWebhookEvent
       | Orb::PlanVersionCreatedWebhookEvent
       | Orb::PriceEditedWebhookEvent
       | Orb::ResourceEventTestWebhookEvent

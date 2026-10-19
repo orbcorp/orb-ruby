@@ -1,0 +1,116 @@
+module Orb
+  module Models
+    type plan_edited_webhook_event =
+      {
+        id: String,
+        created_at: Time,
+        plan: Orb::Plan,
+        properties: Orb::PlanEditedWebhookEvent::Properties,
+        type: Orb::Models::PlanEditedWebhookEvent::type_
+      }
+
+    class PlanEditedWebhookEvent < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor plan: Orb::Plan
+
+      attr_accessor properties: Orb::PlanEditedWebhookEvent::Properties
+
+      attr_accessor type: Orb::Models::PlanEditedWebhookEvent::type_
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        plan: Orb::Plan,
+        properties: Orb::PlanEditedWebhookEvent::Properties,
+        type: Orb::Models::PlanEditedWebhookEvent::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        plan: Orb::Plan,
+        properties: Orb::PlanEditedWebhookEvent::Properties,
+        type: Orb::Models::PlanEditedWebhookEvent::type_
+      }
+
+      type properties =
+        {
+          previous_attributes: Orb::PlanEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+      class Properties < Orb::Internal::Type::BaseModel
+        attr_accessor previous_attributes: Orb::PlanEditedWebhookEvent::Properties::PreviousAttributes
+
+        def initialize: (
+          previous_attributes: Orb::PlanEditedWebhookEvent::Properties::PreviousAttributes
+        ) -> void
+
+        def to_hash: -> {
+          previous_attributes: Orb::PlanEditedWebhookEvent::Properties::PreviousAttributes
+        }
+
+        type previous_attributes =
+          {
+            description: String?,
+            external_plan_id: String?,
+            metadata: ::Hash[Symbol, String]?,
+            name: String?,
+            status: Orb::Models::PlanEditedWebhookEvent::Properties::PreviousAttributes::status?
+          }
+
+        class PreviousAttributes < Orb::Internal::Type::BaseModel
+          attr_accessor description: String?
+
+          attr_accessor external_plan_id: String?
+
+          attr_accessor metadata: ::Hash[Symbol, String]?
+
+          attr_accessor name: String?
+
+          attr_accessor status: Orb::Models::PlanEditedWebhookEvent::Properties::PreviousAttributes::status?
+
+          def initialize: (
+            ?description: String?,
+            ?external_plan_id: String?,
+            ?metadata: ::Hash[Symbol, String]?,
+            ?name: String?,
+            ?status: Orb::Models::PlanEditedWebhookEvent::Properties::PreviousAttributes::status?
+          ) -> void
+
+          def to_hash: -> {
+            description: String?,
+            external_plan_id: String?,
+            metadata: ::Hash[Symbol, String]?,
+            name: String?,
+            status: Orb::Models::PlanEditedWebhookEvent::Properties::PreviousAttributes::status?
+          }
+
+          type status = :active | :archived | :draft
+
+          module Status
+            extend Orb::Internal::Type::Enum
+
+            ACTIVE: :active
+            ARCHIVED: :archived
+            DRAFT: :draft
+
+            def self?.values: -> ::Array[Orb::Models::PlanEditedWebhookEvent::Properties::PreviousAttributes::status]
+          end
+        end
+      end
+
+      type type_ = :"plan.edited"
+
+      module Type
+        extend Orb::Internal::Type::Enum
+
+        PLAN_EDITED: :"plan.edited"
+
+        def self?.values: -> ::Array[Orb::Models::PlanEditedWebhookEvent::type_]
+      end
+    end
+  end
+end

@@ -563,9 +563,13 @@ module Orb
 
   class Plan = Orb::Models::Plan
 
+  class PlanCreatedWebhookEvent = Orb::Models::PlanCreatedWebhookEvent
+
   class PlanCreateParams = Orb::Models::PlanCreateParams
 
   class PlanDefaultVersionSetWebhookEvent = Orb::Models::PlanDefaultVersionSetWebhookEvent
+
+  class PlanEditedWebhookEvent = Orb::Models::PlanEditedWebhookEvent
 
   class PlanFetchParams = Orb::Models::PlanFetchParams
 
