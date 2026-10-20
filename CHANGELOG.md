@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.44.0](https://github.com/orbcorp/orb-ruby/compare/v1.43.0...v1.44.0) (2026-10-20)
+
+
+### Features
+
+* **api:** add `plan.created` and `plan.edited` webhook events ([9413030](https://github.com/orbcorp/orb-ruby/commit/9413030251c1fd9ac58b583a369afbfb7c02672d))
+* **api:** add `tax_reason` field to tax amount entries ([8d1c0db](https://github.com/orbcorp/orb-ruby/commit/8d1c0db96ed1accbe3ff654d1e87bdad7a1d6ad2))
+
 ## [1.43.0](https://github.com/orbcorp/orb-ruby/compare/v1.42.0...v1.43.0) (2026-10-16)
 
 
