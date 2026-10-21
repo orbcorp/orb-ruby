@@ -1,0 +1,105 @@
+module Orb
+  module Models
+    module Webhooks
+      type data_exports_transfer_success_standard_webhook_event =
+        {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::type_
+        }
+
+      class DataExportsTransferSuccessStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor payload_style: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::Properties
+
+        attr_accessor type: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::type_
+        }
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::payload_style]
+        end
+
+        type properties =
+          {
+            description: String,
+            destination_name: String,
+            resources: ::Array[String],
+            rows_transferred: Integer,
+            transfer_ended_at: Time,
+            transfer_started_at: Time
+          }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor description: String
+
+          attr_accessor destination_name: String
+
+          attr_accessor resources: ::Array[String]
+
+          attr_accessor rows_transferred: Integer
+
+          attr_accessor transfer_ended_at: Time
+
+          attr_accessor transfer_started_at: Time
+
+          def initialize: (
+            description: String,
+            destination_name: String,
+            resources: ::Array[String],
+            rows_transferred: Integer,
+            transfer_ended_at: Time,
+            transfer_started_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            description: String,
+            destination_name: String,
+            resources: ::Array[String],
+            rows_transferred: Integer,
+            transfer_ended_at: Time,
+            transfer_started_at: Time
+          }
+        end
+
+        type type_ = :"data_exports.transfer_success"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          DATA_EXPORTS_TRANSFER_SUCCESS: :"data_exports.transfer_success"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::DataExportsTransferSuccessStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

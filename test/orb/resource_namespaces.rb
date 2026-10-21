@@ -31,6 +31,9 @@ module Orb
 
       module Prices
       end
+
+      module Webhooks
+      end
     end
   end
 end

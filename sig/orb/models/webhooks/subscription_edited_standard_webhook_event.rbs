@@ -1,0 +1,218 @@
+module Orb
+  module Models
+    module Webhooks
+      type subscription_edited_standard_webhook_event =
+        {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties,
+          subscription: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription,
+          type: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::type_
+        }
+
+      class SubscriptionEditedStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor payload_style: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties
+
+        attr_accessor subscription: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription
+
+        attr_accessor type: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties,
+          subscription: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription,
+          type: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties,
+          subscription: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription,
+          type: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::type_
+        }
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::payload_style]
+        end
+
+        type properties =
+          {
+            previous_attributes: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties::PreviousAttributes
+          }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor previous_attributes: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties::PreviousAttributes
+
+          def initialize: (
+            previous_attributes: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties::PreviousAttributes
+          ) -> void
+
+          def to_hash: -> {
+            previous_attributes: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Properties::PreviousAttributes
+          }
+
+          type previous_attributes =
+            {
+              auto_collection: bool?,
+              auto_issuance: bool?,
+              default_invoice_memo: String?,
+              invoicing_threshold: String?,
+              metadata: ::Hash[Symbol, String]?,
+              net_terms: Integer?
+            }
+
+          class PreviousAttributes < Orb::Internal::Type::BaseModel
+            attr_accessor auto_collection: bool?
+
+            attr_accessor auto_issuance: bool?
+
+            attr_accessor default_invoice_memo: String?
+
+            attr_accessor invoicing_threshold: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String]?
+
+            attr_accessor net_terms: Integer?
+
+            def initialize: (
+              ?auto_collection: bool?,
+              ?auto_issuance: bool?,
+              ?default_invoice_memo: String?,
+              ?invoicing_threshold: String?,
+              ?metadata: ::Hash[Symbol, String]?,
+              ?net_terms: Integer?
+            ) -> void
+
+            def to_hash: -> {
+              auto_collection: bool?,
+              auto_issuance: bool?,
+              default_invoice_memo: String?,
+              invoicing_threshold: String?,
+              metadata: ::Hash[Symbol, String]?,
+              net_terms: Integer?
+            }
+          end
+        end
+
+        type subscription =
+          {
+            id: String,
+            created_at: Time,
+            customer: Orb::CustomerMinified,
+            end_date: Time?,
+            metadata: ::Hash[Symbol, String],
+            name: String,
+            plan: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::Plan?,
+            start_date: Time,
+            status: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::status
+          }
+
+        class Subscription < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor customer: Orb::CustomerMinified
+
+          attr_accessor end_date: Time?
+
+          attr_accessor metadata: ::Hash[Symbol, String]
+
+          attr_accessor name: String
+
+          attr_accessor plan: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::Plan?
+
+          attr_accessor start_date: Time
+
+          attr_accessor status: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::status
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            customer: Orb::CustomerMinified,
+            end_date: Time?,
+            metadata: ::Hash[Symbol, String],
+            name: String,
+            plan: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::Plan?,
+            start_date: Time,
+            status: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::status
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            customer: Orb::CustomerMinified,
+            end_date: Time?,
+            metadata: ::Hash[Symbol, String],
+            name: String,
+            plan: Orb::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::Plan?,
+            start_date: Time,
+            status: Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::status
+          }
+
+          type plan = { id: String?, external_plan_id: String?, name: String? }
+
+          class Plan < Orb::Internal::Type::BaseModel
+            attr_accessor id: String?
+
+            attr_accessor external_plan_id: String?
+
+            attr_accessor name: String?
+
+            def initialize: (
+              id: String?,
+              external_plan_id: String?,
+              name: String?
+            ) -> void
+
+            def to_hash: -> {
+              id: String?,
+              external_plan_id: String?,
+              name: String?
+            }
+          end
+
+          type status = :active | :ended | :upcoming
+
+          module Status
+            extend Orb::Internal::Type::Enum
+
+            ACTIVE: :active
+            ENDED: :ended
+            UPCOMING: :upcoming
+
+            def self?.values: -> ::Array[Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::Subscription::status]
+          end
+        end
+
+        type type_ = :"subscription.edited"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          SUBSCRIPTION_EDITED: :"subscription.edited"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::SubscriptionEditedStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

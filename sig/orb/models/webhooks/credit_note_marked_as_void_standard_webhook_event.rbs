@@ -1,0 +1,68 @@
+module Orb
+  module Models
+    module Webhooks
+      type credit_note_marked_as_void_standard_webhook_event =
+        {
+          id: String,
+          created_at: Time,
+          credit_note: Orb::CreditNote,
+          payload_style: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::payload_style,
+          properties: top,
+          type: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::type_
+        }
+
+      class CreditNoteMarkedAsVoidStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_note: Orb::CreditNote
+
+        attr_accessor payload_style: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::payload_style
+
+        attr_accessor properties: top
+
+        attr_accessor type: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          credit_note: Orb::CreditNote,
+          payload_style: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::payload_style,
+          properties: top,
+          type: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          credit_note: Orb::CreditNote,
+          payload_style: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::payload_style,
+          properties: top,
+          type: Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::type_
+        }
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::payload_style]
+        end
+
+        type type_ = :"credit_note.marked_as_void"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          CREDIT_NOTE_MARKED_AS_VOID: :"credit_note.marked_as_void"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::CreditNoteMarkedAsVoidStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

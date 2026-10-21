@@ -1,0 +1,129 @@
+module Orb
+  module Models
+    module Webhooks
+      type invoice_invoice_date_elapsed_standard_webhook_event =
+        {
+          id: String,
+          created_at: Time,
+          invoice: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice,
+          payload_style: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::type_
+        }
+
+      class InvoiceInvoiceDateElapsedStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor invoice: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice
+
+        attr_accessor payload_style: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Properties
+
+        attr_accessor type: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          invoice: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice,
+          payload_style: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          invoice: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice,
+          payload_style: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::type_
+        }
+
+        type invoice =
+          {
+            id: String,
+            customer: Orb::CustomerMinified,
+            invoice_number: String,
+            status: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice::status,
+            subscription: Orb::SubscriptionMinified?
+          }
+
+        class Invoice < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor customer: Orb::CustomerMinified
+
+          attr_accessor invoice_number: String
+
+          attr_accessor status: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice::status
+
+          attr_accessor subscription: Orb::SubscriptionMinified?
+
+          def initialize: (
+            id: String,
+            customer: Orb::CustomerMinified,
+            invoice_number: String,
+            status: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice::status,
+            subscription: Orb::SubscriptionMinified?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            customer: Orb::CustomerMinified,
+            invoice_number: String,
+            status: Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice::status,
+            subscription: Orb::SubscriptionMinified?
+          }
+
+          type status = :issued | :paid | :synced | :void | :draft
+
+          module Status
+            extend Orb::Internal::Type::Enum
+
+            ISSUED: :issued
+            PAID: :paid
+            SYNCED: :synced
+            VOID: :void
+            DRAFT: :draft
+
+            def self?.values: -> ::Array[Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::Invoice::status]
+          end
+        end
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::payload_style]
+        end
+
+        type properties = { invoice_date: Time }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor invoice_date: Time
+
+          def initialize: (invoice_date: Time) -> void
+
+          def to_hash: -> { invoice_date: Time }
+        end
+
+        type type_ = :"invoice.invoice_date_elapsed"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          INVOICE_INVOICE_DATE_ELAPSED: :"invoice.invoice_date_elapsed"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::InvoiceInvoiceDateElapsedStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

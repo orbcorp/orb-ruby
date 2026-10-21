@@ -3,6 +3,9 @@
 module Orb
   module Resources
     class Webhooks
+      sig { returns(Orb::Resources::Webhooks::Standard) }
+      attr_reader :standard
+
       sig do
         params(payload: String).returns(
           T.any(

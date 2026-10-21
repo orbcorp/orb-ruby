@@ -1,0 +1,160 @@
+module Orb
+  module Models
+    module Webhooks
+      type credit_note_accounting_sync_succeeded_standard_webhook_event =
+        {
+          id: String,
+          accounting_sync_record: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord,
+          created_at: Time,
+          credit_note: Orb::CreditNote,
+          payload_style: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::type_
+        }
+
+      class CreditNoteAccountingSyncSucceededStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor accounting_sync_record: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord
+
+        attr_accessor created_at: Time
+
+        attr_accessor credit_note: Orb::CreditNote
+
+        attr_accessor payload_style: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::Properties
+
+        attr_accessor type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          accounting_sync_record: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord,
+          created_at: Time,
+          credit_note: Orb::CreditNote,
+          payload_style: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          accounting_sync_record: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord,
+          created_at: Time,
+          credit_note: Orb::CreditNote,
+          payload_style: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::type_
+        }
+
+        type accounting_sync_record =
+          {
+            id: String,
+            customer_id: String,
+            record_type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord::record_type,
+            credit_note_id: String?,
+            error_details: ::Hash[Symbol, top]?,
+            provider_customer_id: String?,
+            status: String?,
+            sync_action: String?
+          }
+
+        class AccountingSyncRecord < Orb::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor customer_id: String
+
+          attr_accessor record_type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord::record_type
+
+          attr_accessor credit_note_id: String?
+
+          attr_accessor error_details: ::Hash[Symbol, top]?
+
+          attr_accessor provider_customer_id: String?
+
+          attr_accessor status: String?
+
+          attr_accessor sync_action: String?
+
+          def initialize: (
+            id: String,
+            customer_id: String,
+            record_type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord::record_type,
+            ?credit_note_id: String?,
+            ?error_details: ::Hash[Symbol, top]?,
+            ?provider_customer_id: String?,
+            ?status: String?,
+            ?sync_action: String?
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            customer_id: String,
+            record_type: Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord::record_type,
+            credit_note_id: String?,
+            error_details: ::Hash[Symbol, top]?,
+            provider_customer_id: String?,
+            status: String?,
+            sync_action: String?
+          }
+
+          type record_type =
+            :customer
+            | :invoice
+            | :transaction
+            | :customer_balance_transaction
+            | :credit_note
+            | :subscription
+            | :sales_order
+            | :block
+
+          module RecordType
+            extend Orb::Internal::Type::Enum
+
+            CUSTOMER: :customer
+            INVOICE: :invoice
+            TRANSACTION: :transaction
+            CUSTOMER_BALANCE_TRANSACTION: :customer_balance_transaction
+            CREDIT_NOTE: :credit_note
+            SUBSCRIPTION: :subscription
+            SALES_ORDER: :sales_order
+            BLOCK: :block
+
+            def self?.values: -> ::Array[Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::AccountingSyncRecord::record_type]
+          end
+        end
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::payload_style]
+        end
+
+        type properties = { connection_type: String }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor connection_type: String
+
+          def initialize: (connection_type: String) -> void
+
+          def to_hash: -> { connection_type: String }
+        end
+
+        type type_ = :"credit_note.accounting_sync_succeeded"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          CREDIT_NOTE_ACCOUNTING_SYNC_SUCCEEDED: :"credit_note.accounting_sync_succeeded"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::CreditNoteAccountingSyncSucceededStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

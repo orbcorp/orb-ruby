@@ -1,0 +1,17 @@
+module Orb
+  module Models
+    module Webhooks
+      type standard_unwrap_standard_params =
+        {  } & Orb::Internal::Type::request_parameters
+
+      class StandardUnwrapStandardParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: Orb::request_opts) -> void
+
+        def to_hash: -> { request_options: Orb::RequestOptions }
+      end
+    end
+  end
+end

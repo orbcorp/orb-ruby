@@ -773,5 +773,7 @@ module Orb
 
   class WebhookEndpointWithSecret = Orb::Models::WebhookEndpointWithSecret
 
+  module Webhooks = Orb::Models::Webhooks
+
   class WebhookUnwrapParams = Orb::Models::WebhookUnwrapParams
 end

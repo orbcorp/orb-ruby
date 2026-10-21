@@ -1,0 +1,100 @@
+module Orb
+  module Models
+    module Webhooks
+      type metric_events_dropped_by_watermark_standard_webhook_event =
+        {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::type_
+        }
+
+      class MetricEventsDroppedByWatermarkStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor payload_style: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::Properties
+
+        attr_accessor type: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::type_
+        }
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::payload_style]
+        end
+
+        type properties =
+          {
+            dropped: Integer,
+            event_name: String,
+            total: Integer,
+            window_end: String,
+            window_start: String
+          }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor dropped: Integer
+
+          attr_accessor event_name: String
+
+          attr_accessor total: Integer
+
+          attr_accessor window_end: String
+
+          attr_accessor window_start: String
+
+          def initialize: (
+            dropped: Integer,
+            event_name: String,
+            total: Integer,
+            window_end: String,
+            window_start: String
+          ) -> void
+
+          def to_hash: -> {
+            dropped: Integer,
+            event_name: String,
+            total: Integer,
+            window_end: String,
+            window_start: String
+          }
+        end
+
+        type type_ = :"metric.events_dropped_by_watermark"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          METRIC_EVENTS_DROPPED_BY_WATERMARK: :"metric.events_dropped_by_watermark"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::MetricEventsDroppedByWatermarkStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

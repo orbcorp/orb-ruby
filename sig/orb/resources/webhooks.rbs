@@ -1,6 +1,8 @@
 module Orb
   module Resources
     class Webhooks
+      attr_reader standard: Orb::Resources::Webhooks::Standard
+
       def unwrap: (
         String payload
       ) -> (Orb::BackfillReflectedWebhookEvent

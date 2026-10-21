@@ -1,0 +1,75 @@
+module Orb
+  module Models
+    module Webhooks
+      type invoice_due_date_recalculation_canceled_standard_webhook_event =
+        {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::type_
+        }
+
+      class InvoiceDueDateRecalculationCanceledStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor payload_style: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::Properties
+
+        attr_accessor type: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::type_
+        }
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::payload_style]
+        end
+
+        type properties = { canceled_at: Time, started_at: Time }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor canceled_at: Time
+
+          attr_accessor started_at: Time
+
+          def initialize: (canceled_at: Time, started_at: Time) -> void
+
+          def to_hash: -> { canceled_at: Time, started_at: Time }
+        end
+
+        type type_ = :"invoice_due_date_recalculation.canceled"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          INVOICE_DUE_DATE_RECALCULATION_CANCELED: :"invoice_due_date_recalculation.canceled"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::InvoiceDueDateRecalculationCanceledStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,112 @@
+module Orb
+  module Models
+    module Webhooks
+      type billable_metric_edited_standard_webhook_event =
+        {
+          id: String,
+          billable_metric: Orb::BillableMetric,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::type_
+        }
+
+      class BillableMetricEditedStandardWebhookEvent < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor billable_metric: Orb::BillableMetric
+
+        attr_accessor created_at: Time
+
+        attr_accessor payload_style: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::payload_style
+
+        attr_accessor properties: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties
+
+        attr_accessor type: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::type_
+
+        def initialize: (
+          id: String,
+          billable_metric: Orb::BillableMetric,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billable_metric: Orb::BillableMetric,
+          created_at: Time,
+          payload_style: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::payload_style,
+          properties: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties,
+          type: Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::type_
+        }
+
+        type payload_style = :expanded | :standard
+
+        module PayloadStyle
+          extend Orb::Internal::Type::Enum
+
+          EXPANDED: :expanded
+          STANDARD: :standard
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::payload_style]
+        end
+
+        type properties =
+          {
+            previous_attributes: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes
+          }
+
+        class Properties < Orb::Internal::Type::BaseModel
+          attr_accessor previous_attributes: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes
+
+          def initialize: (
+            previous_attributes: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes
+          ) -> void
+
+          def to_hash: -> {
+            previous_attributes: Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes
+          }
+
+          type previous_attributes =
+            {
+              description: String?,
+              metadata: ::Hash[Symbol, String]?,
+              name: String?
+            }
+
+          class PreviousAttributes < Orb::Internal::Type::BaseModel
+            attr_accessor description: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String]?
+
+            attr_accessor name: String?
+
+            def initialize: (
+              ?description: String?,
+              ?metadata: ::Hash[Symbol, String]?,
+              ?name: String?
+            ) -> void
+
+            def to_hash: -> {
+              description: String?,
+              metadata: ::Hash[Symbol, String]?,
+              name: String?
+            }
+          end
+        end
+
+        type type_ = :"billable_metric.edited"
+
+        module Type
+          extend Orb::Internal::Type::Enum
+
+          BILLABLE_METRIC_EDITED: :"billable_metric.edited"
+
+          def self?.values: -> ::Array[Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::type_]
+        end
+      end
+    end
+  end
+end
