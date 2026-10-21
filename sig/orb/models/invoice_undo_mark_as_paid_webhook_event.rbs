@@ -5,6 +5,7 @@ module Orb
         id: String,
         created_at: Time,
         invoice: Orb::Invoice,
+        payload_style: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::payload_style,
         properties: top,
         type: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::type_
       }
@@ -16,6 +17,8 @@ module Orb
 
       attr_accessor invoice: Orb::Invoice
 
+      attr_accessor payload_style: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::payload_style
+
       attr_accessor properties: top
 
       attr_accessor type: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::type_
@@ -24,6 +27,7 @@ module Orb
         id: String,
         created_at: Time,
         invoice: Orb::Invoice,
+        payload_style: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::payload_style,
         properties: top,
         type: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::type_
       ) -> void
@@ -32,9 +36,21 @@ module Orb
         id: String,
         created_at: Time,
         invoice: Orb::Invoice,
+        payload_style: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::payload_style,
         properties: top,
         type: Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::type_
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceUndoMarkAsPaidWebhookEvent::payload_style]
+      end
 
       type type_ = :"invoice.undo_mark_as_paid"
 

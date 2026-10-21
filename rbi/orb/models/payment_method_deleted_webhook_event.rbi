@@ -16,6 +16,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       # A payment method represents a customer's stored payment instrument held with an
       # external payment provider (such as Adyen or Stripe).
       #
@@ -44,6 +53,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle::OrSymbol,
           payment_method:
             Orb::PaymentMethodDeletedWebhookEvent::PaymentMethod::OrHash,
           properties: T.anything,
@@ -55,6 +66,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         # A payment method represents a customer's stored payment instrument held with an
         # external payment provider (such as Adyen or Stripe).
         #
@@ -72,6 +86,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle::TaggedSymbol,
             payment_method:
               Orb::PaymentMethodDeletedWebhookEvent::PaymentMethod,
             properties: T.anything,
@@ -80,6 +96,39 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class PaymentMethod < Orb::Internal::Type::BaseModel

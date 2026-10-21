@@ -19,6 +19,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(Orb::SubscriptionUsageExceededWebhookEvent::Properties) }
       attr_reader :properties
 
@@ -67,6 +76,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::SubscriptionUsageExceededWebhookEvent::Properties::OrHash,
           subscription: Orb::Subscription::OrHash,
@@ -78,6 +89,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # A [subscription](/core-concepts#subscription) represents the purchase of a plan
         # by a customer.
@@ -109,6 +123,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: Orb::SubscriptionUsageExceededWebhookEvent::Properties,
             subscription: Orb::Subscription,
             type: Orb::SubscriptionUsageExceededWebhookEvent::Type::TaggedSymbol
@@ -116,6 +132,42 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SubscriptionUsageExceededWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

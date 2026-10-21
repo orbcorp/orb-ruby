@@ -4,6 +4,7 @@ module Orb
       {
         id: String,
         created_at: Time,
+        payload_style: Orb::Models::SubscriptionCreatedWebhookEvent::payload_style,
         properties: top,
         subscription: Orb::Subscription,
         type: Orb::Models::SubscriptionCreatedWebhookEvent::type_
@@ -14,6 +15,8 @@ module Orb
 
       attr_accessor created_at: Time
 
+      attr_accessor payload_style: Orb::Models::SubscriptionCreatedWebhookEvent::payload_style
+
       attr_accessor properties: top
 
       attr_accessor subscription: Orb::Subscription
@@ -23,6 +26,7 @@ module Orb
       def initialize: (
         id: String,
         created_at: Time,
+        payload_style: Orb::Models::SubscriptionCreatedWebhookEvent::payload_style,
         properties: top,
         subscription: Orb::Subscription,
         type: Orb::Models::SubscriptionCreatedWebhookEvent::type_
@@ -31,10 +35,22 @@ module Orb
       def to_hash: -> {
         id: String,
         created_at: Time,
+        payload_style: Orb::Models::SubscriptionCreatedWebhookEvent::payload_style,
         properties: top,
         subscription: Orb::Subscription,
         type: Orb::Models::SubscriptionCreatedWebhookEvent::type_
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionCreatedWebhookEvent::payload_style]
+      end
 
       type type_ = :"subscription.created"
 

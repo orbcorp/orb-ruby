@@ -4,6 +4,7 @@ module Orb
       {
         id: String,
         created_at: Time,
+        payload_style: Orb::Models::PlanVersionCreatedWebhookEvent::payload_style,
         plan: Orb::PlanVersionCreatedWebhookEvent::Plan,
         properties: Orb::PlanVersionCreatedWebhookEvent::Properties,
         type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
@@ -14,6 +15,8 @@ module Orb
 
       attr_accessor created_at: Time
 
+      attr_accessor payload_style: Orb::Models::PlanVersionCreatedWebhookEvent::payload_style
+
       attr_accessor plan: Orb::PlanVersionCreatedWebhookEvent::Plan
 
       attr_accessor properties: Orb::PlanVersionCreatedWebhookEvent::Properties
@@ -23,6 +26,7 @@ module Orb
       def initialize: (
         id: String,
         created_at: Time,
+        payload_style: Orb::Models::PlanVersionCreatedWebhookEvent::payload_style,
         plan: Orb::PlanVersionCreatedWebhookEvent::Plan,
         properties: Orb::PlanVersionCreatedWebhookEvent::Properties,
         type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
@@ -31,10 +35,22 @@ module Orb
       def to_hash: -> {
         id: String,
         created_at: Time,
+        payload_style: Orb::Models::PlanVersionCreatedWebhookEvent::payload_style,
         plan: Orb::PlanVersionCreatedWebhookEvent::Plan,
         properties: Orb::PlanVersionCreatedWebhookEvent::Properties,
         type: Orb::Models::PlanVersionCreatedWebhookEvent::type_
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::PlanVersionCreatedWebhookEvent::payload_style]
+      end
 
       type plan = { id: String?, external_plan_id: String?, name: String? }
 

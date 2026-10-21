@@ -15,6 +15,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::SubscriptionLicenseAllocationResetWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #   Fires at the start of a billing period when license allocations are replenished.
       #   Allocations sharing a billing period are batched into one message.
@@ -37,7 +44,7 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Type]
       required :type, enum: -> { Orb::SubscriptionLicenseAllocationResetWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, properties:, subscription:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, properties:, subscription:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent} for more details.
       #
@@ -47,11 +54,27 @@ module Orb
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Properties] Fires at the start of a billing period when license allocations are replenished.
       #
       #   @param subscription [Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Subscription] A lightweight subscription representation for webhook payloads.
       #
       #   @param type [Symbol, Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::SubscriptionLicenseAllocationResetWebhookEvent#properties
       class Properties < Orb::Internal::Type::BaseModel

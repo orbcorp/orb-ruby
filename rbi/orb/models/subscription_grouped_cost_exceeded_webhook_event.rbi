@@ -19,6 +19,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       # Every group that crossed a threshold for one alert, batched into a single
       # message.
       sig do
@@ -64,6 +73,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::SubscriptionGroupedCostExceededWebhookEvent::Properties::OrHash,
           subscription:
@@ -76,6 +87,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         # Every group that crossed a threshold for one alert, batched into a single
         # message.
         properties:,
@@ -94,6 +108,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::SubscriptionGroupedCostExceededWebhookEvent::Properties,
             subscription:
@@ -104,6 +120,42 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SubscriptionGroupedCostExceededWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

@@ -34,6 +34,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig do
         returns(Orb::TransactionAccountingSyncFailedWebhookEvent::Properties)
       end
@@ -75,6 +84,8 @@ module Orb
           accounting_sync_record:
             Orb::TransactionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::OrHash,
           created_at: Time,
+          payload_style:
+            Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::TransactionAccountingSyncFailedWebhookEvent::Properties::OrHash,
           transaction:
@@ -88,6 +99,9 @@ module Orb
         accounting_sync_record:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         transaction:,
         # The event this payload describes.
@@ -102,6 +116,8 @@ module Orb
             accounting_sync_record:
               Orb::TransactionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
             created_at: Time,
+            payload_style:
+              Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::TransactionAccountingSyncFailedWebhookEvent::Properties,
             transaction:
@@ -256,6 +272,42 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::TransactionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

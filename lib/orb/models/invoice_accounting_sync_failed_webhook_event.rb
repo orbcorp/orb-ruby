@@ -31,6 +31,13 @@ module Orb
       #   @return [Orb::Models::Invoice]
       required :invoice, -> { Orb::Invoice }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoiceAccountingSyncFailedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoiceAccountingSyncFailedWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::InvoiceAccountingSyncFailedWebhookEvent::Properties]
@@ -42,7 +49,7 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoiceAccountingSyncFailedWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoiceAccountingSyncFailedWebhookEvent::Type }
 
-      # @!method initialize(id:, accounting_sync_record:, created_at:, invoice:, properties:, type:)
+      # @!method initialize(id:, accounting_sync_record:, created_at:, invoice:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceAccountingSyncFailedWebhookEvent} for more details.
       #
@@ -55,6 +62,8 @@ module Orb
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
       #   @param invoice [Orb::Models::Invoice] An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, represen
+      #
+      #   @param payload_style [Symbol, Orb::Models::InvoiceAccountingSyncFailedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::InvoiceAccountingSyncFailedWebhookEvent::Properties]
       #
@@ -129,6 +138,20 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoiceAccountingSyncFailedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::InvoiceAccountingSyncFailedWebhookEvent#properties

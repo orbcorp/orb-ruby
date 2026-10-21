@@ -19,6 +19,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig do
         returns(Orb::SubscriptionPlanVersionChangedWebhookEvent::Properties)
       end
@@ -70,6 +79,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::SubscriptionPlanVersionChangedWebhookEvent::Properties::OrHash,
           subscription: Orb::Subscription::OrHash,
@@ -81,6 +92,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # A [subscription](/core-concepts#subscription) represents the purchase of a plan
         # by a customer.
@@ -112,6 +126,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::SubscriptionPlanVersionChangedWebhookEvent::Properties,
             subscription: Orb::Subscription,
@@ -121,6 +137,42 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SubscriptionPlanVersionChangedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

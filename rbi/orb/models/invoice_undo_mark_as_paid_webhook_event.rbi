@@ -27,6 +27,15 @@ module Orb
       sig { params(invoice: Orb::Invoice::OrHash).void }
       attr_writer :invoice
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(T.anything) }
       attr_accessor :properties
 
@@ -42,6 +51,8 @@ module Orb
           id: String,
           created_at: Time,
           invoice: Orb::Invoice::OrHash,
+          payload_style:
+            Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle::OrSymbol,
           properties: T.anything,
           type: Orb::InvoiceUndoMarkAsPaidWebhookEvent::Type::OrSymbol
         ).returns(T.attached_class)
@@ -57,6 +68,9 @@ module Orb
         # represent fixed recurring fees or usage-based fees. They are generated at the
         # end of a billing period, or as the result of an action, such as a cancellation.
         invoice:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -69,12 +83,47 @@ module Orb
             id: String,
             created_at: Time,
             invoice: Orb::Invoice,
+            payload_style:
+              Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: T.anything,
             type: Orb::InvoiceUndoMarkAsPaidWebhookEvent::Type::TaggedSymbol
           }
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::InvoiceUndoMarkAsPaidWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The event this payload describes.

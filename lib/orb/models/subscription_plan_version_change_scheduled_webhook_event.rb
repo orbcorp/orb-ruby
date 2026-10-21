@@ -15,6 +15,14 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent::PayloadStyle]
+      required :payload_style,
+               enum: -> { Orb::SubscriptionPlanVersionChangeScheduledWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent::Properties]
@@ -50,7 +58,7 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent::Type]
       required :type, enum: -> { Orb::SubscriptionPlanVersionChangeScheduledWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, properties:, subscription:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, properties:, subscription:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent} for more
       #   details.
@@ -61,11 +69,27 @@ module Orb
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent::Properties]
       #
       #   @param subscription [Orb::Models::Subscription] A [subscription](/core-concepts#subscription) represents the purchase of a plan
       #
       #   @param type [Symbol, Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::SubscriptionPlanVersionChangeScheduledWebhookEvent#properties
       class Properties < Orb::Internal::Type::BaseModel

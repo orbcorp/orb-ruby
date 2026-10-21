@@ -43,6 +43,15 @@ module Orb
       sig { params(customer: Orb::Customer::OrHash).void }
       attr_writer :customer
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(Orb::CustomerCreditBalanceDroppedWebhookEvent::Properties) }
       attr_reader :properties
 
@@ -69,6 +78,8 @@ module Orb
           id: String,
           created_at: Time,
           customer: Orb::Customer::OrHash,
+          payload_style:
+            Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::CustomerCreditBalanceDroppedWebhookEvent::Properties::OrHash,
           type: Orb::CustomerCreditBalanceDroppedWebhookEvent::Type::OrSymbol
@@ -98,6 +109,9 @@ module Orb
         # your account's timezone. See [Timezone localization](/essentials/timezones) for
         # information on what this timezone parameter influences within Orb.
         customer:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -110,6 +124,8 @@ module Orb
             id: String,
             created_at: Time,
             customer: Orb::Customer,
+            payload_style:
+              Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::CustomerCreditBalanceDroppedWebhookEvent::Properties,
             type:
@@ -118,6 +134,42 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::CustomerCreditBalanceDroppedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

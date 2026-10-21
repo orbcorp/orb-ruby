@@ -5,6 +5,7 @@ module Orb
         id: String,
         accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
         created_at: Time,
+        payload_style: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::payload_style,
         properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
         subscription: Orb::Subscription,
         type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
@@ -17,6 +18,8 @@ module Orb
 
       attr_accessor created_at: Time
 
+      attr_accessor payload_style: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::payload_style
+
       attr_accessor properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties
 
       attr_accessor subscription: Orb::Subscription
@@ -27,6 +30,7 @@ module Orb
         id: String,
         accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
         created_at: Time,
+        payload_style: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::payload_style,
         properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
         subscription: Orb::Subscription,
         type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
@@ -36,6 +40,7 @@ module Orb
         id: String,
         accounting_sync_record: Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
         created_at: Time,
+        payload_style: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::payload_style,
         properties: Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
         subscription: Orb::Subscription,
         type: Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::type_
@@ -116,6 +121,17 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::record_type]
         end
+      end
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionAccountingSyncFailedWebhookEvent::payload_style]
       end
 
       type properties = { connection_type: String, failure_reason: String }

@@ -28,6 +28,13 @@ module Orb
       #   @return [Orb::Models::CreditNote]
       required :credit_note, -> { Orb::CreditNote }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::CreditNoteAccountingSyncSucceededWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent::Properties]
@@ -39,7 +46,7 @@ module Orb
       #   @return [Symbol, Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent::Type]
       required :type, enum: -> { Orb::CreditNoteAccountingSyncSucceededWebhookEvent::Type }
 
-      # @!method initialize(id:, accounting_sync_record:, created_at:, credit_note:, properties:, type:)
+      # @!method initialize(id:, accounting_sync_record:, created_at:, credit_note:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent} for more details.
       #
@@ -52,6 +59,8 @@ module Orb
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
       #   @param credit_note [Orb::Models::CreditNote] The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
+      #
+      #   @param payload_style [Symbol, Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent::Properties]
       #
@@ -126,6 +135,20 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::CreditNoteAccountingSyncSucceededWebhookEvent#properties

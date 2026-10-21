@@ -23,6 +23,13 @@ module Orb
       #   @return [Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice]
       required :invoice, -> { Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties]
@@ -34,7 +41,7 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, invoice:, properties:, type:)
+      # @!method initialize(id:, created_at:, invoice:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent} for more
       #   details.
@@ -46,6 +53,8 @@ module Orb
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
       #   @param invoice [Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice] The invoice fields a consumer needs to run their own notification flows without
+      #
+      #   @param payload_style [Symbol, Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties]
       #
@@ -148,6 +157,20 @@ module Orb
         #   @param payment_method_last_four_digits [String, nil]
         #   @param status [String]
         #   @param subscription_id [String, nil]
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::InvoiceAutomationScheduleStepExecutedWebhookEvent#properties

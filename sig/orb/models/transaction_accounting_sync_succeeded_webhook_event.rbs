@@ -5,6 +5,7 @@ module Orb
         id: String,
         accounting_sync_record: Orb::TransactionAccountingSyncSucceededWebhookEvent::AccountingSyncRecord,
         created_at: Time,
+        payload_style: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::payload_style,
         properties: Orb::TransactionAccountingSyncSucceededWebhookEvent::Properties,
         transaction: Orb::TransactionAccountingSyncSucceededWebhookEvent::Transaction,
         type: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::type_
@@ -17,6 +18,8 @@ module Orb
 
       attr_accessor created_at: Time
 
+      attr_accessor payload_style: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::payload_style
+
       attr_accessor properties: Orb::TransactionAccountingSyncSucceededWebhookEvent::Properties
 
       attr_accessor transaction: Orb::TransactionAccountingSyncSucceededWebhookEvent::Transaction
@@ -27,6 +30,7 @@ module Orb
         id: String,
         accounting_sync_record: Orb::TransactionAccountingSyncSucceededWebhookEvent::AccountingSyncRecord,
         created_at: Time,
+        payload_style: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::payload_style,
         properties: Orb::TransactionAccountingSyncSucceededWebhookEvent::Properties,
         transaction: Orb::TransactionAccountingSyncSucceededWebhookEvent::Transaction,
         type: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::type_
@@ -36,6 +40,7 @@ module Orb
         id: String,
         accounting_sync_record: Orb::TransactionAccountingSyncSucceededWebhookEvent::AccountingSyncRecord,
         created_at: Time,
+        payload_style: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::payload_style,
         properties: Orb::TransactionAccountingSyncSucceededWebhookEvent::Properties,
         transaction: Orb::TransactionAccountingSyncSucceededWebhookEvent::Transaction,
         type: Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::type_
@@ -116,6 +121,17 @@ module Orb
 
           def self?.values: -> ::Array[Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::AccountingSyncRecord::record_type]
         end
+      end
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::payload_style]
       end
 
       type properties = { connection_type: String }

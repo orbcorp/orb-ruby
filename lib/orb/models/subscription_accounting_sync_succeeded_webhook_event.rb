@@ -21,6 +21,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::SubscriptionAccountingSyncSucceededWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent::Properties]
@@ -56,7 +63,7 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent::Type]
       required :type, enum: -> { Orb::SubscriptionAccountingSyncSucceededWebhookEvent::Type }
 
-      # @!method initialize(id:, accounting_sync_record:, created_at:, properties:, subscription:, type:)
+      # @!method initialize(id:, accounting_sync_record:, created_at:, payload_style:, properties:, subscription:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent} for more details.
       #
@@ -67,6 +74,8 @@ module Orb
       #   @param accounting_sync_record [Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent::AccountingSyncRecord]
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
+      #
+      #   @param payload_style [Symbol, Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent::Properties]
       #
@@ -143,6 +152,20 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::SubscriptionAccountingSyncSucceededWebhookEvent#properties

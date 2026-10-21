@@ -35,6 +35,15 @@ module Orb
       end
       attr_writer :invoice
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig do
         returns(
           Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties
@@ -65,6 +74,8 @@ module Orb
           created_at: Time,
           invoice:
             Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice::OrHash,
+          payload_style:
+            Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties::OrHash,
           type:
@@ -80,6 +91,9 @@ module Orb
         # a follow-up API call, mirroring the variables Orb's own automation emails render
         # against.
         invoice:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -93,6 +107,8 @@ module Orb
             created_at: Time,
             invoice:
               Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Invoice,
+            payload_style:
+              Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::Properties,
             type:
@@ -220,6 +236,42 @@ module Orb
           )
         end
         def to_hash
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::InvoiceAutomationScheduleStepExecutedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

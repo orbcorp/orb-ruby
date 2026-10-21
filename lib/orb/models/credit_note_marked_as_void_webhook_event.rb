@@ -22,6 +22,13 @@ module Orb
       #   @return [Orb::Models::CreditNote]
       required :credit_note, -> { Orb::CreditNote }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Object]
@@ -33,7 +40,7 @@ module Orb
       #   @return [Symbol, Orb::Models::CreditNoteMarkedAsVoidWebhookEvent::Type]
       required :type, enum: -> { Orb::CreditNoteMarkedAsVoidWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, credit_note:, properties:, type:)
+      # @!method initialize(id:, created_at:, credit_note:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CreditNoteMarkedAsVoidWebhookEvent} for more details.
       #
@@ -45,9 +52,25 @@ module Orb
       #
       #   @param credit_note [Orb::Models::CreditNote] The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
       #
+      #   @param payload_style [Symbol, Orb::Models::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Object]
       #
       #   @param type [Symbol, Orb::Models::CreditNoteMarkedAsVoidWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::CreditNoteMarkedAsVoidWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # The event this payload describes.
       #

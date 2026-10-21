@@ -29,6 +29,15 @@ module Orb
       end
       attr_writer :invoice
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties) }
       attr_reader :properties
 
@@ -52,6 +61,8 @@ module Orb
           id: String,
           created_at: Time,
           invoice: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice::OrHash,
+          payload_style:
+            Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties::OrHash,
           type: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Type::OrSymbol
@@ -63,6 +74,9 @@ module Orb
         # The time at which this event was created, to the second.
         created_at:,
         invoice:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -75,6 +89,8 @@ module Orb
             id: String,
             created_at: Time,
             invoice: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice,
+            payload_style:
+              Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Properties,
             type: Orb::InvoiceInvoiceDateElapsedWebhookEvent::Type::TaggedSymbol
           }
@@ -196,6 +212,42 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

@@ -19,6 +19,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       # `window_start` and `window_end` are ISO-8601 strings rather than datetimes: the
       # untyped message called `.isoformat()` on them, so they keep microseconds where
       # the webhook JSON provider would have truncated them.
@@ -48,6 +57,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::MetricEventsDroppedByWatermarkWebhookEvent::Properties::OrHash,
           type: Orb::MetricEventsDroppedByWatermarkWebhookEvent::Type::OrSymbol
@@ -58,6 +69,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         # `window_start` and `window_end` are ISO-8601 strings rather than datetimes: the
         # untyped message called `.isoformat()` on them, so they keep microseconds where
         # the webhook JSON provider would have truncated them.
@@ -72,6 +86,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::MetricEventsDroppedByWatermarkWebhookEvent::Properties,
             type:
@@ -80,6 +96,42 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

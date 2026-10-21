@@ -5,6 +5,7 @@ module Orb
         id: String,
         billable_metric: Orb::BillableMetric,
         created_at: Time,
+        payload_style: Orb::Models::BillableMetricEditedWebhookEvent::payload_style,
         properties: Orb::BillableMetricEditedWebhookEvent::Properties,
         type: Orb::Models::BillableMetricEditedWebhookEvent::type_
       }
@@ -16,6 +17,8 @@ module Orb
 
       attr_accessor created_at: Time
 
+      attr_accessor payload_style: Orb::Models::BillableMetricEditedWebhookEvent::payload_style
+
       attr_accessor properties: Orb::BillableMetricEditedWebhookEvent::Properties
 
       attr_accessor type: Orb::Models::BillableMetricEditedWebhookEvent::type_
@@ -24,6 +27,7 @@ module Orb
         id: String,
         billable_metric: Orb::BillableMetric,
         created_at: Time,
+        payload_style: Orb::Models::BillableMetricEditedWebhookEvent::payload_style,
         properties: Orb::BillableMetricEditedWebhookEvent::Properties,
         type: Orb::Models::BillableMetricEditedWebhookEvent::type_
       ) -> void
@@ -32,9 +36,21 @@ module Orb
         id: String,
         billable_metric: Orb::BillableMetric,
         created_at: Time,
+        payload_style: Orb::Models::BillableMetricEditedWebhookEvent::payload_style,
         properties: Orb::BillableMetricEditedWebhookEvent::Properties,
         type: Orb::Models::BillableMetricEditedWebhookEvent::type_
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::BillableMetricEditedWebhookEvent::payload_style]
+      end
 
       type properties =
         {

@@ -27,6 +27,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::CreditBlockAccountingSyncFailedWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Properties]
@@ -38,7 +45,10 @@ module Orb
       #   @return [Symbol, Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Type]
       required :type, enum: -> { Orb::CreditBlockAccountingSyncFailedWebhookEvent::Type }
 
-      # @!method initialize(id:, accounting_sync_record:, block:, created_at:, properties:, type:)
+      # @!method initialize(id:, accounting_sync_record:, block:, created_at:, payload_style:, properties:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent} for more details.
+      #
       #   Issued when a credit block accounting sync fails.
       #
       #   @param id [String] The ID of this webhook event.
@@ -48,6 +58,8 @@ module Orb
       #   @param block [Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Block] The Credit Block resource models prepaid credits within Orb.
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
+      #
+      #   @param payload_style [Symbol, Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::Properties]
       #
@@ -464,6 +476,20 @@ module Orb
           #
           #   @param subscription_id [String, nil] The subscription the commitment belongs to.
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent#properties

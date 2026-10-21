@@ -16,6 +16,11 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig { returns(Orb::PlanCreatedWebhookEvent::PayloadStyle::TaggedSymbol) }
+      attr_accessor :payload_style
+
       sig { returns(Orb::PlanCreatedWebhookEvent::Plan) }
       attr_reader :plan
 
@@ -34,6 +39,7 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style: Orb::PlanCreatedWebhookEvent::PayloadStyle::OrSymbol,
           plan: Orb::PlanCreatedWebhookEvent::Plan::OrHash,
           properties: T.anything,
           type: Orb::PlanCreatedWebhookEvent::Type::OrSymbol
@@ -44,6 +50,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         plan:,
         properties:,
         # The event this payload describes.
@@ -56,6 +65,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::PlanCreatedWebhookEvent::PayloadStyle::TaggedSymbol,
             plan: Orb::PlanCreatedWebhookEvent::Plan,
             properties: T.anything,
             type: Orb::PlanCreatedWebhookEvent::Type::TaggedSymbol
@@ -63,6 +74,37 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::PlanCreatedWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::PlanCreatedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::PlanCreatedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Orb::PlanCreatedWebhookEvent::PayloadStyle::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class Plan < Orb::Internal::Type::BaseModel

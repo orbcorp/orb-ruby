@@ -45,6 +45,15 @@ module Orb
       sig { params(invoice: Orb::Invoice::OrHash).void }
       attr_writer :invoice
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig do
         returns(Orb::SalesOrderAccountingSyncSucceededWebhookEvent::Properties)
       end
@@ -74,6 +83,8 @@ module Orb
             Orb::SalesOrderAccountingSyncSucceededWebhookEvent::AccountingSyncRecord::OrHash,
           created_at: Time,
           invoice: Orb::Invoice::OrHash,
+          payload_style:
+            Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::SalesOrderAccountingSyncSucceededWebhookEvent::Properties::OrHash,
           type:
@@ -92,6 +103,9 @@ module Orb
         # represent fixed recurring fees or usage-based fees. They are generated at the
         # end of a billing period, or as the result of an action, such as a cancellation.
         invoice:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -106,6 +120,8 @@ module Orb
               Orb::SalesOrderAccountingSyncSucceededWebhookEvent::AccountingSyncRecord,
             created_at: Time,
             invoice: Orb::Invoice,
+            payload_style:
+              Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::SalesOrderAccountingSyncSucceededWebhookEvent::Properties,
             type:
@@ -258,6 +274,42 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SalesOrderAccountingSyncSucceededWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

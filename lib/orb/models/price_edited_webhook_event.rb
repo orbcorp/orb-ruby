@@ -15,6 +15,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::PriceEditedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::PriceEditedWebhookEvent::PayloadStyle }
+
       # @!attribute price
       #   The Price resource represents a price that can be billed on a subscription,
       #   resulting in a charge on an invoice in the form of an invoice line item. Prices
@@ -41,7 +48,7 @@ module Orb
       #   @return [Symbol, Orb::Models::PriceEditedWebhookEvent::Type]
       required :type, enum: -> { Orb::PriceEditedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, price:, properties:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, price:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PriceEditedWebhookEvent} for more details.
       #
@@ -51,11 +58,27 @@ module Orb
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::PriceEditedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param price [Orb::Models::Price::Unit, Orb::Models::Price::Tiered, Orb::Models::Price::Bulk, Orb::Models::Price::BulkWithFilters, Orb::Models::Price::Package, Orb::Models::Price::Matrix, Orb::Models::Price::ThresholdTotalAmount, Orb::Models::Price::TieredPackage, Orb::Models::Price::TieredWithMinimum, Orb::Models::Price::GroupedTiered, Orb::Models::Price::GroupedTieredMatrix, Orb::Models::Price::TieredPackageWithMinimum, Orb::Models::Price::PackageWithAllocation, Orb::Models::Price::UnitWithPercent, Orb::Models::Price::MatrixWithAllocation, Orb::Models::Price::TieredMatrixWithAllocation, Orb::Models::Price::MatrixWithThresholdDiscounts, Orb::Models::Price::TieredWithProration, Orb::Models::Price::UnitWithProration, Orb::Models::Price::GroupedAllocation, Orb::Models::Price::BulkWithProration, Orb::Models::Price::GroupedWithProratedMinimum, Orb::Models::Price::GroupedWithMeteredMinimum, Orb::Models::Price::GroupedWithMinMaxThresholds, Orb::Models::Price::MatrixWithDisplayName, Orb::Models::Price::GroupedTieredPackage, Orb::Models::Price::MaxGroupTieredPackage, Orb::Models::Price::ScalableMatrixWithUnitPricing, Orb::Models::Price::ScalableMatrixWithTieredPricing, Orb::Models::Price::CumulativeGroupedBulk, Orb::Models::Price::CumulativeGroupedAllocation, Orb::Models::Price::DailyCreditAllowance, Orb::Models::Price::MeteredAllowance, Orb::Models::Price::MinimumComposite, Orb::Models::Price::Percent, Orb::Models::Price::EventOutput] The Price resource represents a price that can be billed on a subscription, resu
       #
       #   @param properties [Orb::Models::PriceEditedWebhookEvent::Properties]
       #
       #   @param type [Symbol, Orb::Models::PriceEditedWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::PriceEditedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::PriceEditedWebhookEvent#properties
       class Properties < Orb::Internal::Type::BaseModel

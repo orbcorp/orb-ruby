@@ -25,6 +25,13 @@ module Orb
       #   @return [Orb::Models::Invoice]
       required :invoice, -> { Orb::Invoice }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoiceManuallyMarkedAsVoidWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Object]
@@ -36,7 +43,7 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoiceManuallyMarkedAsVoidWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, invoice:, properties:, type:)
+      # @!method initialize(id:, created_at:, invoice:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent} for more details.
       #
@@ -48,9 +55,25 @@ module Orb
       #
       #   @param invoice [Orb::Models::Invoice] An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, represen
       #
+      #   @param payload_style [Symbol, Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Object]
       #
       #   @param type [Symbol, Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoiceManuallyMarkedAsVoidWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # The event this payload describes.
       #

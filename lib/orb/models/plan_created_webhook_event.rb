@@ -15,6 +15,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::PlanCreatedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::PlanCreatedWebhookEvent::PayloadStyle }
+
       # @!attribute plan
       #
       #   @return [Orb::Models::PlanCreatedWebhookEvent::Plan]
@@ -31,18 +38,37 @@ module Orb
       #   @return [Symbol, Orb::Models::PlanCreatedWebhookEvent::Type]
       required :type, enum: -> { Orb::PlanCreatedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, plan:, properties:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, plan:, properties:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::PlanCreatedWebhookEvent} for more details.
+      #
       #   Issued when a plan is created, or when a draft plan is published.
       #
       #   @param id [String] The ID of this webhook event.
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::PlanCreatedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param plan [Orb::Models::PlanCreatedWebhookEvent::Plan]
       #
       #   @param properties [Object]
       #
       #   @param type [Symbol, Orb::Models::PlanCreatedWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::PlanCreatedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::PlanCreatedWebhookEvent#plan
       class Plan < Orb::Internal::Type::BaseModel

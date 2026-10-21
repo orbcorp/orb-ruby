@@ -24,6 +24,15 @@ module Orb
       sig { params(credit_note: Orb::CreditNote::OrHash).void }
       attr_writer :credit_note
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(T.anything) }
       attr_accessor :properties
 
@@ -39,6 +48,8 @@ module Orb
           id: String,
           created_at: Time,
           credit_note: Orb::CreditNote::OrHash,
+          payload_style:
+            Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle::OrSymbol,
           properties: T.anything,
           type: Orb::CreditNoteMarkedAsVoidWebhookEvent::Type::OrSymbol
         ).returns(T.attached_class)
@@ -51,6 +62,9 @@ module Orb
         # The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
         # been applied to a particular invoice.
         credit_note:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -63,12 +77,47 @@ module Orb
             id: String,
             created_at: Time,
             credit_note: Orb::CreditNote,
+            payload_style:
+              Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: T.anything,
             type: Orb::CreditNoteMarkedAsVoidWebhookEvent::Type::TaggedSymbol
           }
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::CreditNoteMarkedAsVoidWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The event this payload describes.

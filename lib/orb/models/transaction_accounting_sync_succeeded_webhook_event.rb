@@ -21,6 +21,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::TransactionAccountingSyncSucceededWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::Properties]
@@ -37,7 +44,10 @@ module Orb
       #   @return [Symbol, Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::Type]
       required :type, enum: -> { Orb::TransactionAccountingSyncSucceededWebhookEvent::Type }
 
-      # @!method initialize(id:, accounting_sync_record:, created_at:, properties:, transaction:, type:)
+      # @!method initialize(id:, accounting_sync_record:, created_at:, payload_style:, properties:, transaction:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::TransactionAccountingSyncSucceededWebhookEvent} for more details.
+      #
       #   Issued when a transaction accounting sync succeeds.
       #
       #   @param id [String] The ID of this webhook event.
@@ -45,6 +55,8 @@ module Orb
       #   @param accounting_sync_record [Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::AccountingSyncRecord]
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
+      #
+      #   @param payload_style [Symbol, Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::TransactionAccountingSyncSucceededWebhookEvent::Properties]
       #
@@ -121,6 +133,20 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::TransactionAccountingSyncSucceededWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::TransactionAccountingSyncSucceededWebhookEvent#properties

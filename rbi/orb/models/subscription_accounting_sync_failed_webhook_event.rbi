@@ -34,6 +34,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig do
         returns(Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties)
       end
@@ -87,6 +96,8 @@ module Orb
           accounting_sync_record:
             Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord::OrHash,
           created_at: Time,
+          payload_style:
+            Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties::OrHash,
           subscription: Orb::Subscription::OrHash,
@@ -100,6 +111,9 @@ module Orb
         accounting_sync_record:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # A [subscription](/core-concepts#subscription) represents the purchase of a plan
         # by a customer.
@@ -133,6 +147,8 @@ module Orb
             accounting_sync_record:
               Orb::SubscriptionAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
             created_at: Time,
+            payload_style:
+              Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::SubscriptionAccountingSyncFailedWebhookEvent::Properties,
             subscription: Orb::Subscription,
@@ -286,6 +302,42 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SubscriptionAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

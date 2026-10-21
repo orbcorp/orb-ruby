@@ -28,6 +28,13 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(Orb::BackfillReflectedWebhookEvent::PayloadStyle::TaggedSymbol)
+      end
+      attr_accessor :payload_style
+
       sig { returns(T.anything) }
       attr_accessor :properties
 
@@ -41,6 +48,8 @@ module Orb
           id: String,
           backfill: Orb::BackfillReflectedWebhookEvent::Backfill::OrHash,
           created_at: Time,
+          payload_style:
+            Orb::BackfillReflectedWebhookEvent::PayloadStyle::OrSymbol,
           properties: T.anything,
           type: Orb::BackfillReflectedWebhookEvent::Type::OrSymbol
         ).returns(T.attached_class)
@@ -53,6 +62,9 @@ module Orb
         backfill:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -65,6 +77,8 @@ module Orb
             id: String,
             backfill: Orb::BackfillReflectedWebhookEvent::Backfill,
             created_at: Time,
+            payload_style:
+              Orb::BackfillReflectedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: T.anything,
             type: Orb::BackfillReflectedWebhookEvent::Type::TaggedSymbol
           }
@@ -242,6 +256,39 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::BackfillReflectedWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::BackfillReflectedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::BackfillReflectedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::BackfillReflectedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

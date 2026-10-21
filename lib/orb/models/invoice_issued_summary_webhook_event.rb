@@ -21,6 +21,13 @@ module Orb
       #   @return [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice]
       required :invoice, -> { Orb::InvoiceIssuedSummaryWebhookEvent::Invoice }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoiceIssuedSummaryWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoiceIssuedSummaryWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Properties]
@@ -32,7 +39,10 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoiceIssuedSummaryWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoiceIssuedSummaryWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, invoice:, properties:, type:)
+      # @!method initialize(id:, created_at:, invoice:, payload_style:, properties:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::InvoiceIssuedSummaryWebhookEvent} for more details.
+      #
       #   A lightweight variant of invoice.issued for accounts configured to receive a
       #   summarized invoice payload.
       #
@@ -41,6 +51,8 @@ module Orb
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
       #   @param invoice [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice] #InvoiceApiResourceWithoutLineItems
+      #
+      #   @param payload_style [Symbol, Orb::Models::InvoiceIssuedSummaryWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Properties]
       #
@@ -825,6 +837,20 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoiceIssuedSummaryWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::InvoiceIssuedSummaryWebhookEvent#properties

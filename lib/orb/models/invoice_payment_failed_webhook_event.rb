@@ -25,6 +25,13 @@ module Orb
       #   @return [Orb::Models::Invoice]
       required :invoice, -> { Orb::Invoice }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoicePaymentFailedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoicePaymentFailedWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::InvoicePaymentFailedWebhookEvent::Properties]
@@ -36,7 +43,7 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoicePaymentFailedWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoicePaymentFailedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, invoice:, properties:, type:)
+      # @!method initialize(id:, created_at:, invoice:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoicePaymentFailedWebhookEvent} for more details.
       #
@@ -49,9 +56,25 @@ module Orb
       #
       #   @param invoice [Orb::Models::Invoice] An [`Invoice`](/core-concepts#invoice) is a fundamental billing entity, represen
       #
+      #   @param payload_style [Symbol, Orb::Models::InvoicePaymentFailedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Orb::Models::InvoicePaymentFailedWebhookEvent::Properties]
       #
       #   @param type [Symbol, Orb::Models::InvoicePaymentFailedWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoicePaymentFailedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::InvoicePaymentFailedWebhookEvent#properties
       class Properties < Orb::Internal::Type::BaseModel

@@ -15,6 +15,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::PaymentMethodDeletedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::PaymentMethodDeletedWebhookEvent::PayloadStyle }
+
       # @!attribute payment_method
       #   A payment method represents a customer's stored payment instrument held with an
       #   external payment provider (such as Adyen or Stripe).
@@ -36,7 +43,7 @@ module Orb
       #   @return [Symbol, Orb::Models::PaymentMethodDeletedWebhookEvent::Type]
       required :type, enum: -> { Orb::PaymentMethodDeletedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, payment_method:, properties:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, payment_method:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PaymentMethodDeletedWebhookEvent} for more details.
       #
@@ -46,11 +53,27 @@ module Orb
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::PaymentMethodDeletedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param payment_method [Orb::Models::PaymentMethodDeletedWebhookEvent::PaymentMethod] A payment method represents a customer's stored payment instrument held with an
       #
       #   @param properties [Object]
       #
       #   @param type [Symbol, Orb::Models::PaymentMethodDeletedWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::PaymentMethodDeletedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::PaymentMethodDeletedWebhookEvent#payment_method
       class PaymentMethod < Orb::Internal::Type::BaseModel

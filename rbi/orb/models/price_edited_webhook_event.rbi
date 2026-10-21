@@ -16,6 +16,11 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig { returns(Orb::PriceEditedWebhookEvent::PayloadStyle::TaggedSymbol) }
+      attr_accessor :payload_style
+
       # The Price resource represents a price that can be billed on a subscription,
       # resulting in a charge on an invoice in the form of an invoice line item. Prices
       # take a quantity and determine an amount to bill.
@@ -48,6 +53,7 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style: Orb::PriceEditedWebhookEvent::PayloadStyle::OrSymbol,
           price:
             T.any(
               Orb::Price::Unit::OrHash,
@@ -96,6 +102,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         # The Price resource represents a price that can be billed on a subscription,
         # resulting in a charge on an invoice in the form of an invoice line item. Prices
         # take a quantity and determine an amount to bill.
@@ -118,6 +127,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::PriceEditedWebhookEvent::PayloadStyle::TaggedSymbol,
             price: Orb::Price::Variants,
             properties: Orb::PriceEditedWebhookEvent::Properties,
             type: Orb::PriceEditedWebhookEvent::Type::TaggedSymbol
@@ -125,6 +136,37 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::PriceEditedWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::PriceEditedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::PriceEditedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Orb::PriceEditedWebhookEvent::PayloadStyle::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

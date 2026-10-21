@@ -15,6 +15,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #   `window_start` and `window_end` are ISO-8601 strings rather than datetimes: the
       #   untyped message called `.isoformat()` on them, so they keep microseconds where
@@ -29,7 +36,7 @@ module Orb
       #   @return [Symbol, Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent::Type]
       required :type, enum: -> { Orb::MetricEventsDroppedByWatermarkWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, properties:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, properties:, type:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent} for more details.
       #
@@ -39,9 +46,25 @@ module Orb
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent::Properties] `window_start` and `window_end` are ISO-8601 strings rather than datetimes: the
       #
       #   @param type [Symbol, Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent#properties
       class Properties < Orb::Internal::Type::BaseModel

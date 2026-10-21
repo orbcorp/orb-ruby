@@ -15,6 +15,13 @@ module Orb
       #   @return [Time]
       required :created_at, Time
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoiceDueDateRecalculationCompletedWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent::Properties]
@@ -26,16 +33,36 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoiceDueDateRecalculationCompletedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, properties:, type:)
+      # @!method initialize(id:, created_at:, payload_style:, properties:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent} for more
+      #   details.
+      #
       #   Issued when an invoice due date recalculation is completed.
       #
       #   @param id [String] The ID of this webhook event.
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
+      #   @param payload_style [Symbol, Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
+      #
       #   @param properties [Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent::Properties]
       #
       #   @param type [Symbol, Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent::Type] The event this payload describes.
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
 
       # @see Orb::Models::InvoiceDueDateRecalculationCompletedWebhookEvent#properties
       class Properties < Orb::Internal::Type::BaseModel

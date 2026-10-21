@@ -16,6 +16,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::EventUnmatchedEventWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(Orb::EventUnmatchedEventWebhookEvent::Properties) }
       attr_reader :properties
 
@@ -35,6 +44,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::EventUnmatchedEventWebhookEvent::PayloadStyle::OrSymbol,
           properties: Orb::EventUnmatchedEventWebhookEvent::Properties::OrHash,
           type: Orb::EventUnmatchedEventWebhookEvent::Type::OrSymbol
         ).returns(T.attached_class)
@@ -44,6 +55,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -55,12 +69,47 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::EventUnmatchedEventWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: Orb::EventUnmatchedEventWebhookEvent::Properties,
             type: Orb::EventUnmatchedEventWebhookEvent::Type::TaggedSymbol
           }
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Orb::EventUnmatchedEventWebhookEvent::PayloadStyle)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::EventUnmatchedEventWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::EventUnmatchedEventWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::EventUnmatchedEventWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

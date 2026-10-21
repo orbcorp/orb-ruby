@@ -6,6 +6,7 @@ module Orb
         accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
         block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block,
         created_at: Time,
+        payload_style: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::payload_style,
         properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties,
         type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
       }
@@ -19,6 +20,8 @@ module Orb
 
       attr_accessor created_at: Time
 
+      attr_accessor payload_style: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::payload_style
+
       attr_accessor properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties
 
       attr_accessor type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
@@ -28,6 +31,7 @@ module Orb
         accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
         block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block,
         created_at: Time,
+        payload_style: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::payload_style,
         properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties,
         type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
       ) -> void
@@ -37,6 +41,7 @@ module Orb
         accounting_sync_record: Orb::CreditBlockAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
         block: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Block,
         created_at: Time,
+        payload_style: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::payload_style,
         properties: Orb::CreditBlockAccountingSyncFailedWebhookEvent::Properties,
         type: Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::type_
       }
@@ -381,6 +386,17 @@ module Orb
 
           def to_hash: -> { id: String, subscription_id: String? }
         end
+      end
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::CreditBlockAccountingSyncFailedWebhookEvent::payload_style]
       end
 
       type properties = { connection_type: String, failure_reason: String }

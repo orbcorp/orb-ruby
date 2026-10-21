@@ -5,6 +5,7 @@ module Orb
         id: String,
         created_at: Time,
         invoice: Orb::Invoice,
+        payload_style: Orb::Models::InvoiceSyncFailedWebhookEvent::payload_style,
         properties: Orb::InvoiceSyncFailedWebhookEvent::Properties,
         type: Orb::Models::InvoiceSyncFailedWebhookEvent::type_
       }
@@ -16,6 +17,8 @@ module Orb
 
       attr_accessor invoice: Orb::Invoice
 
+      attr_accessor payload_style: Orb::Models::InvoiceSyncFailedWebhookEvent::payload_style
+
       attr_accessor properties: Orb::InvoiceSyncFailedWebhookEvent::Properties
 
       attr_accessor type: Orb::Models::InvoiceSyncFailedWebhookEvent::type_
@@ -24,6 +27,7 @@ module Orb
         id: String,
         created_at: Time,
         invoice: Orb::Invoice,
+        payload_style: Orb::Models::InvoiceSyncFailedWebhookEvent::payload_style,
         properties: Orb::InvoiceSyncFailedWebhookEvent::Properties,
         type: Orb::Models::InvoiceSyncFailedWebhookEvent::type_
       ) -> void
@@ -32,9 +36,21 @@ module Orb
         id: String,
         created_at: Time,
         invoice: Orb::Invoice,
+        payload_style: Orb::Models::InvoiceSyncFailedWebhookEvent::payload_style,
         properties: Orb::InvoiceSyncFailedWebhookEvent::Properties,
         type: Orb::Models::InvoiceSyncFailedWebhookEvent::type_
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::InvoiceSyncFailedWebhookEvent::payload_style]
+      end
 
       type properties =
         { payment_provider: String?, payment_provider_id: String? }

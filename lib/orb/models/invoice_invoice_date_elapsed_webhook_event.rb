@@ -20,6 +20,13 @@ module Orb
       #   @return [Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice]
       required :invoice, -> { Orb::InvoiceInvoiceDateElapsedWebhookEvent::Invoice }
 
+      # @!attribute payload_style
+      #   The serialization style this payload was rendered in, as configured on the
+      #   endpoint.
+      #
+      #   @return [Symbol, Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle]
+      required :payload_style, enum: -> { Orb::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle }
+
       # @!attribute properties
       #
       #   @return [Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Properties]
@@ -31,7 +38,10 @@ module Orb
       #   @return [Symbol, Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Type]
       required :type, enum: -> { Orb::InvoiceInvoiceDateElapsedWebhookEvent::Type }
 
-      # @!method initialize(id:, created_at:, invoice:, properties:, type:)
+      # @!method initialize(id:, created_at:, invoice:, payload_style:, properties:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent} for more details.
+      #
       #   Issued when an invoice's invoice date has elapsed.
       #
       #   @param id [String] The ID of this webhook event.
@@ -39,6 +49,8 @@ module Orb
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
       #   @param invoice [Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Invoice]
+      #
+      #   @param payload_style [Symbol, Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
       #   @param properties [Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent::Properties]
       #
@@ -91,6 +103,20 @@ module Orb
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      #
+      # @see Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent#payload_style
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED = :expanded
+        STANDARD = :standard
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Orb::Models::InvoiceInvoiceDateElapsedWebhookEvent#properties

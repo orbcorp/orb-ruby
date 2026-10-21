@@ -19,6 +19,15 @@ module Orb
       sig { returns(Time) }
       attr_accessor :created_at
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig { returns(Orb::DataExportsTransferSuccessWebhookEvent::Properties) }
       attr_reader :properties
 
@@ -41,6 +50,8 @@ module Orb
         params(
           id: String,
           created_at: Time,
+          payload_style:
+            Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::DataExportsTransferSuccessWebhookEvent::Properties::OrHash,
           type: Orb::DataExportsTransferSuccessWebhookEvent::Type::OrSymbol
@@ -51,6 +62,9 @@ module Orb
         id:,
         # The time at which this event was created, to the second.
         created_at:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -62,6 +76,8 @@ module Orb
           {
             id: String,
             created_at: Time,
+            payload_style:
+              Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle::TaggedSymbol,
             properties: Orb::DataExportsTransferSuccessWebhookEvent::Properties,
             type:
               Orb::DataExportsTransferSuccessWebhookEvent::Type::TaggedSymbol
@@ -69,6 +85,42 @@ module Orb
         )
       end
       def to_hash
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::DataExportsTransferSuccessWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Properties < Orb::Internal::Type::BaseModel

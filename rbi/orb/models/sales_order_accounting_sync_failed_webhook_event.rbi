@@ -45,6 +45,15 @@ module Orb
       sig { params(invoice: Orb::Invoice::OrHash).void }
       attr_writer :invoice
 
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      sig do
+        returns(
+          Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+        )
+      end
+      attr_accessor :payload_style
+
       sig do
         returns(Orb::SalesOrderAccountingSyncFailedWebhookEvent::Properties)
       end
@@ -74,6 +83,8 @@ module Orb
             Orb::SalesOrderAccountingSyncFailedWebhookEvent::AccountingSyncRecord::OrHash,
           created_at: Time,
           invoice: Orb::Invoice::OrHash,
+          payload_style:
+            Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle::OrSymbol,
           properties:
             Orb::SalesOrderAccountingSyncFailedWebhookEvent::Properties::OrHash,
           type: Orb::SalesOrderAccountingSyncFailedWebhookEvent::Type::OrSymbol
@@ -91,6 +102,9 @@ module Orb
         # represent fixed recurring fees or usage-based fees. They are generated at the
         # end of a billing period, or as the result of an action, such as a cancellation.
         invoice:,
+        # The serialization style this payload was rendered in, as configured on the
+        # endpoint.
+        payload_style:,
         properties:,
         # The event this payload describes.
         type:
@@ -105,6 +119,8 @@ module Orb
               Orb::SalesOrderAccountingSyncFailedWebhookEvent::AccountingSyncRecord,
             created_at: Time,
             invoice: Orb::Invoice,
+            payload_style:
+              Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol,
             properties:
               Orb::SalesOrderAccountingSyncFailedWebhookEvent::Properties,
             type:
@@ -257,6 +273,42 @@ module Orb
           end
           def self.values
           end
+        end
+      end
+
+      # The serialization style this payload was rendered in, as configured on the
+      # endpoint.
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPANDED =
+          T.let(
+            :expanded,
+            Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+        STANDARD =
+          T.let(
+            :standard,
+            Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SalesOrderAccountingSyncFailedWebhookEvent::PayloadStyle::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 
