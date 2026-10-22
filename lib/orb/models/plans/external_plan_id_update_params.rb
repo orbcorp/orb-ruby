@@ -35,7 +35,13 @@ module Orb
         #   @return [Hash{Symbol=>String, nil}, nil]
         optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-        # @!method initialize(other_external_plan_id:, description: nil, external_plan_id: nil, metadata: nil, request_options: {})
+        # @!attribute name
+        #   The name of the plan.
+        #
+        #   @return [String, nil]
+        optional :name, String, nil?: true
+
+        # @!method initialize(other_external_plan_id:, description: nil, external_plan_id: nil, metadata: nil, name: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plans::ExternalPlanIDUpdateParams} for more details.
         #
@@ -46,6 +52,8 @@ module Orb
         #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
         #
         #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+        #
+        #   @param name [String, nil] The name of the plan.
         #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end

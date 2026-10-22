@@ -12,7 +12,9 @@ module Orb
 
       def update: (
         String metric_id,
+        ?description: String?,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?name: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::BillableMetric
 
@@ -23,6 +25,7 @@ module Orb
         ?created_at_lte: Time?,
         ?cursor: String?,
         ?limit: Integer,
+        ?status: Orb::Models::MetricListParams::status?,
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::BillableMetric]
 

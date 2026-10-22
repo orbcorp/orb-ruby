@@ -32,9 +32,9 @@ module Orb
         sig { returns(T.anything) }
         attr_accessor :properties
 
-        # The subscription in a standard webhook payload: the fields readable without
-        # to_subscription_params(), which every interval, billing period and plan phase
-        # depends on.
+        # The subscription in a standard webhook payload: its own fields, with its plan
+        # and customer as references. Fetch the subscription for its price intervals,
+        # billing periods, plan phases and other derived fields.
         sig do
           returns(
             Orb::Webhooks::SubscriptionEndedStandardWebhookEvent::Subscription
@@ -81,9 +81,9 @@ module Orb
           # endpoint.
           payload_style:,
           properties:,
-          # The subscription in a standard webhook payload: the fields readable without
-          # to_subscription_params(), which every interval, billing period and plan phase
-          # depends on.
+          # The subscription in a standard webhook payload: its own fields, with its plan
+          # and customer as references. Fetch the subscription for its price intervals,
+          # billing periods, plan phases and other derived fields.
           subscription:,
           # The event this payload describes.
           type:
@@ -210,9 +210,9 @@ module Orb
           end
           attr_accessor :status
 
-          # The subscription in a standard webhook payload: the fields readable without
-          # to_subscription_params(), which every interval, billing period and plan phase
-          # depends on.
+          # The subscription in a standard webhook payload: its own fields, with its plan
+          # and customer as references. Fetch the subscription for its price intervals,
+          # billing periods, plan phases and other derived fields.
           sig do
             params(
               id: String,

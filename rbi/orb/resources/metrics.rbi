@@ -36,28 +36,38 @@ module Orb
       )
       end
 
-      # This endpoint allows you to update the `metadata` property on a metric. If you
-      # pass `null` for the metadata value, it will clear any existing metadata for that
-      # invoice.
+      # This endpoint allows you to update the `name`, `description`, and `metadata`
+      # properties on a metric. Fields left out of the request are not changed, and
+      # `name` cannot be empty. If you pass `null` for the metadata value, it will clear
+      # any existing metadata for that metric.
       sig do
         params(
           metric_id: String,
+          description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          name: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::BillableMetric)
       end
       def update(
         metric_id,
+        # A description of the metric.
+        description: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
+        # The name of the metric.
+        name: nil,
         request_options: {}
       )
       end
 
       # This endpoint is used to list [metrics](/core-concepts#metric). It returns
       # information about the metrics including its name, description, and item.
+      #
+      # Pass `status` to only return metrics with that status, e.g. `status=active` to
+      # leave out archived metrics.
       sig do
         params(
           created_at_gt: T.nilable(Time),
@@ -66,6 +76,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
+          status: T.nilable(Orb::MetricListParams::Status::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Internal::Page[Orb::BillableMetric])
       end
@@ -79,6 +90,8 @@ module Orb
         cursor: nil,
         # The number of items to fetch. Defaults to 20.
         limit: nil,
+        # The metric status to filter to ('active', 'archived', or 'draft').
+        status: nil,
         request_options: {}
       )
       end

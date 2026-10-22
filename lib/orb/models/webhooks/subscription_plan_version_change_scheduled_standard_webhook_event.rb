@@ -31,9 +31,9 @@ module Orb
                  -> { Orb::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Properties }
 
         # @!attribute subscription
-        #   The subscription in a standard webhook payload: the fields readable without
-        #   to_subscription_params(), which every interval, billing period and plan phase
-        #   depends on.
+        #   The subscription in a standard webhook payload: its own fields, with its plan
+        #   and customer as references. Fetch the subscription for its price intervals,
+        #   billing periods, plan phases and other derived fields.
         #
         #   @return [Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Subscription]
         required :subscription,
@@ -61,7 +61,7 @@ module Orb
         #
         #   @param properties [Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Properties]
         #
-        #   @param subscription [Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Subscription] The subscription in a standard webhook payload: the fields readable without
+        #   @param subscription [Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Subscription] The subscription in a standard webhook payload: its own fields, with its plan an
         #
         #   @param type [Symbol, Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Type] The event this payload describes.
 
@@ -166,9 +166,9 @@ module Orb
           #   {Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Subscription}
           #   for more details.
           #
-          #   The subscription in a standard webhook payload: the fields readable without
-          #   to_subscription_params(), which every interval, billing period and plan phase
-          #   depends on.
+          #   The subscription in a standard webhook payload: its own fields, with its plan
+          #   and customer as references. Fetch the subscription for its price intervals,
+          #   billing periods, plan phases and other derived fields.
           #
           #   @param id [String]
           #

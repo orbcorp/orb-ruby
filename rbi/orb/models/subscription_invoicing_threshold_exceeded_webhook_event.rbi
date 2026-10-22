@@ -43,10 +43,8 @@ module Orb
       end
       attr_writer :properties
 
-      # A lightweight subscription representation for webhook payloads.
-      #
-      # This avoids the expensive to_subscription_params() call required for full
-      # serialization.
+      # The subscription in a license or grouped cost webhook payload: its status,
+      # dates, plan and customer.
       sig do
         returns(
           Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription
@@ -95,10 +93,8 @@ module Orb
         # endpoint.
         payload_style:,
         properties:,
-        # A lightweight subscription representation for webhook payloads.
-        #
-        # This avoids the expensive to_subscription_params() call required for full
-        # serialization.
+        # The subscription in a license or grouped cost webhook payload: its status,
+        # dates, plan and customer.
         subscription:,
         # The event this payload describes.
         type:
@@ -261,10 +257,8 @@ module Orb
         end
         attr_accessor :status
 
-        # A lightweight subscription representation for webhook payloads.
-        #
-        # This avoids the expensive to_subscription_params() call required for full
-        # serialization.
+        # The subscription in a license or grouped cost webhook payload: its status,
+        # dates, plan and customer.
         sig do
           params(
             id: String,

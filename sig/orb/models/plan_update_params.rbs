@@ -5,7 +5,8 @@ module Orb
         plan_id: String,
         description: String?,
         external_plan_id: String?,
-        metadata: ::Hash[Symbol, String?]?
+        metadata: ::Hash[Symbol, String?]?,
+        name: String?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -21,11 +22,14 @@ module Orb
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
+      attr_accessor name: String?
+
       def initialize: (
         plan_id: String,
         ?description: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?name: String?,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -34,6 +38,7 @@ module Orb
         description: String?,
         external_plan_id: String?,
         metadata: ::Hash[Symbol, String?]?,
+        name: String?,
         request_options: Orb::RequestOptions
       }
     end

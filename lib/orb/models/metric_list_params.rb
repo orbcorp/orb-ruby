@@ -40,7 +40,13 @@ module Orb
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
+      # @!attribute status
+      #   The metric status to filter to ('active', 'archived', or 'draft').
+      #
+      #   @return [Symbol, Orb::Models::MetricListParams::Status, nil]
+      optional :status, enum: -> { Orb::MetricListParams::Status }, nil?: true
+
+      # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MetricListParams} for more details.
       #
@@ -56,7 +62,21 @@ module Orb
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
+      #   @param status [Symbol, Orb::Models::MetricListParams::Status, nil] The metric status to filter to ('active', 'archived', or 'draft').
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
+
+      # The metric status to filter to ('active', 'archived', or 'draft').
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE = :active
+        ARCHIVED = :archived
+        DRAFT = :draft
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
     end
   end
 end

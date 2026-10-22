@@ -30,10 +30,8 @@ module Orb
       required :properties, -> { Orb::SubscriptionGroupedCostExceededWebhookEvent::Properties }
 
       # @!attribute subscription
-      #   A lightweight subscription representation for webhook payloads.
-      #
-      #   This avoids the expensive to_subscription_params() call required for full
-      #   serialization.
+      #   The subscription in a license or grouped cost webhook payload: its status,
+      #   dates, plan and customer.
       #
       #   @return [Orb::Models::SubscriptionGroupedCostExceededWebhookEvent::Subscription]
       required :subscription, -> { Orb::SubscriptionGroupedCostExceededWebhookEvent::Subscription }
@@ -58,7 +56,7 @@ module Orb
       #
       #   @param properties [Orb::Models::SubscriptionGroupedCostExceededWebhookEvent::Properties] Every group that crossed a threshold for one alert, batched into a single messag
       #
-      #   @param subscription [Orb::Models::SubscriptionGroupedCostExceededWebhookEvent::Subscription] A lightweight subscription representation for webhook payloads.
+      #   @param subscription [Orb::Models::SubscriptionGroupedCostExceededWebhookEvent::Subscription] The subscription in a license or grouped cost webhook payload: its status, dates
       #
       #   @param type [Symbol, Orb::Models::SubscriptionGroupedCostExceededWebhookEvent::Type] The event this payload describes.
 
@@ -605,10 +603,8 @@ module Orb
         required :status, enum: -> { Orb::SubscriptionGroupedCostExceededWebhookEvent::Subscription::Status }
 
         # @!method initialize(id:, customer:, end_date:, plan:, start_date:, status:)
-        #   A lightweight subscription representation for webhook payloads.
-        #
-        #   This avoids the expensive to_subscription_params() call required for full
-        #   serialization.
+        #   The subscription in a license or grouped cost webhook payload: its status,
+        #   dates, plan and customer.
         #
         #   @param id [String]
         #   @param customer [Orb::Models::CustomerMinified]

@@ -6,6 +6,7 @@ module Orb
         created_at: Time,
         enabled: bool,
         enabled_event_types: ::Array[String]?,
+        payload_style: Orb::Models::WebhookEndpoint::payload_style,
         url: String
       }
 
@@ -18,6 +19,8 @@ module Orb
 
       attr_accessor enabled_event_types: ::Array[String]?
 
+      attr_accessor payload_style: Orb::Models::WebhookEndpoint::payload_style
+
       attr_accessor url: String
 
       def initialize: (
@@ -25,6 +28,7 @@ module Orb
         created_at: Time,
         enabled: bool,
         enabled_event_types: ::Array[String]?,
+        payload_style: Orb::Models::WebhookEndpoint::payload_style,
         url: String
       ) -> void
 
@@ -33,8 +37,20 @@ module Orb
         created_at: Time,
         enabled: bool,
         enabled_event_types: ::Array[String]?,
+        payload_style: Orb::Models::WebhookEndpoint::payload_style,
         url: String
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::WebhookEndpoint::payload_style]
+      end
     end
   end
 end

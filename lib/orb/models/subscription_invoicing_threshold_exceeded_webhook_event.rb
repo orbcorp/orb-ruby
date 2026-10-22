@@ -29,10 +29,8 @@ module Orb
       required :properties, -> { Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Properties }
 
       # @!attribute subscription
-      #   A lightweight subscription representation for webhook payloads.
-      #
-      #   This avoids the expensive to_subscription_params() call required for full
-      #   serialization.
+      #   The subscription in a license or grouped cost webhook payload: its status,
+      #   dates, plan and customer.
       #
       #   @return [Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription]
       required :subscription, -> { Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription }
@@ -59,7 +57,7 @@ module Orb
       #
       #   @param properties [Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Properties]
       #
-      #   @param subscription [Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription] A lightweight subscription representation for webhook payloads.
+      #   @param subscription [Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription] The subscription in a license or grouped cost webhook payload: its status, dates
       #
       #   @param type [Symbol, Orb::Models::SubscriptionInvoicingThresholdExceededWebhookEvent::Type] The event this payload describes.
 
@@ -142,10 +140,8 @@ module Orb
                  enum: -> { Orb::SubscriptionInvoicingThresholdExceededWebhookEvent::Subscription::Status }
 
         # @!method initialize(id:, customer:, end_date:, plan:, start_date:, status:)
-        #   A lightweight subscription representation for webhook payloads.
-        #
-        #   This avoids the expensive to_subscription_params() call required for full
-        #   serialization.
+        #   The subscription in a license or grouped cost webhook payload: its status,
+        #   dates, plan and customer.
         #
         #   @param id [String]
         #   @param customer [Orb::Models::CustomerMinified]

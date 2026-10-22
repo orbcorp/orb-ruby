@@ -4,6 +4,7 @@ module Orb
       def create: (
         url: String,
         ?enabled_event_types: ::Array[String]?,
+        ?payload_style: Orb::Models::WebhookEndpointCreateParams::payload_style?,
         ?request_options: Orb::request_opts
       ) -> Orb::WebhookEndpointWithSecret
 
@@ -15,6 +16,7 @@ module Orb
       def update: (
         String webhook_endpoint_id,
         ?enabled_event_types: ::Array[String]?,
+        ?payload_style: Orb::Models::WebhookEndpointUpdateParams::payload_style?,
         ?url: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::WebhookEndpoint

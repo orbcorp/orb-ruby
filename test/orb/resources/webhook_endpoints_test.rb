@@ -16,6 +16,7 @@ class Orb::Test::Resources::WebhookEndpointsTest < Orb::Test::ResourceTest
         created_at: Time,
         enabled: Orb::Internal::Type::Boolean,
         enabled_event_types: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        payload_style: Orb::WebhookEndpointWithSecret::PayloadStyle,
         secret: String,
         url: String
       }
@@ -35,6 +36,7 @@ class Orb::Test::Resources::WebhookEndpointsTest < Orb::Test::ResourceTest
         created_at: Time,
         enabled: Orb::Internal::Type::Boolean,
         enabled_event_types: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        payload_style: Orb::WebhookEndpoint::PayloadStyle,
         url: String
       }
     end
@@ -53,6 +55,7 @@ class Orb::Test::Resources::WebhookEndpointsTest < Orb::Test::ResourceTest
         created_at: Time,
         enabled: Orb::Internal::Type::Boolean,
         enabled_event_types: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        payload_style: Orb::WebhookEndpoint::PayloadStyle,
         url: String
       }
     end
@@ -78,6 +81,7 @@ class Orb::Test::Resources::WebhookEndpointsTest < Orb::Test::ResourceTest
         created_at: Time,
         enabled: Orb::Internal::Type::Boolean,
         enabled_event_types: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        payload_style: Orb::WebhookEndpoint::PayloadStyle,
         url: String
       }
     end
@@ -104,6 +108,7 @@ class Orb::Test::Resources::WebhookEndpointsTest < Orb::Test::ResourceTest
         created_at: Time,
         enabled: Orb::Internal::Type::Boolean,
         enabled_event_types: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        payload_style: Orb::WebhookEndpoint::PayloadStyle,
         url: String
       }
     end
@@ -122,6 +127,7 @@ class Orb::Test::Resources::WebhookEndpointsTest < Orb::Test::ResourceTest
         created_at: Time,
         enabled: Orb::Internal::Type::Boolean,
         enabled_event_types: ^(Orb::Internal::Type::ArrayOf[String]) | nil,
+        payload_style: Orb::WebhookEndpoint::PayloadStyle,
         url: String
       }
     end

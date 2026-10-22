@@ -16,7 +16,8 @@ module Orb
       required :created_at, Time
 
       # @!attribute invoice
-      #   #InvoiceApiResourceWithoutLineItems
+      #   An invoice without its line items, subtotal, discounts, minimums or maximums.
+      #   Fetch the invoice for those.
       #
       #   @return [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice]
       required :invoice, -> { Orb::InvoiceIssuedSummaryWebhookEvent::Invoice }
@@ -50,7 +51,7 @@ module Orb
       #
       #   @param created_at [Time] The time at which this event was created, to the second.
       #
-      #   @param invoice [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice] #InvoiceApiResourceWithoutLineItems
+      #   @param invoice [Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice] An invoice without its line items, subtotal, discounts, minimums or maximums. Fe
       #
       #   @param payload_style [Symbol, Orb::Models::InvoiceIssuedSummaryWebhookEvent::PayloadStyle] The serialization style this payload was rendered in, as configured on the endpo
       #
@@ -437,7 +438,8 @@ module Orb
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice} for more details.
         #
-        #   #InvoiceApiResourceWithoutLineItems
+        #   An invoice without its line items, subtotal, discounts, minimums or maximums.
+        #   Fetch the invoice for those.
         #
         #   @param id [String]
         #

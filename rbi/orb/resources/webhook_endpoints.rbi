@@ -12,6 +12,8 @@ module Orb
         params(
           url: String,
           enabled_event_types: T.nilable(T::Array[String]),
+          payload_style:
+            T.nilable(Orb::WebhookEndpointCreateParams::PayloadStyle::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::WebhookEndpointWithSecret)
       end
@@ -21,6 +23,9 @@ module Orb
         # The webhook event types to send to this endpoint. If omitted or null, all event
         # types are sent.
         enabled_event_types: nil,
+        # The payload style of the webhook events sent to this endpoint. If omitted or
+        # null, the account's default style is used.
+        payload_style: nil,
         request_options: {}
       )
       end
@@ -40,6 +45,8 @@ module Orb
         params(
           webhook_endpoint_id: String,
           enabled_event_types: T.nilable(T::Array[String]),
+          payload_style:
+            T.nilable(Orb::WebhookEndpointUpdateParams::PayloadStyle::OrSymbol),
           url: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::WebhookEndpoint)
@@ -49,6 +56,9 @@ module Orb
         # The webhook event types to send to this endpoint. Null sends all event types;
         # omit to leave them unchanged.
         enabled_event_types: nil,
+        # The payload style of the webhook events sent to this endpoint. Applies to events
+        # created after the change; omit to leave it unchanged.
+        payload_style: nil,
         # The HTTPS URL that Orb sends webhook events to.
         url: nil,
         request_options: {}

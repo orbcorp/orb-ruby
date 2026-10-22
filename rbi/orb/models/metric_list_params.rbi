@@ -33,6 +33,10 @@ module Orb
       sig { params(limit: Integer).void }
       attr_writer :limit
 
+      # The metric status to filter to ('active', 'archived', or 'draft').
+      sig { returns(T.nilable(Orb::MetricListParams::Status::OrSymbol)) }
+      attr_accessor :status
+
       sig do
         params(
           created_at_gt: T.nilable(Time),
@@ -41,6 +45,7 @@ module Orb
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
           limit: Integer,
+          status: T.nilable(Orb::MetricListParams::Status::OrSymbol),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -54,6 +59,8 @@ module Orb
         cursor: nil,
         # The number of items to fetch. Defaults to 20.
         limit: nil,
+        # The metric status to filter to ('active', 'archived', or 'draft').
+        status: nil,
         request_options: {}
       )
       end
@@ -67,11 +74,33 @@ module Orb
             created_at_lte: T.nilable(Time),
             cursor: T.nilable(String),
             limit: Integer,
+            status: T.nilable(Orb::MetricListParams::Status::OrSymbol),
             request_options: Orb::RequestOptions
           }
         )
       end
       def to_hash
+      end
+
+      # The metric status to filter to ('active', 'archived', or 'draft').
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Orb::MetricListParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ACTIVE = T.let(:active, Orb::MetricListParams::Status::TaggedSymbol)
+        ARCHIVED = T.let(:archived, Orb::MetricListParams::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::MetricListParams::Status::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Orb::MetricListParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

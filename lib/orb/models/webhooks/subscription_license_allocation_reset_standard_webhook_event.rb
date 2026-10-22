@@ -33,10 +33,8 @@ module Orb
                  -> { Orb::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Properties }
 
         # @!attribute subscription
-        #   A lightweight subscription representation for webhook payloads.
-        #
-        #   This avoids the expensive to_subscription_params() call required for full
-        #   serialization.
+        #   The subscription in a license or grouped cost webhook payload: its status,
+        #   dates, plan and customer.
         #
         #   @return [Orb::Models::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Subscription]
         required :subscription,
@@ -63,7 +61,7 @@ module Orb
         #
         #   @param properties [Orb::Models::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Properties] Fires at the start of a billing period when license allocations are replenished.
         #
-        #   @param subscription [Orb::Models::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Subscription] A lightweight subscription representation for webhook payloads.
+        #   @param subscription [Orb::Models::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Subscription] The subscription in a license or grouped cost webhook payload: its status, dates
         #
         #   @param type [Symbol, Orb::Models::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Type] The event this payload describes.
 
@@ -170,10 +168,8 @@ module Orb
                    enum: -> { Orb::Webhooks::SubscriptionLicenseAllocationResetStandardWebhookEvent::Subscription::Status }
 
           # @!method initialize(id:, customer:, end_date:, plan:, start_date:, status:)
-          #   A lightweight subscription representation for webhook payloads.
-          #
-          #   This avoids the expensive to_subscription_params() call required for full
-          #   serialization.
+          #   The subscription in a license or grouped cost webhook payload: its status,
+          #   dates, plan and customer.
           #
           #   @param id [String]
           #   @param customer [Orb::Models::CustomerMinified]

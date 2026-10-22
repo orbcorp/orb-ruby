@@ -20,7 +20,8 @@ module Orb
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # #InvoiceApiResourceWithoutLineItems
+        # An invoice without its line items, subtotal, discounts, minimums or maximums.
+        # Fetch the invoice for those.
         sig do
           returns(
             Orb::Webhooks::InvoicePaymentSucceededStandardWebhookEvent::Invoice
@@ -90,7 +91,8 @@ module Orb
           id:,
           # The time at which this event was created, to the second.
           created_at:,
-          # #InvoiceApiResourceWithoutLineItems
+          # An invoice without its line items, subtotal, discounts, minimums or maximums.
+          # Fetch the invoice for those.
           invoice:,
           # The serialization style this payload was rendered in, as configured on the
           # endpoint.
@@ -491,7 +493,8 @@ module Orb
           sig { returns(T::Boolean) }
           attr_accessor :will_auto_issue
 
-          # #InvoiceApiResourceWithoutLineItems
+          # An invoice without its line items, subtotal, discounts, minimums or maximums.
+          # Fetch the invoice for those.
           sig do
             params(
               id: String,

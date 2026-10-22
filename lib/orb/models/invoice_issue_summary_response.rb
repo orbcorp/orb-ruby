@@ -381,7 +381,8 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceIssueSummaryResponse} for more details.
       #
-      #   #InvoiceApiResourceWithoutLineItems
+      #   An invoice without its line items, subtotal, discounts, minimums or maximums.
+      #   Fetch the invoice for those.
       #
       #   @param id [String]
       #

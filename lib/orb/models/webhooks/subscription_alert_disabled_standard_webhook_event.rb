@@ -32,10 +32,8 @@ module Orb
         required :properties, -> { Orb::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Properties }
 
         # @!attribute subscription
-        #   A lightweight subscription representation for webhook payloads.
-        #
-        #   This avoids the expensive to_subscription_params() call required for full
-        #   serialization.
+        #   The subscription in a license or grouped cost webhook payload: its status,
+        #   dates, plan and customer.
         #
         #   @return [Orb::Models::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Subscription]
         required :subscription, -> { Orb::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Subscription }
@@ -61,7 +59,7 @@ module Orb
         #
         #   @param properties [Orb::Models::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Properties] Sent when the system disables an alert on its own, currently for cardinality-lim
         #
-        #   @param subscription [Orb::Models::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Subscription] A lightweight subscription representation for webhook payloads.
+        #   @param subscription [Orb::Models::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Subscription] The subscription in a license or grouped cost webhook payload: its status, dates
         #
         #   @param type [Symbol, Orb::Models::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Type] The event this payload describes.
 
@@ -593,10 +591,8 @@ module Orb
                    enum: -> { Orb::Webhooks::SubscriptionAlertDisabledStandardWebhookEvent::Subscription::Status }
 
           # @!method initialize(id:, customer:, end_date:, plan:, start_date:, status:)
-          #   A lightweight subscription representation for webhook payloads.
-          #
-          #   This avoids the expensive to_subscription_params() call required for full
-          #   serialization.
+          #   The subscription in a license or grouped cost webhook payload: its status,
+          #   dates, plan and customer.
           #
           #   @param id [String]
           #   @param customer [Orb::Models::CustomerMinified]

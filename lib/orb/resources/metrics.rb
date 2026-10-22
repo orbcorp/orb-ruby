@@ -44,15 +44,20 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::MetricUpdateParams} for more details.
       #
-      # This endpoint allows you to update the `metadata` property on a metric. If you
-      # pass `null` for the metadata value, it will clear any existing metadata for that
-      # invoice.
+      # This endpoint allows you to update the `name`, `description`, and `metadata`
+      # properties on a metric. Fields left out of the request are not changed, and
+      # `name` cannot be empty. If you pass `null` for the metadata value, it will clear
+      # any existing metadata for that metric.
       #
-      # @overload update(metric_id, metadata: nil, request_options: {})
+      # @overload update(metric_id, description: nil, metadata: nil, name: nil, request_options: {})
       #
       # @param metric_id [String]
       #
+      # @param description [String, nil] A description of the metric.
+      #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param name [String, nil] The name of the metric.
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -76,7 +81,10 @@ module Orb
       # This endpoint is used to list [metrics](/core-concepts#metric). It returns
       # information about the metrics including its name, description, and item.
       #
-      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
+      # Pass `status` to only return metrics with that status, e.g. `status=active` to
+      # leave out archived metrics.
+      #
+      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, status: nil, request_options: {})
       #
       # @param created_at_gt [Time, nil]
       #
@@ -89,6 +97,8 @@ module Orb
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #
       # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param status [Symbol, Orb::Models::MetricListParams::Status, nil] The metric status to filter to ('active', 'archived', or 'draft').
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

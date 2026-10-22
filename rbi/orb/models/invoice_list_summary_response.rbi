@@ -355,7 +355,8 @@ module Orb
       sig { returns(T::Boolean) }
       attr_accessor :will_auto_issue
 
-      # #InvoiceApiResourceWithoutLineItems
+      # An invoice without its line items, subtotal, discounts, minimums or maximums.
+      # Fetch the invoice for those.
       sig do
         params(
           id: String,

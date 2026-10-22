@@ -25,6 +25,7 @@ module Orb
         ?description: String?,
         ?external_plan_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?name: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::Plan
 

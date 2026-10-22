@@ -7,7 +7,8 @@ module Orb
         created_at_lt: Time?,
         created_at_lte: Time?,
         cursor: String?,
-        limit: Integer
+        limit: Integer,
+        status: Orb::Models::MetricListParams::status?
       }
       & Orb::Internal::Type::request_parameters
 
@@ -29,6 +30,8 @@ module Orb
 
       def limit=: (Integer) -> Integer
 
+      attr_accessor status: Orb::Models::MetricListParams::status?
+
       def initialize: (
         ?created_at_gt: Time?,
         ?created_at_gte: Time?,
@@ -36,6 +39,7 @@ module Orb
         ?created_at_lte: Time?,
         ?cursor: String?,
         ?limit: Integer,
+        ?status: Orb::Models::MetricListParams::status?,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -46,8 +50,21 @@ module Orb
         created_at_lte: Time?,
         cursor: String?,
         limit: Integer,
+        status: Orb::Models::MetricListParams::status?,
         request_options: Orb::RequestOptions
       }
+
+      type status = :active | :archived | :draft
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE: :active
+        ARCHIVED: :archived
+        DRAFT: :draft
+
+        def self?.values: -> ::Array[Orb::Models::MetricListParams::status]
+      end
     end
   end
 end

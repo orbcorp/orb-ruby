@@ -4,6 +4,7 @@ module Orb
       {
         webhook_endpoint_id: String,
         enabled_event_types: ::Array[String]?,
+        payload_style: Orb::Models::WebhookEndpointUpdateParams::payload_style?,
         url: String?
       }
       & Orb::Internal::Type::request_parameters
@@ -16,11 +17,14 @@ module Orb
 
       attr_accessor enabled_event_types: ::Array[String]?
 
+      attr_accessor payload_style: Orb::Models::WebhookEndpointUpdateParams::payload_style?
+
       attr_accessor url: String?
 
       def initialize: (
         webhook_endpoint_id: String,
         ?enabled_event_types: ::Array[String]?,
+        ?payload_style: Orb::Models::WebhookEndpointUpdateParams::payload_style?,
         ?url: String?,
         ?request_options: Orb::request_opts
       ) -> void
@@ -28,9 +32,21 @@ module Orb
       def to_hash: -> {
         webhook_endpoint_id: String,
         enabled_event_types: ::Array[String]?,
+        payload_style: Orb::Models::WebhookEndpointUpdateParams::payload_style?,
         url: String?,
         request_options: Orb::RequestOptions
       }
+
+      type payload_style = :expanded | :standard
+
+      module PayloadStyle
+        extend Orb::Internal::Type::Enum
+
+        EXPANDED: :expanded
+        STANDARD: :standard
+
+        def self?.values: -> ::Array[Orb::Models::WebhookEndpointUpdateParams::payload_style]
+      end
     end
   end
 end

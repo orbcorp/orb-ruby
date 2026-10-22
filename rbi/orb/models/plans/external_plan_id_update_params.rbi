@@ -34,12 +34,17 @@ module Orb
         sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
         attr_accessor :metadata
 
+        # The name of the plan.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :name
+
         sig do
           params(
             other_external_plan_id: String,
             description: T.nilable(String),
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            name: T.nilable(String),
             request_options: Orb::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -55,6 +60,8 @@ module Orb
           # by setting the value to `null`, and the entire metadata mapping can be cleared
           # by setting `metadata` to `null`.
           metadata: nil,
+          # The name of the plan.
+          name: nil,
           request_options: {}
         )
         end
@@ -66,6 +73,7 @@ module Orb
               description: T.nilable(String),
               external_plan_id: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+              name: T.nilable(String),
               request_options: Orb::RequestOptions
             }
           )

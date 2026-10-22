@@ -12,11 +12,13 @@ module Orb
       # webhook events. The secret isn't returned by any other endpoint. An account can
       # have at most 20 webhook endpoints by default.
       #
-      # @overload create(url:, enabled_event_types: nil, request_options: {})
+      # @overload create(url:, enabled_event_types: nil, payload_style: nil, request_options: {})
       #
       # @param url [String] The HTTPS URL that Orb sends webhook events to.
       #
       # @param enabled_event_types [Array<String>, nil] The webhook event types to send to this endpoint. If omitted or null, all event
+      #
+      # @param payload_style [Symbol, Orb::Models::WebhookEndpointCreateParams::PayloadStyle, nil] The payload style of the webhook events sent to this endpoint. If omitted or nul
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -58,11 +60,13 @@ module Orb
       #
       # This endpoint updates a webhook endpoint's URL or the event types sent to it.
       #
-      # @overload update(webhook_endpoint_id, enabled_event_types: nil, url: nil, request_options: {})
+      # @overload update(webhook_endpoint_id, enabled_event_types: nil, payload_style: nil, url: nil, request_options: {})
       #
       # @param webhook_endpoint_id [String]
       #
       # @param enabled_event_types [Array<String>, nil] The webhook event types to send to this endpoint. Null sends all event types; om
+      #
+      # @param payload_style [Symbol, Orb::Models::WebhookEndpointUpdateParams::PayloadStyle, nil] The payload style of the webhook events sent to this endpoint. Applies to events
       #
       # @param url [String, nil] The HTTPS URL that Orb sends webhook events to.
       #

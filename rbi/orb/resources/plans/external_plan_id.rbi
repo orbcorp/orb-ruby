@@ -8,8 +8,9 @@ module Orb
       # subscription. You can see more about how to configure prices in the
       # [Price resource](/reference/price).
       class ExternalPlanID
-        # This endpoint can be used to update the `external_plan_id`, `description`, and
-        # `metadata` of an existing plan.
+        # This endpoint can be used to update the `name`, `external_plan_id`,
+        # `description`, and `metadata` of an existing plan. A plan's `name` cannot be
+        # empty.
         #
         # Other fields on a plan are currently immutable.
         sig do
@@ -18,6 +19,7 @@ module Orb
             description: T.nilable(String),
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            name: T.nilable(String),
             request_options: Orb::RequestOptions::OrHash
           ).returns(Orb::Plan)
         end
@@ -33,6 +35,8 @@ module Orb
           # by setting the value to `null`, and the entire metadata mapping can be cleared
           # by setting `metadata` to `null`.
           metadata: nil,
+          # The name of the plan.
+          name: nil,
           request_options: {}
         )
         end
