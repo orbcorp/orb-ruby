@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.46.0](https://github.com/orbcorp/orb-ruby/compare/v1.45.0...v1.46.0) (2026-10-22)
+
+
+### Features
+
+* **api:** api update ([1682d74](https://github.com/orbcorp/orb-ruby/commit/1682d74396deb8eb97d937edf47b041df59e44ed))
+
+
+### Chores
+
+* correct the payload styles changelog entry ([#6](https://github.com/orbcorp/orb-ruby/issues/6)) ([3e08b72](https://github.com/orbcorp/orb-ruby/commit/3e08b7202227418e2a5c3dda10f573c9d7839c90))
+
 ## [1.45.0](https://github.com/orbcorp/orb-ruby/compare/v1.44.0...v1.45.0) (2026-10-21)
 
 
