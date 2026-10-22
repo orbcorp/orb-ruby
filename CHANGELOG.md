@@ -5,7 +5,7 @@
 
 ### Features
 
-* **api:** api update ([1682d74](https://github.com/orbcorp/orb-ruby/commit/1682d74396deb8eb97d937edf47b041df59e44ed))
+* **api:** add `webhooks.standard.unwrap_standard`, which parses standard webhook payloads ([1682d74](https://github.com/orbcorp/orb-ruby/commit/1682d74396deb8eb97d937edf47b041df59e44ed))
 
 
 ### Chores
