@@ -30,9 +30,10 @@ module Orb
         required :properties, -> { Orb::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Properties }
 
         # @!attribute subscription
-        #   The subscription in a standard webhook payload: its own fields, with its plan
-        #   and customer as references. Fetch the subscription for its price intervals,
-        #   billing periods, plan phases and other derived fields.
+        #   A subscription's own fields, with its plan and customer as references, as listed
+        #   by List subscription summaries and carried in standard webhook payloads. Fetch
+        #   the subscription for its price intervals, billing periods, plan phases and other
+        #   derived fields.
         #
         #   @return [Orb::Models::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Subscription]
         required :subscription, -> { Orb::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Subscription }
@@ -59,7 +60,7 @@ module Orb
         #
         #   @param properties [Orb::Models::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Properties]
         #
-        #   @param subscription [Orb::Models::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Subscription] The subscription in a standard webhook payload: its own fields, with its plan an
+        #   @param subscription [Orb::Models::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Subscription] A subscription's own fields, with its plan and customer as references, as listed
         #
         #   @param type [Symbol, Orb::Models::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Type] The event this payload describes.
 
@@ -609,9 +610,10 @@ module Orb
           #   {Orb::Models::Webhooks::SubscriptionSpendExceededStandardWebhookEvent::Subscription}
           #   for more details.
           #
-          #   The subscription in a standard webhook payload: its own fields, with its plan
-          #   and customer as references. Fetch the subscription for its price intervals,
-          #   billing periods, plan phases and other derived fields.
+          #   A subscription's own fields, with its plan and customer as references, as listed
+          #   by List subscription summaries and carried in standard webhook payloads. Fetch
+          #   the subscription for its price intervals, billing periods, plan phases and other
+          #   derived fields.
           #
           #   @param id [String]
           #

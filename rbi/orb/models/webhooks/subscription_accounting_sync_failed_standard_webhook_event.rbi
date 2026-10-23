@@ -59,9 +59,10 @@ module Orb
         end
         attr_writer :properties
 
-        # The subscription in a standard webhook payload: its own fields, with its plan
-        # and customer as references. Fetch the subscription for its price intervals,
-        # billing periods, plan phases and other derived fields.
+        # A subscription's own fields, with its plan and customer as references, as listed
+        # by List subscription summaries and carried in standard webhook payloads. Fetch
+        # the subscription for its price intervals, billing periods, plan phases and other
+        # derived fields.
         sig do
           returns(
             Orb::Webhooks::SubscriptionAccountingSyncFailedStandardWebhookEvent::Subscription
@@ -112,9 +113,10 @@ module Orb
           # endpoint.
           payload_style:,
           properties:,
-          # The subscription in a standard webhook payload: its own fields, with its plan
-          # and customer as references. Fetch the subscription for its price intervals,
-          # billing periods, plan phases and other derived fields.
+          # A subscription's own fields, with its plan and customer as references, as listed
+          # by List subscription summaries and carried in standard webhook payloads. Fetch
+          # the subscription for its price intervals, billing periods, plan phases and other
+          # derived fields.
           subscription:,
           # The event this payload describes.
           type:
@@ -421,9 +423,10 @@ module Orb
           end
           attr_accessor :status
 
-          # The subscription in a standard webhook payload: its own fields, with its plan
-          # and customer as references. Fetch the subscription for its price intervals,
-          # billing periods, plan phases and other derived fields.
+          # A subscription's own fields, with its plan and customer as references, as listed
+          # by List subscription summaries and carried in standard webhook payloads. Fetch
+          # the subscription for its price intervals, billing periods, plan phases and other
+          # derived fields.
           sig do
             params(
               id: String,
