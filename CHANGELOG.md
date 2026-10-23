@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.47.0](https://github.com/orbcorp/orb-ruby/compare/v1.46.0...v1.47.0) (2026-10-23)
+
+
+### Features
+
+* **api:** Add customer credit balance summary endpoints ([86aae77](https://github.com/orbcorp/orb-ruby/commit/86aae7723d2ae70a7e2a2fa25e32d851e7e7063c))
+* **api:** Add endpoint to update credit block metadata ([1d1a10b](https://github.com/orbcorp/orb-ruby/commit/1d1a10b91d5e9bd9b33140a0f5deb452ac8cb313))
+* **api:** api update ([1d1a10b](https://github.com/orbcorp/orb-ruby/commit/1d1a10b91d5e9bd9b33140a0f5deb452ac8cb313))
+* **api:** api update ([1d1a10b](https://github.com/orbcorp/orb-ruby/commit/1d1a10b91d5e9bd9b33140a0f5deb452ac8cb313))
+* **api:** api update ([1d1a10b](https://github.com/orbcorp/orb-ruby/commit/1d1a10b91d5e9bd9b33140a0f5deb452ac8cb313))
+
+
+### Chores
+
+* correct the standard webhook unwrap changelog entry ([#7](https://github.com/orbcorp/orb-ruby/issues/7)) ([637729f](https://github.com/orbcorp/orb-ruby/commit/637729fc02855e0599b70f4ce6c33a92e9ae1035))
+
 ## [1.46.0](https://github.com/orbcorp/orb-ruby/compare/v1.45.0...v1.46.0) (2026-10-22)
 
 
