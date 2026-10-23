@@ -123,6 +123,31 @@ module Orb
         )
       end
 
+      # This endpoint archives a [metric](/core-concepts#metric). Archived metrics are
+      # left out of `GET /v1/metrics` when filtering with `status=active`, and can't be
+      # chosen when creating new plans in the Orb dashboard.
+      #
+      # Archiving does not change existing prices, plans, or subscriptions that use the
+      # metric, and usage on those prices continues to be billed. A metric that is
+      # already archived cannot be archived again.
+      #
+      # @overload archive(metric_id, request_options: {})
+      #
+      # @param metric_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::BillableMetric]
+      #
+      # @see Orb::Models::MetricArchiveParams
+      def archive(metric_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["metrics/%1$s/archive", metric_id],
+          model: Orb::BillableMetric,
+          options: params[:request_options]
+        )
+      end
+
       # This endpoint is used to fetch [metric](/core-concepts#metric) details given a
       # metric identifier. It returns information about the metrics including its name,
       # description, and item.
@@ -139,6 +164,27 @@ module Orb
         @client.request(
           method: :get,
           path: ["metrics/%1$s", metric_id],
+          model: Orb::BillableMetric,
+          options: params[:request_options]
+        )
+      end
+
+      # This endpoint restores an archived [metric](/core-concepts#metric) to `active`,
+      # so it can be chosen for new plans again. Only archived metrics can be
+      # unarchived.
+      #
+      # @overload unarchive(metric_id, request_options: {})
+      #
+      # @param metric_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::BillableMetric]
+      #
+      # @see Orb::Models::MetricUnarchiveParams
+      def unarchive(metric_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["metrics/%1$s/unarchive", metric_id],
           model: Orb::BillableMetric,
           options: params[:request_options]
         )

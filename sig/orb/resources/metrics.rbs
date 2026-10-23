@@ -29,7 +29,17 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::BillableMetric]
 
+      def archive: (
+        String metric_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::BillableMetric
+
       def fetch: (
+        String metric_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::BillableMetric
+
+      def unarchive: (
         String metric_id,
         ?request_options: Orb::request_opts
       ) -> Orb::BillableMetric

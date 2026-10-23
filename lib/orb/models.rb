@@ -140,6 +140,8 @@ module Orb
 
   CreditBlockRetrieveParams = Orb::Models::CreditBlockRetrieveParams
 
+  CreditBlockUpdateParams = Orb::Models::CreditBlockUpdateParams
+
   CreditNote = Orb::Models::CreditNote
 
   CreditNoteAccountingSyncFailedWebhookEvent = Orb::Models::CreditNoteAccountingSyncFailedWebhookEvent
@@ -391,6 +393,8 @@ module Orb
 
   MaximumInterval = Orb::Models::MaximumInterval
 
+  MetricArchiveParams = Orb::Models::MetricArchiveParams
+
   MetricCreateParams = Orb::Models::MetricCreateParams
 
   MetricEventsDroppedByWatermarkWebhookEvent = Orb::Models::MetricEventsDroppedByWatermarkWebhookEvent
@@ -398,6 +402,8 @@ module Orb
   MetricFetchParams = Orb::Models::MetricFetchParams
 
   MetricListParams = Orb::Models::MetricListParams
+
+  MetricUnarchiveParams = Orb::Models::MetricUnarchiveParams
 
   MetricUpdateParams = Orb::Models::MetricUpdateParams
 

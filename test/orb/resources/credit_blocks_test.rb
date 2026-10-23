@@ -28,6 +28,31 @@ class Orb::Test::Resources::CreditBlocksTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_update
+    response = @orb.credit_blocks.update("block_id")
+
+    assert_pattern do
+      response => Orb::Models::CreditBlockUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        balance: Float,
+        credit_block_source: Orb::Models::CreditBlockUpdateResponse::CreditBlockSource,
+        effective_date: Time | nil,
+        expiry_date: Time | nil,
+        filters: ^(Orb::Internal::Type::ArrayOf[Orb::Models::CreditBlockUpdateResponse::Filter]),
+        maximum_initial_balance: Float | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        per_unit_cost_basis: String | nil,
+        status: Orb::Models::CreditBlockUpdateResponse::Status,
+        credit_allocation: Orb::Models::CreditBlockUpdateResponse::CreditAllocation | nil,
+        credit_commitment: Orb::Models::CreditBlockUpdateResponse::CreditCommitment | nil
+      }
+    end
+  end
+
   def test_delete
     response = @orb.credit_blocks.delete("block_id")
 

@@ -1,0 +1,28 @@
+module Orb
+  module Models
+    type credit_block_update_params =
+      { block_id: String, metadata: ::Hash[Symbol, String?]? }
+      & Orb::Internal::Type::request_parameters
+
+    class CreditBlockUpdateParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor block_id: String
+
+      attr_accessor metadata: ::Hash[Symbol, String?]?
+
+      def initialize: (
+        block_id: String,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        block_id: String,
+        metadata: ::Hash[Symbol, String?]?,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end

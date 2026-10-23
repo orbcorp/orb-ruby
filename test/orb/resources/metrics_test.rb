@@ -79,8 +79,50 @@ class Orb::Test::Resources::MetricsTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_archive
+    response = @orb.metrics.archive("metric_id")
+
+    assert_pattern do
+      response => Orb::BillableMetric
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        description: String | nil,
+        item: Orb::Item,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        name: String,
+        sql: String,
+        status: Orb::BillableMetric::Status,
+        parameter_definitions: ^(Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]]) | nil
+      }
+    end
+  end
+
   def test_fetch
     response = @orb.metrics.fetch("metric_id")
+
+    assert_pattern do
+      response => Orb::BillableMetric
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        description: String | nil,
+        item: Orb::Item,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        name: String,
+        sql: String,
+        status: Orb::BillableMetric::Status,
+        parameter_definitions: ^(Orb::Internal::Type::ArrayOf[Orb::Internal::Type::HashOf[Orb::Internal::Type::Unknown]]) | nil
+      }
+    end
+  end
+
+  def test_unarchive
+    response = @orb.metrics.unarchive("metric_id")
 
     assert_pattern do
       response => Orb::BillableMetric

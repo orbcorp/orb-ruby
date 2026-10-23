@@ -6,6 +6,12 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Models::CreditBlockRetrieveResponse
 
+      def update: (
+        String block_id,
+        ?metadata: ::Hash[Symbol, String?]?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::CreditBlockUpdateResponse
+
       def delete: (String block_id, ?request_options: Orb::request_opts) -> nil
 
       def list_invoices: (

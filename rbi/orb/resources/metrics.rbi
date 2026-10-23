@@ -96,6 +96,22 @@ module Orb
       )
       end
 
+      # This endpoint archives a [metric](/core-concepts#metric). Archived metrics are
+      # left out of `GET /v1/metrics` when filtering with `status=active`, and can't be
+      # chosen when creating new plans in the Orb dashboard.
+      #
+      # Archiving does not change existing prices, plans, or subscriptions that use the
+      # metric, and usage on those prices continues to be billed. A metric that is
+      # already archived cannot be archived again.
+      sig do
+        params(
+          metric_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::BillableMetric)
+      end
+      def archive(metric_id, request_options: {})
+      end
+
       # This endpoint is used to fetch [metric](/core-concepts#metric) details given a
       # metric identifier. It returns information about the metrics including its name,
       # description, and item.
@@ -106,6 +122,18 @@ module Orb
         ).returns(Orb::BillableMetric)
       end
       def fetch(metric_id, request_options: {})
+      end
+
+      # This endpoint restores an archived [metric](/core-concepts#metric) to `active`,
+      # so it can be chosen for new plans again. Only archived metrics can be
+      # unarchived.
+      sig do
+        params(
+          metric_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::BillableMetric)
+      end
+      def unarchive(metric_id, request_options: {})
       end
 
       # @api private

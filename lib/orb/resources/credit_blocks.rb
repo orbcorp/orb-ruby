@@ -24,6 +24,41 @@ module Orb
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Orb::Models::CreditBlockUpdateParams} for more details.
+      #
+      # This endpoint updates the `metadata` of a credit block. Keys you pass are added
+      # to the block's existing metadata or overwrite the value already stored for that
+      # key, and setting a key to `null` removes it. Passing `null` for `metadata`
+      # clears all of the block's metadata. The block's `increment` entry in the
+      # [credits ledger](fetch-customer-credits-ledger) reports the block's metadata, so
+      # it shows the update too.
+      #
+      # Other fields on a credit block cannot be changed through this endpoint. Deleted
+      # credit blocks return a 404.
+      #
+      # @overload update(block_id, metadata: nil, request_options: {})
+      #
+      # @param block_id [String]
+      #
+      # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::CreditBlockUpdateResponse]
+      #
+      # @see Orb::Models::CreditBlockUpdateParams
+      def update(block_id, params = {})
+        parsed, options = Orb::CreditBlockUpdateParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: ["credit_blocks/%1$s", block_id],
+          body: parsed,
+          model: Orb::Models::CreditBlockUpdateResponse,
+          options: options
+        )
+      end
+
       # This endpoint deletes a credit block by its ID.
       #
       # When a credit block is deleted:

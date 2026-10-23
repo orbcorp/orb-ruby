@@ -15,6 +15,32 @@ module Orb
       def retrieve(block_id, request_options: {})
       end
 
+      # This endpoint updates the `metadata` of a credit block. Keys you pass are added
+      # to the block's existing metadata or overwrite the value already stored for that
+      # key, and setting a key to `null` removes it. Passing `null` for `metadata`
+      # clears all of the block's metadata. The block's `increment` entry in the
+      # [credits ledger](fetch-customer-credits-ledger) reports the block's metadata, so
+      # it shows the update too.
+      #
+      # Other fields on a credit block cannot be changed through this endpoint. Deleted
+      # credit blocks return a 404.
+      sig do
+        params(
+          block_id: String,
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Models::CreditBlockUpdateResponse)
+      end
+      def update(
+        block_id,
+        # User-specified key/value pairs for the resource. Individual keys can be removed
+        # by setting the value to `null`, and the entire metadata mapping can be cleared
+        # by setting `metadata` to `null`.
+        metadata: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint deletes a credit block by its ID.
       #
       # When a credit block is deleted:

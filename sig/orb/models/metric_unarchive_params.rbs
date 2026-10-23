@@ -1,0 +1,23 @@
+module Orb
+  module Models
+    type metric_unarchive_params =
+      { metric_id: String } & Orb::Internal::Type::request_parameters
+
+    class MetricUnarchiveParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor metric_id: String
+
+      def initialize: (
+        metric_id: String,
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        metric_id: String,
+        request_options: Orb::RequestOptions
+      }
+    end
+  end
+end
