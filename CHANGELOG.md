@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.48.0](https://github.com/orbcorp/orb-ruby/compare/v1.47.0...v1.48.0) (2026-10-24)
+
+
+### Features
+
+* **api:** add list endpoint for lightweight subscription summaries ([7640020](https://github.com/orbcorp/orb-ruby/commit/7640020cab2a3d03c569781bdb51af3ae504fc91))
+
 ## [1.47.0](https://github.com/orbcorp/orb-ruby/compare/v1.46.0...v1.47.0) (2026-10-23)
 
 
