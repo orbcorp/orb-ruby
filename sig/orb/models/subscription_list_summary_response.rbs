@@ -1,0 +1,94 @@
+module Orb
+  module Models
+    type subscription_list_summary_response =
+      {
+        id: String,
+        created_at: Time,
+        customer: Orb::CustomerMinified,
+        end_date: Time?,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        plan: Orb::Models::SubscriptionListSummaryResponse::Plan?,
+        start_date: Time,
+        status: Orb::Models::SubscriptionListSummaryResponse::status
+      }
+
+    class SubscriptionListSummaryResponse < Orb::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor customer: Orb::CustomerMinified
+
+      attr_accessor end_date: Time?
+
+      attr_accessor metadata: ::Hash[Symbol, String]
+
+      attr_accessor name: String
+
+      attr_accessor plan: Orb::Models::SubscriptionListSummaryResponse::Plan?
+
+      attr_accessor start_date: Time
+
+      attr_accessor status: Orb::Models::SubscriptionListSummaryResponse::status
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        customer: Orb::CustomerMinified,
+        end_date: Time?,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        plan: Orb::Models::SubscriptionListSummaryResponse::Plan?,
+        start_date: Time,
+        status: Orb::Models::SubscriptionListSummaryResponse::status
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        customer: Orb::CustomerMinified,
+        end_date: Time?,
+        metadata: ::Hash[Symbol, String],
+        name: String,
+        plan: Orb::Models::SubscriptionListSummaryResponse::Plan?,
+        start_date: Time,
+        status: Orb::Models::SubscriptionListSummaryResponse::status
+      }
+
+      type plan = { id: String?, external_plan_id: String?, name: String? }
+
+      class Plan < Orb::Internal::Type::BaseModel
+        attr_accessor id: String?
+
+        attr_accessor external_plan_id: String?
+
+        attr_accessor name: String?
+
+        def initialize: (
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        ) -> void
+
+        def to_hash: -> {
+          id: String?,
+          external_plan_id: String?,
+          name: String?
+        }
+      end
+
+      type status = :active | :ended | :upcoming
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE: :active
+        ENDED: :ended
+        UPCOMING: :upcoming
+
+        def self?.values: -> ::Array[Orb::Models::SubscriptionListSummaryResponse::status]
+      end
+    end
+  end
+end

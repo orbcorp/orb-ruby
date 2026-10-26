@@ -923,6 +923,53 @@ module Orb
       )
       end
 
+      # This is a lighter-weight version of
+      # [List subscriptions](/api-reference/subscription/list-subscriptions), with the
+      # same filters, pagination and order. It returns each subscription's own fields,
+      # with its plan and customer as references, and leaves out price intervals,
+      # billing periods, plan phases and other derived fields, making it faster to
+      # respond. Fetch a subscription for those.
+      #
+      # This is the same summary of a subscription that standard
+      # [webhook payloads](/integrations-and-exports/webhook-payload-styles) carry.
+      sig do
+        params(
+          created_at_gt: T.nilable(Time),
+          created_at_gte: T.nilable(Time),
+          created_at_lt: T.nilable(Time),
+          created_at_lte: T.nilable(Time),
+          cursor: T.nilable(String),
+          customer_id: T.nilable(String),
+          external_customer_id: T.nilable(String),
+          external_plan_id: T.nilable(String),
+          limit: Integer,
+          plan_id: T.nilable(String),
+          status:
+            T.nilable(Orb::SubscriptionListSummaryParams::Status::OrSymbol),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(
+          Orb::Internal::Page[Orb::Models::SubscriptionListSummaryResponse]
+        )
+      end
+      def list_summary(
+        created_at_gt: nil,
+        created_at_gte: nil,
+        created_at_lt: nil,
+        created_at_lte: nil,
+        # Cursor for pagination. This can be populated by the `next_cursor` value returned
+        # from the initial request.
+        cursor: nil,
+        customer_id: nil,
+        external_customer_id: nil,
+        external_plan_id: nil,
+        # The number of items to fetch. Defaults to 20.
+        limit: nil,
+        plan_id: nil,
+        status: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint is used to add and edit subscription
       # [price intervals](/api-reference/price-interval/add-or-edit-price-intervals). By
       # making modifications to a subscription’s price intervals, you can

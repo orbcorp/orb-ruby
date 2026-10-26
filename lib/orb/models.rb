@@ -751,6 +751,8 @@ module Orb
 
   SubscriptionListParams = Orb::Models::SubscriptionListParams
 
+  SubscriptionListSummaryParams = Orb::Models::SubscriptionListSummaryParams
+
   SubscriptionMinified = Orb::Models::SubscriptionMinified
 
   SubscriptionPlanChangedWebhookEvent = Orb::Models::SubscriptionPlanChangedWebhookEvent

@@ -898,6 +898,66 @@ module Orb
       end
 
       # Some parameter documentations has been truncated, see
+      # {Orb::Models::SubscriptionListSummaryParams} for more details.
+      #
+      # This is a lighter-weight version of
+      # [List subscriptions](/api-reference/subscription/list-subscriptions), with the
+      # same filters, pagination and order. It returns each subscription's own fields,
+      # with its plan and customer as references, and leaves out price intervals,
+      # billing periods, plan phases and other derived fields, making it faster to
+      # respond. Fetch a subscription for those.
+      #
+      # This is the same summary of a subscription that standard
+      # [webhook payloads](/integrations-and-exports/webhook-payload-styles) carry.
+      #
+      # @overload list_summary(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
+      #
+      # @param created_at_gt [Time, nil]
+      #
+      # @param created_at_gte [Time, nil]
+      #
+      # @param created_at_lt [Time, nil]
+      #
+      # @param created_at_lte [Time, nil]
+      #
+      # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
+      #
+      # @param customer_id [String, nil]
+      #
+      # @param external_customer_id [String, nil]
+      #
+      # @param external_plan_id [String, nil]
+      #
+      # @param limit [Integer] The number of items to fetch. Defaults to 20.
+      #
+      # @param plan_id [String, nil]
+      #
+      # @param status [Symbol, Orb::Models::SubscriptionListSummaryParams::Status, nil]
+      #
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Internal::Page<Orb::Models::SubscriptionListSummaryResponse>]
+      #
+      # @see Orb::Models::SubscriptionListSummaryParams
+      def list_summary(params = {})
+        parsed, options = Orb::SubscriptionListSummaryParams.dump_request(params)
+        query = Orb::Internal::Util.encode_query_params(parsed)
+        @client.request(
+          method: :get,
+          path: "subscriptions/summary",
+          query: query.transform_keys(
+            created_at_gt: "created_at[gt]",
+            created_at_gte: "created_at[gte]",
+            created_at_lt: "created_at[lt]",
+            created_at_lte: "created_at[lte]"
+          ),
+          page: Orb::Internal::Page,
+          model: Orb::Models::SubscriptionListSummaryResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {Orb::Models::SubscriptionPriceIntervalsParams} for more details.
       #
       # This endpoint is used to add and edit subscription

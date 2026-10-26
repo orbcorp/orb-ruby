@@ -495,6 +495,8 @@ require_relative "orb/models/subscription_invoicing_threshold_exceeded_webhook_e
 require_relative "orb/models/subscription_license_allocation_reset_webhook_event"
 require_relative "orb/models/subscription_license_balance_threshold_reached_webhook_event"
 require_relative "orb/models/subscription_list_params"
+require_relative "orb/models/subscription_list_summary_params"
+require_relative "orb/models/subscription_list_summary_response"
 require_relative "orb/models/subscription_minified"
 require_relative "orb/models/subscription_plan_changed_webhook_event"
 require_relative "orb/models/subscription_plan_change_scheduled_webhook_event"

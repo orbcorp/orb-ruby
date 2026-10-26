@@ -272,6 +272,35 @@ class Orb::Test::Resources::SubscriptionsTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_list_summary
+    response = @orb.subscriptions.list_summary
+
+    assert_pattern do
+      response => Orb::Internal::Page
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Orb::Models::SubscriptionListSummaryResponse
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        customer: Orb::CustomerMinified,
+        end_date: Time | nil,
+        metadata: ^(Orb::Internal::Type::HashOf[String]),
+        name: String,
+        plan: Orb::Models::SubscriptionListSummaryResponse::Plan | nil,
+        start_date: Time,
+        status: Orb::Models::SubscriptionListSummaryResponse::Status
+      }
+    end
+  end
+
   def test_price_intervals
     skip("Incorrect example breaks Prism")
 
