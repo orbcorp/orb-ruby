@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.49.0](https://github.com/orbcorp/orb-ruby/compare/v1.48.0...v1.49.0) (2026-10-27)
+
+
+### Features
+
+* **api:** allow up to 50 spend_exceeded alerts per plan or subscription ([0448a00](https://github.com/orbcorp/orb-ruby/commit/0448a002cbad582b428b77b530b62460e6f96274))
+
 ## [1.48.0](https://github.com/orbcorp/orb-ruby/compare/v1.47.0...v1.48.0) (2026-10-24)
 
 
