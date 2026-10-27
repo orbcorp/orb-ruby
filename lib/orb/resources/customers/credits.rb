@@ -75,6 +75,82 @@ module Orb
           )
         end
 
+        # This endpoint returns a customer's credit balance in a single currency or custom
+        # pricing unit: the total available balance, the balance waiting on payment, and
+        # the next upcoming expiration.
+        #
+        # `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        # as listed by
+        # [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        # Expired, depleted, and voided blocks are not included. Blocks in
+        # `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        # become available once their invoice is paid.
+        #
+        # Note that `currency` defaults to credits if not specified. To use a real world
+        # currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        # that currency returns a balance of `0`.
+        #
+        # @overload fetch_balance(customer_id, currency: nil, request_options: {})
+        #
+        # @param customer_id [String]
+        #
+        # @param currency [String, nil] The ledger currency or custom pricing unit to use.
+        #
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Orb::Models::Customers::CreditFetchBalanceResponse]
+        #
+        # @see Orb::Models::Customers::CreditFetchBalanceParams
+        def fetch_balance(customer_id, params = {})
+          parsed, options = Orb::Customers::CreditFetchBalanceParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
+          @client.request(
+            method: :get,
+            path: ["customers/%1$s/credits/balance", customer_id],
+            query: query,
+            model: Orb::Models::Customers::CreditFetchBalanceResponse,
+            options: options
+          )
+        end
+
+        # This endpoint returns a customer's credit balance in a single currency or custom
+        # pricing unit: the total available balance, the balance waiting on payment, and
+        # the next upcoming expiration.
+        #
+        # `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        # as listed by
+        # [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        # Expired, depleted, and voided blocks are not included. Blocks in
+        # `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        # become available once their invoice is paid.
+        #
+        # Note that `currency` defaults to credits if not specified. To use a real world
+        # currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        # that currency returns a balance of `0`.
+        #
+        # @overload fetch_balance_by_external_id(external_customer_id, currency: nil, request_options: {})
+        #
+        # @param external_customer_id [String]
+        #
+        # @param currency [String, nil] The ledger currency or custom pricing unit to use.
+        #
+        # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [Orb::Models::Customers::CreditFetchBalanceByExternalIDResponse]
+        #
+        # @see Orb::Models::Customers::CreditFetchBalanceByExternalIDParams
+        def fetch_balance_by_external_id(external_customer_id, params = {})
+          parsed, options = Orb::Customers::CreditFetchBalanceByExternalIDParams.dump_request(params)
+          query = Orb::Internal::Util.encode_query_params(parsed)
+          @client.request(
+            method: :get,
+            path: ["customers/external_customer_id/%1$s/credits/balance", external_customer_id],
+            query: query,
+            model: Orb::Models::Customers::CreditFetchBalanceByExternalIDResponse,
+            options: options
+          )
+        end
+
         # Some parameter documentations has been truncated, see
         # {Orb::Models::Customers::CreditListByExternalIDParams} for more details.
         #

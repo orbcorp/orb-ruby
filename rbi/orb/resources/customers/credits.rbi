@@ -64,6 +64,66 @@ module Orb
         )
         end
 
+        # This endpoint returns a customer's credit balance in a single currency or custom
+        # pricing unit: the total available balance, the balance waiting on payment, and
+        # the next upcoming expiration.
+        #
+        # `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        # as listed by
+        # [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        # Expired, depleted, and voided blocks are not included. Blocks in
+        # `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        # become available once their invoice is paid.
+        #
+        # Note that `currency` defaults to credits if not specified. To use a real world
+        # currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        # that currency returns a balance of `0`.
+        sig do
+          params(
+            customer_id: String,
+            currency: T.nilable(String),
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(Orb::Models::Customers::CreditFetchBalanceResponse)
+        end
+        def fetch_balance(
+          customer_id,
+          # The ledger currency or custom pricing unit to use.
+          currency: nil,
+          request_options: {}
+        )
+        end
+
+        # This endpoint returns a customer's credit balance in a single currency or custom
+        # pricing unit: the total available balance, the balance waiting on payment, and
+        # the next upcoming expiration.
+        #
+        # `balance` is the sum of `balance` across the customer's `active` credit blocks,
+        # as listed by
+        # [Fetch customer credit balance](/api-reference/credit/fetch-customer-credit-balance).
+        # Expired, depleted, and voided blocks are not included. Blocks in
+        # `pending_payment` status are totaled in `pending_payment_balance` instead, and
+        # become available once their invoice is paid.
+        #
+        # Note that `currency` defaults to credits if not specified. To use a real world
+        # currency, set `currency` to an ISO 4217 string. A customer with no credits in
+        # that currency returns a balance of `0`.
+        sig do
+          params(
+            external_customer_id: String,
+            currency: T.nilable(String),
+            request_options: Orb::RequestOptions::OrHash
+          ).returns(
+            Orb::Models::Customers::CreditFetchBalanceByExternalIDResponse
+          )
+        end
+        def fetch_balance_by_external_id(
+          external_customer_id,
+          # The ledger currency or custom pricing unit to use.
+          currency: nil,
+          request_options: {}
+        )
+        end
+
         # Returns a paginated list of unexpired, non-zero credit blocks for a customer.
         #
         # If `include_all_blocks` is set to `true`, all credit blocks (including expired

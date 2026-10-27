@@ -1,0 +1,42 @@
+module Orb
+  module Models
+    module Customers
+      type credit_fetch_balance_by_external_id_response =
+        {
+          balance: Float,
+          currency: String?,
+          next_expiry_balance: Float?,
+          next_expiry_date: Time?,
+          pending_payment_balance: Float
+        }
+
+      class CreditFetchBalanceByExternalIDResponse < Orb::Internal::Type::BaseModel
+        attr_accessor balance: Float
+
+        attr_accessor currency: String?
+
+        attr_accessor next_expiry_balance: Float?
+
+        attr_accessor next_expiry_date: Time?
+
+        attr_accessor pending_payment_balance: Float
+
+        def initialize: (
+          balance: Float,
+          currency: String?,
+          next_expiry_balance: Float?,
+          next_expiry_date: Time?,
+          pending_payment_balance: Float
+        ) -> void
+
+        def to_hash: -> {
+          balance: Float,
+          currency: String?,
+          next_expiry_balance: Float?,
+          next_expiry_date: Time?,
+          pending_payment_balance: Float
+        }
+      end
+    end
+  end
+end

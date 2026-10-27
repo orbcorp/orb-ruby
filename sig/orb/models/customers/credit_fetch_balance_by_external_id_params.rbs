@@ -1,0 +1,30 @@
+module Orb
+  module Models
+    module Customers
+      type credit_fetch_balance_by_external_id_params =
+        { external_customer_id: String, currency: String? }
+        & Orb::Internal::Type::request_parameters
+
+      class CreditFetchBalanceByExternalIDParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor external_customer_id: String
+
+        attr_accessor currency: String?
+
+        def initialize: (
+          external_customer_id: String,
+          ?currency: String?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          external_customer_id: String,
+          currency: String?,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end

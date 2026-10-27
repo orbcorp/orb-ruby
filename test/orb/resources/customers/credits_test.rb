@@ -35,6 +35,42 @@ class Orb::Test::Resources::Customers::CreditsTest < Orb::Test::ResourceTest
     end
   end
 
+  def test_fetch_balance
+    response = @orb.customers.credits.fetch_balance("customer_id")
+
+    assert_pattern do
+      response => Orb::Models::Customers::CreditFetchBalanceResponse
+    end
+
+    assert_pattern do
+      response => {
+        balance: Float,
+        currency: String | nil,
+        next_expiry_balance: Float | nil,
+        next_expiry_date: Time | nil,
+        pending_payment_balance: Float
+      }
+    end
+  end
+
+  def test_fetch_balance_by_external_id
+    response = @orb.customers.credits.fetch_balance_by_external_id("external_customer_id")
+
+    assert_pattern do
+      response => Orb::Models::Customers::CreditFetchBalanceByExternalIDResponse
+    end
+
+    assert_pattern do
+      response => {
+        balance: Float,
+        currency: String | nil,
+        next_expiry_balance: Float | nil,
+        next_expiry_date: Time | nil,
+        pending_payment_balance: Float
+      }
+    end
+  end
+
   def test_list_by_external_id
     response = @orb.customers.credits.list_by_external_id("external_customer_id")
 

@@ -19,6 +19,18 @@ module Orb
           ?request_options: Orb::request_opts
         ) -> Orb::Internal::Page[Orb::Models::Customers::CreditListResponse]
 
+        def fetch_balance: (
+          String customer_id,
+          ?currency: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Customers::CreditFetchBalanceResponse
+
+        def fetch_balance_by_external_id: (
+          String external_customer_id,
+          ?currency: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Customers::CreditFetchBalanceByExternalIDResponse
+
         def list_by_external_id: (
           String external_customer_id,
           ?currency: String?,
