@@ -391,6 +391,22 @@ module Orb
         #   @return [Time, nil]
         required :scheduled_issue_at, Time, nil?: true
 
+        # @!attribute service_period_end
+        #   The latest `end_date` of the invoice's line items, including any line items
+        #   hidden because they have zero quantity. This is `null` when the invoice has no
+        #   line items.
+        #
+        #   @return [Time, nil]
+        required :service_period_end, Time, nil?: true
+
+        # @!attribute service_period_start
+        #   The earliest `start_date` of the invoice's line items, including any line items
+        #   hidden because they have zero quantity. This is `null` when the invoice has no
+        #   line items.
+        #
+        #   @return [Time, nil]
+        required :service_period_start, Time, nil?: true
+
         # @!attribute shipping_address
         #
         #   @return [Orb::Models::Address, nil]
@@ -434,7 +450,7 @@ module Orb
         #   @return [Boolean]
         required :will_auto_issue, Orb::Internal::Type::Boolean
 
-        # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, memo:, metadata:, paid_at:, payment_attempts:, payment_failed_at:, payment_received_at:, payment_started_at:, scheduled_issue_at:, shipping_address:, status:, subscription:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
+        # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, memo:, metadata:, paid_at:, payment_attempts:, payment_failed_at:, payment_received_at:, payment_started_at:, scheduled_issue_at:, service_period_end:, service_period_start:, shipping_address:, status:, subscription:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::InvoiceIssuedSummaryWebhookEvent::Invoice} for more details.
         #
@@ -494,6 +510,10 @@ module Orb
         #   @param payment_started_at [Time, nil] If payment was attempted on this invoice, this will be the start time of the mos
         #
         #   @param scheduled_issue_at [Time, nil] If the invoice is in draft, this timestamp will reflect when the invoice is sche
+        #
+        #   @param service_period_end [Time, nil] The latest `end_date` of the invoice's line items, including any line items hidd
+        #
+        #   @param service_period_start [Time, nil] The earliest `start_date` of the invoice's line items, including any line items
         #
         #   @param shipping_address [Orb::Models::Address, nil]
         #

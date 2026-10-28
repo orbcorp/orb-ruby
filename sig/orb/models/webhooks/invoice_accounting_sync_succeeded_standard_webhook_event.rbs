@@ -153,6 +153,8 @@ module Orb
             payment_received_at: Time?,
             payment_started_at: Time?,
             scheduled_issue_at: Time?,
+            service_period_end: Time?,
+            service_period_start: Time?,
             shipping_address: Orb::Address?,
             status: Orb::Models::Webhooks::InvoiceAccountingSyncSucceededStandardWebhookEvent::Invoice::status,
             subscription: Orb::SubscriptionMinified?,
@@ -217,6 +219,10 @@ module Orb
 
           attr_accessor scheduled_issue_at: Time?
 
+          attr_accessor service_period_end: Time?
+
+          attr_accessor service_period_start: Time?
+
           attr_accessor shipping_address: Orb::Address?
 
           attr_accessor status: Orb::Models::Webhooks::InvoiceAccountingSyncSucceededStandardWebhookEvent::Invoice::status
@@ -259,6 +265,8 @@ module Orb
             payment_received_at: Time?,
             payment_started_at: Time?,
             scheduled_issue_at: Time?,
+            service_period_end: Time?,
+            service_period_start: Time?,
             shipping_address: Orb::Address?,
             status: Orb::Models::Webhooks::InvoiceAccountingSyncSucceededStandardWebhookEvent::Invoice::status,
             subscription: Orb::SubscriptionMinified?,
@@ -296,6 +304,8 @@ module Orb
             payment_received_at: Time?,
             payment_started_at: Time?,
             scheduled_issue_at: Time?,
+            service_period_end: Time?,
+            service_period_start: Time?,
             shipping_address: Orb::Address?,
             status: Orb::Models::Webhooks::InvoiceAccountingSyncSucceededStandardWebhookEvent::Invoice::status,
             subscription: Orb::SubscriptionMinified?,

@@ -433,6 +433,18 @@ module Orb
           sig { returns(T.nilable(Time)) }
           attr_accessor :scheduled_issue_at
 
+          # The latest `end_date` of the invoice's line items, including any line items
+          # hidden because they have zero quantity. This is `null` when the invoice has no
+          # line items.
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :service_period_end
+
+          # The earliest `start_date` of the invoice's line items, including any line items
+          # hidden because they have zero quantity. This is `null` when the invoice has no
+          # line items.
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :service_period_start
+
           sig { returns(T.nilable(Orb::Address)) }
           attr_reader :shipping_address
 
@@ -518,6 +530,8 @@ module Orb
               payment_received_at: T.nilable(Time),
               payment_started_at: T.nilable(Time),
               scheduled_issue_at: T.nilable(Time),
+              service_period_end: T.nilable(Time),
+              service_period_start: T.nilable(Time),
               shipping_address: T.nilable(Orb::Address::OrHash),
               status:
                 Orb::Webhooks::InvoiceManuallyMarkedAsVoidStandardWebhookEvent::Invoice::Status::OrSymbol,
@@ -748,6 +762,14 @@ module Orb
             # If the invoice is in draft, this timestamp will reflect when the invoice is
             # scheduled to be issued.
             scheduled_issue_at:,
+            # The latest `end_date` of the invoice's line items, including any line items
+            # hidden because they have zero quantity. This is `null` when the invoice has no
+            # line items.
+            service_period_end:,
+            # The earliest `start_date` of the invoice's line items, including any line items
+            # hidden because they have zero quantity. This is `null` when the invoice has no
+            # line items.
+            service_period_start:,
             shipping_address:,
             status:,
             subscription:,
@@ -807,6 +829,8 @@ module Orb
                 payment_received_at: T.nilable(Time),
                 payment_started_at: T.nilable(Time),
                 scheduled_issue_at: T.nilable(Time),
+                service_period_end: T.nilable(Time),
+                service_period_start: T.nilable(Time),
                 shipping_address: T.nilable(Orb::Address),
                 status:
                   Orb::Webhooks::InvoiceManuallyMarkedAsVoidStandardWebhookEvent::Invoice::Status::TaggedSymbol,
