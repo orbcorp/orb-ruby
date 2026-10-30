@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.51.0](https://github.com/orbcorp/orb-ruby/compare/v1.50.0...v1.51.0) (2026-10-30)
+
+
+### Features
+
+* **api:** api update ([01f12f2](https://github.com/orbcorp/orb-ruby/commit/01f12f276b97281beb60479d09992f5165dc24df))
+
 ## [1.50.0](https://github.com/orbcorp/orb-ruby/compare/v1.49.0...v1.50.0) (2026-10-29)
 
 
