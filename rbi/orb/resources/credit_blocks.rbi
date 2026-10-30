@@ -5,7 +5,8 @@ module Orb
     # The [Credit Ledger Entry resource](/product-catalog/prepurchase) models prepaid
     # credits within Orb.
     class CreditBlocks
-      # This endpoint returns a credit block identified by its block_id.
+      # This endpoint returns a credit block identified by its block_id. A deleted
+      # credit block is returned with a `status` of `void` and a `balance` of 0.
       sig do
         params(
           block_id: String,

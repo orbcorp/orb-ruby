@@ -166,6 +166,8 @@ module Orb
           required :per_unit_cost_basis, String, nil?: true
 
           # @!attribute status
+          #   `void` means the credit block was deleted. A voided block's `balance` is
+          #   always 0.
           #
           #   @return [Symbol, Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Status]
           required :status, enum: -> { Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Status }
@@ -217,7 +219,7 @@ module Orb
           #
           #   @param per_unit_cost_basis [String, nil]
           #
-          #   @param status [Symbol, Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Status]
+          #   @param status [Symbol, Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Status] `void` means the credit block was deleted. A voided block's `balance` is always
           #
           #   @param credit_allocation [Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::CreditAllocation, nil] The credit allocation that funded a block. Extends the allocation resource
           #
@@ -300,12 +302,16 @@ module Orb
             end
           end
 
+          # `void` means the credit block was deleted. A voided block's `balance` is
+          # always 0.
+          #
           # @see Orb::Models::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block#status
           module Status
             extend Orb::Internal::Type::Enum
 
             ACTIVE = :active
             PENDING_PAYMENT = :pending_payment
+            VOID = :void
 
             # @!method self.values
             #   @return [Array<Symbol>]

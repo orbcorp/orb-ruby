@@ -59,6 +59,8 @@ module Orb
       required :per_unit_cost_basis, String, nil?: true
 
       # @!attribute status
+      #   `void` means the credit block was deleted. A voided block's `balance` is
+      #   always 0.
       #
       #   @return [Symbol, Orb::Models::CreditBlockUpdateResponse::Status]
       required :status, enum: -> { Orb::Models::CreditBlockUpdateResponse::Status }
@@ -101,7 +103,7 @@ module Orb
       #
       #   @param per_unit_cost_basis [String, nil]
       #
-      #   @param status [Symbol, Orb::Models::CreditBlockUpdateResponse::Status]
+      #   @param status [Symbol, Orb::Models::CreditBlockUpdateResponse::Status] `void` means the credit block was deleted. A voided block's `balance` is always
       #
       #   @param credit_allocation [Orb::Models::CreditBlockUpdateResponse::CreditAllocation, nil] The credit allocation that funded a block. Extends the allocation resource
       #
@@ -182,12 +184,16 @@ module Orb
         end
       end
 
+      # `void` means the credit block was deleted. A voided block's `balance` is
+      # always 0.
+      #
       # @see Orb::Models::CreditBlockUpdateResponse#status
       module Status
         extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
         PENDING_PAYMENT = :pending_payment
+        VOID = :void
 
         # @!method self.values
         #   @return [Array<Symbol>]
