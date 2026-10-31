@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.52.0](https://github.com/orbcorp/orb-ruby/compare/v1.51.0...v1.52.0) (2026-10-31)
+
+
+### Features
+
+* **api:** add void status for deleted credit blocks in CreditBlock schema ([7769947](https://github.com/orbcorp/orb-ruby/commit/7769947b098add28640d65c7600d7939660b3a46))
+
 ## [1.51.0](https://github.com/orbcorp/orb-ruby/compare/v1.50.0...v1.51.0) (2026-10-30)
 
 
