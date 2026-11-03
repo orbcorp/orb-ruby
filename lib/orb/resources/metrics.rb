@@ -179,6 +179,28 @@ module Orb
         )
       end
 
+      # This endpoint publishes a [metric](/core-concepts#metric) in `draft` status,
+      # making it `active`. Only draft metrics can be published, and an active metric
+      # can't be moved back into `draft`, so its `sql` and `item_id` can no longer be
+      # changed.
+      #
+      # @overload publish(metric_id, request_options: {})
+      #
+      # @param metric_id [String]
+      # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Orb::Models::BillableMetric]
+      #
+      # @see Orb::Models::MetricPublishParams
+      def publish(metric_id, params = {})
+        @client.request(
+          method: :post,
+          path: ["metrics/%1$s/publish", metric_id],
+          model: Orb::BillableMetric,
+          options: params[:request_options]
+        )
+      end
+
       # This endpoint restores an archived [metric](/core-concepts#metric) to `active`,
       # so it can be chosen for new plans again. Only archived metrics can be
       # unarchived.

@@ -42,6 +42,11 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::BillableMetric
 
+      def publish: (
+        String metric_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::BillableMetric
+
       def unarchive: (
         String metric_id,
         ?request_options: Orb::request_opts

@@ -353,6 +353,8 @@ module Orb
 
   class MetricListParams = Orb::Models::MetricListParams
 
+  class MetricPublishParams = Orb::Models::MetricPublishParams
+
   class MetricUnarchiveParams = Orb::Models::MetricUnarchiveParams
 
   class MetricUpdateParams = Orb::Models::MetricUpdateParams
