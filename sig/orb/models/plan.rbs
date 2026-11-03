@@ -312,7 +312,8 @@ module Orb
           minimum: Orb::Minimum?,
           minimum_amount: String?,
           name: String,
-          order: Integer
+          order: Integer,
+          price_ids: ::Array[String]
         }
 
       class PlanPhase < Orb::Internal::Type::BaseModel
@@ -338,6 +339,8 @@ module Orb
 
         attr_accessor order: Integer
 
+        attr_accessor price_ids: ::Array[String]
+
         def initialize: (
           id: String,
           description: String?,
@@ -349,7 +352,8 @@ module Orb
           minimum: Orb::Minimum?,
           minimum_amount: String?,
           name: String,
-          order: Integer
+          order: Integer,
+          price_ids: ::Array[String]
         ) -> void
 
         def to_hash: -> {
@@ -363,7 +367,8 @@ module Orb
           minimum: Orb::Minimum?,
           minimum_amount: String?,
           name: String,
-          order: Integer
+          order: Integer,
+          price_ids: ::Array[String]
         }
 
         type duration_unit =

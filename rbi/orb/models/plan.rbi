@@ -742,6 +742,10 @@ module Orb
         sig { returns(Integer) }
         attr_accessor :order
 
+        # The IDs of the prices active in this phase.
+        sig { returns(T::Array[String]) }
+        attr_accessor :price_ids
+
         sig do
           params(
             id: String,
@@ -764,7 +768,8 @@ module Orb
             minimum: T.nilable(Orb::Minimum::OrHash),
             minimum_amount: T.nilable(String),
             name: String,
-            order: Integer
+            order: Integer,
+            price_ids: T::Array[String]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -781,7 +786,9 @@ module Orb
           minimum_amount:,
           name:,
           # Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
-          order:
+          order:,
+          # The IDs of the prices active in this phase.
+          price_ids:
         )
         end
 
@@ -799,7 +806,8 @@ module Orb
               minimum: T.nilable(Orb::Minimum),
               minimum_amount: T.nilable(String),
               name: String,
-              order: Integer
+              order: Integer,
+              price_ids: T::Array[String]
             }
           )
         end

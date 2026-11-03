@@ -36,7 +36,13 @@ module Orb
       #   @return [Integer]
       required :order, Integer
 
-      # @!method initialize(id:, description:, duration:, duration_unit:, name:, order:)
+      # @!attribute price_ids
+      #   The IDs of the prices active in this phase.
+      #
+      #   @return [Array<String>]
+      required :price_ids, Orb::Internal::Type::ArrayOf[String]
+
+      # @!method initialize(id:, description:, duration:, duration_unit:, name:, order:, price_ids:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PlanVersionPhase} for more details.
       #
@@ -51,6 +57,8 @@ module Orb
       #   @param name [String]
       #
       #   @param order [Integer] Determines the ordering of the phase in a plan's lifecycle. 1 = first phase.
+      #
+      #   @param price_ids [Array<String>] The IDs of the prices active in this phase.
 
       # @see Orb::Models::PlanVersionPhase#duration_unit
       module DurationUnit

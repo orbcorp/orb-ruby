@@ -7,7 +7,8 @@ module Orb
         duration: Integer?,
         duration_unit: Orb::Models::PlanVersionPhase::duration_unit?,
         name: String,
-        order: Integer
+        order: Integer,
+        price_ids: ::Array[String]
       }
 
     class PlanVersionPhase < Orb::Internal::Type::BaseModel
@@ -23,13 +24,16 @@ module Orb
 
       attr_accessor order: Integer
 
+      attr_accessor price_ids: ::Array[String]
+
       def initialize: (
         id: String,
         description: String?,
         duration: Integer?,
         duration_unit: Orb::Models::PlanVersionPhase::duration_unit?,
         name: String,
-        order: Integer
+        order: Integer,
+        price_ids: ::Array[String]
       ) -> void
 
       def to_hash: -> {
@@ -38,7 +42,8 @@ module Orb
         duration: Integer?,
         duration_unit: Orb::Models::PlanVersionPhase::duration_unit?,
         name: String,
-        order: Integer
+        order: Integer,
+        price_ids: ::Array[String]
       }
 
       type duration_unit =
