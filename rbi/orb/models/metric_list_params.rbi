@@ -91,8 +91,8 @@ module Orb
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACTIVE = T.let(:active, Orb::MetricListParams::Status::TaggedSymbol)
-        ARCHIVED = T.let(:archived, Orb::MetricListParams::Status::TaggedSymbol)
         DRAFT = T.let(:draft, Orb::MetricListParams::Status::TaggedSymbol)
+        ARCHIVED = T.let(:archived, Orb::MetricListParams::Status::TaggedSymbol)
 
         sig do
           override.returns(

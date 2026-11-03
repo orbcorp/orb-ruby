@@ -54,14 +54,14 @@ module Orb
         request_options: Orb::RequestOptions
       }
 
-      type status = :active | :archived | :draft
+      type status = :active | :draft | :archived
 
       module Status
         extend Orb::Internal::Type::Enum
 
         ACTIVE: :active
-        ARCHIVED: :archived
         DRAFT: :draft
+        ARCHIVED: :archived
 
         def self?.values: -> ::Array[Orb::Models::MetricListParams::status]
       end

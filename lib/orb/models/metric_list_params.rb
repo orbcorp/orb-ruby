@@ -71,8 +71,8 @@ module Orb
         extend Orb::Internal::Type::Enum
 
         ACTIVE = :active
-        ARCHIVED = :archived
         DRAFT = :draft
+        ARCHIVED = :archived
 
         # @!method self.values
         #   @return [Array<Symbol>]

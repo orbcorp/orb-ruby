@@ -13,7 +13,7 @@ module Orb
       # string. See [SQL support](/extensibility/advanced-metrics#sql-support) for a
       # description of constructing SQL queries with examples.
       #
-      # @overload create(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
+      # @overload create(description:, item_id:, name:, sql:, metadata: nil, status: nil, request_options: {})
       #
       # @param description [String, nil] A description of the metric.
       #
@@ -24,6 +24,8 @@ module Orb
       # @param sql [String] A sql string defining the metric.
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
+      #
+      # @param status [Symbol, Orb::Models::MetricCreateParams::Status] The status of the metric to create (either active or draft). If not specified, t
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -49,15 +51,23 @@ module Orb
       # `name` cannot be empty. If you pass `null` for the metadata value, it will clear
       # any existing metadata for that metric.
       #
-      # @overload update(metric_id, description: nil, metadata: nil, name: nil, request_options: {})
+      # While a metric is in `draft` status, its `sql` and `item_id` can also be
+      # changed. Use [publish metric](/api-reference/metric/publish-metric) to make a
+      # draft metric active.
+      #
+      # @overload update(metric_id, description: nil, item_id: nil, metadata: nil, name: nil, sql: nil, request_options: {})
       #
       # @param metric_id [String]
       #
       # @param description [String, nil] A description of the metric.
       #
+      # @param item_id [String, nil] The id of the item to associate the metric with. Can only be changed while the m
+      #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       # @param name [String, nil] The name of the metric.
+      #
+      # @param sql [String, nil] A new sql string defining the metric. Can only be changed while the metric is in
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

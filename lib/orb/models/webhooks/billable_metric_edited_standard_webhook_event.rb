@@ -95,6 +95,11 @@ module Orb
             #   @return [String, nil]
             optional :description, String, nil?: true
 
+            # @!attribute item_id
+            #
+            #   @return [String, nil]
+            optional :item_id, String, nil?: true
+
             # @!attribute metadata
             #
             #   @return [Hash{Symbol=>String}, nil]
@@ -105,12 +110,41 @@ module Orb
             #   @return [String, nil]
             optional :name, String, nil?: true
 
-            # @!method initialize(description: nil, metadata: nil, name: nil)
+            # @!attribute sql
+            #
+            #   @return [String, nil]
+            optional :sql, String, nil?: true
+
+            # @!attribute status
+            #
+            #   @return [Symbol, Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status, nil]
+            optional :status,
+                     enum: -> {
+                       Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status
+                     },
+                     nil?: true
+
+            # @!method initialize(description: nil, item_id: nil, metadata: nil, name: nil, sql: nil, status: nil)
             #   metadata values are non-null on the wire, as on the price event.
             #
             #   @param description [String, nil]
+            #   @param item_id [String, nil]
             #   @param metadata [Hash{Symbol=>String}, nil]
             #   @param name [String, nil]
+            #   @param sql [String, nil]
+            #   @param status [Symbol, Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status, nil]
+
+            # @see Orb::Models::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes#status
+            module Status
+              extend Orb::Internal::Type::Enum
+
+              ACTIVE = :active
+              ARCHIVED = :archived
+              DRAFT = :draft
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
 

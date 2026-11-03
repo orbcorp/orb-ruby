@@ -39,7 +39,15 @@ module Orb
       #   @return [Hash{Symbol=>String, nil}, nil]
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
-      # @!method initialize(description:, item_id:, name:, sql:, metadata: nil, request_options: {})
+      # @!attribute status
+      #   The status of the metric to create (either active or draft). If not specified,
+      #   this defaults to active. A draft metric's `sql` and `item_id` can be changed
+      #   until it's published.
+      #
+      #   @return [Symbol, Orb::Models::MetricCreateParams::Status, nil]
+      optional :status, enum: -> { Orb::MetricCreateParams::Status }
+
+      # @!method initialize(description:, item_id:, name:, sql:, metadata: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MetricCreateParams} for more details.
       #
@@ -53,7 +61,22 @@ module Orb
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
+      #   @param status [Symbol, Orb::Models::MetricCreateParams::Status] The status of the metric to create (either active or draft). If not specified, t
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
+
+      # The status of the metric to create (either active or draft). If not specified,
+      # this defaults to active. A draft metric's `sql` and `item_id` can be changed
+      # until it's published.
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE = :active
+        DRAFT = :draft
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
     end
   end
 end

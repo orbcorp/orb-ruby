@@ -31,6 +31,15 @@ module Orb
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
+      # The status of the metric to create (either active or draft). If not specified,
+      # this defaults to active. A draft metric's `sql` and `item_id` can be changed
+      # until it's published.
+      sig { returns(T.nilable(Orb::MetricCreateParams::Status::OrSymbol)) }
+      attr_reader :status
+
+      sig { params(status: Orb::MetricCreateParams::Status::OrSymbol).void }
+      attr_writer :status
+
       sig do
         params(
           description: T.nilable(String),
@@ -38,6 +47,7 @@ module Orb
           name: String,
           sql: String,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+          status: Orb::MetricCreateParams::Status::OrSymbol,
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -54,6 +64,10 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
+        # The status of the metric to create (either active or draft). If not specified,
+        # this defaults to active. A draft metric's `sql` and `item_id` can be changed
+        # until it's published.
+        status: nil,
         request_options: {}
       )
       end
@@ -66,11 +80,34 @@ module Orb
             name: String,
             sql: String,
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
+            status: Orb::MetricCreateParams::Status::OrSymbol,
             request_options: Orb::RequestOptions
           }
         )
       end
       def to_hash
+      end
+
+      # The status of the metric to create (either active or draft). If not specified,
+      # this defaults to active. A draft metric's `sql` and `item_id` can be changed
+      # until it's published.
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Orb::MetricCreateParams::Status) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        ACTIVE = T.let(:active, Orb::MetricCreateParams::Status::TaggedSymbol)
+        DRAFT = T.let(:draft, Orb::MetricCreateParams::Status::TaggedSymbol)
+
+        sig do
+          override.returns(
+            T::Array[Orb::MetricCreateParams::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

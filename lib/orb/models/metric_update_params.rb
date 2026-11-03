@@ -18,6 +18,13 @@ module Orb
       #   @return [String, nil]
       optional :description, String, nil?: true
 
+      # @!attribute item_id
+      #   The id of the item to associate the metric with. Can only be changed while the
+      #   metric is in `draft` status.
+      #
+      #   @return [String, nil]
+      optional :item_id, String, nil?: true
+
       # @!attribute metadata
       #   User-specified key/value pairs for the resource. Individual keys can be removed
       #   by setting the value to `null`, and the entire metadata mapping can be cleared
@@ -32,7 +39,15 @@ module Orb
       #   @return [String, nil]
       optional :name, String, nil?: true
 
-      # @!method initialize(metric_id:, description: nil, metadata: nil, name: nil, request_options: {})
+      # @!attribute sql
+      #   A new sql string defining the metric. Can only be changed while the metric is in
+      #   `draft` status and no price uses it. If the metric has parameters, the new sql
+      #   must use the same ones.
+      #
+      #   @return [String, nil]
+      optional :sql, String, nil?: true
+
+      # @!method initialize(metric_id:, description: nil, item_id: nil, metadata: nil, name: nil, sql: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MetricUpdateParams} for more details.
       #
@@ -40,9 +55,13 @@ module Orb
       #
       #   @param description [String, nil] A description of the metric.
       #
+      #   @param item_id [String, nil] The id of the item to associate the metric with. Can only be changed while the m
+      #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
       #   @param name [String, nil] The name of the metric.
+      #
+      #   @param sql [String, nil] A new sql string defining the metric. Can only be changed while the metric is in
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

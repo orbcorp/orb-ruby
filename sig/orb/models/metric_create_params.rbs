@@ -6,7 +6,8 @@ module Orb
         item_id: String,
         name: String,
         sql: String,
-        metadata: ::Hash[Symbol, String?]?
+        metadata: ::Hash[Symbol, String?]?,
+        status: Orb::Models::MetricCreateParams::status
       }
       & Orb::Internal::Type::request_parameters
 
@@ -24,12 +25,19 @@ module Orb
 
       attr_accessor metadata: ::Hash[Symbol, String?]?
 
+      attr_reader status: Orb::Models::MetricCreateParams::status?
+
+      def status=: (
+        Orb::Models::MetricCreateParams::status
+      ) -> Orb::Models::MetricCreateParams::status
+
       def initialize: (
         description: String?,
         item_id: String,
         name: String,
         sql: String,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?status: Orb::Models::MetricCreateParams::status,
         ?request_options: Orb::request_opts
       ) -> void
 
@@ -39,8 +47,20 @@ module Orb
         name: String,
         sql: String,
         metadata: ::Hash[Symbol, String?]?,
+        status: Orb::Models::MetricCreateParams::status,
         request_options: Orb::RequestOptions
       }
+
+      type status = :active | :draft
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE: :active
+        DRAFT: :draft
+
+        def self?.values: -> ::Array[Orb::Models::MetricCreateParams::status]
+      end
     end
   end
 end

@@ -7,14 +7,17 @@ module Orb
         name: String,
         sql: String,
         ?metadata: ::Hash[Symbol, String?]?,
+        ?status: Orb::Models::MetricCreateParams::status,
         ?request_options: Orb::request_opts
       ) -> Orb::BillableMetric
 
       def update: (
         String metric_id,
         ?description: String?,
+        ?item_id: String?,
         ?metadata: ::Hash[Symbol, String?]?,
         ?name: String?,
+        ?sql: String?,
         ?request_options: Orb::request_opts
       ) -> Orb::BillableMetric
 

@@ -207,33 +207,106 @@ module Orb
             sig { returns(T.nilable(String)) }
             attr_accessor :description
 
+            sig { returns(T.nilable(String)) }
+            attr_accessor :item_id
+
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_accessor :metadata
 
             sig { returns(T.nilable(String)) }
             attr_accessor :name
 
+            sig { returns(T.nilable(String)) }
+            attr_accessor :sql
+
+            sig do
+              returns(
+                T.nilable(
+                  Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::TaggedSymbol
+                )
+              )
+            end
+            attr_accessor :status
+
             # metadata values are non-null on the wire, as on the price event.
             sig do
               params(
                 description: T.nilable(String),
+                item_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, String]),
-                name: T.nilable(String)
+                name: T.nilable(String),
+                sql: T.nilable(String),
+                status:
+                  T.nilable(
+                    Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::OrSymbol
+                  )
               ).returns(T.attached_class)
             end
-            def self.new(description: nil, metadata: nil, name: nil)
+            def self.new(
+              description: nil,
+              item_id: nil,
+              metadata: nil,
+              name: nil,
+              sql: nil,
+              status: nil
+            )
             end
 
             sig do
               override.returns(
                 {
                   description: T.nilable(String),
+                  item_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, String]),
-                  name: T.nilable(String)
+                  name: T.nilable(String),
+                  sql: T.nilable(String),
+                  status:
+                    T.nilable(
+                      Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::TaggedSymbol
+                    )
                 }
               )
             end
             def to_hash
+            end
+
+            module Status
+              extend Orb::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ACTIVE =
+                T.let(
+                  :active,
+                  Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::TaggedSymbol
+                )
+              ARCHIVED =
+                T.let(
+                  :archived,
+                  Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::TaggedSymbol
+                )
+              DRAFT =
+                T.let(
+                  :draft,
+                  Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    Orb::Webhooks::BillableMetricEditedStandardWebhookEvent::Properties::PreviousAttributes::Status::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end

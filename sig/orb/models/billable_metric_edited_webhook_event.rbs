@@ -71,28 +71,55 @@ module Orb
         type previous_attributes =
           {
             description: String?,
+            item_id: String?,
             metadata: ::Hash[Symbol, String]?,
-            name: String?
+            name: String?,
+            sql: String?,
+            status: Orb::Models::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes::status?
           }
 
         class PreviousAttributes < Orb::Internal::Type::BaseModel
           attr_accessor description: String?
 
+          attr_accessor item_id: String?
+
           attr_accessor metadata: ::Hash[Symbol, String]?
 
           attr_accessor name: String?
 
+          attr_accessor sql: String?
+
+          attr_accessor status: Orb::Models::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes::status?
+
           def initialize: (
             ?description: String?,
+            ?item_id: String?,
             ?metadata: ::Hash[Symbol, String]?,
-            ?name: String?
+            ?name: String?,
+            ?sql: String?,
+            ?status: Orb::Models::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes::status?
           ) -> void
 
           def to_hash: -> {
             description: String?,
+            item_id: String?,
             metadata: ::Hash[Symbol, String]?,
-            name: String?
+            name: String?,
+            sql: String?,
+            status: Orb::Models::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes::status?
           }
+
+          type status = :active | :archived | :draft
+
+          module Status
+            extend Orb::Internal::Type::Enum
+
+            ACTIVE: :active
+            ARCHIVED: :archived
+            DRAFT: :draft
+
+            def self?.values: -> ::Array[Orb::Models::BillableMetricEditedWebhookEvent::Properties::PreviousAttributes::status]
+          end
         end
       end
 
