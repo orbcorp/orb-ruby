@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.53.0](https://github.com/orbcorp/orb-ruby/compare/v1.52.0...v1.53.0) (2026-11-04)
+
+
+### Features
+
+* **api:** add price_ids to plan phases in plan responses ([31c53a7](https://github.com/orbcorp/orb-ruby/commit/31c53a746d3a58bf1c5e2af1a17e0ec609d2632b))
+* **api:** support draft billable metrics with SQL/item edits and publish ([d101f75](https://github.com/orbcorp/orb-ruby/commit/d101f751084628d14727d0be016bec21f21b4853))
+
 ## [1.52.0](https://github.com/orbcorp/orb-ruby/compare/v1.51.0...v1.52.0) (2026-10-31)
 
 
