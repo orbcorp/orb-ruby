@@ -5,7 +5,9 @@ module Orb
         {
           id: String,
           effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?,
+          ended_at: Time?,
           plan_id: String,
+          started_at: Time?,
           status: Orb::Models::Plans::MigrationRetrieveResponse::status
         }
 
@@ -14,21 +16,29 @@ module Orb
 
         attr_accessor effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?
 
+        attr_accessor ended_at: Time?
+
         attr_accessor plan_id: String
+
+        attr_accessor started_at: Time?
 
         attr_accessor status: Orb::Models::Plans::MigrationRetrieveResponse::status
 
         def initialize: (
           id: String,
           effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?,
+          ended_at: Time?,
           plan_id: String,
+          started_at: Time?,
           status: Orb::Models::Plans::MigrationRetrieveResponse::status
         ) -> void
 
         def to_hash: -> {
           id: String,
           effective_time: Orb::Models::Plans::MigrationRetrieveResponse::effective_time?,
+          ended_at: Time?,
           plan_id: String,
+          started_at: Time?,
           status: Orb::Models::Plans::MigrationRetrieveResponse::status
         }
 

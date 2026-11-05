@@ -28,9 +28,19 @@ module Orb
         end
         attr_accessor :effective_time
 
+        # When the migration completed or was canceled, or null if it is still in
+        # progress.
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :ended_at
+
         # The ID of the plan being migrated.
         sig { returns(String) }
         attr_accessor :plan_id
+
+        # When Orb began migrating the plan's subscriptions. Null if the migration has not
+        # begun, or was canceled before it began.
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :started_at
 
         # Current status of the migration: 'not_started', 'in_progress', 'completed',
         # 'action_needed', or 'canceled'.
@@ -52,7 +62,9 @@ module Orb
                   Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime::OrSymbol
                 )
               ),
+            ended_at: T.nilable(Time),
             plan_id: String,
+            started_at: T.nilable(Time),
             status:
               Orb::Models::Plans::MigrationRetrieveResponse::Status::OrSymbol
           ).returns(T.attached_class)
@@ -64,8 +76,14 @@ module Orb
           # scheduled to be at the end of the current billing period, or 'end_of_invoice'
           # when scheduled to be at the start of the next invoice.
           effective_time:,
+          # When the migration completed or was canceled, or null if it is still in
+          # progress.
+          ended_at:,
           # The ID of the plan being migrated.
           plan_id:,
+          # When Orb began migrating the plan's subscriptions. Null if the migration has not
+          # begun, or was canceled before it began.
+          started_at:,
           # Current status of the migration: 'not_started', 'in_progress', 'completed',
           # 'action_needed', or 'canceled'.
           status:
@@ -80,7 +98,9 @@ module Orb
                 T.nilable(
                   Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime::Variants
                 ),
+              ended_at: T.nilable(Time),
               plan_id: String,
+              started_at: T.nilable(Time),
               status:
                 Orb::Models::Plans::MigrationRetrieveResponse::Status::TaggedSymbol
             }

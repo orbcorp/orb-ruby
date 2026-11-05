@@ -14,7 +14,9 @@ class Orb::Test::Resources::Plans::MigrationsTest < Orb::Test::ResourceTest
       response => {
         id: String,
         effective_time: Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime | nil,
+        ended_at: Time | nil,
         plan_id: String,
+        started_at: Time | nil,
         status: Orb::Models::Plans::MigrationRetrieveResponse::Status
       }
     end
@@ -38,7 +40,9 @@ class Orb::Test::Resources::Plans::MigrationsTest < Orb::Test::ResourceTest
       row => {
         id: String,
         effective_time: Orb::Models::Plans::MigrationListResponse::EffectiveTime | nil,
+        ended_at: Time | nil,
         plan_id: String,
+        started_at: Time | nil,
         status: Orb::Models::Plans::MigrationListResponse::Status
       }
     end
@@ -55,7 +59,9 @@ class Orb::Test::Resources::Plans::MigrationsTest < Orb::Test::ResourceTest
       response => {
         id: String,
         effective_time: Orb::Models::Plans::MigrationCancelResponse::EffectiveTime | nil,
+        ended_at: Time | nil,
         plan_id: String,
+        started_at: Time | nil,
         status: Orb::Models::Plans::MigrationCancelResponse::Status
       }
     end

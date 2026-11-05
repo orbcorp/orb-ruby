@@ -21,11 +21,25 @@ module Orb
                  union: -> { Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime },
                  nil?: true
 
+        # @!attribute ended_at
+        #   When the migration completed or was canceled, or null if it is still in
+        #   progress.
+        #
+        #   @return [Time, nil]
+        required :ended_at, Time, nil?: true
+
         # @!attribute plan_id
         #   The ID of the plan being migrated.
         #
         #   @return [String]
         required :plan_id, String
+
+        # @!attribute started_at
+        #   When Orb began migrating the plan's subscriptions. Null if the migration has not
+        #   begun, or was canceled before it began.
+        #
+        #   @return [Time, nil]
+        required :started_at, Time, nil?: true
 
         # @!attribute status
         #   Current status of the migration: 'not_started', 'in_progress', 'completed',
@@ -34,7 +48,7 @@ module Orb
         #   @return [Symbol, Orb::Models::Plans::MigrationRetrieveResponse::Status]
         required :status, enum: -> { Orb::Models::Plans::MigrationRetrieveResponse::Status }
 
-        # @!method initialize(id:, effective_time:, plan_id:, status:)
+        # @!method initialize(id:, effective_time:, ended_at:, plan_id:, started_at:, status:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plans::MigrationRetrieveResponse} for more details.
         #
@@ -42,7 +56,11 @@ module Orb
         #
         #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, 'end_of_term' when
         #
+        #   @param ended_at [Time, nil] When the migration completed or was canceled, or null if it is still in progress
+        #
         #   @param plan_id [String] The ID of the plan being migrated.
+        #
+        #   @param started_at [Time, nil] When Orb began migrating the plan's subscriptions. Null if the migration has not
         #
         #   @param status [Symbol, Orb::Models::Plans::MigrationRetrieveResponse::Status] Current status of the migration: 'not_started', 'in_progress', 'completed', 'act
 

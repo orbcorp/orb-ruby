@@ -6245,6 +6245,10 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :external_price_id
 
+        # The phase to remove this price from.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
         # The id of the price to remove on the subscription.
         sig { returns(T.nilable(String)) }
         attr_accessor :price_id
@@ -6252,12 +6256,15 @@ module Orb
         sig do
           params(
             external_price_id: T.nilable(String),
+            plan_phase_order: T.nilable(Integer),
             price_id: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
           # The external price id of the price to remove on the subscription.
           external_price_id: nil,
+          # The phase to remove this price from.
+          plan_phase_order: nil,
           # The id of the price to remove on the subscription.
           price_id: nil
         )
@@ -6267,6 +6274,7 @@ module Orb
           override.returns(
             {
               external_price_id: T.nilable(String),
+              plan_phase_order: T.nilable(Integer),
               price_id: T.nilable(String)
             }
           )
@@ -6857,6 +6865,10 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :minimum_amount
 
+        # The phase to replace this price in.
+        sig { returns(T.nilable(Integer)) }
+        attr_accessor :plan_phase_order
+
         # New subscription price request body params.
         sig do
           returns(
@@ -6918,6 +6930,7 @@ module Orb
             maximum_amount: T.nilable(String),
             metric_parameter_overrides: T.nilable(T::Hash[Symbol, T.anything]),
             minimum_amount: T.nilable(String),
+            plan_phase_order: T.nilable(Integer),
             price:
               T.nilable(
                 T.any(
@@ -6983,6 +6996,8 @@ module Orb
           # [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
           # the replacement price.
           minimum_amount: nil,
+          # The phase to replace this price in.
+          plan_phase_order: nil,
           # New subscription price request body params.
           price: nil,
           # The id of the price to add to the subscription.
@@ -7002,6 +7017,7 @@ module Orb
               metric_parameter_overrides:
                 T.nilable(T::Hash[Symbol, T.anything]),
               minimum_amount: T.nilable(String),
+              plan_phase_order: T.nilable(Integer),
               price:
                 T.nilable(
                   T.any(

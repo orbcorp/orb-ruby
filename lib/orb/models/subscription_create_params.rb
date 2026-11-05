@@ -3654,14 +3654,22 @@ module Orb
         #   @return [String, nil]
         optional :external_price_id, String, nil?: true
 
+        # @!attribute plan_phase_order
+        #   The phase to remove this price from.
+        #
+        #   @return [Integer, nil]
+        optional :plan_phase_order, Integer, nil?: true
+
         # @!attribute price_id
         #   The id of the price to remove on the subscription.
         #
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
-        # @!method initialize(external_price_id: nil, price_id: nil)
+        # @!method initialize(external_price_id: nil, plan_phase_order: nil, price_id: nil)
         #   @param external_price_id [String, nil] The external price id of the price to remove on the subscription.
+        #
+        #   @param plan_phase_order [Integer, nil] The phase to remove this price from.
         #
         #   @param price_id [String, nil] The id of the price to remove on the subscription.
       end
@@ -3975,6 +3983,12 @@ module Orb
         #   @return [String, nil]
         optional :minimum_amount, String, nil?: true
 
+        # @!attribute plan_phase_order
+        #   The phase to replace this price in.
+        #
+        #   @return [Integer, nil]
+        optional :plan_phase_order, Integer, nil?: true
+
         # @!attribute price
         #   New subscription price request body params.
         #
@@ -3987,7 +4001,7 @@ module Orb
         #   @return [String, nil]
         optional :price_id, String, nil?: true
 
-        # @!method initialize(replaces_price_id:, allocation_price: nil, discounts: nil, external_price_id: nil, fixed_price_quantity: nil, maximum_amount: nil, metric_parameter_overrides: nil, minimum_amount: nil, price: nil, price_id: nil)
+        # @!method initialize(replaces_price_id:, allocation_price: nil, discounts: nil, external_price_id: nil, fixed_price_quantity: nil, maximum_amount: nil, metric_parameter_overrides: nil, minimum_amount: nil, plan_phase_order: nil, price: nil, price_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::SubscriptionCreateParams::ReplacePrice} for more details.
         #
@@ -4006,6 +4020,8 @@ module Orb
         #   @param metric_parameter_overrides [Hash{Symbol=>Object}, nil] Override values for parameterized billable metric variables. Keys are parameter
         #
         #   @param minimum_amount [String, nil] [DEPRECATED] Use add_adjustments instead. The subscription's minimum amount for
+        #
+        #   @param plan_phase_order [Integer, nil] The phase to replace this price in.
         #
         #   @param price [Orb::Models::NewSubscriptionUnitPrice, Orb::Models::NewSubscriptionTieredPrice, Orb::Models::NewSubscriptionBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::BulkWithFilters, Orb::Models::NewSubscriptionPackagePrice, Orb::Models::NewSubscriptionMatrixPrice, Orb::Models::NewSubscriptionThresholdTotalAmountPrice, Orb::Models::NewSubscriptionTieredPackagePrice, Orb::Models::NewSubscriptionTieredWithMinimumPrice, Orb::Models::NewSubscriptionGroupedTieredPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedTieredMatrix, Orb::Models::NewSubscriptionTieredPackageWithMinimumPrice, Orb::Models::NewSubscriptionPackageWithAllocationPrice, Orb::Models::NewSubscriptionUnitWithPercentPrice, Orb::Models::NewSubscriptionMatrixWithAllocationPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredMatrixWithAllocation, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::MatrixWithThresholdDiscounts, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::TieredWithProration, Orb::Models::NewSubscriptionUnitWithProrationPrice, Orb::Models::NewSubscriptionGroupedAllocationPrice, Orb::Models::NewSubscriptionBulkWithProrationPrice, Orb::Models::NewSubscriptionGroupedWithProratedMinimumPrice, Orb::Models::NewSubscriptionGroupedWithMeteredMinimumPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::GroupedWithMinMaxThresholds, Orb::Models::NewSubscriptionMatrixWithDisplayNamePrice, Orb::Models::NewSubscriptionGroupedTieredPackagePrice, Orb::Models::NewSubscriptionMaxGroupTieredPackagePrice, Orb::Models::NewSubscriptionScalableMatrixWithUnitPricingPrice, Orb::Models::NewSubscriptionScalableMatrixWithTieredPricingPrice, Orb::Models::NewSubscriptionCumulativeGroupedBulkPrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::CumulativeGroupedAllocation, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::DailyCreditAllowance, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::MeteredAllowance, Orb::Models::NewSubscriptionMinimumCompositePrice, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::Percent, Orb::Models::SubscriptionCreateParams::ReplacePrice::Price::EventOutput, nil] New subscription price request body params.
         #
