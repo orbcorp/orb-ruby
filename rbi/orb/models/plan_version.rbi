@@ -79,7 +79,8 @@ module Orb
                 Orb::Price::MeteredAllowance::OrHash,
                 Orb::Price::MinimumComposite::OrHash,
                 Orb::Price::Percent::OrHash,
-                Orb::Price::EventOutput::OrHash
+                Orb::Price::EventOutput::OrHash,
+                Orb::Price::UnitWithMultiplier::OrHash
               )
             ],
           version: Integer

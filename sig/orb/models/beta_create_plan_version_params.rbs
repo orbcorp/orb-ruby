@@ -495,6 +495,7 @@ module Orb
           | Orb::NewPlanMinimumCompositePrice
           | Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent
           | Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput
+          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
 
         module Price
           extend Orb::Internal::Type::Union
@@ -2442,6 +2443,166 @@ module Orb
             end
           end
 
+          type unit_with_multiplier =
+            {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
+              item_id: String,
+              model_type: :unit_with_multiplier,
+              name: String,
+              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class UnitWithMultiplier < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :unit_with_multiplier
+
+            attr_accessor name: String
+
+            attr_accessor unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
+              item_id: String,
+              name: String,
+              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :unit_with_multiplier
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
+              item_id: String,
+              model_type: :unit_with_multiplier,
+              name: String,
+              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :one_time
+              | :monthly
+              | :quarterly
+              | :semi_annual
+              | :annual
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ONE_TIME: :one_time
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence]
+            end
+
+            type unit_with_multiplier_config =
+              {
+                default_display_name: String,
+                display_name_key: String,
+                multiplier_key: String,
+                unit_amount: String
+              }
+
+            class UnitWithMultiplierConfig < Orb::Internal::Type::BaseModel
+              attr_accessor default_display_name: String
+
+              attr_accessor display_name_key: String
+
+              attr_accessor multiplier_key: String
+
+              attr_accessor unit_amount: String
+
+              def initialize: (
+                default_display_name: String,
+                display_name_key: String,
+                multiplier_key: String,
+                unit_amount: String
+              ) -> void
+
+              def to_hash: -> {
+                default_display_name: String,
+                display_name_key: String,
+                multiplier_key: String,
+                unit_amount: String
+              }
+            end
+          end
+
           def self?.variants: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::price]
         end
       end
@@ -2917,6 +3078,7 @@ module Orb
           | Orb::NewPlanMinimumCompositePrice
           | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent
           | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput
+          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
 
         module Price
           extend Orb::Internal::Type::Union
@@ -4860,6 +5022,166 @@ module Orb
                 unit_rating_key: String,
                 default_unit_rate: String?,
                 grouping_key: String?
+              }
+            end
+          end
+
+          type unit_with_multiplier =
+            {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
+              item_id: String,
+              model_type: :unit_with_multiplier,
+              name: String,
+              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+          class UnitWithMultiplier < Orb::Internal::Type::BaseModel
+            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence
+
+            attr_accessor item_id: String
+
+            attr_accessor model_type: :unit_with_multiplier
+
+            attr_accessor name: String
+
+            attr_accessor unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
+
+            attr_accessor billable_metric_id: String?
+
+            attr_accessor billed_in_advance: bool?
+
+            attr_accessor billing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor conversion_rate: Float?
+
+            attr_accessor conversion_rate_config: Orb::Models::conversion_rate_config?
+
+            attr_accessor currency: String?
+
+            attr_accessor dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?
+
+            attr_accessor external_price_id: String?
+
+            attr_accessor fixed_price_quantity: Float?
+
+            attr_accessor invoice_grouping_key: String?
+
+            attr_accessor invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?
+
+            attr_accessor license_type_id: String?
+
+            attr_accessor metadata: ::Hash[Symbol, String?]?
+
+            attr_accessor reference_id: String?
+
+            def initialize: (
+              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
+              item_id: String,
+              name: String,
+              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              ?billable_metric_id: String?,
+              ?billed_in_advance: bool?,
+              ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?conversion_rate: Float?,
+              ?conversion_rate_config: Orb::Models::conversion_rate_config?,
+              ?currency: String?,
+              ?dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              ?external_price_id: String?,
+              ?fixed_price_quantity: Float?,
+              ?invoice_grouping_key: String?,
+              ?invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              ?license_type_id: String?,
+              ?metadata: ::Hash[Symbol, String?]?,
+              ?reference_id: String?,
+              ?model_type: :unit_with_multiplier
+            ) -> void
+
+            def to_hash: -> {
+              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
+              item_id: String,
+              model_type: :unit_with_multiplier,
+              name: String,
+              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              billable_metric_id: String?,
+              billed_in_advance: bool?,
+              billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              conversion_rate: Float?,
+              conversion_rate_config: Orb::Models::conversion_rate_config?,
+              currency: String?,
+              dimensional_price_configuration: Orb::NewDimensionalPriceConfiguration?,
+              external_price_id: String?,
+              fixed_price_quantity: Float?,
+              invoice_grouping_key: String?,
+              invoicing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
+              license_type_id: String?,
+              metadata: ::Hash[Symbol, String?]?,
+              reference_id: String?
+            }
+
+            type cadence =
+              :one_time
+              | :monthly
+              | :quarterly
+              | :semi_annual
+              | :annual
+              | :custom
+
+            module Cadence
+              extend Orb::Internal::Type::Enum
+
+              ONE_TIME: :one_time
+              MONTHLY: :monthly
+              QUARTERLY: :quarterly
+              SEMI_ANNUAL: :semi_annual
+              ANNUAL: :annual
+              CUSTOM: :custom
+
+              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence]
+            end
+
+            type unit_with_multiplier_config =
+              {
+                default_display_name: String,
+                display_name_key: String,
+                multiplier_key: String,
+                unit_amount: String
+              }
+
+            class UnitWithMultiplierConfig < Orb::Internal::Type::BaseModel
+              attr_accessor default_display_name: String
+
+              attr_accessor display_name_key: String
+
+              attr_accessor multiplier_key: String
+
+              attr_accessor unit_amount: String
+
+              def initialize: (
+                default_display_name: String,
+                display_name_key: String,
+                multiplier_key: String,
+                unit_amount: String
+              ) -> void
+
+              def to_hash: -> {
+                default_display_name: String,
+                display_name_key: String,
+                multiplier_key: String,
+                unit_amount: String
               }
             end
           end

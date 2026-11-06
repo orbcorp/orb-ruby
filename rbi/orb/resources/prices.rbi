@@ -75,7 +75,8 @@ module Orb
               Orb::PriceCreateParams::Body::MeteredAllowance::OrHash,
               Orb::NewFloatingMinimumCompositePrice::OrHash,
               Orb::PriceCreateParams::Body::Percent::OrHash,
-              Orb::PriceCreateParams::Body::EventOutput::OrHash
+              Orb::PriceCreateParams::Body::EventOutput::OrHash,
+              Orb::PriceCreateParams::Body::UnitWithMultiplier::OrHash
             ),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Price::Variants)

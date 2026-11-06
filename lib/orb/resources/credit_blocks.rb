@@ -6,7 +6,7 @@ module Orb
     # credits within Orb.
     class CreditBlocks
       # This endpoint returns a credit block identified by its block_id. A deleted
-      # credit block is returned with a `status` of `void` and a `balance` of 0.
+      # credit block is returned with a `status` of `deleted` and a `balance` of 0.
       #
       # @overload retrieve(block_id, request_options: {})
       #

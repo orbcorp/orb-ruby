@@ -216,14 +216,14 @@ module Orb
               end
             end
 
-            type status = :active | :pending_payment | :void
+            type status = :active | :pending_payment | :deleted
 
             module Status
               extend Orb::Internal::Type::Enum
 
               ACTIVE: :active
               PENDING_PAYMENT: :pending_payment
-              VOID: :void
+              DELETED: :deleted
 
               def self?.values: -> ::Array[Orb::Models::Webhooks::CustomerCreditLedgerIncrementedStandardWebhookEvent::Properties::Block::status]
             end

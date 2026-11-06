@@ -298,7 +298,7 @@ module Orb
           sig { returns(T.nilable(String)) }
           attr_accessor :per_unit_cost_basis
 
-          # `void` means the credit block was deleted. A voided block's `balance` is
+          # A deleted credit block keeps its historical fields, and its `balance` is
           # always 0.
           sig do
             returns(
@@ -396,7 +396,7 @@ module Orb
             # `null`.
             metadata:,
             per_unit_cost_basis:,
-            # `void` means the credit block was deleted. A voided block's `balance` is
+            # A deleted credit block keeps its historical fields, and its `balance` is
             # always 0.
             status:,
             # The credit allocation that funded a block. Extends the allocation resource
@@ -637,7 +637,7 @@ module Orb
             end
           end
 
-          # `void` means the credit block was deleted. A voided block's `balance` is
+          # A deleted credit block keeps its historical fields, and its `balance` is
           # always 0.
           module Status
             extend Orb::Internal::Type::Enum
@@ -661,9 +661,9 @@ module Orb
                 :pending_payment,
                 Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Status::TaggedSymbol
               )
-            VOID =
+            DELETED =
               T.let(
-                :void,
+                :deleted,
                 Orb::CustomerCreditLedgerIncrementedWebhookEvent::Properties::Block::Status::TaggedSymbol
               )
 

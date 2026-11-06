@@ -91,7 +91,8 @@ module Orb
               Orb::Price::MeteredAllowance::OrHash,
               Orb::Price::MinimumComposite::OrHash,
               Orb::Price::Percent::OrHash,
-              Orb::Price::EventOutput::OrHash
+              Orb::Price::EventOutput::OrHash,
+              Orb::Price::UnitWithMultiplier::OrHash
             ),
           properties: Orb::PriceEditedWebhookEvent::Properties::OrHash,
           type: Orb::PriceEditedWebhookEvent::Type::OrSymbol
