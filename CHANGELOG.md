@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.54.0](https://github.com/orbcorp/orb-ruby/compare/v1.53.0...v1.54.0) (2026-11-06)
+
+
+### Features
+
+* **api:** add plan migration started, completed, and canceled webhooks ([9616c3b](https://github.com/orbcorp/orb-ruby/commit/9616c3be737b19de232b98199cba7f4c8a02d893))
+* **api:** add started_at and ended_at to plan migration resource ([9616c3b](https://github.com/orbcorp/orb-ruby/commit/9616c3be737b19de232b98199cba7f4c8a02d893))
+* **api:** api update ([9616c3b](https://github.com/orbcorp/orb-ruby/commit/9616c3be737b19de232b98199cba7f4c8a02d893))
+
 ## [1.53.0](https://github.com/orbcorp/orb-ruby/compare/v1.52.0...v1.53.0) (2026-11-04)
 
 
