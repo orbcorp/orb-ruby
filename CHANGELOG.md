@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.55.0](https://github.com/orbcorp/orb-ruby/compare/v1.54.0...v1.55.0) (2026-11-07)
+
+
+### Features
+
+* **api:** api update ([20bbdeb](https://github.com/orbcorp/orb-ruby/commit/20bbdeb7d23a6e41d948f4b6b1f35b9b97f61395))
+* **api:** credit block status `void` renamed to `deleted` for deleted blocks ([20bbdeb](https://github.com/orbcorp/orb-ruby/commit/20bbdeb7d23a6e41d948f4b6b1f35b9b97f61395))
+
 ## [1.54.0](https://github.com/orbcorp/orb-ruby/compare/v1.53.0...v1.54.0) (2026-11-06)
 
 
