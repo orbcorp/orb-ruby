@@ -17,7 +17,8 @@ class Orb::Test::Resources::Plans::MigrationsTest < Orb::Test::ResourceTest
         ended_at: Time | nil,
         plan_id: String,
         started_at: Time | nil,
-        status: Orb::Models::Plans::MigrationRetrieveResponse::Status
+        status: Orb::Models::Plans::MigrationRetrieveResponse::Status,
+        target_plan_version_number: Integer
       }
     end
   end
@@ -43,7 +44,8 @@ class Orb::Test::Resources::Plans::MigrationsTest < Orb::Test::ResourceTest
         ended_at: Time | nil,
         plan_id: String,
         started_at: Time | nil,
-        status: Orb::Models::Plans::MigrationListResponse::Status
+        status: Orb::Models::Plans::MigrationListResponse::Status,
+        target_plan_version_number: Integer
       }
     end
   end
@@ -62,7 +64,8 @@ class Orb::Test::Resources::Plans::MigrationsTest < Orb::Test::ResourceTest
         ended_at: Time | nil,
         plan_id: String,
         started_at: Time | nil,
-        status: Orb::Models::Plans::MigrationCancelResponse::Status
+        status: Orb::Models::Plans::MigrationCancelResponse::Status,
+        target_plan_version_number: Integer
       }
     end
   end

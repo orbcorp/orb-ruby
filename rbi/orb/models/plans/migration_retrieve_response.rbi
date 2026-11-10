@@ -16,9 +16,10 @@ module Orb
         sig { returns(String) }
         attr_accessor :id
 
-        # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
-        # scheduled to be at the end of the current billing period, or 'end_of_invoice'
-        # when scheduled to be at the start of the next invoice.
+        # When the migration takes effect. Can be a specific date/time, 'start_of_term' or
+        # 'end_of_term' when scheduled to be at the start or end of the current billing
+        # period, or 'start_of_invoice' or 'end_of_invoice' when scheduled to be at the
+        # start of the current or next invoice.
         sig do
           returns(
             T.nilable(
@@ -51,6 +52,10 @@ module Orb
         end
         attr_accessor :status
 
+        # The plan version subscriptions are migrated to.
+        sig { returns(Integer) }
+        attr_accessor :target_plan_version_number
+
         sig do
           params(
             id: String,
@@ -66,15 +71,17 @@ module Orb
             plan_id: String,
             started_at: T.nilable(Time),
             status:
-              Orb::Models::Plans::MigrationRetrieveResponse::Status::OrSymbol
+              Orb::Models::Plans::MigrationRetrieveResponse::Status::OrSymbol,
+            target_plan_version_number: Integer
           ).returns(T.attached_class)
         end
         def self.new(
           # Unique identifier for this plan version change.
           id:,
-          # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
-          # scheduled to be at the end of the current billing period, or 'end_of_invoice'
-          # when scheduled to be at the start of the next invoice.
+          # When the migration takes effect. Can be a specific date/time, 'start_of_term' or
+          # 'end_of_term' when scheduled to be at the start or end of the current billing
+          # period, or 'start_of_invoice' or 'end_of_invoice' when scheduled to be at the
+          # start of the current or next invoice.
           effective_time:,
           # When the migration completed or was canceled, or null if it is still in
           # progress.
@@ -86,7 +93,9 @@ module Orb
           started_at:,
           # Current status of the migration: 'not_started', 'in_progress', 'completed',
           # 'action_needed', or 'canceled'.
-          status:
+          status:,
+          # The plan version subscriptions are migrated to.
+          target_plan_version_number:
         )
         end
 
@@ -102,16 +111,18 @@ module Orb
               plan_id: String,
               started_at: T.nilable(Time),
               status:
-                Orb::Models::Plans::MigrationRetrieveResponse::Status::TaggedSymbol
+                Orb::Models::Plans::MigrationRetrieveResponse::Status::TaggedSymbol,
+              target_plan_version_number: Integer
             }
           )
         end
         def to_hash
         end
 
-        # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
-        # scheduled to be at the end of the current billing period, or 'end_of_invoice'
-        # when scheduled to be at the start of the next invoice.
+        # When the migration takes effect. Can be a specific date/time, 'start_of_term' or
+        # 'end_of_term' when scheduled to be at the start or end of the current billing
+        # period, or 'start_of_invoice' or 'end_of_invoice' when scheduled to be at the
+        # start of the current or next invoice.
         module EffectiveTime
           extend Orb::Internal::Type::Union
 
@@ -143,9 +154,19 @@ module Orb
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+          START_OF_TERM =
+            T.let(
+              :start_of_term,
+              Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime::TaggedSymbol
+            )
           END_OF_TERM =
             T.let(
               :end_of_term,
+              Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime::TaggedSymbol
+            )
+          START_OF_INVOICE =
+            T.let(
+              :start_of_invoice,
               Orb::Models::Plans::MigrationRetrieveResponse::EffectiveTime::TaggedSymbol
             )
           END_OF_INVOICE =

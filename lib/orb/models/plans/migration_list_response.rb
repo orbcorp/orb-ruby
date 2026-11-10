@@ -12,9 +12,10 @@ module Orb
         required :id, String
 
         # @!attribute effective_time
-        #   When the migration takes effect. Can be a specific date/time, 'end_of_term' when
-        #   scheduled to be at the end of the current billing period, or 'end_of_invoice'
-        #   when scheduled to be at the start of the next invoice.
+        #   When the migration takes effect. Can be a specific date/time, 'start_of_term' or
+        #   'end_of_term' when scheduled to be at the start or end of the current billing
+        #   period, or 'start_of_invoice' or 'end_of_invoice' when scheduled to be at the
+        #   start of the current or next invoice.
         #
         #   @return [Date, Time, Symbol, Orb::Models::Plans::MigrationListResponse::EffectiveTime, nil]
         required :effective_time,
@@ -48,13 +49,19 @@ module Orb
         #   @return [Symbol, Orb::Models::Plans::MigrationListResponse::Status]
         required :status, enum: -> { Orb::Models::Plans::MigrationListResponse::Status }
 
-        # @!method initialize(id:, effective_time:, ended_at:, plan_id:, started_at:, status:)
+        # @!attribute target_plan_version_number
+        #   The plan version subscriptions are migrated to.
+        #
+        #   @return [Integer]
+        required :target_plan_version_number, Integer
+
+        # @!method initialize(id:, effective_time:, ended_at:, plan_id:, started_at:, status:, target_plan_version_number:)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plans::MigrationListResponse} for more details.
         #
         #   @param id [String] Unique identifier for this plan version change.
         #
-        #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationListResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, 'end_of_term' when
+        #   @param effective_time [Date, Time, Symbol, Orb::Models::Plans::MigrationListResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, 'start_of_term' or
         #
         #   @param ended_at [Time, nil] When the migration completed or was canceled, or null if it is still in progress
         #
@@ -63,10 +70,13 @@ module Orb
         #   @param started_at [Time, nil] When Orb began migrating the plan's subscriptions. Null if the migration has not
         #
         #   @param status [Symbol, Orb::Models::Plans::MigrationListResponse::Status] Current status of the migration: 'not_started', 'in_progress', 'completed', 'act
+        #
+        #   @param target_plan_version_number [Integer] The plan version subscriptions are migrated to.
 
-        # When the migration takes effect. Can be a specific date/time, 'end_of_term' when
-        # scheduled to be at the end of the current billing period, or 'end_of_invoice'
-        # when scheduled to be at the start of the next invoice.
+        # When the migration takes effect. Can be a specific date/time, 'start_of_term' or
+        # 'end_of_term' when scheduled to be at the start or end of the current billing
+        # period, or 'start_of_invoice' or 'end_of_invoice' when scheduled to be at the
+        # start of the current or next invoice.
         #
         # @see Orb::Models::Plans::MigrationListResponse#effective_time
         module EffectiveTime
@@ -76,7 +86,11 @@ module Orb
 
           variant Time
 
+          variant const: -> { Orb::Models::Plans::MigrationListResponse::EffectiveTime::START_OF_TERM }
+
           variant const: -> { Orb::Models::Plans::MigrationListResponse::EffectiveTime::END_OF_TERM }
+
+          variant const: -> { Orb::Models::Plans::MigrationListResponse::EffectiveTime::START_OF_INVOICE }
 
           variant const: -> { Orb::Models::Plans::MigrationListResponse::EffectiveTime::END_OF_INVOICE }
 
@@ -89,7 +103,9 @@ module Orb
 
           # @!group
 
+          START_OF_TERM = :start_of_term
           END_OF_TERM = :end_of_term
+          START_OF_INVOICE = :start_of_invoice
           END_OF_INVOICE = :end_of_invoice
 
           # @!endgroup

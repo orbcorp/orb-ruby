@@ -8,7 +8,8 @@ module Orb
           ended_at: Time?,
           plan_id: String,
           started_at: Time?,
-          status: Orb::Models::Plans::MigrationListResponse::status
+          status: Orb::Models::Plans::MigrationListResponse::status,
+          target_plan_version_number: Integer
         }
 
       class MigrationListResponse < Orb::Internal::Type::BaseModel
@@ -24,13 +25,16 @@ module Orb
 
         attr_accessor status: Orb::Models::Plans::MigrationListResponse::status
 
+        attr_accessor target_plan_version_number: Integer
+
         def initialize: (
           id: String,
           effective_time: Orb::Models::Plans::MigrationListResponse::effective_time?,
           ended_at: Time?,
           plan_id: String,
           started_at: Time?,
-          status: Orb::Models::Plans::MigrationListResponse::status
+          status: Orb::Models::Plans::MigrationListResponse::status,
+          target_plan_version_number: Integer
         ) -> void
 
         def to_hash: -> {
@@ -39,17 +43,26 @@ module Orb
           ended_at: Time?,
           plan_id: String,
           started_at: Time?,
-          status: Orb::Models::Plans::MigrationListResponse::status
+          status: Orb::Models::Plans::MigrationListResponse::status,
+          target_plan_version_number: Integer
         }
 
-        type effective_time = Date | Time | :end_of_term | :end_of_invoice
+        type effective_time =
+          Date
+          | Time
+          | :start_of_term
+          | :end_of_term
+          | :start_of_invoice
+          | :end_of_invoice
 
         module EffectiveTime
           extend Orb::Internal::Type::Union
 
           def self?.variants: -> ::Array[Orb::Models::Plans::MigrationListResponse::effective_time]
 
+          START_OF_TERM: :start_of_term
           END_OF_TERM: :end_of_term
+          START_OF_INVOICE: :start_of_invoice
           END_OF_INVOICE: :end_of_invoice
         end
 
