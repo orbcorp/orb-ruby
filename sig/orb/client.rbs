@@ -38,6 +38,8 @@ module Orb
 
     attr_reader plans: Orb::Resources::Plans
 
+    attr_reader migrations: Orb::Resources::Migrations
+
     attr_reader prices: Orb::Resources::Prices
 
     attr_reader subscriptions: Orb::Resources::Subscriptions

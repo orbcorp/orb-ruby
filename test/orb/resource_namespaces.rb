@@ -26,6 +26,9 @@ module Orb
       module Licenses
       end
 
+      module Migrations
+      end
+
       module Plans
       end
 

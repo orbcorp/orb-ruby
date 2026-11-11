@@ -1,0 +1,9 @@
+module Orb
+  module Resources
+    class Migrations
+      class Subscriptions
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

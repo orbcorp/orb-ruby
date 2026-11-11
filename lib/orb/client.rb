@@ -114,6 +114,9 @@ module Orb
     # @return [Orb::Resources::Plans]
     attr_reader :plans
 
+    # @return [Orb::Resources::Migrations]
+    attr_reader :migrations
+
     # The Price resource represents a price that can be billed on a subscription,
     # resulting in a charge on an invoice in the form of an invoice line item. Prices
     # take a quantity and determine an amount to bill.
@@ -240,6 +243,7 @@ module Orb
       @webhook_endpoints = Orb::Resources::WebhookEndpoints.new(client: self)
       @metrics = Orb::Resources::Metrics.new(client: self)
       @plans = Orb::Resources::Plans.new(client: self)
+      @migrations = Orb::Resources::Migrations.new(client: self)
       @prices = Orb::Resources::Prices.new(client: self)
       @subscriptions = Orb::Resources::Subscriptions.new(client: self)
       @alerts = Orb::Resources::Alerts.new(client: self)

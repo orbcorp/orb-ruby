@@ -109,6 +109,9 @@ module Orb
     sig { returns(Orb::Resources::Plans) }
     attr_reader :plans
 
+    sig { returns(Orb::Resources::Migrations) }
+    attr_reader :migrations
+
     # The Price resource represents a price that can be billed on a subscription,
     # resulting in a charge on an invoice in the form of an invoice line item. Prices
     # take a quantity and determine an amount to bill.

@@ -1,0 +1,9 @@
+module Orb
+  module Resources
+    class Migrations
+      attr_reader subscriptions: Orb::Resources::Migrations::Subscriptions
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end
