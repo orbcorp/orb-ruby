@@ -1,0 +1,126 @@
+module Orb
+  module Models
+    type migration_create_params =
+      {
+        effective_time: Orb::Models::MigrationCreateParams::effective_time,
+        target_plan_version_number: Integer,
+        allow_invoice_credit_or_void: bool,
+        can_defer_billing: bool,
+        effective_date: Date?,
+        excluded_subscription_ids: ::Array[String]?,
+        external_plan_id: String?,
+        in_trial: bool?,
+        included_subscription_ids: ::Array[String]?,
+        plan_id: String?,
+        plan_version_numbers: ::Array[Integer]?,
+        reason: String?,
+        statuses: ::Array[Orb::Models::MigrationCreateParams::status]
+      }
+      & Orb::Internal::Type::request_parameters
+
+    class MigrationCreateParams < Orb::Internal::Type::BaseModel
+      extend Orb::Internal::Type::RequestParameters::Converter
+      include Orb::Internal::Type::RequestParameters
+
+      attr_accessor effective_time: Orb::Models::MigrationCreateParams::effective_time
+
+      attr_accessor target_plan_version_number: Integer
+
+      attr_reader allow_invoice_credit_or_void: bool?
+
+      def allow_invoice_credit_or_void=: (bool) -> bool
+
+      attr_reader can_defer_billing: bool?
+
+      def can_defer_billing=: (bool) -> bool
+
+      attr_accessor effective_date: Date?
+
+      attr_accessor excluded_subscription_ids: ::Array[String]?
+
+      attr_accessor external_plan_id: String?
+
+      attr_accessor in_trial: bool?
+
+      attr_accessor included_subscription_ids: ::Array[String]?
+
+      attr_accessor plan_id: String?
+
+      attr_accessor plan_version_numbers: ::Array[Integer]?
+
+      attr_accessor reason: String?
+
+      attr_reader statuses: ::Array[Orb::Models::MigrationCreateParams::status]?
+
+      def statuses=: (
+        ::Array[Orb::Models::MigrationCreateParams::status]
+      ) -> ::Array[Orb::Models::MigrationCreateParams::status]
+
+      def initialize: (
+        effective_time: Orb::Models::MigrationCreateParams::effective_time,
+        target_plan_version_number: Integer,
+        ?allow_invoice_credit_or_void: bool,
+        ?can_defer_billing: bool,
+        ?effective_date: Date?,
+        ?excluded_subscription_ids: ::Array[String]?,
+        ?external_plan_id: String?,
+        ?in_trial: bool?,
+        ?included_subscription_ids: ::Array[String]?,
+        ?plan_id: String?,
+        ?plan_version_numbers: ::Array[Integer]?,
+        ?reason: String?,
+        ?statuses: ::Array[Orb::Models::MigrationCreateParams::status],
+        ?request_options: Orb::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        effective_time: Orb::Models::MigrationCreateParams::effective_time,
+        target_plan_version_number: Integer,
+        allow_invoice_credit_or_void: bool,
+        can_defer_billing: bool,
+        effective_date: Date?,
+        excluded_subscription_ids: ::Array[String]?,
+        external_plan_id: String?,
+        in_trial: bool?,
+        included_subscription_ids: ::Array[String]?,
+        plan_id: String?,
+        plan_version_numbers: ::Array[Integer]?,
+        reason: String?,
+        statuses: ::Array[Orb::Models::MigrationCreateParams::status],
+        request_options: Orb::RequestOptions
+      }
+
+      type effective_time =
+        :immediately
+        | :requested_date
+        | :start_of_term
+        | :end_of_term
+        | :start_of_invoice
+        | :end_of_invoice
+
+      module EffectiveTime
+        extend Orb::Internal::Type::Enum
+
+        IMMEDIATELY: :immediately
+        REQUESTED_DATE: :requested_date
+        START_OF_TERM: :start_of_term
+        END_OF_TERM: :end_of_term
+        START_OF_INVOICE: :start_of_invoice
+        END_OF_INVOICE: :end_of_invoice
+
+        def self?.values: -> ::Array[Orb::Models::MigrationCreateParams::effective_time]
+      end
+
+      type status = :active | :upcoming
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        ACTIVE: :active
+        UPCOMING: :upcoming
+
+        def self?.values: -> ::Array[Orb::Models::MigrationCreateParams::status]
+      end
+    end
+  end
+end

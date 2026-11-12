@@ -3,6 +3,41 @@ module Orb
     class Migrations
       attr_reader subscriptions: Orb::Resources::Migrations::Subscriptions
 
+      def create: (
+        effective_time: Orb::Models::MigrationCreateParams::effective_time,
+        target_plan_version_number: Integer,
+        ?allow_invoice_credit_or_void: bool,
+        ?can_defer_billing: bool,
+        ?effective_date: Date?,
+        ?excluded_subscription_ids: ::Array[String]?,
+        ?external_plan_id: String?,
+        ?in_trial: bool?,
+        ?included_subscription_ids: ::Array[String]?,
+        ?plan_id: String?,
+        ?plan_version_numbers: ::Array[Integer]?,
+        ?reason: String?,
+        ?statuses: ::Array[Orb::Models::MigrationCreateParams::status],
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::MigrationCreateResponse
+
+      def retrieve: (
+        String migration_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::MigrationRetrieveResponse
+
+      def list: (
+        ?cursor: String?,
+        ?external_plan_id: String?,
+        ?limit: Integer,
+        ?plan_id: String?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Internal::Page[Orb::Models::MigrationListResponse]
+
+      def cancel: (
+        String migration_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Models::MigrationCancelResponse
+
       def initialize: (client: Orb::Client) -> void
     end
   end

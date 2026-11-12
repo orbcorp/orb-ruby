@@ -1,0 +1,64 @@
+module Orb
+  module Models
+    module Migrations
+      type subscription_list_params =
+        {
+          migration_id: String,
+          cursor: String?,
+          limit: Integer,
+          status: ::Array[Orb::Models::Migrations::SubscriptionListParams::status]?,
+          subscription_id: ::Array[String]?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class SubscriptionListParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor migration_id: String
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_accessor status: ::Array[Orb::Models::Migrations::SubscriptionListParams::status]?
+
+        attr_accessor subscription_id: ::Array[String]?
+
+        def initialize: (
+          migration_id: String,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?status: ::Array[Orb::Models::Migrations::SubscriptionListParams::status]?,
+          ?subscription_id: ::Array[String]?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          migration_id: String,
+          cursor: String?,
+          limit: Integer,
+          status: ::Array[Orb::Models::Migrations::SubscriptionListParams::status]?,
+          subscription_id: ::Array[String]?,
+          request_options: Orb::RequestOptions
+        }
+
+        type status = :scheduling | :scheduled | :completed | :skipped | :failed
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          SCHEDULING: :scheduling
+          SCHEDULED: :scheduled
+          COMPLETED: :completed
+          SKIPPED: :skipped
+          FAILED: :failed
+
+          def self?.values: -> ::Array[Orb::Models::Migrations::SubscriptionListParams::status]
+        end
+      end
+    end
+  end
+end

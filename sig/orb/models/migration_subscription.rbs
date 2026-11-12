@@ -1,0 +1,54 @@
+module Orb
+  module Models
+    type migration_subscription =
+      {
+        customer: Orb::CustomerMinified,
+        effective_date: Time?,
+        failure_reason: String?,
+        status: Orb::Models::MigrationSubscription::status,
+        subscription_id: String
+      }
+
+    class MigrationSubscription < Orb::Internal::Type::BaseModel
+      attr_accessor customer: Orb::CustomerMinified
+
+      attr_accessor effective_date: Time?
+
+      attr_accessor failure_reason: String?
+
+      attr_accessor status: Orb::Models::MigrationSubscription::status
+
+      attr_accessor subscription_id: String
+
+      def initialize: (
+        customer: Orb::CustomerMinified,
+        effective_date: Time?,
+        failure_reason: String?,
+        status: Orb::Models::MigrationSubscription::status,
+        subscription_id: String
+      ) -> void
+
+      def to_hash: -> {
+        customer: Orb::CustomerMinified,
+        effective_date: Time?,
+        failure_reason: String?,
+        status: Orb::Models::MigrationSubscription::status,
+        subscription_id: String
+      }
+
+      type status = :scheduling | :scheduled | :completed | :skipped | :failed
+
+      module Status
+        extend Orb::Internal::Type::Enum
+
+        SCHEDULING: :scheduling
+        SCHEDULED: :scheduled
+        COMPLETED: :completed
+        SKIPPED: :skipped
+        FAILED: :failed
+
+        def self?.values: -> ::Array[Orb::Models::MigrationSubscription::status]
+      end
+    end
+  end
+end

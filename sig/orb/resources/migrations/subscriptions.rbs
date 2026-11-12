@@ -2,6 +2,15 @@ module Orb
   module Resources
     class Migrations
       class Subscriptions
+        def list: (
+          String migration_id,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?status: ::Array[Orb::Models::Migrations::SubscriptionListParams::status]?,
+          ?subscription_id: ::Array[String]?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Internal::Page[Orb::MigrationSubscription]
+
         def initialize: (client: Orb::Client) -> void
       end
     end

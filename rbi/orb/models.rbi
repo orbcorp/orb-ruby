@@ -411,6 +411,18 @@ module Orb
 
   MetricUpdateParams = Orb::Models::MetricUpdateParams
 
+  MigrationCancelParams = Orb::Models::MigrationCancelParams
+
+  MigrationCreateParams = Orb::Models::MigrationCreateParams
+
+  MigrationListParams = Orb::Models::MigrationListParams
+
+  MigrationRetrieveParams = Orb::Models::MigrationRetrieveParams
+
+  Migrations = Orb::Models::Migrations
+
+  MigrationSubscription = Orb::Models::MigrationSubscription
+
   Minimum = Orb::Models::Minimum
 
   MinimumInterval = Orb::Models::MinimumInterval
