@@ -16,8 +16,9 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :description
 
-      # The id of the item to associate the metric with. Can only be changed while the
-      # metric is in `draft` status.
+      # The id of the item to associate the metric with. Prices created on the metric
+      # afterwards use the new item; existing prices keep the item they were created
+      # with.
       sig { returns(T.nilable(String)) }
       attr_accessor :item_id
 
@@ -52,8 +53,9 @@ module Orb
         metric_id:,
         # A description of the metric.
         description: nil,
-        # The id of the item to associate the metric with. Can only be changed while the
-        # metric is in `draft` status.
+        # The id of the item to associate the metric with. Prices created on the metric
+        # afterwards use the new item; existing prices keep the item they were created
+        # with.
         item_id: nil,
         # User-specified key/value pairs for the resource. Individual keys can be removed
         # by setting the value to `null`, and the entire metadata mapping can be cleared

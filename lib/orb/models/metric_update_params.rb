@@ -19,8 +19,9 @@ module Orb
       optional :description, String, nil?: true
 
       # @!attribute item_id
-      #   The id of the item to associate the metric with. Can only be changed while the
-      #   metric is in `draft` status.
+      #   The id of the item to associate the metric with. Prices created on the metric
+      #   afterwards use the new item; existing prices keep the item they were created
+      #   with.
       #
       #   @return [String, nil]
       optional :item_id, String, nil?: true
@@ -55,7 +56,7 @@ module Orb
       #
       #   @param description [String, nil] A description of the metric.
       #
-      #   @param item_id [String, nil] The id of the item to associate the metric with. Can only be changed while the m
+      #   @param item_id [String, nil] The id of the item to associate the metric with. Prices created on the metric af
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
