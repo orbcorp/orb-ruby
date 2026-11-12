@@ -56,6 +56,10 @@ module Orb
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MigrationRetrieveResponse} for more details.
       #
+      #   A migration moves a plan's subscriptions onto one of the plan's versions. Each
+      #   subscription is migrated asynchronously, either immediately or at a scheduled
+      #   time, and the migration reports its overall status as it progresses.
+      #
       #   @param id [String] Unique identifier for this plan version change.
       #
       #   @param effective_time [Date, Time, Symbol, Orb::Models::MigrationRetrieveResponse::EffectiveTime, nil] When the migration takes effect. Can be a specific date/time, 'start_of_term' or
