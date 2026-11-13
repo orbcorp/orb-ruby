@@ -51,6 +51,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :external_plan_id
 
+      # Whether the plan has an unpublished draft version.
+      sig { returns(T::Boolean) }
+      attr_accessor :has_draft
+
       # An ISO 4217 currency string for which this plan is billed in. Matches `currency`
       # unless `currency` is a custom pricing unit.
       sig { returns(String) }
@@ -153,6 +157,7 @@ module Orb
               )
             ),
           external_plan_id: T.nilable(String),
+          has_draft: T::Boolean,
           invoicing_currency: String,
           maximum: T.nilable(Orb::Maximum::OrHash),
           maximum_amount: T.nilable(String),
@@ -234,6 +239,8 @@ module Orb
         # as an alias for this Plan. Use this field to identify a plan by an existing
         # identifier in your system.
         external_plan_id:,
+        # Whether the plan has an unpublished draft version.
+        has_draft:,
         # An ISO 4217 currency string for which this plan is billed in. Matches `currency`
         # unless `currency` is a custom pricing unit.
         invoicing_currency:,
@@ -277,6 +284,7 @@ module Orb
             description: String,
             discount: T.nilable(Orb::Discount::Variants),
             external_plan_id: T.nilable(String),
+            has_draft: T::Boolean,
             invoicing_currency: String,
             maximum: T.nilable(Orb::Maximum),
             maximum_amount: T.nilable(String),

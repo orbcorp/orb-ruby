@@ -74,6 +74,12 @@ module Orb
       #   @return [String, nil]
       required :external_plan_id, String, nil?: true
 
+      # @!attribute has_draft
+      #   Whether the plan has an unpublished draft version.
+      #
+      #   @return [Boolean]
+      required :has_draft, Orb::Internal::Type::Boolean
+
       # @!attribute invoicing_currency
       #   An ISO 4217 currency string for which this plan is billed in. Matches `currency`
       #   unless `currency` is a custom pricing unit.
@@ -161,7 +167,7 @@ module Orb
       #   @return [Integer]
       required :version, Integer
 
-      # @!method initialize(id:, adjustments:, base_plan:, base_plan_id:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:)
+      # @!method initialize(id:, adjustments:, base_plan:, base_plan_id:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, has_draft:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:)
       #   Some parameter documentations has been truncated, see {Orb::Models::Plan} for
       #   more details.
       #
@@ -189,6 +195,8 @@ module Orb
       #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil]
       #
       #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
+      #
+      #   @param has_draft [Boolean] Whether the plan has an unpublished draft version.
       #
       #   @param invoicing_currency [String] An ISO 4217 currency string for which this plan is billed in. Matches `currency`
       #

@@ -12,6 +12,7 @@ module Orb
         description: String,
         discount: Orb::Models::discount?,
         external_plan_id: String?,
+        has_draft: bool,
         invoicing_currency: String,
         maximum: Orb::Maximum?,
         maximum_amount: String?,
@@ -48,6 +49,8 @@ module Orb
       attr_accessor discount: Orb::Models::discount?
 
       attr_accessor external_plan_id: String?
+
+      attr_accessor has_draft: bool
 
       attr_accessor invoicing_currency: String
 
@@ -88,6 +91,7 @@ module Orb
         description: String,
         discount: Orb::Models::discount?,
         external_plan_id: String?,
+        has_draft: bool,
         invoicing_currency: String,
         maximum: Orb::Maximum?,
         maximum_amount: String?,
@@ -115,6 +119,7 @@ module Orb
         description: String,
         discount: Orb::Models::discount?,
         external_plan_id: String?,
+        has_draft: bool,
         invoicing_currency: String,
         maximum: Orb::Maximum?,
         maximum_amount: String?,

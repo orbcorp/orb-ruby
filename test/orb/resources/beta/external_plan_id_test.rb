@@ -58,6 +58,7 @@ class Orb::Test::Resources::Beta::ExternalPlanIDTest < Orb::Test::ResourceTest
         description: String,
         discount: Orb::Discount | nil,
         external_plan_id: String | nil,
+        has_draft: Orb::Internal::Type::Boolean,
         invoicing_currency: String,
         maximum: Orb::Maximum | nil,
         maximum_amount: String | nil,
