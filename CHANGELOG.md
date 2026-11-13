@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.56.0](https://github.com/orbcorp/orb-ruby/compare/v1.55.0...v1.56.0) (2026-11-13)
+
+
+### Features
+
+* **api:** allow changing item_id on active metrics ([22348b9](https://github.com/orbcorp/orb-ruby/commit/22348b96def523d51a7af440aece88608118d50c))
+* **api:** api update ([7d0e3d3](https://github.com/orbcorp/orb-ruby/commit/7d0e3d3d8fdffdf0ba92373915840401ba38d2e8))
+* **api:** api update ([5ed2dd7](https://github.com/orbcorp/orb-ruby/commit/5ed2dd7c3e270be63ff343e5e8afd2ecf9a62ea1))
+
 ## [1.55.0](https://github.com/orbcorp/orb-ruby/compare/v1.54.0...v1.55.0) (2026-11-07)
 
 
