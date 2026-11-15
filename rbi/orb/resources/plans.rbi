@@ -18,6 +18,13 @@ module Orb
       # subscribed to by a customer. Plans define the billing behavior of the
       # subscription. You can see more about how to configure prices in the
       # [Price resource](/reference/price).
+      sig { returns(Orb::Resources::Plans::Draft) }
+      attr_reader :draft
+
+      # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      # subscribed to by a customer. Plans define the billing behavior of the
+      # subscription. You can see more about how to configure prices in the
+      # [Price resource](/reference/price).
       sig { returns(Orb::Resources::Plans::Migrations) }
       attr_reader :migrations
 

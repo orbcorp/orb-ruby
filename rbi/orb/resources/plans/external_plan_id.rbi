@@ -8,6 +8,13 @@ module Orb
       # subscription. You can see more about how to configure prices in the
       # [Price resource](/reference/price).
       class ExternalPlanID
+        # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+        # subscribed to by a customer. Plans define the billing behavior of the
+        # subscription. You can see more about how to configure prices in the
+        # [Price resource](/reference/price).
+        sig { returns(Orb::Resources::Plans::ExternalPlanID::Draft) }
+        attr_reader :draft
+
         # This endpoint can be used to update the `name`, `external_plan_id`,
         # `description`, and `metadata` of an existing plan. A plan's `name` cannot be
         # empty.

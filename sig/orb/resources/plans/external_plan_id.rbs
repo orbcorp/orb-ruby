@@ -2,6 +2,8 @@ module Orb
   module Resources
     class Plans
       class ExternalPlanID
+        attr_reader draft: Orb::Resources::Plans::ExternalPlanID::Draft
+
         def update: (
           String other_external_plan_id,
           ?description: String?,

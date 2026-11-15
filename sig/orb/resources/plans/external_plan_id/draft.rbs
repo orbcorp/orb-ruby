@@ -1,0 +1,39 @@
+module Orb
+  module Resources
+    class Plans
+      class ExternalPlanID
+        class Draft
+          def discard: (
+            String external_plan_id,
+            ?request_options: Orb::request_opts
+          ) -> nil
+
+          def fetch: (
+            String external_plan_id,
+            ?request_options: Orb::request_opts
+          ) -> Orb::Plans::PlanVersionDraft
+
+          def publish: (
+            String external_plan_id,
+            ?set_as_default: bool,
+            ?request_options: Orb::request_opts
+          ) -> Orb::PlanVersion
+
+          def save: (
+            String external_plan_id,
+            ?add_adjustments: ::Array[Orb::Plans::ExternalPlanID::DraftSaveParams::AddAdjustment]?,
+            ?add_prices: ::Array[Orb::Plans::ExternalPlanID::DraftSaveParams::AddPrice]?,
+            ?description: String?,
+            ?remove_adjustments: ::Array[Orb::Plans::ExternalPlanID::DraftSaveParams::RemoveAdjustment]?,
+            ?remove_prices: ::Array[Orb::Plans::ExternalPlanID::DraftSaveParams::RemovePrice]?,
+            ?replace_adjustments: ::Array[Orb::Plans::ExternalPlanID::DraftSaveParams::ReplaceAdjustment]?,
+            ?replace_prices: ::Array[Orb::Plans::ExternalPlanID::DraftSaveParams::ReplacePrice]?,
+            ?request_options: Orb::request_opts
+          ) -> Orb::Plans::PlanVersionDraft
+
+          def initialize: (client: Orb::Client) -> void
+        end
+      end
+    end
+  end
+end

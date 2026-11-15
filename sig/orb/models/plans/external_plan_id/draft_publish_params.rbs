@@ -1,0 +1,34 @@
+module Orb
+  module Models
+    module Plans
+      module ExternalPlanID
+        type draft_publish_params =
+          { external_plan_id: String, set_as_default: bool }
+          & Orb::Internal::Type::request_parameters
+
+        class DraftPublishParams < Orb::Internal::Type::BaseModel
+          extend Orb::Internal::Type::RequestParameters::Converter
+          include Orb::Internal::Type::RequestParameters
+
+          attr_accessor external_plan_id: String
+
+          attr_reader set_as_default: bool?
+
+          def set_as_default=: (bool) -> bool
+
+          def initialize: (
+            external_plan_id: String,
+            ?set_as_default: bool,
+            ?request_options: Orb::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            external_plan_id: String,
+            set_as_default: bool,
+            request_options: Orb::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

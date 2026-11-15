@@ -18,6 +18,13 @@ module Orb
       # subscribed to by a customer. Plans define the billing behavior of the
       # subscription. You can see more about how to configure prices in the
       # [Price resource](/reference/price).
+      # @return [Orb::Resources::Plans::Draft]
+      attr_reader :draft
+
+      # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
+      # subscribed to by a customer. Plans define the billing behavior of the
+      # subscription. You can see more about how to configure prices in the
+      # [Price resource](/reference/price).
       # @return [Orb::Resources::Plans::Migrations]
       attr_reader :migrations
 
@@ -186,6 +193,7 @@ module Orb
       def initialize(client:)
         @client = client
         @external_plan_id = Orb::Resources::Plans::ExternalPlanID.new(client: client)
+        @draft = Orb::Resources::Plans::Draft.new(client: client)
         @migrations = Orb::Resources::Plans::Migrations.new(client: client)
       end
     end
