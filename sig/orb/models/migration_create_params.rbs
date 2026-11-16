@@ -14,6 +14,7 @@ module Orb
         plan_id: String?,
         plan_version_numbers: ::Array[Integer]?,
         reason: String?,
+        skip_grace_period: bool,
         statuses: ::Array[Orb::Models::MigrationCreateParams::status]
       }
       & Orb::Internal::Type::request_parameters
@@ -50,6 +51,10 @@ module Orb
 
       attr_accessor reason: String?
 
+      attr_reader skip_grace_period: bool?
+
+      def skip_grace_period=: (bool) -> bool
+
       attr_reader statuses: ::Array[Orb::Models::MigrationCreateParams::status]?
 
       def statuses=: (
@@ -69,6 +74,7 @@ module Orb
         ?plan_id: String?,
         ?plan_version_numbers: ::Array[Integer]?,
         ?reason: String?,
+        ?skip_grace_period: bool,
         ?statuses: ::Array[Orb::Models::MigrationCreateParams::status],
         ?request_options: Orb::request_opts
       ) -> void
@@ -86,6 +92,7 @@ module Orb
         plan_id: String?,
         plan_version_numbers: ::Array[Integer]?,
         reason: String?,
+        skip_grace_period: bool,
         statuses: ::Array[Orb::Models::MigrationCreateParams::status],
         request_options: Orb::RequestOptions
       }

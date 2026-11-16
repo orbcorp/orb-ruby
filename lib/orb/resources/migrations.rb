@@ -21,7 +21,7 @@ module Orb
       # filters. Each subscription is migrated asynchronously; fetch the migration to
       # follow its status.
       #
-      # @overload create(effective_time:, target_plan_version_number:, allow_invoice_credit_or_void: nil, can_defer_billing: nil, effective_date: nil, excluded_subscription_ids: nil, external_plan_id: nil, in_trial: nil, included_subscription_ids: nil, plan_id: nil, plan_version_numbers: nil, reason: nil, statuses: nil, request_options: {})
+      # @overload create(effective_time:, target_plan_version_number:, allow_invoice_credit_or_void: nil, can_defer_billing: nil, effective_date: nil, excluded_subscription_ids: nil, external_plan_id: nil, in_trial: nil, included_subscription_ids: nil, plan_id: nil, plan_version_numbers: nil, reason: nil, skip_grace_period: nil, statuses: nil, request_options: {})
       #
       # @param effective_time [Symbol, Orb::Models::MigrationCreateParams::EffectiveTime] When the migration takes effect: 'immediately', 'requested_date' on `effective_d
       #
@@ -47,6 +47,8 @@ module Orb
       # @param plan_version_numbers [Array<Integer>, nil] Migrate only subscriptions currently on these plan versions.
       #
       # @param reason [String, nil] Why the migration was created.
+      #
+      # @param skip_grace_period [Boolean] A new migration waits 5 minutes before it changes any subscriptions, so it can b
       #
       # @param statuses [Array<Symbol, Orb::Models::MigrationCreateParams::Status>] Migrate subscriptions with these statuses. Defaults to active subscriptions.
       #

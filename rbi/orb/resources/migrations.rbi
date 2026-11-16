@@ -31,6 +31,7 @@ module Orb
           plan_id: T.nilable(String),
           plan_version_numbers: T.nilable(T::Array[Integer]),
           reason: T.nilable(String),
+          skip_grace_period: T::Boolean,
           statuses: T::Array[Orb::MigrationCreateParams::Status::OrSymbol],
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Models::MigrationCreateResponse)
@@ -69,6 +70,9 @@ module Orb
         plan_version_numbers: nil,
         # Why the migration was created.
         reason: nil,
+        # A new migration waits 5 minutes before it changes any subscriptions, so it can
+        # be canceled. When true, it starts right away instead.
+        skip_grace_period: nil,
         # Migrate subscriptions with these statuses. Defaults to active subscriptions.
         statuses: nil,
         request_options: {}

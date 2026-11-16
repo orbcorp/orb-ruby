@@ -88,13 +88,20 @@ module Orb
       #   @return [String, nil]
       optional :reason, String, nil?: true
 
+      # @!attribute skip_grace_period
+      #   A new migration waits 5 minutes before it changes any subscriptions, so it can
+      #   be canceled. When true, it starts right away instead.
+      #
+      #   @return [Boolean, nil]
+      optional :skip_grace_period, Orb::Internal::Type::Boolean
+
       # @!attribute statuses
       #   Migrate subscriptions with these statuses. Defaults to active subscriptions.
       #
       #   @return [Array<Symbol, Orb::Models::MigrationCreateParams::Status>, nil]
       optional :statuses, -> { Orb::Internal::Type::ArrayOf[enum: Orb::MigrationCreateParams::Status] }
 
-      # @!method initialize(effective_time:, target_plan_version_number:, allow_invoice_credit_or_void: nil, can_defer_billing: nil, effective_date: nil, excluded_subscription_ids: nil, external_plan_id: nil, in_trial: nil, included_subscription_ids: nil, plan_id: nil, plan_version_numbers: nil, reason: nil, statuses: nil, request_options: {})
+      # @!method initialize(effective_time:, target_plan_version_number:, allow_invoice_credit_or_void: nil, can_defer_billing: nil, effective_date: nil, excluded_subscription_ids: nil, external_plan_id: nil, in_trial: nil, included_subscription_ids: nil, plan_id: nil, plan_version_numbers: nil, reason: nil, skip_grace_period: nil, statuses: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::MigrationCreateParams} for more details.
       #
@@ -122,6 +129,8 @@ module Orb
       #   @param plan_version_numbers [Array<Integer>, nil] Migrate only subscriptions currently on these plan versions.
       #
       #   @param reason [String, nil] Why the migration was created.
+      #
+      #   @param skip_grace_period [Boolean] A new migration waits 5 minutes before it changes any subscriptions, so it can b
       #
       #   @param statuses [Array<Symbol, Orb::Models::MigrationCreateParams::Status>] Migrate subscriptions with these statuses. Defaults to active subscriptions.
       #

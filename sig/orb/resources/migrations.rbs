@@ -16,6 +16,7 @@ module Orb
         ?plan_id: String?,
         ?plan_version_numbers: ::Array[Integer]?,
         ?reason: String?,
+        ?skip_grace_period: bool,
         ?statuses: ::Array[Orb::Models::MigrationCreateParams::status],
         ?request_options: Orb::request_opts
       ) -> Orb::Models::MigrationCreateResponse

@@ -74,6 +74,14 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :reason
 
+      # A new migration waits 5 minutes before it changes any subscriptions, so it can
+      # be canceled. When true, it starts right away instead.
+      sig { returns(T.nilable(T::Boolean)) }
+      attr_reader :skip_grace_period
+
+      sig { params(skip_grace_period: T::Boolean).void }
+      attr_writer :skip_grace_period
+
       # Migrate subscriptions with these statuses. Defaults to active subscriptions.
       sig do
         returns(
@@ -103,6 +111,7 @@ module Orb
           plan_id: T.nilable(String),
           plan_version_numbers: T.nilable(T::Array[Integer]),
           reason: T.nilable(String),
+          skip_grace_period: T::Boolean,
           statuses: T::Array[Orb::MigrationCreateParams::Status::OrSymbol],
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -141,6 +150,9 @@ module Orb
         plan_version_numbers: nil,
         # Why the migration was created.
         reason: nil,
+        # A new migration waits 5 minutes before it changes any subscriptions, so it can
+        # be canceled. When true, it starts right away instead.
+        skip_grace_period: nil,
         # Migrate subscriptions with these statuses. Defaults to active subscriptions.
         statuses: nil,
         request_options: {}
@@ -162,6 +174,7 @@ module Orb
             plan_id: T.nilable(String),
             plan_version_numbers: T.nilable(T::Array[Integer]),
             reason: T.nilable(String),
+            skip_grace_period: T::Boolean,
             statuses: T::Array[Orb::MigrationCreateParams::Status::OrSymbol],
             request_options: Orb::RequestOptions
           }
