@@ -1,10 +1,10 @@
 module Orb
   module Models
-    type beta_set_default_plan_version_params =
+    type plan_set_default_plan_version_params =
       { plan_id: String, version: Integer }
       & Orb::Internal::Type::request_parameters
 
-    class BetaSetDefaultPlanVersionParams < Orb::Internal::Type::BaseModel
+    class PlanSetDefaultPlanVersionParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 

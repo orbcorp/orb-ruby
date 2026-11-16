@@ -1,27 +1,27 @@
 module Orb
   module Models
-    module Beta
-      type external_plan_id_set_default_plan_version_params =
-        { external_plan_id: String, version: Integer }
+    module Plans
+      type external_plan_id_fetch_plan_version_params =
+        { external_plan_id: String, version: String }
         & Orb::Internal::Type::request_parameters
 
-      class ExternalPlanIDSetDefaultPlanVersionParams < Orb::Internal::Type::BaseModel
+      class ExternalPlanIDFetchPlanVersionParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
         attr_accessor external_plan_id: String
 
-        attr_accessor version: Integer
+        attr_accessor version: String
 
         def initialize: (
           external_plan_id: String,
-          version: Integer,
+          version: String,
           ?request_options: Orb::request_opts
         ) -> void
 
         def to_hash: -> {
           external_plan_id: String,
-          version: Integer,
+          version: String,
           request_options: Orb::RequestOptions
         }
       end

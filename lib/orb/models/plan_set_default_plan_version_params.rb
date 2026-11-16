@@ -2,8 +2,8 @@
 
 module Orb
   module Models
-    # @see Orb::Resources::Beta#fetch_plan_version
-    class BetaFetchPlanVersionParams < Orb::Internal::Type::BaseModel
+    # @see Orb::Resources::Plans#set_default_plan_version
+    class PlanSetDefaultPlanVersionParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -13,13 +13,16 @@ module Orb
       required :plan_id, String
 
       # @!attribute version
+      #   Plan version to set as the default.
       #
-      #   @return [String]
-      required :version, String
+      #   @return [Integer]
+      required :version, Integer
 
       # @!method initialize(plan_id:, version:, request_options: {})
       #   @param plan_id [String]
-      #   @param version [String]
+      #
+      #   @param version [Integer] Plan version to set as the default.
+      #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end
   end

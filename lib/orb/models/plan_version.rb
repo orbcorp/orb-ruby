@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    # @see Orb::Resources::Beta#create_plan_version
+    # @see Orb::Resources::Plans#create_plan_version
     class PlanVersion < Orb::Internal::Type::BaseModel
       # @!attribute adjustments
       #   Adjustments for this plan. If the plan has phases, this includes adjustments

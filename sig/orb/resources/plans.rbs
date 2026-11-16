@@ -42,8 +42,33 @@ module Orb
         ?request_options: Orb::request_opts
       ) -> Orb::Internal::Page[Orb::Plan]
 
+      def create_plan_version: (
+        String plan_id,
+        version: Integer,
+        ?add_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice]?,
+        ?remove_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::PlanCreatePlanVersionParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice]?,
+        ?set_as_default: bool?,
+        ?request_options: Orb::request_opts
+      ) -> Orb::PlanVersion
+
       def fetch: (
         String plan_id,
+        ?request_options: Orb::request_opts
+      ) -> Orb::Plan
+
+      def fetch_plan_version: (
+        String version,
+        plan_id: String,
+        ?request_options: Orb::request_opts
+      ) -> Orb::PlanVersion
+
+      def set_default_plan_version: (
+        String plan_id,
+        version: Integer,
         ?request_options: Orb::request_opts
       ) -> Orb::Plan
 

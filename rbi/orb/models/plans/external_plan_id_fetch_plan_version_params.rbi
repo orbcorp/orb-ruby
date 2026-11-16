@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    module Beta
+    module Plans
       class ExternalPlanIDFetchPlanVersionParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -10,7 +10,7 @@ module Orb
         OrHash =
           T.type_alias do
             T.any(
-              Orb::Beta::ExternalPlanIDFetchPlanVersionParams,
+              Orb::Plans::ExternalPlanIDFetchPlanVersionParams,
               Orb::Internal::AnyHash
             )
           end

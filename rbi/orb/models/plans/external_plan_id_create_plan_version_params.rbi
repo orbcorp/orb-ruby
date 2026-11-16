@@ -2,7 +2,7 @@
 
 module Orb
   module Models
-    module Beta
+    module Plans
       class ExternalPlanIDCreatePlanVersionParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
@@ -10,7 +10,7 @@ module Orb
         OrHash =
           T.type_alias do
             T.any(
-              Orb::Beta::ExternalPlanIDCreatePlanVersionParams,
+              Orb::Plans::ExternalPlanIDCreatePlanVersionParams,
               Orb::Internal::AnyHash
             )
           end
@@ -27,7 +27,7 @@ module Orb
           returns(
             T.nilable(
               T::Array[
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment
               ]
             )
           )
@@ -39,7 +39,7 @@ module Orb
           returns(
             T.nilable(
               T::Array[
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice
               ]
             )
           )
@@ -51,7 +51,7 @@ module Orb
           returns(
             T.nilable(
               T::Array[
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment
               ]
             )
           )
@@ -63,7 +63,7 @@ module Orb
           returns(
             T.nilable(
               T::Array[
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemovePrice
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemovePrice
               ]
             )
           )
@@ -75,7 +75,7 @@ module Orb
           returns(
             T.nilable(
               T::Array[
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment
               ]
             )
           )
@@ -87,7 +87,7 @@ module Orb
           returns(
             T.nilable(
               T::Array[
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice
               ]
             )
           )
@@ -105,37 +105,37 @@ module Orb
             add_adjustments:
               T.nilable(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::OrHash
                 ]
               ),
             add_prices:
               T.nilable(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::OrHash
                 ]
               ),
             remove_adjustments:
               T.nilable(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment::OrHash
                 ]
               ),
             remove_prices:
               T.nilable(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemovePrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemovePrice::OrHash
                 ]
               ),
             replace_adjustments:
               T.nilable(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::OrHash
                 ]
               ),
             replace_prices:
               T.nilable(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::OrHash
                 ]
               ),
             set_as_default: T.nilable(T::Boolean),
@@ -172,37 +172,37 @@ module Orb
               add_adjustments:
                 T.nilable(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment
                   ]
                 ),
               add_prices:
                 T.nilable(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice
                   ]
                 ),
               remove_adjustments:
                 T.nilable(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment
                   ]
                 ),
               remove_prices:
                 T.nilable(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemovePrice
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemovePrice
                   ]
                 ),
               replace_adjustments:
                 T.nilable(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment
                   ]
                 ),
               replace_prices:
                 T.nilable(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice
                   ]
                 ),
               set_as_default: T.nilable(T::Boolean),
@@ -217,7 +217,7 @@ module Orb
           OrHash =
             T.type_alias do
               T.any(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment,
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment,
                 Orb::Internal::AnyHash
               )
             end
@@ -231,7 +231,7 @@ module Orb
                 Orb::NewAmountDiscount,
                 Orb::NewMinimum,
                 Orb::NewMaximum,
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
               )
             )
           end
@@ -250,7 +250,7 @@ module Orb
                   Orb::NewAmountDiscount::OrHash,
                   Orb::NewMinimum::OrHash,
                   Orb::NewMaximum::OrHash,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::OrHash
                 ),
               plan_phase_order: T.nilable(Integer)
             ).returns(T.attached_class)
@@ -273,7 +273,7 @@ module Orb
                     Orb::NewAmountDiscount,
                     Orb::NewMinimum,
                     Orb::NewMaximum,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
                   ),
                 plan_phase_order: T.nilable(Integer)
               }
@@ -294,7 +294,7 @@ module Orb
                   Orb::NewAmountDiscount,
                   Orb::NewMinimum,
                   Orb::NewMaximum,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
                 )
               end
 
@@ -302,7 +302,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -313,7 +313,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier
                   ]
                 )
               end
@@ -323,7 +323,7 @@ module Orb
               sig do
                 returns(
                   T.nilable(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
                   )
                 )
               end
@@ -346,7 +346,7 @@ module Orb
                 returns(
                   T.nilable(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter
                     ]
                   )
                 )
@@ -365,7 +365,7 @@ module Orb
               sig do
                 returns(
                   T.nilable(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
                   )
                 )
               end
@@ -375,11 +375,11 @@ module Orb
                 params(
                   tiers:
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier::OrHash
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier::OrHash
                     ],
                   applies_to_all:
                     T.nilable(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
                     ),
                   applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
@@ -387,13 +387,13 @@ module Orb
                   filters:
                     T.nilable(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::OrHash
                       ]
                     ),
                   is_invoice_level: T::Boolean,
                   price_type:
                     T.nilable(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
                     ),
                   adjustment_type: Symbol
                 ).returns(T.attached_class)
@@ -425,11 +425,11 @@ module Orb
                     adjustment_type: Symbol,
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier
                       ],
                     applies_to_all:
                       T.nilable(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
                       ),
                     applies_to_item_ids: T.nilable(T::Array[String]),
                     applies_to_price_ids: T.nilable(T::Array[String]),
@@ -437,13 +437,13 @@ module Orb
                     filters:
                       T.nilable(
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter
                         ]
                       ),
                     is_invoice_level: T::Boolean,
                     price_type:
                       T.nilable(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
                       )
                   }
                 )
@@ -455,7 +455,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -510,7 +510,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       T::Boolean,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
                     )
                   end
                 OrBoolean = T.type_alias { T::Boolean }
@@ -518,13 +518,13 @@ module Orb
                 TRUE =
                   T.let(
                     true,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
                     ]
                   )
                 end
@@ -536,7 +536,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -544,7 +544,7 @@ module Orb
                 # The property of the price to filter on.
                 sig do
                   returns(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol
                   )
                 end
                 attr_accessor :field
@@ -552,7 +552,7 @@ module Orb
                 # Should prices that match the filter be included or excluded.
                 sig do
                   returns(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol
                   )
                 end
                 attr_accessor :operator
@@ -564,9 +564,9 @@ module Orb
                 sig do
                   params(
                     field:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
                     operator:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
                     values: T::Array[String]
                   ).returns(T.attached_class)
                 end
@@ -584,9 +584,9 @@ module Orb
                   override.returns(
                     {
                       field:
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
                       operator:
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
                       values: T::Array[String]
                     }
                   )
@@ -602,7 +602,7 @@ module Orb
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -610,33 +610,33 @@ module Orb
                   PRICE_ID =
                     T.let(
                       :price_id,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   ITEM_ID =
                     T.let(
                       :item_id,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   PRICE_TYPE =
                     T.let(
                       :price_type,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   CURRENCY =
                     T.let(
                       :currency,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   PRICING_UNIT_ID =
                     T.let(
                       :pricing_unit_id,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                       ]
                     )
                   end
@@ -652,7 +652,7 @@ module Orb
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -660,18 +660,18 @@ module Orb
                   INCLUDES =
                     T.let(
                       :includes,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
                     )
                   EXCLUDES =
                     T.let(
                       :excludes,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
                       ]
                     )
                   end
@@ -688,7 +688,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -696,33 +696,33 @@ module Orb
                 USAGE =
                   T.let(
                     :usage,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 FIXED_IN_ADVANCE =
                   T.let(
                     :fixed_in_advance,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 FIXED_IN_ARREARS =
                   T.let(
                     :fixed_in_arrears,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 FIXED =
                   T.let(
                     :fixed,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 IN_ARREARS =
                   T.let(
                     :in_arrears,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                     ]
                   )
                 end
@@ -734,7 +734,7 @@ module Orb
             sig do
               override.returns(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Variants
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddAdjustment::Adjustment::Variants
                 ]
               )
             end
@@ -747,7 +747,7 @@ module Orb
           OrHash =
             T.type_alias do
               T.any(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice,
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice,
                 Orb::Internal::AnyHash
               )
             end
@@ -767,7 +767,7 @@ module Orb
           sig do
             returns(
               T.nilable(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice
               )
             )
           end
@@ -777,7 +777,7 @@ module Orb
             params(
               license_allocation_price:
                 T.nilable(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::OrHash
                 )
             ).void
           end
@@ -795,40 +795,40 @@ module Orb
                   Orb::NewPlanUnitPrice,
                   Orb::NewPlanTieredPrice,
                   Orb::NewPlanBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
                   Orb::NewPlanPackagePrice,
                   Orb::NewPlanMatrixPrice,
                   Orb::NewPlanThresholdTotalAmountPrice,
                   Orb::NewPlanTieredPackagePrice,
                   Orb::NewPlanTieredWithMinimumPrice,
                   Orb::NewPlanGroupedTieredPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
                   Orb::NewPlanTieredPackageWithMinimumPrice,
                   Orb::NewPlanPackageWithAllocationPrice,
                   Orb::NewPlanUnitWithPercentPrice,
                   Orb::NewPlanMatrixWithAllocationPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
                   Orb::NewPlanUnitWithProrationPrice,
                   Orb::NewPlanGroupedAllocationPrice,
                   Orb::NewPlanBulkWithProrationPrice,
                   Orb::NewPlanGroupedWithProratedMinimumPrice,
                   Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
                   Orb::NewPlanMatrixWithDisplayNamePrice,
                   Orb::NewPlanGroupedTieredPackagePrice,
                   Orb::NewPlanMaxGroupTieredPackagePrice,
                   Orb::NewPlanScalableMatrixWithUnitPricingPrice,
                   Orb::NewPlanScalableMatrixWithTieredPricingPrice,
                   Orb::NewPlanCumulativeGroupedBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
                   Orb::NewPlanMinimumCompositePrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
                 )
               )
             )
@@ -840,7 +840,7 @@ module Orb
               allocation_price: T.nilable(Orb::NewAllocationPrice::OrHash),
               license_allocation_price:
                 T.nilable(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::OrHash
                 ),
               plan_phase_order: T.nilable(Integer),
               price:
@@ -849,40 +849,40 @@ module Orb
                     Orb::NewPlanUnitPrice::OrHash,
                     Orb::NewPlanTieredPrice::OrHash,
                     Orb::NewPlanBulkPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::OrHash,
                     Orb::NewPlanPackagePrice::OrHash,
                     Orb::NewPlanMatrixPrice::OrHash,
                     Orb::NewPlanThresholdTotalAmountPrice::OrHash,
                     Orb::NewPlanTieredPackagePrice::OrHash,
                     Orb::NewPlanTieredWithMinimumPrice::OrHash,
                     Orb::NewPlanGroupedTieredPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::OrHash,
                     Orb::NewPlanTieredPackageWithMinimumPrice::OrHash,
                     Orb::NewPlanPackageWithAllocationPrice::OrHash,
                     Orb::NewPlanUnitWithPercentPrice::OrHash,
                     Orb::NewPlanMatrixWithAllocationPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::OrHash,
                     Orb::NewPlanUnitWithProrationPrice::OrHash,
                     Orb::NewPlanGroupedAllocationPrice::OrHash,
                     Orb::NewPlanBulkWithProrationPrice::OrHash,
                     Orb::NewPlanGroupedWithProratedMinimumPrice::OrHash,
                     Orb::NewPlanGroupedWithMeteredMinimumPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::OrHash,
                     Orb::NewPlanMatrixWithDisplayNamePrice::OrHash,
                     Orb::NewPlanGroupedTieredPackagePrice::OrHash,
                     Orb::NewPlanMaxGroupTieredPackagePrice::OrHash,
                     Orb::NewPlanScalableMatrixWithUnitPricingPrice::OrHash,
                     Orb::NewPlanScalableMatrixWithTieredPricingPrice::OrHash,
                     Orb::NewPlanCumulativeGroupedBulkPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::OrHash,
                     Orb::NewPlanMinimumCompositePrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::OrHash
                   )
                 )
             ).returns(T.attached_class)
@@ -905,7 +905,7 @@ module Orb
                 allocation_price: T.nilable(Orb::NewAllocationPrice),
                 license_allocation_price:
                   T.nilable(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice
                   ),
                 plan_phase_order: T.nilable(Integer),
                 price:
@@ -914,40 +914,40 @@ module Orb
                       Orb::NewPlanUnitPrice,
                       Orb::NewPlanTieredPrice,
                       Orb::NewPlanBulkPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
                       Orb::NewPlanPackagePrice,
                       Orb::NewPlanMatrixPrice,
                       Orb::NewPlanThresholdTotalAmountPrice,
                       Orb::NewPlanTieredPackagePrice,
                       Orb::NewPlanTieredWithMinimumPrice,
                       Orb::NewPlanGroupedTieredPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
                       Orb::NewPlanTieredPackageWithMinimumPrice,
                       Orb::NewPlanPackageWithAllocationPrice,
                       Orb::NewPlanUnitWithPercentPrice,
                       Orb::NewPlanMatrixWithAllocationPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
                       Orb::NewPlanUnitWithProrationPrice,
                       Orb::NewPlanGroupedAllocationPrice,
                       Orb::NewPlanBulkWithProrationPrice,
                       Orb::NewPlanGroupedWithProratedMinimumPrice,
                       Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
                       Orb::NewPlanMatrixWithDisplayNamePrice,
                       Orb::NewPlanGroupedTieredPackagePrice,
                       Orb::NewPlanMaxGroupTieredPackagePrice,
                       Orb::NewPlanScalableMatrixWithUnitPricingPrice,
                       Orb::NewPlanScalableMatrixWithTieredPricingPrice,
                       Orb::NewPlanCumulativeGroupedBulkPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
                       Orb::NewPlanMinimumCompositePrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
                     )
                   )
               }
@@ -960,7 +960,7 @@ module Orb
             OrHash =
               T.type_alias do
                 T.any(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice,
                   Orb::Internal::AnyHash
                 )
               end
@@ -968,7 +968,7 @@ module Orb
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::OrSymbol
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -984,7 +984,7 @@ module Orb
             sig do
               returns(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation
                 ]
               )
             end
@@ -993,7 +993,7 @@ module Orb
             # The pricing model type
             sig do
               returns(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::OrSymbol
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::OrSymbol
               )
             end
             attr_accessor :model_type
@@ -1115,14 +1115,14 @@ module Orb
             sig do
               params(
                 cadence:
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::OrSymbol,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::OrSymbol,
                 item_id: String,
                 license_allocations:
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation::OrHash
                   ],
                 model_type:
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::OrSymbol,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::OrSymbol,
                 name: String,
                 unit_config: Orb::UnitConfig::OrHash,
                 billable_metric_id: T.nilable(String),
@@ -1214,14 +1214,14 @@ module Orb
               override.returns(
                 {
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::OrSymbol,
                   item_id: String,
                   license_allocations:
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation
                     ],
                   model_type:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::OrSymbol,
                   name: String,
                   unit_config: Orb::UnitConfig,
                   billable_metric_id: T.nilable(String),
@@ -1261,7 +1261,7 @@ module Orb
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1269,38 +1269,38 @@ module Orb
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                   ]
                 )
               end
@@ -1312,7 +1312,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -1367,7 +1367,7 @@ module Orb
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1375,13 +1375,13 @@ module Orb
               UNIT =
                 T.let(
                   :unit,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::ModelType::TaggedSymbol
                   ]
                 )
               end
@@ -1400,40 +1400,40 @@ module Orb
                   Orb::NewPlanUnitPrice,
                   Orb::NewPlanTieredPrice,
                   Orb::NewPlanBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
                   Orb::NewPlanPackagePrice,
                   Orb::NewPlanMatrixPrice,
                   Orb::NewPlanThresholdTotalAmountPrice,
                   Orb::NewPlanTieredPackagePrice,
                   Orb::NewPlanTieredWithMinimumPrice,
                   Orb::NewPlanGroupedTieredPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
                   Orb::NewPlanTieredPackageWithMinimumPrice,
                   Orb::NewPlanPackageWithAllocationPrice,
                   Orb::NewPlanUnitWithPercentPrice,
                   Orb::NewPlanMatrixWithAllocationPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
                   Orb::NewPlanUnitWithProrationPrice,
                   Orb::NewPlanGroupedAllocationPrice,
                   Orb::NewPlanBulkWithProrationPrice,
                   Orb::NewPlanGroupedWithProratedMinimumPrice,
                   Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
                   Orb::NewPlanMatrixWithDisplayNamePrice,
                   Orb::NewPlanGroupedTieredPackagePrice,
                   Orb::NewPlanMaxGroupTieredPackagePrice,
                   Orb::NewPlanScalableMatrixWithUnitPricingPrice,
                   Orb::NewPlanScalableMatrixWithTieredPricingPrice,
                   Orb::NewPlanCumulativeGroupedBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
                   Orb::NewPlanMinimumCompositePrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
                 )
               end
 
@@ -1441,7 +1441,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -1449,7 +1449,7 @@ module Orb
               # Configuration for bulk_with_filters pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig
                 )
               end
               attr_reader :bulk_with_filters_config
@@ -1457,7 +1457,7 @@ module Orb
               sig do
                 params(
                   bulk_with_filters_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash
                 ).void
               end
               attr_writer :bulk_with_filters_config
@@ -1465,7 +1465,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -1587,9 +1587,9 @@ module Orb
               sig do
                 params(
                   bulk_with_filters_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash,
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -1677,9 +1677,9 @@ module Orb
                 override.returns(
                   {
                     bulk_with_filters_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -1716,7 +1716,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -1725,7 +1725,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
                     ]
                   )
                 end
@@ -1735,7 +1735,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
                     ]
                   )
                 end
@@ -1746,11 +1746,11 @@ module Orb
                   params(
                     filters:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter::OrHash
                       ],
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -1767,11 +1767,11 @@ module Orb
                     {
                       filters:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
                         ],
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
                         ]
                     }
                   )
@@ -1783,7 +1783,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -1824,7 +1824,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -1873,7 +1873,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1881,38 +1881,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -1925,7 +1925,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -1933,7 +1933,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -1941,7 +1941,7 @@ module Orb
               # Configuration for grouped_tiered_matrix pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
                 )
               end
               attr_reader :grouped_tiered_matrix_config
@@ -1949,7 +1949,7 @@ module Orb
               sig do
                 params(
                   grouped_tiered_matrix_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash
                 ).void
               end
               attr_writer :grouped_tiered_matrix_config
@@ -2071,9 +2071,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
                   grouped_tiered_matrix_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -2161,9 +2161,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
                     grouped_tiered_matrix_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -2204,7 +2204,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2212,38 +2212,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -2255,7 +2255,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -2273,7 +2273,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
                     ]
                   )
                 end
@@ -2286,7 +2286,7 @@ module Orb
                     dimension: String,
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -2308,7 +2308,7 @@ module Orb
                       dimension: String,
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
                         ]
                     }
                   )
@@ -2320,7 +2320,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -2372,7 +2372,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -2380,7 +2380,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -2400,7 +2400,7 @@ module Orb
               # Configuration for tiered_matrix_with_allocation pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
                 )
               end
               attr_reader :tiered_matrix_with_allocation_config
@@ -2408,7 +2408,7 @@ module Orb
               sig do
                 params(
                   tiered_matrix_with_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash
                 ).void
               end
               attr_writer :tiered_matrix_with_allocation_config
@@ -2518,11 +2518,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   tiered_matrix_with_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -2608,12 +2608,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     tiered_matrix_with_allocation_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -2651,7 +2651,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2659,38 +2659,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -2702,7 +2702,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -2724,7 +2724,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
                     ]
                   )
                 end
@@ -2738,7 +2738,7 @@ module Orb
                     dimensions: T::Array[String],
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -2763,7 +2763,7 @@ module Orb
                       dimensions: T::Array[String],
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
                         ]
                     }
                   )
@@ -2775,7 +2775,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -2831,7 +2831,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -2839,7 +2839,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -2851,7 +2851,7 @@ module Orb
               # Configuration for matrix_with_threshold_discounts pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
                 )
               end
               attr_reader :matrix_with_threshold_discounts_config
@@ -2859,7 +2859,7 @@ module Orb
               sig do
                 params(
                   matrix_with_threshold_discounts_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash
                 ).void
               end
               attr_writer :matrix_with_threshold_discounts_config
@@ -2977,10 +2977,10 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
                   item_id: String,
                   matrix_with_threshold_discounts_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash,
                   name: String,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
@@ -3067,10 +3067,10 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
                     item_id: String,
                     matrix_with_threshold_discounts_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
@@ -3110,7 +3110,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3118,38 +3118,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -3161,7 +3161,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -3178,7 +3178,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
                     ]
                   )
                 end
@@ -3192,7 +3192,7 @@ module Orb
                   returns(
                     T.nilable(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
                       ]
                     )
                   )
@@ -3203,7 +3203,7 @@ module Orb
                   params(
                     threshold_discount_groups:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
                       ]
                   ).void
                 end
@@ -3216,12 +3216,12 @@ module Orb
                     first_dimension: String,
                     matrix_values:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue::OrHash
                       ],
                     second_dimension: T.nilable(String),
                     threshold_discount_groups:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -3245,12 +3245,12 @@ module Orb
                       first_dimension: String,
                       matrix_values:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
                         ],
                       second_dimension: T.nilable(String),
                       threshold_discount_groups:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
                         ]
                     }
                   )
@@ -3262,7 +3262,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -3307,7 +3307,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -3378,7 +3378,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -3386,7 +3386,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -3406,7 +3406,7 @@ module Orb
               # Configuration for tiered_with_proration pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig
                 )
               end
               attr_reader :tiered_with_proration_config
@@ -3414,7 +3414,7 @@ module Orb
               sig do
                 params(
                   tiered_with_proration_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash
                 ).void
               end
               attr_writer :tiered_with_proration_config
@@ -3524,11 +3524,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   tiered_with_proration_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -3614,12 +3614,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     tiered_with_proration_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -3657,7 +3657,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3665,38 +3665,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -3708,7 +3708,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -3718,7 +3718,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
                     ]
                   )
                 end
@@ -3729,7 +3729,7 @@ module Orb
                   params(
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -3745,7 +3745,7 @@ module Orb
                     {
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
                         ]
                     }
                   )
@@ -3757,7 +3757,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -3800,7 +3800,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -3808,7 +3808,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -3816,7 +3816,7 @@ module Orb
               # Configuration for grouped_with_min_max_thresholds pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
                 )
               end
               attr_reader :grouped_with_min_max_thresholds_config
@@ -3824,7 +3824,7 @@ module Orb
               sig do
                 params(
                   grouped_with_min_max_thresholds_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash
                 ).void
               end
               attr_writer :grouped_with_min_max_thresholds_config
@@ -3946,9 +3946,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
                   grouped_with_min_max_thresholds_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -4036,9 +4036,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
                     grouped_with_min_max_thresholds_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -4079,7 +4079,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4087,38 +4087,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -4130,7 +4130,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -4191,7 +4191,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -4199,7 +4199,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -4207,7 +4207,7 @@ module Orb
               # Configuration for cumulative_grouped_allocation pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
                 )
               end
               attr_reader :cumulative_grouped_allocation_config
@@ -4215,7 +4215,7 @@ module Orb
               sig do
                 params(
                   cumulative_grouped_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash
                 ).void
               end
               attr_writer :cumulative_grouped_allocation_config
@@ -4337,9 +4337,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
                   cumulative_grouped_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -4427,9 +4427,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
                     cumulative_grouped_allocation_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -4470,7 +4470,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4478,38 +4478,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -4521,7 +4521,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -4582,7 +4582,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -4590,7 +4590,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -4598,7 +4598,7 @@ module Orb
               # Configuration for daily_credit_allowance pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
                 )
               end
               attr_reader :daily_credit_allowance_config
@@ -4606,7 +4606,7 @@ module Orb
               sig do
                 params(
                   daily_credit_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash
                 ).void
               end
               attr_writer :daily_credit_allowance_config
@@ -4728,9 +4728,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
                   daily_credit_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -4818,9 +4818,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
                     daily_credit_allowance_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -4861,7 +4861,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4869,38 +4869,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -4912,7 +4912,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -4940,7 +4940,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
                     ]
                   )
                 end
@@ -4955,7 +4955,7 @@ module Orb
                     event_day_property: String,
                     matrix_values:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -4985,7 +4985,7 @@ module Orb
                       event_day_property: String,
                       matrix_values:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
                         ]
                     }
                   )
@@ -4997,7 +4997,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -5045,7 +5045,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -5053,7 +5053,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -5065,7 +5065,7 @@ module Orb
               # Configuration for metered_allowance pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig
                 )
               end
               attr_reader :metered_allowance_config
@@ -5073,7 +5073,7 @@ module Orb
               sig do
                 params(
                   metered_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash
                 ).void
               end
               attr_writer :metered_allowance_config
@@ -5191,10 +5191,10 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::OrSymbol,
                   item_id: String,
                   metered_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash,
                   name: String,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
@@ -5281,10 +5281,10 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::OrSymbol,
                     item_id: String,
                     metered_allowance_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
@@ -5324,7 +5324,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5332,38 +5332,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -5375,7 +5375,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -5468,7 +5468,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -5476,7 +5476,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -5496,7 +5496,7 @@ module Orb
               # Configuration for percent pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig
                 )
               end
               attr_reader :percent_config
@@ -5504,7 +5504,7 @@ module Orb
               sig do
                 params(
                   percent_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig::OrHash
                 ).void
               end
               attr_writer :percent_config
@@ -5614,11 +5614,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   percent_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -5704,12 +5704,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     percent_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -5747,7 +5747,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5755,38 +5755,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -5798,7 +5798,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -5866,7 +5866,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -5874,7 +5874,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -5882,7 +5882,7 @@ module Orb
               # Configuration for event_output pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig
                 )
               end
               attr_reader :event_output_config
@@ -5890,7 +5890,7 @@ module Orb
               sig do
                 params(
                   event_output_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig::OrHash
                 ).void
               end
               attr_writer :event_output_config
@@ -6012,9 +6012,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::OrSymbol,
                   event_output_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -6102,9 +6102,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::OrSymbol,
                     event_output_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -6145,7 +6145,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6153,38 +6153,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -6196,7 +6196,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -6255,7 +6255,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -6263,7 +6263,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -6283,7 +6283,7 @@ module Orb
               # Configuration for unit_with_multiplier pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
                 )
               end
               attr_reader :unit_with_multiplier_config
@@ -6291,7 +6291,7 @@ module Orb
               sig do
                 params(
                   unit_with_multiplier_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash
                 ).void
               end
               attr_writer :unit_with_multiplier_config
@@ -6401,11 +6401,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   unit_with_multiplier_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -6491,12 +6491,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     unit_with_multiplier_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -6534,7 +6534,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6542,38 +6542,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -6585,7 +6585,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -6655,7 +6655,7 @@ module Orb
             sig do
               override.returns(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Variants
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::AddPrice::Price::Variants
                 ]
               )
             end
@@ -6668,7 +6668,7 @@ module Orb
           OrHash =
             T.type_alias do
               T.any(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment,
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemoveAdjustment,
                 Orb::Internal::AnyHash
               )
             end
@@ -6708,7 +6708,7 @@ module Orb
           OrHash =
             T.type_alias do
               T.any(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::RemovePrice,
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::RemovePrice,
                 Orb::Internal::AnyHash
               )
             end
@@ -6748,7 +6748,7 @@ module Orb
           OrHash =
             T.type_alias do
               T.any(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment,
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment,
                 Orb::Internal::AnyHash
               )
             end
@@ -6762,7 +6762,7 @@ module Orb
                 Orb::NewAmountDiscount,
                 Orb::NewMinimum,
                 Orb::NewMaximum,
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
               )
             )
           end
@@ -6785,7 +6785,7 @@ module Orb
                   Orb::NewAmountDiscount::OrHash,
                   Orb::NewMinimum::OrHash,
                   Orb::NewMaximum::OrHash,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::OrHash
                 ),
               replaces_adjustment_id: String,
               plan_phase_order: T.nilable(Integer)
@@ -6811,7 +6811,7 @@ module Orb
                     Orb::NewAmountDiscount,
                     Orb::NewMinimum,
                     Orb::NewMaximum,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
                   ),
                 replaces_adjustment_id: String,
                 plan_phase_order: T.nilable(Integer)
@@ -6833,7 +6833,7 @@ module Orb
                   Orb::NewAmountDiscount,
                   Orb::NewMinimum,
                   Orb::NewMaximum,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
                 )
               end
 
@@ -6841,7 +6841,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -6852,7 +6852,7 @@ module Orb
               sig do
                 returns(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier
                   ]
                 )
               end
@@ -6862,7 +6862,7 @@ module Orb
               sig do
                 returns(
                   T.nilable(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
                   )
                 )
               end
@@ -6885,7 +6885,7 @@ module Orb
                 returns(
                   T.nilable(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter
                     ]
                   )
                 )
@@ -6904,7 +6904,7 @@ module Orb
               sig do
                 returns(
                   T.nilable(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
                   )
                 )
               end
@@ -6914,11 +6914,11 @@ module Orb
                 params(
                   tiers:
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier::OrHash
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier::OrHash
                     ],
                   applies_to_all:
                     T.nilable(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
                     ),
                   applies_to_item_ids: T.nilable(T::Array[String]),
                   applies_to_price_ids: T.nilable(T::Array[String]),
@@ -6926,13 +6926,13 @@ module Orb
                   filters:
                     T.nilable(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::OrHash
                       ]
                     ),
                   is_invoice_level: T::Boolean,
                   price_type:
                     T.nilable(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
                     ),
                   adjustment_type: Symbol
                 ).returns(T.attached_class)
@@ -6964,11 +6964,11 @@ module Orb
                     adjustment_type: Symbol,
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier
                       ],
                     applies_to_all:
                       T.nilable(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::OrBoolean
                       ),
                     applies_to_item_ids: T.nilable(T::Array[String]),
                     applies_to_price_ids: T.nilable(T::Array[String]),
@@ -6976,13 +6976,13 @@ module Orb
                     filters:
                       T.nilable(
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter
                         ]
                       ),
                     is_invoice_level: T::Boolean,
                     price_type:
                       T.nilable(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::OrSymbol
                       )
                   }
                 )
@@ -6994,7 +6994,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -7049,7 +7049,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       T::Boolean,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll
                     )
                   end
                 OrBoolean = T.type_alias { T::Boolean }
@@ -7057,13 +7057,13 @@ module Orb
                 TRUE =
                   T.let(
                     true,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::AppliesToAll::TaggedBoolean
                     ]
                   )
                 end
@@ -7075,7 +7075,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -7083,7 +7083,7 @@ module Orb
                 # The property of the price to filter on.
                 sig do
                   returns(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol
                   )
                 end
                 attr_accessor :field
@@ -7091,7 +7091,7 @@ module Orb
                 # Should prices that match the filter be included or excluded.
                 sig do
                   returns(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol
                   )
                 end
                 attr_accessor :operator
@@ -7103,9 +7103,9 @@ module Orb
                 sig do
                   params(
                     field:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
                     operator:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
                     values: T::Array[String]
                   ).returns(T.attached_class)
                 end
@@ -7123,9 +7123,9 @@ module Orb
                   override.returns(
                     {
                       field:
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::OrSymbol,
                       operator:
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::OrSymbol,
                       values: T::Array[String]
                     }
                   )
@@ -7141,7 +7141,7 @@ module Orb
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7149,33 +7149,33 @@ module Orb
                   PRICE_ID =
                     T.let(
                       :price_id,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   ITEM_ID =
                     T.let(
                       :item_id,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   PRICE_TYPE =
                     T.let(
                       :price_type,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   CURRENCY =
                     T.let(
                       :currency,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
                   PRICING_UNIT_ID =
                     T.let(
                       :pricing_unit_id,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Field::TaggedSymbol
                       ]
                     )
                   end
@@ -7191,7 +7191,7 @@ module Orb
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7199,18 +7199,18 @@ module Orb
                   INCLUDES =
                     T.let(
                       :includes,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
                     )
                   EXCLUDES =
                     T.let(
                       :excludes,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::Operator::TaggedSymbol
                       ]
                     )
                   end
@@ -7227,7 +7227,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7235,33 +7235,33 @@ module Orb
                 USAGE =
                   T.let(
                     :usage,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 FIXED_IN_ADVANCE =
                   T.let(
                     :fixed_in_advance,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 FIXED_IN_ARREARS =
                   T.let(
                     :fixed_in_arrears,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 FIXED =
                   T.let(
                     :fixed,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
                 IN_ARREARS =
                   T.let(
                     :in_arrears,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::PriceType::TaggedSymbol
                     ]
                   )
                 end
@@ -7273,7 +7273,7 @@ module Orb
             sig do
               override.returns(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Variants
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplaceAdjustment::Adjustment::Variants
                 ]
               )
             end
@@ -7286,7 +7286,7 @@ module Orb
           OrHash =
             T.type_alias do
               T.any(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice,
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice,
                 Orb::Internal::AnyHash
               )
             end
@@ -7310,7 +7310,7 @@ module Orb
           sig do
             returns(
               T.nilable(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice
               )
             )
           end
@@ -7320,7 +7320,7 @@ module Orb
             params(
               license_allocation_price:
                 T.nilable(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::OrHash
                 )
             ).void
           end
@@ -7338,40 +7338,40 @@ module Orb
                   Orb::NewPlanUnitPrice,
                   Orb::NewPlanTieredPrice,
                   Orb::NewPlanBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
                   Orb::NewPlanPackagePrice,
                   Orb::NewPlanMatrixPrice,
                   Orb::NewPlanThresholdTotalAmountPrice,
                   Orb::NewPlanTieredPackagePrice,
                   Orb::NewPlanTieredWithMinimumPrice,
                   Orb::NewPlanGroupedTieredPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
                   Orb::NewPlanTieredPackageWithMinimumPrice,
                   Orb::NewPlanPackageWithAllocationPrice,
                   Orb::NewPlanUnitWithPercentPrice,
                   Orb::NewPlanMatrixWithAllocationPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
                   Orb::NewPlanUnitWithProrationPrice,
                   Orb::NewPlanGroupedAllocationPrice,
                   Orb::NewPlanBulkWithProrationPrice,
                   Orb::NewPlanGroupedWithProratedMinimumPrice,
                   Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
                   Orb::NewPlanMatrixWithDisplayNamePrice,
                   Orb::NewPlanGroupedTieredPackagePrice,
                   Orb::NewPlanMaxGroupTieredPackagePrice,
                   Orb::NewPlanScalableMatrixWithUnitPricingPrice,
                   Orb::NewPlanScalableMatrixWithTieredPricingPrice,
                   Orb::NewPlanCumulativeGroupedBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
                   Orb::NewPlanMinimumCompositePrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
                 )
               )
             )
@@ -7384,7 +7384,7 @@ module Orb
               allocation_price: T.nilable(Orb::NewAllocationPrice::OrHash),
               license_allocation_price:
                 T.nilable(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::OrHash
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::OrHash
                 ),
               plan_phase_order: T.nilable(Integer),
               price:
@@ -7393,40 +7393,40 @@ module Orb
                     Orb::NewPlanUnitPrice::OrHash,
                     Orb::NewPlanTieredPrice::OrHash,
                     Orb::NewPlanBulkPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::OrHash,
                     Orb::NewPlanPackagePrice::OrHash,
                     Orb::NewPlanMatrixPrice::OrHash,
                     Orb::NewPlanThresholdTotalAmountPrice::OrHash,
                     Orb::NewPlanTieredPackagePrice::OrHash,
                     Orb::NewPlanTieredWithMinimumPrice::OrHash,
                     Orb::NewPlanGroupedTieredPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::OrHash,
                     Orb::NewPlanTieredPackageWithMinimumPrice::OrHash,
                     Orb::NewPlanPackageWithAllocationPrice::OrHash,
                     Orb::NewPlanUnitWithPercentPrice::OrHash,
                     Orb::NewPlanMatrixWithAllocationPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::OrHash,
                     Orb::NewPlanUnitWithProrationPrice::OrHash,
                     Orb::NewPlanGroupedAllocationPrice::OrHash,
                     Orb::NewPlanBulkWithProrationPrice::OrHash,
                     Orb::NewPlanGroupedWithProratedMinimumPrice::OrHash,
                     Orb::NewPlanGroupedWithMeteredMinimumPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::OrHash,
                     Orb::NewPlanMatrixWithDisplayNamePrice::OrHash,
                     Orb::NewPlanGroupedTieredPackagePrice::OrHash,
                     Orb::NewPlanMaxGroupTieredPackagePrice::OrHash,
                     Orb::NewPlanScalableMatrixWithUnitPricingPrice::OrHash,
                     Orb::NewPlanScalableMatrixWithTieredPricingPrice::OrHash,
                     Orb::NewPlanCumulativeGroupedBulkPrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::OrHash,
                     Orb::NewPlanMinimumCompositePrice::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::OrHash,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::OrHash
                   )
                 )
             ).returns(T.attached_class)
@@ -7452,7 +7452,7 @@ module Orb
                 allocation_price: T.nilable(Orb::NewAllocationPrice),
                 license_allocation_price:
                   T.nilable(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice
                   ),
                 plan_phase_order: T.nilable(Integer),
                 price:
@@ -7461,40 +7461,40 @@ module Orb
                       Orb::NewPlanUnitPrice,
                       Orb::NewPlanTieredPrice,
                       Orb::NewPlanBulkPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
                       Orb::NewPlanPackagePrice,
                       Orb::NewPlanMatrixPrice,
                       Orb::NewPlanThresholdTotalAmountPrice,
                       Orb::NewPlanTieredPackagePrice,
                       Orb::NewPlanTieredWithMinimumPrice,
                       Orb::NewPlanGroupedTieredPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
                       Orb::NewPlanTieredPackageWithMinimumPrice,
                       Orb::NewPlanPackageWithAllocationPrice,
                       Orb::NewPlanUnitWithPercentPrice,
                       Orb::NewPlanMatrixWithAllocationPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
                       Orb::NewPlanUnitWithProrationPrice,
                       Orb::NewPlanGroupedAllocationPrice,
                       Orb::NewPlanBulkWithProrationPrice,
                       Orb::NewPlanGroupedWithProratedMinimumPrice,
                       Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
                       Orb::NewPlanMatrixWithDisplayNamePrice,
                       Orb::NewPlanGroupedTieredPackagePrice,
                       Orb::NewPlanMaxGroupTieredPackagePrice,
                       Orb::NewPlanScalableMatrixWithUnitPricingPrice,
                       Orb::NewPlanScalableMatrixWithTieredPricingPrice,
                       Orb::NewPlanCumulativeGroupedBulkPrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
                       Orb::NewPlanMinimumCompositePrice,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
                     )
                   )
               }
@@ -7507,7 +7507,7 @@ module Orb
             OrHash =
               T.type_alias do
                 T.any(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice,
                   Orb::Internal::AnyHash
                 )
               end
@@ -7515,7 +7515,7 @@ module Orb
             # The cadence to bill for this price on.
             sig do
               returns(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::OrSymbol
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::OrSymbol
               )
             end
             attr_accessor :cadence
@@ -7531,7 +7531,7 @@ module Orb
             sig do
               returns(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation
                 ]
               )
             end
@@ -7540,7 +7540,7 @@ module Orb
             # The pricing model type
             sig do
               returns(
-                Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::OrSymbol
+                Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::OrSymbol
               )
             end
             attr_accessor :model_type
@@ -7662,14 +7662,14 @@ module Orb
             sig do
               params(
                 cadence:
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::OrSymbol,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::OrSymbol,
                 item_id: String,
                 license_allocations:
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation::OrHash
                   ],
                 model_type:
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::OrSymbol,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::OrSymbol,
                 name: String,
                 unit_config: Orb::UnitConfig::OrHash,
                 billable_metric_id: T.nilable(String),
@@ -7761,14 +7761,14 @@ module Orb
               override.returns(
                 {
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::OrSymbol,
                   item_id: String,
                   license_allocations:
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation
                     ],
                   model_type:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::OrSymbol,
                   name: String,
                   unit_config: Orb::UnitConfig,
                   billable_metric_id: T.nilable(String),
@@ -7808,7 +7808,7 @@ module Orb
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7816,38 +7816,38 @@ module Orb
               ONE_TIME =
                 T.let(
                   :one_time,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               MONTHLY =
                 T.let(
                   :monthly,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               QUARTERLY =
                 T.let(
                   :quarterly,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               SEMI_ANNUAL =
                 T.let(
                   :semi_annual,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               ANNUAL =
                 T.let(
                   :annual,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::Cadence::TaggedSymbol
                   ]
                 )
               end
@@ -7859,7 +7859,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -7914,7 +7914,7 @@ module Orb
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7922,13 +7922,13 @@ module Orb
               UNIT =
                 T.let(
                   :unit,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::TaggedSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::ModelType::TaggedSymbol
                   ]
                 )
               end
@@ -7947,40 +7947,40 @@ module Orb
                   Orb::NewPlanUnitPrice,
                   Orb::NewPlanTieredPrice,
                   Orb::NewPlanBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
                   Orb::NewPlanPackagePrice,
                   Orb::NewPlanMatrixPrice,
                   Orb::NewPlanThresholdTotalAmountPrice,
                   Orb::NewPlanTieredPackagePrice,
                   Orb::NewPlanTieredWithMinimumPrice,
                   Orb::NewPlanGroupedTieredPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
                   Orb::NewPlanTieredPackageWithMinimumPrice,
                   Orb::NewPlanPackageWithAllocationPrice,
                   Orb::NewPlanUnitWithPercentPrice,
                   Orb::NewPlanMatrixWithAllocationPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
                   Orb::NewPlanUnitWithProrationPrice,
                   Orb::NewPlanGroupedAllocationPrice,
                   Orb::NewPlanBulkWithProrationPrice,
                   Orb::NewPlanGroupedWithProratedMinimumPrice,
                   Orb::NewPlanGroupedWithMeteredMinimumPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
                   Orb::NewPlanMatrixWithDisplayNamePrice,
                   Orb::NewPlanGroupedTieredPackagePrice,
                   Orb::NewPlanMaxGroupTieredPackagePrice,
                   Orb::NewPlanScalableMatrixWithUnitPricingPrice,
                   Orb::NewPlanScalableMatrixWithTieredPricingPrice,
                   Orb::NewPlanCumulativeGroupedBulkPrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
                   Orb::NewPlanMinimumCompositePrice,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
                 )
               end
 
@@ -7988,7 +7988,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -7996,7 +7996,7 @@ module Orb
               # Configuration for bulk_with_filters pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig
                 )
               end
               attr_reader :bulk_with_filters_config
@@ -8004,7 +8004,7 @@ module Orb
               sig do
                 params(
                   bulk_with_filters_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash
                 ).void
               end
               attr_writer :bulk_with_filters_config
@@ -8012,7 +8012,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -8134,9 +8134,9 @@ module Orb
               sig do
                 params(
                   bulk_with_filters_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::OrHash,
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -8224,9 +8224,9 @@ module Orb
                 override.returns(
                   {
                     bulk_with_filters_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -8263,7 +8263,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -8272,7 +8272,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
                     ]
                   )
                 end
@@ -8282,7 +8282,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
                     ]
                   )
                 end
@@ -8293,11 +8293,11 @@ module Orb
                   params(
                     filters:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter::OrHash
                       ],
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -8314,11 +8314,11 @@ module Orb
                     {
                       filters:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter
                         ],
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier
                         ]
                     }
                   )
@@ -8330,7 +8330,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -8371,7 +8371,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -8420,7 +8420,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -8428,38 +8428,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -8472,7 +8472,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -8480,7 +8480,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -8488,7 +8488,7 @@ module Orb
               # Configuration for grouped_tiered_matrix pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
                 )
               end
               attr_reader :grouped_tiered_matrix_config
@@ -8496,7 +8496,7 @@ module Orb
               sig do
                 params(
                   grouped_tiered_matrix_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash
                 ).void
               end
               attr_writer :grouped_tiered_matrix_config
@@ -8618,9 +8618,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
                   grouped_tiered_matrix_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -8708,9 +8708,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::OrSymbol,
                     grouped_tiered_matrix_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -8751,7 +8751,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -8759,38 +8759,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -8802,7 +8802,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -8820,7 +8820,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
                     ]
                   )
                 end
@@ -8833,7 +8833,7 @@ module Orb
                     dimension: String,
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -8855,7 +8855,7 @@ module Orb
                       dimension: String,
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier
                         ]
                     }
                   )
@@ -8867,7 +8867,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -8919,7 +8919,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -8927,7 +8927,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -8947,7 +8947,7 @@ module Orb
               # Configuration for tiered_matrix_with_allocation pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
                 )
               end
               attr_reader :tiered_matrix_with_allocation_config
@@ -8955,7 +8955,7 @@ module Orb
               sig do
                 params(
                   tiered_matrix_with_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash
                 ).void
               end
               attr_writer :tiered_matrix_with_allocation_config
@@ -9065,11 +9065,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   tiered_matrix_with_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -9155,12 +9155,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     tiered_matrix_with_allocation_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -9198,7 +9198,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9206,38 +9206,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -9249,7 +9249,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -9271,7 +9271,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
                     ]
                   )
                 end
@@ -9285,7 +9285,7 @@ module Orb
                     dimensions: T::Array[String],
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -9310,7 +9310,7 @@ module Orb
                       dimensions: T::Array[String],
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier
                         ]
                     }
                   )
@@ -9322,7 +9322,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -9378,7 +9378,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -9386,7 +9386,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -9398,7 +9398,7 @@ module Orb
               # Configuration for matrix_with_threshold_discounts pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
                 )
               end
               attr_reader :matrix_with_threshold_discounts_config
@@ -9406,7 +9406,7 @@ module Orb
               sig do
                 params(
                   matrix_with_threshold_discounts_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash
                 ).void
               end
               attr_writer :matrix_with_threshold_discounts_config
@@ -9524,10 +9524,10 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
                   item_id: String,
                   matrix_with_threshold_discounts_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::OrHash,
                   name: String,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
@@ -9614,10 +9614,10 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::OrSymbol,
                     item_id: String,
                     matrix_with_threshold_discounts_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
@@ -9657,7 +9657,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9665,38 +9665,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -9708,7 +9708,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -9725,7 +9725,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
                     ]
                   )
                 end
@@ -9739,7 +9739,7 @@ module Orb
                   returns(
                     T.nilable(
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
                       ]
                     )
                   )
@@ -9750,7 +9750,7 @@ module Orb
                   params(
                     threshold_discount_groups:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
                       ]
                   ).void
                 end
@@ -9763,12 +9763,12 @@ module Orb
                     first_dimension: String,
                     matrix_values:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue::OrHash
                       ],
                     second_dimension: T.nilable(String),
                     threshold_discount_groups:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -9792,12 +9792,12 @@ module Orb
                       first_dimension: String,
                       matrix_values:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue
                         ],
                       second_dimension: T.nilable(String),
                       threshold_discount_groups:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup
                         ]
                     }
                   )
@@ -9809,7 +9809,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -9854,7 +9854,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -9925,7 +9925,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -9933,7 +9933,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -9953,7 +9953,7 @@ module Orb
               # Configuration for tiered_with_proration pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig
                 )
               end
               attr_reader :tiered_with_proration_config
@@ -9961,7 +9961,7 @@ module Orb
               sig do
                 params(
                   tiered_with_proration_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash
                 ).void
               end
               attr_writer :tiered_with_proration_config
@@ -10071,11 +10071,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   tiered_with_proration_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -10161,12 +10161,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     tiered_with_proration_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -10204,7 +10204,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10212,38 +10212,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -10255,7 +10255,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -10265,7 +10265,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
                     ]
                   )
                 end
@@ -10276,7 +10276,7 @@ module Orb
                   params(
                     tiers:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -10292,7 +10292,7 @@ module Orb
                     {
                       tiers:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier
                         ]
                     }
                   )
@@ -10304,7 +10304,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -10347,7 +10347,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -10355,7 +10355,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -10363,7 +10363,7 @@ module Orb
               # Configuration for grouped_with_min_max_thresholds pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
                 )
               end
               attr_reader :grouped_with_min_max_thresholds_config
@@ -10371,7 +10371,7 @@ module Orb
               sig do
                 params(
                   grouped_with_min_max_thresholds_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash
                 ).void
               end
               attr_writer :grouped_with_min_max_thresholds_config
@@ -10493,9 +10493,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
                   grouped_with_min_max_thresholds_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -10583,9 +10583,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::OrSymbol,
                     grouped_with_min_max_thresholds_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -10626,7 +10626,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10634,38 +10634,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -10677,7 +10677,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -10738,7 +10738,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -10746,7 +10746,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -10754,7 +10754,7 @@ module Orb
               # Configuration for cumulative_grouped_allocation pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
                 )
               end
               attr_reader :cumulative_grouped_allocation_config
@@ -10762,7 +10762,7 @@ module Orb
               sig do
                 params(
                   cumulative_grouped_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash
                 ).void
               end
               attr_writer :cumulative_grouped_allocation_config
@@ -10884,9 +10884,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
                   cumulative_grouped_allocation_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -10974,9 +10974,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::OrSymbol,
                     cumulative_grouped_allocation_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -11017,7 +11017,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11025,38 +11025,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -11068,7 +11068,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -11129,7 +11129,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -11137,7 +11137,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -11145,7 +11145,7 @@ module Orb
               # Configuration for daily_credit_allowance pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
                 )
               end
               attr_reader :daily_credit_allowance_config
@@ -11153,7 +11153,7 @@ module Orb
               sig do
                 params(
                   daily_credit_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash
                 ).void
               end
               attr_writer :daily_credit_allowance_config
@@ -11275,9 +11275,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
                   daily_credit_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -11365,9 +11365,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::OrSymbol,
                     daily_credit_allowance_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -11408,7 +11408,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11416,38 +11416,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -11459,7 +11459,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -11487,7 +11487,7 @@ module Orb
                 sig do
                   returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
                     ]
                   )
                 end
@@ -11502,7 +11502,7 @@ module Orb
                     event_day_property: String,
                     matrix_values:
                       T::Array[
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue::OrHash
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue::OrHash
                       ]
                   ).returns(T.attached_class)
                 end
@@ -11532,7 +11532,7 @@ module Orb
                       event_day_property: String,
                       matrix_values:
                         T::Array[
-                          Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
+                          Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue
                         ]
                     }
                   )
@@ -11544,7 +11544,7 @@ module Orb
                   OrHash =
                     T.type_alias do
                       T.any(
-                        Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue,
+                        Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue,
                         Orb::Internal::AnyHash
                       )
                     end
@@ -11592,7 +11592,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -11600,7 +11600,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -11612,7 +11612,7 @@ module Orb
               # Configuration for metered_allowance pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig
                 )
               end
               attr_reader :metered_allowance_config
@@ -11620,7 +11620,7 @@ module Orb
               sig do
                 params(
                   metered_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash
                 ).void
               end
               attr_writer :metered_allowance_config
@@ -11738,10 +11738,10 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::OrSymbol,
                   item_id: String,
                   metered_allowance_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig::OrHash,
                   name: String,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
@@ -11828,10 +11828,10 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::OrSymbol,
                     item_id: String,
                     metered_allowance_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
                     model_type: Symbol,
                     name: String,
                     billable_metric_id: T.nilable(String),
@@ -11871,7 +11871,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11879,38 +11879,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -11922,7 +11922,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -12015,7 +12015,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -12023,7 +12023,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -12043,7 +12043,7 @@ module Orb
               # Configuration for percent pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig
                 )
               end
               attr_reader :percent_config
@@ -12051,7 +12051,7 @@ module Orb
               sig do
                 params(
                   percent_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig::OrHash
                 ).void
               end
               attr_writer :percent_config
@@ -12161,11 +12161,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   percent_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -12251,12 +12251,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     percent_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -12294,7 +12294,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -12302,38 +12302,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -12345,7 +12345,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -12413,7 +12413,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -12421,7 +12421,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -12429,7 +12429,7 @@ module Orb
               # Configuration for event_output pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig
                 )
               end
               attr_reader :event_output_config
@@ -12437,7 +12437,7 @@ module Orb
               sig do
                 params(
                   event_output_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig::OrHash
                 ).void
               end
               attr_writer :event_output_config
@@ -12559,9 +12559,9 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::OrSymbol,
                   event_output_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig::OrHash,
                   item_id: String,
                   name: String,
                   billable_metric_id: T.nilable(String),
@@ -12649,9 +12649,9 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::OrSymbol,
                     event_output_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
@@ -12692,7 +12692,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -12700,38 +12700,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -12743,7 +12743,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -12802,7 +12802,7 @@ module Orb
               OrHash =
                 T.type_alias do
                   T.any(
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier,
                     Orb::Internal::AnyHash
                   )
                 end
@@ -12810,7 +12810,7 @@ module Orb
               # The cadence to bill for this price on.
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::OrSymbol
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::OrSymbol
                 )
               end
               attr_accessor :cadence
@@ -12830,7 +12830,7 @@ module Orb
               # Configuration for unit_with_multiplier pricing
               sig do
                 returns(
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
                 )
               end
               attr_reader :unit_with_multiplier_config
@@ -12838,7 +12838,7 @@ module Orb
               sig do
                 params(
                   unit_with_multiplier_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash
                 ).void
               end
               attr_writer :unit_with_multiplier_config
@@ -12948,11 +12948,11 @@ module Orb
               sig do
                 params(
                   cadence:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
                   item_id: String,
                   name: String,
                   unit_with_multiplier_config:
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash,
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig::OrHash,
                   billable_metric_id: T.nilable(String),
                   billed_in_advance: T.nilable(T::Boolean),
                   billing_cycle_configuration:
@@ -13038,12 +13038,12 @@ module Orb
                 override.returns(
                   {
                     cadence:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::OrSymbol,
                     item_id: String,
                     model_type: Symbol,
                     name: String,
                     unit_with_multiplier_config:
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
                     billable_metric_id: T.nilable(String),
                     billed_in_advance: T.nilable(T::Boolean),
                     billing_cycle_configuration:
@@ -13081,7 +13081,7 @@ module Orb
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -13089,38 +13089,38 @@ module Orb
                 ONE_TIME =
                   T.let(
                     :one_time,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 MONTHLY =
                   T.let(
                     :monthly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 QUARTERLY =
                   T.let(
                     :quarterly,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 SEMI_ANNUAL =
                   T.let(
                     :semi_annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 ANNUAL =
                   T.let(
                     :annual,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                    Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::Cadence::TaggedSymbol
                     ]
                   )
                 end
@@ -13132,7 +13132,7 @@ module Orb
                 OrHash =
                   T.type_alias do
                     T.any(
-                      Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+                      Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
                       Orb::Internal::AnyHash
                     )
                   end
@@ -13202,7 +13202,7 @@ module Orb
             sig do
               override.returns(
                 T::Array[
-                  Orb::Beta::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Variants
+                  Orb::Plans::ExternalPlanIDCreatePlanVersionParams::ReplacePrice::Price::Variants
                 ]
               )
             end

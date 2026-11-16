@@ -22,13 +22,6 @@ module Orb
     sig { returns(Orb::Resources::TopLevel) }
     attr_reader :top_level
 
-    # The [Plan](/core-concepts#plan-and-price) resource represents a plan that can be
-    # subscribed to by a customer. Plans define the billing behavior of the
-    # subscription. You can see more about how to configure prices in the
-    # [Price resource](/reference/price).
-    sig { returns(Orb::Resources::Beta) }
-    attr_reader :beta
-
     # A coupon represents a reusable discount configuration that can be applied either
     # as a fixed or percentage amount to an invoice or subscription. Coupons are
     # activated using a redemption code, which applies the discount to a subscription

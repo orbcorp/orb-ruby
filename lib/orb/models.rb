@@ -81,14 +81,6 @@ module Orb
 
   BackfillRevertedWebhookEvent = Orb::Models::BackfillRevertedWebhookEvent
 
-  Beta = Orb::Models::Beta
-
-  BetaCreatePlanVersionParams = Orb::Models::BetaCreatePlanVersionParams
-
-  BetaFetchPlanVersionParams = Orb::Models::BetaFetchPlanVersionParams
-
-  BetaSetDefaultPlanVersionParams = Orb::Models::BetaSetDefaultPlanVersionParams
-
   BillableMetric = Orb::Models::BillableMetric
 
   BillableMetricEditedWebhookEvent = Orb::Models::BillableMetricEditedWebhookEvent
@@ -643,11 +635,15 @@ module Orb
 
   PlanCreateParams = Orb::Models::PlanCreateParams
 
+  PlanCreatePlanVersionParams = Orb::Models::PlanCreatePlanVersionParams
+
   PlanDefaultVersionSetWebhookEvent = Orb::Models::PlanDefaultVersionSetWebhookEvent
 
   PlanEditedWebhookEvent = Orb::Models::PlanEditedWebhookEvent
 
   PlanFetchParams = Orb::Models::PlanFetchParams
+
+  PlanFetchPlanVersionParams = Orb::Models::PlanFetchPlanVersionParams
 
   PlanListParams = Orb::Models::PlanListParams
 
@@ -662,6 +658,8 @@ module Orb
   PlanPhaseUsageDiscountAdjustment = Orb::Models::PlanPhaseUsageDiscountAdjustment
 
   Plans = Orb::Models::Plans
+
+  PlanSetDefaultPlanVersionParams = Orb::Models::PlanSetDefaultPlanVersionParams
 
   PlanUpdateParams = Orb::Models::PlanUpdateParams
 

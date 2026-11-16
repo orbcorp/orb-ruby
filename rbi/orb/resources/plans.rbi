@@ -147,6 +147,65 @@ module Orb
       )
       end
 
+      # This endpoint allows the creation of a new plan version for an existing plan.
+      sig do
+        params(
+          plan_id: String,
+          version: Integer,
+          add_adjustments:
+            T.nilable(
+              T::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::OrHash]
+            ),
+          add_prices:
+            T.nilable(
+              T::Array[Orb::PlanCreatePlanVersionParams::AddPrice::OrHash]
+            ),
+          remove_adjustments:
+            T.nilable(
+              T::Array[
+                Orb::PlanCreatePlanVersionParams::RemoveAdjustment::OrHash
+              ]
+            ),
+          remove_prices:
+            T.nilable(
+              T::Array[Orb::PlanCreatePlanVersionParams::RemovePrice::OrHash]
+            ),
+          replace_adjustments:
+            T.nilable(
+              T::Array[
+                Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::OrHash
+              ]
+            ),
+          replace_prices:
+            T.nilable(
+              T::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::OrHash]
+            ),
+          set_as_default: T.nilable(T::Boolean),
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::PlanVersion)
+      end
+      def create_plan_version(
+        plan_id,
+        # New version number.
+        version:,
+        # Additional adjustments to be added to the plan.
+        add_adjustments: nil,
+        # Additional prices to be added to the plan.
+        add_prices: nil,
+        # Adjustments to be removed from the plan.
+        remove_adjustments: nil,
+        # Prices to be removed from the plan.
+        remove_prices: nil,
+        # Adjustments to be replaced with additional adjustments on the plan.
+        replace_adjustments: nil,
+        # Prices to be replaced with additional prices on the plan.
+        replace_prices: nil,
+        # Set this new plan version as the default
+        set_as_default: nil,
+        request_options: {}
+      )
+      end
+
       # This endpoint is used to fetch [plan](/core-concepts#plan-and-price) details
       # given a plan identifier. It returns information about the prices included in the
       # plan and their configuration, as well as the product that the plan is attached
@@ -171,6 +230,34 @@ module Orb
         ).returns(Orb::Plan)
       end
       def fetch(plan_id, request_options: {})
+      end
+
+      # This endpoint is used to fetch a plan version. It returns the phases, prices,
+      # and adjustments present on this version of the plan.
+      sig do
+        params(
+          version: String,
+          plan_id: String,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::PlanVersion)
+      end
+      def fetch_plan_version(version, plan_id:, request_options: {})
+      end
+
+      # This endpoint allows setting the default version of a plan.
+      sig do
+        params(
+          plan_id: String,
+          version: Integer,
+          request_options: Orb::RequestOptions::OrHash
+        ).returns(Orb::Plan)
+      end
+      def set_default_plan_version(
+        plan_id,
+        # Plan version to set as the default.
+        version:,
+        request_options: {}
+      )
       end
 
       # @api private

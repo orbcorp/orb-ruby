@@ -2,9 +2,9 @@
 
 module Orb
   module Models
-    module Beta
-      # @see Orb::Resources::Beta::ExternalPlanID#fetch_plan_version
-      class ExternalPlanIDFetchPlanVersionParams < Orb::Internal::Type::BaseModel
+    module Plans
+      # @see Orb::Resources::Plans::ExternalPlanID#set_default_plan_version
+      class ExternalPlanIDSetDefaultPlanVersionParams < Orb::Internal::Type::BaseModel
         extend Orb::Internal::Type::RequestParameters::Converter
         include Orb::Internal::Type::RequestParameters
 
@@ -14,13 +14,16 @@ module Orb
         required :external_plan_id, String
 
         # @!attribute version
+        #   Plan version to set as the default.
         #
-        #   @return [String]
-        required :version, String
+        #   @return [Integer]
+        required :version, Integer
 
         # @!method initialize(external_plan_id:, version:, request_options: {})
         #   @param external_plan_id [String]
-        #   @param version [String]
+        #
+        #   @param version [Integer] Plan version to set as the default.
+        #
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -1,20 +1,20 @@
 module Orb
   module Models
-    type beta_create_plan_version_params =
+    type plan_create_plan_version_params =
       {
         plan_id: String,
         version: Integer,
-        add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
-        add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,
-        remove_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::RemoveAdjustment]?,
-        remove_prices: ::Array[Orb::BetaCreatePlanVersionParams::RemovePrice]?,
-        replace_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment]?,
-        replace_prices: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice]?,
+        add_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment]?,
+        add_prices: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice]?,
+        remove_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::RemoveAdjustment]?,
+        remove_prices: ::Array[Orb::PlanCreatePlanVersionParams::RemovePrice]?,
+        replace_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment]?,
+        replace_prices: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice]?,
         set_as_default: bool?
       }
       & Orb::Internal::Type::request_parameters
 
-    class BetaCreatePlanVersionParams < Orb::Internal::Type::BaseModel
+    class PlanCreatePlanVersionParams < Orb::Internal::Type::BaseModel
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
@@ -22,29 +22,29 @@ module Orb
 
       attr_accessor version: Integer
 
-      attr_accessor add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?
+      attr_accessor add_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment]?
 
-      attr_accessor add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?
+      attr_accessor add_prices: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice]?
 
-      attr_accessor remove_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::RemoveAdjustment]?
+      attr_accessor remove_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::RemoveAdjustment]?
 
-      attr_accessor remove_prices: ::Array[Orb::BetaCreatePlanVersionParams::RemovePrice]?
+      attr_accessor remove_prices: ::Array[Orb::PlanCreatePlanVersionParams::RemovePrice]?
 
-      attr_accessor replace_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment]?
+      attr_accessor replace_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment]?
 
-      attr_accessor replace_prices: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice]?
+      attr_accessor replace_prices: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice]?
 
       attr_accessor set_as_default: bool?
 
       def initialize: (
         plan_id: String,
         version: Integer,
-        ?add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
-        ?add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,
-        ?remove_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::RemoveAdjustment]?,
-        ?remove_prices: ::Array[Orb::BetaCreatePlanVersionParams::RemovePrice]?,
-        ?replace_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment]?,
-        ?replace_prices: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice]?,
+        ?add_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment]?,
+        ?add_prices: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice]?,
+        ?remove_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::RemoveAdjustment]?,
+        ?remove_prices: ::Array[Orb::PlanCreatePlanVersionParams::RemovePrice]?,
+        ?replace_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment]?,
+        ?replace_prices: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice]?,
         ?set_as_default: bool?,
         ?request_options: Orb::request_opts
       ) -> void
@@ -52,34 +52,34 @@ module Orb
       def to_hash: -> {
         plan_id: String,
         version: Integer,
-        add_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment]?,
-        add_prices: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice]?,
-        remove_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::RemoveAdjustment]?,
-        remove_prices: ::Array[Orb::BetaCreatePlanVersionParams::RemovePrice]?,
-        replace_adjustments: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment]?,
-        replace_prices: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice]?,
+        add_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment]?,
+        add_prices: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice]?,
+        remove_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::RemoveAdjustment]?,
+        remove_prices: ::Array[Orb::PlanCreatePlanVersionParams::RemovePrice]?,
+        replace_adjustments: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment]?,
+        replace_prices: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice]?,
         set_as_default: bool?,
         request_options: Orb::RequestOptions
       }
 
       type add_adjustment =
         {
-          adjustment: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::adjustment,
+          adjustment: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::adjustment,
           plan_phase_order: Integer?
         }
 
       class AddAdjustment < Orb::Internal::Type::BaseModel
-        attr_accessor adjustment: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::adjustment
+        attr_accessor adjustment: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::adjustment
 
         attr_accessor plan_phase_order: Integer?
 
         def initialize: (
-          adjustment: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::adjustment,
+          adjustment: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::adjustment,
           ?plan_phase_order: Integer?
         ) -> void
 
         def to_hash: -> {
-          adjustment: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::adjustment,
+          adjustment: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::adjustment,
           plan_phase_order: Integer?
         }
 
@@ -89,7 +89,7 @@ module Orb
           | Orb::NewAmountDiscount
           | Orb::NewMinimum
           | Orb::NewMaximum
-          | Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
+          | Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount
 
         module Adjustment
           extend Orb::Internal::Type::Union
@@ -97,22 +97,22 @@ module Orb
           type tiered_percentage_discount =
             {
               adjustment_type: :tiered_percentage_discount,
-              tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
-              applies_to_all: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
               applies_to_item_ids: ::Array[String]?,
               applies_to_price_ids: ::Array[String]?,
               currency: String?,
-              filters: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              filters: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
               is_invoice_level: bool,
-              price_type: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+              price_type: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
             }
 
           class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :tiered_percentage_discount
 
-            attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier]
+            attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier]
 
-            attr_accessor applies_to_all: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?
+            attr_accessor applies_to_all: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?
 
             attr_accessor applies_to_item_ids: ::Array[String]?
 
@@ -120,36 +120,36 @@ module Orb
 
             attr_accessor currency: String?
 
-            attr_accessor filters: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?
+            attr_accessor filters: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?
 
             attr_reader is_invoice_level: bool?
 
             def is_invoice_level=: (bool) -> bool
 
-            attr_accessor price_type: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+            attr_accessor price_type: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
 
             def initialize: (
-              tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
-              ?applies_to_all: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              ?applies_to_all: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
               ?applies_to_item_ids: ::Array[String]?,
               ?applies_to_price_ids: ::Array[String]?,
               ?currency: String?,
-              ?filters: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              ?filters: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
               ?is_invoice_level: bool,
-              ?price_type: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?,
+              ?price_type: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?,
               ?adjustment_type: :tiered_percentage_discount
             ) -> void
 
             def to_hash: -> {
               adjustment_type: :tiered_percentage_discount,
-              tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
-              applies_to_all: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
               applies_to_item_ids: ::Array[String]?,
               applies_to_price_ids: ::Array[String]?,
               currency: String?,
-              filters: ::Array[Orb::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              filters: ::Array[Orb::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
               is_invoice_level: bool,
-              price_type: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+              price_type: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type?
             }
 
             type tier =
@@ -182,32 +182,32 @@ module Orb
 
               TRUE: true
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all]
             end
 
             type filter =
               {
-                field: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
-                operator: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                field: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
                 values: ::Array[String]
               }
 
             class Filter < Orb::Internal::Type::BaseModel
-              attr_accessor field: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field
+              attr_accessor field: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field
 
-              attr_accessor operator: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator
+              attr_accessor operator: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator
 
               attr_accessor values: ::Array[String]
 
               def initialize: (
-                field: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
-                operator: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                field: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
                 values: ::Array[String]
               ) -> void
 
               def to_hash: -> {
-                field: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
-                operator: Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                field: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
                 values: ::Array[String]
               }
 
@@ -227,7 +227,7 @@ module Orb
                 CURRENCY: :currency
                 PRICING_UNIT_ID: :pricing_unit_id
 
-                def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field]
+                def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::field]
               end
 
               type operator = :includes | :excludes
@@ -238,7 +238,7 @@ module Orb
                 INCLUDES: :includes
                 EXCLUDES: :excludes
 
-                def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator]
+                def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator]
               end
             end
 
@@ -258,51 +258,51 @@ module Orb
               FIXED: :fixed
               IN_ARREARS: :in_arrears
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::Adjustment::TieredPercentageDiscount::price_type]
             end
           end
 
-          def self?.variants: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddAdjustment::adjustment]
+          def self?.variants: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddAdjustment::adjustment]
         end
       end
 
       type add_price =
         {
           allocation_price: Orb::NewAllocationPrice?,
-          license_allocation_price: Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?,
+          license_allocation_price: Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?,
           plan_phase_order: Integer?,
-          price: Orb::Models::BetaCreatePlanVersionParams::AddPrice::price?
+          price: Orb::Models::PlanCreatePlanVersionParams::AddPrice::price?
         }
 
       class AddPrice < Orb::Internal::Type::BaseModel
         attr_accessor allocation_price: Orb::NewAllocationPrice?
 
-        attr_accessor license_allocation_price: Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?
+        attr_accessor license_allocation_price: Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?
 
         attr_accessor plan_phase_order: Integer?
 
-        attr_accessor price: Orb::Models::BetaCreatePlanVersionParams::AddPrice::price?
+        attr_accessor price: Orb::Models::PlanCreatePlanVersionParams::AddPrice::price?
 
         def initialize: (
           ?allocation_price: Orb::NewAllocationPrice?,
-          ?license_allocation_price: Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?,
+          ?license_allocation_price: Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?,
           ?plan_phase_order: Integer?,
-          ?price: Orb::Models::BetaCreatePlanVersionParams::AddPrice::price?
+          ?price: Orb::Models::PlanCreatePlanVersionParams::AddPrice::price?
         ) -> void
 
         def to_hash: -> {
           allocation_price: Orb::NewAllocationPrice?,
-          license_allocation_price: Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?,
+          license_allocation_price: Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice?,
           plan_phase_order: Integer?,
-          price: Orb::Models::BetaCreatePlanVersionParams::AddPrice::price?
+          price: Orb::Models::PlanCreatePlanVersionParams::AddPrice::price?
         }
 
         type license_allocation_price =
           {
-            cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence,
+            cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence,
             item_id: String,
-            license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation],
-            model_type: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type,
+            license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation],
+            model_type: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type,
             name: String,
             unit_config: Orb::UnitConfig,
             billable_metric_id: String?,
@@ -322,13 +322,13 @@ module Orb
           }
 
         class LicenseAllocationPrice < Orb::Internal::Type::BaseModel
-          attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence
+          attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence
 
           attr_accessor item_id: String
 
-          attr_accessor license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation]
+          attr_accessor license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation]
 
-          attr_accessor model_type: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type
+          attr_accessor model_type: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type
 
           attr_accessor name: String
 
@@ -363,10 +363,10 @@ module Orb
           attr_accessor reference_id: String?
 
           def initialize: (
-            cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence,
+            cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence,
             item_id: String,
-            license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation],
-            model_type: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type,
+            license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation],
+            model_type: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type,
             name: String,
             unit_config: Orb::UnitConfig,
             ?billable_metric_id: String?,
@@ -386,10 +386,10 @@ module Orb
           ) -> void
 
           def to_hash: -> {
-            cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence,
+            cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence,
             item_id: String,
-            license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation],
-            model_type: Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type,
+            license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::LicenseAllocation],
+            model_type: Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type,
             name: String,
             unit_config: Orb::UnitConfig,
             billable_metric_id: String?,
@@ -421,7 +421,7 @@ module Orb
             ANNUAL: :annual
             CUSTOM: :custom
 
-            def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence]
+            def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::cadence]
           end
 
           type license_allocation =
@@ -454,7 +454,7 @@ module Orb
 
             UNIT: :unit
 
-            def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type]
+            def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::LicenseAllocationPrice::model_type]
           end
         end
 
@@ -462,48 +462,48 @@ module Orb
           Orb::NewPlanUnitPrice
           | Orb::NewPlanTieredPrice
           | Orb::NewPlanBulkPrice
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters
           | Orb::NewPlanPackagePrice
           | Orb::NewPlanMatrixPrice
           | Orb::NewPlanThresholdTotalAmountPrice
           | Orb::NewPlanTieredPackagePrice
           | Orb::NewPlanTieredWithMinimumPrice
           | Orb::NewPlanGroupedTieredPrice
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix
           | Orb::NewPlanTieredPackageWithMinimumPrice
           | Orb::NewPlanPackageWithAllocationPrice
           | Orb::NewPlanUnitWithPercentPrice
           | Orb::NewPlanMatrixWithAllocationPrice
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration
           | Orb::NewPlanUnitWithProrationPrice
           | Orb::NewPlanGroupedAllocationPrice
           | Orb::NewPlanBulkWithProrationPrice
           | Orb::NewPlanGroupedWithProratedMinimumPrice
           | Orb::NewPlanGroupedWithMeteredMinimumPrice
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds
           | Orb::NewPlanMatrixWithDisplayNamePrice
           | Orb::NewPlanGroupedTieredPackagePrice
           | Orb::NewPlanMaxGroupTieredPackagePrice
           | Orb::NewPlanScalableMatrixWithUnitPricingPrice
           | Orb::NewPlanScalableMatrixWithTieredPricingPrice
           | Orb::NewPlanCumulativeGroupedBulkPrice
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance
           | Orb::NewPlanMinimumCompositePrice
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput
-          | Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::Percent
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput
+          | Orb::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier
 
         module Price
           extend Orb::Internal::Type::Union
 
           type bulk_with_filters =
             {
-              bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence,
+              bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence,
               item_id: String,
               model_type: :bulk_with_filters,
               name: String,
@@ -524,9 +524,9 @@ module Orb
             }
 
           class BulkWithFilters < Orb::Internal::Type::BaseModel
-            attr_accessor bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig
+            attr_accessor bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig
 
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence
 
             attr_accessor item_id: String
 
@@ -563,8 +563,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence,
+              bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -585,8 +585,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence,
+              bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence,
               item_id: String,
               model_type: :bulk_with_filters,
               name: String,
@@ -608,23 +608,23 @@ module Orb
 
             type bulk_with_filters_config =
               {
-                filters: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+                filters: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
               }
 
             class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
-              attr_accessor filters: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter]
+              attr_accessor filters: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter]
 
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
 
               def initialize: (
-                filters: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+                filters: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
               ) -> void
 
               def to_hash: -> {
-                filters: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+                filters: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
               }
 
               type filter = { property_key: String, property_value: String }
@@ -679,14 +679,14 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::BulkWithFilters::cadence]
             end
           end
 
           type grouped_tiered_matrix =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
-              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
               item_id: String,
               model_type: :grouped_tiered_matrix,
               name: String,
@@ -707,9 +707,9 @@ module Orb
             }
 
           class GroupedTieredMatrix < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence
 
-            attr_accessor grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
+            attr_accessor grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
 
             attr_accessor item_id: String
 
@@ -746,8 +746,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
-              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -768,8 +768,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
-              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
               item_id: String,
               model_type: :grouped_tiered_matrix,
               name: String,
@@ -807,14 +807,14 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::cadence]
             end
 
             type grouped_tiered_matrix_config =
               {
                 default_unit_amount: String,
                 dimension: String,
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
               }
 
             class GroupedTieredMatrixConfig < Orb::Internal::Type::BaseModel
@@ -822,18 +822,18 @@ module Orb
 
               attr_accessor dimension: String
 
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
 
               def initialize: (
                 default_unit_amount: String,
                 dimension: String,
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
               ) -> void
 
               def to_hash: -> {
                 default_unit_amount: String,
                 dimension: String,
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
               }
 
               type tier =
@@ -867,11 +867,11 @@ module Orb
 
           type tiered_matrix_with_allocation =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
               item_id: String,
               model_type: :tiered_matrix_with_allocation,
               name: String,
-              tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -889,7 +889,7 @@ module Orb
             }
 
           class TieredMatrixWithAllocation < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence
 
             attr_accessor item_id: String
 
@@ -897,7 +897,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+            attr_accessor tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -928,10 +928,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
               item_id: String,
               name: String,
-              tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -950,11 +950,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence,
               item_id: String,
               model_type: :tiered_matrix_with_allocation,
               name: String,
-              tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -989,7 +989,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::cadence]
             end
 
             type tiered_matrix_with_allocation_config =
@@ -997,7 +997,7 @@ module Orb
                 allocation: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
               }
 
             class TieredMatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
@@ -1007,20 +1007,20 @@ module Orb
 
               attr_accessor dimensions: ::Array[String]
 
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
 
               def initialize: (
                 allocation: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
               ) -> void
 
               def to_hash: -> {
                 allocation: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
               }
 
               type tier =
@@ -1054,9 +1054,9 @@ module Orb
 
           type matrix_with_threshold_discounts =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence,
               item_id: String,
-              matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
               model_type: :matrix_with_threshold_discounts,
               name: String,
               billable_metric_id: String?,
@@ -1076,11 +1076,11 @@ module Orb
             }
 
           class MatrixWithThresholdDiscounts < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence
 
             attr_accessor item_id: String
 
-            attr_accessor matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
+            attr_accessor matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
 
             attr_accessor model_type: :matrix_with_threshold_discounts
 
@@ -1115,9 +1115,9 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence,
               item_id: String,
-              matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
               name: String,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
@@ -1137,9 +1137,9 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence,
               item_id: String,
-              matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
               model_type: :matrix_with_threshold_discounts,
               name: String,
               billable_metric_id: String?,
@@ -1176,16 +1176,16 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::cadence]
             end
 
             type matrix_with_threshold_discounts_config =
               {
                 default_unit_amount: String,
                 first_dimension: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
                 second_dimension: String?,
-                threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
               }
 
             class MatrixWithThresholdDiscountsConfig < Orb::Internal::Type::BaseModel
@@ -1193,30 +1193,30 @@ module Orb
 
               attr_accessor first_dimension: String
 
-              attr_accessor matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue]
+              attr_accessor matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue]
 
               attr_accessor second_dimension: String?
 
-              attr_reader threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]?
+              attr_reader threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]?
 
               def threshold_discount_groups=: (
-                ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
-              ) -> ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              ) -> ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
 
               def initialize: (
                 default_unit_amount: String,
                 first_dimension: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
                 ?second_dimension: String?,
-                ?threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                ?threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
               ) -> void
 
               def to_hash: -> {
                 default_unit_amount: String,
                 first_dimension: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
                 second_dimension: String?,
-                threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
               }
 
               type matrix_value =
@@ -1287,11 +1287,11 @@ module Orb
 
           type tiered_with_proration =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence,
               item_id: String,
               model_type: :tiered_with_proration,
               name: String,
-              tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+              tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -1309,7 +1309,7 @@ module Orb
             }
 
           class TieredWithProration < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence
 
             attr_accessor item_id: String
 
@@ -1317,7 +1317,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig
+            attr_accessor tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -1348,10 +1348,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence,
               item_id: String,
               name: String,
-              tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+              tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -1370,11 +1370,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence,
               item_id: String,
               model_type: :tiered_with_proration,
               name: String,
-              tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
+              tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -1409,23 +1409,23 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::cadence]
             end
 
             type tiered_with_proration_config =
               {
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
               }
 
             class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
 
               def initialize: (
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
               ) -> void
 
               def to_hash: -> {
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
               }
 
               type tier = { tier_lower_bound: String, unit_amount: String }
@@ -1450,8 +1450,8 @@ module Orb
 
           type grouped_with_min_max_thresholds =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
+              grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -1472,9 +1472,9 @@ module Orb
             }
 
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence
 
-            attr_accessor grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+            attr_accessor grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
 
             attr_accessor item_id: String
 
@@ -1511,8 +1511,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
+              grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -1533,8 +1533,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence,
+              grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -1572,7 +1572,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::GroupedWithMinMaxThresholds::cadence]
             end
 
             type grouped_with_min_max_thresholds_config =
@@ -1610,8 +1610,8 @@ module Orb
 
           type cumulative_grouped_allocation =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence,
-              cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence,
+              cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
               item_id: String,
               model_type: :cumulative_grouped_allocation,
               name: String,
@@ -1632,9 +1632,9 @@ module Orb
             }
 
           class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence
 
-            attr_accessor cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
+            attr_accessor cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
 
             attr_accessor item_id: String
 
@@ -1671,8 +1671,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence,
-              cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence,
+              cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -1693,8 +1693,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence,
-              cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence,
+              cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
               item_id: String,
               model_type: :cumulative_grouped_allocation,
               name: String,
@@ -1732,7 +1732,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::CumulativeGroupedAllocation::cadence]
             end
 
             type cumulative_grouped_allocation_config =
@@ -1770,8 +1770,8 @@ module Orb
 
           type daily_credit_allowance =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence,
-              daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence,
+              daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
               item_id: String,
               model_type: :daily_credit_allowance,
               name: String,
@@ -1792,9 +1792,9 @@ module Orb
             }
 
           class DailyCreditAllowance < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence
 
-            attr_accessor daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
+            attr_accessor daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
 
             attr_accessor item_id: String
 
@@ -1831,8 +1831,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence,
-              daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence,
+              daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -1853,8 +1853,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence,
-              daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence,
+              daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
               item_id: String,
               model_type: :daily_credit_allowance,
               name: String,
@@ -1892,7 +1892,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::cadence]
             end
 
             type daily_credit_allowance_config =
@@ -1901,7 +1901,7 @@ module Orb
                 default_unit_amount: String,
                 dimensions: ::Array[String?],
                 event_day_property: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
               }
 
             class DailyCreditAllowanceConfig < Orb::Internal::Type::BaseModel
@@ -1913,14 +1913,14 @@ module Orb
 
               attr_accessor event_day_property: String
 
-              attr_accessor matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+              attr_accessor matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
 
               def initialize: (
                 daily_allowance: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String?],
                 event_day_property: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
               ) -> void
 
               def to_hash: -> {
@@ -1928,7 +1928,7 @@ module Orb
                 default_unit_amount: String,
                 dimensions: ::Array[String?],
                 event_day_property: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::AddPrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
               }
 
               type matrix_value =
@@ -1954,9 +1954,9 @@ module Orb
 
           type metered_allowance =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence,
               item_id: String,
-              metered_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              metered_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
               model_type: :metered_allowance,
               name: String,
               billable_metric_id: String?,
@@ -1976,11 +1976,11 @@ module Orb
             }
 
           class MeteredAllowance < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence
 
             attr_accessor item_id: String
 
-            attr_accessor metered_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig
+            attr_accessor metered_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig
 
             attr_accessor model_type: :metered_allowance
 
@@ -2015,9 +2015,9 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence,
               item_id: String,
-              metered_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              metered_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
               name: String,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
@@ -2037,9 +2037,9 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence,
               item_id: String,
-              metered_allowance_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              metered_allowance_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::MeteredAllowanceConfig,
               model_type: :metered_allowance,
               name: String,
               billable_metric_id: String?,
@@ -2076,7 +2076,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::MeteredAllowance::cadence]
             end
 
             type metered_allowance_config =
@@ -2128,11 +2128,11 @@ module Orb
 
           type percent =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::Percent::cadence,
               item_id: String,
               model_type: :percent,
               name: String,
-              percent_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
+              percent_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -2150,7 +2150,7 @@ module Orb
             }
 
           class Percent < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::Percent::cadence
 
             attr_accessor item_id: String
 
@@ -2158,7 +2158,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor percent_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig
+            attr_accessor percent_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -2189,10 +2189,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::Percent::cadence,
               item_id: String,
               name: String,
-              percent_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
+              percent_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -2211,11 +2211,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::Percent::cadence,
               item_id: String,
               model_type: :percent,
               name: String,
-              percent_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
+              percent_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::Percent::PercentConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -2250,7 +2250,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::Percent::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::Percent::cadence]
             end
 
             type percent_config =
@@ -2290,8 +2290,8 @@ module Orb
 
           type event_output =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
-              event_output_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
+              event_output_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
               item_id: String,
               model_type: :event_output,
               name: String,
@@ -2312,9 +2312,9 @@ module Orb
             }
 
           class EventOutput < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence
 
-            attr_accessor event_output_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig
+            attr_accessor event_output_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig
 
             attr_accessor item_id: String
 
@@ -2351,8 +2351,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
-              event_output_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
+              event_output_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -2373,8 +2373,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
-              event_output_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence,
+              event_output_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::EventOutputConfig,
               item_id: String,
               model_type: :event_output,
               name: String,
@@ -2412,7 +2412,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::EventOutput::cadence]
             end
 
             type event_output_config =
@@ -2445,11 +2445,11 @@ module Orb
 
           type unit_with_multiplier =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
               item_id: String,
               model_type: :unit_with_multiplier,
               name: String,
-              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -2467,7 +2467,7 @@ module Orb
             }
 
           class UnitWithMultiplier < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence
 
             attr_accessor item_id: String
 
@@ -2475,7 +2475,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
+            attr_accessor unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -2506,10 +2506,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
               item_id: String,
               name: String,
-              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -2528,11 +2528,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence,
               item_id: String,
               model_type: :unit_with_multiplier,
               name: String,
-              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -2567,7 +2567,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::Price::UnitWithMultiplier::cadence]
             end
 
             type unit_with_multiplier_config =
@@ -2603,7 +2603,7 @@ module Orb
             end
           end
 
-          def self?.variants: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::AddPrice::price]
+          def self?.variants: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::AddPrice::price]
         end
       end
 
@@ -2637,26 +2637,26 @@ module Orb
 
       type replace_adjustment =
         {
-          adjustment: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::adjustment,
+          adjustment: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::adjustment,
           replaces_adjustment_id: String,
           plan_phase_order: Integer?
         }
 
       class ReplaceAdjustment < Orb::Internal::Type::BaseModel
-        attr_accessor adjustment: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::adjustment
+        attr_accessor adjustment: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::adjustment
 
         attr_accessor replaces_adjustment_id: String
 
         attr_accessor plan_phase_order: Integer?
 
         def initialize: (
-          adjustment: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::adjustment,
+          adjustment: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::adjustment,
           replaces_adjustment_id: String,
           ?plan_phase_order: Integer?
         ) -> void
 
         def to_hash: -> {
-          adjustment: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::adjustment,
+          adjustment: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::adjustment,
           replaces_adjustment_id: String,
           plan_phase_order: Integer?
         }
@@ -2667,7 +2667,7 @@ module Orb
           | Orb::NewAmountDiscount
           | Orb::NewMinimum
           | Orb::NewMaximum
-          | Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
+          | Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount
 
         module Adjustment
           extend Orb::Internal::Type::Union
@@ -2675,22 +2675,22 @@ module Orb
           type tiered_percentage_discount =
             {
               adjustment_type: :tiered_percentage_discount,
-              tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier],
-              applies_to_all: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
               applies_to_item_ids: ::Array[String]?,
               applies_to_price_ids: ::Array[String]?,
               currency: String?,
-              filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
               is_invoice_level: bool,
-              price_type: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+              price_type: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?
             }
 
           class TieredPercentageDiscount < Orb::Internal::Type::BaseModel
             attr_accessor adjustment_type: :tiered_percentage_discount
 
-            attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier]
+            attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier]
 
-            attr_accessor applies_to_all: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?
+            attr_accessor applies_to_all: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?
 
             attr_accessor applies_to_item_ids: ::Array[String]?
 
@@ -2698,36 +2698,36 @@ module Orb
 
             attr_accessor currency: String?
 
-            attr_accessor filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?
+            attr_accessor filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?
 
             attr_reader is_invoice_level: bool?
 
             def is_invoice_level=: (bool) -> bool
 
-            attr_accessor price_type: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+            attr_accessor price_type: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?
 
             def initialize: (
-              tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier],
-              ?applies_to_all: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              ?applies_to_all: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
               ?applies_to_item_ids: ::Array[String]?,
               ?applies_to_price_ids: ::Array[String]?,
               ?currency: String?,
-              ?filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              ?filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
               ?is_invoice_level: bool,
-              ?price_type: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?,
+              ?price_type: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?,
               ?adjustment_type: :tiered_percentage_discount
             ) -> void
 
             def to_hash: -> {
               adjustment_type: :tiered_percentage_discount,
-              tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier],
-              applies_to_all: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
+              tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Tier],
+              applies_to_all: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all?,
               applies_to_item_ids: ::Array[String]?,
               applies_to_price_ids: ::Array[String]?,
               currency: String?,
-              filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
+              filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter]?,
               is_invoice_level: bool,
-              price_type: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?
+              price_type: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type?
             }
 
             type tier =
@@ -2760,32 +2760,32 @@ module Orb
 
               TRUE: true
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::applies_to_all]
             end
 
             type filter =
               {
-                field: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
-                operator: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                field: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
                 values: ::Array[String]
               }
 
             class Filter < Orb::Internal::Type::BaseModel
-              attr_accessor field: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field
+              attr_accessor field: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field
 
-              attr_accessor operator: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator
+              attr_accessor operator: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator
 
               attr_accessor values: ::Array[String]
 
               def initialize: (
-                field: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
-                operator: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                field: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
                 values: ::Array[String]
               ) -> void
 
               def to_hash: -> {
-                field: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
-                operator: Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
+                field: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field,
+                operator: Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator,
                 values: ::Array[String]
               }
 
@@ -2805,7 +2805,7 @@ module Orb
                 CURRENCY: :currency
                 PRICING_UNIT_ID: :pricing_unit_id
 
-                def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field]
+                def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::field]
               end
 
               type operator = :includes | :excludes
@@ -2816,7 +2816,7 @@ module Orb
                 INCLUDES: :includes
                 EXCLUDES: :excludes
 
-                def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator]
+                def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::Filter::operator]
               end
             end
 
@@ -2836,11 +2836,11 @@ module Orb
               FIXED: :fixed
               IN_ARREARS: :in_arrears
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::Adjustment::TieredPercentageDiscount::price_type]
             end
           end
 
-          def self?.variants: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplaceAdjustment::adjustment]
+          def self?.variants: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplaceAdjustment::adjustment]
         end
       end
 
@@ -2848,9 +2848,9 @@ module Orb
         {
           replaces_price_id: String,
           allocation_price: Orb::NewAllocationPrice?,
-          license_allocation_price: Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?,
+          license_allocation_price: Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?,
           plan_phase_order: Integer?,
-          price: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::price?
+          price: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::price?
         }
 
       class ReplacePrice < Orb::Internal::Type::BaseModel
@@ -2858,34 +2858,34 @@ module Orb
 
         attr_accessor allocation_price: Orb::NewAllocationPrice?
 
-        attr_accessor license_allocation_price: Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?
+        attr_accessor license_allocation_price: Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?
 
         attr_accessor plan_phase_order: Integer?
 
-        attr_accessor price: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::price?
+        attr_accessor price: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::price?
 
         def initialize: (
           replaces_price_id: String,
           ?allocation_price: Orb::NewAllocationPrice?,
-          ?license_allocation_price: Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?,
+          ?license_allocation_price: Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?,
           ?plan_phase_order: Integer?,
-          ?price: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::price?
+          ?price: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::price?
         ) -> void
 
         def to_hash: -> {
           replaces_price_id: String,
           allocation_price: Orb::NewAllocationPrice?,
-          license_allocation_price: Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?,
+          license_allocation_price: Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice?,
           plan_phase_order: Integer?,
-          price: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::price?
+          price: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::price?
         }
 
         type license_allocation_price =
           {
-            cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence,
+            cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence,
             item_id: String,
-            license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation],
-            model_type: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type,
+            license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation],
+            model_type: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type,
             name: String,
             unit_config: Orb::UnitConfig,
             billable_metric_id: String?,
@@ -2905,13 +2905,13 @@ module Orb
           }
 
         class LicenseAllocationPrice < Orb::Internal::Type::BaseModel
-          attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence
+          attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence
 
           attr_accessor item_id: String
 
-          attr_accessor license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation]
+          attr_accessor license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation]
 
-          attr_accessor model_type: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type
+          attr_accessor model_type: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type
 
           attr_accessor name: String
 
@@ -2946,10 +2946,10 @@ module Orb
           attr_accessor reference_id: String?
 
           def initialize: (
-            cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence,
+            cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence,
             item_id: String,
-            license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation],
-            model_type: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type,
+            license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation],
+            model_type: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type,
             name: String,
             unit_config: Orb::UnitConfig,
             ?billable_metric_id: String?,
@@ -2969,10 +2969,10 @@ module Orb
           ) -> void
 
           def to_hash: -> {
-            cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence,
+            cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence,
             item_id: String,
-            license_allocations: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation],
-            model_type: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type,
+            license_allocations: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::LicenseAllocation],
+            model_type: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type,
             name: String,
             unit_config: Orb::UnitConfig,
             billable_metric_id: String?,
@@ -3004,7 +3004,7 @@ module Orb
             ANNUAL: :annual
             CUSTOM: :custom
 
-            def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence]
+            def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::cadence]
           end
 
           type license_allocation =
@@ -3037,7 +3037,7 @@ module Orb
 
             UNIT: :unit
 
-            def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type]
+            def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::LicenseAllocationPrice::model_type]
           end
         end
 
@@ -3045,48 +3045,48 @@ module Orb
           Orb::NewPlanUnitPrice
           | Orb::NewPlanTieredPrice
           | Orb::NewPlanBulkPrice
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters
           | Orb::NewPlanPackagePrice
           | Orb::NewPlanMatrixPrice
           | Orb::NewPlanThresholdTotalAmountPrice
           | Orb::NewPlanTieredPackagePrice
           | Orb::NewPlanTieredWithMinimumPrice
           | Orb::NewPlanGroupedTieredPrice
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix
           | Orb::NewPlanTieredPackageWithMinimumPrice
           | Orb::NewPlanPackageWithAllocationPrice
           | Orb::NewPlanUnitWithPercentPrice
           | Orb::NewPlanMatrixWithAllocationPrice
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration
           | Orb::NewPlanUnitWithProrationPrice
           | Orb::NewPlanGroupedAllocationPrice
           | Orb::NewPlanBulkWithProrationPrice
           | Orb::NewPlanGroupedWithProratedMinimumPrice
           | Orb::NewPlanGroupedWithMeteredMinimumPrice
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds
           | Orb::NewPlanMatrixWithDisplayNamePrice
           | Orb::NewPlanGroupedTieredPackagePrice
           | Orb::NewPlanMaxGroupTieredPackagePrice
           | Orb::NewPlanScalableMatrixWithUnitPricingPrice
           | Orb::NewPlanScalableMatrixWithTieredPricingPrice
           | Orb::NewPlanCumulativeGroupedBulkPrice
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance
           | Orb::NewPlanMinimumCompositePrice
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput
-          | Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput
+          | Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier
 
         module Price
           extend Orb::Internal::Type::Union
 
           type bulk_with_filters =
             {
-              bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence,
+              bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence,
               item_id: String,
               model_type: :bulk_with_filters,
               name: String,
@@ -3107,9 +3107,9 @@ module Orb
             }
 
           class BulkWithFilters < Orb::Internal::Type::BaseModel
-            attr_accessor bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig
+            attr_accessor bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig
 
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence
 
             attr_accessor item_id: String
 
@@ -3146,8 +3146,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence,
+              bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -3168,8 +3168,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              bulk_with_filters_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence,
+              bulk_with_filters_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence,
               item_id: String,
               model_type: :bulk_with_filters,
               name: String,
@@ -3191,23 +3191,23 @@ module Orb
 
             type bulk_with_filters_config =
               {
-                filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+                filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
               }
 
             class BulkWithFiltersConfig < Orb::Internal::Type::BaseModel
-              attr_accessor filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter]
+              attr_accessor filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter]
 
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
 
               def initialize: (
-                filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+                filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
               ) -> void
 
               def to_hash: -> {
-                filters: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
+                filters: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Filter],
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::BulkWithFiltersConfig::Tier]
               }
 
               type filter = { property_key: String, property_value: String }
@@ -3262,14 +3262,14 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::BulkWithFilters::cadence]
             end
           end
 
           type grouped_tiered_matrix =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
-              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
               item_id: String,
               model_type: :grouped_tiered_matrix,
               name: String,
@@ -3290,9 +3290,9 @@ module Orb
             }
 
           class GroupedTieredMatrix < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence
 
-            attr_accessor grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
+            attr_accessor grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig
 
             attr_accessor item_id: String
 
@@ -3329,8 +3329,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
-              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -3351,8 +3351,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
-              grouped_tiered_matrix_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence,
+              grouped_tiered_matrix_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig,
               item_id: String,
               model_type: :grouped_tiered_matrix,
               name: String,
@@ -3390,14 +3390,14 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::cadence]
             end
 
             type grouped_tiered_matrix_config =
               {
                 default_unit_amount: String,
                 dimension: String,
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
               }
 
             class GroupedTieredMatrixConfig < Orb::Internal::Type::BaseModel
@@ -3405,18 +3405,18 @@ module Orb
 
               attr_accessor dimension: String
 
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
 
               def initialize: (
                 default_unit_amount: String,
                 dimension: String,
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
               ) -> void
 
               def to_hash: -> {
                 default_unit_amount: String,
                 dimension: String,
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedTieredMatrix::GroupedTieredMatrixConfig::Tier]
               }
 
               type tier =
@@ -3450,11 +3450,11 @@ module Orb
 
           type tiered_matrix_with_allocation =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
               item_id: String,
               model_type: :tiered_matrix_with_allocation,
               name: String,
-              tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -3472,7 +3472,7 @@ module Orb
             }
 
           class TieredMatrixWithAllocation < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence
 
             attr_accessor item_id: String
 
@@ -3480,7 +3480,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
+            attr_accessor tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -3511,10 +3511,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
               item_id: String,
               name: String,
-              tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -3533,11 +3533,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence,
               item_id: String,
               model_type: :tiered_matrix_with_allocation,
               name: String,
-              tiered_matrix_with_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
+              tiered_matrix_with_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -3572,7 +3572,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::cadence]
             end
 
             type tiered_matrix_with_allocation_config =
@@ -3580,7 +3580,7 @@ module Orb
                 allocation: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
               }
 
             class TieredMatrixWithAllocationConfig < Orb::Internal::Type::BaseModel
@@ -3590,20 +3590,20 @@ module Orb
 
               attr_accessor dimensions: ::Array[String]
 
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
 
               def initialize: (
                 allocation: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
               ) -> void
 
               def to_hash: -> {
                 allocation: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String],
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredMatrixWithAllocation::TieredMatrixWithAllocationConfig::Tier]
               }
 
               type tier =
@@ -3637,9 +3637,9 @@ module Orb
 
           type matrix_with_threshold_discounts =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence,
               item_id: String,
-              matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
               model_type: :matrix_with_threshold_discounts,
               name: String,
               billable_metric_id: String?,
@@ -3659,11 +3659,11 @@ module Orb
             }
 
           class MatrixWithThresholdDiscounts < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence
 
             attr_accessor item_id: String
 
-            attr_accessor matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
+            attr_accessor matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig
 
             attr_accessor model_type: :matrix_with_threshold_discounts
 
@@ -3698,9 +3698,9 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence,
               item_id: String,
-              matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
               name: String,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
@@ -3720,9 +3720,9 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence,
               item_id: String,
-              matrix_with_threshold_discounts_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
+              matrix_with_threshold_discounts_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig,
               model_type: :matrix_with_threshold_discounts,
               name: String,
               billable_metric_id: String?,
@@ -3759,16 +3759,16 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::cadence]
             end
 
             type matrix_with_threshold_discounts_config =
               {
                 default_unit_amount: String,
                 first_dimension: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
                 second_dimension: String?,
-                threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
               }
 
             class MatrixWithThresholdDiscountsConfig < Orb::Internal::Type::BaseModel
@@ -3776,30 +3776,30 @@ module Orb
 
               attr_accessor first_dimension: String
 
-              attr_accessor matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue]
+              attr_accessor matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue]
 
               attr_accessor second_dimension: String?
 
-              attr_reader threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]?
+              attr_reader threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]?
 
               def threshold_discount_groups=: (
-                ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
-              ) -> ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+              ) -> ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
 
               def initialize: (
                 default_unit_amount: String,
                 first_dimension: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
                 ?second_dimension: String?,
-                ?threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                ?threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
               ) -> void
 
               def to_hash: -> {
                 default_unit_amount: String,
                 first_dimension: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::MatrixValue],
                 second_dimension: String?,
-                threshold_discount_groups: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
+                threshold_discount_groups: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MatrixWithThresholdDiscounts::MatrixWithThresholdDiscountsConfig::ThresholdDiscountGroup]
               }
 
               type matrix_value =
@@ -3870,11 +3870,11 @@ module Orb
 
           type tiered_with_proration =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence,
               item_id: String,
               model_type: :tiered_with_proration,
               name: String,
-              tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+              tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -3892,7 +3892,7 @@ module Orb
             }
 
           class TieredWithProration < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence
 
             attr_accessor item_id: String
 
@@ -3900,7 +3900,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig
+            attr_accessor tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -3931,10 +3931,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence,
               item_id: String,
               name: String,
-              tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+              tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -3953,11 +3953,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence,
               item_id: String,
               model_type: :tiered_with_proration,
               name: String,
-              tiered_with_proration_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
+              tiered_with_proration_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -3992,23 +3992,23 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::cadence]
             end
 
             type tiered_with_proration_config =
               {
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
               }
 
             class TieredWithProrationConfig < Orb::Internal::Type::BaseModel
-              attr_accessor tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+              attr_accessor tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
 
               def initialize: (
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
               ) -> void
 
               def to_hash: -> {
-                tiers: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
+                tiers: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::TieredWithProration::TieredWithProrationConfig::Tier]
               }
 
               type tier = { tier_lower_bound: String, unit_amount: String }
@@ -4033,8 +4033,8 @@ module Orb
 
           type grouped_with_min_max_thresholds =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
+              grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -4055,9 +4055,9 @@ module Orb
             }
 
           class GroupedWithMinMaxThresholds < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence
 
-            attr_accessor grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
+            attr_accessor grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig
 
             attr_accessor item_id: String
 
@@ -4094,8 +4094,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
+              grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -4116,8 +4116,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
-              grouped_with_min_max_thresholds_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence,
+              grouped_with_min_max_thresholds_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::GroupedWithMinMaxThresholdsConfig,
               item_id: String,
               model_type: :grouped_with_min_max_thresholds,
               name: String,
@@ -4155,7 +4155,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::GroupedWithMinMaxThresholds::cadence]
             end
 
             type grouped_with_min_max_thresholds_config =
@@ -4193,8 +4193,8 @@ module Orb
 
           type cumulative_grouped_allocation =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence,
-              cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence,
+              cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
               item_id: String,
               model_type: :cumulative_grouped_allocation,
               name: String,
@@ -4215,9 +4215,9 @@ module Orb
             }
 
           class CumulativeGroupedAllocation < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence
 
-            attr_accessor cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
+            attr_accessor cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig
 
             attr_accessor item_id: String
 
@@ -4254,8 +4254,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence,
-              cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence,
+              cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -4276,8 +4276,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence,
-              cumulative_grouped_allocation_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence,
+              cumulative_grouped_allocation_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::CumulativeGroupedAllocationConfig,
               item_id: String,
               model_type: :cumulative_grouped_allocation,
               name: String,
@@ -4315,7 +4315,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::CumulativeGroupedAllocation::cadence]
             end
 
             type cumulative_grouped_allocation_config =
@@ -4353,8 +4353,8 @@ module Orb
 
           type daily_credit_allowance =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence,
-              daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence,
+              daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
               item_id: String,
               model_type: :daily_credit_allowance,
               name: String,
@@ -4375,9 +4375,9 @@ module Orb
             }
 
           class DailyCreditAllowance < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence
 
-            attr_accessor daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
+            attr_accessor daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig
 
             attr_accessor item_id: String
 
@@ -4414,8 +4414,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence,
-              daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence,
+              daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -4436,8 +4436,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence,
-              daily_credit_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence,
+              daily_credit_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig,
               item_id: String,
               model_type: :daily_credit_allowance,
               name: String,
@@ -4475,7 +4475,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::cadence]
             end
 
             type daily_credit_allowance_config =
@@ -4484,7 +4484,7 @@ module Orb
                 default_unit_amount: String,
                 dimensions: ::Array[String?],
                 event_day_property: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
               }
 
             class DailyCreditAllowanceConfig < Orb::Internal::Type::BaseModel
@@ -4496,14 +4496,14 @@ module Orb
 
               attr_accessor event_day_property: String
 
-              attr_accessor matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+              attr_accessor matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
 
               def initialize: (
                 daily_allowance: String,
                 default_unit_amount: String,
                 dimensions: ::Array[String?],
                 event_day_property: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
               ) -> void
 
               def to_hash: -> {
@@ -4511,7 +4511,7 @@ module Orb
                 default_unit_amount: String,
                 dimensions: ::Array[String?],
                 event_day_property: String,
-                matrix_values: ::Array[Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
+                matrix_values: ::Array[Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::DailyCreditAllowance::DailyCreditAllowanceConfig::MatrixValue]
               }
 
               type matrix_value =
@@ -4537,9 +4537,9 @@ module Orb
 
           type metered_allowance =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence,
               item_id: String,
-              metered_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              metered_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
               model_type: :metered_allowance,
               name: String,
               billable_metric_id: String?,
@@ -4559,11 +4559,11 @@ module Orb
             }
 
           class MeteredAllowance < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence
 
             attr_accessor item_id: String
 
-            attr_accessor metered_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig
+            attr_accessor metered_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig
 
             attr_accessor model_type: :metered_allowance
 
@@ -4598,9 +4598,9 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence,
               item_id: String,
-              metered_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              metered_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
               name: String,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
@@ -4620,9 +4620,9 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence,
               item_id: String,
-              metered_allowance_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
+              metered_allowance_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::MeteredAllowanceConfig,
               model_type: :metered_allowance,
               name: String,
               billable_metric_id: String?,
@@ -4659,7 +4659,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::MeteredAllowance::cadence]
             end
 
             type metered_allowance_config =
@@ -4711,11 +4711,11 @@ module Orb
 
           type percent =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence,
               item_id: String,
               model_type: :percent,
               name: String,
-              percent_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
+              percent_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -4733,7 +4733,7 @@ module Orb
             }
 
           class Percent < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence
 
             attr_accessor item_id: String
 
@@ -4741,7 +4741,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor percent_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig
+            attr_accessor percent_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -4772,10 +4772,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence,
               item_id: String,
               name: String,
-              percent_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
+              percent_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -4794,11 +4794,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence,
               item_id: String,
               model_type: :percent,
               name: String,
-              percent_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
+              percent_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::PercentConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -4833,7 +4833,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::Percent::cadence]
             end
 
             type percent_config =
@@ -4873,8 +4873,8 @@ module Orb
 
           type event_output =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
-              event_output_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
+              event_output_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
               item_id: String,
               model_type: :event_output,
               name: String,
@@ -4895,9 +4895,9 @@ module Orb
             }
 
           class EventOutput < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence
 
-            attr_accessor event_output_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig
+            attr_accessor event_output_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig
 
             attr_accessor item_id: String
 
@@ -4934,8 +4934,8 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
-              event_output_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
+              event_output_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
               item_id: String,
               name: String,
               ?billable_metric_id: String?,
@@ -4956,8 +4956,8 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
-              event_output_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence,
+              event_output_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::EventOutputConfig,
               item_id: String,
               model_type: :event_output,
               name: String,
@@ -4995,7 +4995,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::EventOutput::cadence]
             end
 
             type event_output_config =
@@ -5028,11 +5028,11 @@ module Orb
 
           type unit_with_multiplier =
             {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
               item_id: String,
               model_type: :unit_with_multiplier,
               name: String,
-              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -5050,7 +5050,7 @@ module Orb
             }
 
           class UnitWithMultiplier < Orb::Internal::Type::BaseModel
-            attr_accessor cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence
+            attr_accessor cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence
 
             attr_accessor item_id: String
 
@@ -5058,7 +5058,7 @@ module Orb
 
             attr_accessor name: String
 
-            attr_accessor unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
+            attr_accessor unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig
 
             attr_accessor billable_metric_id: String?
 
@@ -5089,10 +5089,10 @@ module Orb
             attr_accessor reference_id: String?
 
             def initialize: (
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
               item_id: String,
               name: String,
-              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
               ?billable_metric_id: String?,
               ?billed_in_advance: bool?,
               ?billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -5111,11 +5111,11 @@ module Orb
             ) -> void
 
             def to_hash: -> {
-              cadence: Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
+              cadence: Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence,
               item_id: String,
               model_type: :unit_with_multiplier,
               name: String,
-              unit_with_multiplier_config: Orb::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
+              unit_with_multiplier_config: Orb::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::UnitWithMultiplierConfig,
               billable_metric_id: String?,
               billed_in_advance: bool?,
               billing_cycle_configuration: Orb::NewBillingCycleConfiguration?,
@@ -5150,7 +5150,7 @@ module Orb
               ANNUAL: :annual
               CUSTOM: :custom
 
-              def self?.values: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence]
+              def self?.values: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::Price::UnitWithMultiplier::cadence]
             end
 
             type unit_with_multiplier_config =
@@ -5186,7 +5186,7 @@ module Orb
             end
           end
 
-          def self?.variants: -> ::Array[Orb::Models::BetaCreatePlanVersionParams::ReplacePrice::price]
+          def self?.variants: -> ::Array[Orb::Models::PlanCreatePlanVersionParams::ReplacePrice::price]
         end
       end
     end
