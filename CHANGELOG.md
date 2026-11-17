@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.58.0](https://github.com/orbcorp/orb-ruby/compare/v1.57.0...v1.58.0) (2026-11-17)
+
+
+### Features
+
+* **api:** add plan.migration_scheduled webhook when a plan migration is created ([5bda9b3](https://github.com/orbcorp/orb-ruby/commit/5bda9b3b6e9e4d868ebbd529a8ba4601cb5d76b7))
+* **api:** add skip_grace_period option to plan version migrations ([5bda9b3](https://github.com/orbcorp/orb-ruby/commit/5bda9b3b6e9e4d868ebbd529a8ba4601cb5d76b7))
+
 ## [1.57.0](https://github.com/orbcorp/orb-ruby/compare/v1.56.0...v1.57.0) (2026-11-14)
 
 
