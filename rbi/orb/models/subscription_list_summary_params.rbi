@@ -28,10 +28,20 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 
-      sig { returns(T.nilable(String)) }
+      sig do
+        returns(
+          T.nilable(Orb::SubscriptionListSummaryParams::CustomerID::Variants)
+        )
+      end
       attr_accessor :customer_id
 
-      sig { returns(T.nilable(String)) }
+      sig do
+        returns(
+          T.nilable(
+            Orb::SubscriptionListSummaryParams::ExternalCustomerID::Variants
+          )
+        )
+      end
       attr_accessor :external_customer_id
 
       sig { returns(T.nilable(String)) }
@@ -48,7 +58,14 @@ module Orb
       attr_accessor :plan_id
 
       sig do
-        returns(T.nilable(Orb::SubscriptionListSummaryParams::Status::OrSymbol))
+        returns(
+          T.nilable(
+            T.any(
+              Orb::SubscriptionStatusFilter::OrSymbol,
+              T::Array[Orb::SubscriptionStatusFilter::OrSymbol]
+            )
+          )
+        )
       end
       attr_accessor :status
 
@@ -59,13 +76,22 @@ module Orb
           created_at_lt: T.nilable(Time),
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
-          customer_id: T.nilable(String),
-          external_customer_id: T.nilable(String),
+          customer_id:
+            T.nilable(Orb::SubscriptionListSummaryParams::CustomerID::Variants),
+          external_customer_id:
+            T.nilable(
+              Orb::SubscriptionListSummaryParams::ExternalCustomerID::Variants
+            ),
           external_plan_id: T.nilable(String),
           limit: Integer,
           plan_id: T.nilable(String),
           status:
-            T.nilable(Orb::SubscriptionListSummaryParams::Status::OrSymbol),
+            T.nilable(
+              T.any(
+                Orb::SubscriptionStatusFilter::OrSymbol,
+                T::Array[Orb::SubscriptionStatusFilter::OrSymbol]
+              )
+            ),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -96,13 +122,24 @@ module Orb
             created_at_lt: T.nilable(Time),
             created_at_lte: T.nilable(Time),
             cursor: T.nilable(String),
-            customer_id: T.nilable(String),
-            external_customer_id: T.nilable(String),
+            customer_id:
+              T.nilable(
+                Orb::SubscriptionListSummaryParams::CustomerID::Variants
+              ),
+            external_customer_id:
+              T.nilable(
+                Orb::SubscriptionListSummaryParams::ExternalCustomerID::Variants
+              ),
             external_plan_id: T.nilable(String),
             limit: Integer,
             plan_id: T.nilable(String),
             status:
-              T.nilable(Orb::SubscriptionListSummaryParams::Status::OrSymbol),
+              T.nilable(
+                T.any(
+                  Orb::SubscriptionStatusFilter::OrSymbol,
+                  T::Array[Orb::SubscriptionStatusFilter::OrSymbol]
+                )
+              ),
             request_options: Orb::RequestOptions
           }
         )
@@ -110,38 +147,72 @@ module Orb
       def to_hash
       end
 
-      module Status
-        extend Orb::Internal::Type::Enum
+      module CustomerID
+        extend Orb::Internal::Type::Union
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Orb::SubscriptionListSummaryParams::Status)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        ACTIVE =
-          T.let(
-            :active,
-            Orb::SubscriptionListSummaryParams::Status::TaggedSymbol
-          )
-        ENDED =
-          T.let(
-            :ended,
-            Orb::SubscriptionListSummaryParams::Status::TaggedSymbol
-          )
-        UPCOMING =
-          T.let(
-            :upcoming,
-            Orb::SubscriptionListSummaryParams::Status::TaggedSymbol
-          )
+        Variants = T.type_alias { T.any(String, T::Array[String]) }
 
         sig do
           override.returns(
-            T::Array[Orb::SubscriptionListSummaryParams::Status::TaggedSymbol]
+            T::Array[Orb::SubscriptionListSummaryParams::CustomerID::Variants]
           )
         end
-        def self.values
+        def self.variants
         end
+
+        StringArray =
+          T.let(
+            Orb::Internal::Type::ArrayOf[String],
+            Orb::Internal::Type::Converter
+          )
+      end
+
+      module ExternalCustomerID
+        extend Orb::Internal::Type::Union
+
+        Variants = T.type_alias { T.any(String, T::Array[String]) }
+
+        sig do
+          override.returns(
+            T::Array[
+              Orb::SubscriptionListSummaryParams::ExternalCustomerID::Variants
+            ]
+          )
+        end
+        def self.variants
+        end
+
+        StringArray =
+          T.let(
+            Orb::Internal::Type::ArrayOf[String],
+            Orb::Internal::Type::Converter
+          )
+      end
+
+      module Status
+        extend Orb::Internal::Type::Union
+
+        Variants =
+          T.type_alias do
+            T.any(
+              Orb::SubscriptionStatusFilter::TaggedSymbol,
+              T::Array[Orb::SubscriptionStatusFilter::TaggedSymbol]
+            )
+          end
+
+        sig do
+          override.returns(
+            T::Array[Orb::SubscriptionListSummaryParams::Status::Variants]
+          )
+        end
+        def self.variants
+        end
+
+        SubscriptionStatusFilterArray =
+          T.let(
+            Orb::Internal::Type::ArrayOf[enum: Orb::SubscriptionStatusFilter],
+            Orb::Internal::Type::Converter
+          )
       end
     end
   end

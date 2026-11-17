@@ -163,7 +163,13 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(T::Array[Orb::InvoiceListParams::Status::OrSymbol]),
+          status:
+            T.nilable(
+              T.any(
+                Orb::InvoiceStatusFilter::OrSymbol,
+                T::Array[Orb::InvoiceStatusFilter::OrSymbol]
+              )
+            ),
           subscription_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Internal::Page[Orb::Invoice])
@@ -346,7 +352,13 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol),
+          status:
+            T.nilable(
+              T.any(
+                Orb::InvoiceStatusFilter::OrSymbol,
+                T::Array[Orb::InvoiceStatusFilter::OrSymbol]
+              )
+            ),
           subscription_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Internal::Page[Orb::Models::InvoiceListSummaryResponse])

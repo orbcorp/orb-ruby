@@ -1,0 +1,17 @@
+module Orb
+  module Models
+    type invoice_status_filter = :draft | :issued | :paid | :synced | :void
+
+    module InvoiceStatusFilter
+      extend Orb::Internal::Type::Enum
+
+      DRAFT: :draft
+      ISSUED: :issued
+      PAID: :paid
+      SYNCED: :synced
+      VOID: :void
+
+      def self?.values: -> ::Array[Orb::Models::invoice_status_filter]
+    end
+  end
+end

@@ -20,7 +20,7 @@ module Orb
         invoice_date_lte: Time?,
         is_recurring: bool?,
         limit: Integer,
-        status: ::Array[Orb::Models::InvoiceListParams::status]?,
+        status: Orb::Models::InvoiceListParams::status?,
         subscription_id: String?
       }
       & Orb::Internal::Type::request_parameters
@@ -67,7 +67,7 @@ module Orb
 
       def limit=: (Integer) -> Integer
 
-      attr_accessor status: ::Array[Orb::Models::InvoiceListParams::status]?
+      attr_accessor status: Orb::Models::InvoiceListParams::status?
 
       attr_accessor subscription_id: String?
 
@@ -90,7 +90,7 @@ module Orb
         ?invoice_date_lte: Time?,
         ?is_recurring: bool?,
         ?limit: Integer,
-        ?status: ::Array[Orb::Models::InvoiceListParams::status]?,
+        ?status: Orb::Models::InvoiceListParams::status?,
         ?subscription_id: String?,
         ?request_options: Orb::request_opts
       ) -> void
@@ -114,7 +114,7 @@ module Orb
         invoice_date_lte: Time?,
         is_recurring: bool?,
         limit: Integer,
-        status: ::Array[Orb::Models::InvoiceListParams::status]?,
+        status: Orb::Models::InvoiceListParams::status?,
         subscription_id: String?,
         request_options: Orb::RequestOptions
       }
@@ -130,18 +130,16 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::InvoiceListParams::date_type]
       end
 
-      type status = :draft | :issued | :paid | :synced | :void
+      type status =
+        Orb::Models::invoice_status_filter
+        | ::Array[Orb::Models::invoice_status_filter]
 
       module Status
-        extend Orb::Internal::Type::Enum
+        extend Orb::Internal::Type::Union
 
-        DRAFT: :draft
-        ISSUED: :issued
-        PAID: :paid
-        SYNCED: :synced
-        VOID: :void
+        def self?.variants: -> ::Array[Orb::Models::InvoiceListParams::status]
 
-        def self?.values: -> ::Array[Orb::Models::InvoiceListParams::status]
+        InvoiceStatusFilterArray: Orb::Internal::Type::Converter
       end
     end
   end

@@ -75,7 +75,14 @@ module Orb
       attr_writer :limit
 
       sig do
-        returns(T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol))
+        returns(
+          T.nilable(
+            T.any(
+              Orb::InvoiceStatusFilter::OrSymbol,
+              T::Array[Orb::InvoiceStatusFilter::OrSymbol]
+            )
+          )
+        )
       end
       attr_accessor :status
 
@@ -102,7 +109,13 @@ module Orb
           invoice_date_lte: T.nilable(Time),
           is_recurring: T.nilable(T::Boolean),
           limit: Integer,
-          status: T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol),
+          status:
+            T.nilable(
+              T.any(
+                Orb::InvoiceStatusFilter::OrSymbol,
+                T::Array[Orb::InvoiceStatusFilter::OrSymbol]
+              )
+            ),
           subscription_id: T.nilable(String),
           request_options: Orb::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -159,7 +172,13 @@ module Orb
             invoice_date_lte: T.nilable(Time),
             is_recurring: T.nilable(T::Boolean),
             limit: Integer,
-            status: T.nilable(Orb::InvoiceListSummaryParams::Status::OrSymbol),
+            status:
+              T.nilable(
+                T.any(
+                  Orb::InvoiceStatusFilter::OrSymbol,
+                  T::Array[Orb::InvoiceStatusFilter::OrSymbol]
+                )
+              ),
             subscription_id: T.nilable(String),
             request_options: Orb::RequestOptions
           }
@@ -198,28 +217,29 @@ module Orb
       end
 
       module Status
-        extend Orb::Internal::Type::Enum
+        extend Orb::Internal::Type::Union
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Orb::InvoiceListSummaryParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        DRAFT =
-          T.let(:draft, Orb::InvoiceListSummaryParams::Status::TaggedSymbol)
-        ISSUED =
-          T.let(:issued, Orb::InvoiceListSummaryParams::Status::TaggedSymbol)
-        PAID = T.let(:paid, Orb::InvoiceListSummaryParams::Status::TaggedSymbol)
-        SYNCED =
-          T.let(:synced, Orb::InvoiceListSummaryParams::Status::TaggedSymbol)
-        VOID = T.let(:void, Orb::InvoiceListSummaryParams::Status::TaggedSymbol)
+        Variants =
+          T.type_alias do
+            T.any(
+              Orb::InvoiceStatusFilter::TaggedSymbol,
+              T::Array[Orb::InvoiceStatusFilter::TaggedSymbol]
+            )
+          end
 
         sig do
           override.returns(
-            T::Array[Orb::InvoiceListSummaryParams::Status::TaggedSymbol]
+            T::Array[Orb::InvoiceListSummaryParams::Status::Variants]
           )
         end
-        def self.values
+        def self.variants
         end
+
+        InvoiceStatusFilterArray =
+          T.let(
+            Orb::Internal::Type::ArrayOf[enum: Orb::InvoiceStatusFilter],
+            Orb::Internal::Type::Converter
+          )
       end
     end
   end

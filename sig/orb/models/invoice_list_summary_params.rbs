@@ -125,18 +125,16 @@ module Orb
         def self?.values: -> ::Array[Orb::Models::InvoiceListSummaryParams::date_type]
       end
 
-      type status = :draft | :issued | :paid | :synced | :void
+      type status =
+        Orb::Models::invoice_status_filter
+        | ::Array[Orb::Models::invoice_status_filter]
 
       module Status
-        extend Orb::Internal::Type::Enum
+        extend Orb::Internal::Type::Union
 
-        DRAFT: :draft
-        ISSUED: :issued
-        PAID: :paid
-        SYNCED: :synced
-        VOID: :void
+        def self?.variants: -> ::Array[Orb::Models::InvoiceListSummaryParams::status]
 
-        def self?.values: -> ::Array[Orb::Models::InvoiceListSummaryParams::status]
+        InvoiceStatusFilterArray: Orb::Internal::Type::Converter
       end
     end
   end

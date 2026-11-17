@@ -329,6 +329,8 @@ module Orb
 
   InvoiceRegenerateReceiptPdfParams = Orb::Models::InvoiceRegenerateReceiptPdfParams
 
+  InvoiceStatusFilter = Orb::Models::InvoiceStatusFilter
+
   InvoiceSyncFailedWebhookEvent = Orb::Models::InvoiceSyncFailedWebhookEvent
 
   InvoiceSyncSucceededWebhookEvent = Orb::Models::InvoiceSyncSucceededWebhookEvent
@@ -787,6 +789,8 @@ module Orb
   SubscriptionSpendExceededWebhookEvent = Orb::Models::SubscriptionSpendExceededWebhookEvent
 
   SubscriptionStartedWebhookEvent = Orb::Models::SubscriptionStartedWebhookEvent
+
+  SubscriptionStatusFilter = Orb::Models::SubscriptionStatusFilter
 
   SubscriptionTrialEndedWebhookEvent = Orb::Models::SubscriptionTrialEndedWebhookEvent
 

@@ -7,8 +7,8 @@ module Orb
         created_at_lt: Time?,
         created_at_lte: Time?,
         cursor: String?,
-        customer_id: ::Array[String]?,
-        external_customer_id: ::Array[String]?,
+        customer_id: Orb::Models::SubscriptionListParams::customer_id?,
+        external_customer_id: Orb::Models::SubscriptionListParams::external_customer_id?,
         external_plan_id: String?,
         limit: Integer,
         plan_id: String?,
@@ -30,9 +30,9 @@ module Orb
 
       attr_accessor cursor: String?
 
-      attr_accessor customer_id: ::Array[String]?
+      attr_accessor customer_id: Orb::Models::SubscriptionListParams::customer_id?
 
-      attr_accessor external_customer_id: ::Array[String]?
+      attr_accessor external_customer_id: Orb::Models::SubscriptionListParams::external_customer_id?
 
       attr_accessor external_plan_id: String?
 
@@ -50,8 +50,8 @@ module Orb
         ?created_at_lt: Time?,
         ?created_at_lte: Time?,
         ?cursor: String?,
-        ?customer_id: ::Array[String]?,
-        ?external_customer_id: ::Array[String]?,
+        ?customer_id: Orb::Models::SubscriptionListParams::customer_id?,
+        ?external_customer_id: Orb::Models::SubscriptionListParams::external_customer_id?,
         ?external_plan_id: String?,
         ?limit: Integer,
         ?plan_id: String?,
@@ -65,8 +65,8 @@ module Orb
         created_at_lt: Time?,
         created_at_lte: Time?,
         cursor: String?,
-        customer_id: ::Array[String]?,
-        external_customer_id: ::Array[String]?,
+        customer_id: Orb::Models::SubscriptionListParams::customer_id?,
+        external_customer_id: Orb::Models::SubscriptionListParams::external_customer_id?,
         external_plan_id: String?,
         limit: Integer,
         plan_id: String?,
@@ -74,16 +74,36 @@ module Orb
         request_options: Orb::RequestOptions
       }
 
-      type status = :active | :ended | :upcoming
+      type customer_id = String | ::Array[String]
+
+      module CustomerID
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::SubscriptionListParams::customer_id]
+
+        StringArray: Orb::Internal::Type::Converter
+      end
+
+      type external_customer_id = String | ::Array[String]
+
+      module ExternalCustomerID
+        extend Orb::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Orb::Models::SubscriptionListParams::external_customer_id]
+
+        StringArray: Orb::Internal::Type::Converter
+      end
+
+      type status =
+        Orb::Models::subscription_status_filter
+        | ::Array[Orb::Models::subscription_status_filter]
 
       module Status
-        extend Orb::Internal::Type::Enum
+        extend Orb::Internal::Type::Union
 
-        ACTIVE: :active
-        ENDED: :ended
-        UPCOMING: :upcoming
+        def self?.variants: -> ::Array[Orb::Models::SubscriptionListParams::status]
 
-        def self?.values: -> ::Array[Orb::Models::SubscriptionListParams::status]
+        SubscriptionStatusFilterArray: Orb::Internal::Type::Converter
       end
     end
   end

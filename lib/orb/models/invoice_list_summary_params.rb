@@ -101,8 +101,8 @@ module Orb
 
       # @!attribute status
       #
-      #   @return [Symbol, Orb::Models::InvoiceListSummaryParams::Status, nil]
-      optional :status, enum: -> { Orb::InvoiceListSummaryParams::Status }, nil?: true
+      #   @return [Symbol, Orb::Models::InvoiceStatusFilter, Array<Symbol, Orb::Models::InvoiceStatusFilter>, nil]
+      optional :status, union: -> { Orb::InvoiceListSummaryParams::Status }, nil?: true
 
       # @!attribute subscription_id
       #
@@ -147,7 +147,7 @@ module Orb
       #
       #   @param limit [Integer] The number of items to fetch. Defaults to 20.
       #
-      #   @param status [Symbol, Orb::Models::InvoiceListSummaryParams::Status, nil]
+      #   @param status [Symbol, Orb::Models::InvoiceStatusFilter, Array<Symbol, Orb::Models::InvoiceStatusFilter>, nil]
       #
       #   @param subscription_id [String, nil]
       #
@@ -164,16 +164,17 @@ module Orb
       end
 
       module Status
-        extend Orb::Internal::Type::Enum
+        extend Orb::Internal::Type::Union
 
-        DRAFT = :draft
-        ISSUED = :issued
-        PAID = :paid
-        SYNCED = :synced
-        VOID = :void
+        variant enum: -> { Orb::InvoiceStatusFilter }
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        variant -> { Orb::Models::InvoiceListSummaryParams::Status::InvoiceStatusFilterArray }
+
+        # @!method self.variants
+        #   @return [Array(Symbol, Orb::Models::InvoiceStatusFilter, Array<Symbol, Orb::Models::InvoiceStatusFilter>)]
+
+        # @type [Orb::Internal::Type::Converter]
+        InvoiceStatusFilterArray = Orb::Internal::Type::ArrayOf[enum: -> { Orb::InvoiceStatusFilter }]
       end
     end
   end

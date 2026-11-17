@@ -489,12 +489,22 @@ module Orb
           created_at_lt: T.nilable(Time),
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
-          customer_id: T.nilable(T::Array[String]),
-          external_customer_id: T.nilable(T::Array[String]),
+          customer_id:
+            T.nilable(Orb::SubscriptionListParams::CustomerID::Variants),
+          external_customer_id:
+            T.nilable(
+              Orb::SubscriptionListParams::ExternalCustomerID::Variants
+            ),
           external_plan_id: T.nilable(String),
           limit: Integer,
           plan_id: T.nilable(String),
-          status: T.nilable(Orb::SubscriptionListParams::Status::OrSymbol),
+          status:
+            T.nilable(
+              T.any(
+                Orb::SubscriptionStatusFilter::OrSymbol,
+                T::Array[Orb::SubscriptionStatusFilter::OrSymbol]
+              )
+            ),
           request_options: Orb::RequestOptions::OrHash
         ).returns(Orb::Internal::Page[Orb::Subscription])
       end
@@ -939,13 +949,22 @@ module Orb
           created_at_lt: T.nilable(Time),
           created_at_lte: T.nilable(Time),
           cursor: T.nilable(String),
-          customer_id: T.nilable(String),
-          external_customer_id: T.nilable(String),
+          customer_id:
+            T.nilable(Orb::SubscriptionListSummaryParams::CustomerID::Variants),
+          external_customer_id:
+            T.nilable(
+              Orb::SubscriptionListSummaryParams::ExternalCustomerID::Variants
+            ),
           external_plan_id: T.nilable(String),
           limit: Integer,
           plan_id: T.nilable(String),
           status:
-            T.nilable(Orb::SubscriptionListSummaryParams::Status::OrSymbol),
+            T.nilable(
+              T.any(
+                Orb::SubscriptionStatusFilter::OrSymbol,
+                T::Array[Orb::SubscriptionStatusFilter::OrSymbol]
+              )
+            ),
           request_options: Orb::RequestOptions::OrHash
         ).returns(
           Orb::Internal::Page[Orb::Models::SubscriptionListSummaryResponse]

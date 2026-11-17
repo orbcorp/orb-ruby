@@ -422,9 +422,9 @@ module Orb
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #
-      # @param customer_id [Array<String>, nil]
+      # @param customer_id [String, Array<String>, nil]
       #
-      # @param external_customer_id [Array<String>, nil]
+      # @param external_customer_id [String, Array<String>, nil]
       #
       # @param external_plan_id [String, nil]
       #
@@ -432,7 +432,7 @@ module Orb
       #
       # @param plan_id [String, nil]
       #
-      # @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
+      # @param status [Symbol, Orb::Models::SubscriptionStatusFilter, Array<Symbol, Orb::Models::SubscriptionStatusFilter>, nil]
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -922,9 +922,9 @@ module Orb
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #
-      # @param customer_id [String, nil]
+      # @param customer_id [String, Array<String>, nil]
       #
-      # @param external_customer_id [String, nil]
+      # @param external_customer_id [String, Array<String>, nil]
       #
       # @param external_plan_id [String, nil]
       #
@@ -932,7 +932,7 @@ module Orb
       #
       # @param plan_id [String, nil]
       #
-      # @param status [Symbol, Orb::Models::SubscriptionListSummaryParams::Status, nil]
+      # @param status [Symbol, Orb::Models::SubscriptionStatusFilter, Array<Symbol, Orb::Models::SubscriptionStatusFilter>, nil]
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

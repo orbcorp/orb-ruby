@@ -36,13 +36,17 @@ module Orb
 
       # @!attribute customer_id
       #
-      #   @return [Array<String>, nil]
-      optional :customer_id, Orb::Internal::Type::ArrayOf[String], nil?: true
+      #   @return [String, Array<String>, nil]
+      optional :customer_id, union: -> { Orb::SubscriptionListParams::CustomerID }, nil?: true
 
       # @!attribute external_customer_id
       #
-      #   @return [Array<String>, nil]
-      optional :external_customer_id, Orb::Internal::Type::ArrayOf[String], nil?: true
+      #   @return [String, Array<String>, nil]
+      optional :external_customer_id,
+               union: -> {
+                 Orb::SubscriptionListParams::ExternalCustomerID
+               },
+               nil?: true
 
       # @!attribute external_plan_id
       #
@@ -62,8 +66,8 @@ module Orb
 
       # @!attribute status
       #
-      #   @return [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
-      optional :status, enum: -> { Orb::SubscriptionListParams::Status }, nil?: true
+      #   @return [Symbol, Orb::Models::SubscriptionStatusFilter, Array<Symbol, Orb::Models::SubscriptionStatusFilter>, nil]
+      optional :status, union: -> { Orb::SubscriptionListParams::Status }, nil?: true
 
       # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -79,9 +83,9 @@ module Orb
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #
-      #   @param customer_id [Array<String>, nil]
+      #   @param customer_id [String, Array<String>, nil]
       #
-      #   @param external_customer_id [Array<String>, nil]
+      #   @param external_customer_id [String, Array<String>, nil]
       #
       #   @param external_plan_id [String, nil]
       #
@@ -89,19 +93,52 @@ module Orb
       #
       #   @param plan_id [String, nil]
       #
-      #   @param status [Symbol, Orb::Models::SubscriptionListParams::Status, nil]
+      #   @param status [Symbol, Orb::Models::SubscriptionStatusFilter, Array<Symbol, Orb::Models::SubscriptionStatusFilter>, nil]
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
+      module CustomerID
+        extend Orb::Internal::Type::Union
+
+        variant String
+
+        variant -> { Orb::Models::SubscriptionListParams::CustomerID::StringArray }
+
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
+
+        # @type [Orb::Internal::Type::Converter]
+        StringArray = Orb::Internal::Type::ArrayOf[String]
+      end
+
+      module ExternalCustomerID
+        extend Orb::Internal::Type::Union
+
+        variant String
+
+        variant -> { Orb::Models::SubscriptionListParams::ExternalCustomerID::StringArray }
+
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
+
+        # @type [Orb::Internal::Type::Converter]
+        StringArray = Orb::Internal::Type::ArrayOf[String]
+      end
+
       module Status
-        extend Orb::Internal::Type::Enum
+        extend Orb::Internal::Type::Union
 
-        ACTIVE = :active
-        ENDED = :ended
-        UPCOMING = :upcoming
+        variant enum: -> { Orb::SubscriptionStatusFilter }
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        variant -> { Orb::Models::SubscriptionListParams::Status::SubscriptionStatusFilterArray }
+
+        # @!method self.variants
+        #   @return [Array(Symbol, Orb::Models::SubscriptionStatusFilter, Array<Symbol, Orb::Models::SubscriptionStatusFilter>)]
+
+        # @type [Orb::Internal::Type::Converter]
+        SubscriptionStatusFilterArray = Orb::Internal::Type::ArrayOf[enum: -> {
+          Orb::SubscriptionStatusFilter
+        }]
       end
     end
   end

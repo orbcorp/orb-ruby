@@ -1,0 +1,15 @@
+module Orb
+  module Models
+    type subscription_status_filter = :active | :ended | :upcoming
+
+    module SubscriptionStatusFilter
+      extend Orb::Internal::Type::Enum
+
+      ACTIVE: :active
+      ENDED: :ended
+      UPCOMING: :upcoming
+
+      def self?.values: -> ::Array[Orb::Models::subscription_status_filter]
+    end
+  end
+end
