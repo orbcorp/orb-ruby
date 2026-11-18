@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.59.0](https://github.com/orbcorp/orb-ruby/compare/v1.58.0...v1.59.0) (2026-11-18)
+
+
+### Features
+
+* **api:** api update ([ce159e7](https://github.com/orbcorp/orb-ruby/commit/ce159e709eefe069a41c52a4b834668423070944))
+* **api:** document currency handling and void examples for ledger entries ([99715ca](https://github.com/orbcorp/orb-ruby/commit/99715ca90a6f21c3e1af85e255cbc50cf1f7484b))
+
 ## [1.58.0](https://github.com/orbcorp/orb-ruby/compare/v1.57.0...v1.58.0) (2026-11-17)
 
 
