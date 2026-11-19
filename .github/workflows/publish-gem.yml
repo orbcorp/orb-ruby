@@ -44,4 +44,17 @@ jobs:
           await-release: "false"
 
       - name: Await release on RubyGems.org
-        run: gem exec rubygems-await ./orb-billing-*.gem
+        # rubygems-await calls RubyGems internals that `rubygems: latest`
+        # (4.x) removed, so poll the public versions API instead.
+        run: |-
+          version="$(ruby -r ./lib/orb/version -e 'puts Orb::VERSION')"
+          for _ in $(seq 60); do
+            if curl -fsS --max-time 30 https://rubygems.org/api/v1/versions/orb-billing.json |
+              jq -e --arg v "$version" 'any(.[]; .number == $v)' > /dev/null; then
+              echo "orb-billing $version is live on RubyGems.org"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::Timed out waiting for orb-billing $version on RubyGems.org"
+          exit 1
