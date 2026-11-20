@@ -99,7 +99,8 @@ module Orb
           required :customer_id, String
 
           # @!attribute default
-          #   Whether this is the customer's default payment method.
+          #   Whether this is the customer's default payment method on its payment gateway
+          #   connection.
           #
           #   @return [Boolean]
           required :default, Orb::Internal::Type::Boolean
@@ -142,7 +143,7 @@ module Orb
           #
           #   @param customer_id [String] The ID of the Orb customer this payment method is attached to.
           #
-          #   @param default [Boolean] Whether this is the customer's default payment method.
+          #   @param default [Boolean] Whether this is the customer's default payment method on its payment gateway con
           #
           #   @param external_payment_method_id [String] The identifier of this payment method in the external payment provider.
           #

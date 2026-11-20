@@ -129,10 +129,12 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      # Determines the difference between the invoice issue date for subscription
-      # invoices as the date that they are due. A value of `0` here represents that the
-      # invoice is due on issue, whereas a value of `30` represents that the customer
-      # has a month to pay the invoice.
+      # The number of days until subscription invoices are due, counting the start date
+      # set by the account's
+      # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      # as day 1. A value of `0` here represents that the invoice is due on issue,
+      # whereas a value of `30` represents that the customer has a month to pay the
+      # invoice.
       sig { returns(Integer) }
       attr_accessor :net_terms
 
@@ -319,10 +321,12 @@ module Orb
         minimum_intervals:,
         # The name of the subscription.
         name:,
-        # Determines the difference between the invoice issue date for subscription
-        # invoices as the date that they are due. A value of `0` here represents that the
-        # invoice is due on issue, whereas a value of `30` represents that the customer
-        # has a month to pay the invoice.
+        # The number of days until subscription invoices are due, counting the start date
+        # set by the account's
+        # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+        # as day 1. A value of `0` here represents that the invoice is due on issue,
+        # whereas a value of `30` represents that the customer has a month to pay the
+        # invoice.
         net_terms:,
         # A pending subscription change if one exists on this subscription.
         pending_subscription_change:,

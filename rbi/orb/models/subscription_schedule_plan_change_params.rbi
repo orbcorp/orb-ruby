@@ -129,9 +129,12 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :invoicing_threshold
 
-      # The net terms determines the difference between the invoice date and the issue
-      # date for the invoice. If you intend the invoice to be due on issue, set this
-      # to 0. If not provided, this defaults to the value specified in the plan.
+      # The number of days until the invoice is due, counting the start date as day 1,
+      # so net 30 from October 1 is due October 30. The account's
+      # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      # sets whether the start date is the invoice date or the issuance date. If you
+      # intend the invoice to be due on issue, set this to 0. If not provided, this
+      # defaults to the value specified in the plan.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
@@ -336,9 +339,12 @@ module Orb
         # be issued for the subscription. If not specified, invoices will only be issued
         # at the end of the billing period.
         invoicing_threshold: nil,
-        # The net terms determines the difference between the invoice date and the issue
-        # date for the invoice. If you intend the invoice to be due on issue, set this
-        # to 0. If not provided, this defaults to the value specified in the plan.
+        # The number of days until the invoice is due, counting the start date as day 1,
+        # so net 30 from October 1 is due October 30. The account's
+        # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+        # sets whether the start date is the invoice date or the issuance date. If you
+        # intend the invoice to be due on issue, set this to 0. If not provided, this
+        # defaults to the value specified in the plan.
         net_terms: nil,
         per_credit_overage_amount: nil,
         # The plan that the given subscription should be switched to. Note that either

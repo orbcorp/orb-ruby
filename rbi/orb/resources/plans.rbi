@@ -67,9 +67,11 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
-        # The net terms determines the difference between the invoice date and the issue
-        # date for the invoice. If you intend the invoice to be due on issue, set this
-        # to 0.
+        # The number of days until the invoice is due, counting the start date as day 1,
+        # so net 30 from October 1 is due October 30. The account's
+        # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+        # sets whether the start date is the invoice date or the issuance date. If you
+        # intend the invoice to be due on issue, set this to 0.
         net_terms: nil,
         # Configuration of pre-defined phases, each with their own prices and adjustments.
         # Leave unspecified for plans with a single phase.

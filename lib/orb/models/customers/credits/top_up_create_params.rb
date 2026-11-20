@@ -101,9 +101,11 @@ module Orb
             required :auto_collection, Orb::Internal::Type::Boolean
 
             # @!attribute net_terms
-            #   The net terms determines the difference between the invoice date and the issue
-            #   date for the invoice. If you intend the invoice to be due on issue, set this
-            #   to 0.
+            #   The number of days until the invoice is due, counting the start date as day 1,
+            #   so net 30 from October 1 is due October 30. The account's
+            #   [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+            #   sets whether the start date is the invoice date or the issuance date. If you
+            #   intend the invoice to be due on issue, set this to 0.
             #
             #   @return [Integer]
             required :net_terms, Integer
@@ -132,7 +134,7 @@ module Orb
             #
             #   @param auto_collection [Boolean] Whether the credits purchase invoice should auto collect with the customer's sav
             #
-            #   @param net_terms [Integer] The net terms determines the difference between the invoice date and the issue d
+            #   @param net_terms [Integer] The number of days until the invoice is due, counting the start date as day 1, s
             #
             #   @param memo [String, nil] An optional memo to display on the invoice.
             #

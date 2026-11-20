@@ -35,7 +35,7 @@ module Orb
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      # @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
+      # @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       # @param will_auto_issue [Boolean] When true, auto-issues the invoice on the invoice date. If the invoice date is t
       #
@@ -73,7 +73,7 @@ module Orb
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      # @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
+      # @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #

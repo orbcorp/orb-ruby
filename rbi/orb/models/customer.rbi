@@ -833,7 +833,8 @@ module Orb
         sig { returns(String) }
         attr_accessor :customer_id
 
-        # Whether this is the customer's default payment method.
+        # Whether this is the customer's default payment method on its payment gateway
+        # connection.
         sig { returns(T::Boolean) }
         attr_accessor :default
 
@@ -879,7 +880,8 @@ module Orb
           created_at:,
           # The ID of the Orb customer this payment method is attached to.
           customer_id:,
-          # Whether this is the customer's default payment method.
+          # Whether this is the customer's default payment method on its payment gateway
+          # connection.
           default:,
           # The identifier of this payment method in the external payment provider.
           external_payment_method_id:,

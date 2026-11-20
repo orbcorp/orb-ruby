@@ -51,7 +51,7 @@ module Orb
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      # @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       # @param plan_phases [Array<Orb::Models::PlanCreateParams::PlanPhase>, nil] Configuration of pre-defined phases, each with their own prices and adjustments.
       #

@@ -79,11 +79,12 @@ module Orb
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute net_terms
-      #   The net terms determines the due date of the invoice. Due date is calculated
-      #   based on the invoice or issuance date, depending on the account's configured due
-      #   date calculation method. A value of '0' here represents that the invoice is due
-      #   on issue, whereas a value of '30' represents that the customer has 30 days to
-      #   pay the invoice. Do not set this field if you want to set a custom due date.
+      #   The number of days until the invoice is due, counting the start date as day 1,
+      #   so net 30 from October 1 is due October 30. The account's
+      #   [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      #   sets whether the start date is the invoice date or the issuance date. A value of
+      #   '0' here represents that the invoice is due on issue. Do not set this field if
+      #   you want to set a custom due date.
       #
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
@@ -120,7 +121,7 @@ module Orb
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      #   @param net_terms [Integer, nil] The net terms determines the due date of the invoice. Due date is calculated bas
+      #   @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       #   @param will_auto_issue [Boolean] When true, auto-issues the invoice on the invoice date. If the invoice date is t
       #

@@ -53,10 +53,12 @@ module Orb
       optional :metadata, Orb::Internal::Type::HashOf[String, nil?: true], nil?: true
 
       # @!attribute net_terms
-      #   Determines the difference between the invoice issue date for subscription
-      #   invoices as the date that they are due. A value of `0` here represents that the
-      #   invoice is due on issue, whereas a value of `30` represents that the customer
-      #   has a month to pay the invoice.
+      #   The number of days until subscription invoices are due, counting the start date
+      #   set by the account's
+      #   [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      #   as day 1. A value of `0` here represents that the invoice is due on issue,
+      #   whereas a value of `30` represents that the customer has a month to pay the
+      #   invoice.
       #
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
@@ -77,7 +79,7 @@ module Orb
       #
       #   @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      #   @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
+      #   @param net_terms [Integer, nil] The number of days until subscription invoices are due, counting the start date
       #
       #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
     end

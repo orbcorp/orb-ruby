@@ -134,9 +134,12 @@ module Orb
       optional :invoicing_threshold, String, nil?: true
 
       # @!attribute net_terms
-      #   The net terms determines the difference between the invoice date and the issue
-      #   date for the invoice. If you intend the invoice to be due on issue, set this
-      #   to 0. If not provided, this defaults to the value specified in the plan.
+      #   The number of days until the invoice is due, counting the start date as day 1,
+      #   so net 30 from October 1 is due October 30. The account's
+      #   [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      #   sets whether the start date is the invoice date or the issuance date. If you
+      #   intend the invoice to be due on issue, set this to 0. If not provided, this
+      #   defaults to the value specified in the plan.
       #
       #   @return [Integer, nil]
       optional :net_terms, Integer, nil?: true
@@ -267,7 +270,7 @@ module Orb
       #
       #   @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
       #
-      #   @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      #   @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       #   @param per_credit_overage_amount [Float, nil]
       #

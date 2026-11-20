@@ -88,11 +88,13 @@ module Orb
       sig { returns(String) }
       attr_accessor :name
 
-      # Determines the difference between the invoice issue date and the due date. A
-      # value of "0" here signifies that invoices are due on issue, whereas a value of
-      # "30" means that the customer has a month to pay the invoice before its overdue.
-      # Note that individual subscriptions or invoices may set a different net terms
-      # configuration.
+      # The number of days until invoices are due, counting the start date set by the
+      # account's
+      # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      # as day 1. A value of "0" here signifies that invoices are due on issue, whereas
+      # a value of "30" means that the customer has a month to pay the invoice before
+      # its overdue. Note that individual subscriptions or invoices may set a different
+      # net terms configuration.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
@@ -254,11 +256,13 @@ module Orb
         minimum:,
         minimum_amount:,
         name:,
-        # Determines the difference between the invoice issue date and the due date. A
-        # value of "0" here signifies that invoices are due on issue, whereas a value of
-        # "30" means that the customer has a month to pay the invoice before its overdue.
-        # Note that individual subscriptions or invoices may set a different net terms
-        # configuration.
+        # The number of days until invoices are due, counting the start date set by the
+        # account's
+        # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+        # as day 1. A value of "0" here signifies that invoices are due on issue, whereas
+        # a value of "30" means that the customer has a month to pay the invoice before
+        # its overdue. Note that individual subscriptions or invoices may set a different
+        # net terms configuration.
         net_terms:,
         plan_phases:,
         # Prices for this plan. If the plan has phases, this includes prices across all

@@ -313,7 +313,7 @@ module Orb
       #
       # @param name [String, nil] The name to use for the subscription. If not specified, the plan name will be us
       #
-      # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      # @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       # @param per_credit_overage_amount [Float, nil]
       #
@@ -374,7 +374,7 @@ module Orb
       #
       # @param metadata [Hash{Symbol=>String, nil}, nil] User-specified key/value pairs for the resource. Individual keys can be removed
       #
-      # @param net_terms [Integer, nil] Determines the difference between the invoice issue date for subscription invoic
+      # @param net_terms [Integer, nil] The number of days until subscription invoices are due, counting the start date
       #
       # @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -1347,7 +1347,7 @@ module Orb
       #
       # @param invoicing_threshold [String, nil] When this subscription's accrued usage reaches this threshold, an invoice will b
       #
-      # @param net_terms [Integer, nil] The net terms determines the difference between the invoice date and the issue d
+      # @param net_terms [Integer, nil] The number of days until the invoice is due, counting the start date as day 1, s
       #
       # @param per_credit_overage_amount [Float, nil]
       #

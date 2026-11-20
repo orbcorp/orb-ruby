@@ -432,12 +432,12 @@ module Orb
                 sig { returns(T.nilable(String)) }
                 attr_accessor :memo
 
-                # The net terms determines the due date of the invoice. Due date is calculated
-                # based on the invoice or issuance date, depending on the account's configured due
-                # date calculation method. A value of '0' here represents that the invoice is due
-                # on issue, whereas a value of '30' represents that the customer has 30 days to
-                # pay the invoice. You must set either `net_terms` or `custom_due_date`, but not
-                # both.
+                # The number of days until the invoice is due, counting the start date as day 1,
+                # so net 30 from October 1 is due October 30. The account's
+                # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+                # sets whether the start date is the invoice date or the issuance date. A value of
+                # '0' here represents that the invoice is due on issue. You must set either
+                # `net_terms` or `custom_due_date`, but not both.
                 sig { returns(T.nilable(Integer)) }
                 attr_accessor :net_terms
 
@@ -489,12 +489,12 @@ module Orb
                   mark_as_paid: nil,
                   # An optional memo to display on the invoice.
                   memo: nil,
-                  # The net terms determines the due date of the invoice. Due date is calculated
-                  # based on the invoice or issuance date, depending on the account's configured due
-                  # date calculation method. A value of '0' here represents that the invoice is due
-                  # on issue, whereas a value of '30' represents that the customer has 30 days to
-                  # pay the invoice. You must set either `net_terms` or `custom_due_date`, but not
-                  # both.
+                  # The number of days until the invoice is due, counting the start date as day 1,
+                  # so net 30 from October 1 is due October 30. The account's
+                  # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+                  # sets whether the start date is the invoice date or the issuance date. A value of
+                  # '0' here represents that the invoice is due on issue. You must set either
+                  # `net_terms` or `custom_due_date`, but not both.
                   net_terms: nil,
                   # If true, the new credit block will require that the corresponding invoice is
                   # paid before it can be drawn down from.

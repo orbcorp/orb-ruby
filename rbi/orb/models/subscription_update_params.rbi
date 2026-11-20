@@ -44,10 +44,12 @@ module Orb
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :metadata
 
-      # Determines the difference between the invoice issue date for subscription
-      # invoices as the date that they are due. A value of `0` here represents that the
-      # invoice is due on issue, whereas a value of `30` represents that the customer
-      # has a month to pay the invoice.
+      # The number of days until subscription invoices are due, counting the start date
+      # set by the account's
+      # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+      # as day 1. A value of `0` here represents that the invoice is due on issue,
+      # whereas a value of `30` represents that the customer has a month to pay the
+      # invoice.
       sig { returns(T.nilable(Integer)) }
       attr_accessor :net_terms
 
@@ -85,10 +87,12 @@ module Orb
         # by setting the value to `null`, and the entire metadata mapping can be cleared
         # by setting `metadata` to `null`.
         metadata: nil,
-        # Determines the difference between the invoice issue date for subscription
-        # invoices as the date that they are due. A value of `0` here represents that the
-        # invoice is due on issue, whereas a value of `30` represents that the customer
-        # has a month to pay the invoice.
+        # The number of days until subscription invoices are due, counting the start date
+        # set by the account's
+        # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
+        # as day 1. A value of `0` here represents that the invoice is due on issue,
+        # whereas a value of `30` represents that the customer has a month to pay the
+        # invoice.
         net_terms: nil,
         request_options: {}
       )
