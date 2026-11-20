@@ -67,8 +67,7 @@ module Orb
       # Some parameter documentations has been truncated, see
       # {Orb::Models::CreditNoteListParams} for more details.
       #
-      # Get a paginated list of CreditNotes. Users can also filter by customer_id,
-      # subscription_id, or external_customer_id. The credit notes will be returned in
+      # Get a paginated list of CreditNotes. The credit notes will be returned in
       # reverse chronological order by `creation_time`.
       #
       # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
