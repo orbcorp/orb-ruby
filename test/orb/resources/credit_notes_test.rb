@@ -17,6 +17,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
+        billing_entity_id: String | nil,
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String | nil,
@@ -53,6 +54,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
     assert_pattern do
       row => {
         id: String,
+        billing_entity_id: String | nil,
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String | nil,
@@ -82,6 +84,7 @@ class Orb::Test::Resources::CreditNotesTest < Orb::Test::ResourceTest
     assert_pattern do
       response => {
         id: String,
+        billing_entity_id: String | nil,
         created_at: Time,
         credit_note_number: String,
         credit_note_pdf: String | nil,

@@ -136,7 +136,13 @@ module Orb
             status: Orb::Models::Webhooks::SubscriptionPlanVersionChangeScheduledStandardWebhookEvent::Subscription::status
           }
 
-          type plan = { id: String?, external_plan_id: String?, name: String? }
+          type plan =
+            {
+              id: String?,
+              external_plan_id: String?,
+              name: String?,
+              billing_entity_id: String?
+            }
 
           class Plan < Orb::Internal::Type::BaseModel
             attr_accessor id: String?
@@ -145,16 +151,20 @@ module Orb
 
             attr_accessor name: String?
 
+            attr_accessor billing_entity_id: String?
+
             def initialize: (
               id: String?,
               external_plan_id: String?,
-              name: String?
+              name: String?,
+              ?billing_entity_id: String?
             ) -> void
 
             def to_hash: -> {
               id: String?,
               external_plan_id: String?,
-              name: String?
+              name: String?,
+              billing_entity_id: String?
             }
           end
 

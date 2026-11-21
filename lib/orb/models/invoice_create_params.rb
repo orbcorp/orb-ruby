@@ -36,6 +36,13 @@ module Orb
       #   @return [Boolean, nil]
       optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute billing_entity_id
+      #   The id of the active billing entity that issues this invoice. If not specified,
+      #   falls back to the customer's billing entity.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute customer_id
       #   The id of the `Customer` to create this invoice for. One of `customer_id` and
       #   `external_customer_id` are required.
@@ -55,6 +62,12 @@ module Orb
       #
       #   @return [Date, Time, nil]
       optional :due_date, union: -> { Orb::InvoiceCreateParams::DueDate }, nil?: true
+
+      # @!attribute external_billing_entity_id
+      #   The external id of the active billing entity that issues this invoice.
+      #
+      #   @return [String, nil]
+      optional :external_billing_entity_id, String, nil?: true
 
       # @!attribute external_customer_id
       #   The `external_customer_id` of the `Customer` to create this invoice for. One of
@@ -97,7 +110,7 @@ module Orb
       #   @return [Boolean, nil]
       optional :will_auto_issue, Orb::Internal::Type::Boolean
 
-      # @!method initialize(currency:, invoice_date:, line_items:, auto_collection: nil, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
+      # @!method initialize(currency:, invoice_date:, line_items:, auto_collection: nil, billing_entity_id: nil, customer_id: nil, discount: nil, due_date: nil, external_billing_entity_id: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceCreateParams} for more details.
       #
@@ -109,11 +122,15 @@ module Orb
       #
       #   @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #
+      #   @param billing_entity_id [String, nil] The id of the active billing entity that issues this invoice. If not specified,
+      #
       #   @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
       #   @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil] An optional discount to attach to the invoice.
       #
       #   @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
+      #   @param external_billing_entity_id [String, nil] The external id of the active billing entity that issues this invoice.
       #
       #   @param external_customer_id [String, nil] The `external_customer_id` of the `Customer` to create this invoice for. One of
       #

@@ -26,6 +26,7 @@ class Orb::Test::Resources::Coupons::SubscriptionsTest < Orb::Test::ResourceTest
         auto_issuance: Orb::Internal::Type::Boolean | nil,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
+        billing_entity_id: String | nil,
         created_at: Time,
         current_billing_period_end_date: Time | nil,
         current_billing_period_start_date: Time | nil,

@@ -11,6 +11,12 @@ module Orb
           T.any(Orb::SubscriptionListParams, Orb::Internal::AnyHash)
         end
 
+      # Filters to objects issued by this billing entity. Filtering on the account's
+      # default billing entity also matches objects created before the account had
+      # billing entities.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       sig { returns(T.nilable(Time)) }
       attr_accessor :created_at_gt
 
@@ -67,6 +73,7 @@ module Orb
 
       sig do
         params(
+          billing_entity_id: T.nilable(String),
           created_at_gt: T.nilable(Time),
           created_at_gte: T.nilable(Time),
           created_at_lt: T.nilable(Time),
@@ -92,6 +99,10 @@ module Orb
         ).returns(T.attached_class)
       end
       def self.new(
+        # Filters to objects issued by this billing entity. Filtering on the account's
+        # default billing entity also matches objects created before the account had
+        # billing entities.
+        billing_entity_id: nil,
         created_at_gt: nil,
         created_at_gte: nil,
         created_at_lt: nil,
@@ -113,6 +124,7 @@ module Orb
       sig do
         override.returns(
           {
+            billing_entity_id: T.nilable(String),
             created_at_gt: T.nilable(Time),
             created_at_gte: T.nilable(Time),
             created_at_lt: T.nilable(Time),

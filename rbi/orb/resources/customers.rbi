@@ -90,6 +90,7 @@ module Orb
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
+          billing_entity_id: T.nilable(String),
           currency: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
@@ -141,6 +142,9 @@ module Orb
         # will be inherited from the account-level setting.
         auto_issuance: nil,
         billing_address: nil,
+        # The Orb ID of the active billing entity to set as this customer's default
+        # entity.
+        billing_entity_id: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
         currency: nil,
@@ -342,6 +346,7 @@ module Orb
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
+          billing_entity_id: T.nilable(String),
           currency: T.nilable(String),
           default_payment_method_id: T.nilable(String),
           email: T.nilable(String),
@@ -390,6 +395,9 @@ module Orb
         # will be inherited from the account-level setting.
         auto_issuance: nil,
         billing_address: nil,
+        # The Orb ID of the active billing entity to set as this customer's default
+        # entity. Pass `null` to clear it.
+        billing_entity_id: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. This
         # can only be set if the customer does not already have a currency configured. If
         # not set at creation or update time, it will be set at subscription creation
@@ -768,6 +776,7 @@ module Orb
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
+          billing_entity_id: T.nilable(String),
           currency: T.nilable(String),
           default_payment_method_id: T.nilable(String),
           email: T.nilable(String),
@@ -820,6 +829,9 @@ module Orb
         # will be inherited from the account-level setting.
         auto_issuance: nil,
         billing_address: nil,
+        # The Orb ID of the active billing entity to set as this customer's default
+        # entity. Pass `null` to clear it.
+        billing_entity_id: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. This
         # can only be set if the customer does not already have a currency configured. If
         # not set at creation or update time, it will be set at subscription creation

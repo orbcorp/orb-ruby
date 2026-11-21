@@ -9,6 +9,12 @@ module Orb
       #   @return [String]
       required :id, String
 
+      # @!attribute billing_entity_id
+      #   The id of the billing entity of the credit note's invoice.
+      #
+      #   @return [String, nil]
+      required :billing_entity_id, String, nil?: true
+
       # @!attribute created_at
       #   The creation time of the resource in Orb.
       #
@@ -96,11 +102,13 @@ module Orb
       #   @return [Array<Orb::Models::CreditNote::Discount>, nil]
       optional :discounts, -> { Orb::Internal::Type::ArrayOf[Orb::CreditNote::Discount] }
 
-      # @!method initialize(id:, created_at:, credit_note_number:, credit_note_pdf:, customer:, invoice_id:, line_items:, maximum_amount_adjustment:, memo:, minimum_amount_refunded:, reason:, subtotal:, total:, type:, voided_at:, discounts: nil)
+      # @!method initialize(id:, billing_entity_id:, created_at:, credit_note_number:, credit_note_pdf:, customer:, invoice_id:, line_items:, maximum_amount_adjustment:, memo:, minimum_amount_refunded:, reason:, subtotal:, total:, type:, voided_at:, discounts: nil)
       #   The [Credit Note](/invoicing/credit-notes) resource represents a credit that has
       #   been applied to a particular invoice.
       #
       #   @param id [String] The Orb id of this credit note.
+      #
+      #   @param billing_entity_id [String, nil] The id of the billing entity of the credit note's invoice.
       #
       #   @param created_at [Time] The creation time of the resource in Orb.
       #

@@ -205,6 +205,9 @@ module Orb
               end
 
             sig { returns(T.nilable(String)) }
+            attr_accessor :billing_entity_id
+
+            sig { returns(T.nilable(String)) }
             attr_accessor :description
 
             sig { returns(T.nilable(String)) }
@@ -228,6 +231,7 @@ module Orb
             # metadata values are non-null on the wire, as on the price event.
             sig do
               params(
+                billing_entity_id: T.nilable(String),
                 description: T.nilable(String),
                 external_plan_id: T.nilable(String),
                 metadata: T.nilable(T::Hash[Symbol, String]),
@@ -239,6 +243,7 @@ module Orb
               ).returns(T.attached_class)
             end
             def self.new(
+              billing_entity_id: nil,
               description: nil,
               external_plan_id: nil,
               metadata: nil,
@@ -250,6 +255,7 @@ module Orb
             sig do
               override.returns(
                 {
+                  billing_entity_id: T.nilable(String),
                   description: T.nilable(String),
                   external_plan_id: T.nilable(String),
                   metadata: T.nilable(T::Hash[Symbol, String]),

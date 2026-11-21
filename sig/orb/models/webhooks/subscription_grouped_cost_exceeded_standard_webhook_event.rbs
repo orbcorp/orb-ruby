@@ -190,7 +190,8 @@ module Orb
                 id: String?,
                 external_plan_id: String?,
                 name: String?,
-                plan_version: String
+                plan_version: String,
+                billing_entity_id: String?
               }
 
             class Plan < Orb::Internal::Type::BaseModel
@@ -202,18 +203,22 @@ module Orb
 
               attr_accessor plan_version: String
 
+              attr_accessor billing_entity_id: String?
+
               def initialize: (
                 id: String?,
                 external_plan_id: String?,
                 name: String?,
-                plan_version: String
+                plan_version: String,
+                ?billing_entity_id: String?
               ) -> void
 
               def to_hash: -> {
                 id: String?,
                 external_plan_id: String?,
                 name: String?,
-                plan_version: String
+                plan_version: String,
+                billing_entity_id: String?
               }
             end
 
@@ -437,7 +442,13 @@ module Orb
             status: Orb::Models::Webhooks::SubscriptionGroupedCostExceededStandardWebhookEvent::Subscription::status
           }
 
-          type plan = { id: String?, external_plan_id: String?, name: String? }
+          type plan =
+            {
+              id: String?,
+              external_plan_id: String?,
+              name: String?,
+              billing_entity_id: String?
+            }
 
           class Plan < Orb::Internal::Type::BaseModel
             attr_accessor id: String?
@@ -446,16 +457,20 @@ module Orb
 
             attr_accessor name: String?
 
+            attr_accessor billing_entity_id: String?
+
             def initialize: (
               id: String?,
               external_plan_id: String?,
-              name: String?
+              name: String?,
+              ?billing_entity_id: String?
             ) -> void
 
             def to_hash: -> {
               id: String?,
               external_plan_id: String?,
-              name: String?
+              name: String?,
+              billing_entity_id: String?
             }
           end
 

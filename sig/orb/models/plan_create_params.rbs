@@ -6,6 +6,7 @@ module Orb
         name: String,
         prices: ::Array[Orb::PlanCreateParams::Price],
         adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
+        billing_entity_id: String?,
         default_invoice_memo: String?,
         description: String?,
         external_plan_id: String?,
@@ -27,6 +28,8 @@ module Orb
       attr_accessor prices: ::Array[Orb::PlanCreateParams::Price]
 
       attr_accessor adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?
+
+      attr_accessor billing_entity_id: String?
 
       attr_accessor default_invoice_memo: String?
 
@@ -51,6 +54,7 @@ module Orb
         name: String,
         prices: ::Array[Orb::PlanCreateParams::Price],
         ?adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
+        ?billing_entity_id: String?,
         ?default_invoice_memo: String?,
         ?description: String?,
         ?external_plan_id: String?,
@@ -66,6 +70,7 @@ module Orb
         name: String,
         prices: ::Array[Orb::PlanCreateParams::Price],
         adjustments: ::Array[Orb::PlanCreateParams::Adjustment]?,
+        billing_entity_id: String?,
         default_invoice_memo: String?,
         description: String?,
         external_plan_id: String?,

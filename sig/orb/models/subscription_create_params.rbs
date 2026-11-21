@@ -9,12 +9,14 @@ module Orb
         auto_issuance: bool?,
         aws_region: String?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
+        billing_entity_id: String?,
         coupon_redemption_code: String?,
         credits_overage_rate: Float?,
         currency: String?,
         customer_id: String?,
         default_invoice_memo: String?,
         end_date: Time?,
+        external_billing_entity_id: String?,
         external_customer_id: String?,
         external_marketplace: Orb::Models::SubscriptionCreateParams::external_marketplace?,
         external_marketplace_reporting_id: String?,
@@ -59,6 +61,8 @@ module Orb
 
       attr_accessor billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?
 
+      attr_accessor billing_entity_id: String?
+
       attr_accessor coupon_redemption_code: String?
 
       attr_accessor credits_overage_rate: Float?
@@ -70,6 +74,8 @@ module Orb
       attr_accessor default_invoice_memo: String?
 
       attr_accessor end_date: Time?
+
+      attr_accessor external_billing_entity_id: String?
 
       attr_accessor external_customer_id: String?
 
@@ -121,12 +127,14 @@ module Orb
         ?auto_issuance: bool?,
         ?aws_region: String?,
         ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
+        ?billing_entity_id: String?,
         ?coupon_redemption_code: String?,
         ?credits_overage_rate: Float?,
         ?currency: String?,
         ?customer_id: String?,
         ?default_invoice_memo: String?,
         ?end_date: Time?,
+        ?external_billing_entity_id: String?,
         ?external_customer_id: String?,
         ?external_marketplace: Orb::Models::SubscriptionCreateParams::external_marketplace?,
         ?external_marketplace_reporting_id: String?,
@@ -159,12 +167,14 @@ module Orb
         auto_issuance: bool?,
         aws_region: String?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
+        billing_entity_id: String?,
         coupon_redemption_code: String?,
         credits_overage_rate: Float?,
         currency: String?,
         customer_id: String?,
         default_invoice_memo: String?,
         end_date: Time?,
+        external_billing_entity_id: String?,
         external_customer_id: String?,
         external_marketplace: Orb::Models::SubscriptionCreateParams::external_marketplace?,
         external_marketplace_reporting_id: String?,

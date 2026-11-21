@@ -6,6 +6,7 @@ module Orb
 
         def update: (
           String other_external_plan_id,
+          ?billing_entity_id: String?,
           ?description: String?,
           ?external_plan_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,

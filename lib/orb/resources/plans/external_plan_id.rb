@@ -24,9 +24,11 @@ module Orb
         #
         # Other fields on a plan are currently immutable.
         #
-        # @overload update(other_external_plan_id, description: nil, external_plan_id: nil, metadata: nil, name: nil, request_options: {})
+        # @overload update(other_external_plan_id, billing_entity_id: nil, description: nil, external_plan_id: nil, metadata: nil, name: nil, request_options: {})
         #
         # @param other_external_plan_id [String]
+        #
+        # @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this plan's default entity. Pa
         #
         # @param description [String, nil] An optional user-defined description of the plan.
         #

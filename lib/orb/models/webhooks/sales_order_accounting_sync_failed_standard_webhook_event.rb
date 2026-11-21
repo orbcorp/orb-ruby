@@ -165,6 +165,12 @@ module Orb
           #   @return [Orb::Models::Address, nil]
           required :billing_address, -> { Orb::Address }, nil?: true
 
+          # @!attribute billing_entity_id
+          #   The id of the billing entity that issues this invoice.
+          #
+          #   @return [String, nil]
+          required :billing_entity_id, String, nil?: true
+
           # @!attribute created_at
           #   The creation time of the resource in Orb.
           #
@@ -534,7 +540,7 @@ module Orb
           #   @return [Boolean]
           required :will_auto_issue, Orb::Internal::Type::Boolean
 
-          # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, memo:, metadata:, paid_at:, payment_attempts:, payment_failed_at:, payment_received_at:, payment_started_at:, scheduled_issue_at:, service_period_end:, service_period_start:, shipping_address:, status:, subscription:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
+          # @!method initialize(id:, amount_due:, auto_collection:, billing_address:, billing_entity_id:, created_at:, credit_notes:, currency:, customer:, customer_balance_transactions:, customer_tax_id:, due_date:, eligible_to_issue_at:, hosted_invoice_url:, invoice_date:, invoice_number:, invoice_pdf:, invoice_source:, issue_failed_at:, issued_at:, memo:, metadata:, paid_at:, payment_attempts:, payment_failed_at:, payment_received_at:, payment_started_at:, scheduled_issue_at:, service_period_end:, service_period_start:, shipping_address:, status:, subscription:, sync_failed_at:, total:, voided_at:, will_auto_issue:)
           #   Some parameter documentations has been truncated, see
           #   {Orb::Models::Webhooks::SalesOrderAccountingSyncFailedStandardWebhookEvent::Invoice}
           #   for more details.
@@ -549,6 +555,8 @@ module Orb
           #   @param auto_collection [Orb::Models::Webhooks::SalesOrderAccountingSyncFailedStandardWebhookEvent::Invoice::AutoCollection]
           #
           #   @param billing_address [Orb::Models::Address, nil]
+          #
+          #   @param billing_entity_id [String, nil] The id of the billing entity that issues this invoice.
           #
           #   @param created_at [Time] The creation time of the resource in Orb.
           #

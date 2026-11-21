@@ -49,6 +49,10 @@ module Orb
       sig { returns(Integer) }
       attr_accessor :billing_cycle_day
 
+      # The id of the billing entity that issues this subscription's invoices.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -214,6 +218,7 @@ module Orb
           billing_cycle_anchor_configuration:
             Orb::BillingCycleAnchorConfiguration::OrHash,
           billing_cycle_day: Integer,
+          billing_entity_id: T.nilable(String),
           created_at: Time,
           current_billing_period_end_date: T.nilable(Time),
           current_billing_period_start_date: T.nilable(Time),
@@ -270,6 +275,8 @@ module Orb
         # is the billing cycle day (e.g. billing_cycle_day=31 for April means the billing
         # period begins on the 30th.
         billing_cycle_day:,
+        # The id of the billing entity that issues this subscription's invoices.
+        billing_entity_id:,
         created_at:,
         # The end of the current billing period. This is an exclusive timestamp, such that
         # the instant returned is not part of the billing period. Set to null for
@@ -356,6 +363,7 @@ module Orb
             billing_cycle_anchor_configuration:
               Orb::BillingCycleAnchorConfiguration,
             billing_cycle_day: Integer,
+            billing_entity_id: T.nilable(String),
             created_at: Time,
             current_billing_period_end_date: T.nilable(Time),
             current_billing_period_start_date: T.nilable(Time),

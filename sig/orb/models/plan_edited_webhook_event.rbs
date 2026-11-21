@@ -70,6 +70,7 @@ module Orb
 
         type previous_attributes =
           {
+            billing_entity_id: String?,
             description: String?,
             external_plan_id: String?,
             metadata: ::Hash[Symbol, String]?,
@@ -78,6 +79,8 @@ module Orb
           }
 
         class PreviousAttributes < Orb::Internal::Type::BaseModel
+          attr_accessor billing_entity_id: String?
+
           attr_accessor description: String?
 
           attr_accessor external_plan_id: String?
@@ -89,6 +92,7 @@ module Orb
           attr_accessor status: Orb::Models::PlanEditedWebhookEvent::Properties::PreviousAttributes::status?
 
           def initialize: (
+            ?billing_entity_id: String?,
             ?description: String?,
             ?external_plan_id: String?,
             ?metadata: ::Hash[Symbol, String]?,
@@ -97,6 +101,7 @@ module Orb
           ) -> void
 
           def to_hash: -> {
+            billing_entity_id: String?,
             description: String?,
             external_plan_id: String?,
             metadata: ::Hash[Symbol, String]?,

@@ -48,6 +48,7 @@ module Orb
             amount_due: String,
             auto_collection: Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::AutoCollection,
             billing_address: Orb::Address?,
+            billing_entity_id: String?,
             created_at: Time,
             credit_notes: ::Array[Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::CreditNote],
             currency: String,
@@ -90,6 +91,8 @@ module Orb
           attr_accessor auto_collection: Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::AutoCollection
 
           attr_accessor billing_address: Orb::Address?
+
+          attr_accessor billing_entity_id: String?
 
           attr_accessor created_at: Time
 
@@ -160,6 +163,7 @@ module Orb
             amount_due: String,
             auto_collection: Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::AutoCollection,
             billing_address: Orb::Address?,
+            billing_entity_id: String?,
             created_at: Time,
             credit_notes: ::Array[Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::CreditNote],
             currency: String,
@@ -199,6 +203,7 @@ module Orb
             amount_due: String,
             auto_collection: Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::AutoCollection,
             billing_address: Orb::Address?,
+            billing_entity_id: String?,
             created_at: Time,
             credit_notes: ::Array[Orb::Webhooks::InvoiceDunningScheduleResetStandardWebhookEvent::Invoice::CreditNote],
             currency: String,

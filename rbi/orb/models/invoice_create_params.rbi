@@ -30,6 +30,11 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :auto_collection
 
+      # The id of the active billing entity that issues this invoice. If not specified,
+      # falls back to the customer's billing entity.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # The id of the `Customer` to create this invoice for. One of `customer_id` and
       # `external_customer_id` are required.
       sig { returns(T.nilable(String)) }
@@ -55,6 +60,10 @@ module Orb
       # calculated based on the `net_terms` value.
       sig { returns(T.nilable(Orb::InvoiceCreateParams::DueDate::Variants)) }
       attr_accessor :due_date
+
+      # The external id of the active billing entity that issues this invoice.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :external_billing_entity_id
 
       # The `external_customer_id` of the `Customer` to create this invoice for. One of
       # `customer_id` and `external_customer_id` are required.
@@ -96,6 +105,7 @@ module Orb
           invoice_date: Time,
           line_items: T::Array[Orb::InvoiceCreateParams::LineItem::OrHash],
           auto_collection: T.nilable(T::Boolean),
+          billing_entity_id: T.nilable(String),
           customer_id: T.nilable(String),
           discount:
             T.nilable(
@@ -108,6 +118,7 @@ module Orb
               )
             ),
           due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
+          external_billing_entity_id: T.nilable(String),
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -130,6 +141,9 @@ module Orb
         # payment method, if any. If not specified, the invoice inherits the customer's
         # auto_collection setting.
         auto_collection: nil,
+        # The id of the active billing entity that issues this invoice. If not specified,
+        # falls back to the customer's billing entity.
+        billing_entity_id: nil,
         # The id of the `Customer` to create this invoice for. One of `customer_id` and
         # `external_customer_id` are required.
         customer_id: nil,
@@ -138,6 +152,8 @@ module Orb
         # An optional custom due date for the invoice. If not set, the due date will be
         # calculated based on the `net_terms` value.
         due_date: nil,
+        # The external id of the active billing entity that issues this invoice.
+        external_billing_entity_id: nil,
         # The `external_customer_id` of the `Customer` to create this invoice for. One of
         # `customer_id` and `external_customer_id` are required.
         external_customer_id: nil,
@@ -170,6 +186,7 @@ module Orb
             invoice_date: Time,
             line_items: T::Array[Orb::InvoiceCreateParams::LineItem],
             auto_collection: T.nilable(T::Boolean),
+            billing_entity_id: T.nilable(String),
             customer_id: T.nilable(String),
             discount:
               T.nilable(
@@ -182,6 +199,7 @@ module Orb
                 )
               ),
             due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
+            external_billing_entity_id: T.nilable(String),
             external_customer_id: T.nilable(String),
             memo: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

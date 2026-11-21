@@ -6,9 +6,11 @@ module Orb
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         auto_collection: bool?,
+        billing_entity_id: String?,
         customer_id: String?,
         discount: Orb::Models::discount?,
         due_date: Orb::Models::InvoiceCreateParams::due_date?,
+        external_billing_entity_id: String?,
         external_customer_id: String?,
         memo: String?,
         metadata: ::Hash[Symbol, String?]?,
@@ -29,11 +31,15 @@ module Orb
 
       attr_accessor auto_collection: bool?
 
+      attr_accessor billing_entity_id: String?
+
       attr_accessor customer_id: String?
 
       attr_accessor discount: Orb::Models::discount?
 
       attr_accessor due_date: Orb::Models::InvoiceCreateParams::due_date?
+
+      attr_accessor external_billing_entity_id: String?
 
       attr_accessor external_customer_id: String?
 
@@ -52,9 +58,11 @@ module Orb
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         ?auto_collection: bool?,
+        ?billing_entity_id: String?,
         ?customer_id: String?,
         ?discount: Orb::Models::discount?,
         ?due_date: Orb::Models::InvoiceCreateParams::due_date?,
+        ?external_billing_entity_id: String?,
         ?external_customer_id: String?,
         ?memo: String?,
         ?metadata: ::Hash[Symbol, String?]?,
@@ -68,9 +76,11 @@ module Orb
         invoice_date: Time,
         line_items: ::Array[Orb::InvoiceCreateParams::LineItem],
         auto_collection: bool?,
+        billing_entity_id: String?,
         customer_id: String?,
         discount: Orb::Models::discount?,
         due_date: Orb::Models::InvoiceCreateParams::due_date?,
+        external_billing_entity_id: String?,
         external_customer_id: String?,
         memo: String?,
         metadata: ::Hash[Symbol, String?]?,

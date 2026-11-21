@@ -54,6 +54,12 @@ module Orb
       #   @return [Integer]
       required :billing_cycle_day, Integer
 
+      # @!attribute billing_entity_id
+      #   The id of the billing entity that issues this subscription's invoices.
+      #
+      #   @return [String, nil]
+      required :billing_entity_id, String, nil?: true
+
       # @!attribute created_at
       #
       #   @return [Time]
@@ -218,7 +224,7 @@ module Orb
       #   @return [Orb::Models::SubscriptionTrialInfo]
       required :trial_info, -> { Orb::SubscriptionTrialInfo }
 
-      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, auto_issuance:, billing_cycle_anchor_configuration:, billing_cycle_day:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, name:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:)
+      # @!method initialize(id:, active_plan_phase_order:, adjustment_intervals:, auto_collection:, auto_issuance:, billing_cycle_anchor_configuration:, billing_cycle_day:, billing_entity_id:, created_at:, current_billing_period_end_date:, current_billing_period_start_date:, customer:, default_invoice_memo:, discount_intervals:, end_date:, fixed_fee_quantity_schedule:, invoicing_threshold:, maximum_intervals:, metadata:, minimum_intervals:, name:, net_terms:, pending_subscription_change:, plan:, price_intervals:, redeemed_coupon:, start_date:, status:, trial_info:)
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::Subscription} for more details.
       #
@@ -255,6 +261,8 @@ module Orb
       #   @param billing_cycle_anchor_configuration [Orb::Models::BillingCycleAnchorConfiguration]
       #
       #   @param billing_cycle_day [Integer] The day of the month on which the billing cycle is anchored. If the maximum numb
+      #
+      #   @param billing_entity_id [String, nil] The id of the billing entity that issues this subscription's invoices.
       #
       #   @param created_at [Time]
       #

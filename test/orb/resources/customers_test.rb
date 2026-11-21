@@ -35,6 +35,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
         automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
+        billing_entity_id: String | nil,
         default_payment_method: Orb::Customer::DefaultPaymentMethod | nil,
         payment_configuration: Orb::Customer::PaymentConfiguration | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
@@ -74,6 +75,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
         automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
+        billing_entity_id: String | nil,
         default_payment_method: Orb::Customer::DefaultPaymentMethod | nil,
         payment_configuration: Orb::Customer::PaymentConfiguration | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
@@ -120,6 +122,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
         automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
+        billing_entity_id: String | nil,
         default_payment_method: Orb::Customer::DefaultPaymentMethod | nil,
         payment_configuration: Orb::Customer::PaymentConfiguration | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
@@ -203,6 +206,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
         automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
+        billing_entity_id: String | nil,
         default_payment_method: Orb::Customer::DefaultPaymentMethod | nil,
         payment_configuration: Orb::Customer::PaymentConfiguration | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
@@ -242,6 +246,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
         automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
+        billing_entity_id: String | nil,
         default_payment_method: Orb::Customer::DefaultPaymentMethod | nil,
         payment_configuration: Orb::Customer::PaymentConfiguration | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil
@@ -298,6 +303,7 @@ class Orb::Test::Resources::CustomersTest < Orb::Test::ResourceTest
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration | nil,
         automatic_tax_enabled: Orb::Internal::Type::Boolean | nil,
+        billing_entity_id: String | nil,
         default_payment_method: Orb::Customer::DefaultPaymentMethod | nil,
         payment_configuration: Orb::Customer::PaymentConfiguration | nil,
         reporting_configuration: Orb::Customer::ReportingConfiguration | nil

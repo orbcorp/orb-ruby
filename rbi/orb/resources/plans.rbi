@@ -36,6 +36,7 @@ module Orb
           prices: T::Array[Orb::PlanCreateParams::Price::OrHash],
           adjustments:
             T.nilable(T::Array[Orb::PlanCreateParams::Adjustment::OrHash]),
+          billing_entity_id: T.nilable(String),
           default_invoice_memo: T.nilable(String),
           description: T.nilable(String),
           external_plan_id: T.nilable(String),
@@ -58,6 +59,8 @@ module Orb
         # Adjustments for this plan. If the plan has phases, this includes adjustments
         # across all phases of the plan.
         adjustments: nil,
+        # The Orb ID of the active billing entity to set as this plan's default entity.
+        billing_entity_id: nil,
         # Free-form text which is available on the invoice PDF and the Orb invoice portal.
         default_invoice_memo: nil,
         # An optional user-defined description of the plan.
@@ -91,6 +94,7 @@ module Orb
       sig do
         params(
           plan_id: String,
+          billing_entity_id: T.nilable(String),
           description: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -100,6 +104,9 @@ module Orb
       end
       def update(
         plan_id,
+        # The Orb ID of the active billing entity to set as this plan's default entity.
+        # Pass `null` to clear it.
+        billing_entity_id: nil,
         # An optional user-defined description of the plan.
         description: nil,
         # An optional user-defined ID for this plan resource, used throughout the system

@@ -36,6 +36,10 @@ module Orb
       sig { params(billing_address: T.nilable(Orb::Address::OrHash)).void }
       attr_writer :billing_address
 
+      # The id of the billing entity that issues this invoice.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # The creation time of the resource in Orb.
       sig { returns(Time) }
       attr_accessor :created_at
@@ -379,6 +383,7 @@ module Orb
           auto_collection:
             Orb::Models::InvoiceIssueSummaryResponse::AutoCollection::OrHash,
           billing_address: T.nilable(Orb::Address::OrHash),
+          billing_entity_id: T.nilable(String),
           created_at: Time,
           credit_notes:
             T::Array[
@@ -430,6 +435,8 @@ module Orb
         amount_due:,
         auto_collection:,
         billing_address:,
+        # The id of the billing entity that issues this invoice.
+        billing_entity_id:,
         # The creation time of the resource in Orb.
         created_at:,
         # A list of credit notes associated with the invoice
@@ -677,6 +684,7 @@ module Orb
             auto_collection:
               Orb::Models::InvoiceIssueSummaryResponse::AutoCollection,
             billing_address: T.nilable(Orb::Address),
+            billing_entity_id: T.nilable(String),
             created_at: Time,
             credit_notes:
               T::Array[Orb::Models::InvoiceIssueSummaryResponse::CreditNote],

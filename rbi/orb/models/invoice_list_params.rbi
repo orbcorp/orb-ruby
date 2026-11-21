@@ -18,6 +18,12 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :amount_lt
 
+      # Filters to objects issued by this billing entity. Filtering on the account's
+      # default billing entity also matches objects created before the account had
+      # billing entities.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # Cursor for pagination. This can be populated by the `next_cursor` value returned
       # from the initial request.
       sig { returns(T.nilable(String)) }
@@ -96,6 +102,7 @@ module Orb
           amount: T.nilable(String),
           amount_gt: T.nilable(String),
           amount_lt: T.nilable(String),
+          billing_entity_id: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
           date_type: T.nilable(Orb::InvoiceListParams::DateType::OrSymbol),
@@ -126,6 +133,10 @@ module Orb
         amount: nil,
         amount_gt: nil,
         amount_lt: nil,
+        # Filters to objects issued by this billing entity. Filtering on the account's
+        # default billing entity also matches objects created before the account had
+        # billing entities.
+        billing_entity_id: nil,
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         cursor: nil,
@@ -163,6 +174,7 @@ module Orb
             amount: T.nilable(String),
             amount_gt: T.nilable(String),
             amount_lt: T.nilable(String),
+            billing_entity_id: T.nilable(String),
             cursor: T.nilable(String),
             customer_id: T.nilable(String),
             date_type: T.nilable(Orb::InvoiceListParams::DateType::OrSymbol),

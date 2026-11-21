@@ -9,6 +9,10 @@ module Orb
       sig { returns(String) }
       attr_accessor :id
 
+      # The id of the billing entity of the credit note's invoice.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # The creation time of the resource in Orb.
       sig { returns(Time) }
       attr_accessor :created_at
@@ -87,6 +91,7 @@ module Orb
       sig do
         params(
           id: String,
+          billing_entity_id: T.nilable(String),
           created_at: Time,
           credit_note_number: String,
           credit_note_pdf: T.nilable(String),
@@ -108,6 +113,8 @@ module Orb
       def self.new(
         # The Orb id of this credit note.
         id:,
+        # The id of the billing entity of the credit note's invoice.
+        billing_entity_id:,
         # The creation time of the resource in Orb.
         created_at:,
         # The unique identifier for credit notes.
@@ -142,6 +149,7 @@ module Orb
         override.returns(
           {
             id: String,
+            billing_entity_id: T.nilable(String),
             created_at: Time,
             credit_note_number: String,
             credit_note_pdf: T.nilable(String),

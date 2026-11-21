@@ -226,6 +226,9 @@ module Orb
           attr_writer :billing_address
 
           sig { returns(T.nilable(String)) }
+          attr_accessor :billing_entity_id
+
+          sig { returns(T.nilable(String)) }
           attr_accessor :default_payment_method_id
 
           sig { returns(T.nilable(String)) }
@@ -418,6 +421,7 @@ module Orb
             params(
               auto_collection: T.nilable(T::Boolean),
               billing_address: T.nilable(Orb::Address::OrHash),
+              billing_entity_id: T.nilable(String),
               default_payment_method_id: T.nilable(String),
               email: T.nilable(String),
               email_delivery: T.nilable(T::Boolean),
@@ -433,6 +437,7 @@ module Orb
           def self.new(
             auto_collection: nil,
             billing_address: nil,
+            billing_entity_id: nil,
             default_payment_method_id: nil,
             email: nil,
             email_delivery: nil,
@@ -601,6 +606,7 @@ module Orb
               {
                 auto_collection: T.nilable(T::Boolean),
                 billing_address: T.nilable(Orb::Address),
+                billing_entity_id: T.nilable(String),
                 default_payment_method_id: T.nilable(String),
                 email: T.nilable(String),
                 email_delivery: T.nilable(T::Boolean),

@@ -70,7 +70,9 @@ module Orb
       # Get a paginated list of CreditNotes. The credit notes will be returned in
       # reverse chronological order by `creation_time`.
       #
-      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
+      # @overload list(billing_entity_id: nil, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, limit: nil, request_options: {})
+      #
+      # @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       # @param created_at_gt [Time, nil]
       #

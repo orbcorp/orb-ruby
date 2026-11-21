@@ -8,6 +8,7 @@ module Orb
         auto_collection: bool?,
         auto_issuance: bool?,
         billing_address: Orb::AddressInput?,
+        billing_entity_id: String?,
         currency: String?,
         default_payment_method_id: String?,
         email: String?,
@@ -41,6 +42,8 @@ module Orb
       attr_accessor auto_issuance: bool?
 
       attr_accessor billing_address: Orb::AddressInput?
+
+      attr_accessor billing_entity_id: String?
 
       attr_accessor currency: String?
 
@@ -79,6 +82,7 @@ module Orb
         ?auto_collection: bool?,
         ?auto_issuance: bool?,
         ?billing_address: Orb::AddressInput?,
+        ?billing_entity_id: String?,
         ?currency: String?,
         ?default_payment_method_id: String?,
         ?email: String?,
@@ -104,6 +108,7 @@ module Orb
         auto_collection: bool?,
         auto_issuance: bool?,
         billing_address: Orb::AddressInput?,
+        billing_entity_id: String?,
         currency: String?,
         default_payment_method_id: String?,
         email: String?,

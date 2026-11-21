@@ -12,6 +12,11 @@ module Orb
       sig { returns(String) }
       attr_accessor :plan_id
 
+      # The Orb ID of the active billing entity to set as this plan's default entity.
+      # Pass `null` to clear it.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # An optional user-defined description of the plan.
       sig { returns(T.nilable(String)) }
       attr_accessor :description
@@ -35,6 +40,7 @@ module Orb
       sig do
         params(
           plan_id: String,
+          billing_entity_id: T.nilable(String),
           description: T.nilable(String),
           external_plan_id: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -44,6 +50,9 @@ module Orb
       end
       def self.new(
         plan_id:,
+        # The Orb ID of the active billing entity to set as this plan's default entity.
+        # Pass `null` to clear it.
+        billing_entity_id: nil,
         # An optional user-defined description of the plan.
         description: nil,
         # An optional user-defined ID for this plan resource, used throughout the system
@@ -64,6 +73,7 @@ module Orb
         override.returns(
           {
             plan_id: String,
+            billing_entity_id: T.nilable(String),
             description: T.nilable(String),
             external_plan_id: T.nilable(String),
             metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),

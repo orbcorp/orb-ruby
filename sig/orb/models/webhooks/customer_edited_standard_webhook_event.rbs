@@ -73,6 +73,7 @@ module Orb
             {
               auto_collection: bool?,
               billing_address: Orb::Address?,
+              billing_entity_id: String?,
               default_payment_method_id: String?,
               email: String?,
               email_delivery: bool?,
@@ -89,6 +90,8 @@ module Orb
             attr_accessor auto_collection: bool?
 
             attr_accessor billing_address: Orb::Address?
+
+            attr_accessor billing_entity_id: String?
 
             attr_accessor default_payment_method_id: String?
 
@@ -113,6 +116,7 @@ module Orb
             def initialize: (
               ?auto_collection: bool?,
               ?billing_address: Orb::Address?,
+              ?billing_entity_id: String?,
               ?default_payment_method_id: String?,
               ?email: String?,
               ?email_delivery: bool?,
@@ -128,6 +132,7 @@ module Orb
             def to_hash: -> {
               auto_collection: bool?,
               billing_address: Orb::Address?,
+              billing_entity_id: String?,
               default_payment_method_id: String?,
               email: String?,
               email_delivery: bool?,

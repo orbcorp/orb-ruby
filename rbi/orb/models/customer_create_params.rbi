@@ -57,6 +57,11 @@ module Orb
       sig { params(billing_address: T.nilable(Orb::AddressInput::OrHash)).void }
       attr_writer :billing_address
 
+      # The Orb ID of the active billing entity to set as this customer's default
+      # entity.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # An ISO 4217 currency string used for the customer's invoices and balance. If not
       # set at creation time, will be set at subscription creation time.
       sig { returns(T.nilable(String)) }
@@ -321,6 +326,7 @@ module Orb
           auto_collection: T.nilable(T::Boolean),
           auto_issuance: T.nilable(T::Boolean),
           billing_address: T.nilable(Orb::AddressInput::OrHash),
+          billing_entity_id: T.nilable(String),
           currency: T.nilable(String),
           email_delivery: T.nilable(T::Boolean),
           external_customer_id: T.nilable(String),
@@ -372,6 +378,9 @@ module Orb
         # will be inherited from the account-level setting.
         auto_issuance: nil,
         billing_address: nil,
+        # The Orb ID of the active billing entity to set as this customer's default
+        # entity.
+        billing_entity_id: nil,
         # An ISO 4217 currency string used for the customer's invoices and balance. If not
         # set at creation time, will be set at subscription creation time.
         currency: nil,
@@ -569,6 +578,7 @@ module Orb
             auto_collection: T.nilable(T::Boolean),
             auto_issuance: T.nilable(T::Boolean),
             billing_address: T.nilable(Orb::AddressInput),
+            billing_entity_id: T.nilable(String),
             currency: T.nilable(String),
             email_delivery: T.nilable(T::Boolean),
             external_customer_id: T.nilable(String),

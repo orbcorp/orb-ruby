@@ -274,6 +274,10 @@ module Orb
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :automatic_tax_enabled
 
+      # The id of the default billing entity of this customer.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # A payment method represents a customer's stored payment instrument held with an
       # external payment provider (such as Adyen or Stripe).
       #
@@ -358,6 +362,7 @@ module Orb
           accounting_sync_configuration:
             T.nilable(Orb::Customer::AccountingSyncConfiguration::OrHash),
           automatic_tax_enabled: T.nilable(T::Boolean),
+          billing_entity_id: T.nilable(String),
           default_payment_method:
             T.nilable(Orb::Customer::DefaultPaymentMethod::OrHash),
           payment_configuration:
@@ -570,6 +575,8 @@ module Orb
         # Whether automatic tax calculation is enabled for this customer. This field is
         # nullable for backwards compatibility but will always return a boolean value.
         automatic_tax_enabled: nil,
+        # The id of the default billing entity of this customer.
+        billing_entity_id: nil,
         # A payment method represents a customer's stored payment instrument held with an
         # external payment provider (such as Adyen or Stripe).
         #
@@ -611,6 +618,7 @@ module Orb
             accounting_sync_configuration:
               T.nilable(Orb::Customer::AccountingSyncConfiguration),
             automatic_tax_enabled: T.nilable(T::Boolean),
+            billing_entity_id: T.nilable(String),
             default_payment_method:
               T.nilable(Orb::Customer::DefaultPaymentMethod),
             payment_configuration:

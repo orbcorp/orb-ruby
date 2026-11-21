@@ -119,6 +119,11 @@ module Orb
             #   @return [Orb::Models::Address, nil]
             optional :billing_address, -> { Orb::Address }, nil?: true
 
+            # @!attribute billing_entity_id
+            #
+            #   @return [String, nil]
+            optional :billing_entity_id, String, nil?: true
+
             # @!attribute default_payment_method_id
             #
             #   @return [String, nil]
@@ -319,7 +324,7 @@ module Orb
             #   @return [Orb::Models::CustomerTaxID, nil]
             optional :tax_id, -> { Orb::CustomerTaxID }, nil?: true
 
-            # @!method initialize(auto_collection: nil, billing_address: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, shipping_address: nil, tax_id: nil)
+            # @!method initialize(auto_collection: nil, billing_address: nil, billing_entity_id: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, metadata: nil, name: nil, payment_provider: nil, payment_provider_id: nil, shipping_address: nil, tax_id: nil)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Webhooks::CustomerEditedStandardWebhookEvent::Properties::PreviousAttributes}
             #   for more details.
@@ -331,6 +336,8 @@ module Orb
             #   @param auto_collection [Boolean, nil]
             #
             #   @param billing_address [Orb::Models::Address, nil]
+            #
+            #   @param billing_entity_id [String, nil]
             #
             #   @param default_payment_method_id [String, nil]
             #

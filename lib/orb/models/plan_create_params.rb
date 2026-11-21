@@ -37,6 +37,12 @@ module Orb
                },
                nil?: true
 
+      # @!attribute billing_entity_id
+      #   The Orb ID of the active billing entity to set as this plan's default entity.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute default_invoice_memo
       #   Free-form text which is available on the invoice PDF and the Orb invoice portal.
       #
@@ -86,7 +92,7 @@ module Orb
       #   @return [Symbol, Orb::Models::PlanCreateParams::Status, nil]
       optional :status, enum: -> { Orb::PlanCreateParams::Status }
 
-      # @!method initialize(currency:, name:, prices:, adjustments: nil, default_invoice_memo: nil, description: nil, external_plan_id: nil, metadata: nil, net_terms: nil, plan_phases: nil, status: nil, request_options: {})
+      # @!method initialize(currency:, name:, prices:, adjustments: nil, billing_entity_id: nil, default_invoice_memo: nil, description: nil, external_plan_id: nil, metadata: nil, net_terms: nil, plan_phases: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PlanCreateParams} for more details.
       #
@@ -97,6 +103,8 @@ module Orb
       #   @param prices [Array<Orb::Models::PlanCreateParams::Price>] Prices for this plan. If the plan has phases, this includes prices across all ph
       #
       #   @param adjustments [Array<Orb::Models::PlanCreateParams::Adjustment>, nil] Adjustments for this plan. If the plan has phases, this includes adjustments acr
+      #
+      #   @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this plan's default entity.
       #
       #   @param default_invoice_memo [String, nil] Free-form text which is available on the invoice PDF and the Orb invoice portal.
       #

@@ -4,6 +4,7 @@ module Orb
       type external_plan_id_update_params =
         {
           other_external_plan_id: String,
+          billing_entity_id: String?,
           description: String?,
           external_plan_id: String?,
           metadata: ::Hash[Symbol, String?]?,
@@ -17,6 +18,8 @@ module Orb
 
         attr_accessor other_external_plan_id: String
 
+        attr_accessor billing_entity_id: String?
+
         attr_accessor description: String?
 
         attr_accessor external_plan_id: String?
@@ -27,6 +30,7 @@ module Orb
 
         def initialize: (
           other_external_plan_id: String,
+          ?billing_entity_id: String?,
           ?description: String?,
           ?external_plan_id: String?,
           ?metadata: ::Hash[Symbol, String?]?,
@@ -36,6 +40,7 @@ module Orb
 
         def to_hash: -> {
           other_external_plan_id: String,
+          billing_entity_id: String?,
           description: String?,
           external_plan_id: String?,
           metadata: ::Hash[Symbol, String?]?,

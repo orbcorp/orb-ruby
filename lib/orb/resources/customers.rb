@@ -84,7 +84,7 @@ module Orb
       # - [Timezone localization](/essentials/timezones) can be configured on a
       #   per-customer basis by setting the `timezone` parameter
       #
-      # @overload create(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
+      # @overload create(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, billing_entity_id: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
       #
       # @param email [String] A valid customer email, to be used for notifications. When Orb triggers payment
       #
@@ -99,6 +99,8 @@ module Orb
       # @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
+      #
+      # @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this customer's default entity
       #
       # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
       #
@@ -152,7 +154,7 @@ module Orb
       # be set if it has not already been set on the customer. Other fields on a
       # customer are currently immutable.
       #
-      # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @overload update(customer_id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, billing_entity_id: nil, currency: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
       # @param customer_id [String]
       #
@@ -165,6 +167,8 @@ module Orb
       # @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
+      #
+      # @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this customer's default entity
       #
       # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. This c
       #
@@ -461,7 +465,7 @@ module Orb
       # resource and semantics of this endpoint exactly mirror
       # [Update Customer](update-customer).
       #
-      # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
+      # @overload update_by_external_id(id, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, billing_entity_id: nil, currency: nil, default_payment_method_id: nil, email: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, name: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, request_options: {})
       #
       # @param id [String]
       #
@@ -474,6 +478,8 @@ module Orb
       # @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
       #
       # @param billing_address [Orb::Models::AddressInput, nil]
+      #
+      # @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this customer's default entity
       #
       # @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. This c
       #

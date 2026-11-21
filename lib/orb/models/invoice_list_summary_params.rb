@@ -22,6 +22,14 @@ module Orb
       #   @return [String, nil]
       optional :amount_lt, String, nil?: true
 
+      # @!attribute billing_entity_id
+      #   Filters to objects issued by this billing entity. Filtering on the account's
+      #   default billing entity also matches objects created before the account had
+      #   billing entities.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute cursor
       #   Cursor for pagination. This can be populated by the `next_cursor` value returned
       #   from the initial request.
@@ -109,7 +117,7 @@ module Orb
       #   @return [String, nil]
       optional :subscription_id, String, nil?: true
 
-      # @!method initialize(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      # @!method initialize(amount: nil, amount_gt: nil, amount_lt: nil, billing_entity_id: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::InvoiceListSummaryParams} for more details.
       #
@@ -118,6 +126,8 @@ module Orb
       #   @param amount_gt [String, nil]
       #
       #   @param amount_lt [String, nil]
+      #
+      #   @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       #   @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #

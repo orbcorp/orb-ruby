@@ -90,6 +90,11 @@ module Orb
 
           # @see Orb::Models::Webhooks::PlanEditedStandardWebhookEvent::Properties#previous_attributes
           class PreviousAttributes < Orb::Internal::Type::BaseModel
+            # @!attribute billing_entity_id
+            #
+            #   @return [String, nil]
+            optional :billing_entity_id, String, nil?: true
+
             # @!attribute description
             #
             #   @return [String, nil]
@@ -119,9 +124,10 @@ module Orb
                      },
                      nil?: true
 
-            # @!method initialize(description: nil, external_plan_id: nil, metadata: nil, name: nil, status: nil)
+            # @!method initialize(billing_entity_id: nil, description: nil, external_plan_id: nil, metadata: nil, name: nil, status: nil)
             #   metadata values are non-null on the wire, as on the price event.
             #
+            #   @param billing_entity_id [String, nil]
             #   @param description [String, nil]
             #   @param external_plan_id [String, nil]
             #   @param metadata [Hash{Symbol=>String}, nil]

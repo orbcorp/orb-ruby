@@ -7,6 +7,14 @@ module Orb
       extend Orb::Internal::Type::RequestParameters::Converter
       include Orb::Internal::Type::RequestParameters
 
+      # @!attribute billing_entity_id
+      #   Filters to objects issued by this billing entity. Filtering on the account's
+      #   default billing entity also matches objects created before the account had
+      #   billing entities.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute created_at_gt
       #
       #   @return [Time, nil]
@@ -69,9 +77,11 @@ module Orb
       #   @return [Symbol, Orb::Models::SubscriptionStatusFilter, Array<Symbol, Orb::Models::SubscriptionStatusFilter>, nil]
       optional :status, union: -> { Orb::SubscriptionListParams::Status }, nil?: true
 
-      # @!method initialize(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
+      # @!method initialize(billing_entity_id: nil, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionListParams} for more details.
+      #
+      #   @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       #   @param created_at_gt [Time, nil]
       #

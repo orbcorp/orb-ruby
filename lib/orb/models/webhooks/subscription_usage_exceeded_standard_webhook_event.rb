@@ -344,7 +344,13 @@ module Orb
               #   @return [String]
               required :plan_version, String
 
-              # @!method initialize(id:, external_plan_id:, name:, plan_version:)
+              # @!attribute billing_entity_id
+              #   The id of the default billing entity of this plan.
+              #
+              #   @return [String, nil]
+              optional :billing_entity_id, String, nil?: true
+
+              # @!method initialize(id:, external_plan_id:, name:, plan_version:, billing_entity_id: nil)
               #   Some parameter documentations has been truncated, see
               #   {Orb::Models::Webhooks::SubscriptionUsageExceededStandardWebhookEvent::Properties::AlertConfiguration::Plan}
               #   for more details.
@@ -358,6 +364,8 @@ module Orb
               #   @param name [String, nil]
               #
               #   @param plan_version [String]
+              #
+              #   @param billing_entity_id [String, nil] The id of the default billing entity of this plan.
             end
 
             class Threshold < Orb::Internal::Type::BaseModel
@@ -660,7 +668,13 @@ module Orb
             #   @return [String, nil]
             required :name, String, nil?: true
 
-            # @!method initialize(id:, external_plan_id:, name:)
+            # @!attribute billing_entity_id
+            #   The id of the default billing entity of this plan.
+            #
+            #   @return [String, nil]
+            optional :billing_entity_id, String, nil?: true
+
+            # @!method initialize(id:, external_plan_id:, name:, billing_entity_id: nil)
             #   Some parameter documentations has been truncated, see
             #   {Orb::Models::Webhooks::SubscriptionUsageExceededStandardWebhookEvent::Subscription::Plan}
             #   for more details.
@@ -670,6 +684,8 @@ module Orb
             #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
             #
             #   @param name [String, nil]
+            #
+            #   @param billing_entity_id [String, nil] The id of the default billing entity of this plan.
           end
 
           # @see Orb::Models::Webhooks::SubscriptionUsageExceededStandardWebhookEvent::Subscription#status

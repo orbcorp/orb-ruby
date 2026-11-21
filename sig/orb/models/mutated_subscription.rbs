@@ -9,6 +9,7 @@ module Orb
         auto_issuance: bool?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
+        billing_entity_id: String?,
         created_at: Time,
         current_billing_period_end_date: Time?,
         current_billing_period_start_date: Time?,
@@ -47,6 +48,8 @@ module Orb
       attr_accessor billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration
 
       attr_accessor billing_cycle_day: Integer
+
+      attr_accessor billing_entity_id: String?
 
       attr_accessor created_at: Time
 
@@ -100,6 +103,7 @@ module Orb
         auto_issuance: bool?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
+        billing_entity_id: String?,
         created_at: Time,
         current_billing_period_end_date: Time?,
         current_billing_period_start_date: Time?,
@@ -132,6 +136,7 @@ module Orb
         auto_issuance: bool?,
         billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration,
         billing_cycle_day: Integer,
+        billing_entity_id: String?,
         created_at: Time,
         current_billing_period_end_date: Time?,
         current_billing_period_start_date: Time?,

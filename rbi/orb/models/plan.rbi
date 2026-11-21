@@ -26,6 +26,10 @@ module Orb
       sig { returns(T.nilable(String)) }
       attr_accessor :base_plan_id
 
+      # The id of the default billing entity of this plan.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       sig { returns(Time) }
       attr_accessor :created_at
 
@@ -144,6 +148,7 @@ module Orb
             ],
           base_plan: T.nilable(Orb::Plan::BasePlan::OrHash),
           base_plan_id: T.nilable(String),
+          billing_entity_id: T.nilable(String),
           created_at: Time,
           currency: String,
           default_invoice_memo: T.nilable(String),
@@ -228,6 +233,8 @@ module Orb
         # Legacy field representing the parent plan ID if the current plan is a 'child
         # plan', overriding prices from the parent.
         base_plan_id:,
+        # The id of the default billing entity of this plan.
+        billing_entity_id:,
         created_at:,
         # An ISO 4217 currency string or custom pricing unit (`credits`) for this plan's
         # prices.
@@ -282,6 +289,7 @@ module Orb
             adjustments: T::Array[Orb::Plan::Adjustment::Variants],
             base_plan: T.nilable(Orb::Plan::BasePlan),
             base_plan_id: T.nilable(String),
+            billing_entity_id: T.nilable(String),
             created_at: Time,
             currency: String,
             default_invoice_memo: T.nilable(String),
@@ -675,13 +683,18 @@ module Orb
         sig { returns(T.nilable(String)) }
         attr_accessor :name
 
+        # The id of the default billing entity of this plan.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :billing_entity_id
+
         # Legacy field representing the parent plan if the current plan is a 'child plan',
         # overriding prices from the parent.
         sig do
           params(
             id: T.nilable(String),
             external_plan_id: T.nilable(String),
-            name: T.nilable(String)
+            name: T.nilable(String),
+            billing_entity_id: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -690,7 +703,9 @@ module Orb
           # as an alias for this Plan. Use this field to identify a plan by an existing
           # identifier in your system.
           external_plan_id:,
-          name:
+          name:,
+          # The id of the default billing entity of this plan.
+          billing_entity_id: nil
         )
         end
 
@@ -699,7 +714,8 @@ module Orb
             {
               id: T.nilable(String),
               external_plan_id: T.nilable(String),
-              name: T.nilable(String)
+              name: T.nilable(String),
+              billing_entity_id: T.nilable(String)
             }
           )
         end

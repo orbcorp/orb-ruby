@@ -34,6 +34,12 @@ module Orb
       #   @return [String, nil]
       required :base_plan_id, String, nil?: true
 
+      # @!attribute billing_entity_id
+      #   The id of the default billing entity of this plan.
+      #
+      #   @return [String, nil]
+      required :billing_entity_id, String, nil?: true
+
       # @!attribute created_at
       #
       #   @return [Time]
@@ -169,7 +175,7 @@ module Orb
       #   @return [Integer]
       required :version, Integer
 
-      # @!method initialize(id:, adjustments:, base_plan:, base_plan_id:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, has_draft:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:)
+      # @!method initialize(id:, adjustments:, base_plan:, base_plan_id:, billing_entity_id:, created_at:, currency:, default_invoice_memo:, description:, discount:, external_plan_id:, has_draft:, invoicing_currency:, maximum:, maximum_amount:, metadata:, minimum:, minimum_amount:, name:, net_terms:, plan_phases:, prices:, product:, status:, trial_config:, version:)
       #   Some parameter documentations has been truncated, see {Orb::Models::Plan} for
       #   more details.
       #
@@ -185,6 +191,8 @@ module Orb
       #   @param base_plan [Orb::Models::Plan::BasePlan, nil] Legacy field representing the parent plan if the current plan is a 'child plan',
       #
       #   @param base_plan_id [String, nil] Legacy field representing the parent plan ID if the current plan is a 'child pla
+      #
+      #   @param billing_entity_id [String, nil] The id of the default billing entity of this plan.
       #
       #   @param created_at [Time]
       #
@@ -449,7 +457,13 @@ module Orb
         #   @return [String, nil]
         required :name, String, nil?: true
 
-        # @!method initialize(id:, external_plan_id:, name:)
+        # @!attribute billing_entity_id
+        #   The id of the default billing entity of this plan.
+        #
+        #   @return [String, nil]
+        optional :billing_entity_id, String, nil?: true
+
+        # @!method initialize(id:, external_plan_id:, name:, billing_entity_id: nil)
         #   Some parameter documentations has been truncated, see
         #   {Orb::Models::Plan::BasePlan} for more details.
         #
@@ -461,6 +475,8 @@ module Orb
         #   @param external_plan_id [String, nil] An optional user-defined ID for this plan resource, used throughout the system a
         #
         #   @param name [String, nil]
+        #
+        #   @param billing_entity_id [String, nil] The id of the default billing entity of this plan.
       end
 
       class PlanPhase < Orb::Internal::Type::BaseModel

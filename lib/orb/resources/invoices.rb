@@ -13,7 +13,7 @@ module Orb
       #
       # This endpoint is used to create a one-off invoice for a customer.
       #
-      # @overload create(currency:, invoice_date:, line_items:, auto_collection: nil, customer_id: nil, discount: nil, due_date: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
+      # @overload create(currency:, invoice_date:, line_items:, auto_collection: nil, billing_entity_id: nil, customer_id: nil, discount: nil, due_date: nil, external_billing_entity_id: nil, external_customer_id: nil, memo: nil, metadata: nil, net_terms: nil, will_auto_issue: nil, request_options: {})
       #
       # @param currency [String] An ISO 4217 currency string. Must be the same as the customer's currency if it i
       #
@@ -23,11 +23,15 @@ module Orb
       #
       # @param auto_collection [Boolean, nil] Determines whether this invoice will automatically attempt to charge a saved pay
       #
+      # @param billing_entity_id [String, nil] The id of the active billing entity that issues this invoice. If not specified,
+      #
       # @param customer_id [String, nil] The id of the `Customer` to create this invoice for. One of `customer_id` and `e
       #
       # @param discount [Orb::Models::PercentageDiscount, Orb::Models::TrialDiscount, Orb::Models::UsageDiscount, Orb::Models::AmountDiscount, Orb::Models::Discount::TieredPercentage, nil] An optional discount to attach to the invoice.
       #
       # @param due_date [Date, Time, nil] An optional custom due date for the invoice. If not set, the due date will be ca
+      #
+      # @param external_billing_entity_id [String, nil] The external id of the active billing entity that issues this invoice.
       #
       # @param external_customer_id [String, nil] The `external_customer_id` of the `Customer` to create this invoice for. One of
       #
@@ -112,13 +116,15 @@ module Orb
       # the [list invoices summary](/api-reference/invoice/list-invoices-summary)
       # endpoint for better performance.
       #
-      # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, include_zero_quantity_line_items: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      # @overload list(amount: nil, amount_gt: nil, amount_lt: nil, billing_entity_id: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, include_zero_quantity_line_items: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #
       # @param amount [String, nil]
       #
       # @param amount_gt [String, nil]
       #
       # @param amount_lt [String, nil]
+      #
+      # @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #
@@ -356,13 +362,15 @@ module Orb
       # values for each draft invoice, which may not always be up-to-date since Orb
       # regularly refreshes invoices asynchronously.
       #
-      # @overload list_summary(amount: nil, amount_gt: nil, amount_lt: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
+      # @overload list_summary(amount: nil, amount_gt: nil, amount_lt: nil, billing_entity_id: nil, cursor: nil, customer_id: nil, date_type: nil, due_date: nil, due_date_window: nil, due_date_gt: nil, due_date_lt: nil, external_customer_id: nil, invoice_date_gt: nil, invoice_date_gte: nil, invoice_date_lt: nil, invoice_date_lte: nil, is_recurring: nil, limit: nil, status: nil, subscription_id: nil, request_options: {})
       #
       # @param amount [String, nil]
       #
       # @param amount_gt [String, nil]
       #
       # @param amount_lt [String, nil]
+      #
+      # @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       # @param cursor [String, nil] Cursor for pagination. This can be populated by the `next_cursor` value returned
       #

@@ -12,6 +12,13 @@ module Orb
       #   @return [String]
       required :plan_id, String
 
+      # @!attribute billing_entity_id
+      #   The Orb ID of the active billing entity to set as this plan's default entity.
+      #   Pass `null` to clear it.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute description
       #   An optional user-defined description of the plan.
       #
@@ -40,11 +47,13 @@ module Orb
       #   @return [String, nil]
       optional :name, String, nil?: true
 
-      # @!method initialize(plan_id:, description: nil, external_plan_id: nil, metadata: nil, name: nil, request_options: {})
+      # @!method initialize(plan_id:, billing_entity_id: nil, description: nil, external_plan_id: nil, metadata: nil, name: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::PlanUpdateParams} for more details.
       #
       #   @param plan_id [String]
+      #
+      #   @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this plan's default entity. Pa
       #
       #   @param description [String, nil] An optional user-defined description of the plan.
       #

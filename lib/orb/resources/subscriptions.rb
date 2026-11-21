@@ -267,7 +267,7 @@ module Orb
       #
       # By default, Orb limits the number of subscriptions per customer to 100.
       #
-      # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, auto_issuance: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      # @overload create(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, auto_issuance: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, billing_entity_id: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_billing_entity_id: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #
       # @param add_adjustments [Array<Orb::Models::SubscriptionCreateParams::AddAdjustment>, nil] Additional adjustments to be added to the subscription. (Only available for acco
       #
@@ -283,6 +283,8 @@ module Orb
       #
       # @param billing_cycle_anchor_configuration [Orb::Models::BillingCycleAnchorConfiguration, nil]
       #
+      # @param billing_entity_id [String, nil] The id of the active billing entity that issues this subscription's invoices. If
+      #
       # @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
       #
       # @param credits_overage_rate [Float, nil]
@@ -294,6 +296,8 @@ module Orb
       # @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
       #
       # @param end_date [Time, nil]
+      #
+      # @param external_billing_entity_id [String, nil] The external id of the active billing entity that issues this subscription's inv
       #
       # @param external_customer_id [String, nil]
       #
@@ -410,7 +414,9 @@ module Orb
       # request, use the status[] query parameter, e.g.
       # `status[]=active&status[]=ended`.
       #
-      # @overload list(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
+      # @overload list(billing_entity_id: nil, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
+      #
+      # @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       # @param created_at_gt [Time, nil]
       #
@@ -910,7 +916,9 @@ module Orb
       # This is the same summary of a subscription that standard
       # [webhook payloads](/integrations-and-exports/webhook-payload-styles) carry.
       #
-      # @overload list_summary(created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
+      # @overload list_summary(billing_entity_id: nil, created_at_gt: nil, created_at_gte: nil, created_at_lt: nil, created_at_lte: nil, cursor: nil, customer_id: nil, external_customer_id: nil, external_plan_id: nil, limit: nil, plan_id: nil, status: nil, request_options: {})
+      #
+      # @param billing_entity_id [String, nil] Filters to objects issued by this billing entity. Filtering on the account's def
       #
       # @param created_at_gt [Time, nil]
       #

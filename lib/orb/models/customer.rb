@@ -299,6 +299,12 @@ module Orb
       #   @return [Boolean, nil]
       optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
 
+      # @!attribute billing_entity_id
+      #   The id of the default billing entity of this customer.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute default_payment_method
       #   A payment method represents a customer's stored payment instrument held with an
       #   external payment provider (such as Adyen or Stripe).
@@ -321,7 +327,7 @@ module Orb
       #   @return [Orb::Models::Customer::ReportingConfiguration, nil]
       optional :reporting_configuration, -> { Orb::Customer::ReportingConfiguration }, nil?: true
 
-      # @!method initialize(id:, additional_emails:, auto_collection:, auto_issuance:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, automatic_tax_enabled: nil, default_payment_method: nil, payment_configuration: nil, reporting_configuration: nil)
+      # @!method initialize(id:, additional_emails:, auto_collection:, auto_issuance:, balance:, billing_address:, created_at:, currency:, email:, email_delivery:, exempt_from_automated_tax:, external_customer_id:, hierarchy:, metadata:, name:, payment_provider:, payment_provider_id:, portal_url:, shipping_address:, tax_id:, timezone:, accounting_sync_configuration: nil, automatic_tax_enabled: nil, billing_entity_id: nil, default_payment_method: nil, payment_configuration: nil, reporting_configuration: nil)
       #   Some parameter documentations has been truncated, see {Orb::Models::Customer}
       #   for more details.
       #
@@ -389,6 +395,8 @@ module Orb
       #   @param accounting_sync_configuration [Orb::Models::Customer::AccountingSyncConfiguration, nil]
       #
       #   @param automatic_tax_enabled [Boolean, nil] Whether automatic tax calculation is enabled for this customer. This field is nu
+      #
+      #   @param billing_entity_id [String, nil] The id of the default billing entity of this customer.
       #
       #   @param default_payment_method [Orb::Models::Customer::DefaultPaymentMethod, nil] A payment method represents a customer's stored payment instrument held with an
       #

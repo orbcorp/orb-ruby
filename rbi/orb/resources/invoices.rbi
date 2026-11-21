@@ -15,6 +15,7 @@ module Orb
           invoice_date: Time,
           line_items: T::Array[Orb::InvoiceCreateParams::LineItem::OrHash],
           auto_collection: T.nilable(T::Boolean),
+          billing_entity_id: T.nilable(String),
           customer_id: T.nilable(String),
           discount:
             T.nilable(
@@ -27,6 +28,7 @@ module Orb
               )
             ),
           due_date: T.nilable(Orb::InvoiceCreateParams::DueDate::Variants),
+          external_billing_entity_id: T.nilable(String),
           external_customer_id: T.nilable(String),
           memo: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(String)]),
@@ -49,6 +51,9 @@ module Orb
         # payment method, if any. If not specified, the invoice inherits the customer's
         # auto_collection setting.
         auto_collection: nil,
+        # The id of the active billing entity that issues this invoice. If not specified,
+        # falls back to the customer's billing entity.
+        billing_entity_id: nil,
         # The id of the `Customer` to create this invoice for. One of `customer_id` and
         # `external_customer_id` are required.
         customer_id: nil,
@@ -57,6 +62,8 @@ module Orb
         # An optional custom due date for the invoice. If not set, the due date will be
         # calculated based on the `net_terms` value.
         due_date: nil,
+        # The external id of the active billing entity that issues this invoice.
+        external_billing_entity_id: nil,
         # The `external_customer_id` of the `Customer` to create this invoice for. One of
         # `customer_id` and `external_customer_id` are required.
         external_customer_id: nil,
@@ -150,6 +157,7 @@ module Orb
           amount: T.nilable(String),
           amount_gt: T.nilable(String),
           amount_lt: T.nilable(String),
+          billing_entity_id: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
           date_type: T.nilable(Orb::InvoiceListParams::DateType::OrSymbol),
@@ -180,6 +188,10 @@ module Orb
         amount: nil,
         amount_gt: nil,
         amount_lt: nil,
+        # Filters to objects issued by this billing entity. Filtering on the account's
+        # default billing entity also matches objects created before the account had
+        # billing entities.
+        billing_entity_id: nil,
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         cursor: nil,
@@ -339,6 +351,7 @@ module Orb
           amount: T.nilable(String),
           amount_gt: T.nilable(String),
           amount_lt: T.nilable(String),
+          billing_entity_id: T.nilable(String),
           cursor: T.nilable(String),
           customer_id: T.nilable(String),
           date_type:
@@ -369,6 +382,10 @@ module Orb
         amount: nil,
         amount_gt: nil,
         amount_lt: nil,
+        # Filters to objects issued by this billing entity. Filtering on the account's
+        # default billing entity also matches objects created before the account had
+        # billing entities.
+        billing_entity_id: nil,
         # Cursor for pagination. This can be populated by the `next_cursor` value returned
         # from the initial request.
         cursor: nil,

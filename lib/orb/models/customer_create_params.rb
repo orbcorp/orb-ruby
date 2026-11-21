@@ -56,6 +56,13 @@ module Orb
       #   @return [Orb::Models::AddressInput, nil]
       optional :billing_address, -> { Orb::AddressInput }, nil?: true
 
+      # @!attribute billing_entity_id
+      #   The Orb ID of the active billing entity to set as this customer's default
+      #   entity.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute currency
       #   An ISO 4217 currency string used for the customer's invoices and balance. If not
       #   set at creation time, will be set at subscription creation time.
@@ -290,7 +297,7 @@ module Orb
       #   @return [String, nil]
       optional :timezone, String, nil?: true
 
-      # @!method initialize(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
+      # @!method initialize(email:, name:, accounting_sync_configuration: nil, additional_emails: nil, auto_collection: nil, auto_issuance: nil, billing_address: nil, billing_entity_id: nil, currency: nil, email_delivery: nil, external_customer_id: nil, hierarchy: nil, metadata: nil, payment_configuration: nil, payment_provider: nil, payment_provider_id: nil, reporting_configuration: nil, shipping_address: nil, tax_configuration: nil, tax_id: nil, timezone: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::CustomerCreateParams} for more details.
       #
@@ -307,6 +314,8 @@ module Orb
       #   @param auto_issuance [Boolean, nil] Used to determine if invoices for this customer will be automatically issued. If
       #
       #   @param billing_address [Orb::Models::AddressInput, nil]
+      #
+      #   @param billing_entity_id [String, nil] The Orb ID of the active billing entity to set as this customer's default entity
       #
       #   @param currency [String, nil] An ISO 4217 currency string used for the customer's invoices and balance. If not
       #

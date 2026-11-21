@@ -58,6 +58,14 @@ module Orb
       #   @return [Orb::Models::BillingCycleAnchorConfiguration, nil]
       optional :billing_cycle_anchor_configuration, -> { Orb::BillingCycleAnchorConfiguration }, nil?: true
 
+      # @!attribute billing_entity_id
+      #   The id of the active billing entity that issues this subscription's invoices. If
+      #   not specified, falls back to the customer's billing entity, then the plan's,
+      #   then the account's default. This cannot be changed after creation.
+      #
+      #   @return [String, nil]
+      optional :billing_entity_id, String, nil?: true
+
       # @!attribute coupon_redemption_code
       #   Redemption code to be used for this subscription. If the coupon cannot be found
       #   by its redemption code, or cannot be redeemed, an error response will be
@@ -95,6 +103,13 @@ module Orb
       #
       #   @return [Time, nil]
       optional :end_date, Time, nil?: true
+
+      # @!attribute external_billing_entity_id
+      #   The external id of the active billing entity that issues this subscription's
+      #   invoices.
+      #
+      #   @return [String, nil]
+      optional :external_billing_entity_id, String, nil?: true
 
       # @!attribute external_customer_id
       #
@@ -260,7 +275,7 @@ module Orb
       #   @return [Array<String>, nil]
       optional :usage_customer_ids, Orb::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!method initialize(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, auto_issuance: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
+      # @!method initialize(add_adjustments: nil, add_prices: nil, align_billing_with_subscription_start_date: nil, auto_collection: nil, auto_issuance: nil, aws_region: nil, billing_cycle_anchor_configuration: nil, billing_entity_id: nil, coupon_redemption_code: nil, credits_overage_rate: nil, currency: nil, customer_id: nil, default_invoice_memo: nil, end_date: nil, external_billing_entity_id: nil, external_customer_id: nil, external_marketplace: nil, external_marketplace_reporting_id: nil, external_plan_id: nil, filter: nil, initial_phase_order: nil, invoicing_threshold: nil, metadata: nil, name: nil, net_terms: nil, per_credit_overage_amount: nil, plan_id: nil, plan_version_number: nil, price_overrides: nil, remove_adjustments: nil, remove_prices: nil, replace_adjustments: nil, replace_prices: nil, start_date: nil, trial_duration_days: nil, usage_customer_ids: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {Orb::Models::SubscriptionCreateParams} for more details.
       #
@@ -278,6 +293,8 @@ module Orb
       #
       #   @param billing_cycle_anchor_configuration [Orb::Models::BillingCycleAnchorConfiguration, nil]
       #
+      #   @param billing_entity_id [String, nil] The id of the active billing entity that issues this subscription's invoices. If
+      #
       #   @param coupon_redemption_code [String, nil] Redemption code to be used for this subscription. If the coupon cannot be found
       #
       #   @param credits_overage_rate [Float, nil]
@@ -289,6 +306,8 @@ module Orb
       #   @param default_invoice_memo [String, nil] Determines the default memo on this subscription's invoices. Note that if this i
       #
       #   @param end_date [Time, nil]
+      #
+      #   @param external_billing_entity_id [String, nil] The external id of the active billing entity that issues this subscription's inv
       #
       #   @param external_customer_id [String, nil]
       #

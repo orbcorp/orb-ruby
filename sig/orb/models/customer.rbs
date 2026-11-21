@@ -25,6 +25,7 @@ module Orb
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         automatic_tax_enabled: bool?,
+        billing_entity_id: String?,
         default_payment_method: Orb::Customer::DefaultPaymentMethod?,
         payment_configuration: Orb::Customer::PaymentConfiguration?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?
@@ -77,6 +78,8 @@ module Orb
 
       attr_accessor automatic_tax_enabled: bool?
 
+      attr_accessor billing_entity_id: String?
+
       attr_accessor default_payment_method: Orb::Customer::DefaultPaymentMethod?
 
       attr_accessor payment_configuration: Orb::Customer::PaymentConfiguration?
@@ -107,6 +110,7 @@ module Orb
         timezone: String,
         ?accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         ?automatic_tax_enabled: bool?,
+        ?billing_entity_id: String?,
         ?default_payment_method: Orb::Customer::DefaultPaymentMethod?,
         ?payment_configuration: Orb::Customer::PaymentConfiguration?,
         ?reporting_configuration: Orb::Customer::ReportingConfiguration?
@@ -136,6 +140,7 @@ module Orb
         timezone: String,
         accounting_sync_configuration: Orb::Customer::AccountingSyncConfiguration?,
         automatic_tax_enabled: bool?,
+        billing_entity_id: String?,
         default_payment_method: Orb::Customer::DefaultPaymentMethod?,
         payment_configuration: Orb::Customer::PaymentConfiguration?,
         reporting_configuration: Orb::Customer::ReportingConfiguration?

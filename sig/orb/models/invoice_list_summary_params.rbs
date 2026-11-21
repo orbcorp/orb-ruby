@@ -5,6 +5,7 @@ module Orb
         amount: String?,
         amount_gt: String?,
         amount_lt: String?,
+        billing_entity_id: String?,
         cursor: String?,
         customer_id: String?,
         date_type: Orb::Models::InvoiceListSummaryParams::date_type?,
@@ -33,6 +34,8 @@ module Orb
       attr_accessor amount_gt: String?
 
       attr_accessor amount_lt: String?
+
+      attr_accessor billing_entity_id: String?
 
       attr_accessor cursor: String?
 
@@ -72,6 +75,7 @@ module Orb
         ?amount: String?,
         ?amount_gt: String?,
         ?amount_lt: String?,
+        ?billing_entity_id: String?,
         ?cursor: String?,
         ?customer_id: String?,
         ?date_type: Orb::Models::InvoiceListSummaryParams::date_type?,
@@ -95,6 +99,7 @@ module Orb
         amount: String?,
         amount_gt: String?,
         amount_lt: String?,
+        billing_entity_id: String?,
         cursor: String?,
         customer_id: String?,
         date_type: Orb::Models::InvoiceListSummaryParams::date_type?,

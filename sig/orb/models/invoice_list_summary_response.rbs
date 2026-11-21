@@ -6,6 +6,7 @@ module Orb
         amount_due: String,
         auto_collection: Orb::Models::InvoiceListSummaryResponse::AutoCollection,
         billing_address: Orb::Address?,
+        billing_entity_id: String?,
         created_at: Time,
         credit_notes: ::Array[Orb::Models::InvoiceListSummaryResponse::CreditNote],
         currency: String,
@@ -48,6 +49,8 @@ module Orb
       attr_accessor auto_collection: Orb::Models::InvoiceListSummaryResponse::AutoCollection
 
       attr_accessor billing_address: Orb::Address?
+
+      attr_accessor billing_entity_id: String?
 
       attr_accessor created_at: Time
 
@@ -118,6 +121,7 @@ module Orb
         amount_due: String,
         auto_collection: Orb::Models::InvoiceListSummaryResponse::AutoCollection,
         billing_address: Orb::Address?,
+        billing_entity_id: String?,
         created_at: Time,
         credit_notes: ::Array[Orb::Models::InvoiceListSummaryResponse::CreditNote],
         currency: String,
@@ -157,6 +161,7 @@ module Orb
         amount_due: String,
         auto_collection: Orb::Models::InvoiceListSummaryResponse::AutoCollection,
         billing_address: Orb::Address?,
+        billing_entity_id: String?,
         created_at: Time,
         credit_notes: ::Array[Orb::Models::InvoiceListSummaryResponse::CreditNote],
         currency: String,

@@ -62,6 +62,12 @@ module Orb
       end
       attr_writer :billing_cycle_anchor_configuration
 
+      # The id of the active billing entity that issues this subscription's invoices. If
+      # not specified, falls back to the customer's billing entity, then the plan's,
+      # then the account's default. This cannot be changed after creation.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :billing_entity_id
+
       # Redemption code to be used for this subscription. If the coupon cannot be found
       # by its redemption code, or cannot be redeemed, an error response will be
       # returned and the subscription creation or plan change will not be scheduled.
@@ -86,6 +92,11 @@ module Orb
 
       sig { returns(T.nilable(Time)) }
       attr_accessor :end_date
+
+      # The external id of the active billing entity that issues this subscription's
+      # invoices.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :external_billing_entity_id
 
       sig { returns(T.nilable(String)) }
       attr_accessor :external_customer_id
@@ -230,12 +241,14 @@ module Orb
           aws_region: T.nilable(String),
           billing_cycle_anchor_configuration:
             T.nilable(Orb::BillingCycleAnchorConfiguration::OrHash),
+          billing_entity_id: T.nilable(String),
           coupon_redemption_code: T.nilable(String),
           credits_overage_rate: T.nilable(Float),
           currency: T.nilable(String),
           customer_id: T.nilable(String),
           default_invoice_memo: T.nilable(String),
           end_date: T.nilable(Time),
+          external_billing_entity_id: T.nilable(String),
           external_customer_id: T.nilable(String),
           external_marketplace:
             T.nilable(
@@ -294,6 +307,10 @@ module Orb
         auto_issuance: nil,
         aws_region: nil,
         billing_cycle_anchor_configuration: nil,
+        # The id of the active billing entity that issues this subscription's invoices. If
+        # not specified, falls back to the customer's billing entity, then the plan's,
+        # then the account's default. This cannot be changed after creation.
+        billing_entity_id: nil,
         # Redemption code to be used for this subscription. If the coupon cannot be found
         # by its redemption code, or cannot be redeemed, an error response will be
         # returned and the subscription creation or plan change will not be scheduled.
@@ -307,6 +324,9 @@ module Orb
         # is not provided, it is determined by the plan configuration.
         default_invoice_memo: nil,
         end_date: nil,
+        # The external id of the active billing entity that issues this subscription's
+        # invoices.
+        external_billing_entity_id: nil,
         external_customer_id: nil,
         external_marketplace: nil,
         external_marketplace_reporting_id: nil,
@@ -389,12 +409,14 @@ module Orb
             aws_region: T.nilable(String),
             billing_cycle_anchor_configuration:
               T.nilable(Orb::BillingCycleAnchorConfiguration),
+            billing_entity_id: T.nilable(String),
             coupon_redemption_code: T.nilable(String),
             credits_overage_rate: T.nilable(Float),
             currency: T.nilable(String),
             customer_id: T.nilable(String),
             default_invoice_memo: T.nilable(String),
             end_date: T.nilable(Time),
+            external_billing_entity_id: T.nilable(String),
             external_customer_id: T.nilable(String),
             external_marketplace:
               T.nilable(

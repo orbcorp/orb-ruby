@@ -6,6 +6,7 @@ module Orb
         adjustments: ::Array[Orb::Models::Plan::adjustment],
         base_plan: Orb::Plan::BasePlan?,
         base_plan_id: String?,
+        billing_entity_id: String?,
         created_at: Time,
         currency: String,
         default_invoice_memo: String?,
@@ -37,6 +38,8 @@ module Orb
       attr_accessor base_plan: Orb::Plan::BasePlan?
 
       attr_accessor base_plan_id: String?
+
+      attr_accessor billing_entity_id: String?
 
       attr_accessor created_at: Time
 
@@ -85,6 +88,7 @@ module Orb
         adjustments: ::Array[Orb::Models::Plan::adjustment],
         base_plan: Orb::Plan::BasePlan?,
         base_plan_id: String?,
+        billing_entity_id: String?,
         created_at: Time,
         currency: String,
         default_invoice_memo: String?,
@@ -113,6 +117,7 @@ module Orb
         adjustments: ::Array[Orb::Models::Plan::adjustment],
         base_plan: Orb::Plan::BasePlan?,
         base_plan_id: String?,
+        billing_entity_id: String?,
         created_at: Time,
         currency: String,
         default_invoice_memo: String?,
@@ -283,7 +288,13 @@ module Orb
         def self?.variants: -> ::Array[Orb::Models::Plan::adjustment]
       end
 
-      type base_plan = { id: String?, external_plan_id: String?, name: String? }
+      type base_plan =
+        {
+          id: String?,
+          external_plan_id: String?,
+          name: String?,
+          billing_entity_id: String?
+        }
 
       class BasePlan < Orb::Internal::Type::BaseModel
         attr_accessor id: String?
@@ -292,16 +303,20 @@ module Orb
 
         attr_accessor name: String?
 
+        attr_accessor billing_entity_id: String?
+
         def initialize: (
           id: String?,
           external_plan_id: String?,
-          name: String?
+          name: String?,
+          ?billing_entity_id: String?
         ) -> void
 
         def to_hash: -> {
           id: String?,
           external_plan_id: String?,
-          name: String?
+          name: String?,
+          billing_entity_id: String?
         }
       end
 

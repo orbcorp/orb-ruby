@@ -9,12 +9,14 @@ module Orb
         ?auto_issuance: bool?,
         ?aws_region: String?,
         ?billing_cycle_anchor_configuration: Orb::BillingCycleAnchorConfiguration?,
+        ?billing_entity_id: String?,
         ?coupon_redemption_code: String?,
         ?credits_overage_rate: Float?,
         ?currency: String?,
         ?customer_id: String?,
         ?default_invoice_memo: String?,
         ?end_date: Time?,
+        ?external_billing_entity_id: String?,
         ?external_customer_id: String?,
         ?external_marketplace: Orb::Models::SubscriptionCreateParams::external_marketplace?,
         ?external_marketplace_reporting_id: String?,
@@ -51,6 +53,7 @@ module Orb
       ) -> Orb::Subscription
 
       def list: (
+        ?billing_entity_id: String?,
         ?created_at_gt: Time?,
         ?created_at_gte: Time?,
         ?created_at_lt: Time?,
@@ -114,6 +117,7 @@ module Orb
       ) -> Orb::Models::subscription_usage
 
       def list_summary: (
+        ?billing_entity_id: String?,
         ?created_at_gt: Time?,
         ?created_at_gte: Time?,
         ?created_at_lt: Time?,
