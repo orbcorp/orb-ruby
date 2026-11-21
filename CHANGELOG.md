@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.60.0](https://github.com/orbcorp/orb-ruby/compare/v1.59.0...v1.60.0) (2026-11-21)
+
+
+### Features
+
+* **api:** api update ([29b3035](https://github.com/orbcorp/orb-ruby/commit/29b3035523862a9eac8e710d3626bc990191916d))
+* **api:** api update ([df7fd89](https://github.com/orbcorp/orb-ruby/commit/df7fd89d24953b08bf247deb9a9b3e3175717503))
+* **api:** clarify net_terms day counting, with start date as day 1 ([df7fd89](https://github.com/orbcorp/orb-ruby/commit/df7fd89d24953b08bf247deb9a9b3e3175717503))
+* **api:** Remove unsupported filters from list credit notes description ([b7c0ac6](https://github.com/orbcorp/orb-ruby/commit/b7c0ac6ee716ccee0a37643e1f1275345e51be9f))
+
 ## [1.59.0](https://github.com/orbcorp/orb-ruby/compare/v1.58.0...v1.59.0) (2026-11-18)
 
 
