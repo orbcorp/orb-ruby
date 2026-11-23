@@ -1,6 +1,8 @@
 # typed: strong
 
 module Orb
+  Account = Orb::Models::Account
+
   AccountingProviderConfig = Orb::Models::AccountingProviderConfig
 
   Address = Orb::Models::Address

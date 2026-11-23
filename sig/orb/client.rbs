@@ -20,6 +20,8 @@ module Orb
 
     attr_reader credit_notes: Orb::Resources::CreditNotes
 
+    attr_reader account: Orb::Resources::Account
+
     attr_reader customers: Orb::Resources::Customers
 
     attr_reader events: Orb::Resources::Events

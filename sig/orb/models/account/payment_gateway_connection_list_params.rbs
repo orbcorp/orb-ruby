@@ -1,0 +1,56 @@
+module Orb
+  module Models
+    module Account
+      type payment_gateway_connection_list_params =
+        {
+          billing_entity_id: String?,
+          cursor: String?,
+          limit: Integer,
+          provider_type: Orb::Models::Account::PaymentGatewayConnectionListParams::provider_type?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class PaymentGatewayConnectionListParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor billing_entity_id: String?
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_accessor provider_type: Orb::Models::Account::PaymentGatewayConnectionListParams::provider_type?
+
+        def initialize: (
+          ?billing_entity_id: String?,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?provider_type: Orb::Models::Account::PaymentGatewayConnectionListParams::provider_type?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          billing_entity_id: String?,
+          cursor: String?,
+          limit: Integer,
+          provider_type: Orb::Models::Account::PaymentGatewayConnectionListParams::provider_type?,
+          request_options: Orb::RequestOptions
+        }
+
+        type provider_type = :stripe | :adyen
+
+        module ProviderType
+          extend Orb::Internal::Type::Enum
+
+          STRIPE: :stripe
+          ADYEN: :adyen
+
+          def self?.values: -> ::Array[Orb::Models::Account::PaymentGatewayConnectionListParams::provider_type]
+        end
+      end
+    end
+  end
+end

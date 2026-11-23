@@ -1,0 +1,80 @@
+module Orb
+  module Resources
+    class Account
+      class BillingEntities
+        def create: (
+          address: Orb::AddressInput,
+          legal_name: String,
+          name: String,
+          ?external_billing_entity_id: String?,
+          ?invoice_settings: Orb::Account::BillingEntityCreateParams::InvoiceSettings?,
+          ?tax_registrations: ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration],
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def update: (
+          String billing_entity_id,
+          ?address: Orb::AddressInput?,
+          ?default_payment_gateway_connection_id: String?,
+          ?invoice_settings: Orb::Account::BillingEntityUpdateParams::InvoiceSettings?,
+          ?legal_name: String?,
+          ?name: String?,
+          ?payment_gateway_connections: ::Array[Orb::Account::BillingEntityUpdateParams::PaymentGatewayConnection]?,
+          ?tax_registrations: ::Array[Orb::Account::BillingEntityUpdateParams::TaxRegistration]?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def list: (
+          ?cursor: String?,
+          ?limit: Integer,
+          ?status: Orb::Models::Account::BillingEntityListParams::status?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Internal::Page[Orb::Account::BillingEntity]
+
+        def archive: (
+          String billing_entity_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def archive_by_external_id: (
+          String external_billing_entity_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def fetch: (
+          String billing_entity_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def fetch_by_external_id: (
+          String external_billing_entity_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def unarchive: (
+          String billing_entity_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def unarchive_by_external_id: (
+          String external_billing_entity_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def update_by_external_id: (
+          String external_billing_entity_id,
+          ?address: Orb::AddressInput?,
+          ?default_payment_gateway_connection_id: String?,
+          ?invoice_settings: Orb::Account::BillingEntityUpdateByExternalIDParams::InvoiceSettings?,
+          ?legal_name: String?,
+          ?name: String?,
+          ?payment_gateway_connections: ::Array[Orb::Account::BillingEntityUpdateByExternalIDParams::PaymentGatewayConnection]?,
+          ?tax_registrations: ::Array[Orb::Account::BillingEntityUpdateByExternalIDParams::TaxRegistration]?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::BillingEntity
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

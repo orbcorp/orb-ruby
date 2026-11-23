@@ -1,4 +1,6 @@
 module Orb
+  module Account = Orb::Models::Account
+
   class AccountingProviderConfig = Orb::Models::AccountingProviderConfig
 
   class Address = Orb::Models::Address

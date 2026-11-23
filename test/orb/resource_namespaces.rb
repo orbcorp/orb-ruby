@@ -3,6 +3,9 @@
 module Orb
   module Test
     module Resources
+      module Account
+      end
+
       module Coupons
       end
 

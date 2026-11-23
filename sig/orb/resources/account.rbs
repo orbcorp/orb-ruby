@@ -1,0 +1,11 @@
+module Orb
+  module Resources
+    class Account
+      attr_reader billing_entities: Orb::Resources::Account::BillingEntities
+
+      attr_reader payment_gateway_connections: Orb::Resources::Account::PaymentGatewayConnections
+
+      def initialize: (client: Orb::Client) -> void
+    end
+  end
+end

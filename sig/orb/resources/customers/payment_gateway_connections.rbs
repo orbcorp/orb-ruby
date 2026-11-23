@@ -1,0 +1,67 @@
+module Orb
+  module Resources
+    class Customers
+      class PaymentGatewayConnections
+        def create: (
+          String customer_id,
+          payment_gateway_connection_id: String,
+          ?is_default: bool,
+          ?provider_customer_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Customers::CustomerPaymentGatewayConnection
+
+        def update: (
+          String payment_gateway_connection_id,
+          customer_id: String,
+          ?is_default: Orb::Models::Customers::PaymentGatewayConnectionUpdateParams::is_default?,
+          ?provider_customer_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Customers::CustomerPaymentGatewayConnection
+
+        def list: (
+          String customer_id,
+          ?billing_entity_id: String?,
+          ?payment_gateway_connection_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Customers::PaymentGatewayConnectionListResponse
+
+        def delete: (
+          String payment_gateway_connection_id,
+          customer_id: String,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Customers::CustomerPaymentGatewayConnection
+
+        def create_by_external_id: (
+          String external_customer_id,
+          payment_gateway_connection_id: String,
+          ?is_default: bool,
+          ?provider_customer_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Customers::CustomerPaymentGatewayConnection
+
+        def delete_by_external_id: (
+          String payment_gateway_connection_id,
+          external_customer_id: String,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Customers::CustomerPaymentGatewayConnection
+
+        def list_by_external_id: (
+          String external_customer_id,
+          ?billing_entity_id: String?,
+          ?payment_gateway_connection_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Models::Customers::PaymentGatewayConnectionListByExternalIDResponse
+
+        def update_by_external_id: (
+          String payment_gateway_connection_id,
+          external_customer_id: String,
+          ?is_default: Orb::Models::Customers::PaymentGatewayConnectionUpdateByExternalIDParams::is_default?,
+          ?provider_customer_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Customers::CustomerPaymentGatewayConnection
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

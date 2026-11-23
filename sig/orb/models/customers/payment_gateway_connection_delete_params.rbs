@@ -1,0 +1,30 @@
+module Orb
+  module Models
+    module Customers
+      type payment_gateway_connection_delete_params =
+        { customer_id: String, payment_gateway_connection_id: String }
+        & Orb::Internal::Type::request_parameters
+
+      class PaymentGatewayConnectionDeleteParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor payment_gateway_connection_id: String
+
+        def initialize: (
+          customer_id: String,
+          payment_gateway_connection_id: String,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          payment_gateway_connection_id: String,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end

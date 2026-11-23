@@ -1,0 +1,22 @@
+module Orb
+  module Resources
+    class Account
+      class PaymentGatewayConnections
+        def list: (
+          ?billing_entity_id: String?,
+          ?cursor: String?,
+          ?limit: Integer,
+          ?provider_type: Orb::Models::Account::PaymentGatewayConnectionListParams::provider_type?,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Internal::Page[Orb::Account::PaymentGatewayConnection]
+
+        def fetch: (
+          String payment_gateway_connection_id,
+          ?request_options: Orb::request_opts
+        ) -> Orb::Account::PaymentGatewayConnection
+
+        def initialize: (client: Orb::Client) -> void
+      end
+    end
+  end
+end

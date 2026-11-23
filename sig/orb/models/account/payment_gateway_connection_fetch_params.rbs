@@ -1,0 +1,26 @@
+module Orb
+  module Models
+    module Account
+      type payment_gateway_connection_fetch_params =
+        { payment_gateway_connection_id: String }
+        & Orb::Internal::Type::request_parameters
+
+      class PaymentGatewayConnectionFetchParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor payment_gateway_connection_id: String
+
+        def initialize: (
+          payment_gateway_connection_id: String,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          payment_gateway_connection_id: String,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end

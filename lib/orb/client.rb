@@ -40,6 +40,9 @@ module Orb
     # @return [Orb::Resources::CreditNotes]
     attr_reader :credit_notes
 
+    # @return [Orb::Resources::Account]
+    attr_reader :account
+
     # A customer is a buyer of your products, and the other party to the billing
     # relationship.
     #
@@ -230,6 +233,7 @@ module Orb
       @top_level = Orb::Resources::TopLevel.new(client: self)
       @coupons = Orb::Resources::Coupons.new(client: self)
       @credit_notes = Orb::Resources::CreditNotes.new(client: self)
+      @account = Orb::Resources::Account.new(client: self)
       @customers = Orb::Resources::Customers.new(client: self)
       @events = Orb::Resources::Events.new(client: self)
       @invoice_line_items = Orb::Resources::InvoiceLineItems.new(client: self)

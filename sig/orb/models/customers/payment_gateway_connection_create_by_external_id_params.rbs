@@ -1,0 +1,45 @@
+module Orb
+  module Models
+    module Customers
+      type payment_gateway_connection_create_by_external_id_params =
+        {
+          external_customer_id: String,
+          payment_gateway_connection_id: String,
+          is_default: bool,
+          provider_customer_id: String?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class PaymentGatewayConnectionCreateByExternalIDParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor external_customer_id: String
+
+        attr_accessor payment_gateway_connection_id: String
+
+        attr_reader is_default: bool?
+
+        def is_default=: (bool) -> bool
+
+        attr_accessor provider_customer_id: String?
+
+        def initialize: (
+          external_customer_id: String,
+          payment_gateway_connection_id: String,
+          ?is_default: bool,
+          ?provider_customer_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          external_customer_id: String,
+          payment_gateway_connection_id: String,
+          is_default: bool,
+          provider_customer_id: String?,
+          request_options: Orb::RequestOptions
+        }
+      end
+    end
+  end
+end

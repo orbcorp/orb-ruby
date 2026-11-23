@@ -1,0 +1,51 @@
+module Orb
+  module Models
+    module Account
+      type billing_entity_list_params =
+        {
+          cursor: String?,
+          limit: Integer,
+          status: Orb::Models::Account::BillingEntityListParams::status?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class BillingEntityListParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor cursor: String?
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_accessor status: Orb::Models::Account::BillingEntityListParams::status?
+
+        def initialize: (
+          ?cursor: String?,
+          ?limit: Integer,
+          ?status: Orb::Models::Account::BillingEntityListParams::status?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          cursor: String?,
+          limit: Integer,
+          status: Orb::Models::Account::BillingEntityListParams::status?,
+          request_options: Orb::RequestOptions
+        }
+
+        type status = :active | :archived
+
+        module Status
+          extend Orb::Internal::Type::Enum
+
+          ACTIVE: :active
+          ARCHIVED: :archived
+
+          def self?.values: -> ::Array[Orb::Models::Account::BillingEntityListParams::status]
+        end
+      end
+    end
+  end
+end

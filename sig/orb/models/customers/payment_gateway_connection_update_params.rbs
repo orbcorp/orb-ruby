@@ -1,0 +1,53 @@
+module Orb
+  module Models
+    module Customers
+      type payment_gateway_connection_update_params =
+        {
+          customer_id: String,
+          payment_gateway_connection_id: String,
+          is_default: Orb::Models::Customers::PaymentGatewayConnectionUpdateParams::is_default?,
+          provider_customer_id: String?
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class PaymentGatewayConnectionUpdateParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor payment_gateway_connection_id: String
+
+        attr_accessor is_default: Orb::Models::Customers::PaymentGatewayConnectionUpdateParams::is_default?
+
+        attr_accessor provider_customer_id: String?
+
+        def initialize: (
+          customer_id: String,
+          payment_gateway_connection_id: String,
+          ?is_default: Orb::Models::Customers::PaymentGatewayConnectionUpdateParams::is_default?,
+          ?provider_customer_id: String?,
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          payment_gateway_connection_id: String,
+          is_default: Orb::Models::Customers::PaymentGatewayConnectionUpdateParams::is_default?,
+          provider_customer_id: String?,
+          request_options: Orb::RequestOptions
+        }
+
+        type is_default = true
+
+        module IsDefault
+          extend Orb::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[Orb::Models::Customers::PaymentGatewayConnectionUpdateParams::is_default]
+        end
+      end
+    end
+  end
+end

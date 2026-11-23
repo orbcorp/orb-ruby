@@ -35,6 +35,9 @@ module Orb
     sig { returns(Orb::Resources::CreditNotes) }
     attr_reader :credit_notes
 
+    sig { returns(Orb::Resources::Account) }
+    attr_reader :account
+
     # A customer is a buyer of your products, and the other party to the billing
     # relationship.
     #

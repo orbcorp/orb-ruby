@@ -1,0 +1,58 @@
+module Orb
+  module Models
+    module Account
+      type payment_gateway_connection =
+        {
+          id: String,
+          billing_entity_id: String,
+          created_at: Time,
+          external_account_id: String?,
+          is_default: bool,
+          provider_type: Orb::Models::Account::PaymentGatewayConnection::provider_type
+        }
+
+      class PaymentGatewayConnection < Orb::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor billing_entity_id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor external_account_id: String?
+
+        attr_accessor is_default: bool
+
+        attr_accessor provider_type: Orb::Models::Account::PaymentGatewayConnection::provider_type
+
+        def initialize: (
+          id: String,
+          billing_entity_id: String,
+          created_at: Time,
+          external_account_id: String?,
+          is_default: bool,
+          provider_type: Orb::Models::Account::PaymentGatewayConnection::provider_type
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          billing_entity_id: String,
+          created_at: Time,
+          external_account_id: String?,
+          is_default: bool,
+          provider_type: Orb::Models::Account::PaymentGatewayConnection::provider_type
+        }
+
+        type provider_type = :stripe | :adyen
+
+        module ProviderType
+          extend Orb::Internal::Type::Enum
+
+          STRIPE: :stripe
+          ADYEN: :adyen
+
+          def self?.values: -> ::Array[Orb::Models::Account::PaymentGatewayConnection::provider_type]
+        end
+      end
+    end
+  end
+end

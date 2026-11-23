@@ -1,0 +1,118 @@
+module Orb
+  module Models
+    module Account
+      type billing_entity_create_params =
+        {
+          address: Orb::AddressInput,
+          legal_name: String,
+          name: String,
+          external_billing_entity_id: String?,
+          invoice_settings: Orb::Account::BillingEntityCreateParams::InvoiceSettings?,
+          tax_registrations: ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration]
+        }
+        & Orb::Internal::Type::request_parameters
+
+      class BillingEntityCreateParams < Orb::Internal::Type::BaseModel
+        extend Orb::Internal::Type::RequestParameters::Converter
+        include Orb::Internal::Type::RequestParameters
+
+        attr_accessor address: Orb::AddressInput
+
+        attr_accessor legal_name: String
+
+        attr_accessor name: String
+
+        attr_accessor external_billing_entity_id: String?
+
+        attr_accessor invoice_settings: Orb::Account::BillingEntityCreateParams::InvoiceSettings?
+
+        attr_reader tax_registrations: ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration]?
+
+        def tax_registrations=: (
+          ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration]
+        ) -> ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration]
+
+        def initialize: (
+          address: Orb::AddressInput,
+          legal_name: String,
+          name: String,
+          ?external_billing_entity_id: String?,
+          ?invoice_settings: Orb::Account::BillingEntityCreateParams::InvoiceSettings?,
+          ?tax_registrations: ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration],
+          ?request_options: Orb::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          address: Orb::AddressInput,
+          legal_name: String,
+          name: String,
+          external_billing_entity_id: String?,
+          invoice_settings: Orb::Account::BillingEntityCreateParams::InvoiceSettings?,
+          tax_registrations: ::Array[Orb::Account::BillingEntityCreateParams::TaxRegistration],
+          request_options: Orb::RequestOptions
+        }
+
+        type invoice_settings =
+          {
+            auto_collection: bool?,
+            automatic_tax_enabled: bool?,
+            email_delivery: bool?,
+            manual_issuance: bool?,
+            memo: String?,
+            net_terms: Integer?
+          }
+
+        class InvoiceSettings < Orb::Internal::Type::BaseModel
+          attr_accessor auto_collection: bool?
+
+          attr_accessor automatic_tax_enabled: bool?
+
+          attr_accessor email_delivery: bool?
+
+          attr_accessor manual_issuance: bool?
+
+          attr_accessor memo: String?
+
+          attr_accessor net_terms: Integer?
+
+          def initialize: (
+            ?auto_collection: bool?,
+            ?automatic_tax_enabled: bool?,
+            ?email_delivery: bool?,
+            ?manual_issuance: bool?,
+            ?memo: String?,
+            ?net_terms: Integer?
+          ) -> void
+
+          def to_hash: -> {
+            auto_collection: bool?,
+            automatic_tax_enabled: bool?,
+            email_delivery: bool?,
+            manual_issuance: bool?,
+            memo: String?,
+            net_terms: Integer?
+          }
+        end
+
+        type tax_registration =
+          { code: String, value: String, applies_to: String? }
+
+        class TaxRegistration < Orb::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor value: String
+
+          attr_accessor applies_to: String?
+
+          def initialize: (
+            code: String,
+            value: String,
+            ?applies_to: String?
+          ) -> void
+
+          def to_hash: -> { code: String, value: String, applies_to: String? }
+        end
+      end
+    end
+  end
+end
