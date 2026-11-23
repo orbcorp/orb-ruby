@@ -68,63 +68,16 @@ module Orb
         #   @param request_options [Orb::RequestOptions, Hash{Symbol=>Object}]
 
         class InvoiceSettings < Orb::Internal::Type::BaseModel
-          # @!attribute auto_collection
-          #   Whether Orb charges the customer's payment method automatically.
-          #
-          #   @return [Boolean, nil]
-          optional :auto_collection, Orb::Internal::Type::Boolean, nil?: true
-
-          # @!attribute automatic_tax_enabled
-          #   Whether Orb calculates tax through the tax provider.
-          #
-          #   @return [Boolean, nil]
-          optional :automatic_tax_enabled, Orb::Internal::Type::Boolean, nil?: true
-
-          # @!attribute email_delivery
-          #   Whether Orb emails invoices to customers.
-          #
-          #   @return [Boolean, nil]
-          optional :email_delivery, Orb::Internal::Type::Boolean, nil?: true
-
-          # @!attribute manual_issuance
-          #   Whether invoices stay in draft until issued by hand.
-          #
-          #   @return [Boolean, nil]
-          optional :manual_issuance, Orb::Internal::Type::Boolean, nil?: true
-
           # @!attribute memo
           #   The memo printed on the entity's invoices.
           #
           #   @return [String, nil]
           optional :memo, String, nil?: true
 
-          # @!attribute net_terms
-          #   The number of days until payment is due, counting the start date as day 1, so
-          #   net 30 from October 1 is due October 30. The account's
-          #   [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
-          #   sets whether the start date is the invoice date or the issuance date.
-          #
-          #   @return [Integer, nil]
-          optional :net_terms, Integer, nil?: true
-
-          # @!method initialize(auto_collection: nil, automatic_tax_enabled: nil, email_delivery: nil, manual_issuance: nil, memo: nil, net_terms: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {Orb::Models::Account::BillingEntityCreateParams::InvoiceSettings} for more
-          #   details.
-          #
+          # @!method initialize(memo: nil)
           #   Settings that override the account's for this billing entity.
           #
-          #   @param auto_collection [Boolean, nil] Whether Orb charges the customer's payment method automatically.
-          #
-          #   @param automatic_tax_enabled [Boolean, nil] Whether Orb calculates tax through the tax provider.
-          #
-          #   @param email_delivery [Boolean, nil] Whether Orb emails invoices to customers.
-          #
-          #   @param manual_issuance [Boolean, nil] Whether invoices stay in draft until issued by hand.
-          #
           #   @param memo [String, nil] The memo printed on the entity's invoices.
-          #
-          #   @param net_terms [Integer, nil] The number of days until payment is due, counting the start date as day 1, so ne
         end
 
         class TaxRegistration < Orb::Internal::Type::BaseModel

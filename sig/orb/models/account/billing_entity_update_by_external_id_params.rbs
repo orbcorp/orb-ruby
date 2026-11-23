@@ -58,46 +58,14 @@ module Orb
           request_options: Orb::RequestOptions
         }
 
-        type invoice_settings =
-          {
-            auto_collection: bool?,
-            automatic_tax_enabled: bool?,
-            email_delivery: bool?,
-            manual_issuance: bool?,
-            memo: String?,
-            net_terms: Integer?
-          }
+        type invoice_settings = { memo: String? }
 
         class InvoiceSettings < Orb::Internal::Type::BaseModel
-          attr_accessor auto_collection: bool?
-
-          attr_accessor automatic_tax_enabled: bool?
-
-          attr_accessor email_delivery: bool?
-
-          attr_accessor manual_issuance: bool?
-
           attr_accessor memo: String?
 
-          attr_accessor net_terms: Integer?
+          def initialize: (?memo: String?) -> void
 
-          def initialize: (
-            ?auto_collection: bool?,
-            ?automatic_tax_enabled: bool?,
-            ?email_delivery: bool?,
-            ?manual_issuance: bool?,
-            ?memo: String?,
-            ?net_terms: Integer?
-          ) -> void
-
-          def to_hash: -> {
-            auto_collection: bool?,
-            automatic_tax_enabled: bool?,
-            email_delivery: bool?,
-            manual_issuance: bool?,
-            memo: String?,
-            net_terms: Integer?
-          }
+          def to_hash: -> { memo: String? }
         end
 
         type payment_gateway_connection =

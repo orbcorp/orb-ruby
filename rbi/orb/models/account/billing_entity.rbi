@@ -157,76 +157,20 @@ module Orb
               )
             end
 
-          # Whether Orb charges the customer's payment method automatically.
-          sig { returns(T.nilable(T::Boolean)) }
-          attr_accessor :auto_collection
-
-          # Whether Orb calculates tax through the tax provider.
-          sig { returns(T.nilable(T::Boolean)) }
-          attr_accessor :automatic_tax_enabled
-
-          # Whether Orb emails invoices to customers.
-          sig { returns(T.nilable(T::Boolean)) }
-          attr_accessor :email_delivery
-
-          # Whether invoices stay in draft until issued by hand.
-          sig { returns(T.nilable(T::Boolean)) }
-          attr_accessor :manual_issuance
-
           # The memo printed on the entity's invoices.
           sig { returns(T.nilable(String)) }
           attr_accessor :memo
 
-          # The number of days until payment is due, counting the start date as day 1, so
-          # net 30 from October 1 is due October 30. The account's
-          # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
-          # sets whether the start date is the invoice date or the issuance date.
-          sig { returns(T.nilable(Integer)) }
-          attr_accessor :net_terms
-
           # The billing entity's own invoice settings. Each null field inherits the
           # account's setting.
-          sig do
-            params(
-              auto_collection: T.nilable(T::Boolean),
-              automatic_tax_enabled: T.nilable(T::Boolean),
-              email_delivery: T.nilable(T::Boolean),
-              manual_issuance: T.nilable(T::Boolean),
-              memo: T.nilable(String),
-              net_terms: T.nilable(Integer)
-            ).returns(T.attached_class)
-          end
+          sig { params(memo: T.nilable(String)).returns(T.attached_class) }
           def self.new(
-            # Whether Orb charges the customer's payment method automatically.
-            auto_collection:,
-            # Whether Orb calculates tax through the tax provider.
-            automatic_tax_enabled:,
-            # Whether Orb emails invoices to customers.
-            email_delivery:,
-            # Whether invoices stay in draft until issued by hand.
-            manual_issuance:,
             # The memo printed on the entity's invoices.
-            memo:,
-            # The number of days until payment is due, counting the start date as day 1, so
-            # net 30 from October 1 is due October 30. The account's
-            # [due date calculation method](/invoicing/payments#configuring-net-terms-and-collection-behavior)
-            # sets whether the start date is the invoice date or the issuance date.
-            net_terms:
+            memo:
           )
           end
 
-          sig do
-            override.returns(
-              {
-                auto_collection: T.nilable(T::Boolean),
-                automatic_tax_enabled: T.nilable(T::Boolean),
-                email_delivery: T.nilable(T::Boolean),
-                manual_issuance: T.nilable(T::Boolean),
-                memo: T.nilable(String),
-                net_terms: T.nilable(Integer)
-              }
-            )
-          end
+          sig { override.returns({ memo: T.nilable(String) }) }
           def to_hash
           end
         end
