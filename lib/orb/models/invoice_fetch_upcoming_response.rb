@@ -794,7 +794,11 @@ module Orb
 
         # @!attribute adjusted_subtotal
         #   The line amount after any adjustments and before overage conversion, credits and
-        #   partial invoicing.
+        #   partial invoicing. Unlike `subtotal` and `amount`, this is not rounded to the
+        #   currency's precision, so it matches the `adjusted_subtotal` in data exports. To
+        #   find the effect of adjustments, use `adjustments` rather than the difference
+        #   between `subtotal` and `adjusted_subtotal`. Each adjustment amount is rounded to
+        #   the currency's precision, so a sub-cent adjustment can show as zero.
         #
         #   @return [String]
         required :adjusted_subtotal, String
@@ -889,7 +893,8 @@ module Orb
                  -> { Orb::Internal::Type::ArrayOf[union: Orb::Models::InvoiceFetchUpcomingResponse::LineItem::SubLineItem] }
 
         # @!attribute subtotal
-        #   The line amount before any adjustments.
+        #   The line amount before any adjustments, rounded to the invoicing currency's
+        #   precision.
         #
         #   @return [String]
         required :subtotal, String
@@ -939,7 +944,7 @@ module Orb
         #
         #   @param sub_line_items [Array<Orb::Models::MatrixSubLineItem, Orb::Models::TierSubLineItem, Orb::Models::OtherSubLineItem>] For complex pricing structures, the line item can be broken down further in `sub
         #
-        #   @param subtotal [String] The line amount before any adjustments.
+        #   @param subtotal [String] The line amount before any adjustments, rounded to the invoicing currency's prec
         #
         #   @param tax_amounts [Array<Orb::Models::TaxAmount>] An array of tax rates and their incurred tax amounts. Empty if no tax integratio
         #
