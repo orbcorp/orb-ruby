@@ -298,7 +298,9 @@ module Orb
             end
 
           # The jurisdiction the registration applies to. If null, it applies to every
-          # customer.
+          # customer. A Canadian provincial registration (`CA PST-BC`, `CA PST-MB`,
+          # `CA PST-SK`, `CA QST`) only applies to customers in its province, whatever this
+          # field holds.
           sig { returns(T.nilable(String)) }
           attr_accessor :applies_to
 
@@ -319,7 +321,9 @@ module Orb
           end
           def self.new(
             # The jurisdiction the registration applies to. If null, it applies to every
-            # customer.
+            # customer. A Canadian provincial registration (`CA PST-BC`, `CA PST-MB`,
+            # `CA PST-SK`, `CA QST`) only applies to customers in its province, whatever this
+            # field holds.
             applies_to:,
             # The tax registration type, for example `DE VAT`.
             code:,

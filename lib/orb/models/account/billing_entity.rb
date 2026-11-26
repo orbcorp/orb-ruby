@@ -181,7 +181,9 @@ module Orb
         class TaxRegistration < Orb::Internal::Type::BaseModel
           # @!attribute applies_to
           #   The jurisdiction the registration applies to. If null, it applies to every
-          #   customer.
+          #   customer. A Canadian provincial registration (`CA PST-BC`, `CA PST-MB`,
+          #   `CA PST-SK`, `CA QST`) only applies to customers in its province, whatever this
+          #   field holds.
           #
           #   @return [String, nil]
           required :applies_to, String, nil?: true
